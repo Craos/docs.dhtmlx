@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Step 2. Add Grid on a Page  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="tutorials__binding_grid_to_form__step1.html">Step 1. Create the App's File</a></li><li class=" current"><a href="tutorials__binding_grid_to_form__step2.html">Step 2. Add Grid on a Page</a></li><li class=""><a href="tutorials__binding_grid_to_form__step3.html">Step 3. Add Form on the Page</a></li><li class=""><a href="tutorials__binding_grid_to_form__step4.html">Step 4. Bind the Form to the Grid</a></li><li class=""><a href="tutorials__binding_grid_to_form__step5.html">Step 5.  Save Data Changes on the Server</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="tutorials__index.html">Tutorials</a><a class="n3" href="tutorials__binding_grid_to_form__index.html">Binding Form to Grid</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Step 2. Add Grid on a Page</h1>
+
+<p>Now, we will create a grid on the page and populate it with data. Our grid will have 3 columns: Name, Quantity, Price.</p>
+
+<p>We'll use a MySQL database "<i>sampledb</i> " and the table "<i>books</i> " in it as the data source.  In the grid we will present 3 properties (<em>title, quantity, price</em> ).</p>
+
+<p><img style=" margin: 20px auto 20px auto;display: block;" src="media/tutorials/dhtmlx_grid_server/bd_structure.png"/></p>
+
+<div style="font-weight:bold; color: rgb(65, 65, 65); padding-top: 10px; font-size: 15px;">To create a grid and populate it with data:</div>
+
+<ol>
+<li>Place a <i>div</i> container on the page and set its width and height parameters in the <i>style</i> attribute:<br><br>
+<p class='snippet'>
+"index.html" file 
+</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">title</span>&gt;</span>Binding a form to a grid<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">title</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;STYLESHEET&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlx.css&quot;</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">script</span>  <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlx.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span> 
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+<span class="xtra ln-xtra">        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;mygrid_container&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width:600px;height:160px;float:left;&quot;</span>&gt;</span></span><span class="xtra ln-xtra">        <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span> </span>    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+</li>
+<li>Add the following code to the "<i>index.html</i> " to render a grid on the page:<br><br> 
+<p class='snippet'>
+"index.html" file
+</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">&quot;mygrid_container&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>  <span class="co1">//creates a grid object</span>
+mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>     <span class="co1">//sets the path to the source images</span>
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Name,Quantity,Price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>               <span class="co1">//sets the header labels</span>
+mygrid.<span class="me1">setColumnIds</span><span class="br0">&#40;</span><span class="st0">&quot;fname,lname,email&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>               <span class="co1">//sets the columns' ids</span>
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>                                   <span class="co1">//renders the grid on the page</span></pre></code></pre>
+
+<i>It's important to set ids for the columns cause we will need them to bind a form to the grid.<br> Details on initializing and configuring the grid, read in the tutorial - <a class="link-" href="tutorials__dhtmlxgrid_basic__index.html">First Steps with dhtmlxGrid</a>.</i>
+<br>
+<br>
+    </li>
+        <li>Find the <i>db.sql</i> file in the [demo app](docs.dhtmlx.com/packages/tutorials/grid_with_form.zip) and import it into your local database.</li>
+<li>Create a subfolder with the name "<i>connector</i> " in the "<i>codebase</i> " folder.
+</li>
+
+<li>Download the dhtmlxConnector library (<a href="https://github.com/DHTMLX/connector-php/archive/master.zip">link to download</a>). </li>
+
+<li>Open the "<i>dhtmlxConnector.zip</i> " archive and extract the content of its "<i>codebase</i> " folder to the "<i>dhtmlxConnector</i> " folder. 
+
+</li>
+
+    <li>Create a PHP file in the "<i>grid_with_form</i> " folder and name it <b>"griddata.php"</b>.</li>
+
+    <li>Open the <b>"griddata.php"</b> file and add the following server-side code to it:<br><br>
+<p class='snippet'>
+"griddata.php"
+</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+<span class="kw1">require_once</span><span class="br0">&#40;</span><span class="st0">&quot;codebase/connector/grid_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//includes connector file </span>
+&nbsp;
+<span class="co1">// connects to the database with the name &quot;sampledb&quot;  </span>
+<span class="re0">$res</span><span class="sy0">=</span><span class="kw2">new</span> PDO<span class="br0">&#40;</span><span class="st0">&quot;mysql:dbname=sampledb;host=localhost&quot;</span><span class="sy0">,</span><span class="st0">&quot;user&quot;</span><span class="sy0">,</span><span class="st0">&quot;password&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$conn</span> <span class="sy0">=</span> <span class="kw2">new</span> GridConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="br0">&#41;</span><span class="sy0">;</span>     <span class="co1">//initializes the connector object</span>
+<span class="re0">$conn</span><span class="sy0">-&gt;</span><span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;books&quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span><span class="st0">&quot;title,quantity,price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>  <span class="co1">//loads data from db</span></pre></code></pre>
+
+    
+<i>Make sure that all the includes used within the connector's script don't have any whitespaces beyond the <b>&lt;?php</b> and  <b>?></b> tags. <br>
+The <a class="link-" href="connector__php__connector_object_methods.html#rendertable">render_table</a> method allows loading data from a single table. 
+As parameters, the method takes: the table's name, the id field, a list of fields to load (used as values of the grid's cells).
+</i>
+
+<br>
+<br>
+
+    </li>
+    <li>Call the <a class="link-" href="api__dhtmlxgrid_load.html">load()</a> method to load data from the server to the grid:<br></li>
+<p class='snippet'>
+"index.html" file
+</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;griddata.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>                 <span class="co1">//takes the path to your data feed</span></pre></code></pre>
+
+<br><br>
+   </li>
+</ol>
+
+<p><img style="border: 1px #C4C4C5 solid;margin: 20px auto 20px auto;display: block;box-shadow: #D8D8D8 0px 0px 6px 1px;" src="media/tutorials/dhtmlx_grid_server/step3.png"/></p>
+
+<div id="tutorial_step">
+    <a id="next_step" class="link-" href="tutorials__binding_grid_to_form__step3.html"></a>
+</div>
+
+<!-- Content Area End -->
+			<a href='tutorials__binding_grid_to_form__step2.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

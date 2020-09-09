@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Integration with dhtmlxLayout  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="integration_with_dhtmlxmessage.html">Integration with dhtmlxMessage</a></li><li class=""><a href="backbone_integration.html">Backbone Integration</a></li><li class=""><a href="scheduler_typescript.html">Using Scheduler with TypeScript</a></li><li class=""><a href="jquery_integration.html">jQuery Integration</a></li><li class=""><a href="datastore_integration.html">Integration with dhtmlxDataStore</a></li><li class=" current"><a href="dhxlayout_integration.html">Integration with dhtmlxLayout</a></li><ul><li class="inner"><a href="dhxlayout_integration.html#dhtmlxsuitev5">dhtmlxSuite v5+</a></li><li class="inner"><a href="dhxlayout_integration.html#dhtmlxsuitev6">dhtmlxSuite v6+</a></li></ul><li class=""><a href="integration_with_bootstrap.html">Integration with Bootstrap</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="scheduler_integrations.html">Scheduler Integrations</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Integration with dhtmlxLayout</h1>
+
+<p>A good way to place <a class="link-pro" href="multiple_per_page.html">multiple schedulers</a> on the page is using dhtmlxLayout. It not only provides a beautiful frame, but also ensures correct interacting
+with other elements on the page and acting according to the page size changes.</p>
+
+<div class='note'><p><p>Note that dhtmlxLayout is not a part of the dhtmlxScheduler library.
+There are two versions of Layout you can choose from, depending on the version of the dhtmlxSuite library.</p>
+</p></div>
+
+<a name='dhtmlxsuitev5'><h2>dhtmlxSuite v5+</h2></a>
+
+<p>In this version dhtmlxLayout can be used as a separate product or as a part of the dhtmlxSuite library. To use dhtmlxLayout v5.X in your application, you should 
+<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">purchase the license</a>.</p>
+
+<p><strong>To attach a dhtmlxScheduler instance to a layout cell</strong>, use the <a href="../api__dhtmlxcell_attachscheduler.html">attachScheduler()</a> method.</p>
+
+<p><strong>Note</strong>, attaching scheduler to a cell automatically initializes it. So, configure scheduler before placing it into the layout.</p>
+
+<pre><code><pre class="js"><span class="kw2">function</span> init<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw2">var</span> dhxLayout <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXLayoutObject<span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="st0">&quot;2U&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    sched1 <span class="sy0">=</span> Scheduler.<span class="me1">getSchedulerInstance</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    sched1.<span class="me1">config</span>.<span class="me1">multi_day</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+    dhxLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;a&quot;</span><span class="br0">&#41;</span>.<span class="me1">attachScheduler</span><span class="br0">&#40;</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span>05<span class="sy0">,</span><span class="nu0">30</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="st0">&quot;week&quot;</span><span class="sy0">,</span><span class="kw2">null</span><span class="sy0">,</span>sched1<span class="br0">&#41;</span><span class="sy0">;</span>
+    sched1.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/data/units&quot;</span><span class="br0">&#41;</span>
+&nbsp;
+    sched2 <span class="sy0">=</span> Scheduler.<span class="me1">getSchedulerInstance</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    dhxLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;b&quot;</span><span class="br0">&#41;</span>.<span class="me1">attachScheduler</span><span class="br0">&#40;</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span>05<span class="sy0">,</span><span class="nu0">30</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="st0">&quot;month&quot;</span><span class="sy0">,</span><span class="kw2">null</span><span class="sy0">,</span>sched2<span class="br0">&#41;</span><span class="sy0">;</span>
+    sched2.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/data/units&quot;</span><span class="br0">&#41;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p><a href='samples/10_integration/05_dhtmlxlayout_terrace.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Integration with dhtmlxLayout (dhx_terrace skin, Suite v5.1)</a></p>
+
+<a name='dhtmlxsuitev6'><h2>dhtmlxSuite v6+</h2></a>
+
+<p>Starting from dhtmlxSuite 6.0, dhtmlxLayout can't be obtained separately from the whole Suite library.
+If you're going to use this approach, you should purchase the license of
+the <a href="https://dhtmlx.com/docs/products/dhtmlxSuite/#licensing">Suite 6.X library</a>.</p>
+
+<p>dhtmlxScheduler of <a class="link-" href="what_s_new.html#53">version 5.3</a> and newer implements a common View interface used in dhtmlxSuite v6+ and can be <a href="../suite/layout__api__layout_attach_method.html">attached to any cell directly</a>:</p>
+
+<pre><code><pre class="js"><span class="co1">// create and configure the scheduler instance</span>
+scheduler.<span class="me1">config</span>.<span class="me1">header</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+   <span class="st0">&quot;day&quot;</span><span class="sy0">,</span>
+   <span class="st0">&quot;week&quot;</span><span class="sy0">,</span>
+   <span class="st0">&quot;month&quot;</span><span class="sy0">,</span>
+   <span class="st0">&quot;date&quot;</span><span class="sy0">,</span>
+   <span class="st0">&quot;prev&quot;</span><span class="sy0">,</span>
+   <span class="st0">&quot;today&quot;</span><span class="sy0">,</span>
+   <span class="st0">&quot;next&quot;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+scheduler.<span class="me1">config</span>.<span class="me1">multi_day</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// after the scheduler is attached, onSchedulerReady will be fired</span>
+scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onSchedulerReady&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    requestAnimationFrame<span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="co1">// here you can set the initial view and date and load the data</span>
+        scheduler.<span class="me1">setCurrentView</span><span class="br0">&#40;</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2017</span><span class="sy0">,</span><span class="nu0">5</span><span class="sy0">,</span><span class="nu0">3</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;week&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;../common/events.json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">const</span> layout <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Layout</span><span class="br0">&#40;</span><span class="st0">&quot;layout&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    rows<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span>
+        id<span class="sy0">:</span> <span class="st0">&quot;scheduler-cell&quot;</span><span class="sy0">,</span>
+        header<span class="sy0">:</span> <span class="st0">&quot;Appointment Scheduler&quot;</span><span class="sy0">,</span>
+        html<span class="sy0">:</span><span class="st0">&quot;&lt;div&gt;&lt;/div&gt;&quot;</span>
+    <span class="br0">&#125;</span><span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+layout.<span class="me1">cell</span><span class="br0">&#40;</span><span class="st0">&quot;scheduler-cell&quot;</span><span class="br0">&#41;</span>.<span class="me1">attach</span><span class="br0">&#40;</span>scheduler<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Pay attention</h3>
+
+<ul>
+<li>Note, that <code>dhtmlxSuite Layout</code> is asynchronous, the scheduler won't be initialized right after the <code>.attach</code> call.</li>
+<li>You'll need to capture "onSchedulerReady" for any post-initialization settings.</li>
+<li>Currently <strong>there is no way to specify scheduler markup when it's used together with dhtmlxSuite v6+</strong>, 
+which means you'll need to use the <a class="link-" href="api__scheduler_header_config.html">header</a> config to specify controls of the navigation panel.</li>
+</ul>
+
+<!-- Content Area End -->
+			<a href='dhxlayout_integration.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

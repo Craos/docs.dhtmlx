@@ -1,0 +1,313 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Initialization  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="treegrid__api__refs__treegrid.html">Treegrid API</a></li><li class=" current"><a href="treegrid__initialization.html">Initialization</a></li><ul><li class="inner"><a href="treegrid__initialization.html#includesourcefiles">Include source files</a></li><li class="inner"><a href="treegrid__initialization.html#createacontainer">Create a container</a></li><li class="inner"><a href="treegrid__initialization.html#initializetreegrid">Initialize TreeGrid</a></li><li class="inner"><a href="treegrid__initialization.html#loaddataintotreegrid">Load data into TreeGrid</a></li></ul><li class=""><a href="treegrid__configuration.html">Configuration</a></li><li class=""><a href="treegrid__data_loading.html">Data Loading</a></li><li class=""><a href="treegrid__usage.html">Work with TreeGrid</a></li><li class=""><a href="treegrid__customization.html">Customization</a></li><li class=""><a href="treegrid__events.html">Event Handling</a></li><li class=""><a href="treegrid__migration.html">Migration to Newer Versions</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="treegrid__index.html">TreeGrid</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Initialization</h1>
+
+<p>To initialize dhtmlxTreeGrid on a page, you need to take the following simple steps:</p>
+
+<ul>
+<li><a href="https://dhtmlx.com/docs/products/dhtmlxTreeGrid/download.shtml">Download the dhtmlxTreeGrid package</a> and unpack it into a folder of your project</li>
+<li><a href="treegrid__initialization.html#includesourcefiles">Include source files</a></li>
+<li><a href="treegrid__initialization.html#createcontainer">Create a container</a></li>
+<li><a href="treegrid__initialization.html#initializegrid">Initialize TreeGrid</a> with the object constructor</li>
+<li><a href="treegrid__initialization.html#loaddata">Load data into TreeGrid</a></li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">title</span>&gt;</span>How to Start with dhtmlxTreeGrid<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">title</span>&gt;</span>         
+        <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../../codebase/treegrid.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../../codebase/treegrid.css&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;treegrid_container&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">            <span class="co1">// creating dhtmlxTreeGrid </span>
+            <span class="kw2">var</span> treegrid <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">TreeGrid</span><span class="br0">&#40;</span><span class="st0">&quot;treegrid_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+                columns<span class="sy0">:</span> <span class="br0">&#91;</span>
+                    <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">100</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;a&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;#&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+                    <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">100</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;b&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;Title&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+                    <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">200</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;c&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;Name&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+                    <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">200</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;d&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;Address&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span> <span class="br0">&#125;</span>
+                <span class="br0">&#93;</span><span class="sy0">,</span>
+                headerRowHeight<span class="sy0">:</span> <span class="nu0">50</span><span class="sy0">,</span>
+                data<span class="sy0">:</span> dataset
+            <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre>        <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/kob9385v' target='blank'><span class='sample'>Related sample: </span>&nbsp;TreeGrid. Basic initialization</a></p>
+
+<a name='includesourcefiles'><h2>Include source files</h2></a>
+
+<p>Create an HTML file and place full paths to JS and CSS files of dhtmlxTreeGrid into the header of the created file. The TreeGrid component can be used standalone or as a part of the Suite library.</p>
+
+<p><strong>If you use dhtmlxTreeGrid standalone</strong>, you need to include 2 files:</p>
+
+<ul>
+<li><em>treegrid.js</em></li>
+<li><em>treegrid.css</em></li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../../codebase/treegrid.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../../codebase/treegrid.css&quot;</span>&gt;</span></pre></code></pre>
+
+<p><strong>If you use dhtmlxTreeGrid as a part of the Suite package</strong>, you need to include JS/CSS files of the dhtmlxSuite library:</p>
+
+<ul>
+<li>suite.js</li>
+<li>suite.css</li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../codebase/suite.css&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../codebase/suite.js&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<a name='createacontainer'><h2>Create a container</h2></a>
+
+<p>Add a container for TreeGrid and give it an id, for example "treegrid_container". To display TreeGrid on the page correctly, define width and height of the container.</p>
+
+<p class='snippet'> index.html</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;treegrid_container&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width:800px; height:600px&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+<a name='initializetreegrid'><h2>Initialize TreeGrid</h2></a>
+
+<p>Initialize TreeGrid with the <code>dhx.TreeGrid</code> object constructor. The constructor has two parameters:</p>
+
+<ul>
+<li>the HTML container for TreeGrid,</li>
+<li>optional, an object with configuration properties (see the full list below). If this argument is not passed to the constructor, the settings will be default.</li>
+</ul>
+
+<p class='snippet'> index.html</p>
+
+<pre><code><pre class="js"><span class="co1">// creating dhtmlxTreeGrid</span>
+<span class="kw2">var</span> treegrid <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">TreeGrid</span><span class="br0">&#40;</span><span class="st0">&quot;treegrid_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    columns<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">100</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;a&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;#&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">100</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;b&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;Title&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">200</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;c&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;Name&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">200</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;d&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;Address&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span> <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    headerRowHeight<span class="sy0">:</span> <span class="nu0">50</span><span class="sy0">,</span>
+    data<span class="sy0">:</span> dataset
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>There is a set of properties you can specify for TreeGrid to optimize its configuration for your needs. Read the details below.</p>
+
+<h3>Configuration properties</h3>
+
+<p>There is a list of properties that you can specify in the TreeGrid configuration object (the second parameter of the constructor function):</p>
+
+<table><tr><td><a class="link-" href="treegrid__api__treegrid_adjust_config.html">adjust</a></td><td> defines whether the width of columns is automatically adjusted to the width of their content</td></tr>
+<tr><td><a class="link-" href="treegrid__api__treegrid_autowidth_config.html">autoWidth</a></td><td> makes treegrid's columns to fit the size of a treegrid</td></tr>
+<tr><td><a class="link-" href="treegrid__api__treegrid_columns_config.html">columns</a></td><td> defines the configuration of grid columns</td></tr>
+<tr><td><a class="link-" href="treegrid__api__treegrid_css_config.html">css</a></td><td> adds style classes to TreeGrid</td></tr>
+<tr><td><a class="link-" href="treegrid__api__treegrid_data_config.html">data</a></td><td> sets a data set for a grid</td></tr>
+<tr><td><a class="link-" href="treegrid__api__treegrid_dragcopy_config.html">dragCopy</a></td><td> defines that a row is copied to a target during drag-n-drop</td></tr>
+<tr><td><a class="link-" href="treegrid__api__treegrid_dragitem_config.html">dragItem</a></td><td> enables the possibility to reorder treegrid columns by drag and drop</td></tr>
+<tr><td><a class="link-" href="treegrid__api__treegrid_dragmode_config.html">dragMode</a></td><td> enables drag-n-drop in Grid</td></tr>
+<tr><td><a class="link-" href="treegrid__api__treegrid_editable_config.html">editable</a></td><td> enables editing in TreeGrid columns</td></tr>
+<tr><td><a class="link-" href="treegrid__api__treegrid_footerrowheight_config.html">footerRowHeight</a></td><td> sets the height of a row inside the footer, 40 by default</td></tr>
+<tr><td><a class="link-" href="treegrid__api__treegrid_grouptitletemplate_config.html">groupTitleTemplate</a></td><td> sets a template to the title of a group</td></tr>
+<tr><td><a class="link-" href="treegrid__api__treegrid_headerrowheight_config.html">headerRowHeight</a></td><td> sets the height of a row inside the header, 40 by default</td></tr>
+<tr><td><a class="link-" href="treegrid__api__treegrid_height_config.html">height</a></td><td> sets the height of a grid</td></tr>
+<tr><td><a class="link-" href="treegrid__api__treegrid_htmlenable_config.html">htmlEnable</a></td><td> specifies the HTML content (inner HTML) of TreeGrid columns</td></tr>
+<tr><td><a class="link-" href="treegrid__api__treegrid_resizable_config.html">resizable</a></td><td> defines whether columns can be resized</td></tr>
+<tr><td><a class="link-" href="treegrid__api__treegrid_rowcss_config.html">rowCss</a></td><td> sets a custom styling to a row</td></tr>
+<tr><td><a class="link-" href="treegrid__api__treegrid_rowheight_config.html">rowHeight</a></td><td> sets the height of a grid row, 40 by default</td></tr>
+<tr><td><a class="link-" href="treegrid__api__treegrid_selection_config.html">selection</a></td><td> switches selection in a grid on/off</td></tr>
+<tr><td><a class="link-" href="treegrid__api__treegrid_sortable_config.html">sortable</a></td><td> defines whether sorting on clicking headers of columns is enabled</td></tr>
+<tr><td><a class="link-" href="treegrid__api__treegrid_spans_config.html">spans</a></td><td> defines the configuration of cols/rows spans</td></tr>
+<tr><td><a class="link-" href="treegrid__api__treegrid_splitat_config.html">splitAt</a></td><td> sets the number of columns that should be frozen, thus spllitting a grid into the static and scrollable parts</td></tr>
+<tr><td><a class="link-" href="treegrid__api__treegrid_tooltip_config.html">tooltip</a></td><td> enables a tooltip on hovering over the content of a column</td></tr>
+<tr><td><a class="link-" href="treegrid__api__treegrid_width_config.html">width</a></td><td> sets the width of a grid</td></tr></table>
+
+<a name='loaddataintotreegrid'><h2>Load data into TreeGrid</h2></a>
+
+<p>There are several handy ways of loading data into TreeGrid. You can add data both before and after initialization of the component.</p>
+
+<ul>
+<li>via the data option in the configuration object of Grid:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> treegrid <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">TreeGrid</span><span class="br0">&#40;</span><span class="st0">&quot;treegrid_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    columns<span class="sy0">:</span> <span class="br0">&#91;</span><span class="co1">// columns config],</span>
+    data<span class="sy0">:</span> dataset 
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>from an external file with the help of the <strong>load()</strong> method of data collection:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> treegrid <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">TreeGrid</span><span class="br0">&#40;</span><span class="st0">&quot;treegrid_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+treegrid.<span class="me1">data</span>.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;../common/dataset.json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/44rmxlmq' target='blank'><span class='sample'>Related sample: </span>&nbsp;TreeGrid.  External data loading</a></p>
+
+<ul>
+<li>from a local source using the <strong>parse</strong> method of data collection:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> treegrid <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">TreeGrid</span><span class="br0">&#40;</span><span class="st0">&quot;treegrid_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+treegrid.<span class="me1">data</span>.<span class="me1">parse</span><span class="br0">&#40;</span>dataset<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Detailed information on loading data into TreeGrid is given in the article <a class="link-" href="treegrid__data_loading.html">Data Loading</a>.</p>
+
+<!-- Content Area End -->
+			<a href='treegrid__initialization.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

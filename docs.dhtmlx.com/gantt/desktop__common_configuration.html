@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Configuration  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__install_with_bower.html">How to Install dhtmlxGantt</a></li><li class=""><a href="desktop__initializing_gantt_chart.html">Initialization</a></li><li class=" current"><a href="desktop__common_configuration.html">Configuration</a></li><ul><li class="inner"><a href="desktop__common_configuration.html#ganttconfigobject">'gantt.config' object</a></li><li class="inner"><a href="desktop__common_configuration.html#gantttemplatesobject">'gantt.templates' object</a></li></ul><li class=""><a href="desktop__layout_config.html">Gantt Layout</a></li><li class="toc-pro"><a href="desktop__resource_management.html">Resource Management</a></li><li class=""><a href="desktop__handling_events.html">Event Handling</a></li><li class="toc-pro"><a href="desktop__multiple_gantts.html">Multiple Charts on a Page</a></li><li class=""><a href="desktop__extensions_list.html">Full List of Extensions</a></li><li class=""><a href="desktop__using_gantt_on_server.html">Using Gantt on the server</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__general_gantt_chart.html">Creating Gantt Chart on the Page</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Configuration</h1>
+
+<p>To gain the desired look for the Gantt chart, dhtmlxGantt provides 2 objects:</p>
+
+<ul>
+<li><a class="link-" href="api__refs__gantt_props.html">gantt.config</a> - configuration options for dates, scale, controls etc.</li>
+<li><a class="link-" href="api__refs__gantt_templates.html">gantt.templates</a> - formatting templates for dates and labels used in the Gantt chart.</li>
+</ul>
+
+<a name='ganttconfigobject'><h2>'gantt.config' object</h2></a>
+
+<p>All the configuration options are declared in the <strong>gantt.config</strong> object.</p>
+
+<p>To set the desired option, just write it as it's stated in this documentation.</p>
+
+<p>Beware, configuration options should go before the code line with dhtmlxGantt initialization.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">scales</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> unit<span class="sy0">:</span> <span class="st0">&quot;year&quot;</span><span class="sy0">,</span> step<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> format<span class="sy0">:</span> <span class="st0">&quot;%Y&quot;</span> <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>See the full list of the <strong>gantt.config</strong> properties in  <a class="link-" href="api__refs__gantt_props.html">"Gantt API:Properties"</a>.</p>
+
+<p><a href='samples/03_scales/02_month_days.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Month view</a></p>
+
+<a name='gantttemplatesobject'><h2>'gantt.templates' object</h2></a>
+
+<p>Templates can be used to change the displaying of dates and labels.</p>
+
+<p>To define a template, just write it as it's stated in this documentation. Remember, the definitions of templates should go before the code line with dhtmlxGantt initialization.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">task_text</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span>end<span class="sy0">,</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&lt;b&gt;Text:&lt;/b&gt; &quot;</span><span class="sy0">+</span>task.<span class="me1">text</span><span class="sy0">+</span><span class="st0">&quot;,&lt;b&gt; Holders:&lt;/b&gt; &quot;</span><span class="sy0">+</span>task.<span class="me1">users</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/desktop/gantt_templates.png"/></p>
+
+<p>See the full list of available templates in the <a class="link-" href="api__refs__gantt_templates.html">Gantt API:Templates</a> section.</p>
+
+<p><a href='samples/04_customization/08_templates.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Styling task bars with events</a></p>
+
+<!-- Content Area End -->
+			<a href='desktop__common_configuration.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

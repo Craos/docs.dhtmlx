@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Working with Lightbox Elements  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__default_edit_form.html">Configuring Lightbox Elements</a></li><li class=" current"><a href="desktop__lightbox_manipulations.html">Working with Lightbox Elements</a></li><ul><li class="inner"><a href="desktop__lightbox_manipulations.html#gettingsettingthecontrolvalue">Getting/setting the control value</a></li><li class="inner"><a href="desktop__lightbox_manipulations.html#checkingwhetherthelighboxisopen">Checking whether the lighbox is open</a></li><li class="inner"><a href="desktop__lightbox_manipulations.html#mappingdatapropertiestothelightboxsections">Mapping data properties to the lightbox sections</a></li><li class="inner"><a href="desktop__lightbox_manipulations.html#settingthedefaultvalueforalightboxscontrol">Setting the default value for a lightbox's control</a></li><li class="inner"><a href="desktop__lightbox_manipulations.html#makingasectionhiddenforsomeevents">Making a section hidden for some events</a></li><li class="inner"><a href="desktop__lightbox_manipulations.html#settingsectionanditslabelonthesameline">Setting section and its label on the same line</a></li><li class="inner"><a href="desktop__lightbox_manipulations.html#buttoninthesectionheader">Button in the section header</a></li></ul><li class=""><a href="desktop__custom_editor.html">Creating Custom Element</a></li><li class=""><a href="desktop__custom_edit_form.html">Custom Lightbox</a></li><li class=""><a href="desktop__custom_button.html">Changing Buttons in the Lightbox</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__edit_form.html">Configuring Edit Form</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Working with Lightbox Elements</h1>
+
+<a name='gettingsettingthecontrolvalue'><h2>Getting/setting the control value</h2></a>
+
+<p>To get/set the value of a lightbox control, use the <a class="link-" href="api__gantt_getlightboxsection.html">getLightboxSection</a> method as in:</p>
+
+<pre><code><pre class="js"><span class="co1">//to get the value</span>
+<span class="kw2">var</span> value <span class="sy0">=</span> gantt.<span class="me1">getLightboxSection</span><span class="br0">&#40;</span><span class="st0">'description'</span><span class="br0">&#41;</span>.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">//to set the value</span>
+gantt.<span class="me1">getLightboxSection</span><span class="br0">&#40;</span><span class="st0">'description'</span><span class="br0">&#41;</span>.<span class="me1">setValue</span><span class="br0">&#40;</span><span class="st0">'abc'</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='checkingwhetherthelighboxisopen'><h2>Checking whether the lighbox is open</h2></a>
+
+<p>To check whether the lightbox is currently open or closed, use the <strong>lightbox</strong> property of the state object returned by the <a class="link-" href="api__gantt_getstate.html">getState</a> method.<br> If the lightbox is open - the method will return the id 
+of the opened task, otherwise 'null' or 'undefined'</p>
+
+<pre><code><pre class="js"><span class="kw1">if</span> <span class="br0">&#40;</span>gantt.<span class="me1">getState</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">lightbox</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">//the code for the opened lighbox</span>
+<span class="br0">&#125;</span> <span class="kw1">else</span> <span class="br0">&#123;</span>
+    <span class="co1">//the code for the closed lighbox</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='mappingdatapropertiestothelightboxsections'><h2>Mapping data properties to the lightbox sections</h2></a>
+
+<p>To map a data property to a lightbox section, use the <strong>map_to</strong> attribute of the section object:</p>
+
+<pre><code><pre class="js"><span class="co1">//assigns the &quot;holders&quot; section to a data property with the name &quot;holder&quot; </span>
+gantt.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;description&quot;</span><span class="sy0">,</span>height<span class="sy0">:</span><span class="nu0">38</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> <span class="kw3">focus</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;holders&quot;</span><span class="sy0">,</span>    height<span class="sy0">:</span><span class="nu0">22</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;holder&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>                                                                      </span>    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span>       height<span class="sy0">:</span><span class="nu0">72</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;auto&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='settingthedefaultvalueforalightboxscontrol'><h2>Setting the default value for a lightbox's control</h2></a>
+
+<p>To set the default value for a lightbox's section, use the <strong>default_value</strong> property of the section's object.</p>
+
+<p>For example, you have added a custom section to the lightbox  - "Priority" -  that displays the task priority. 
+When the user creates a new event, the field will be just empty. To correct such behaviour and set by default, say, the low priority,
+specify the lightbox as in:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> opts <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> key<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;High&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>                                            
+    <span class="br0">&#123;</span> key<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Normal&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>                                         
+    <span class="br0">&#123;</span> key<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Low&quot;</span> <span class="br0">&#125;</span>                                            
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">38</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> <span class="kw3">focus</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;priority&quot;</span><span class="sy0">,</span>    height<span class="sy0">:</span><span class="nu0">22</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;select&quot;</span><span class="sy0">,</span>   map_to<span class="sy0">:</span><span class="st0">&quot;priority&quot;</span><span class="sy0">,</span>    </span><span class="xtra ln-xtra">    options<span class="sy0">:</span>opts<span class="sy0">,</span> default_value<span class="sy0">:</span><span class="nu0">3</span><span class="br0">&#125;</span><span class="sy0">,</span>                                                                      </span>    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span>        height<span class="sy0">:</span><span class="nu0">72</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;auto&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>The <strong>default_value</strong> property sets the default value for the lightbox's section, not for a new event, i.e. a new event  gets the specified value only after the user opens the lightbox and saves the event.</p>
+</p></div>
+
+<p>To set the default value directly for new events, use the <a class="link-" href="api__gantt_ontaskcreated_event.html">onTaskCreated</a> event:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onTaskCreated&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span> task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    task.<span class="me1">priority</span> <span class="sy0">=</span> <span class="st0">&quot;Low&quot;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='makingasectionhiddenforsomeevents'><h2>Making a section hidden for some events</h2></a>
+
+<p>To make a section hidden for specific events, redefine its <strong>set_value</strong> method as in:<br></p>
+
+<pre><code><pre class="js">gantt.<span class="me1">form_blocks</span>.<span class="me1">textarea</span>.<span class="me1">set_value</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>node<span class="sy0">,</span>value<span class="sy0">,</span>ev<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    node.<span class="me1">firstChild</span>.<span class="me1">value</span><span class="sy0">=</span>value<span class="sy0">||</span><span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+    <span class="kw2">var</span> style <span class="sy0">=</span> ev.<span class="me1">some_property</span><span class="sy0">?</span><span class="st0">&quot;&quot;</span><span class="sy0">:</span><span class="st0">&quot;none&quot;</span><span class="sy0">;</span>
+    node.<span class="me1">style</span>.<span class="me1">display</span><span class="sy0">=</span>style<span class="sy0">;</span> <span class="co1">// editor area</span>
+    node.<span class="me1">previousSibling</span>.<span class="me1">style</span>.<span class="me1">display</span><span class="sy0">=</span>style<span class="sy0">;</span> <span class="co1">//section header</span>
+    gantt.<span class="me1">resizeLightbox</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//correct size of lightbox</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='settingsectionanditslabelonthesameline'><h2>Setting section and its label on the same line</h2></a>
+
+<p>You can place sections of lightbox on the same line as their labels via setting the <a class="link-" href="api__gantt_wide_form_config.html">wide_form</a> configuration option to <em>true</em>:</p>
+
+<pre><code><pre class="js"><span class="xtra ln-xtra">gantt.<span class="me1">config</span>.<span class="me1">wide_form</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span> </span>&nbsp;
+gantt.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">section_priority</span> <span class="sy0">=</span> <span class="st0">&quot;Priority&quot;</span><span class="sy0">;</span>
+gantt.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">section_status</span> <span class="sy0">=</span> <span class="st0">&quot;Status&quot;</span><span class="sy0">;</span>
+&nbsp;
+&nbsp;
+gantt.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span> <span class="nu0">38</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;text&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span> <span class="kw3">focus</span><span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;status&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">22</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;status&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;select&quot;</span><span class="sy0">,</span> options<span class="sy0">:</span> <span class="br0">&#91;</span>         
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;New&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>                                                       
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Open&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>                                                     
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Done&quot;</span><span class="br0">&#125;</span>                                                      
+    <span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">,</span>                                                                            
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;priority&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;priority&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;radio&quot;</span><span class="sy0">,</span> options<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;High&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span> <span class="nu0">2</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Normal&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span> <span class="nu0">3</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Low&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;time&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;auto&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/5/9a68c1292' target='blank'><span class='sample'>Related sample: </span>&nbsp;Aligning Lightbox</a></p>
+
+<a name='buttoninthesectionheader'><h2>Button in the section header</h2></a>
+
+<p>It's possible to have a custom button in the section header. To add a button to the header of a section, make the following steps:</p>
+
+<ul>
+<li>Specify the <strong>button</strong> property in the section object:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">130</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span> button<span class="sy0">:</span><span class="st0">&quot;help&quot;</span><span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>Set the label for the button:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">//'help' is the value of the 'button' property</span>
+gantt.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">button_help</span><span class="sy0">=</span><span class="st0">&quot;Help label&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>Specify the handler of button clicks:</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">form_blocks</span>.<span class="me1">textarea</span>.<span class="me1">button_click</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>index<span class="sy0">,</span>button<span class="sy0">,</span>shead<span class="sy0">,</span>sbody<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// any custom logic</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>where:</p>
+
+<ul>
+<li><strong>index</strong> - (<em>number</em>) the section index. Zero-based numbering</li>
+<li><strong>button</strong> - (<em>HTMLElement</em>) the HTML element of a button</li>
+<li><strong>shead</strong> - (<em>HTMLElement</em>) the HTML element of the section header</li>
+<li><strong>sbody</strong> - (<em>HTMLElement</em>) the HTML element of the section body</li>
+</ul>
+
+<p>You can define the image used for the button through the following CSS class:</p>
+
+<pre><code><pre class="js">.<span class="me1">dhx_custom_button_help</span><span class="br0">&#123;</span>
+    background<span class="sy0">-</span>image<span class="sy0">:</span>url<span class="br0">&#40;</span>imgs<span class="sy0">/</span>but_help.<span class="me1">gif</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='desktop__lightbox_manipulations.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

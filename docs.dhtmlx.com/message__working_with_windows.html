@@ -1,0 +1,308 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Working with Message Boxes  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="message__introduction.html">Introduction</a></li><li class=" current"><a href="message__working_with_windows.html">Working with Message Boxes</a></li><ul><li class="inner"><a href="message__working_with_windows.html#includedfiles">Included Files</a></li><li class="inner"><a href="message__working_with_windows.html#constructor">Constructor</a></li><li class="inner"><a href="message__working_with_windows.html#usageforms">Usage Forms</a></li><li class="inner"><a href="message__working_with_windows.html#styling">Styling</a></li><li class="inner"><a href="message__working_with_windows.html#positioning">Positioning</a></li><li class="inner"><a href="message__working_with_windows.html#hidingamessageboxwithapi">Hiding a Message Box with  API</a></li></ul><li class=""><a href="message__windows_description.html">Message Boxes Description</a></li><li class=""><a href="message__faq.html">FAQ</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="helpers__index.html">Helpers</a><a class="n3" href="message__index.html">Message</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Working with Message Boxes</h1>
+
+<a name='includedfiles'><h2>Included Files</h2></a>
+
+<p>To use dhtmlxMessage you need to have <strong>dhtmlx.js</strong> and <strong>dhtmlx.css</strong> files included on the page.</p>
+
+<div class='note'><p><p>dhtmlxMessage is a part of 'dhtmlxSuite' package and can't be used standalone</p>
+</p></div>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>link rel<span class="sy0">=</span><span class="st0">&quot;STYLESHEET&quot;</span> type<span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> href<span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlx.css&quot;</span><span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>script src<span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlx.js&quot;</span> type<span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span><span class="sy0">&gt;&lt;/</span>script<span class="sy0">&gt;</span></pre></code></pre>
+
+<a name='constructor'><h2>Constructor</h2></a>
+
+<p>There are 2 ways to initialize the helper:</p>
+
+<ol>
+    <li><b>Common</b><br>
+  
+   The type of the message box is specified through the parameter <b>type</b>.<br>
+   The default value is <b>message</b>.
+      
+
+<pre><code><pre class="js">dhtmlx.<span class="me1">message</span><span class="br0">&#40;</span><span class="br0">&#123;</span> 
+    type<span class="sy0">:</span><span class="st0">&quot;confirm-warning&quot;</span><span class="sy0">,</span> 
+    text<span class="sy0">:</span><span class="st0">&quot;Are you sure you want to do it?&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+    </li>
+    <li><b>Message-related</b> (applicable to alert and confirm boxes only).<br>
+    The type of the message is specified in the calling method. 
+  
+
+<pre><code><pre class="js">dhtmlx.<span class="kw3">confirm</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    title<span class="sy0">:</span><span class="st0">&quot;Confirm&quot;</span><span class="sy0">,</span>
+    text<span class="sy0">:</span><span class="st0">&quot;Continue?&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//or</span>
+dhtmlx.<span class="kw3">alert</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    title<span class="sy0">:</span><span class="st0">&quot;Alert&quot;</span><span class="sy0">,</span>
+    type<span class="sy0">:</span><span class="st0">&quot;alert-error&quot;</span><span class="sy0">,</span>
+    text<span class="sy0">:</span><span class="st0">&quot;You can't do this&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+    </li>
+</ol>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxMessage/samples/01_init/01_info.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Message</a></p>
+
+<a name='usageforms'><h2>Usage Forms</h2></a>
+
+<p>The helper can be used in 2 forms:</p>
+
+<ol>
+    <li><b>Short form</b> 
+  
+   (contains just the text of a message - implicit usage of the parameter 'text'. The other parameters take default values)
+    
+
+<pre><code><pre class="js">dhtmlx.<span class="kw3">alert</span><span class="br0">&#40;</span><span class="st0">&quot;some text&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+    </li>
+
+
+    <li><b>Full form</b>
+  
+   (contains several available parameters. Non-specified parameters take default values)
+     
+
+<pre><code><pre class="js">dhtmlx.<span class="kw3">alert</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+      type<span class="sy0">:</span><span class="st0">&quot;alert-error&quot;</span><span class="sy0">,</span>
+      text<span class="sy0">:</span><span class="st0">&quot;some text&quot;</span><span class="sy0">,</span>
+      title<span class="sy0">:</span><span class="st0">&quot;Error!&quot;</span><span class="sy0">,</span>
+      ok<span class="sy0">:</span><span class="st0">&quot;Yes&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+    </li>
+</ol>
+
+<a name='styling'><h2>Styling</h2></a>
+
+<p>For any type of the message box you can define a custom style to achieve the desired look.</p>
+
+<p>Generally, the appropriate css class is specified through the parameter <strong>type</strong>: you define a css class and set the parameter to its name.</p>
+
+<div class='note'><p><p>While creating a css class, please, use the 'important' keyword to ensure correct processing.</p>
+</p></div>
+
+<p><strong>There are some rules related to setting the 'type' parameter you should keep in mind:</strong></p>
+
+<ol>
+<li>To set a css class for the <em>alert</em> and <em>confirm</em> boxes, you must initialize such a box using the 'window-related' way. </li>
+<li>To set a css class for the <em>message</em> boxes, you must initialize such a box using the 'common' way.</li>
+<li>The name of a css class should go with the '<strong>dhtmlx-</strong>' prefix.</li>
+</ol>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>style type<span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span><span class="sy0">&gt;</span>
+.<span class="me1">dhtmlx</span><span class="sy0">-</span>myCss<span class="br0">&#123;</span>
+    font<span class="sy0">-</span>weight<span class="sy0">:</span>bold <span class="sy0">!</span>important<span class="sy0">;</span>
+    color<span class="sy0">:</span>white <span class="sy0">!</span>important<span class="sy0">;</span>
+    background<span class="sy0">-</span>color<span class="sy0">:</span>red <span class="sy0">!</span>important<span class="sy0">;</span>
+<span class="br0">&#125;</span>
+<span class="sy0">&lt;/</span>style<span class="sy0">&gt;</span>
+...
+<span class="me1">dhtmlx</span>.<span class="me1">message</span><span class="br0">&#40;</span><span class="br0">&#123;</span> type<span class="sy0">:</span><span class="st0">&quot;myCss&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;some text&quot;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//or</span>
+dhtmlx.<span class="kw3">confirm</span> <span class="br0">&#40;</span><span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;myCss&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;some text&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//or</span>
+dhtmlx.<span class="kw3">alert</span> <span class="br0">&#40;</span><span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;myCss&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;some text&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='positioning'><h2>Positioning</h2></a>
+
+<h3>Message Boxes</h3>
+
+<p>To position alert or confirm box, use the <strong>top</strong>, <strong>left</strong> properties of the object constructor:</p>
+
+<pre><code><pre class="js">dhtmlx.<span class="kw3">confirm</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    top<span class="sy0">:</span><span class="st0">'10'</span><span class="sy0">,</span> 
+    left<span class="sy0">:</span><span class="st0">'10'</span><span class="sy0">,</span>
+    type<span class="sy0">:</span><span class="st0">&quot;confirm&quot;</span><span class="sy0">,</span>
+    text<span class="sy0">:</span> <span class="st0">&quot;Continue?&quot;</span><span class="sy0">,</span>
+    callback<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>result<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        dhtmlx.<span class="me1">message</span><span class="br0">&#40;</span><span class="st0">&quot;Result: &quot;</span><span class="sy0">+</span>result<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Info Boxes</h3>
+
+<p>To position an info box, use the property <strong>dhtmlx.message.position</strong>.</p>
+
+<ul>
+<li><strong>dhtmlx.message.position</strong>  - ('top', 'bottom') sets the position of the info box(es) on a screen. The default value - 'top'.<br> With the 'top' position specified, 
+each next info box will be displayed below the previous one. With the 'bottom' position specified, each next info box will be displayed above the previous one.</li>
+</ul>
+
+<pre><code><pre class="js">dhtmlx.<span class="me1">message</span>.<span class="me1">position</span><span class="sy0">=</span><span class="st0">&quot;top&quot;</span><span class="sy0">;</span>
+dhtmlx.<span class="me1">message</span><span class="br0">&#40;</span><span class="st0">&quot;Your data has been successfully saved!&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxMessage/samples/01_init/01_info.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Message</a></p>
+
+<div class='note'><p><p>If you want to get info box(es) left aligned, add the following style on the page:</p>
+</p></div>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>style<span class="sy0">&gt;</span>
+.<span class="me1">dhtmlx_message_area</span><span class="br0">&#123;</span>
+    left<span class="sy0">:</span>5px<span class="sy0">;</span>
+    right<span class="sy0">:</span>auto<span class="sy0">;</span>
+<span class="br0">&#125;</span>
+<span class="sy0">&lt;/</span>style<span class="sy0">&gt;</span></pre></code></pre>
+
+<a name='hidingamessageboxwithapi'><h2>Hiding a Message Box with  API</h2></a>
+
+<p>To hide the specified message box manually and not to wait while it hides automatically, you can use the <strong>dhtmlx.message.hide(<em>boxId</em>)</strong> method.</p>
+
+<div class='note'><p><p>The method can't be used with <strong>dhtmlx.alert</strong> and <strong>dhtmlx.confirm</strong></p>
+</p></div>
+
+<ul>
+<li><strong>boxId</strong> - the box id specified in the box's constructor</li>
+</ul>
+
+<pre><code><pre class="js">dhtmlx.<span class="me1">message</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    id<span class="sy0">:</span><span class="st0">&quot;myBox&quot;</span><span class="sy0">,</span>
+    text<span class="sy0">:</span><span class="st0">&quot;Page is loaded&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+..
+<span class="me1">dhtmlx</span>.<span class="me1">message</span>.<span class="me1">hide</span><span class="br0">&#40;</span><span class="st0">&quot;myBox&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='message__working_with_windows.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

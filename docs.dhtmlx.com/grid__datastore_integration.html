@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Integration with dhtmlxDataStore  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="grid__htmlform_integration.html">Integration with HTML Form</a></li><li class=""><a href="grid__tree_integration.html">Integration with dhtmlxTree</a></li><li class=""><a href="grid__chart_integration.html">Integration with dhtmlxChart</a></li><li class=""><a href="grid__combo_integration.html">Integration with dhtmlxCombo</a></li><li class=""><a href="grid__menu_integration.html">Integration with dhtmlxMenu</a></li><li class=" current"><a href="grid__datastore_integration.html">Integration with dhtmlxDataStore</a></li><ul><li class="inner"><a href="grid__datastore_integration.html#loadingdatafromdatastore">Loading data from dataStore</a></li><li class="inner"><a href="grid__datastore_integration.html#linkingformdirectlyviadatastore">Linking form directly via dataStore</a></li><li class="inner"><a href="grid__datastore_integration.html#bindingtoothercomponentstreegriddataviewetc">Binding to other components (tree, grid, dataview etc.)</a></li><li class="inner"><a href="grid__datastore_integration.html#bindingtotheserverside">Binding to the server side</a></li></ul><li class=""><a href="grid__container_integration.html">Integration with Container Components</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__integration.html">Integrating with Other Components</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Integration with dhtmlxDataStore</h1>
+
+<p>When you deal with multiple DHTMLX components that use the same data, it's convenient to use one data source (specified as a <a class="link-" href="datastore__index.html">DataStore</a> object) for them and just define the rules 
+how data in different components should be linked. So, a value changed in one component will be reflected in other linked ones.</p>
+
+<a name='loadingdatafromdatastore'><h2>Loading data from dataStore</h2></a>
+
+<p>To load data from the <a class="link-" href="datastore__index.html">DataStore</a> object to the grid, use the <a class="link-" href="api__datastore_sync.html">sync</a> method as in:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">sync</span><span class="br0">&#40;</span>myStore<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='linkingformdirectlyviadatastore'><h2>Linking form directly via dataStore</h2></a>
+
+<p>To link Form to Grid through the <a class="link-" href="datastore__index.html">DataStore</a> object, use the <a class="link-" href="api__datastore_bind.html">bind</a> method as in:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">sync</span><span class="br0">&#40;</span>myStore<span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onRowSelect&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="br0">&#123;</span> data.<span class="me1">setCursor</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+myform.<span class="me1">bind</span><span class="br0">&#40;</span>myStore<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='bindingtoothercomponentstreegriddataviewetc'><h2>Binding to other components (tree, grid, dataview etc.)</h2></a>
+
+<p>To bind Grid to other DHTMLX components use the <a class="link-" href="api__datastore_bind.html">bind</a> method as in:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">bind</span><span class="br0">&#40;</span>myCombo<span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>data<span class="sy0">,</span> filter<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">return</span> myGrid.<span class="me1">cells</span><span class="br0">&#40;</span>data<span class="sy0">,</span> <span class="nu0">2</span><span class="br0">&#41;</span>.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">==</span> filter.<span class="me1">text</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//or</span>
+mygrid2.<span class="me1">bind</span><span class="br0">&#40;</span>mygrid1<span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>data<span class="sy0">,</span> filter<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        filter.<span class="kw3">name</span> <span class="sy0">=</span> data.<span class="me1">cell1</span><span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">;</span> <span class="co1">//the first letter of the selected author</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//or</span>
+mygrid.<span class="me1">bind</span><span class="br0">&#40;</span>tree<span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>data<span class="sy0">,</span>filter<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        filter.<span class="kw3">name</span> <span class="sy0">=</span> data.<span class="me1">text</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='bindingtotheserverside'><h2>Binding to the server side</h2></a>
+
+<p>To bind a grid populated from the server-side to other DHTMLX component use the dataFeed and <a class="link-" href="api__datastore_bind.html">bind</a> methods as in:</p>
+
+<pre><code><pre class="js"><span class="co1">//specify here the path to the file that will get change request</span>
+<span class="co1">//it'll help you to load new data from the server (instead of the master component)</span>
+mygrid.<span class="me1">dataFeed</span><span class="br0">&#40;</span><span class="st0">&quot;data/grid.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+mygrid.<span class="me1">bind</span><span class="br0">&#40;</span>myform<span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>master<span class="sy0">,</span> data<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>master.<span class="kw3">Name</span> <span class="sy0">==</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span> <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+        <span class="kw1">return</span> mygrid.<span class="me1">cells</span><span class="br0">&#40;</span>data<span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">toLowerCase</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">indexOf</span><span class="br0">&#40;</span>master.<span class="kw3">Name</span><span class="br0">&#41;</span><span class="sy0">!=-</span><span class="nu0">1</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//each time some value in form is changed </span>
+<span class="co1">//grid will be filtered, based on the defined logic</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='grid__datastore_integration.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

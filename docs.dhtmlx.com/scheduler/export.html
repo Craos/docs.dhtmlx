@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Data Serialization to XML, JSON, iCal  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="google_calendar_integration.html">Integration with Google Calendar</a></li><li class=""><a href="pdf.html">Export to PDF</a></li><li class=""><a href="png.html">Export to PNG</a></li><li class=""><a href="excel.html">Export to Excel and iCal</a></li><li class=" current"><a href="export.html">Data Serialization to XML, JSON, iCal</a></li><ul><li class="inner"><a href="export.html#makingpreparations">Making preparations</a></li><li class="inner"><a href="export.html#exporttoxml">Export to XML</a></li><li class="inner"><a href="export.html#exporttojson">Export to JSON</a></li><li class="inner"><a href="export.html#exporttoical">Export to iCal</a></li><li class="inner"><a href="export.html#attributesinserialization">Attributes in serialization</a></li><li class="inner"><a href="export.html#serializingrecurringevents">Serializing recurring events</a></li><li class="inner"><a href="export.html#savingdatainanxmlfile">Saving data in an XML file</a></li><li class="inner"><a href="export.html#troubleshooting">Troubleshooting</a></li><li><a href="ical_export_import.html">iCal export/import</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="data_export.html">Data Export and Import</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Data Serialization to XML, JSON, iCal</h1>
+
+<a name='makingpreparations'><h2>Making preparations</h2></a>
+
+<p>To activate such functionality, include the <strong>dhtmlxscheduler_serialize.js</strong> extension file.</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>script src<span class="sy0">=</span><span class="st0">'codebase/ext/dhtmlxscheduler_serialize.js'</span><span class="sy0">&gt;&lt;/</span>script<span class="sy0">&gt;</span></pre></code></pre>
+
+<a name='exporttoxml'><h2>Export to XML</h2></a>
+
+<p>To serialize scheduler data to an XML string, use the <a class="link-" href="api__scheduler_toxml.html">toXML</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> xml <span class="sy0">=</span> scheduler.<span class="me1">toXML</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//xml string</span></pre></code></pre>
+
+<p><a href='samples/04_export/01_serialize_data.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Serialize scheduler events</a></p>
+
+<a name='exporttojson'><h2>Export to JSON</h2></a>
+
+<p>To serialize scheduler data to a JSON string, use the <a class="link-" href="api__scheduler_tojson.html">toJSON</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> json_string <span class="sy0">=</span> scheduler.<span class="me1">toJSON</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//json string</span></pre></code></pre>
+
+<div class='note'><p><p>Note, the method returns a JSON string, not object. If you need to get a JSON object - use the <a class="link-" href="api__scheduler_getevents.html">getEvents</a> method.</p>
+</p></div>
+
+<p><a href='samples/04_export/01_serialize_data.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Serialize scheduler events</a></p>
+
+<a name='exporttoical'><h2>Export to iCal</h2></a>
+
+<p>To serialize scheduler data to an ICal string, use the <a class="link-" href="api__scheduler_toical.html">toICal</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> ical_string <span class="sy0">=</span> scheduler.<span class="me1">toICal</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//ical string</span></pre></code></pre>
+
+<p>Also, there is an <a class="link-" href="ical_export_import.html">external script for iCal import-export operations</a></p>
+
+<p><a href='samples/04_export/01_serialize_data.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Serialize scheduler events</a></p>
+
+<a name='attributesinserialization'><h2>Attributes in serialization</h2></a>
+
+<div class='note'><p><p>The following technique is not applicable to the iCal format.</p>
+</p></div>
+
+<p>By default export will include only standard attributes(properties):</p>
+
+<ol>
+<li>id</li>
+<li>text</li>
+<li>start_date (<em>format of serialization is defined by the <a class="link-" href="api__scheduler_date_format_config.html">date_format</a> property</em>)</li>
+<li>end_date</li>
+</ol>
+
+<p>If you need to include some custom attributes, you can redefine the <strong>data_attributes</strong> method. In the simplest case it will look as in:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">data_attributes</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="br0">&#91;</span>
+        <span class="br0">&#91;</span><span class="st0">&quot;id&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span><span class="br0">&#91;</span><span class="st0">&quot;text&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span><span class="br0">&#91;</span><span class="st0">&quot;date_start&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span><span class="br0">&#91;</span><span class="st0">&quot;date_end&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="br0">&#91;</span><span class="st0">&quot;custom_attribute&quot;</span><span class="br0">&#93;</span>
+    <span class="br0">&#93;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Basically, the method defines a list of attribute names.</p>
+
+<p>But you can define the formatting function, which describes how attribute data needs to be processed before serialization.</p>
+
+<p>It can be useful for dates that need converting before being placed in XML</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">data_attributes</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="br0">&#91;</span>
+        <span class="br0">&#91;</span><span class="st0">&quot;id&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="br0">&#91;</span><span class="st0">&quot;text&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="br0">&#91;</span><span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span>scheduler.<span class="me1">templates</span>.<span class="me1">format_date</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="br0">&#91;</span><span class="st0">&quot;end_date&quot;</span><span class="sy0">,</span>scheduler.<span class="me1">templates</span>.<span class="me1">format_date</span><span class="br0">&#93;</span><span class="br0">&#93;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='serializingrecurringevents'><h2>Serializing recurring events</h2></a>
+
+<div class='note'><p><p>Below technique is not applicable for the iCal format.</p>
+</p></div>
+
+<p>If you are using the "recurring" extension, you need to define extra attributes, which are used by recurring events:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">data_attributes</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> empty <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>a<span class="br0">&#41;</span><span class="br0">&#123;</span> <span class="kw1">return</span> a<span class="sy0">||</span><span class="st0">&quot;&quot;</span><span class="sy0">;</span> <span class="br0">&#125;</span>
+    <span class="kw1">return</span> <span class="br0">&#91;</span><span class="br0">&#91;</span><span class="st0">&quot;id&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="br0">&#91;</span><span class="st0">&quot;text&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="br0">&#91;</span><span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span>scheduler.<span class="me1">templates</span>.<span class="me1">xml_format</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="br0">&#91;</span><span class="st0">&quot;end_date&quot;</span><span class="sy0">,</span>scheduler.<span class="me1">templates</span>.<span class="me1">xml_format</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="br0">&#91;</span><span class="st0">&quot;rec_type&quot;</span><span class="sy0">,</span>empty<span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="br0">&#91;</span><span class="st0">&quot;event_length&quot;</span><span class="sy0">,</span>empty<span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="br0">&#91;</span><span class="st0">&quot;event_pid&quot;</span><span class="sy0">,</span>empty<span class="br0">&#93;</span><span class="br0">&#93;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='savingdatainanxmlfile'><h2>Saving data in an XML file</h2></a>
+
+<p>Serialization allows you to implement a simple routine of data saving, which doesn't require DB - data will be stored in an XML file.</p>
+
+<ul>
+<li>First of all, include the serialization extension:</li>
+</ul>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;script</span> <span class="re0">src</span>=<span class="st0">'codebase/ext/dhtmlxscheduler_serialize.js'</span><span class="re2">&gt;</span><span class="re1">&lt;/script<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<ul>
+<li>Then, place a hidden form for data saving on the page:</li>
+</ul>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;form</span> <span class="re0">id</span>=<span class="st0">&quot;xml_form&quot;</span> <span class="re0">action</span>=<span class="st0">&quot;xml_writer.php&quot;</span> <span class="re0">method</span>=<span class="st0">&quot;post&quot;</span> <span class="re0">target</span>=<span class="st0">&quot;hidden_frame&quot;</span> <span class="re2">&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;input</span> <span class="re0">type</span>=<span class="st0">&quot;hidden&quot;</span> <span class="re0">name</span>=<span class="st0">&quot;data&quot;</span> <span class="re0">value</span>=<span class="st0">&quot;&quot;</span> <span class="re0">id</span>=<span class="st0">&quot;data&quot;</span><span class="re2">&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;/form<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<ul>
+<li>Place the "Save" button on the page</li>
+</ul>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>input type<span class="sy0">=</span><span class="st0">&quot;button&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;save&quot;</span> value<span class="sy0">=</span><span class="st0">&quot;save&quot;</span> onclick<span class="sy0">=</span><span class="st0">&quot;save()&quot;</span> <span class="sy0">&gt;</span></pre></code></pre>
+
+<pre><code><pre class="js"><span class="kw2">function</span> save<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> form <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">&quot;xml_form&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    form.<span class="me1">elements</span>.<span class="me1">data</span>.<span class="me1">value</span> <span class="sy0">=</span> scheduler.<span class="me1">toXML</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    form.<span class="me1">submit</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>On server side, write the data in an existent file. xml_writer.php could be as follows:</li>
+</ul>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+    <a href="http://www.php.net/file_put_contents"><span class="kw3">file_put_contents</span></a><span class="br0">&#40;</span><span class="st0">&quot;./data.xml&quot;</span><span class="sy0">,</span><span class="re0">$_POST</span><span class="br0">&#91;</span><span class="st0">&quot;data&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="sy1">?&gt;</span></pre></code></pre>
+
+<p>the empty data.xml is:</p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;data<span class="re2">&gt;</span></span><span class="re1">&lt;/data<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<p>That's all, now scheduler can be loaded from data.xml, pressing "save" button will serialize the current state of the scheduler to xml and save back to the file.</p>
+
+<p>So, on next loading the scheduler will load events that have been saved previously.</p>
+
+<a name='troubleshooting'><h2>Troubleshooting</h2></a>
+
+<p>If during data saving, you face unwanted data escaping (in the saved data), make sure that "magic_quotes" is disabled in php configuration.</p>
+
+<!-- Content Area End -->
+			<a href='export.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

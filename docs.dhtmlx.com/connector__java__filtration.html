@@ -1,0 +1,246 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Filtering  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="connector__java__reference.html">Java Connector API</a></li><li class=""><a href="connector__java__general_idea.html">General Idea of dhtmlxConnector</a></li><li class=""><a href="connector__java__init.html">Initializing Java Connector</a></li><li class=""><a href="connector__java__basis.html">Basic Loading</a></li><li class=""><a href="connector__java__dyn_loading.html">Dynamic Loading</a></li><li class=" current"><a href="connector__java__filtration.html">Filtering</a></li><ul><li class="inner"><a href="connector__java__filtration.html#inheaderfiltertypes">In-header filter types</a></li><li class="inner"><a href="connector__java__filtration.html#customfiltersusingthebeforerenderevent">Custom filters (using the beforeRender event)</a></li></ul><li class=""><a href="connector__java__formatting.html">Formatting/Changing Data Before Loading</a></li><li class=""><a href="connector__java__sort.html">Sorting</a></li><li class=""><a href="connector__java__columns_in_grid.html">Select/Combobox Columns in Grid</a></li><li class=""><a href="connector__java__dp.html">Client-Side Requirement - dataProcessor</a></li><li class=""><a href="connector__java__complex_queries.html">Making Queries</a></li><li class=""><a href="connector__java__transactions.html">Transactions</a></li><li class=""><a href="connector__java__app_security.html">Security</a></li><li class=""><a href="connector__java__validation.html">Validation</a></li><li class=""><a href="connector__java__errors.html">Error Handling and Logging</a></li><li class=""><a href="connector__java__event_handling.html">Handling Events</a></li><li class=""><a href="connector__java__data_protocol.html">Data Protocol</a></li><li class=""><a href="connector__java__server_side_requirements.html">New Functions</a></li><li class=""><a href="connector__java__coding_howtos.html">HowTos</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="connector__index.html">Client-Server Communication</a><a class="n3" href="connector__java__index.html">Java Connector</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Filtering</h1>
+
+<p>There are 2 ways to implement server-side filtering:</p>
+
+<ul>
+<li><a class="link-" href="connector__java__filtration.html#inheaderfiltertypes">by using in-header filter types during the component configuration</a></li>
+<li><a class="link-" href="connector__java__filtration.html#customfiltersusingbeforerenderevent">by means of the beforeRender event</a> </li>
+</ul>
+
+<p>Note, the server-side filtering of dhtmlxTreeGrid doesn't maintain open states.</p>
+
+<a name='inheaderfiltertypes'><h2>In-header filter types</h2></a>
+
+<p><strong>APPLICABLE TO:</strong> Grid, TreeGrid, Combo</p>
+
+<p>To enable server-side filtering you can use one of the following in-header filter types while configuring dhtmlxGrid/dhtmlxTreeGrid on the client side:</p>
+
+<ul>
+<li><em><strong>#connector_text_filter</strong></em> - a text filter. Retrieves values which contain a mask defined through a text field</li>
+<li><em><strong>#connector_select_filter</strong></em> - a select filter. Retrieves values which contain a mask defined through a dropdown list of possible values</li>
+</ul>
+
+<pre><code><pre class="php">mygrid<span class="sy0">.</span>setHeader<span class="br0">&#40;</span><span class="st0">&quot;Column A, Column B&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid<span class="sy0">.</span>attachHeader<span class="br0">&#40;</span><span class="st0">&quot;#connector_text_filter,#connector_select_filter&quot;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<h3>Text filter</h3>
+
+<p>The use of the text filter doesn't require any additional configuration code. Grid/TreeGrid will automatically send data about a newly entered text and filter server-side data using the %mask% pattern.</p>
+
+<p>If you need to change the filtering pattern or implement a more advanced logic - the <a class="link-" href="connector__java__event_beforefilter.html">beforeFilter</a> event should be used.</p>
+
+<ul>
+<li><em><strong>default filtering logic</strong></em></li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">class</span> FilterBehavior <span class="kw2">extends</span> ConnectorBehavior<span class="br0">&#123;</span>
+        <span class="sy0">@</span>Overrride
+    <span class="kw2">public</span> <span class="kw1">void</span> beforeFilter<span class="br0">&#40;</span>ArrayList<span class="sy0">&lt;</span>FilteringRule<span class="sy0">&gt;</span> filters<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="co1">//WHERE some_field LIKE 'value'</span>
+        filters.<span class="me1">add</span><span class="br0">&#40;</span> <span class="kw2">new</span> FilteringRule<span class="br0">&#40;</span><span class="st0">&quot;some_field&quot;</span><span class="sy0">,</span><span class="st0">&quot;value&quot;</span><span class="sy0">,</span><span class="st0">&quot;LIKE&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span>
+conn.<span class="me1">attach</span>.<span class="me1">event</span><span class="br0">&#40;</span><span class="kw2">new</span> FilterBehavior<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><em><strong>redefined filtering logic</strong></em></li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">class</span> FilterBehavior <span class="kw2">extends</span> ConnectorBehavior<span class="br0">&#123;</span>
+        <span class="sy0">@</span>Overrride
+    <span class="kw2">public</span> <span class="kw1">void</span> beforeFilter<span class="br0">&#40;</span>ArrayList<span class="sy0">&lt;</span>FilteringRule<span class="sy0">&gt;</span> filters<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="co1">//change WHERE some_field LIKE '%value%' to the WHERE some_field &gt; 'value'</span>
+        Integer index <span class="sy0">=</span> filters.<span class="me1">index</span><span class="br0">&#40;</span><span class="st0">&quot;some_field&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>index<span class="sy0">!=-</span><span class="nu0">1</span><span class="br0">&#41;</span>
+            filters.<span class="me1">get</span><span class="br0">&#40;</span>index<span class="br0">&#41;</span>.<span class="me1">operation</span><span class="sy0">=</span><span class="st0">&quot;&gt;&quot;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span>
+conn.<span class="me1">attach</span>.<span class="me1">event</span><span class="br0">&#40;</span><span class="kw2">new</span> FilterBehavior<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Select filter</h3>
+
+<p>By default, grid/treegrid will use DISTINCT select against the related field, and fetch all possible options.</p>
+
+<p>If you need to define a custom list of options you can use one of 2 ways:</p>
+
+<ul>
+<li><em><strong>a hardcoded list</strong></em></li>
+</ul>
+
+<pre><code><pre class="js">ArrayList<span class="sy0">&lt;</span>String<span class="sy0">&gt;</span> c1 <span class="sy0">=</span> <span class="kw2">new</span> ArrayList<span class="sy0">&lt;</span>String<span class="sy0">&gt;</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+c1.<span class="me1">add</span><span class="br0">&#40;</span><span class="st0">&quot;1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+c1.<span class="me1">add</span><span class="br0">&#40;</span><span class="st0">&quot;two&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+c1.<span class="me1">add</span><span class="br0">&#40;</span><span class="st0">&quot;3&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+grid.<span class="me1">set_options</span><span class="br0">&#40;</span><span class="st0">&quot;item_nm&quot;</span><span class="sy0">,</span>c1<span class="br0">&#41;</span><span class="sy0">;</span>
+grid.<span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;grid50&quot;</span><span class="sy0">,</span><span class="st0">&quot;item_id&quot;</span><span class="sy0">,</span><span class="st0">&quot;item_nm,item_cd&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><em><strong>a list created on the base of a different table</strong></em></li>
+</ul>
+
+<pre><code><pre class="js">filter1 <span class="sy0">=</span> <span class="kw2">new</span> OptionsConnector<span class="br0">&#40;</span>conn<span class="br0">&#41;</span><span class="sy0">;</span>
+filter1.<span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;countries&quot;</span><span class="sy0">,</span><span class="st0">&quot;country_id&quot;</span><span class="sy0">,</span><span class="st0">&quot;country_name(value)&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+grid.<span class="me1">set_options</span><span class="br0">&#40;</span><span class="st0">&quot;item_nm&quot;</span><span class="sy0">,</span>filter1<span class="br0">&#41;</span><span class="sy0">;</span>
+grid.<span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;grid50&quot;</span><span class="sy0">,</span><span class="st0">&quot;item_id&quot;</span><span class="sy0">,</span><span class="st0">&quot;item_nm,item_cd&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>You can use both the <em>render_table</em> and <em>render_sql</em> methods for OptionsConnector object, the same as for any normal connector.</p>
+
+<p>Pay attention that the name of the field used in the select filter needs having the <strong>(value)</strong> alias.</p>
+
+<a name='customfiltersusingthebeforerenderevent'><h2>Custom filters (using the beforeRender event)</h2></a>
+
+<p><strong>APPLICABLE TO:</strong> Grid, Combo</p>
+
+<p>By using the <a class="link-" href="connector__java__event_beforerender.html">beforeRender</a> event it's possible to define filtering rules as PHP code (doesn't work for dyn. modes).</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> FilterBehavior <span class="kw2">extends</span> ConnectorBehavior<span class="br0">&#123;</span>
+        <span class="sy0">@</span>Overrride
+    <span class="kw2">public</span> <span class="kw1">void</span> beforeRender<span class="br0">&#40;</span>DataItem data<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>data.<span class="me1">get_value</span><span class="br0">&#40;</span><span class="st0">&quot;some&quot;</span><span class="br0">&#41;</span> <span class="sy0">&lt;</span> <span class="nu0">0</span> <span class="br0">&#41;</span>
+            data.<span class="me1">skip</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span>
+conn.<span class="me1">attach</span>.<span class="me1">event</span><span class="br0">&#40;</span><span class="kw2">new</span> FilterBehavior<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='connector__java__filtration.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

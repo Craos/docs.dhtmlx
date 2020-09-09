@@ -1,0 +1,312 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Initializing Popup on a Page  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxpopup.html">dhtmlXPopup API</a></li><li class=" current"><a href="popup__initialization.html">Initializing Popup on a Page</a></li><ul><li class="inner"><a href="popup__initialization.html#attachingpopuptoform">Attaching Popup to Form</a></li><li class="inner"><a href="popup__initialization.html#attachingpopuptotoolbar">Attaching Popup to Toolbar</a></li><li class="inner"><a href="popup__initialization.html#attachingpopuptoribbon">Attaching Popup to Ribbon</a></li><li class="inner"><a href="popup__initialization.html#attachingpopuptoslider">Attaching Popup to Slider</a></li><li class="inner"><a href="popup__initialization.html#usingpopupstandalone">Using Popup standalone</a></li><li class="inner"><a href="popup__initialization.html#destructor">Destructor</a></li><li><a href="popup__object_constructor.html">Object Constructor</a></li></ul><li class=""><a href="popup__attaching_content.html">Attaching Content to Popup</a></li><li class=""><a href="popup__skin.html">Skinning Popup</a></li><li class=""><a href="popup__visibility.html">Managing Popup's Visibility</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="popup__index.html">Popup</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Initializing Popup on a Page</h1>
+
+<p>There are several ways of creating Popup on a page:</p>
+
+<ul>
+<li><a class="link-" href="popup__initialization.html#attachingpopuptoform">To attach Popup to Form</a></li>
+<li><a class="link-" href="popup__initialization.html#attachingpopuptotoolbar">To attach Popup to Toolbar</a></li>
+<li><a class="link-" href="popup__initialization.html#attachingpopuptoribbon">To attach Popup to Ribbon</a></li>
+<li><a class="link-" href="popup__initialization.html#attachingpopuptoslider">To attach Popup to Slider</a></li>
+<li><a class="link-" href="popup__initialization.html#usingpopupstandalone">To use Popup standalone</a></li>
+</ul>
+
+<a name='attachingpopuptoform'><h2>Attaching Popup to Form</h2></a>
+
+<p><img style="padding-bottom:20px" src="media/popup/popup_form_integration.png"/></p>
+
+<p>To attach Popup to dhtmlxForm, pass the following parameters to the <a class="link-" href="popup__object_constructor.html#attachingtoaformscontrol">dhtmlxPopup's object constructor</a>:</p>
+
+<p><br></p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myForm <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXForm<span class="br0">&#40;</span><span class="st0">&quot;myForm&quot;</span><span class="sy0">,</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;input&quot;</span><span class="sy0">,</span>   <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;name&quot;</span><span class="sy0">,</span>  value<span class="sy0">:</span> <span class="st0">&quot;Ogiwara Masaaki&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Full Name&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;password&quot;</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;pwd&quot;</span><span class="sy0">,</span>  value<span class="sy0">:</span> <span class="st0">&quot;12345&quot;</span><span class="sy0">,</span>  label<span class="sy0">:</span> <span class="st0">&quot;Password&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;button&quot;</span><span class="sy0">,</span>   <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;proceed&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Proceed&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> myPop <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXPopup<span class="br0">&#40;</span><span class="br0">&#123;</span> 
+    form<span class="sy0">:</span> myForm<span class="sy0">,</span> 
+    id<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;name&quot;</span><span class="sy0">,</span><span class="st0">&quot;pwd&quot;</span><span class="br0">&#93;</span> <span class="co1">// attaches the same popup to &quot;Full Name&quot; and &quot;Password&quot; inputs</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><br></p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxPopup/samples/01_init/06_attach_to_form.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Attach to form</a></p>
+
+<a name='attachingpopuptotoolbar'><h2>Attaching Popup to Toolbar</h2></a>
+
+<p><img style="padding-bottom:20px" src="media/popup/popup_toolbar_integration.png"/></p>
+
+<p>To attach Popup to dhtmlxToolbar, pass the following parameters to the <a class="link-" href="popup__object_constructor.html#attachingtoatoolbarscontrol">dhtmlxPopup's object constructor</a>:</p>
+
+<p><br></p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myToolbar <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXToolbarObject<span class="br0">&#40;</span><span class="st0">&quot;toolbarObj&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+myToolbar.<span class="me1">addButton</span><span class="br0">&#40;</span><span class="st0">&quot;button_open&quot;</span><span class="sy0">,</span> <span class="nu0">2</span><span class="sy0">,</span> <span class="st0">&quot;Open&quot;</span><span class="sy0">,</span> <span class="st0">&quot;open.gif&quot;</span><span class="sy0">,</span> <span class="st0">&quot;open_dis.gif&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+myToolbar.<span class="me1">addButton</span><span class="br0">&#40;</span><span class="st0">&quot;button_save&quot;</span><span class="sy0">,</span> <span class="nu0">3</span><span class="sy0">,</span> <span class="st0">&quot;Save&quot;</span><span class="sy0">,</span> <span class="st0">&quot;save.gif&quot;</span><span class="sy0">,</span> <span class="st0">&quot;save_dis.gif&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> myPop <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXPopup<span class="br0">&#40;</span><span class="br0">&#123;</span> 
+        toolbar<span class="sy0">:</span> myToolbar<span class="sy0">,</span>
+        id<span class="sy0">:</span> <span class="st0">&quot;button_open&quot;</span> <span class="co1">//attaches popup to the &quot;Open&quot; button</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+myPop.<span class="me1">attachHTML</span><span class="br0">&#40;</span><span class="st0">&quot;any custom text here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><br></p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxPopup/samples/01_init/01_attach_to_toolbar.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Attach to toolbar</a></p>
+
+<a name='attachingpopuptoribbon'><h2>Attaching Popup to Ribbon</h2></a>
+
+<p><img style="padding-bottom:20px" src="media/popup/popup_ribbon_integration.png"/></p>
+
+<p>To attach Popup to dhtmlxRibbon, pass the following parameters to the <a class="link-" href="popup__object_constructor.html">dhtmlxPopup's object constructor</a>:</p>
+
+<p><br></p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>script<span class="sy0">&gt;</span>
+    <span class="kw2">var</span> myRibbon<span class="sy0">;</span>
+    <span class="kw2">var</span> myPop<span class="sy0">;</span>
+        <span class="kw2">function</span> doOnLoad<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            myRibbon <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXRibbon<span class="br0">&#40;</span><span class="br0">&#123;</span>
+                parent<span class="sy0">:</span> <span class="st0">&quot;myRibbon&quot;</span><span class="sy0">,</span>
+                icons_path<span class="sy0">:</span> <span class="st0">&quot;../../../dhtmlxRibbon/samples/common/&quot;</span><span class="sy0">,</span>
+                json<span class="sy0">:</span> <span class="st0">&quot;../../../dhtmlxRibbon/samples/common/data_attached.json&quot;</span><span class="sy0">,</span>
+                <span class="kw3">onload</span><span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+                  myRibbon.<span class="me1">setItemText</span><span class="br0">&#40;</span><span class="st0">&quot;print_page_setup&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Popup here!&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                  myPop <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXPopup<span class="br0">&#40;</span><span class="br0">&#123;</span> ribbon<span class="sy0">:</span> myRibbon<span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;print_page_setup&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                  myPop.<span class="me1">attachList</span><span class="br0">&#40;</span><span class="st0">&quot;name,price&quot;</span><span class="sy0">,</span> <span class="br0">&#91;</span>
+                        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;Audi A5 Coupe&quot;</span><span class="sy0">,</span> price<span class="sy0">:</span> <span class="st0">&quot;&amp;euro; 31,550&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+                        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">2</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;Audi A5 Sportback&quot;</span><span class="sy0">,</span> price<span class="sy0">:</span> <span class="st0">&quot;&amp;euro; 30,990&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+                        myPop.<span class="me1">separator</span><span class="sy0">,</span>
+                        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">3</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;Audi A6&quot;</span><span class="sy0">,</span> price<span class="sy0">:</span> <span class="st0">&quot;&amp;euro; 30,990&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+                        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">4</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;Audi A6 Avant&quot;</span><span class="sy0">,</span> price<span class="sy0">:</span> <span class="st0">&quot;&amp;euro; 37,450&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+                        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">5</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;Audi A6 Quattro&quot;</span><span class="sy0">,</span> price<span class="sy0">:</span> <span class="st0">&quot;&amp;euro; 55,360&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+                        myPop.<span class="me1">separator</span><span class="sy0">,</span>
+                        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">6</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;Audi TT Coupe&quot;</span><span class="sy0">,</span> price<span class="sy0">:</span> <span class="st0">&quot;&amp;euro; 29,830&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+                        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">7</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;Audi TT RS Coupe&quot;</span><span class="sy0">,</span> price<span class="sy0">:</span> <span class="st0">&quot;&amp;euro; 59,800&quot;</span><span class="br0">&#125;</span>
+                    <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                <span class="br0">&#125;</span>
+            <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+<span class="sy0">&lt;/</span>script<span class="sy0">&gt;</span></pre></code></pre>
+
+<p><br></p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxPopup/samples/01_init/09_attach_to_ribbon.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Attach to ribbon</a></p>
+
+<a name='attachingpopuptoslider'><h2>Attaching Popup to Slider</h2></a>
+
+<p><img style="padding-bottom:20px" src="media/popup/popup_slider_integration.png"/></p>
+
+<p>To attach Popup to dhtmlxSlider, pass the following parameters to the <a class="link-" href="popup__object_constructor.html">dhtmlxPopup's object constructor</a>:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>script<span class="sy0">&gt;</span>
+    <span class="kw2">var</span> mySlider<span class="sy0">;</span>
+    <span class="kw2">var</span> myPop<span class="sy0">;</span>
+        <span class="kw2">function</span> doOnLoad<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="co1">// init slider</span>
+            mySlider <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXSlider<span class="br0">&#40;</span><span class="br0">&#123;</span>
+                parent<span class="sy0">:</span> <span class="st0">&quot;sliderObj&quot;</span><span class="sy0">,</span>
+                size<span class="sy0">:</span> <span class="nu0">150</span><span class="sy0">,</span>
+                value<span class="sy0">:</span> <span class="nu0">5</span><span class="sy0">,</span>
+                step<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span>
+                min<span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">,</span>
+                max<span class="sy0">:</span> <span class="nu0">10</span>
+            <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+            <span class="co1">// attach popup to slider</span>
+            myPop <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXPopup<span class="br0">&#40;</span><span class="br0">&#123;</span> slider<span class="sy0">:</span> mySlider <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+            <span class="co1">// change popup value when slider moved</span>
+            mySlider.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onChange&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>value<span class="br0">&#41;</span><span class="br0">&#123;</span>
+                updatePopupValue<span class="br0">&#40;</span>value<span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+            <span class="co1">// set initial value for popup</span>
+            updatePopupValue<span class="br0">&#40;</span>mySlider.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="kw2">function</span> updatePopupValue<span class="br0">&#40;</span>value<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            myPop.<span class="me1">attachHTML</span><span class="br0">&#40;</span><span class="st0">&quot;Current value: &quot;</span><span class="sy0">+</span>value.<span class="me1">toString</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+<span class="sy0">&lt;/</span>script<span class="sy0">&gt;</span></pre></code></pre>
+
+<p><br></p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxPopup/samples/01_init/10_attach_to_slider.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Attach to slider</a></p>
+
+<a name='usingpopupstandalone'><h2>Using Popup standalone</h2></a>
+
+<p>Popup can be used standalone (attached to a custom object).</p>
+
+<div class='note'><p><p>This way implies that dhtmlxPopup will be instantiated, but the show/hide commands must be called manually.</p>
+</p></div>
+
+<p><img src="media/popup/popup_standalone_init.png"/></p>
+
+<p>To create a standalone Popup you don't need to pass any parameters to the <a class="link-" href="popup__object_constructor.html">dhtmlxPopup's object constructor</a>:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text&quot;</span> <span class="kw3">onclick</span><span class="sy0">=</span><span class="st0">&quot;showPopup(this);&quot;</span> <span class="kw3">onblur</span><span class="sy0">=</span><span class="st0">&quot;hidePopup();&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;click&quot;</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">    <span class="kw2">var</span> myPop <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXPopup<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    myPop.<span class="me1">attachHTML</span><span class="br0">&#40;</span><span class="st0">&quot;You can enter some text here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw2">function</span> showPopup<span class="br0">&#40;</span>inp<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        myPop.<span class="me1">show</span><span class="br0">&#40;</span><span class="nu0">20</span><span class="sy0">,</span><span class="nu0">20</span><span class="sy0">,</span><span class="nu0">400</span><span class="sy0">,</span><span class="nu0">300</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//params are: x, y, width, height</span>
+    <span class="br0">&#125;</span>
+    <span class="kw2">function</span> hidePopup<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        myPop.<span class="me1">hide</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p>Get the details on how to show/hide dhtmlxPopup in the related chapter - <a class="link-" href="popup__visibility.html">Managing visibility</a>.</p>
+
+<a name='destructor'><h2>Destructor</h2></a>
+
+<p>To remove a dhtmlxPopup instance and clear the memory, use the <a class="link-" href="api__dhtmlxpopup_unload.html">unload</a> method:</p>
+
+<pre><code><pre class="js">myPop.<span class="me1">unload</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+myPop <span class="sy0">=</span> <span class="kw2">null</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>Once you've reloaded the page, the dhtmlxPopup's instances are destroyed automatically.</p>
+</p></div>
+
+<!-- Content Area End -->
+			<a href='popup__initialization.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Localization</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+
+	<script type="text/javascript" src="../../codebase/vault-v=3.0.0.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../codebase/vault-v=3.0.0.css">
+
+	<script type="text/javascript" src="../common/js/index-v=3.0.0.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/2.6.95/css/materialdesignicons.css?v=3.0.0">
+	<link rel="stylesheet" type="text/css" href="../common/dhx_samples-v=3.0.0.css">
+
+
+        <!-- metrics -->
+        <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-11031269-1', 'auto');
+        ga('send', 'pageview');
+        </script>
+
+        <!-- error tracking -->
+        <script src="https://cdn.ravenjs.com/3.19.1/raven.min.js" crossorigin="anonymous"></script>
+        <script>Raven.config('https://a2578da6be394598bfe003e4dbb3a394@sentry.dhtmlx.ru/13').install()</script>
+</head>
+
+<body>
+	<div class="top-rect-block">
+		<div class="radio-group-block">
+			<div class="text-value">Locale: </div>
+			<div class="radio-block checked" id="use-english">
+				<div class="radio mdi mdi-radiobox-marked"></div>
+				<div class="radio-label">English</div>
+			</div>
+			<div class="radio-block" id="use-deutsch">
+				<div class="radio mdi mdi-radiobox-blank"></div>
+				<div class="radio-label">Deutsch</div>
+			</div>
+		</div>
+	</div>
+	<div id="vault" class="container with-header"></div>
+
+	<script>
+		var english = {
+			add: "Add",
+			browse: "Browse files",
+			cancel: "Cancel",
+			clear: "Clear",
+			clearAll: "Clear all",
+			download: "Download",
+			dragAndDrop: "Drag & drop",
+			filesOrFoldersHere: "files or folders here",
+			or: "or",
+			upload: "Upload"
+		};
+
+		var deutsch = {
+			dragAndDrop: "Drag & Drop",
+			or: "oder",
+			browse: "Suchen Sie Dateien durch",
+			filesOrFoldersHere: "Dateien oder Ordner hier",
+			cancel: "Stornieren",
+			clearAll: "Alles löschen",
+			clear: "Löschen",
+			add: "Hinzufügen",
+			upload: "Hochladen",
+			download: "Herunterladen"
+		};
+
+        var vault = new dhx.Vault("vault", {
+			uploader: {
+                target: "/vault/backend/upload"
+            }
+		});
+
+		var radioGroup = document.getElementsByClassName("radio-group-block")[0];
+		addListenersForRadioGroup(radioGroup, function(id) {
+			if (id === "use-english") {
+				dhx.i18n.setLocale("vault", english);
+			} else {
+				dhx.i18n.setLocale("vault", deutsch);
+			}
+			vault.paint();
+		});
+
+	</script>
+
+</body>
+
+</html>

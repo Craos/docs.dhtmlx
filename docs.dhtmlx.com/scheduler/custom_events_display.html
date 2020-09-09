@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Custom Event's Box  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=" current"><a href="custom_events_display.html">Custom Event's Box</a></li><ul><li class="inner"><a href="custom_events_display.html#technique">Technique</a></li><li class="inner"><a href="custom_events_display.html#importanttips">Important tips</a></li><li class="inner"><a href="custom_events_display.html#example">Example</a></li></ul><li class=""><a href="custom_events_color.html">Custom Event's Color</a></li><li class=""><a href="custom_events_content.html">Custom Event's Content</a></li><li class=""><a href="tooltips.html">Tooltips</a></li><li class=""><a href="customizing_edit_select_bars.html">Customizing "Select" and "Edit" Bars</a></li><li class=""><a href="sizing.html">Sizing the Scale and Events Boxes</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="customizing_events.html">Customizing Events</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Custom Event's Box</h1>
+
+<p>dhtmlxScheduler provides the possibility to define custom display for events.</p>
+
+<div class='note'><p><p>Applicable to the <a class="link-" href="day_view.html">Day View</a> and <a class="link-" href="week_view.html">Week View</a> only</p>
+</p></div>
+
+<a name='technique'><h2>Technique</h2></a>
+
+<p>Events customizing is achieved with the help of the <a class="link-" href="api__scheduler_renderevent.html">renderEvent</a> method:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">renderEvent</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>container<span class="sy0">,</span> ev<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="co1">// your customizing code</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li><strong><em>container</em></strong> - the event's container</li>
+<li><strong><em>ev</em></strong> - the event object</li>
+</ul>
+
+<p><a href='samples/02_customization/27_custom_event_box.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom event box</a></p>
+
+<a name='importanttips'><h2>Important tips</h2></a>
+
+<ul>
+<li>Returning <em>true</em> applies the custom logic, returning <em>false</em> applies the default logic.</li>
+<li>Some CSS classes have special purpose (they must go first in the className of the element):
+
+<ul>
+<li><strong><em>dhx_event_move</em></strong> - an element with this style can be dragged (usually, it's the event header). </li>
+<li><strong><em>dhx_event_resize</em></strong> - dragging an element with this style will change the event's duration.</li>
+</ul></li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> html <span class="sy0">=</span> <span class="st0">&quot;&lt;div class='dhx_event_move my_event_move' &quot;</span></pre></code></pre>
+
+<a name='example'><h2>Example</h2></a>
+
+<p>Here is an example of some custom look:</p>
+
+<p><img src="media/custom_event_box.png"></p>
+
+<p class='snippet'>
+Specifying a custom look for the event's box
+</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">event_class</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> event<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;my_event&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+scheduler.<span class="me1">renderEvent</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>container<span class="sy0">,</span> ev<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw2">var</span> container_width <span class="sy0">=</span> container.<span class="me1">style</span>.<span class="me1">width</span><span class="sy0">;</span> <span class="co1">// e.g. &quot;105px&quot;</span>
+&nbsp;
+    <span class="co1">// move section</span>
+    <span class="kw2">var</span> html <span class="sy0">=</span> <span class="st0">&quot;&lt;div class='dhx_event_move my_event_move' style='width: &quot;</span> <span class="sy0">+</span> 
+    container_width <span class="sy0">+</span> <span class="st0">&quot;'&gt;&lt;/div&gt;&quot;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="co1">// container for event's content</span>
+    html<span class="sy0">+=</span> <span class="st0">&quot;&lt;div class='my_event_body'&gt;&quot;</span><span class="sy0">;</span>
+    html <span class="sy0">+=</span> <span class="st0">&quot;&lt;span class='event_date'&gt;&quot;</span><span class="sy0">;</span>
+    <span class="co1">//two options here:show only start date for short events or start+end for long</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="br0">&#40;</span>ev.<span class="me1">end_date</span> <span class="sy0">-</span> ev.<span class="me1">start_date</span><span class="br0">&#41;</span><span class="sy0">/</span><span class="nu0">60000</span><span class="sy0">&gt;</span><span class="nu0">40</span><span class="br0">&#41;</span><span class="br0">&#123;</span><span class="co1">//if event is longer than 40 minutes</span>
+        html <span class="sy0">+=</span> scheduler.<span class="me1">templates</span>.<span class="me1">event_header</span><span class="br0">&#40;</span>ev.<span class="me1">start_date</span><span class="sy0">,</span> ev.<span class="me1">end_date</span><span class="sy0">,</span> ev<span class="br0">&#41;</span><span class="sy0">;</span>
+        html <span class="sy0">+=</span> <span class="st0">&quot;&lt;/span&gt;&lt;br/&gt;&quot;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span> <span class="kw1">else</span> <span class="br0">&#123;</span>
+        html <span class="sy0">+=</span> scheduler.<span class="me1">templates</span>.<span class="me1">event_date</span><span class="br0">&#40;</span>ev.<span class="me1">start_date</span><span class="br0">&#41;</span> <span class="sy0">+</span> <span class="st0">&quot;&lt;/span&gt;&quot;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="co1">// displaying event's text</span>
+    html <span class="sy0">+=</span> <span class="st0">&quot;&lt;span&gt;&quot;</span> <span class="sy0">+</span> scheduler.<span class="me1">templates</span>.<span class="me1">event_text</span><span class="br0">&#40;</span>ev.<span class="me1">start_date</span><span class="sy0">,</span>ev.<span class="me1">end_date</span><span class="sy0">,</span>ev<span class="br0">&#41;</span><span class="sy0">+</span>
+    <span class="st0">&quot;&lt;/span&gt;&quot;</span> <span class="sy0">+</span> <span class="st0">&quot;&lt;/div&gt;&quot;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="co1">// resize section</span>
+    html <span class="sy0">+=</span> <span class="st0">&quot;&lt;div class='dhx_event_resize my_event_resize' style='width: &quot;</span> <span class="sy0">+</span>
+    container_width <span class="sy0">+</span> <span class="st0">&quot;'&gt;&lt;/div&gt;&quot;</span><span class="sy0">;</span>
+&nbsp;
+    container.<span class="me1">innerHTML</span> <span class="sy0">=</span> html<span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span> <span class="co1">//required, true - to display a custom form, false - the default form</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>and the related CSS is the following:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">style</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> &gt;</span><pre class="css">    html<span class="sy0">,</span> body <span class="br0">&#123;</span>
+        <span class="kw1">margin</span><span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">;</span>
+        <span class="kw1">padding</span><span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="coMULTI">/* the background color for the whole container and its border*/</span>
+    <span class="re1">.my_event</span> <span class="br0">&#123;</span>
+        <span class="kw1">background-color</span><span class="sy0">:</span> <span class="re0">#add8e6</span><span class="sy0">;</span>
+        <span class="kw1">border</span><span class="sy0">:</span> <span class="re3">1px</span> <span class="kw2">solid</span> <span class="re0">#778899</span><span class="sy0">;</span>
+        <span class="kw1">overflow</span><span class="sy0">:</span> <span class="kw2">hidden</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>    
+    <span class="coMULTI">/* disabling the default color for the select menu */</span>
+    <span class="re1">.dhx_cal_select_menu</span><span class="re1">.my_event</span> div <span class="br0">&#123;</span>
+        <span class="kw1">border</span><span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">;</span>
+        <span class="kw1">background-color</span><span class="sy0">:</span> <span class="kw2">transparent</span><span class="sy0">;</span>
+        <span class="kw1">color</span><span class="sy0">:</span> <span class="kw1">black</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>    
+    <span class="coMULTI">/* styles for the event content */</span>
+    <span class="re1">.dhx_cal_event</span><span class="re1">.my_event</span> <span class="re1">.my_event_body</span> <span class="br0">&#123;</span>
+        <span class="kw1">padding-top</span><span class="sy0">:</span> <span class="re3">3px</span><span class="sy0">;</span>
+        <span class="kw1">padding-left</span><span class="sy0">:</span> <span class="re3">5px</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>   
+    <span class="coMULTI">/* event's date information */</span>
+    <span class="re1">.my_event</span> <span class="re1">.event_date</span> <span class="br0">&#123;</span>         
+        <span class="kw1">font-weight</span><span class="sy0">:</span> <span class="kw2">bold</span><span class="sy0">;</span>
+        <span class="kw1">padding-right</span><span class="sy0">:</span> <span class="re3">5px</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>   
+    <span class="coMULTI">/* event's resizing section */</span>
+    <span class="re1">.my_event_resize</span> <span class="br0">&#123;</span>
+        <span class="kw1">height</span><span class="sy0">:</span> <span class="re3">3px</span><span class="sy0">;</span>
+        <span class="kw1">position</span><span class="sy0">:</span> <span class="kw2">absolute</span><span class="sy0">;</span>
+        <span class="kw1">bottom</span><span class="sy0">:</span> <span class="re3">-1px</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="coMULTI">/* event's move section */</span>
+    <span class="re1">.my_event_move</span> <span class="br0">&#123;</span>
+        <span class="kw1">position</span><span class="sy0">:</span> <span class="kw2">absolute</span><span class="sy0">;</span>
+        <span class="kw1">top</span><span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">;</span>
+        <span class="kw1">height</span><span class="sy0">:</span> <span class="re3">10px</span><span class="sy0">;</span>
+        <span class="kw1">cursor</span><span class="sy0">:</span> <span class="kw2">pointer</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span></pre>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">style</span>&gt;</span></pre></code></pre>
+
+<p><a href='samples/02_customization/27_custom_event_box.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom event box</a></p>
+
+<!-- Content Area End -->
+			<a href='custom_events_display.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

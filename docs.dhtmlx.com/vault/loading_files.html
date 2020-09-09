@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1589296882.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1589296882.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Vault Docs" href="https://docs.dhtmlx.com/vault/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Loading List of Files  Vault Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/c/widgets/vault">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="installation.html">How to Install dhtmlxVault</a></li><li class=""><a href="initialize.html">Initialization</a></li><li class=""><a href="configuring.html">Configuration</a></li><li class=""><a href="localization.html">Localization</a></li><li class=""><a href="work_with_vault.html">Working with Vault</a></li><li class=" current"><a href="loading_files.html">Loading List of Files</a></li><ul><li class="inner"><a href="loading_files.html#preparingdata">Preparing data</a></li><li class="inner"><a href="loading_files.html#loadingfromserver">Loading from server</a></li><li class="inner"><a href="loading_files.html#loadingfromlocalsource">Loading from local source</a></li><li class="inner"><a href="loading_files.html#downloadingfiles">Downloading files</a></li><li class="inner"><a href="loading_files.html#savingandrestoringthefilelist">Saving and restoring the file list</a></li></ul><li class=""><a href="uploading_files.html">Uploading Files</a></li><li class=""><a href="managing_files.html">Managing Files</a></li><li class=""><a href="events.html">Handling Events</a></li><li class=""><a href="customization.html">Customizing Vault</a></li><li class=""><a href="angular_integration.html">Integrating Vault with Angular</a></li><li class=""><a href="react_integration.html">Integrating Vault with React</a></li><li class=""><a href="vuejs_integration.html">Integrating Vault with Vue.js</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Loading List of Files</h1>
+
+<p>DataCollection of dhtmlxVault stores the files that are added for upload. You can load and save the list of files.</p>
+
+<a name='preparingdata'><h2>Preparing data</h2></a>
+
+<p>dhtmlxVault accepts data in the JSON format. For example:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> files <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>
+        <span class="st0">&quot;name&quot;</span><span class="sy0">:</span><span class="st0">&quot;one.jpg&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;size&quot;</span><span class="sy0">:</span><span class="nu0">36484</span><span class="sy0">,</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>
+        <span class="st0">&quot;name&quot;</span><span class="sy0">:</span><span class="st0">&quot;another.svg&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;size&quot;</span><span class="sy0">:</span><span class="nu0">35523213</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The <strong>file</strong> object has the following properties:</p>
+
+<ul>
+<li><strong>id</strong>  -  (<em>string</em>) the ID of the file</li>
+<li><strong>image</strong> - (<em>string</em>) an HTML Canvas image for preview in the grid</li>
+<li><strong>link</strong> -  (<em>string</em>) the path to the uploaded file on a server. <a href="loading_files.html#downloadingfiles">Read more below</a> </li>
+<li><strong>name</strong> -  (<em>string</em>) the name of the file including the extension (for adding files from a server)</li>
+<li><strong>size</strong> - (<em>number</em>) the size of the file in bytes (for adding files from a server)</li>
+<li><strong>status</strong> - (<em>string</em>) the status of the file ("queue", "inprogress", "uploaded", or "failed")</li>
+<li><strong>path</strong> - (<em>string</em>) the path to the file on the computer starting from the name of the folder (in case a folder with files is added)</li>
+<li><strong>preview</strong> - (<em>string</em>) the path to the file preview. Can be set for a file with <em>status:"uploaded"</em>. If the parameter isn't specified, Vault will generate preview automatically </li>
+<li><strong>progress</strong>  - (<em>number</em>) the progress of the file upload</li>
+<li><strong>request</strong> - (<em>object</em>) an XMLHttpRequest object sent to server when an upload begins</li>
+</ul>
+
+<p>The <strong>path</strong> attribute is added only to files that were added in a folder. Thus, a file "dog.jpg" added in the folder "animals" will get the attribute <em>path="animals/"</em>.</p>
+
+<a name='loadingfromserver'><h2>Loading from server</h2></a>
+
+<p>You can load a list of files from an external file with the <a class="link-" href="api__data__load.html">load</a> method. As a parameter the method takes the URL of an external file:</p>
+
+<pre><code><pre class="js">vault.<span class="me1">data</span>.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/files.json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>dhtmlxVault will make an AJAX request and will wait for a valid JSON array. The request is asynchronous, so if you want to do something after the list of files is loaded, use the <strong>then</strong> method:</p>
+
+<pre><code><pre class="js">vault.<span class="me1">data</span>.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/files&quot;</span><span class="br0">&#41;</span>.<span class="me1">then</span><span class="br0">&#40;</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">=&gt;</span> <span class="br0">&#123;</span>
+   <span class="co1">// do something</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The method will return a promise of data loading.</p>
+
+<a name='loadingfromlocalsource'><h2>Loading from local source</h2></a>
+
+<p>Use the <a class="link-" href="api__data__parse.html">parse</a> method to load a list of files from a local source. Pass an array of files that should be loaded as a parameter of the method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> vault <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Vault</span><span class="br0">&#40;</span><span class="st0">&quot;vault_container&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span> target<span class="sy0">:</span><span class="st0">&quot;/upload&quot;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+vault.<span class="me1">data</span>.<span class="me1">parse</span><span class="br0">&#40;</span>files<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/01_init/03_serverdata.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Server data</a></p>
+
+<a name='downloadingfiles'><h2>Downloading files</h2></a>
+
+<p>In order to download files from Vault to the computer, file objects must have the <strong>link</strong> attribute specified with the path to their location on the server.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> files <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>
+        <span class="st0">&quot;name&quot;</span><span class="sy0">:</span><span class="st0">&quot;file1.jpg&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;link&quot;</span><span class="sy0">:</span><span class="st0">&quot;YOUR_LINK&quot;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="co1">// more file objects</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The <em>link</em> attribute may contain both a full path to the file, or only a partial path, or the file id. If the path is not full, you can use the <a class="link-" href="api__uploader__downloadurl_config.html">downloadURL</a> property. 
+It sets the path to the <em>directory</em> of the uploaded file on a server. Then the link to the file on a server will be built as <strong>downloadURl</strong>+<strong>link</strong> attribute of the file object.</p>
+
+<a name='savingandrestoringthefilelist'><h2>Saving and restoring the file list</h2></a>
+
+<p>You can get the list of files in the queue with the <a class="link-" href="api__data__serialize.html">serialize</a> method. It will return an array of JSON objects for each file in the list:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> state <span class="sy0">=</span> vault.<span class="me1">data</span>.<span class="me1">serialize</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="coMULTI">/* =&gt;
+[
+    {
+        id:&quot;u1531242355011&quot;,
+        name:&quot;dfgergrdJ0E.jpg&quot;,
+        progress:0,
+        size:132653,
+        status:&quot;queue&quot;,
+        type:&quot;image/jpeg&quot;
+    },
+    {
+        id:&quot;u1531242355010&quot;,
+        name:&quot;_lp31XrdJ0E.jpg&quot;,
+        progress:0,
+        size:142633,
+        status:&quot;queue&quot;,
+        type:&quot;image/jpeg&quot;
+    }
+]
+*/</span></pre></code></pre>
+
+<p>Later, you can restore the list with the <a class="link-" href="api__data__parse.html">parse</a> method:</p>
+
+<pre><code><pre class="js">vault.<span class="me1">data</span>.<span class="me1">parse</span><span class="br0">&#40;</span>state<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='loading_files.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			
+<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='loading_files.html'>Loading List of Files</a></li>	
+	<li><a href='managing_files.html'>Managing Files</a></li>
+	<li><a href='work_with_vault.html'>Working with Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Look and Feel</li>
+	<li><a href='configuring.html'>Configuration</a></li>
+	<li><a href='customization.html'>Customization</a></li>
+	<li><a href='localization.html'>Localization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Integration</li>
+	<li><a href='angular_integration.html'>Vault and Angular</a></li>
+	<li><a href='react_integration.html'>Vault and React</a></li>
+	<li><a href='vuejs_integration.html'>Vault and Vue.js</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__vault.html#methods'>Methods</a></li>
+	<li><a href='api__refs__vault_props.html'>Properties</a></li>
+	<li><a href='api__refs__vault_events.html'>Events</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

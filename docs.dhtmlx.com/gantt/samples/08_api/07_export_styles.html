@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>Task styles</title>
+	<script src="../../codebase/dhtmlxgantt-v=7.0.9.js"></script>
+	<script src="https://export.dhtmlx.com/gantt/api.js?v=7.0.9"></script>
+
+	<link rel="stylesheet" href="../../codebase/dhtmlxgantt-v=7.0.9.css">
+	<link rel="stylesheet" href="../common/customstyles-v=7.0.9.css">
+	<link rel="stylesheet" href="../common/controls_styles-v=7.0.9.css">
+
+	<script src="../common/testdata-v=7.0.9.js"></script>
+	<style>
+		html, body {
+			height: 100%;
+			padding: 0px;
+			margin: 0px;
+			overflow: hidden;
+		}
+	</style>
+</head>
+
+<body>
+<div class="gantt_control">
+	<input value="Export to PDF" type="button" onclick="exportGantt('pdf')">
+	<input value="Export to PNG" type="button" onclick="exportGantt('png')">
+</div>
+<div id="gantt_here" style='width:100%; height: calc(100vh - 52px);'></div>
+
+<script>
+
+	gantt.config.columns = [
+		{name: "text", label: "Task name", tree: true, width: "*"},
+		{name: "start_date", label: "Start time", align: "center"},
+		{
+			name: "priority", label: "Priority", align: "center", template: function (obj) {
+				if (obj.priority == 1) {
+					return "High"
+				}
+				if (obj.priority == 2) {
+					return "Medium"
+				}
+				return "Low"
+			}
+		}
+	];
+
+	gantt.templates.task_class = function (start, end, task) {
+		switch (task.priority) {
+			case "1":
+				return "high";
+				break;
+			case "2":
+				return "medium";
+				break;
+			case "3":
+				return "low";
+				break;
+		}
+	};
+
+	gantt.init("gantt_here");
+	gantt.parse(users_data);
+
+	function exportGantt(mode) {
+		if (mode == "png"){
+			gantt.exportToPNG({
+				header: '<link rel="stylesheet" href="//docs.dhtmlx.com/gantt/samples/common/customstyles.css?v=7.0.9">'
+			});
+		}else if (mode == "pdf"){
+			gantt.exportToPDF({
+				header: '<link rel="stylesheet" href="//docs.dhtmlx.com/gantt/samples/common/customstyles.css?v=7.0.9">'
+			});
+		}
+	}
+</script>
+
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-11031269-1', 'auto');
+	ga('send', 'pageview');
+</script>
+<script src="https://cdn.ravenjs.com/3.10.0/raven.min.js"></script>
+<script>Raven.config('https://25a6d5e8c35148d195a1967d8374ffca@sentry.dhtmlx.ru/6').install()</script></body>

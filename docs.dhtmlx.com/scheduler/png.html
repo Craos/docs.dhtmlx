@@ -1,0 +1,255 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Export to PNG  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="google_calendar_integration.html">Integration with Google Calendar</a></li><li class=""><a href="pdf.html">Export to PDF</a></li><li class=" current"><a href="png.html">Export to PNG</a></li><ul><li class="inner"><a href="png.html#usingexportservices">Using Export Services</a></li><li class="inner"><a href="png.html#limitsonrequestsize">Limits on request size</a></li><li class="inner"><a href="png.html#defaultexporttopng">Default Export to PNG</a></li><li class="inner"><a href="png.html#parametersoftheexportmethod">Parameters of the export method</a></li><li class="inner"><a href="png.html#nameoftheoutputfile">Name of the output file</a></li><li class="inner"><a href="png.html#headerfooteroftheoutputfile">Header/footer of the output file</a></li><li class="inner"><a href="png.html#customstylefortheoutputfile">Custom style for the output file</a></li></ul><li class=""><a href="excel.html">Export to Excel and iCal</a></li><li class=""><a href="export.html">Data Serialization to XML, JSON, iCal</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="data_export.html">Data Export and Import</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Export to PNG</h1>
+
+<p>Starting from version 4.1, dhtmlxScheduler provides an <a class="link-" href="png.html#defaultexporttopng">online export service</a>
+that gives you the possibility to export the scheduler to the PNG format.</p>
+
+<div class='note'><p><p>The service is free, but the output PNG file will contain the library's watermark under the GPL license. In case you buy a license, the result of export will be available without a watermark
+during the valid support period (1 month for Commercial license and 12 months for the Enterprise one).</p>
+</p></div>
+
+<a name='usingexportservices'><h2>Using Export Services</h2></a>
+
+<p>There are several export services available. You can install them on your computer and export Scheduler to PNG locally.</p>
+
+<p>Note that export services are not included into the Scheduler package, 
+read the <a href="https://dhtmlx.com/docs/products/dhtmlxScheduler/export.shtml">corresponding article</a> to learn the terms of using each of them.</p>
+
+<a name='limitsonrequestsize'><h2>Limits on request size</h2></a>
+
+<p>There is a common API endpoint <a href="https://export.dhtmlx.com/scheduler">https://export.dhtmlx.com/scheduler</a> which serves for export methods (<em>exportToPDF</em>, <em>exportToPNG</em>, etc.). <strong>Max request size is 10 MB</strong>.</p>
+
+<a name='defaultexporttopng'><h2>Default Export to PNG</h2></a>
+
+<p>To export the scheduler as a PNG image, do the following steps:</p>
+
+<ol>
+    <li>Include the <b>"http://export.dhtmlx.com/scheduler/api.js"</b> file on the page to enable the online export service:
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlxscheduler.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="xtra ln-xtra"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;http://export.dhtmlx.com/scheduler/api.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>  </span><span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlxscheduler.css&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span>&gt;</span></pre></code></pre>
+
+</li>
+    <li>Call the <a class="link-" href="png.html#parametersoftheexportmethod">exportToPNG</a> method to export the scheduler: 
+
+<pre><code><pre class="html"><span class="xtra ln-xtra"><span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;Export to PNG&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;button&quot;</span> <span class="kw3">onclick</span><span class="sy0">=</span><span class="st0">'scheduler.exportToPNG()'</span>&gt;</span></span>&nbsp;
+<span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">    scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span><span class="nu0">5</span><span class="sy0">,</span><span class="nu0">30</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="st0">&quot;month&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;data/events&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+
+</li>
+</ol>
+
+<p><a href='samples/04_export/06_online_export.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Export to PDF/PNG</a></p>
+
+<a name='parametersoftheexportmethod'><h2>Parameters of the export method</h2></a>
+
+<p>The <strong>exportToPNG()</strong> method takes as a parameter an object with a number of properties (all the properties are optional):</p>
+
+<table class="webixdoc_links">
+    <tbody>
+        <tr>
+            <td class="webixdoc_links0"><b>name</b></td>
+            <td>(<i>string</i>) the name of the output file</td>
+        </tr>
+       <tr>
+            <td class="webixdoc_links0"><b>format</b></td>
+            <td>(<i>'A0', 'A1', 'A2', 'A3', 'A4', 'A5'</i>) the format of the output PNG image/td>
+        </tr>
+        <tr>
+            <td class="webixdoc_links0"><b>orientation</b></td>
+            <td>(<i>'portrait', 'landscape'</i>) sets the orientation of the output PNG image</td>
+        </tr>        
+        <tr>
+            <td class="webixdoc_links0"><b>zoom</b></td>
+            <td>(<i>number</i>) sets the zoom coefficient of the output PNG image</td>
+        </tr>
+        <tr>
+            <td class="webixdoc_links0"><b>header</b></td>
+            <td>(<i>string</i>) specifies the header that will be added to the output PNG image. Note, you can use any HTML here</td>
+        </tr>
+        <tr>
+            <td class="webixdoc_links0"><b>footer</b></td>
+            <td>(<i>string</i>) specifies the footer that will be added to the output PNG image. Note, you can use any HTML here</td>
+        </tr>
+        <tr>
+            <td class="webixdoc_links0"><b>server</b></td>
+            <td>(<i>string</i>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is <strong>https://export.dhtmlx.com/scheduler</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<p><br></p>
+
+<p class='snippet'>
+Calling the export method with optional properties
+</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">exportToPNG</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    format<span class="sy0">:</span><span class="st0">&quot;A4&quot;</span><span class="sy0">,</span>
+    orientation<span class="sy0">:</span><span class="st0">&quot;portrait&quot;</span><span class="sy0">,</span>
+    zoom<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span>
+    header<span class="sy0">:</span><span class="st0">&quot;&lt;h1&gt;My company&lt;/h1&gt;&quot;</span><span class="sy0">,</span>
+    footer<span class="sy0">:</span><span class="st0">&quot;&lt;h4&gt;Bottom line&lt;/h4&gt;&quot;</span><span class="sy0">,</span>
+    server<span class="sy0">:</span><span class="st0">&quot;https://myapp.com/myexport/scheduler&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='nameoftheoutputfile'><h2>Name of the output file</h2></a>
+
+<p>To set a custom name for the output file, use the <strong>name</strong> property in the 
+<a class="link-" href="export.html#parametersoftheexportmethod">exportToPNG</a> method:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">exportToPNG</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+<span class="xtra ln-xtra">    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;my_beautiful_scheduler.png&quot;</span></span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='headerfooteroftheoutputfile'><h2>Header/footer of the output file</h2></a>
+
+<p>To add the header/footer to the output PNG file, use the <strong>header</strong>/<strong>footer</strong> properties in the 
+<a class="link-" href="export.html#parametersoftheexportmethod">exportToPNG</a> method:</p>
+
+<div class='note'><p><p>Note, you can use any HTML while specifying the parameters. While specifying images, remember that you need to set global paths as values of the "src" attribute</p>
+</p></div>
+
+<pre><code><pre class="js">scheduler.<span class="me1">exportToPNG</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;myscheduler.png&quot;</span><span class="sy0">,</span>
+    header<span class="sy0">:</span><span class="st0">&quot;&lt;h1&gt;My company&lt;/h1&gt;&quot;</span><span class="sy0">,</span>
+    footer<span class="sy0">:</span><span class="st0">&quot;&lt;h4&gt;Bottom line&lt;/h4&gt;&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='customstylefortheoutputfile'><h2>Custom style for the output file</h2></a>
+
+<p>To apply a custom style for the scheduler, provide the stylesheet with your custom CSS classes:</p>
+
+<ul>
+<li>through a link:</li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">exportToPNG</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;calendar.png&quot;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    header<span class="sy0">:</span><span class="st0">'&lt;link rel=&quot;stylesheet&quot; href=&quot;http://mysite.com/custom.css&quot;&gt;'</span> </span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>or through the 'style' tag:</li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">exportToPNG</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;calendar.png&quot;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    header<span class="sy0">:</span><span class="st0">'&lt;style&gt;... custom css classes here ...&lt;/style&gt;'</span> </span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Note, the aforementioned solution works for the global HTTP reference. If you have CSS classes specified in an Intranet/local environment, you can embed all styles as in:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">exportToPNG</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    header<span class="sy0">:</span><span class="st0">&quot;&lt;style&gt;.tier1{   background: red;   color:white;}&lt;/style&gt;&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='png.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

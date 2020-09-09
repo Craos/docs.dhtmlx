@@ -1,0 +1,261 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Step 3. Add Form into Window  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="tutorial__binding_components__step1.html">Step 1. Add a Window</a></li><li class=""><a href="tutorial__binding_components__step2.html">Step 2. Bind Window to Grid</a></li><li class=" current"><a href="tutorial__binding_components__step3.html">Step 3. Add Form into Window</a></li><ul><li class="inner"><a href="tutorial__binding_components__step3.html#specifyingconfigurationoftheform">Specifying configuration of the Form</a></li><li class="inner"><a href="tutorial__binding_components__step3.html#initializingtheform">Initializing the Form</a></li><li class="inner"><a href="tutorial__binding_components__step3.html#addingformintowindow">Adding Form into Window</a></li></ul><li class=""><a href="tutorial__binding_components__step4.html">Step 4. Add a ContextMenu</a></li><li class=""><a href="tutorial__binding_components__step5.html">Step 5. Add buttons to Toolbar</a></li><li class=""><a href="tutorial__binding_components__step6.html">Step 6. Edit data in the Grid</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="tutorial__index.html">How To Start</a><a class="n3" href="tutorial__binding_components__index.html">Binding Components</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Step 3. Add Form into Window</h1>
+
+<p>In this step we describe how to add a form on the page. The form will contain fields displaying the content of the selected grid row and will allow you to edit the data in the grid.</p>
+
+<p>In addition, we will put the form into the window so that we could apply or cancel changes in the form.</p>
+
+<a name='specifyingconfigurationoftheform'><h2>Specifying configuration of the Form</h2></a>
+
+<p>Let's define the list of Form controls and put them in two columns:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> formConfig <span class="sy0">=</span> <span class="br0">&#123;</span>
+    gravity<span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span>
+    cols<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+            padding<span class="sy0">:</span> <span class="nu0">10</span><span class="sy0">,</span>
+            rows<span class="sy0">:</span> <span class="br0">&#91;</span>
+                <span class="br0">&#123;</span> type<span class="sy0">:</span> <span class="st0">&quot;input&quot;</span><span class="sy0">,</span> hidden<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> gravity<span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;id&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="br0">&#123;</span>
+                  type<span class="sy0">:</span> <span class="st0">&quot;input&quot;</span><span class="sy0">,</span> gravity<span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;First Name&quot;</span><span class="sy0">,</span>
+                   required<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;first_name&quot;</span>
+                <span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="br0">&#123;</span>
+                    type<span class="sy0">:</span> <span class="st0">&quot;input&quot;</span><span class="sy0">,</span>gravity<span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span>required<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+                    label<span class="sy0">:</span> <span class="st0">&quot;Email&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;email&quot;</span><span class="sy0">,</span> validation<span class="sy0">:</span> <span class="st0">&quot;email&quot;</span>
+                <span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="br0">&#123;</span>
+                    type<span class="sy0">:</span> <span class="st0">&quot;checkbox&quot;</span><span class="sy0">,</span> gravity<span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Premium&quot;</span><span class="sy0">,</span>
+                    id<span class="sy0">:</span> <span class="st0">&quot;vip&quot;</span><span class="sy0">,</span> labelInline<span class="sy0">:</span> <span class="kw2">true</span> 
+                <span class="br0">&#125;</span>
+            <span class="br0">&#93;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>
+            padding<span class="sy0">:</span> <span class="nu0">10</span><span class="sy0">,</span>
+            rows<span class="sy0">:</span><span class="br0">&#91;</span>
+                <span class="br0">&#123;</span> type<span class="sy0">:</span> <span class="st0">&quot;input&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Last Name&quot;</span><span class="sy0">,</span> required<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+                    gravity<span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;last_name&quot;</span>
+                <span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="br0">&#123;</span>
+                   id<span class="sy0">:</span> <span class="st0">&quot;country&quot;</span><span class="sy0">,</span> gravity<span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;select&quot;</span><span class="sy0">,</span>
+                    required<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Country&quot;</span><span class="sy0">,</span> options<span class="sy0">:</span> countries
+                <span class="br0">&#125;</span>
+            <span class="br0">&#93;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The first column contains the following fields:</p>
+
+<ul>
+<li><p>an input field for entering the first name,</p></li>
+<li><p>an input field for entering an email,</p></li>
+<li><p>a checkbox for the user to make a choice between a Premium user and a Default user,</p></li>
+<li><p>a hidden input field "Id". This field will help to define later what to do with a grid row - to add a new one or to edit a selected one.</p></li>
+</ul>
+
+<p>The second column consists of:</p>
+
+<ul>
+<li><p>an input field for entering the last name,</p></li>
+<li><p>a select box to choose a country. The options for the Country select are the following:</p></li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> countries <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>value<span class="sy0">:</span> <span class="st0">&quot;&quot;</span><span class="sy0">,</span> content<span class="sy0">:</span> <span class="st0">&quot;&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>value<span class="sy0">:</span> <span class="st0">&quot;Albania&quot;</span><span class="sy0">,</span> content<span class="sy0">:</span> <span class="st0">&quot;Albania&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>value<span class="sy0">:</span> <span class="st0">&quot;Haiti&quot;</span><span class="sy0">,</span> content<span class="sy0">:</span> <span class="st0">&quot;Haiti&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>value<span class="sy0">:</span> <span class="st0">&quot;Japan&quot;</span><span class="sy0">,</span> content<span class="sy0">:</span> <span class="st0">&quot;Japan&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>value<span class="sy0">:</span> <span class="st0">&quot;Poland&quot;</span><span class="sy0">,</span> content<span class="sy0">:</span> <span class="st0">&quot;Poland&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="co1">//more options</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>You need to define a JSON structure with country options before defining the list of Form controls.</p>
+</p></div>
+
+<p>The full list of form controls and their attributes is given <a class="link-" href="form__controls_list.html">here</a>.</p>
+
+<a name='initializingtheform'><h2>Initializing the Form</h2></a>
+
+<p>Now, we can initialize Form with the dhx.Form object constructor:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> form <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Form</span><span class="br0">&#40;</span><span class="kw2">null</span><span class="sy0">,</span> formConfig<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><i>The constructor takes two parameters:</p>
+
+<ul>
+<li>the first parameter is the form container, which is <code>null</code> as we are attaching a form to the window, not to an HTML container,</li>
+<li>the second parameter is a configuration object where we set the list of the form controls.</i></li>
+</ul>
+
+<a name='addingformintowindow'><h2>Adding Form into Window</h2></a>
+
+<p>Finally, we use the <b>attach()</b> method of a window to attach a form to the window:</p>
+
+<pre><code><pre class="js">dhxWindow.<span class="me1">attach</span><span class="br0">&#40;</span>form<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img style="margin: 12px" src="media/tutorial/binding_components/form.png"/></p>
+
+<div id="tutorial_step">
+    <a id="next_step" class="link-" href="tutorial__binding_components__step4.html"></a>
+</div>
+
+<!-- Content Area End -->
+			<a href='tutorial__binding_components__step3.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

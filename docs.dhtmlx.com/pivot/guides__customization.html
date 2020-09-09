@@ -1,0 +1,362 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599137912.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599137912.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Pivot Docs" href="https://docs.dhtmlx.com/pivot/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Customizing Pivot  Pivot Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=27">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="guides__initialization.html">Creating Pivot on a Page</a></li><li class=""><a href="guides__loading_data.html">Loading Data into Pivot</a></li><li class=""><a href="guides__working_with_pivot.html">Working with Pivot</a></li><li class=""><a href="guides__export.html">Exporting Pivot</a></li><li class=""><a href="guides__configuration.html">Configuring Pivot</a></li><li class=" current"><a href="guides__customization.html">Customizing Pivot</a></li><ul><li class="inner"><a href="guides__customization.html#conditionalformattingofcells">Conditional Formatting of Cells</a></li><li class="inner"><a href="guides__customization.html#settingtemplatesforheaders">Setting Templates for Headers</a></li><li class="inner"><a href="guides__customization.html#settingtemplatesforcells">Setting Templates for Cells</a></li><li class="inner"><a href="guides__customization.html#customdategroupingtypes">Custom Date Grouping Types</a></li><li class="inner"><a href="guides__customization.html#customformatforcells">Custom Format for Cells</a></li></ul><li class=""><a href="guides__using_filters.html">Manipulating with Filters</a></li><li class=""><a href="guides__localization.html">Localizing Pivot</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Customizing Pivot</h1>
+
+<p>dhtmlxPivot provides you with a range of customization possibilities. You may color cells depending on their values, apply various styling for the headers of rows and columns and define custom date formats.</p>
+
+<a name='conditionalformattingofcells'><h2>Conditional Formatting of Cells</h2></a>
+
+<p>There is a possibility to highlight cells with particular data values. It can be implemented with the help of the <a class="link-" href="api__pivot_mark_config.html">mark</a> configuration property.
+This option allows coloring cells, depending on the specified condition set by a function.</p>
+
+<ul>
+<li>styling cells with <strong>min</strong> and <strong>max</strong> values</li>
+</ul>
+
+<p>There are two predefined functions that find the min and max values in a column. You can refer to them and apply desired styles to the cells that contain min and max values. 
+For this you need to specify the <strong>mark</strong> property and set its value as an object with two attributes that correspond to the described functions.</p>
+
+<p>For example:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>style<span class="sy0">&gt;</span>
+    .<span class="me1">max_cell</span> <span class="br0">&#123;</span>
+        background<span class="sy0">:</span> #FF5722<span class="sy0">;</span>
+        color<span class="sy0">:</span> #FFF
+    <span class="br0">&#125;</span>
+&nbsp;
+    .<span class="me1">min_cell</span> <span class="br0">&#123;</span>
+        background<span class="sy0">:</span> #4CAF50<span class="sy0">;</span>
+        color<span class="sy0">:</span> #FFF
+    <span class="br0">&#125;</span>
+<span class="sy0">&lt;/</span>style<span class="sy0">&gt;</span>
+&nbsp;
+<span class="kw2">var</span> pivot <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Pivot</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    data<span class="sy0">:</span> dataset<span class="sy0">,</span>
+    fields<span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="co1">// the fields structure         </span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    fieldList<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="co1">// the list of fields</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="co1">// styling cells with min and max values </span>
+    <span class="co1">// via the predefined functions</span>
+    mark<span class="sy0">:</span> <span class="br0">&#123;</span>
+        min<span class="sy0">:</span> <span class="st0">&quot;min_cell&quot;</span><span class="sy0">,</span>
+        max<span class="sy0">:</span> <span class="st0">&quot;max_cell&quot;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/conditional_formatting.png" alt="Conditional Formatting" /></p>
+
+<p><a href='samples/02_configuration/01_min_max_mark.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Min/max mark - DHTMLX Pivot</a></p>
+
+<ul>
+<li>styling cells via a custom function </li>
+</ul>
+
+<p>You can also specify your own function that will define the logic of applying styles to cells with certain values. You need to use this function as a value of the <strong>mark</strong> property in the Pivot configuration object.</p>
+
+<p>A custom function takes several parameters:</p>
+
+<ul>
+<li><strong>cell</strong> - the value of a cell</li>
+<li><strong>columnData</strong> - an array with the data of a column </li>
+<li><strong>row</strong> - the object of a row</li>
+<li><strong>column</strong> - the object of a column </li>
+</ul>
+
+<p>and must return a string with the name of the applied CSS class.</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>style<span class="sy0">&gt;</span>
+    .<span class="me1">mark</span> <span class="br0">&#123;</span>
+        background<span class="sy0">:</span> #<span class="nu0">757575</span><span class="sy0">;</span>
+        color<span class="sy0">:</span> #FFF<span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    .<span class="me1">customMaxCell</span> <span class="br0">&#123;</span>
+        background<span class="sy0">:</span> #ffd6d6<span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    .<span class="me1">biggestMaxCell</span> <span class="br0">&#123;</span>
+        background<span class="sy0">:</span> #fa9595<span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="sy0">&lt;/</span>style<span class="sy0">&gt;</span>
+&nbsp;
+&nbsp;
+<span class="kw2">var</span> pivot <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Pivot</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    data<span class="sy0">:</span> dataset<span class="sy0">,</span>
+    fields<span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="co1">// the fields structure         </span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    fieldList<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="co1">// the list of fields</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="co1">// styling cells with values less than 10</span>
+    <span class="co1">// via a custom function </span>
+    mark<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>cell<span class="sy0">,</span> columnData<span class="sy0">,</span> row<span class="sy0">,</span> column<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>column.<span class="me1">method</span> <span class="sy0">===</span> <span class="st0">&quot;max&quot;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="kw2">var</span> max <span class="sy0">=</span> Math.<span class="me1">max</span>.<span class="me1">apply</span><span class="br0">&#40;</span><span class="kw2">null</span><span class="sy0">,</span> columnData<span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="kw1">if</span> <span class="br0">&#40;</span>max <span class="sy0">===</span> parseFloat<span class="br0">&#40;</span>cell<span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+                <span class="kw1">return</span> <span class="st0">&quot;biggestMaxCell&quot;</span>
+            <span class="br0">&#125;</span>
+            <span class="kw1">return</span> <span class="st0">&quot;customMaxCell&quot;</span>
+        <span class="br0">&#125;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>cell <span class="sy0">&lt;</span> <span class="nu0">10</span> <span class="sy0">&amp;&amp;</span> cell <span class="sy0">!==</span> <span class="kw2">null</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="kw1">return</span> <span class="st0">&quot;mark&quot;</span>
+        <span class="br0">&#125;</span>
+        <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/custom_css.png" alt="Custom Style for Cells" /></p>
+
+<p><a href='samples/02_configuration/02_custom_mark.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom mark - DHTMLX Pivot</a></p>
+
+<a name='settingtemplatesforheaders'><h2>Setting Templates for Headers</h2></a>
+
+<p>You can change the appearance of column and row headers. For instance, if you want to style a column header and change its font, you can
+create a CSS class for that and use it in the template for the header. The template should be a function that returns the changed label.</p>
+
+<pre><code><pre class="css"><span class="re1">.myCustomClass</span> <span class="br0">&#123;</span>
+    <span class="kw1">color</span><span class="sy0">:</span> <span class="re0">#b71c1c</span><span class="sy0">;</span>
+    <span class="kw1">font-size</span><span class="sy0">:</span> <span class="re3">16px</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<pre><code><pre class="js"><span class="kw2">new</span> dhx.<span class="me1">Pivot</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    data<span class="sy0">:</span> dataset<span class="sy0">,</span>
+    fields<span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="co1">// pivot fields structure</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    fieldList<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="st0">&quot;name&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Name&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="st0">&quot;year&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Year&quot;</span><span class="sy0">,</span> template<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>text<span class="sy0">,</span> obj<span class="br0">&#41;</span> <span class="br0">&#123;</span> 
+             <span class="kw1">return</span> <span class="st0">'&lt;span class=&quot;myCustomClass&quot;&gt;'</span> <span class="sy0">+</span> text <span class="sy0">+</span> <span class="st0">'&lt;/span&gt;'</span> 
+          <span class="br0">&#125;</span> 
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="co1">// more fields</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    layout<span class="sy0">:</span> <span class="br0">&#123;</span>
+        rowsHeadersWidth<span class="sy0">:</span> <span class="st0">&quot;auto&quot;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/header_templates.png" alt="Headers Templates" /></p>
+
+<p><a href='samples/02_configuration/03_headers_template.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Headers template - DHTMLX Pivot</a></p>
+
+<a name='settingtemplatesforcells'><h2>Setting Templates for Cells</h2></a>
+
+<p>dhtmlxPivot provides you with the possibility to show any custom content in the datatable cells. You need to specify the <strong>cellTemplate</strong> property in the field object and define a function that will implement 
+the logic of rendering content of cells. The template function takes three parameters:</p>
+
+<ul>
+<li><strong>text</strong> - the value of a cell</li>
+<li><strong>row</strong> - the object of a row</li>
+<li><strong>column</strong> - the object of a column</li>
+</ul>
+
+<p>For instance, you can show different content depending on the operation set for a column. In the example below the content of cells is specified in the following way:</p>
+
+<ul>
+<li>if the column operation is "sum", the cells will display the result of the operation </li>
+<li>if the column operation is "count", the cells will display:
+
+<ul>
+<li>an unchecked checkbox, if the cell value is more than 3</li>
+<li>a checked checkbox otherwise</li>
+</ul></li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> pivot <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Pivot</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    data<span class="sy0">:</span> dataset<span class="sy0">,</span>
+    fields<span class="sy0">:</span> <span class="br0">&#123;</span>
+        rows<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;form&quot;</span><span class="sy0">,</span> <span class="st0">&quot;name&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        columns<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;year&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        values<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="st0">&quot;oil&quot;</span><span class="sy0">,</span> method<span class="sy0">:</span> <span class="st0">&quot;count&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span> <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="st0">&quot;oil&quot;</span><span class="sy0">,</span> method<span class="sy0">:</span> <span class="st0">&quot;sum&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    fieldList<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="co1">// previous fields</span>
+        <span class="br0">&#123;</span>
+          id<span class="sy0">:</span> <span class="st0">&quot;oil&quot;</span><span class="sy0">,</span>
+          label<span class="sy0">:</span> <span class="st0">&quot;Oil&quot;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">          cellTemplate<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>text<span class="sy0">,</span> row<span class="sy0">,</span> col<span class="br0">&#41;</span> <span class="br0">&#123;</span>                                 </span><span class="xtra ln-xtra">             <span class="kw1">if</span> <span class="br0">&#40;</span>col.<span class="me1">method</span> <span class="sy0">===</span> <span class="st0">&quot;sum&quot;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>                                            </span><span class="xtra ln-xtra">                <span class="kw1">return</span> <span class="st0">'&lt;div class=&quot;customCell&quot;&gt;'</span> <span class="sy0">+</span> <span class="br0">&#40;</span>text<span class="sy0">||</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span> <span class="sy0">+</span> <span class="st0">'&lt;/div&gt;'</span>           </span><span class="xtra ln-xtra">            <span class="br0">&#125;</span> <span class="kw1">else</span> <span class="br0">&#123;</span>                                                                </span><span class="xtra ln-xtra">                <span class="kw1">return</span> <span class="st0">'&lt;input class=&quot;custom_div&quot; type=&quot;checkbox&quot; disabled '</span> <span class="sy0">+</span>      </span><span class="xtra ln-xtra">                    <span class="br0">&#40;</span>text <span class="sy0">&gt;</span> <span class="nu0">3</span> <span class="sy0">?</span> <span class="st0">&quot;checked&quot;</span> <span class="sy0">:</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span> <span class="sy0">+</span> <span class="st0">' &gt;&lt;/div&gt;'</span>                        </span>            <span class="br0">&#125;</span>
+          <span class="br0">&#125;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="st0">&quot;balance&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Balance&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="st0">&quot;when&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;When&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;date&quot;</span><span class="sy0">,</span> format<span class="sy0">:</span> <span class="st0">&quot;%d/%m/%Y&quot;</span> <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/cell_templates.png" alt="Cell Templates" /></p>
+
+<p><a href='samples/02_configuration/04_cells_template.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Cells template - DHTMLX Pivot</a></p>
+
+<a name='customdategroupingtypes'><h2>Custom Date Grouping Types</h2></a>
+
+<p>You can add custom operations for grouping data by dates by using the <a class="link-" href="api__pivot_addsubfield.html">addSubField</a> method.</p>
+
+<p>The method takes three parameters:</p>
+
+<ul>
+<li><strong>name</strong> - (<em>string</em>) the name of the date field</li>
+<li><strong>functor</strong> - (<em>function</em>) the function for grouping</li>
+<li><strong>label</strong> - (<em>string</em>) the label for a new option</li>
+</ul>
+
+<p>For instance, it can be useful if you want to group data into two columns relative to the release date:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> releaseDate <span class="sy0">=</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2017</span><span class="sy0">,</span> <span class="nu0">10</span><span class="sy0">,</span> <span class="nu0">10</span><span class="br0">&#41;</span><span class="sy0">;</span>
+pivot.<span class="me1">addSubField</span><span class="br0">&#40;</span><span class="st0">&quot;when&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>val<span class="br0">&#41;</span><span class="br0">&#123;</span> 
+    <span class="kw1">return</span> val <span class="sy0">&gt;</span> releaseDate <span class="sy0">?</span> <span class="st0">&quot;After&quot;</span> <span class="sy0">:</span> <span class="st0">&quot;Before&quot;</span> 
+<span class="br0">&#125;</span><span class="sy0">,</span> <span class="st0">&quot;Release&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+pivot.<span class="me1">setFields</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    rows<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;form&quot;</span><span class="sy0">,</span> <span class="st0">&quot;name&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    columns<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> <span class="st0">&quot;id&quot;</span><span class="sy0">:</span> <span class="st0">&quot;when&quot;</span><span class="sy0">,</span> <span class="st0">&quot;group&quot;</span><span class="sy0">:</span> <span class="st0">&quot;Release&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    values<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="st0">&quot;oil&quot;</span><span class="sy0">,</span> method<span class="sy0">:</span> <span class="st0">&quot;max&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span> <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="st0">&quot;oil&quot;</span><span class="sy0">,</span> method<span class="sy0">:</span> <span class="st0">&quot;min&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/custom_date_format.png" alt="Custom Date Format" /></p>
+
+<a name='customformatforcells'><h2>Custom Format for Cells</h2></a>
+
+<p>dhtmlxPivot provides the possibility to set custom format for values of cells. You can specify a custom format via the <a class="link-" href="api__pivot_customformat_config.html">customFormat</a> configuration property. It is a function that takes two parameters:</p>
+
+<ul>
+<li><strong>cellValue</strong> - the value of the cell</li>
+<li><strong>method</strong> - the type of operation that will be applied to data</li>
+</ul>
+
+<p>Thus it is possible to define different custom formats for values in columns that are assigned to different operations:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myPivot <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Pivot</span><span class="br0">&#40;</span><span class="st0">&quot;container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    data<span class="sy0">:</span> dataset<span class="sy0">,</span>                 
+    fields<span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="co1">// initial pivot structure</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    fieldList<span class="sy0">:</span> <span class="br0">&#91;</span>      
+        <span class="co1">// the full list of fields</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    customFormat<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>cellValue<span class="sy0">,</span> method<span class="br0">&#41;</span> <span class="br0">&#123;</span>                
+        <span class="kw1">if</span> <span class="br0">&#40;</span>method <span class="sy0">===</span> <span class="st0">&quot;count&quot;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>                               
+            <span class="kw1">return</span> cellValue.<span class="me1">toLocaleString</span><span class="br0">&#40;</span><span class="st0">&quot;de&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>              
+        <span class="br0">&#125;</span>                                                       
+        <span class="kw1">return</span> <span class="st0">&quot;&amp;euro; &quot;</span> <span class="sy0">+</span> cellValue.<span class="me1">toLocaleString</span><span class="br0">&#40;</span><span class="st0">&quot;de&quot;</span><span class="br0">&#41;</span>       
+    <span class="br0">&#125;</span>                                                           
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In the above example custom format is set for columns according to the following scheme:</p>
+
+<ul>
+<li>for columns with the "count" operation, the rules of the German locale are applied</li>
+<li>for columns with the "sum" operation, the "euro" sign preceeding the cell value and the rules of the German locale are applied </li>
+</ul>
+
+<p><img src="media/custom_cell_format.png" alt="Custom Cell Format" /></p>
+
+<p><a href='samples/02_configuration/08_custom_formatting.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom formatting - DHTMLX Pivot</a></p>
+
+<!-- Content Area End -->
+			<a href='guides__customization.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Overview</li>
+	<li><a href='overview.html'>Pivot Overview</a></li>
+	<li><a href='how_to_start.html'>How to Start</a></li>
+	<li><a href='migrating.html'>Migration</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='guides__initialization.html'>Initialization</a></li>
+	<li><a href='guides__loading_data.html'>Data Loading</a></li>
+	<li><a href='guides__working_with_pivot.html#definingdataoperations'>Data Operations</a></li>	
+	
+</ul>
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='guides__configuration.html#definingpivotlookandfeel'>Pivot Layout</a></li>	
+	<li><a href='guides__configuration.html'>Fields and Operations</a></li>
+	<li><a href='guides__localization.html'>Localization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__pivot.html#constructor'>Constructor</a></li>
+	<li><a href='api__refs__pivot_methods.html'>Methods</a></li>
+	<li><a href='api__refs__pivot_props.html'>Properties</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Configuration  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="layout__api__refs__layout.html">Layout API</a></li><li class=""><a href="layout__init.html">Initialization</a></li><li class=" current"><a href="layout__configuration.html">Configuration</a></li><ul><li class="inner"><a href="layout__configuration.html#layoutstructure">Layout structure</a></li><li class="inner"><a href="layout__configuration.html#configurationofcell">Configuration of cell</a></li></ul><li class=""><a href="layout__work_with_layout.html">Work with Layout</a></li><li class=""><a href="layout__customization.html">Customization</a></li><li class=""><a href="layout__events.html">Event Handling</a></li><li class=""><a href="layout__migration.html">Migration from 6.2 to 6.3</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="layout__index.html">Layout</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Configuration</h1>
+
+<a name='layoutstructure'><h2>Layout structure</h2></a>
+
+<p>You can use dhtmlxLayout to build the necessary composition of blocks to arrange parts of your application. There are three common types of layout:</p>
+
+<ul>
+<li>horizontal layout</li>
+</ul>
+
+<p>This type of layout contains several <a class="link-" href="layout__api__layout_rows_config.html">rows</a> of cells which are placed horizontally.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> layout <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Layout</span><span class="br0">&#40;</span><span class="st0">&quot;layout_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>                                  
+    rows<span class="sy0">:</span> <span class="br0">&#91;</span>
+       <span class="br0">&#123;</span> header<span class="sy0">:</span> <span class="st0">&quot;The header of the row 1&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+       <span class="br0">&#123;</span> header<span class="sy0">:</span> <span class="st0">&quot;The header of the row 2&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+       <span class="br0">&#123;</span> header<span class="sy0">:</span> <span class="st0">&quot;The header of the row 3&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+       <span class="br0">&#123;</span> header<span class="sy0">:</span> <span class="st0">&quot;The header of the row 4&quot;</span> <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>                                        
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>vertical layout</li>
+</ul>
+
+<p>This type of layout includes a set of <a class="link-" href="layout__api__layout_cols_config.html">columns</a> of cells that are located vertically.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> layout <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Layout</span><span class="br0">&#40;</span><span class="st0">&quot;layout_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>   
+    cols<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span> header<span class="sy0">:</span> <span class="st0">&quot;The header of the column 1&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> header<span class="sy0">:</span> <span class="st0">&quot;The header of the column 2&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> header<span class="sy0">:</span> <span class="st0">&quot;The header of the column 3&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> header<span class="sy0">:</span> <span class="st0">&quot;The header of the column 4&quot;</span> <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>mixed layout</li>
+</ul>
+
+<p>In this layout type <strong>both rows and columns</strong> are used, i.e. a row may include several columns and a column may have rows inside.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> layout <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Layout</span><span class="br0">&#40;</span><span class="st0">&quot;layout_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>   
+    rows<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+            cols<span class="sy0">:</span> <span class="br0">&#91;</span>
+                <span class="br0">&#123;</span>
+                    header<span class="sy0">:</span> <span class="st0">&quot;Block 1&quot;</span>                        
+                <span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="br0">&#123;</span>
+                    header<span class="sy0">:</span> <span class="st0">&quot;Block 2&quot;</span>               
+                <span class="br0">&#125;</span>
+            <span class="br0">&#93;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>
+            rows<span class="sy0">:</span> <span class="br0">&#91;</span>
+                <span class="br0">&#123;</span>
+                    header<span class="sy0">:</span> <span class="st0">&quot;Block 3&quot;</span>                                       
+                <span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="br0">&#123;</span>
+                    header<span class="sy0">:</span> <span class="st0">&quot;Block 4&quot;</span>                                                
+                <span class="br0">&#125;</span>
+            <span class="br0">&#93;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='configurationofcell'><h2>Configuration of cell</h2></a>
+
+<h3 id="htmlcontent">HTML content</h3>
+
+<p>A layout cell can have any HTML content inside it. You can set it with the <a class="link-" href="layout__api__layout_html_config.html">html</a> attribute in the object of a cell.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> layout <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Layout</span><span class="br0">&#40;</span><span class="st0">&quot;layout_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    cols<span class="sy0">:</span> <span class="br0">&#91;</span>
+      <span class="br0">&#123;</span> header<span class="sy0">:</span> <span class="st0">&quot;Cell header&quot;</span><span class="sy0">,</span> html<span class="sy0">:</span> <span class="st0">&quot;Hello world&quot;</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/6x76kgyq' target='blank'><span class='sample'>Related sample: </span>&nbsp;Layout. Html Content</a></p>
+
+<h3 id="hiddencell">Hidden cell</h3>
+
+<p>It is possible to add the <a class="link-" href="layout__api__layout_hidden_config.html">hidden</a> attribute into the the object of a cell(s) to render a layout with some cells hidden:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> layout <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Layout</span><span class="br0">&#40;</span><span class="st0">&quot;layout_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    cols<span class="sy0">:</span> <span class="br0">&#91;</span>
+      <span class="br0">&#123;</span> header<span class="sy0">:</span> <span class="st0">&quot;Cell header&quot;</span><span class="sy0">,</span> hidden<span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3 id="cellheader">Cell header</h3>
+
+<p>Each layout cell can have a header with some text that describes the content of this cell.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> layout <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Layout</span><span class="br0">&#40;</span><span class="st0">&quot;layout_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    cols<span class="sy0">:</span> <span class="br0">&#91;</span>
+      <span class="br0">&#123;</span> header<span class="sy0">:</span> <span class="st0">&quot;Perfect cell header&quot;</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>You can also add an icon or an image into the header of a cell with the help of corresponding attributes - <a class="link-" href="layout__api__layout_headericon_config.html">headerIcon</a> and <a class="link-" href="layout__api__layout_headerimage_config.html">headerImage</a>.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> layout <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Layout</span><span class="br0">&#40;</span><span class="st0">&quot;layout_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    cols<span class="sy0">:</span> <span class="br0">&#91;</span>
+      <span class="br0">&#123;</span> header<span class="sy0">:</span> <span class="st0">&quot;Cell header&quot;</span><span class="sy0">,</span> headerIcon<span class="sy0">:</span><span class="st0">&quot;/icon.png&quot;</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// or</span>
+<span class="kw2">var</span> layout <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Layout</span><span class="br0">&#40;</span><span class="st0">&quot;layout_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    cols<span class="sy0">:</span> <span class="br0">&#91;</span>
+      <span class="br0">&#123;</span> header<span class="sy0">:</span> <span class="st0">&quot;Cell header&quot;</span><span class="sy0">,</span> headerImage<span class="sy0">:</span><span class="st0">&quot;/img.png&quot;</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/bxqnzesl' target='blank'><span class='sample'>Related sample: </span>&nbsp;Layout. Header</a></p>
+
+<h3 id="headercellheight">Height of a header cell</h3>
+
+<p>You can specify the necessary height of cell with a header using the <a class="link-" href="layout__api__layout_headerheight_config.html">headerHeight</a> configuration option of a cell:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> layout <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Layout</span><span class="br0">&#40;</span><span class="st0">&quot;layout&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    rows<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+            id<span class="sy0">:</span> <span class="st0">&quot;row1&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>
+            id<span class="sy0">:</span> <span class="st0">&quot;row2&quot;</span><span class="sy0">,</span>
+            header<span class="sy0">:</span> <span class="st0">&quot;Row 2&quot;</span><span class="sy0">,</span>
+            headerHeight<span class="sy0">:</span> <span class="nu0">80</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/bxqnzesl' target='blank'><span class='sample'>Related sample: </span>&nbsp;Layout. Header</a></p>
+
+<p>If the <a class="link-" href="layout__api__layout_header_config.html">header</a> property is not set in the config of a cell, the <a class="link-" href="layout__api__layout_headerheight_config.html">headerHeight</a> option will add a header without text for a cell.</p>
+
+<h3 id="cellsize">Cell size</h3>
+
+<p>You can easily control and change the size of a cell via the <a class="link-" href="layout__api__layout_width_config.html">width</a> and <a class="link-" href="layout__api__layout_height_config.html">height</a> attributes of the object of a cell.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> layout <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Layout</span><span class="br0">&#40;</span><span class="st0">&quot;layout_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>   
+    rows<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+            cols<span class="sy0">:</span> <span class="br0">&#91;</span>
+                <span class="br0">&#123;</span>
+                    header<span class="sy0">:</span> <span class="st0">&quot;Block 1&quot;</span><span class="sy0">,</span>
+                    width<span class="sy0">:</span> <span class="st0">&quot;40%&quot;</span>                                
+                <span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="br0">&#123;</span>
+                    header<span class="sy0">:</span> <span class="st0">&quot;Block 2&quot;</span><span class="sy0">,</span>                  
+                    width<span class="sy0">:</span> <span class="st0">&quot;60%&quot;</span>
+                <span class="br0">&#125;</span>
+            <span class="br0">&#93;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>
+            rows<span class="sy0">:</span> <span class="br0">&#91;</span>
+                <span class="br0">&#123;</span>
+                    header<span class="sy0">:</span> <span class="st0">&quot;Block 3&quot;</span><span class="sy0">,</span>
+                    height<span class="sy0">:</span> <span class="st0">&quot;200px&quot;</span>                             
+                <span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="br0">&#123;</span>
+                    header<span class="sy0">:</span> <span class="st0">&quot;Block 4&quot;</span><span class="sy0">,</span>                              
+                    height<span class="sy0">:</span> <span class="st0">&quot;300px&quot;</span>
+                <span class="br0">&#125;</span>
+            <span class="br0">&#93;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3 id="collapsibility">Collapsibility</h3>
+
+<p>There are two attributes of the object of a cell: <a class="link-" href="layout__api__layout_collapsable_config.html">collapsable</a> and <a class="link-" href="layout__api__layout_collapsed_config.html">collapsed</a>. The first one defines whether a cell can be collapsed and expanded, and the second one checks whether a cell is collapsed during
+the initialization of a layout.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> layout <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Layout</span><span class="br0">&#40;</span><span class="st0">&quot;layout_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    cols<span class="sy0">:</span> <span class="br0">&#91;</span>
+      <span class="br0">&#123;</span> header<span class="sy0">:</span> <span class="st0">&quot;Cell header&quot;</span><span class="sy0">,</span> collapsable<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span> collapsed<span class="sy0">:</span><span class="kw2">false</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/8u4ok0os' target='blank'><span class='sample'>Related sample: </span>&nbsp;Layout. Collapsable</a></p>
+
+<p><a href='https://snippet.dhtmlx.com/r2e0y6n7' target='blank'><span class='sample'>Related sample: </span>&nbsp;Layout. Accordion</a></p>
+
+<h3 id="resizability">Resizability</h3>
+
+<p>To allow resizing of a cell, make use of the <a class="link-" href="layout__api__layout_resizable_config.html">resizable</a> option in the object of a cell.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> layout <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Layout</span><span class="br0">&#40;</span><span class="st0">&quot;layout_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    cols<span class="sy0">:</span> <span class="br0">&#91;</span>
+      <span class="br0">&#123;</span> header<span class="sy0">:</span> <span class="st0">&quot;Cell header&quot;</span><span class="sy0">,</span> resizable<span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/k2fj4nm0' target='blank'><span class='sample'>Related sample: </span>&nbsp;Layout. Resizable</a></p>
+
+<!-- Content Area End -->
+			<a href='layout__configuration.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

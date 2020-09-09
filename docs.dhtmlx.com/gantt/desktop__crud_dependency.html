@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Adding/Updating/Deleting Links  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__link_object_operations.html">Getting the Link Object/Id</a></li><li class=" current"><a href="desktop__crud_dependency.html">Adding/Updating/Deleting Links</a></li><ul><li class="inner"><a href="desktop__crud_dependency.html#addinganewlink">Adding a new link</a></li><li class="inner"><a href="desktop__crud_dependency.html#updatingalinksproperty">Updating a link's property</a></li><li class="inner"><a href="desktop__crud_dependency.html#deletingalink">Deleting a link</a></li><li class="inner"><a href="desktop__crud_dependency.html#removingalllinksfromtheganttchart">Removing all links from the Gantt chart</a></li><li class="inner"><a href="desktop__crud_dependency.html#editinglinkvaluesfromui">Editing link values from UI</a></li></ul><li class="toc-pro"><a href="desktop__auto_scheduling.html">Auto Scheduling</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__dependencies.html">Configuring Dependency Links</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Adding/Updating/Deleting Links</h1>
+
+<p>In this chapter you'll learn how to do basic operations with dependency links: to create or delete a link, 
+to dynamically update a link's property.</p>
+
+<a name='addinganewlink'><h2>Adding a new link</h2></a>
+
+<p>To add a new link to the Gantt chart, use the <a class="link-" href="api__gantt_addlink.html">addLink</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> linkId <span class="sy0">=</span> gantt.<span class="me1">addLink</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span>
+    source<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span>
+    target<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span>
+    type<span class="sy0">:</span><span class="st0">&quot;1&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='updatingalinksproperty'><h2>Updating a link's property</h2></a>
+
+<p>To dynamically update a property of a link object, use the <a class="link-" href="api__gantt_refreshlink.html">refreshLink</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> links<span class="sy0">=</span> gantt.<span class="me1">config</span>.<span class="me1">links</span><span class="sy0">;</span>
+<span class="kw2">var</span> link <span class="sy0">=</span> gantt.<span class="me1">getLink</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//-&gt;{id:1,source:1, target:2, type:&quot;1&quot;}</span>
+&nbsp;
+<span class="xtra ln-xtra"><span class="kw1">if</span> <span class="br0">&#40;</span>link.<span class="me1">type</span> <span class="sy0">==</span> links.<span class="me1">finish_to_start</span><span class="br0">&#41;</span><span class="br0">&#123;</span> </span><span class="xtra ln-xtra">    link.<span class="me1">type</span> <span class="sy0">=</span> links.<span class="me1">finish_to_finish</span><span class="sy0">;</span> </span><span class="xtra ln-xtra">    gantt.<span class="me1">refreshLink</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>  </span><span class="xtra ln-xtra"><span class="br0">&#125;</span></span></pre></code></pre>
+
+<p>Note, to update all links in the Gantt chart at once, use the <a class="link-" href="api__gantt_refreshdata.html">refreshData</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> links<span class="sy0">=</span> gantt.<span class="me1">config</span>.<span class="me1">links</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> link1 <span class="sy0">=</span> gantt.<span class="me1">getLink</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//-&gt;{id:1,source:1, target:2, type:&quot;1&quot;}</span>
+<span class="kw2">var</span> link2 <span class="sy0">=</span> gantt.<span class="me1">getLink</span><span class="br0">&#40;</span><span class="nu0">2</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//-&gt;{id:2,source:4, target:5, type:&quot;0&quot;}</span>
+&nbsp;
+<span class="xtra ln-xtra"><span class="kw1">if</span> <span class="br0">&#40;</span>link1.<span class="me1">type</span> <span class="sy0">==</span> links.<span class="me1">finish_to_finish</span><span class="br0">&#41;</span><span class="br0">&#123;</span> </span><span class="xtra ln-xtra">    gantt.<span class="me1">refreshData</span><span class="br0">&#40;</span><span class="br0">&#41;</span> </span><span class="xtra ln-xtra"><span class="br0">&#125;</span></span></pre></code></pre>
+
+<div class='note'><p><p>Note, all types of links' dependencies are stored in the <a class="link-" href="api__gantt_links_config.html">links</a> object</p>
+</p></div>
+
+<a name='deletingalink'><h2>Deleting a link</h2></a>
+
+<p>To delete a link, use the <a class="link-" href="api__gantt_deletelink.html">deleteLink</a> method:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">deleteLink</span><span class="br0">&#40;</span>linkId<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='removingalllinksfromtheganttchart'><h2>Removing all links from the Gantt chart</h2></a>
+
+<p>To clear the Gantt chart from all tasks and links, call the <a class="link-" href="api__gantt_clearall.html">clearAll</a> method:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">clearAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='editinglinkvaluesfromui'><h2>Editing link values from UI</h2></a>
+
+<p>There is no built-in UI for the user to edit lag or any other properties of the link. So if you need some UI, you have to implement it manually.</p>
+
+<p>A common approach presupposes following the steps below:</p>
+
+<ul>
+<li>capture the <a class="link-" href="api__gantt_onlinkdblclick_event.html">onLinkDblClick</a> event; </li>
+<li>cancel the default handler; </li>
+<li>display a popup from the event handler.</li>
+</ul>
+
+<p>On the last step you can either use <a class="link-" href="desktop__message_boxes.html">built-in popups </a> or implement some custom solution.</p>
+
+<p>Here is a sample code of the edit-lag popup implementation:</p>
+
+<pre><code><pre class="js"><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> modal<span class="sy0">;</span>
+    <span class="kw2">var</span> editLinkId<span class="sy0">;</span>
+&nbsp;
+    <span class="kw2">function</span> endPopup<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        modal <span class="sy0">=</span> <span class="kw2">null</span><span class="sy0">;</span>
+        editLinkId <span class="sy0">=</span> <span class="kw2">null</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw2">function</span> cancelEditLink<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        endPopup<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="kw2">function</span> deleteLink<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        gantt.<span class="me1">deleteLink</span><span class="br0">&#40;</span>editLinkId<span class="br0">&#41;</span><span class="sy0">;</span>
+        endPopup<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="kw2">function</span> saveLink<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw2">var</span> link <span class="sy0">=</span> gantt.<span class="me1">getLink</span><span class="br0">&#40;</span>editLinkId<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw2">var</span> lagValue <span class="sy0">=</span> modal.<span class="me1">querySelector</span><span class="br0">&#40;</span><span class="st0">&quot;.lag-input&quot;</span><span class="br0">&#41;</span>.<span class="me1">value</span><span class="sy0">;</span>
+        <span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">!</span>isNaN<span class="br0">&#40;</span>parseInt<span class="br0">&#40;</span>lagValue<span class="sy0">,</span> <span class="nu0">10</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+            link.<span class="me1">lag</span> <span class="sy0">=</span> parseInt<span class="br0">&#40;</span>lagValue<span class="sy0">,</span> <span class="nu0">10</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        gantt.<span class="me1">updateLink</span><span class="br0">&#40;</span>link.<span class="me1">id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">if</span><span class="br0">&#40;</span>gantt.<span class="me1">autoSchedule</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+            gantt.<span class="me1">autoSchedule</span><span class="br0">&#40;</span>link.<span class="me1">source</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+        endPopup<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onLinkDblClick&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span>e<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        editLinkId <span class="sy0">=</span> id<span class="sy0">;</span>
+        <span class="kw2">var</span> link <span class="sy0">=</span> gantt.<span class="me1">getLink</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw2">var</span> linkTitle <span class="sy0">=</span> gantt.<span class="me1">getTask</span><span class="br0">&#40;</span>link.<span class="me1">source</span><span class="br0">&#41;</span>.<span class="me1">text</span> <span class="sy0">+</span> <span class="st0">&quot; -&gt; &quot;</span> <span class="sy0">+</span> 
+            gantt.<span class="me1">getTask</span><span class="br0">&#40;</span>link.<span class="me1">target</span><span class="br0">&#41;</span>.<span class="me1">text</span><span class="sy0">;</span>
+&nbsp;
+        modal <span class="sy0">=</span> gantt.<span class="me1">modalbox</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+            title<span class="sy0">:</span> linkTitle<span class="sy0">,</span>
+            text<span class="sy0">:</span> <span class="st0">&quot;&lt;div&gt;&quot;</span> <span class="sy0">+</span>
+                    <span class="st0">&quot;&lt;label&gt;Lag &lt;input type='number' class='lag-input' /&gt;&lt;/label&gt;&quot;</span> <span class="sy0">+</span>
+                <span class="st0">&quot;&lt;/div&gt;&quot;</span><span class="sy0">,</span>
+            buttons<span class="sy0">:</span> <span class="br0">&#91;</span>
+                <span class="br0">&#123;</span>label<span class="sy0">:</span><span class="st0">&quot;Save&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span><span class="st0">&quot;save&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="br0">&#123;</span>label<span class="sy0">:</span><span class="st0">&quot;Cancel&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span><span class="st0">&quot;cancel&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="br0">&#123;</span>label<span class="sy0">:</span><span class="st0">&quot;Delete&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span><span class="st0">&quot;delete&quot;</span><span class="br0">&#125;</span>
+            <span class="br0">&#93;</span><span class="sy0">,</span>
+            width<span class="sy0">:</span> <span class="st0">&quot;500px&quot;</span><span class="sy0">,</span>
+            callback<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>result<span class="br0">&#41;</span><span class="br0">&#123;</span>
+                <span class="kw1">switch</span><span class="br0">&#40;</span>result<span class="br0">&#41;</span><span class="br0">&#123;</span>
+                    <span class="kw1">case</span> <span class="st0">&quot;save&quot;</span><span class="sy0">:</span>
+                        saveLink<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                        <span class="kw1">break</span><span class="sy0">;</span>
+                    <span class="kw1">case</span> <span class="st0">&quot;cancel&quot;</span><span class="sy0">:</span>
+                        cancelEditLink<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                        <span class="kw1">break</span><span class="sy0">;</span>
+&nbsp;
+                    <span class="kw1">case</span> <span class="st0">&quot;delete&quot;</span><span class="sy0">:</span>
+                        deleteLink<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                        <span class="kw1">break</span><span class="sy0">;</span>
+                <span class="br0">&#125;</span>
+            <span class="br0">&#125;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        modal.<span class="me1">querySelector</span><span class="br0">&#40;</span><span class="st0">&quot;.lag-input&quot;</span><span class="br0">&#41;</span>.<span class="me1">value</span> <span class="sy0">=</span> link.<span class="me1">lag</span> <span class="sy0">||</span> <span class="nu0">0</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://snippet.dhtmlx.com/7c812e5bd' target='blank'><span class='sample'>Related sample: </span>&nbsp; Edit-lag Popup</a></p>
+
+<!-- Content Area End -->
+			<a href='desktop__crud_dependency.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

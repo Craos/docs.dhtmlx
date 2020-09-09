@@ -1,0 +1,297 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Loading Big Datasets  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxtree.html">dhtmlXTree API</a></li><li class=""><a href="tree__initialization_of_dhtmlxtree.html">Initializing Tree</a></li><li class=""><a href="tree__syntax_templates.html">Syntax Templates</a></li><li class=""><a href="tree__setting_tree_appearance.html">Setting Tree Appearance</a></li><li class=""><a href="tree__navigation_and_selection_in_tree.html">Navigation and Selection in Tree</a></li><li class=""><a href="tree__searching_and_sorting_in_tree.html">Searching and Sorting in Tree</a></li><li class=""><a href="tree__serialization_caching_and_removing_tree.html">Serializing and Caching Tree</a></li><li class=" current"><a href="tree__increasing_tree_s_performance.html">Loading Big Datasets</a></li><ul><li class="inner"><a href="tree__increasing_tree_s_performance.html#dynamicloading">Dynamic Loading</a></li><li class="inner"><a href="tree__increasing_tree_s_performance.html#smartxmlparsing">Smart XML Parsing</a></li><li class="inner"><a href="tree__increasing_tree_s_performance.html#distributedparsing">Distributed Parsing</a></li></ul><li class=""><a href="tree__nodes_manipulation.html">Manipulating Nodes</a></li><li class=""><a href="tree__drag_and_drop_handling.html">Handling Drag-and-Drop</a></li><li class=""><a href="tree__checkboxes_manipulation.html">Manipulating Checkboxes</a></li><li class=""><a href="tree__radio_buttons_manipulation.html">Manipulating Radio Buttons</a></li><li class=""><a href="tree__simultaneous_server_update.html">Simultaneous Server Update</a></li><li class=""><a href="tree__compatibility_with_other_dhtmlx_components.html">Compatibility with Other DHTMLX Components</a></li><li class=""><a href="tree__events_handling.html">Handling Events</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="tree__index.html">Tree</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Loading Big Datasets</h1>
+
+<p>The following ways of increasing performance when working with huge data sets are introduced in dhtmlxTree:</p>
+
+<ul>
+<li><a class="link-" href="tree__increasing_tree_s_performance.html#dynamicloading">Dynamic Loading</a>;</li>
+<li><a class="link-" href="tree__increasing_tree_s_performance.html#smartxmlparsing">Smart XML Parsing</a>;</li>
+<li><a class="link-" href="tree__increasing_tree_s_performance.html#distributedparsing">Distributed Parsing</a>.</li>
+</ul>
+
+<a name='dynamicloading'><h2>Dynamic Loading</h2></a>
+
+<p>In case Tree contains large amount of nodes (or the user doesn't want to waste time on loading hidden nodes), 
+it would be better to load them on request, not all at once.</p>
+
+<p>The functionality to load tree's levels dynamically using XML was introduced for this purpose. 
+Dynamic loading of items from XML stream gives the possibility to create DHTML trees with unlimited number of nodes.</p>
+
+<h3 id="dynload">Activating Dynamic Loading</h3>
+
+<p>Firstly, the user should indicate in XML the nodes that will be loaded dynamically in this way: add the parameter child="1" to all nodes that have child items. 
+The items containing this parameter will be the objects for dynamic loading.</p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;iso-8859-1&quot;</span> <span class="re2">?&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;tree</span> <span class="re0">id</span>=<span class="st0">&quot;0&quot;</span><span class="re2">&gt;</span></span>
+        <span class="sc3"><span class="re1">&lt;item</span>  <span class="re0">text</span>=<span class="st0">&quot;Surveillance&quot;</span> <span class="re0">id</span>=<span class="st0">&quot;a1&quot;</span> <span class="re0">im0</span>=<span class="st0">&quot;book.gif&quot;</span> … <span class="re0">child</span>=<span class="st0">&quot;1&quot;</span><span class="re2">/&gt;</span></span>
+        <span class="sc3"><span class="re1">&lt;item</span> …<span class="re2">/&gt;</span></span>
+        …
+    <span class="sc3"><span class="re1">&lt;/tree<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<p>The <a class="link-" href="api__dhtmlxtree_setxmlautoloading.html">setXMLAutoLoading</a> method switches the dynamic loading on in the tree:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">setXMLAutoLoading</span><span class="br0">&#40;</span>url<span class="br0">&#41;</span><span class="sy0">;</span>
+tree.<span class="me1">load</span><span class="br0">&#40;</span>file<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// load the first level of the tree</span></pre></code></pre>
+
+<p>The above mentioned snippet is useful in case of a tree with large amount of data.</p>
+
+<p>The system will firstly load the data indicated by the <em>load()</em> method.</p>
+
+<p>The script specified in the <em>setXMLAutoLoading()</em> method will be called when the user clicks the tree to expand any of the parent nodes
+(the child nodes of which have not been loaded). The script will get the id of the node to open, and return an XML with the description of child items.</p>
+
+<div class='note'><p><p>When dynamic loading is switched on in the tree, script methods work only for those items that are loaded at the moment.</p>
+</p></div>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxTree/samples/12_loading_processing_data/13_tree_dyn_loading.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Autoloading from XML</a></p>
+
+<h3 id="loadbehavior">Setting Auto Loading Behavior</h3>
+
+<div class='note'><p><p>This functionality is available in the PRO version only.</p>
+</p></div>
+
+<p>The <a class="link-pro" href="api__dhtmlxtree_setxmlautoloadingbehaviour.html">setXMLAutoLoadingBehaviour</a> method is responsible for specifying the way according 
+to which the server-side URL is constructed during dynamic loading calls:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">setXMLAutoLoadingBehaviour</span><span class="br0">&#40;</span>mode<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The following <em>mode</em> options are available here:</p>
+
+<ul>
+<li><strong>id</strong> - (default) some_script?id=[item_id]</li>
+<li><strong>function</strong> - used for calling a user-defined handler that should be set as a parameter of the setXMLAutoLoading() method (see example below)</li>
+<li><strong>name</strong> - some_script[item_id]</li>
+<li><strong>xmlname</strong>  - some_script[item_id].xml</li>
+</ul>
+
+<p>An example of using the <em>function</em> mode may look as follows:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">setXMLAutoLoadingBehavior</span><span class="br0">&#40;</span><span class="st0">&quot;function&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+tree.<span class="me1">setXMLAutoLoading</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    tree.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;some.php?id=&quot;</span><span class="sy0">+</span>id<span class="br0">&#41;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<p>In this mode the <em>setXMLAutoLoading()</em> method receives a function that sends a request to the script to load the content of the clicked item by its id.
+The <em>load()</em> method called inside of this function returns an XML with the description of child items of the clicked item.</p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxTree/samples/12_loading_processing_data/03_pro_dyn_operations.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Operations in a dynamic tree</a></p>
+
+<h3>Setting Escaping Mode</h3>
+
+<p>The setEscapingMode() method is responsible for setting the escaping mode (used for escaping id in requests). 
+This method sets the mode for transferring the information of tree's item to the server:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">setEscapingMode</span><span class="br0">&#40;</span>mode<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The following modes are available:</p>
+
+<ul>
+<li><strong>default</strong> - uses native escape functionality of the browser;</li>
+<li><strong>utf8</strong> - is used for UTF escaping;</li>
+<li><strong>none</strong> - data is not escaped.</li>
+</ul>
+
+<a name='smartxmlparsing'><h2>Smart XML Parsing</h2></a>
+
+<p>The idea of Smart XML Parsing is simple: the entire tree structure is loaded on the client side, but only the nodes that should be displayed are rendered. 
+It helps to decrease the loading time
+and enhance the general performance of large trees greatly. Plus, the entire tree structure is available for most of the script methods 
+(for example, searching is performed through all the nodes, not only through the rendered ones).</p>
+
+<h3>Activating Smart XML Parsing</h3>
+
+<p>To activate Smart XML Parsing the user should apply the following method:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">enableSmartXMLParsing</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// false is used to disable</span></pre></code></pre>
+
+<p>Please, pay attention to the fact that Smart XML Parsing does not work in case of loading a fully expanded tree.</p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxTree/samples/12_loading_processing_data/10_pro_smart_parsing.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Smart XML parsing</a></p>
+
+<h3>Getting Parsing State</h3>
+
+<p>The parsing state can be got by means of the getItemParsingState() method which takes an item's id as the parameter:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> state <span class="sy0">=</span> tree.<span class="me1">getItemParsingState</span><span class="br0">&#40;</span>itemId<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The method returns:</p>
+
+<ul>
+<li><em>1</em> - the item is already parsed;</li>
+<li><em>0</em> - the item is not parsed yet;</li>
+<li><em>-1</em> - the item's parsing is in process.</li>
+</ul>
+
+<a name='distributedparsing'><h2>Distributed Parsing</h2></a>
+
+<p>Another way of increasing the performance of the tree with some levels containing more than 100-200 nodes per level is introduced. This functionality is called Distributed Parsing.</p>
+
+<p>The main advantage of this functionality lies in making a level visible and ready to use before it is completely parsed. 
+Thus, items are loaded portion by portion with some timeouts.</p>
+
+<h3>Activating Distributed Parsing</h3>
+
+<p>To enable this functionality the user should make use of the following JS command:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">enableDistributedParsing</span><span class="br0">&#40;</span>mode<span class="sy0">,</span>count<span class="sy0">,</span>delay<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Parameters of this method are:</p>
+
+<ul>
+<li><strong>mode</strong> - (true/false) enable/disable Distributed Parsing</li>
+<li><strong>count</strong> - number of nodes per portion (optional parameter);</li>
+<li><strong>delay</strong> - delay between portions parsing, set in milliseconds (optional parameter).</li>
+</ul>
+
+<p>This functionaity is fully compatible with Smart XML Parsing.</p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxTree/samples/12_loading_processing_data/02_pro_dist_load.html' target='blank'><span class='sample'>Related sample: </span>&nbsp; Distributed parsing</a></p>
+
+<h3>Getting Parsing State</h3>
+
+<p>The current state of Distributed Parsing can be easily got in the following way:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> state <span class="sy0">=</span> tree.<span class="me1">getDistributedParsingState</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// returns true/false</span></pre></code></pre>
+
+<p>This method returns either <strong>true</strong> (meaning that parsing is still in progress) or <strong>false</strong> (meaning that parsing is already finished).</p>
+
+<!-- Content Area End -->
+			<a href='tree__increasing_tree_s_performance.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

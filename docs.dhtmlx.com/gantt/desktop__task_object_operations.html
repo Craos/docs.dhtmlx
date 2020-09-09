@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Task Object/Id  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__task_types.html">Task Types</a></li><li class=" current"><a href="desktop__task_object_operations.html">Task Object/Id</a></li><ul><li class="inner"><a href="desktop__task_object_operations.html#taskobject">Task object</a></li><li class="inner"><a href="desktop__task_object_operations.html#parentofatask">Parent of a task</a></li><li class="inner"><a href="desktop__task_object_operations.html#linksconnectedtoatask">Links connected to a task</a></li><li class="inner"><a href="desktop__task_object_operations.html#taskduration">Task duration</a></li><li class="inner"><a href="desktop__task_object_operations.html#taskenddate">Task end date</a></li><li class="inner"><a href="desktop__task_object_operations.html#selectedtask">Selected task</a></li><li class="inner"><a href="desktop__task_object_operations.html#tasksfromaspecificperiod">Tasks from a specific period</a></li><li class="inner"><a href="desktop__task_object_operations.html#alltasksofgantt">All tasks of Gantt</a></li><li class="inner"><a href="desktop__task_object_operations.html#linksofacertaintask">Links of a certain task</a></li><li class="inner"><a href="desktop__task_object_operations.html#nearestoncomingtask">Nearest oncoming task</a></li><li class="inner"><a href="desktop__task_object_operations.html#taskid">Task id</a></li><li class="inner"><a href="desktop__task_object_operations.html#openingclosingtaskbranches">Opening/Closing task branches</a></li></ul><li class=""><a href="desktop__task_tree_operations.html">Task Parent/Child</a></li><li class=""><a href="desktop__crud_task.html">Basic Operations with Tasks</a></li><li class=""><a href="desktop__unscheduled_tasks.html">Unscheduled Tasks</a></li><li class="toc-pro"><a href="desktop__split_tasks.html">Split Tasks</a></li><li class=""><a href="desktop__multiselection.html">Multi-Task Selection</a></li><li class=""><a href="desktop__working_time.html">Work Time Calculation</a></li><li class="toc-pro"><a href="desktop__critical_path.html">Critical Path</a></li><li class="toc-pro"><a href="desktop__baselines.html">Extra Elements in Timeline Area</a></li><li class="toc-pro"><a href="desktop__milestones.html">Milestones</a></li><li class=""><a href="desktop__tooltips.html">Tooltips for Gantt Elements</a></li><li class=""><a href="desktop__text_block_for_task.html">Displaying Contents of Tasks</a></li><li class=""><a href="desktop__readonly_mode.html">Read-Only Mode</a></li><li class=""><a href="desktop__validation.html">Validation</a></li><li class=""><a href="desktop__dnd.html">Dragging Tasks within the Timeline</a></li><li class=""><a href="desktop__advanced_dnd.html">Creating/Selecting Tasks with DnD</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__task_bars.html">Configuring Tasks</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Task Object/Id</h1>
+
+<p>To work with data in the Gantt chart, you need to know how to get the object or id of a data item. Firstly, most methods take the data object/id as a parameter. 
+Secondly, any data-related code scenario can't be implemented without referring to the data object/id.</p>
+
+<p><em>To learn about available tree-related methods for tasks, refer to the <a class="link-" href="desktop__task_tree_operations.html">Task Parent/Child</a> article.</em></p>
+
+<a name='taskobject'><h2>Task object</h2></a>
+
+<p>To get a task object, use the <a class="link-" href="api__gantt_gettask.html">getTask</a> method:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">getTask</span><span class="br0">&#40;</span><span class="st0">&quot;t1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//-&gt;{id:&quot;t1&quot;, text:&quot;Task #5&quot;, start_date:&quot;02-09-2020&quot;, duration:28, </span>
+<span class="co1">// progress:0.6, parent:&quot;pr_2&quot;, $source:[3,5], $target:[2,1], ...}</span></pre></code></pre>
+
+<a name='parentofatask'><h2>Parent of a task</h2></a>
+
+<p>To get the parent of a task, use the <a class="link-" href="api__gantt_getparent.html">getParent</a> method or the <strong>parent</strong> property of the task's object:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">getParent</span><span class="br0">&#40;</span><span class="st0">&quot;t1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//-&gt;&quot;pr_2&quot;.If there is no parent, the method returns the root id</span>
+<span class="co1">//or</span>
+<span class="kw2">var</span> taskObj <span class="sy0">=</span> gantt.<span class="me1">getTask</span><span class="br0">&#40;</span><span class="st0">&quot;t1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//-&gt; {id:&quot;t1&quot;, text:&quot;Task #5&quot;, parent:&quot;pr_2&quot;, ...}</span>
+<span class="kw2">var</span> taskParent <span class="sy0">=</span> taskObj.<span class="me1">parent</span><span class="sy0">;</span>  <span class="co1">//-&gt; &quot;pr_2&quot;</span></pre></code></pre>
+
+<p><em>To see all methods related to the tree nature of the Gantt chart, read the <a class="link-" href="desktop__task_tree_operations.html">Task Parent/Child</a> article.</em></p>
+
+<a name='linksconnectedtoatask'><h2>Links connected to a task</h2></a>
+
+<p>For details about how to get all links connected to a specific task, see the <a class="link-" href="desktop__link_object_operations.html#gettingthelinksrelatedtoacertaintask">Getting the Link Object/Id</a> article.</p>
+
+<a name='taskduration'><h2>Task duration</h2></a>
+
+<p>To get the duration of a task, use the <a class="link-" href="api__gantt_calculateduration.html">calculateDuration</a> method:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">calculateDuration</span><span class="br0">&#40;</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2020</span><span class="sy0">,</span>03<span class="sy0">,</span><span class="nu0">30</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="kw2">new</span> Date <span class="br0">&#40;</span><span class="nu0">2020</span><span class="sy0">,</span>04<span class="sy0">,</span>02<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt;16</span></pre></code></pre>
+
+<p>Note, if the <a class="link-" href="api__gantt_work_time_config.html">work_time</a> option is enabled, the <a class="link-" href="api__gantt_calculateduration.html">calculateDuration</a> method calculates the task's duration in working time.</p>
+
+<a name='taskenddate'><h2>Task end date</h2></a>
+
+<p>To get the end date of a task, use the <a class="link-" href="api__gantt_calculateenddate.html">calculateEndDate</a> method:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">calculateEndDate</span><span class="br0">&#40;</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2020</span><span class="sy0">,</span>03<span class="sy0">,</span><span class="nu0">30</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="nu0">48</span><span class="sy0">,</span><span class="st0">&quot;hour&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//-&gt; Thu May 07 2020 17:00:00</span></pre></code></pre>
+
+<p>Note, if the <a class="link-" href="api__gantt_work_time_config.html">work_time</a> option is enabled, the method considers duration as a working time.</p>
+
+<a name='selectedtask'><h2>Selected task</h2></a>
+
+<p>To get the currently selected task, use the <a class="link-" href="api__gantt_getselectedid.html">getSelectedId</a> method:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">selectTask</span><span class="br0">&#40;</span><span class="st0">&quot;t_1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+gantt.<span class="me1">getSelectedId</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>  <span class="co1">//-&gt; &quot;t_1&quot; - the id of the selected task</span></pre></code></pre>
+
+<a name='tasksfromaspecificperiod'><h2>Tasks from a specific period</h2></a>
+
+<p>To get a collection of tasks that occur during the specified period, use the <a class="link-" href="api__gantt_gettaskbytime.html">getTaskByTime</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> tasks <span class="sy0">=</span> gantt.<span class="me1">getTaskByTime</span><span class="br0">&#40;</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2020</span><span class="sy0">,</span>03<span class="sy0">,</span>05<span class="br0">&#41;</span><span class="sy0">,</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2020</span><span class="sy0">,</span>03<span class="sy0">,</span><span class="nu0">15</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="co1">// where tasks is an array of tasks' objects</span></pre></code></pre>
+
+<a name='alltasksofgantt'><h2>All tasks of Gantt</h2></a>
+
+<p>To get all tasks presented in the Gantt chart, use the <a class="link-" href="api__gantt_gettaskbytime.html">getTaskByTime</a> method as in:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> tasks <span class="sy0">=</span> gantt.<span class="me1">getTaskByTime</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>  <span class="co1">//returns all tasks as an array of objects</span></pre></code></pre>
+
+<p>You can also call the <a class="link-" href="api__gantt_serialize.html">serialize</a> method.</p>
+
+<a name='linksofacertaintask'><h2>Links of a certain task</h2></a>
+
+<p>To get links related to a task, use the <strong>$source</strong>, <strong>$target</strong> properties of the task object. The properties are autogenerated and store ids of the related links:</p>
+
+<ul>
+<li><strong>$source</strong> - links that comes out from the task.</li>
+<li><strong>$target</strong> - links that comes into task.</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> taskObj <span class="sy0">=</span> gantt.<span class="me1">getTask</span><span class="br0">&#40;</span><span class="st0">&quot;t1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra"><span class="kw2">var</span> sourceLinks <span class="sy0">=</span> taskObj.$source<span class="sy0">;</span>  <span class="co1">//-&gt; [&quot;l1&quot;,&quot;l4&quot;] - ids of coming-out links  </span></span><span class="xtra ln-xtra"><span class="kw2">var</span> targetLinks <span class="sy0">=</span> taskObj.$target<span class="sy0">;</span>  <span class="co1">//-&gt; [&quot;l5&quot;,&quot;l8&quot;] - ids of coming-into links</span></span></pre></code></pre>
+
+<a name='nearestoncomingtask'><h2>Nearest oncoming task</h2></a>
+
+<p>To get the nearest oncoming task, use the <a class="link-" href="api__gantt_gettaskbytime.html">getTaskByTime</a> method as in:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> tasks <span class="sy0">=</span> gantt.<span class="me1">getTaskByTime</span><span class="br0">&#40;</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">9999</span><span class="sy0">,</span><span class="nu0">1</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="co1">// tasks - the list of all oncoming tasks</span>
+tasks.<span class="me1">sort</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>a<span class="sy0">,</span>b<span class="br0">&#41;</span><span class="br0">&#123;</span> <span class="kw1">return</span> <span class="br0">&#40;</span>a.<span class="me1">start_date</span> <span class="sy0">&gt;</span> b.<span class="me1">start_date</span> <span class="sy0">?</span> <span class="nu0">1</span> <span class="sy0">:</span> <span class="sy0">-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// tasks[0] - the nearest oncoming event</span></pre></code></pre>
+
+<a name='taskid'><h2>Task id</h2></a>
+
+<p>Generally, you can get the id of a task from the "data" object of the data set.</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    tasks<span class="sy0">:</span><span class="br0">&#91;</span>
+<span class="xtra ln-xtra">        <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;01-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">18</span><span class="sy0">,</span> progress<span class="sy0">:</span><span class="nu0">0.4</span><span class="br0">&#125;</span><span class="sy0">,</span> </span><span class="xtra ln-xtra">        <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #2&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;02-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span>  progress<span class="sy0">:</span><span class="nu0">0.6</span><span class="br0">&#125;</span>  </span>    <span class="br0">&#93;</span><span class="sy0">,</span>
+    links<span class="sy0">:</span><span class="br0">&#91;</span>...<span class="br0">&#93;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>If you can't get the task's id from the data set, use the <a class="link-" href="api__gantt_gettaskbytime.html">getTaskByTime</a> method as in:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> tasks <span class="sy0">=</span> gantt.<span class="me1">getTaskByTime</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>   <span class="co1">//returns all tasks</span>
+<span class="kw1">for</span><span class="br0">&#40;</span><span class="kw2">var</span> i<span class="sy0">=</span><span class="nu0">0</span><span class="sy0">;</span>i <span class="sy0">&lt;</span> tasks.<span class="me1">length</span><span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span><span class="br0">&#123;</span>  <span class="co1">//goes over all tasks to find the one needed</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>tasks<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="me1">text</span> <span class="sy0">==</span> <span class="st0">&quot;Task #3&quot;</span><span class="br0">&#41;</span> 
+        <span class="kw2">var</span> taskId <span class="sy0">=</span> tasks<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="me1">id</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><em>If you know an approximate time when the needed task occurs, you'd better limit the returned collection of tasks in order to increase the app speed:</em></p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> tasks <span class="sy0">=</span> gantt.<span class="me1">getTaskByTime</span><span class="br0">&#40;</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2020</span><span class="sy0">,</span>05<span class="sy0">,</span>01<span class="br0">&#41;</span><span class="sy0">,</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2020</span><span class="sy0">,</span>05<span class="sy0">,</span><span class="nu0">10</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="kw1">for</span><span class="br0">&#40;</span><span class="kw2">var</span> i<span class="sy0">=</span><span class="nu0">0</span><span class="sy0">;</span>i <span class="sy0">&lt;</span> tasks.<span class="me1">length</span><span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span><span class="br0">&#123;</span>  
+    <span class="kw1">if</span> <span class="br0">&#40;</span>tasks<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="me1">text</span> <span class="sy0">==</span> <span class="st0">&quot;Task #3&quot;</span><span class="br0">&#41;</span> 
+        <span class="kw2">var</span> taskId <span class="sy0">=</span> tasks<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="me1">id</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Changing id of a task</h3>
+
+<p>To change the current id of a task, use the <a class="link-" href="api__gantt_changetaskid.html">changeTaskId</a> method:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">changeTaskId</span><span class="br0">&#40;</span><span class="st0">&quot;t1&quot;</span><span class="sy0">,</span> <span class="st0">&quot;t11&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>  <span class="co1">//changes the task id from &quot;t1&quot; to &quot;t11&quot;</span></pre></code></pre>
+
+<a name='openingclosingtaskbranches'><h2>Opening/Closing task branches</h2></a>
+
+<p>The open state of a task branch is defined by the <strong>task.$open</strong> property, which is available after tasks are loaded into gantt.
+Once the value is modified, the changes will be displayed after the next repainting of the gantt:</p>
+
+<pre><code><pre class="js"><span class="co1">// expand all branches</span>
+gantt.<span class="me1">eachTask</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    task.$open <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">render</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// collapse all branches</span>
+gantt.<span class="me1">eachTask</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    task.$open <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">render</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In order to open/close a single task, you can use the <a class="link-" href="api__gantt_open.html">open</a> and <a class="link-" href="api__gantt_close.html">close</a> methods. They'll change the inner state of the task and invoke repainting. 
+However, to modify many tasks, it's better to work with <strong>task.$open</strong> directly in order to avoid unnecessary repaintings.</p>
+
+<!-- Content Area End -->
+			<a href='desktop__task_object_operations.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

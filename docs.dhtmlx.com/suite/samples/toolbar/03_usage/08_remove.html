@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- meta block -->
+		<title>Remove - DHTMLX Toolbar</title>
+		<meta name="description" content="Check interactive samples of DHTMLX Toolbar to explore its usage and other details.">
+		<!-- end meta block -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+		<script type="text/javascript" src="../../../codebase/suite-v=6.5.3.js"></script>
+		<link rel="stylesheet" href="../../../codebase/suite-v=6.5.3.css">
+		<link rel="stylesheet" href="../../common/index-v=6.5.3.css">
+		
+		
+		<!-- custom sample head -->
+		<script type="text/javascript" src="../common/form/form.min-v=6.5.3.js"></script>
+		<link rel="stylesheet" href="../common/form/form.min-v=6.5.3.css">
+		<style>
+			#restore:disabled {
+				cursor: default;
+				background-color: rgb(221, 221, 221);
+				color: #fff;
+			}
+		</style>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/4.4.95/css/materialdesignicons.css?v=6.5.3" media="all" rel="stylesheet" type="text/css">
+	<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                        'gtm.start':
+                                new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5M5RCSJ');</script>
+<!-- End Google Tag Manager -->
+
+<!-- error tracking -->
+<script src="https://cdn.ravenjs.com/3.19.1/raven.min.js" crossorigin="anonymous"></script>
+<script>Raven.config('https://a2578da6be394598bfe003e4dbb3a394@sentry.dhtmlx.ru/13').install()</script></head>
+	<body>
+		<header class="dhx_sample-header">
+			<div class="dhx_sample-header__main">
+				<nav class="dhx_sample-header__breadcrumbs">
+					<ul class="dhx_sample-header-breadcrumbs">
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="../../index.html" class="dhx_sample-header-breadcrumbs__link">Suite samples</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="../index.html" class="dhx_sample-header-breadcrumbs__link">Toolbar samples</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="index.html" class="dhx_sample-header-breadcrumbs__link">Usage</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<span class="dhx_sample-header-breadcrumbs__link">Remove</span>
+						</li>
+					</ul>
+				</nav>
+				<h1 class="dhx_sample-header__title">
+					<div class="dhx_sample-header__content">
+							Remove.
+					</div>
+				</h1>
+		<div class="dhx_sample-header__cta" id="dhx_sample-cta">
+			<a title="Free Trial" target="_blank" class="dhx_sample-btn dhx_sample-btn--flat dhx_sample-btn--cta" 
+			href="https://dhtmlx.com/docs/products/dhtmlxSuite/download.shtml">Free Trial</a>
+		</div>
+	</div>
+		</header>
+		<section class="dhx_sample-controls">
+			<button id="remove" class="dhx_sample-btn dhx_sample-btn--flat" onclick="remove()">Remove</button>
+			<button id="restore" class="dhx_sample-btn dhx_sample-btn--flat" disabled onclick="restore()">Restore</button>
+			<select id="items" class="dhx_sample-input"></select>
+		</section>
+		<section class="dhx_sample-container">
+			<div class="dhx_sample-container__widget" id="toolbar"></div>
+		</section>
+		<script>
+			var toolbar = new dhx.Toolbar("toolbar", {css:"dhx_widget--bordered"});
+			var select = document.querySelector("#items");
+
+			function init() {
+				document.getElementById("restore").disabled = true;
+				toolbar.data.load("../common/struct.json").then(function() {
+					toolbar.data.remove("other");
+					select.innerHTML = '';
+					toolbar.data.map(function(el) {
+						if(el.parent === toolbar.data.getRoot()) {
+							var opt = document.createElement("option");
+							opt.text = el.id;
+							select.add(opt);
+						}
+					});
+				});
+			}
+
+			init();
+			function remove() {
+				toolbar.data.remove(select.value);
+				select[select.selectedIndex] = null;
+				document.getElementById("restore").disabled = false;
+			}
+
+			function restore() {
+				init();
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,666 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Exploring Supported Data Formats  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=" current"><a href="grid__data_formats.html">Exploring Supported Data Formats</a></li><ul><li class="inner"><a href="grid__data_formats.html#xmlformat">XML format</a></li><li class="inner"><a href="grid__data_formats.html#jsonformat">JSON format</a></li><li class="inner"><a href="grid__data_formats.html#csvformat">CSV format</a></li><li class="inner"><a href="grid__data_formats.html#jsarrayformat">JSArray format</a></li><li class="inner"><a href="grid__data_formats.html#customdataformat">Custom data format</a></li><li class="inner"><a href="grid__data_formats.html#handlingerrorresponse">Handling error response</a></li></ul><li class=""><a href="grid__loading_storing_data.html">Loading Data into Grid</a></li><li class=""><a href="grid__big_datasets_loading.html">Loading Big Datasets</a></li><li class=""><a href="grid__server_side.html">Saving Data on the Server Side</a></li><li class=""><a href="grid__serialization.html">Serializing Data to XML,CSV</a></li><li class=""><a href="grid__data_export.html">Exporting Data to PDF,Excel</a></li><li class=""><a href="grid__userdata.html">Loading Additional Data to Grid</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__loading_data.html">Loading and Storing Data</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Exploring Supported Data Formats</h1>
+
+<p>dhtmlxGrid can be populated with data of 4 formats:</p>
+
+<ul>
+<li><a class="link-" href="grid__data_formats.html#xmlformat">XML</a>.</li>
+<li><a class="link-" href="grid__data_formats.html#jsonformat">JSON</a>.</li>
+<li><a class="link-" href="grid__data_formats.html#csvformat">CSV</a>.</li>
+<li><a class="link-" href="grid__data_formats.html#jsarrayformat">JSArray</a>.</li>
+<li><a class="link-" href="grid__data_formats.html#customdataformat">+ you can define a custom data format</a>. </li>
+</ul>
+
+<p>Let's take a collection of books as a data source and present it in different formats.</p>
+
+<p><img  style="border: 1px #C4C4C5 solid;margin: 20px auto 20px auto;display: block;box-shadow: #D8D8D8 0px 0px 7px 1px;" src="media/grid/books_collection.png"/></p>
+
+<a name='xmlformat'><h2>XML format</h2></a>
+
+<p>In the XML format the data source will be presented as in:</p>
+
+<p class='snippet'>
+data.xml file
+</p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">'1.0'</span> <span class="re0">encoding</span>=<span class="st0">'iso-8859-1'</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;rows<span class="re2">&gt;</span></span></span> 
+    <span class="sc3"><span class="re1">&lt;row</span> <span class="re0">id</span>=<span class="st0">&quot;1&quot;</span><span class="re2">&gt;</span></span> 
+        <span class="sc3"><span class="re1">&lt;cell<span class="re2">&gt;</span></span></span>A Time to Kill<span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span> 
+        <span class="sc3"><span class="re1">&lt;cell<span class="re2">&gt;</span></span></span>John Grisham<span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span> 
+        <span class="sc3"><span class="re1">&lt;cell<span class="re2">&gt;</span></span></span>12.99<span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span> 
+    <span class="sc3"><span class="re1">&lt;/row<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;row</span> <span class="re0">id</span>=<span class="st0">&quot;2&quot;</span><span class="re2">&gt;</span></span> 
+        <span class="sc3"><span class="re1">&lt;cell<span class="re2">&gt;</span></span></span>Blood and Smoke<span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span> 
+        <span class="sc3"><span class="re1">&lt;cell<span class="re2">&gt;</span></span></span>Stephen King<span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span> 
+        <span class="sc3"><span class="re1">&lt;cell<span class="re2">&gt;</span></span></span>10<span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span> 
+    <span class="sc3"><span class="re1">&lt;/row<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;row</span> <span class="re0">id</span>=<span class="st0">&quot;3&quot;</span><span class="re2">&gt;</span></span>
+        <span class="sc3"><span class="re1">&lt;userdata</span> <span class="re0">name</span>=<span class="st0">&quot;lowprice&quot;</span><span class="re2">&gt;</span><span class="re1">&lt;/userdata<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;cell<span class="re2">&gt;</span></span></span>The Rainmaker<span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span> 
+        <span class="sc3"><span class="re1">&lt;cell<span class="re2">&gt;</span></span></span>Stephen King<span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span> 
+        <span class="sc3"><span class="re1">&lt;cell<span class="re2">&gt;</span></span></span><span class="sc2">&lt;![CDATA[&lt;font color=&quot;red&quot;&gt;7.99&lt;/font&gt;]]&gt;</span><span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span> 
+    <span class="sc3"><span class="re1">&lt;/row<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/rows<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<p><br></p>
+
+<p class='snippet'>
+'index.html' file
+</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;data.xml&quot;</span><span class="sy0">,</span> <span class="st0">&quot;xml&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>Please note that the <strong>row id</strong> shouldn't be set to the 0 value</p>
+</p></div>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/12_initialization_loading/10_init_grid_xml.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Loading from XML</a></p>
+
+<h3>Available tags</h3>
+
+<table class="xml_tags">
+    <tbody>
+        <tr>
+            <td><b>afterInit</b></td>
+            <td> groups all command calls which will be executed after grid structure is initialized.<br> 
+              A command from this block will be executed even if no data structure tags (column) are defined in the header</td>
+        </tr>
+        <tr>
+            <td><b>beforeInit </b></td>
+            <td>groups all command calls which will be executed before grid structure is initialized.<br>
+             A command from this block will be executed <b>only</b> if full grid structure is defined in XML (column tags)</td>
+        </tr>
+        <tr>
+            <td > <b>call</b></td>
+            <td>
+                represents the call of grid command, must be placed in <b>afterInit</b> or <b>beforeInit</b> section.<br><br>
+              The attribute is:               
+                <ul>    
+                    <li><b>command</b> -  name of the grid method which will be called</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td> <b>cell</b></td>
+            <td>
+                represents a cell of grid, the value of the tag will be used as the value of a cell in grid.<br><br>
+                The attributes are:
+                <ul>
+                    <li><b>class</b> -  css class which will be attached to a cell;</li>
+                    <li><b>colspan</b> -  a few cells can be grouped in a rowspan, please pay attention that other cells which will be included in colspan still need to be present in XML.
+                         The support of the attribute must be enabled by API call; </li>
+                    <li><b>rowspan</b> -  a few cells can be grouped in a rowspan, this feature is a mutual exclusion of a colspan (a cell can have both colspan and rowspan at the same time).
+                      Please note that a multiple rowspan will slow grid down.
+                      _rowspan.js extension is required to activate the feature;</li>
+                    <li><b>style</b> -  a css style string, a value mapped to the style attribute of an HTML cell;</li>
+                    <li><b>type</b> - the type of a used cell defined per column ( setColTypes ), but each cell in grid can have independent settings, 
+                     so even if you have an editable column, you can define specified cells as readonly or checkboxes or some other control, by using this attribute.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td> <b>column</b></td>
+            <td>
+                in case of configuration from XML it represents a column of grid; the value of the tag is used as a column label<br><br>
+                The attributes are:
+                <ul>
+                    <li><b>align</b> -  horizontal align of a column (left, right, center; equal to setColAlign);</li>
+                    <li><b>color</b> -   color of a column (equal to setColumnColor);</li>
+                    <li><b>format</b> -  for "edn" and "calendar" excells format can be specified (equal to calling setNumberFormat or setDateFormat against the related column);<br>
+                      will not affect any other column types;</li>
+                    <li><b>id</b> -  each column has its ID, it makes sense when you are using movable columns and a column index isn't consistent enough.
+                     While grid API uses indexes for all operations, it provides API to convert IDs to indexes and back (getColumnId, getColIndexById);</li>
+                    <li><b>sort</b> - allows setting a sorting type (equal to setColSotring command - str,int,date).
+                     If you need to set a custom routine, just set the name of a javascript function which will be used for such a task here. (This name must have more than 4 chars);</li>
+                    <li><b>type</b> - the default column type (equal to setColTypes - ro,ed,co and etc.);</li>
+                    <li><b>width</b> - the width of column in percents or pixels, needs to be specified as a pure int, without ending px.
+                    By default is treated as width in pixels, can be switched to percents by using the "setting/colwidth" tag.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td> <b>colwidth</b> </td>
+            <td>allows specifying the way of treating column width specified in "column@width".<br><br> 
+            The tag's value can be:
+            <ul>
+                <li><b>px</b> - width will be set as pixels (default value, tag may be skipped in such a case);</li>
+                <li><b>%</b> - width will be set as percents.</li>
+            </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><b>head </b></td>
+            <td>an optional tag used for grouping configuration tags (necessary only if you want to define configuration in XML); 
+             no attributes are supported</td>
+        </tr>
+        <tr>
+            <td><b>option</b> </td>
+            <td>
+                allows defining a list of options for excell which can work with such a conception (co, coro, clist, in theory any custom excell which has an inner combo property). 
+                The content of the tag is used as an option's label. The "value" attribute is mandatory.<br><br>
+                The attribute is:
+                <ul>
+                    <li><b>value</b> - a value for the related option inside of combobox</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><b>param</b></td>
+            <td>represents a parameter of the method's call, there must be as many param tags as necessary</td>
+        </tr>  
+        <tr>
+            <td><b>row</b> </td>
+            <td>
+                the tag represents a row of grid, one tag for each row<br><br>
+                The attributes are:
+                <ul>
+                    <li><b>bgColor</b> - the color of a row, it is highly recommended to use this parameter 
+                    to set color of row (all other ways will override the colors' selection);</li>
+                    <li><b>class</b> - the name of the css class which will be attached to row;</li>
+                    <li><b>id</b> - a unique identificator, a combination of chars/numbers. It shouldn't be set to 0;</li>
+                    <li><b>locked</b> - a row will be locked - switched to the read-only state, can be reverted by JS API;</li>
+                    <li><b>selected</b> - after data loading, a row will be pre-selected;</li>
+                    <li><b>call</b> - makes sense only with the enabled "selected" attribute, 
+                       if both attributes set to true - a row will be selected and the onSelectRow event will be called;</li>
+                    <li><b>style</b> - a string with css definitions which will be set as a style attribute of the related row.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><b>rows</b> </td>
+            <td>
+                just the top xml tag, has no special meaning<br><br>
+                The attributes are:
+                <ul>
+                    <li><b>pos</b> - in case of dynamic smart rendering XML is fetched from server by chunks, 
+                    the "pos" attribute shows in which place of grid the data from incoming XML must be inserted.<br>
+                    In most cases (the exceptions are pretty specific) this value will be equal to the url parameter "posStart" (which is automatically added to all calls in SRND mode). 
+                    <br>
+                    The attribute makes sense only in SRND mode and will be ignored in any other one;</li>
+                    <li><b>total</b> - both dynamic paging and dynamic rendering modes require specifying the maximum expected count of rows (paging can work without such a limit, but it will not show
+                      all available pages from the start in such a case).<br>
+                      As the hardcoding count or rows in javascript code is rare possible, it can be specified directly in XML.<br>
+                      If the value is skipped in SRND mode, the total count is set to the size of incoming XML (basically, the dynamic smart rendering switches to the static smart rendering).<br>
+                      If the value is skipped in paging mode, the grid will request additional data from server until an empty XML set is returned.<br>
+                      The attribute makes no sense in non-dynamic modes.</li>
+                </ul>
+            </td>
+        </tr>        
+        <tr>
+            <td><b>settings</b></td>
+            <td>groups a grid's configuration settings, has no individual meaning</td>
+        </tr>
+        <tr>
+            <td><b>splitat</b></td>
+            <td>executes the splitAt command in the required position, functionality is kind of deprecated, and it's recommended to use afterInit/call to initiate splitting</td>
+        </tr>
+        <tr>
+            <td><b>userdata</b> </td>
+            <td>
+                 to store some additional data which doesn't need to be displayed, but may be useful for some client-side operations, userdata sections can be used.<br><br>
+                 The attribute is:
+                <ul>
+                    <li><b>name</b> - as there may be many userdata tags per row/grid, they differ by the <b>name</b> attribute. 
+                    The value of the <b>name</b> attribute is used on the client side to get the related value</li>
+                </ul>
+            </td>
+        </tr>
+        
+</tbody>
+</table>
+
+<h3 id="additional_xmlformats">Additional XML formats</h3>
+
+<p>There are also 2 additional XML formats that are based on columns' ids:</p>
+
+<ol>
+<li>"xmlA"</li>
+<li>"xmlB"</li>
+</ol>
+
+<div class='note'><p><p>To use "xmla", "xmlb" formats you need to include the "ext/dhtxmlgrid_data.js" file on the page.</p>
+</p></div>
+
+<p>Both formats can be customized in the same manner as the default XML format.</p>
+
+<h4>xmlA format</h4>
+
+<pre><code><pre class="js">grid.<span class="me1">setColumnIds</span><span class="br0">&#40;</span><span class="st0">&quot;first,second,third&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+grid.<span class="me1">load</span><span class="br0">&#40;</span>url<span class="sy0">,</span><span class="st0">&quot;xmlA&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;rows<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;row</span> <span class="re0">id</span>=<span class="st0">&quot;some1&quot;</span> <span class="re0">first</span>=<span class="st0">&quot;11&quot;</span> <span class="re0">second</span>=<span class="st0">&quot;12&quot;</span> <span class="re0">third</span>=<span class="st0">&quot;13&quot;</span> <span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;row</span> <span class="re0">id</span>=<span class="st0">&quot;some2&quot;</span> <span class="re0">first</span>=<span class="st0">&quot;21&quot;</span> <span class="re0">second</span>=<span class="st0">&quot;22&quot;</span> <span class="re0">third</span>=<span class="st0">&quot;23&quot;</span> <span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;row</span> <span class="re0">id</span>=<span class="st0">&quot;some3&quot;</span> <span class="re0">first</span>=<span class="st0">&quot;31&quot;</span> <span class="re0">second</span>=<span class="st0">&quot;32&quot;</span> <span class="re0">third</span>=<span class="st0">&quot;33&quot;</span> <span class="re2">/&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;/rows<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<div class='note'><p><p>If the user uses MSSQL, he can use SELECT * FROM Some FOR XML AUTO to get data exactly in the necessary format.</p>
+</p></div>
+
+<h4>xmlB format</h4>
+
+<pre><code><pre class="js">grid.<span class="me1">setColumnIds</span><span class="br0">&#40;</span><span class="st0">&quot;first,second,third&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+grid.<span class="me1">load</span><span class="br0">&#40;</span>url<span class="sy0">,</span><span class="st0">&quot;xmlB&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;rows<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;row</span> <span class="re0">id</span>=<span class="st0">&quot;some1&quot;</span><span class="re2">&gt;</span><span class="re1">&lt;first<span class="re2">&gt;</span></span></span>11<span class="sc3"><span class="re1">&lt;/first<span class="re2">&gt;</span></span><span class="re1">&lt;second<span class="re2">&gt;</span></span></span>12<span class="sc3"><span class="re1">&lt;/second<span class="re2">&gt;</span></span><span class="re1">&lt;third<span class="re2">&gt;</span></span></span>13<span class="sc3"><span class="re1">&lt;/third<span class="re2">&gt;</span></span><span class="re1">&lt;/row<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;row</span> <span class="re0">id</span>=<span class="st0">&quot;some2&quot;</span><span class="re2">&gt;</span><span class="re1">&lt;first<span class="re2">&gt;</span></span></span>21<span class="sc3"><span class="re1">&lt;/first<span class="re2">&gt;</span></span><span class="re1">&lt;second<span class="re2">&gt;</span></span></span>22<span class="sc3"><span class="re1">&lt;/second<span class="re2">&gt;</span></span><span class="re1">&lt;third<span class="re2">&gt;</span></span></span>23<span class="sc3"><span class="re1">&lt;/third<span class="re2">&gt;</span></span><span class="re1">&lt;/row<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;row</span> <span class="re0">id</span>=<span class="st0">&quot;some3&quot;</span><span class="re2">&gt;</span><span class="re1">&lt;first<span class="re2">&gt;</span></span></span>31<span class="sc3"><span class="re1">&lt;/first<span class="re2">&gt;</span></span><span class="re1">&lt;second<span class="re2">&gt;</span></span></span>32<span class="sc3"><span class="re1">&lt;/second<span class="re2">&gt;</span></span><span class="re1">&lt;third<span class="re2">&gt;</span></span></span>33<span class="sc3"><span class="re1">&lt;/third<span class="re2">&gt;</span></span><span class="re1">&lt;/row<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/rows<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/12_initialization_loading/06_grid_xml_formats.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Different XML formats</a></p>
+
+<a name='jsonformat'><h2>JSON format</h2></a>
+
+<p>There are 2 JSON formats you can use for specifying data for dhtmlxGrid</p>
+
+<ul>
+<li>Basic (dhtmlxGrid-oriented) JSON format.</li>
+<li>Native JSON format.</li>
+</ul>
+
+<h3>Basic JSON format</h3>
+
+<p>The basic dhtmlxGrid-oriented JSON format allows you to:</p>
+
+<ul>
+<li>specify data of the grid</li>
+<li>set additional configuration parameters</li>
+</ul>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    rows<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> data<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;A Time to Kill&quot;</span><span class="sy0">,</span> <span class="st0">&quot;John Grisham&quot;</span><span class="sy0">,</span> <span class="st0">&quot;100&quot;</span><span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> data<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;Blood and Smoke&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Stephen King&quot;</span><span class="sy0">,</span> <span class="st0">&quot;1000&quot;</span><span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> data<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;The Rainmaker&quot;</span><span class="sy0">,</span> <span class="st0">&quot;John Grisham&quot;</span><span class="sy0">,</span> <span class="st0">&quot;-200&quot;</span><span class="br0">&#93;</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>Please note that the <strong>row id</strong> shouldn't be set to the 0 value</p>
+</p></div>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/12_initialization_loading/09_init_grid_json.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Loading from JSON</a></p>
+
+<p><br></p>
+
+<p><strong>Row-related settings</strong></p>
+
+<ol>
+<li><strong>id</strong> - (<em>string|number</em>) the row's id. Note, that is shouldn't be set to 0.</li>
+<li><strong>bgColor</strong>  -  (<em>string</em>) the row's color. It's strongly recommended to use this property to set the row's color (all other ways will override selection colors)</li>
+<li><strong>class</strong>     - (<em>string</em>) the name of a CSS class that will be applied to the row</li>
+<li><strong>style</strong>    - (<em>string</em>) a string with CSS definitions which will be set as the 'style' attribute of the row</li>
+<li><strong>locked</strong> - (<em>boolean</em>) specifies whether the row should be read-only (<em>true</em>) or editable (<em>false</em>)</li>
+<li><strong>selected</strong> -(<em>boolean</em>) selects the row initially</li>
+<li><strong>call</strong>  -(<em>boolean</em>) makes sense only with the "selected" property enabled.
+If both properties set to <strong>true</strong> - the row will be selected and the <a class="link-notsure" href="api__dhtmlxgrid_onrowselect_event.html">onRowSelect</a> event will be called</li>
+<li><strong>userdata</strong> - (<em>object</em>) key-value pairs of row's userdata</li>
+</ol>
+
+<p>In Native JSON format attributes of the extended dhtmlxGrid-oriented JSON format, such as 'style', 'selected' are not available.</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    rows<span class="sy0">:</span><span class="br0">&#91;</span>
+       <span class="br0">&#123;</span>  id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span>
+          selected<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span>  
+          bgColor<span class="sy0">:</span> <span class="st0">&quot;red&quot;</span><span class="sy0">,</span>
+          userdata<span class="sy0">:</span><span class="br0">&#123;</span><span class="st0">&quot;priority&quot;</span><span class="sy0">:</span><span class="st0">&quot;normal&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>        <span class="co1">// sets the row userdata</span>
+          data<span class="sy0">:</span><span class="br0">&#91;</span>
+            <span class="st0">&quot;A Time to Kill&quot;</span><span class="sy0">,</span>
+            <span class="st0">&quot;John Grisham&quot;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span><span class="st0">&quot;value&quot;</span><span class="sy0">:</span><span class="st0">&quot;100&quot;</span><span class="sy0">,</span><span class="st0">&quot;type&quot;</span><span class="sy0">:</span><span class="st0">&quot;ed&quot;</span><span class="br0">&#125;</span>          <span class="co1">// changes the cell type</span>
+          <span class="br0">&#93;</span>
+       <span class="br0">&#125;</span><span class="sy0">,</span>
+       <span class="br0">&#123;</span>  id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span>
+          style<span class="sy0">:</span><span class="st0">&quot;font-weight:bold;&quot;</span><span class="sy0">,</span> 
+          userdata<span class="sy0">:</span><span class="br0">&#123;</span><span class="st0">&quot;priority&quot;</span><span class="sy0">:</span><span class="st0">&quot;High&quot;</span><span class="sy0">,</span><span class="st0">&quot;hotdeal&quot;</span><span class="sy0">:</span><span class="st0">&quot;yes&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span> <span class="co1">// sets the row userdata</span>
+          data<span class="sy0">:</span><span class="br0">&#91;</span>
+            <span class="st0">&quot;Blood and Smoke&quot;</span><span class="sy0">,</span>
+            <span class="st0">&quot;Stephen King&quot;</span><span class="sy0">,</span>
+            <span class="st0">&quot;1000&quot;</span><span class="sy0">/</span>
+          <span class="br0">&#93;</span>
+       <span class="br0">&#125;</span>       
+<span class="br0">&#93;</span><span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Native JSON format</h3>
+
+<p>Using the native JSON format you can set just row values and that's it. <br>
+Attributes of the extended dhtmlxGrid-oriented JSON format, such as 'style', 'selected', are not available.</li></p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    <span class="st0">&quot;total_count&quot;</span><span class="sy0">:</span><span class="nu0">50000</span><span class="sy0">,</span> <span class="st0">&quot;pos&quot;</span><span class="sy0">:</span><span class="nu0">0</span><span class="sy0">,</span> <span class="st0">&quot;data&quot;</span><span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>   
+            <span class="st0">&quot;col1&quot;</span><span class="sy0">:</span> <span class="st0">&quot;A Time to Kill&quot;</span><span class="sy0">,</span>
+            <span class="st0">&quot;col2&quot;</span><span class="sy0">:</span> <span class="st0">&quot;John Grisham&quot;</span><span class="sy0">,</span>
+            <span class="st0">&quot;col3&quot;</span><span class="sy0">:</span> <span class="st0">&quot;100&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> 
+            <span class="st0">&quot;col1&quot;</span><span class="sy0">:</span> <span class="st0">&quot;Blood and Smoke&quot;</span><span class="sy0">,</span>
+            <span class="st0">&quot;col2&quot;</span><span class="sy0">:</span> <span class="st0">&quot;Stephen King&quot;</span><span class="sy0">,</span>
+            <span class="st0">&quot;col3&quot;</span><span class="sy0">:</span> <span class="st0">&quot;1000&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> 
+            <span class="st0">&quot;col1&quot;</span><span class="sy0">:</span> <span class="st0">&quot;The Rainmaker&quot;</span><span class="sy0">,</span>
+            <span class="st0">&quot;col2&quot;</span><span class="sy0">:</span> <span class="st0">&quot;John Grisham&quot;</span><span class="sy0">,</span>
+            <span class="st0">&quot;col3&quot;</span><span class="sy0">:</span> <span class="st0">&quot;-200&quot;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>where 'col1', 'col2', 'col3' are colums ids set with the <a class="link-" href="api__dhtmlxgrid_setcolumnids.html">setColumnIds</a> method:</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">mygrid.<span class="me1">setColumnIds</span><span class="br0">&#40;</span><span class="st0">&quot;col1,col2,col3&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p>Note, to set the standard JSON format for data call the method <strong>load</strong> with the value 'js' as the second parameter:</p>
+
+<pre><code><pre class="js">myGrid.<span class="me1">load</span><span class="br0">&#40;</span>url<span class="sy0">,</span><span class="st0">&quot;js&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3 id="dynamic_loading">Dynamic loading</h3>
+
+<p>Available properties:</p>
+
+<ol>
+<li><strong>total_count</strong> - sets the maximum number of rows retrieved from the server. <strong>Used in the dynamic "<a class="link-pro" href="grid__paging.html">Paging</a>" and dynamic "<a class="link-" href="grid__smart_rendering.html">Smart Rendering</a>" modes only.</strong> 
+
+<ul>
+<li><em>If ommited in the "Smart Rendering" mode - the total number of rows is set to the size of the incoming data and "Smart Rendering" is switched from the dynamic to the static mode.</em></li>
+<li><em>If ommited in the "Paging" mode - paging will work but won't show all available pages from the start. Also, the grid will request additional data from the server until gets an empty data set.</em></li>
+</ul></li>
+<li><strong>pos</strong> - in case of dynamic "Smart Rendering", data is fetched from the server by chunks and the "pos" attribute shows which place of the grid the incoming data must be inserted in. 
+<strong>Used in the dynamic "<a class="link-" href="grid__smart_rendering.html">Smart Rendering</a>" mode only</strong></li>
+<li><strong>userdata</strong> - (<em>object</em>) key-value pairs of grid's userdata</li>
+</ol>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    total_count<span class="sy0">:</span><span class="nu0">50000</span><span class="sy0">,</span>
+    pos<span class="sy0">:</span><span class="nu0">0</span><span class="sy0">,</span>
+    rows<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> data<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;A Time to Kill&quot;</span><span class="sy0">,</span> <span class="st0">&quot;John Grisham&quot;</span><span class="sy0">,</span> <span class="st0">&quot;100&quot;</span><span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> data<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;Blood and Smoke&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Stephen King&quot;</span><span class="sy0">,</span> <span class="st0">&quot;1000&quot;</span><span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> data<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;The Rainmaker&quot;</span><span class="sy0">,</span> <span class="st0">&quot;John Grisham&quot;</span><span class="sy0">,</span> <span class="st0">&quot;-200&quot;</span><span class="br0">&#93;</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span> 
+<span class="br0">&#93;</span><span class="br0">&#125;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/12_initialization_loading/20_grid_config_js.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Configuration from JSON - Common JSON</a></p>
+
+<a name='csvformat'><h2>CSV format</h2></a>
+
+<pre><code><pre class="js"><span class="kw2">var</span>  csvstr<span class="sy0">=</span><span class="st0">&quot;A Time to Kill,John Grisham,100&quot;</span>
+            <span class="sy0">+</span><span class="st0">&quot;<span class="es0">\n</span>Blood and Smoke,Stephen King,1000&quot;</span>
+            <span class="sy0">+</span><span class="st0">&quot;<span class="es0">\n</span>The Rainmaker,John Grisham,-200&quot;</span><span class="sy0">;</span>
+grid.<span class="me1">parse</span><span class="br0">&#40;</span>csvstr<span class="sy0">,</span><span class="st0">&quot;csv&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Setting row/cell delimiter</h3>
+
+<p>By default, dhtmlxGrid uses:</p>
+
+<ul>
+<li><strong>\n</strong> - as the row delimiter.</li>
+<li><strong>,</strong> - as the cell delimiter.</li>
+</ul>
+
+<p>You can set your custom delimiters using the <strong>csv.row</strong> and <strong>csv.cell</strong> properties:</p>
+
+<pre><code><pre class="js">grid.<span class="me1">csv</span>.<span class="me1">row</span> <span class="sy0">=</span> <span class="st0">&quot;your custom row delimiter&quot;</span><span class="sy0">;</span>
+grid.<span class="me1">csv</span>.<span class="me1">cell</span> <span class="sy0">=</span> <span class="st0">&quot;your custom cell delimiter&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Note, for backward compatibility you can also use the setCSVDelimiter() method.</p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/12_initialization_loading/13_pro_load_csv.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Import/export from/to CSV</a></p>
+
+<a name='jsarrayformat'><h2>JSArray format</h2></a>
+
+<p>In the JSArray format, the data source will be presented as in:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#91;</span><span class="st0">&quot;A Time to Kill&quot;</span><span class="sy0">,</span><span class="st0">&quot;John Grisham&quot;</span><span class="sy0">,</span><span class="st0">&quot;100&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="br0">&#91;</span><span class="st0">&quot;Blood and Smoke&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Stephen King&quot;</span><span class="sy0">,</span> <span class="st0">&quot;1000&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="br0">&#91;</span><span class="st0">&quot;The Rainmaker&quot;</span><span class="sy0">,</span><span class="st0">&quot;John Grisham&quot;</span><span class="sy0">,</span><span class="st0">&quot;-200&quot;</span><span class="br0">&#93;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/12_initialization_loading/08_init_grid_jsarray.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Loading from JS array</a></p>
+
+<a name='customdataformat'><h2>Custom data format</h2></a>
+
+<p>Generally, to create a custom data format you need to:</p>
+
+<ol>
+<li>Set the name for the new format.</li>
+<li>Define the row-level parser.</li>
+<li>Define the cell-level parser.</li>
+</ol>
+
+<p>Let's assume, you have data specified as in:</p>
+
+<p class='snippet'>
+"data.xml" file
+</p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;data<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">name</span>=<span class="st0">&quot;my item A&quot;</span><span class="re2">&gt;</span></span>
+        <span class="sc3"><span class="re1">&lt;size<span class="re2">&gt;</span></span></span>15<span class="sc3"><span class="re1">&lt;/size<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;mode</span> <span class="re0">step</span>=<span class="st0">&quot;2&quot;</span> <span class="re0">online</span>=<span class="st0">&quot;off&quot;</span><span class="re2">&gt;</span></span>active<span class="sc3"><span class="re1">&lt;/mode<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/item<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">name</span>=<span class="st0">&quot;my item B&quot;</span><span class="re2">&gt;</span></span>
+        <span class="sc3"><span class="re1">&lt;size<span class="re2">&gt;</span></span></span>15<span class="sc3"><span class="re1">&lt;/size<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;mode</span> <span class="re0">step</span>=<span class="st0">&quot;2&quot;</span> <span class="re0">online</span>=<span class="st0">&quot;on&quot;</span><span class="re2">&gt;</span></span>active<span class="sc3"><span class="re1">&lt;/mode<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/item<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/data<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<p>The format of this data doesn't fit the predefined grid's formats. As a possible solution, you can
+add XSLT transformation that will convert data to the format acceptable by the grid, but if you have a big dataset -<br />
+creating a custom data format is a much more preffered way.</p>
+
+<h3>Step 1. Choose a name for your custom data format</h3>
+
+<p>The names "xml","xmla","xmlb", "json","js", "jsarray","csv" are already taken, so any other name is valid. 
+For example, you can use "custom_xml" as the name for your new data format.</p>
+
+<h3>Step 2. Defining the row-level parser</h3>
+
+<p>To specify a new data format you will need to use 3 methods:</p>
+
+<ol>
+<li><strong>grid.<em>process</em>[formatName]</strong> - the row parser function. Processes the incoming stream of data and separates it in rows.</li>
+<li><strong>grid.<em>process</em>[formatName]_row</strong> - the cell parser method. Takes the data related to rows and processes it.</li>
+<li><strong>grid.<em>get</em>[formatName]_data</strong> - the data locator method. Provides the way to locate the value of a column inside a data row. 
+The method is required only if you are planning to use the smart rendering mode (it locates the data inside unparsed chunks). 
+In other cases, the method shouldn't be used.</li>
+</ol>
+
+<p>The row parser function must separate incoming data in rows and assign IDs to them. As our data source is XML, 
+we will use XPath to parse it into rows:</p>
+
+<pre><code><pre class="js">grid._process_custom_xml<span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>xml<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">this</span>._parsing<span class="sy0">=</span><span class="kw2">true</span><span class="sy0">;</span>
+    <span class="kw2">var</span> rows <span class="sy0">=</span> xml.<span class="me1">doXPath</span><span class="br0">&#40;</span><span class="st0">&quot;//item&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>       <span class="co1">//gets all row elements from XML</span>
+    <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw2">var</span> i <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span> i <span class="sy0">&lt;</span> rows.<span class="me1">length</span><span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw2">var</span> id <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">getUID</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>      <span class="co1">//XML has no native ids,so custom ids are generated</span>
+        <span class="kw1">this</span>.<span class="me1">rowsBuffer</span><span class="br0">&#91;</span>i<span class="br0">&#93;</span><span class="sy0">=</span><span class="br0">&#123;</span>                <span class="co1">//stores references to each row element</span>
+            idd<span class="sy0">:</span> id<span class="sy0">,</span>
+            data<span class="sy0">:</span> rows<span class="br0">&#91;</span>i<span class="br0">&#93;</span><span class="sy0">,</span>
+            _parser<span class="sy0">:</span> <span class="kw1">this</span>._process_custom_xml_row<span class="sy0">,</span> <span class="co1">//cell parser method</span>
+            _locator<span class="sy0">:</span> <span class="kw1">this</span>._get_custom_xml_data    <span class="co1">//data locator method</span>
+        <span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">this</span>.<span class="me1">rowsAr</span><span class="br0">&#91;</span>id<span class="br0">&#93;</span><span class="sy0">=</span>rows<span class="br0">&#91;</span>i<span class="br0">&#93;</span><span class="sy0">;</span>             <span class="co1">//stores id reference</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">this</span>.<span class="me1">render_dataset</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>            <span class="co1">//forces update of grid's view after data loading</span>
+    <span class="kw1">this</span>._parsing<span class="sy0">=</span><span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Step 3. Define cell-level parser</h3>
+
+<p>The cell parser must take the data for each column of the grid from the row related XML.
+Before starting to implement cell parser, you need to specify what data will be mapped for which column.</p>
+
+<pre><code><pre class="js">grid._process_custom_xml_row<span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>r<span class="sy0">,</span> xml<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> size <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">xmlLoader</span>.<span class="me1">doXPath</span><span class="br0">&#40;</span><span class="st0">&quot;./size&quot;</span><span class="sy0">,</span> xml<span class="br0">&#41;</span><span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">;</span> <span class="co1">//gets size sub-tag</span>
+    <span class="kw2">var</span> mode <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">xmlLoader</span>.<span class="me1">doXPath</span><span class="br0">&#40;</span><span class="st0">&quot;./mode&quot;</span><span class="sy0">,</span> xml<span class="br0">&#41;</span><span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">;</span> <span class="co1">//gets mode sub-tag</span>
+    <span class="kw2">var</span> strAr <span class="sy0">=</span> <span class="br0">&#91;</span>  
+        xml.<span class="me1">getAttribute</span><span class="br0">&#40;</span><span class="st0">&quot;name&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span>
+        size.<span class="me1">firstChild</span>.<span class="me1">data</span><span class="sy0">,</span>
+        mode.<span class="me1">firstChild</span>.<span class="me1">data</span><span class="sy0">,</span>
+        mode.<span class="me1">getAttribute</span><span class="br0">&#40;</span><span class="st0">&quot;online&quot;</span><span class="br0">&#41;</span>
+    <span class="br0">&#93;</span><span class="sy0">;</span>
+    <span class="co1">//sets just a plain array as no custom attributes are needed</span>
+    r._attrs<span class="sy0">=</span><span class="br0">&#123;</span><span class="br0">&#125;</span><span class="sy0">;</span>
+    <span class="kw1">for</span> <span class="br0">&#40;</span>j<span class="sy0">=</span><span class="nu0">0</span><span class="sy0">;</span> j <span class="sy0">&lt;</span> r.<span class="me1">childNodes</span>.<span class="me1">length</span><span class="sy0">;</span> j<span class="sy0">++</span><span class="br0">&#41;</span> r.<span class="me1">childNodes</span><span class="br0">&#91;</span>j<span class="br0">&#93;</span>._attrs<span class="sy0">=</span><span class="br0">&#123;</span><span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="co1">//finishes data loading </span>
+    <span class="kw1">this</span>._fillRow<span class="br0">&#40;</span>r<span class="sy0">,</span> strAr<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> r<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>That's all. Now you can load data in the custom format as in:</p>
+
+<pre><code><pre class="js">grid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;data.xml&quot;</span><span class="sy0">,</span><span class="st0">&quot;custom_xml&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='handlingerrorresponse'><h2>Handling error response</h2></a>
+
+<p>Starting from version 4.1, to handle error response from server, use the <a class="link-" href="api__dhtmlxajax_onloadxmlerror_event.html">onLoadXMLError</a> event instead of the dhtmlxError.catchError.</p>
+
+<pre><code><pre class="js">window.<span class="me1">dhx</span>.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onLoadXMLError&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>request object<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// your code here</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='grid__data_formats.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

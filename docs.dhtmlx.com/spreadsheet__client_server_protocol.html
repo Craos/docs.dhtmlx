@@ -1,0 +1,339 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1546520180.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1546520180.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Client-Server Protocol  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');   ga('create', 'UA-11031269-1', 'auto'); ga('send', 'pageview');</script><!-- Yandex.Metrika counter --><script type='text/javascript'>(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter22235746 = new Ya.Metrika({id:22235746, clickmap:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName('script')[0], s = d.createElement('script'), f = function () { n.parentNode.insertBefore(s, n); }; s.type = 'text/javascript'; s.async = true; s.src = (d.location.protocol == 'https:' ? 'https:' : 'http:') + '//mc.yandex.ru/metrika/watch.js'; if (w.opera == '[object Opera]') { d.addEventListener('DOMContentLoaded', f, false); } else { f(); } })(document, window, 'yandex_metrika_callbacks');</script><noscript><div><img src='https://mc.yandex.ru/watch/22235746' style='position:absolute; left:-9999px;' alt='' /></div></noscript>
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='http://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="http://dhtmlx.com/docs/products/docsExplorer/samples.shtml">Samples</a>
+				<a href="http://forum.dhtmlx.com/">Forum</a>
+				<a href="http://support.dhtmlx.com/">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="spreadsheet__configuration.html">Configuration</a></li><li class=""><a href="spreadsheet__init.html">Initialization and Read-Only Mode</a></li><li class=" current"><a href="spreadsheet__client_server_protocol.html">Client-Server Protocol</a></li><ul><li class="inner"><a href="spreadsheet__client_server_protocol.html#loading">Loading</a></li><li class="inner"><a href="spreadsheet__client_server_protocol.html#dataupdates">Data updates</a></li></ul><li class=""><a href="spreadsheet__reference.html">API Reference</a></li><li class=""><a href="spreadsheet__userguide_basicdefinitions.html">Fundamental Definitions</a></li><li class=""><a href="spreadsheet__userguide_navigation.html">Hot Keys</a></li><li class=""><a href="spreadsheet__userguide_settings.html">Worksheet Settings</a></li><li class=""><a href="spreadsheet__userguide_controls.html">Main Toolbar</a></li><li class=""><a href="spreadsheet__userguide_text.html">Selecting Cell and Entering Text</a></li><li class=""><a href="spreadsheet__userguide_formatting.html">Formatting</a></li><li class=""><a href="spreadsheet__userguide_locking_and_validation.html">Cells Locking and Validation</a></li><li class=""><a href="spreadsheet__userguide_copying.html">Copying/Moving Data Between Cells</a></li><li class=""><a href="spreadsheet__userguide_formulas.html">Formulas</a></li><li class=""><a href="spreadsheet__userguide_export.html">Data Export</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="spreadsheet__index.html">SpreadSheet</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Client-Server Protocol</h1>
+
+<p>This chapter will tell you about client-server communication in the context of 2 data operations: loading and update.</p>
+
+<div class='note'><p><p>Format of data transmitting is JSON</p>
+</p></div>
+
+<a name='loading'><h2>Loading</h2></a>
+
+<p>Initially, Spreadsheet loads a default 'skeleton' and doesn't store any information on the server, except for the sheet's id. 
+When you change something and send a request, data related to this change is saved on the server. 
+Next time you refresh the page or another user accesses it, Spreadsheet loads the 'skeleton' and gets data saved on the server to rewrite the appropriate default values.</p>
+
+<p>The server response can have the following look:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    <span class="st0">&quot;sheetid&quot;</span><span class="sy0">:</span> <span class="st0">&quot;1&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;config&quot;</span><span class="sy0">:</span> <span class="st0">&quot;cols:10;rows:25;show_row_numbers:true;show_export_buttons:true&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;readonly&quot;</span><span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span> 
+    <span class="st0">&quot;head&quot;</span><span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span>
+        <span class="st0">&quot;col&quot;</span><span class="sy0">:</span> <span class="st0">&quot;4&quot;</span><span class="sy0">,</span> 
+        <span class="st0">&quot;width&quot;</span><span class="sy0">:</span> <span class="st0">&quot;64&quot;</span><span class="sy0">,</span> 
+        <span class="st0">&quot;label&quot;</span><span class="sy0">:</span> <span class="st0">&quot;D111&quot;</span> 
+        <span class="br0">&#125;</span><span class="sy0">,</span> 
+        <span class="br0">&#123;</span>  
+        ...
+        <span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="st0">&quot;cells&quot;</span><span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span>
+        <span class="st0">&quot;row&quot;</span><span class="sy0">:</span> <span class="st0">&quot;2&quot;</span><span class="sy0">,</span> 
+        <span class="st0">&quot;col&quot;</span><span class="sy0">:</span> <span class="st0">&quot;2&quot;</span><span class="sy0">,</span>  
+        <span class="st0">&quot;style&quot;</span><span class="sy0">:</span> <span class="st0">&quot;0;0;000000;ffffff;left;none;0&quot;</span><span class="sy0">,</span> 
+        <span class="st0">&quot;text&quot;</span><span class="sy0">:</span> <span class="st0">&quot;3&quot;</span><span class="sy0">,</span> 
+        <span class="st0">&quot;calc&quot;</span><span class="sy0">:</span> <span class="st0">&quot;3&quot;</span> 
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> 
+        ...
+        <span class="br0">&#125;</span><span class="br0">&#93;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3 id="params">Available parameters</h3>
+
+<ul>
+<li><strong>sheetid</strong> - (string) the name of a Spreadsheet instance;</li>
+<li><strong>config</strong> - (hash of values serialized into string) contains general Spreadsheet configuration.<br>
+Passed as array with 4 elements, in the following succession:
+
+<ul>
+<li><strong>cols</strong> - (number) the number of columns in the sheet;</li>
+<li><strong>rows</strong> - (number) the number of rows in the sheet;</li>
+<li><strong>show_row_number</strong> - (boolean) specifies whether row headings should be shown or hidden;</li>
+<li><strong>show_export_buttons</strong> - (boolean) specifies whether export buttons('pdf', 'excel') should be shown or hidden.</li>
+</ul></li>
+<li><strong>readonly</strong> - (boolean) specifies whether a user can edit the spreadsheet;</li>
+<li><strong>head</strong> - (array) contains columns configurations:
+
+<ul>
+<li><strong>row</strong> - (number) the column index in the sheet (numeration starts from 1);</li>
+<li><strong>width</strong> - (number) the width of the column;</li>
+<li><strong>label</strong> - (string) the heading of the column.</li>
+</ul></li>
+<li><strong>cells</strong> - (array) specifies cells configuration:
+
+<ul>
+<li><strong>row</strong> -(number) the cell row index in the sheet (numeration starts from 1); </li>
+<li><strong>col</strong> - (number) the cell column index in the sheet (numeration starts from 1);</li>
+<li><strong>label</strong> - (string) the heading of the column;</li>
+<li><strong>style</strong> - (hash of values serialized into string) defines cells' style.<br>
+Passed as array with 7 elements in the following succession:
+
+<ul>
+<li><strong>bold</strong> - (0 or 1) defines whether the bold style should be applied to the cell;</li>
+<li><strong>italic</strong> - (0 or 1) defines whether the italic style should be applied to the cell;</li>
+<li><strong>color</strong> - (hex value without the leading # sign) the text color;</li>
+<li><strong>background</strong> - (hex value without the leading # sign) the background color;</li>
+<li><strong>align</strong> - (left, right, center, justify) the alignment in the cell;</li>
+<li><strong>validator</strong> - (none, email, number, positive, not_empty) defines a validator applied to the cell;</li>
+<li><strong>lock</strong> - (0 or 1) specifies whether the cell is locked or unlocked.</li>
+</ul></li>
+</ul></li>
+<li><strong>text</strong> -(string|number) the value entered in the cell;</li>
+<li><strong>calc</strong> - (string|number) the calculated value (makes sense in case of formulas).</li>
+</ul>
+
+<a name='dataupdates'><h2>Data updates</h2></a>
+
+<h3>Incoming parameters</h3>
+
+<p>Each time you update data, Spreadsheet sends a request (an array of cell properties) to the server.</p>
+
+<p>For example, if you update the cell B1 by setting the value "Sales", the related request will look like:</p>
+
+<pre><code><pre class="js">rows<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">=</span><span class="nu0">1</span><span class="sy0">;</span>
+cols<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">=</span><span class="nu0">2</span><span class="sy0">;</span>
+values<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">=</span><span class="st0">'Sales'</span></pre></code></pre>
+
+<p>In case you update several cells at once, the request will contain several 'properties' blocks:</p>
+
+<pre><code><pre class="js">rows<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">=</span><span class="nu0">3</span><span class="sy0">;</span>
+cols<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">=</span><span class="nu0">5</span><span class="sy0">;</span>
+values<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">=</span><span class="st0">'some_value'</span><span class="sy0">;</span>
+..
+<span class="me1">rows</span><span class="br0">&#91;</span>i<span class="br0">&#93;</span><span class="sy0">=</span><span class="nu0">5</span><span class="sy0">;</span>
+cols<span class="br0">&#91;</span>i<span class="br0">&#93;</span><span class="sy0">=</span><span class="nu0">5</span><span class="sy0">;</span>
+values<span class="br0">&#91;</span>i<span class="br0">&#93;</span><span class="sy0">=</span><span class="st0">'some_value'</span><span class="sy0">;</span></pre></code></pre>
+
+<p>where i=n-1, n - the number of cells which need updating.</p>
+
+<h3>Available parameters</h3>
+
+<p>Parameters and their number depend on a cell you update, whether it is a regular cell or a column heading.</p>
+
+<p><strong>Cells:</strong></p>
+
+<ul>
+<li>parameters sent by POST method:
+
+<ul>
+<li><strong>rows[i]</strong> - (number) the cell row index in the sheet (numeration starts from 1); </li>
+<li><strong>cols[i]</strong> - (number) the cell column index in the sheet (numeration starts from 1); </li>
+<li><strong>styles[i]</strong> - (hash of values serialized into string) defines cell style.<br>
+Passed as array with 7 elements (see details <a href="spreadsheet__client_server_protocol.html#params">above</a>); </li>
+<li><strong>values[i]</strong> - (string, number) the value of the cell.</li>
+</ul></li>
+<li>parameters sent by GET method:
+
+<ul>
+<li><strong>edit=true</strong> - makes cells editable. Constant value;</li>
+<li><strong>dhx.math</strong> - (boolean) enables formulas. Beware, if you activate this option you should write all calculation logic manually;</li>
+<li><strong>sheet</strong> - (string) the id of the used sheet.</li>
+</ul></li>
+</ul>
+
+<p><strong>Headings:</strong></p>
+
+<ul>
+<li>parameters sent by POST method:
+
+<ul>
+<li><strong>col</strong> - (number) the column index in the sheet (numeration starts from 1); </li>
+<li><strong>name</strong> - (string) the heading of the column;</li>
+<li><strong>width</strong> - (number) the width of the column.</li>
+</ul></li>
+<li>parameters sent by GET method:
+
+<ul>
+<li><strong>sheet</strong> - (string) the id of the using sheet;</li>
+<li><strong>edit='header'</strong> - makes headings editable. Constant value.</li>
+</ul></li>
+</ul>
+
+<h3>Server response</h3>
+
+<p>The response of the server presents a hash of values, each of which defines configuration of a certain cell (or a heading).</p>
+
+<ul>
+<li>Cells            </li>
+</ul>
+
+<p><strong>Incoming parameters</strong>:</p>
+
+<pre><code><pre class="js">sheet<span class="sy0">=</span> <span class="st0">'5'</span><span class="sy0">;</span>
+edit<span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+dhx.<span class="me1">math</span><span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+rows<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">=</span> <span class="nu0">1</span><span class="sy0">;</span>
+cols<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">=</span> <span class="nu0">2</span><span class="sy0">;</span>
+styles<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">=</span> <span class="st0">'1;1;000000;ffffff;center;email;0'</span>
+values<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">=</span> <span class="st0">'Sales'</span></pre></code></pre>
+
+<p><strong>Server response</strong>:</p>
+
+<pre><code><pre class="js"><span class="br0">&#91;</span><span class="br0">&#123;</span>  
+    row<span class="sy0">:</span> <span class="st0">'24'</span><span class="sy0">,</span>
+    col<span class="sy0">:</span> <span class="st0">'4'</span><span class="sy0">,</span>
+    text<span class="sy0">:</span> <span class="st0">''</span><span class="sy0">,</span> 
+    calc<span class="sy0">:</span> <span class="st0">''</span><span class="sy0">,</span> 
+    type<span class="sy0">:</span> <span class="st0">'updated'</span>
+<span class="br0">&#125;</span><span class="br0">&#93;</span></pre></code></pre>
+
+<ul>
+<li>Headings      </li>
+</ul>
+
+<p><strong>Incoming parameters</strong>:</p>
+
+<pre><code><pre class="js">sheet<span class="sy0">=</span> <span class="st0">'5'</span><span class="sy0">;</span>
+edit<span class="sy0">=</span> <span class="st0">'header'</span><span class="sy0">;</span>
+col<span class="sy0">=</span> <span class="nu0">2</span><span class="sy0">;</span>
+<span class="kw3">name</span><span class="sy0">=</span> <span class="st0">'Total'</span><span class="sy0">;</span>
+width<span class="sy0">=</span> <span class="nu0">200</span><span class="sy0">;</span></pre></code></pre>
+
+<p><strong>Server response</strong>:</p>
+
+<pre><code><pre class="js"><span class="br0">&#91;</span><span class="br0">&#123;</span>  
+    row<span class="sy0">:</span> <span class="st0">''</span><span class="sy0">,</span>
+    col<span class="sy0">:</span> <span class="st0">'4'</span><span class="sy0">,</span>
+    text<span class="sy0">:</span> <span class="st0">''</span><span class="sy0">,</span> 
+    calc<span class="sy0">:</span> <span class="st0">''</span><span class="sy0">,</span> 
+    type<span class="sy0">:</span> <span class="st0">'updated'</span>
+<span class="br0">&#125;</span><span class="br0">&#93;</span></pre></code></pre>
+
+<p>See descriptions of the parameters used in the table in the section <a href="spreadsheet__client_server_protocol.html#params">Loading</a>.</p>
+
+<!-- Content Area End -->
+			<a href='spreadsheet__client_server_protocol.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

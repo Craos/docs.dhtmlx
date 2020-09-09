@@ -1,0 +1,1089 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>dhtmlxGantt with ASP.NET MVC  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__howtostart_dotnet_core.html">dhtmlxGantt with ASP.NET Core</a></li><li class=""><a href="desktop__howtostart_nodejs.html">dhtmlxGantt with Node.js</a></li><li class=" current"><a href="desktop__howtostart_dotnet.html">dhtmlxGantt with ASP.NET MVC</a></li><ul><li class="inner"><a href="desktop__howtostart_dotnet.html#step1creatingaproject">Step 1. Creating a project</a></li><li class="inner"><a href="desktop__howtostart_dotnet.html#step2addinggantttothepage">Step 2. Adding Gantt to the page</a></li><li class="inner"><a href="desktop__howtostart_dotnet.html#step3creatingmodelsanddatabase">Step 3. Creating models and database</a></li><li class="inner"><a href="desktop__howtostart_dotnet.html#step4implementingwebapi">Step 4. Implementing Web API</a></li><li class="inner"><a href="desktop__howtostart_dotnet.html#errorhandling">Error handling</a></li><li class="inner"><a href="desktop__howtostart_dotnet.html#storingtheorderoftasks">Storing the order of tasks</a></li><li class="inner"><a href="desktop__howtostart_dotnet.html#knownissues">Known issues</a></li><li class="inner"><a href="desktop__howtostart_dotnet.html#applicationsecurity">Application security</a></li><li class="inner"><a href="desktop__howtostart_dotnet.html#troubleshooting">Trouble shooting</a></li><li class="inner"><a href="desktop__howtostart_dotnet.html#whatsnext">What's next</a></li></ul><li class=""><a href="desktop__howtostart_php_laravel.html">dhtmlxGantt with PHP: Laravel</a></li><li class=""><a href="desktop__howtostart_php_slim4.html">dhtmlxGantt with PHP:Slim</a></li><li class=""><a href="desktop__howtostart_ruby.html">dhtmlxGantt with Ruby on Rails</a></li><li class=""><a href="desktop__howtostart_php.html">dhtmlxGantt with PHP:Slim3</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__howtostart_guides.html">How to Start with dhtmlxGantt</a></div>
+<!-- Content Area -->
+
+
+
+<h1>dhtmlxGantt with ASP.NET MVC</h1>
+
+<p>This tutorial will give you step-by-step instructions on creating Gantt with <a href="https://www.asp.net/">ASP.NET</a> and REST API on the server side.</p>
+
+<p>You can also explore other server-side integration possibilities of Gantt by choosing one of the following tutorials:</p>
+
+<ul>
+<li><a class="link-" href="desktop__howtostart_dotnet_core.html">dhtmlxGantt with ASP.NET Core</a></li>
+<li><a class="link-" href="desktop__howtostart_nodejs.html">dhtmlxGantt with Node.js</a></li>
+<li><a class="link-" href="desktop__howtostart_php_laravel.html">dhtmlxGantt with PHP: Laravel</a></li>
+<li><a class="link-" href="desktop__howtostart_php_slim4.html">dhtmlxGantt with PHP:Slim</a></li>
+<li><a class="link-" href="desktop__howtostart_ruby.html">dhtmlxGantt with Ruby on Rails</a></li>
+</ul>
+
+<p>We will make use of the ASP.NET MVC 5 web platform and the Web API 2 controller for REST API to create a Gantt application.
+To organize communication with a database we will use the <a href="http://www.asp.net/entity-framework">Entity Framework</a>.
+We will build our application with the help of the Visual Studio IDE.</p>
+
+<div class='note'><p><p>The complete source code is <a href="https://github.com/DHTMLX/gantt-howto-dotnet">available on GitHub</a>.</p>
+</p></div>
+
+<a name='step1creatingaproject'><h2>Step 1. Creating a project</h2></a>
+
+<h3>Creating a new Visual Studio project</h3>
+
+<p>Let's start by running Visual Studio and creating a new project. For this, open the File menu tab and choose:<br>
+New -> Project. Then select ASP.NET Web Application and name it <em>DHX.Gantt.Web</em>.</p>
+
+<p><img src="media/desktop/how_to_start_net_create_project.png"></p>
+
+<p>Select an <em>Empty</em> project among available templates and check MVC and Web API checkboxes below the list of templates.</p>
+
+<p><img src="media/desktop/how_to_start_net_project_template.png"></p>
+
+<a name='step2addinggantttothepage'><h2>Step 2. Adding Gantt to the page</h2></a>
+
+<h3>Creating a Controller</h3>
+
+<p>Now we have an empty project and everything is ready for implementing our gantt.</p>
+
+<p>Firstly, we'll add an MVC controller which will show a page with a gantt chart.</p>
+
+<p>To create it, call the context menu for the Controllers folder and choose Add->Controller.
+In the opened window select MVC 5 Controller -> Empty and name a newly added controller "HomeController".</p>
+
+<p><img src="media/desktop/how_to_start_net_controller.png"></p>
+
+<p>HomeController has the <em>Index()</em> method of the <em>ActionResult</em> class by default, so it doesn't require any additional logic. We will just add a view for it.</p>
+
+<p class='snippet'> Controllers/HomeController.cs</p>
+
+<pre><code><pre class="js">using System<span class="sy0">;</span>
+using System.<span class="me1">Collections</span>.<span class="me1">Generic</span><span class="sy0">;</span>
+using System.<span class="me1">Linq</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span>.<span class="me1">Mvc</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">namespace</span> DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>.<span class="me1">Controllers</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> HomeController <span class="sy0">:</span> Controller
+    <span class="br0">&#123;</span>
+        <span class="co1">// GET: Home</span>
+        <span class="kw2">public</span> ActionResult Index<span class="br0">&#40;</span><span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw1">return</span> View<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Creating a View</h3>
+
+<p>Now it's time to create our index page. Go to Views/Home and add an empty view named Index:</p>
+
+<p><img src="media/desktop/how_to_start_net_view.png"></p>
+
+<p>Open the newly created view and put the following code into it:</p>
+
+<p class='snippet'> Views/Home/Index.cshtml</p>
+
+<pre><code><pre class="html">@{
+    Layout = null;
+}
+&nbsp;
+<span class="sc0">&lt;!DOCTYPE html&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">meta</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;viewport&quot;</span> <span class="kw3">content</span><span class="sy0">=</span><span class="st0">&quot;width=device-width&quot;</span> <span class="sy0">/</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">title</span>&gt;</span>Index<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">title</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css&quot;</span> </span>
+<span class="sc2">        <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="sy0">/</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">        document.<span class="me1">addEventListener</span><span class="br0">&#40;</span><span class="st0">&quot;DOMContentLoaded&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>event<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="co1">// specifying the date format</span>
+            gantt.<span class="me1">config</span>.<span class="me1">date_format</span> <span class="sy0">=</span> <span class="st0">&quot;%Y-%m-%d %H:%i&quot;</span><span class="sy0">;</span>
+            <span class="co1">// initializing gantt</span>
+            gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+            <span class="co1">// initiating data loading</span>
+            gantt.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/api/data&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="co1">// initializing dataProcessor</span>
+            <span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> gantt.<span class="me1">dataProcessor</span><span class="br0">&#40;</span><span class="st0">&quot;/api/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="co1">// and attaching it to gantt</span>
+            dp.<span class="me1">init</span><span class="br0">&#40;</span>gantt<span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="co1">// setting the REST mode for dataProcessor</span>
+            dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;REST&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre>    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;gantt_here&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width: 100%; height: 100vh;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+<p>What we have done here:</p>
+
+<ul>
+<li>defined a simple page markup for our gantt application</li>
+<li>added dhtmlx gantt js/css sources using <a class="link-" href="desktop__cdn_links_list.html">CDN links</a></li>
+<li>and created gantt on the page</li>
+</ul>
+
+<p>Pay attention to the configuration: we've specified the <a class="link-" href="api__gantt_date_format_config.html">format of dates</a> that come from the data source.</p>
+
+<p class='snippet'> Views/Home/Index.cshtml</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">date_format</span> <span class="sy0">=</span> <span class="st0">&quot;%Y-%m-%d %H:%i&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>It's needed for our client to be able to parse dates that come from the server.</p>
+
+<p>And also we told the gantt that it's going to work with RESTful API on a backend and use <a class="link-" href="desktop__server_side.html#technique">"/api/data/"</a> as a default route:</p>
+
+<p class='snippet'> Views/Home/Index.cshtml</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/api/data&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// initializing dataProcessor</span>
+<span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> gantt.<span class="me1">dataProcessor</span><span class="br0">&#40;</span><span class="st0">&quot;/api/data&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// and attaching it to gantt</span>
+dp.<span class="me1">init</span><span class="br0">&#40;</span>gantt<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// setting the REST mode for dataProcessor</span>
+dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;REST&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The server side itself will be implemented a bit later. For now, you can run the application and see that a gantt is rendered on the page.</p>
+
+<p><img src="media/desktop/adding_gantt.png"></p>
+
+<a name='step3creatingmodelsanddatabase'><h2>Step 3. Creating models and database</h2></a>
+
+<h3>Creating Models</h3>
+
+<p>Now we should define model classes for the gantt chart. A Gantt data model consists of <a class="link-" href="desktop__loading.html#standarddatabasestructure">Links and Tasks</a>. 
+As you can see, dhtmlxGantt uses a certain naming convention for data model that is different from the one traditionally used in C#. 
+The client-side model can also contain some properties that you don't need to store in a database, but which will be used either on the client or in the backend logic.</p>
+
+<p>Because of this, we'll go with the <a href="https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5">Data Transfer Object</a> 
+pattern here: we'll define domain model classes that will be used with EF and inside the app, and DTO classes that will be used to communicate with Web API. Then we'll implement some kind of mapping between the two models.</p>
+
+<p>Let's start!</p>
+
+<h4>Task Model</h4>
+
+<p>First, we will create a class for Task. Its content can be similar to this one:</p>
+
+<p class='snippet'> Models/Task.cs</p>
+
+<pre><code><pre class="js">using System<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">namespace</span> DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>.<span class="me1">Models</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> Task
+    <span class="br0">&#123;</span>
+        <span class="kw2">public</span> int Id <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> string Text <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> DateTime StartDate <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> int Duration <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> decimal Progress <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> int<span class="sy0">?</span> ParentId <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> string Type <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>You can find the full list of properties, both mandatory and optional, available for the Task object in the 
+<a class="link-" href="desktop__loading.html#task_properties">corresponding article</a> of documentation.</p>
+
+<h4>Link Model</h4>
+
+<p>Now it's time for the Link class, which may look as follows:</p>
+
+<p class='snippet'> Models/Link.cs</p>
+
+<pre><code><pre class="js"><span class="kw2">namespace</span> DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>.<span class="me1">Models</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> Link
+    <span class="br0">&#123;</span>
+        <span class="kw2">public</span> int Id <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> string Type <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> int SourceTaskId <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> int TargetTaskId <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Configuring DataBase Connection</h3>
+
+<h4>Installing Entity Framework</h4>
+
+<p>As you remember, we are going to organize the work with a database with the help of the <a href="http://www.asp.net/entity-framework">Entity Framework</a>.</p>
+
+<p>So, first of all we need to install the framework. To do it, you need to run the following command in the Package Manager Console:</p>
+
+<pre><code><pre class="js">Install<span class="sy0">-</span><span class="kw2">Package</span> EntityFramework</pre></code></pre>
+
+<h4>Creating Database Context</h4>
+
+<p>The next step is to create Context. Context represents a session with the DataBase. It allows getting and saving data.</p>
+
+<p>Call the context menu for the <em>Models</em> folder and select Add->Class. The new class will be called "GanttContext" and will have the following content:</p>
+
+<p class='snippet'> Models/GanttContext.cs</p>
+
+<pre><code><pre class="js">using System.<span class="me1">Data</span>.<span class="me1">Entity</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">namespace</span> DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>.<span class="me1">Models</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> GanttContext <span class="sy0">:</span> DbContext
+    <span class="br0">&#123;</span>
+        <span class="kw2">public</span> DbSet<span class="sy0">&lt;</span>Task<span class="sy0">&gt;</span> Tasks <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> DbSet<span class="sy0">&lt;</span>Link<span class="sy0">&gt;</span> Links <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h4>Adding initial records to database</h4>
+
+<p>Now we can add some records into the database.</p>
+
+<p>The Entity Framework can automatically create a database when an application runs. 
+We should specify that a database should be dropped and re-created whenever the model changes.</p>
+
+<p>First, we should create a database initializer. For this purpose, we need to add a new class in the <em>App_Start</em> folder
+that will be inherited from the <em>DropCreateDatabaseIfModelChanges</em> class. Let's call it "GanttInitializer".</p>
+
+<p>In this class we are going to redefine the <em>Seed()</em> method to populate it with test data. Then we will add the entities collection into the context with the <em>Add()</em> method.</p>
+
+<p>The full code of the <em>GanttInitializer</em> class is given below:</p>
+
+<p class='snippet'> App_Start/GanttInitializer.cs</p>
+
+<pre><code><pre class="js">using System<span class="sy0">;</span>
+using System.<span class="me1">Collections</span>.<span class="me1">Generic</span><span class="sy0">;</span>
+using System.<span class="me1">Data</span>.<span class="me1">Entity</span><span class="sy0">;</span>
+using System.<span class="me1">Linq</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span><span class="sy0">;</span>
+&nbsp;
+&nbsp;
+<span class="kw2">namespace</span> DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>.<span class="me1">Models</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> GanttInitializer <span class="sy0">:</span> DropCreateDatabaseIfModelChanges<span class="sy0">&lt;</span>GanttContext<span class="sy0">&gt;</span>
+    <span class="br0">&#123;</span>
+        <span class="kw2">protected</span> override <span class="kw1">void</span> Seed<span class="br0">&#40;</span>GanttContext context<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            List<span class="sy0">&lt;</span>Task<span class="sy0">&gt;</span> tasks <span class="sy0">=</span> <span class="kw2">new</span> List<span class="sy0">&lt;</span>Task<span class="sy0">&gt;</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+            <span class="br0">&#123;</span>
+                <span class="kw2">new</span> Task<span class="br0">&#40;</span><span class="br0">&#41;</span>
+                <span class="br0">&#123;</span>
+                    Id <span class="sy0">=</span> <span class="nu0">1</span><span class="sy0">,</span>
+                    Text <span class="sy0">=</span> <span class="st0">&quot;Project #2&quot;</span><span class="sy0">,</span>
+                    StartDate <span class="sy0">=</span> DateTime.<span class="me1">Today</span>.<span class="me1">AddDays</span><span class="br0">&#40;</span><span class="sy0">-</span><span class="nu0">3</span><span class="br0">&#41;</span><span class="sy0">,</span>
+                    Duration <span class="sy0">=</span> <span class="nu0">18</span><span class="sy0">,</span>
+                    Progress <span class="sy0">=</span> 0.4m<span class="sy0">,</span>
+                    ParentId <span class="sy0">=</span> <span class="kw2">null</span>
+                <span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="kw2">new</span> Task<span class="br0">&#40;</span><span class="br0">&#41;</span>
+                <span class="br0">&#123;</span>
+                    Id <span class="sy0">=</span> <span class="nu0">2</span><span class="sy0">,</span>
+                    Text <span class="sy0">=</span> <span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span>
+                    StartDate <span class="sy0">=</span> DateTime.<span class="me1">Today</span>.<span class="me1">AddDays</span><span class="br0">&#40;</span><span class="sy0">-</span><span class="nu0">2</span><span class="br0">&#41;</span><span class="sy0">,</span>
+                    Duration <span class="sy0">=</span> <span class="nu0">8</span><span class="sy0">,</span>
+                    Progress <span class="sy0">=</span> 0.6m<span class="sy0">,</span>
+                    ParentId <span class="sy0">=</span> <span class="nu0">1</span>
+                <span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="kw2">new</span> Task<span class="br0">&#40;</span><span class="br0">&#41;</span>
+                <span class="br0">&#123;</span>
+                    Id <span class="sy0">=</span> <span class="nu0">3</span><span class="sy0">,</span>
+                    Text <span class="sy0">=</span> <span class="st0">&quot;Task #2&quot;</span><span class="sy0">,</span>
+                    StartDate <span class="sy0">=</span> DateTime.<span class="me1">Today</span>.<span class="me1">AddDays</span><span class="br0">&#40;</span><span class="sy0">-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">,</span>
+                    Duration <span class="sy0">=</span> <span class="nu0">8</span><span class="sy0">,</span>
+                    Progress <span class="sy0">=</span> 0.6m<span class="sy0">,</span>
+                    ParentId <span class="sy0">=</span> <span class="nu0">1</span>
+                <span class="br0">&#125;</span>
+            <span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+            tasks.<span class="me1">ForEach</span><span class="br0">&#40;</span>s <span class="sy0">=&gt;</span> context.<span class="me1">Tasks</span>.<span class="me1">Add</span><span class="br0">&#40;</span>s<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            context.<span class="me1">SaveChanges</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+            List<span class="sy0">&lt;</span>Link<span class="sy0">&gt;</span> links <span class="sy0">=</span> <span class="kw2">new</span> List<span class="sy0">&lt;</span>Link<span class="sy0">&gt;</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+            <span class="br0">&#123;</span>
+                <span class="kw2">new</span> Link<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>Id <span class="sy0">=</span> <span class="nu0">1</span><span class="sy0">,</span> SourceTaskId <span class="sy0">=</span> <span class="nu0">1</span><span class="sy0">,</span> TargetTaskId <span class="sy0">=</span> <span class="nu0">2</span><span class="sy0">,</span> Type <span class="sy0">=</span> <span class="st0">&quot;1&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="kw2">new</span> Link<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>Id <span class="sy0">=</span> <span class="nu0">2</span><span class="sy0">,</span> SourceTaskId <span class="sy0">=</span> <span class="nu0">2</span><span class="sy0">,</span> TargetTaskId <span class="sy0">=</span> <span class="nu0">3</span><span class="sy0">,</span> Type <span class="sy0">=</span> <span class="st0">&quot;0&quot;</span><span class="br0">&#125;</span>
+            <span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+            links.<span class="me1">ForEach</span><span class="br0">&#40;</span>s <span class="sy0">=&gt;</span> context.<span class="me1">Links</span>.<span class="me1">Add</span><span class="br0">&#40;</span>s<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            context.<span class="me1">SaveChanges</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Open the <em>Global.asax</em> file. It contains the code that runs on the application start.
+Add the necessary namespace and the code line that will set Initializer for our context into the <em>Application_Start()</em> method:</p>
+
+<p class='snippet'> Global.asax</p>
+
+<pre><code><pre class="js">using System<span class="sy0">;</span>
+using System.<span class="me1">Web</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span>.<span class="me1">Mvc</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span>.<span class="me1">Routing</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span>.<span class="me1">Http</span><span class="sy0">;</span>
+&nbsp;
+using System.<span class="me1">Data</span>.<span class="me1">Entity</span><span class="sy0">;</span>
+using DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>.<span class="me1">Models</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">namespace</span> DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> Global <span class="sy0">:</span> HttpApplication
+    <span class="br0">&#123;</span>
+        <span class="kw1">void</span> Application_Start<span class="br0">&#40;</span>object sender<span class="sy0">,</span> EventArgs e<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="co1">// Code that runs on application startup</span>
+            AreaRegistration.<span class="me1">RegisterAllAreas</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            GlobalConfiguration.<span class="me1">Configure</span><span class="br0">&#40;</span>WebApiConfig.<span class="me1">Register</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            RouteConfig.<span class="me1">RegisterRoutes</span><span class="br0">&#40;</span>RouteTable.<span class="me1">Routes</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra">            Database.<span class="me1">SetInitializer</span><span class="br0">&#40;</span><span class="kw2">new</span> GanttInitializer<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span></span>        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Defining DTOs and Mapping</h3>
+
+<p>It's time to declare DTO classes that will be used for Web API.
+As for mapping between Model and DTO, we'll go the simplest way and just define an explicit conversion operator for these classes.</p>
+
+<p>The TaskDto class will look as follows:</p>
+
+<p class='snippet'> Models/TaskDto.cs</p>
+
+<pre><code><pre class="js">using System<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">namespace</span> DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>.<span class="me1">Models</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> TaskDto
+    <span class="br0">&#123;</span>
+        <span class="kw2">public</span> int id <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> string text <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> string start_date <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> int duration <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> decimal progress <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> int<span class="sy0">?</span> parent <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> string type <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> bool <span class="kw3">open</span>
+        <span class="br0">&#123;</span>
+            get <span class="br0">&#123;</span> <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span> <span class="br0">&#125;</span>
+            set <span class="br0">&#123;</span> <span class="br0">&#125;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="kw2">public</span> static explicit operator TaskDto<span class="br0">&#40;</span>Task task<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw1">return</span> <span class="kw2">new</span> TaskDto
+            <span class="br0">&#123;</span>
+                id <span class="sy0">=</span> task.<span class="me1">Id</span><span class="sy0">,</span>
+                text <span class="sy0">=</span> task.<span class="me1">Text</span><span class="sy0">,</span>
+                start_date <span class="sy0">=</span> task.<span class="me1">StartDate</span>.<span class="me1">ToString</span><span class="br0">&#40;</span><span class="st0">&quot;yyyy-MM-dd HH:mm&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span>
+                duration <span class="sy0">=</span> task.<span class="me1">Duration</span><span class="sy0">,</span>
+                parent <span class="sy0">=</span> task.<span class="me1">ParentId</span><span class="sy0">,</span>
+                type <span class="sy0">=</span> task.<span class="me1">Type</span><span class="sy0">,</span>
+                progress <span class="sy0">=</span> task.<span class="me1">Progress</span>
+            <span class="br0">&#125;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="kw2">public</span> static explicit operator Task<span class="br0">&#40;</span>TaskDto task<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw1">return</span> <span class="kw2">new</span> Task
+            <span class="br0">&#123;</span>
+                Id <span class="sy0">=</span> task.<span class="me1">id</span><span class="sy0">,</span>
+                Text <span class="sy0">=</span> task.<span class="me1">text</span><span class="sy0">,</span>
+                StartDate <span class="sy0">=</span> DateTime.<span class="me1">Parse</span><span class="br0">&#40;</span>
+                    task.<span class="me1">start_date</span><span class="sy0">,</span> 
+                    System.<span class="me1">Globalization</span>.<span class="me1">CultureInfo</span>.<span class="me1">InvariantCulture</span><span class="br0">&#41;</span><span class="sy0">,</span>
+                Duration <span class="sy0">=</span> task.<span class="me1">duration</span><span class="sy0">,</span>
+                ParentId <span class="sy0">=</span> task.<span class="me1">parent</span><span class="sy0">,</span>
+                Type <span class="sy0">=</span> task.<span class="me1">type</span><span class="sy0">,</span>
+                Progress <span class="sy0">=</span> task.<span class="me1">progress</span>
+            <span class="br0">&#125;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>And the code of the LinkDto class is given below:</p>
+
+<p class='snippet'> Models/LinkDto.cs</p>
+
+<pre><code><pre class="js"><span class="kw2">namespace</span> DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>.<span class="me1">Models</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> LinkDto
+    <span class="br0">&#123;</span>
+        <span class="kw2">public</span> int id <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> string type <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> int source <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> int target <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+&nbsp;
+        <span class="kw2">public</span> static explicit operator LinkDto<span class="br0">&#40;</span>Link link<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw1">return</span> <span class="kw2">new</span> LinkDto
+            <span class="br0">&#123;</span>
+                id <span class="sy0">=</span> link.<span class="me1">Id</span><span class="sy0">,</span>
+                type <span class="sy0">=</span> link.<span class="me1">Type</span><span class="sy0">,</span>
+                source <span class="sy0">=</span> link.<span class="me1">SourceTaskId</span><span class="sy0">,</span>
+                target <span class="sy0">=</span> link.<span class="me1">TargetTaskId</span>
+            <span class="br0">&#125;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="kw2">public</span> static explicit operator Link<span class="br0">&#40;</span>LinkDto link<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw1">return</span> <span class="kw2">new</span> Link
+            <span class="br0">&#123;</span>
+                Id <span class="sy0">=</span> link.<span class="me1">id</span><span class="sy0">,</span>
+                Type <span class="sy0">=</span> link.<span class="me1">type</span><span class="sy0">,</span>
+                SourceTaskId <span class="sy0">=</span> link.<span class="me1">source</span><span class="sy0">,</span>
+                TargetTaskId <span class="sy0">=</span> link.<span class="me1">target</span>
+            <span class="br0">&#125;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Lastly, let's add a model for the <a class="link-" href="desktop__supported_data_formats.html#json">data source</a>:</p>
+
+<p class='snippet'> Models/GanttDto.cs</p>
+
+<pre><code><pre class="js">using System<span class="sy0">;</span>
+using System.<span class="me1">Collections</span>.<span class="me1">Generic</span><span class="sy0">;</span>
+using System.<span class="me1">Linq</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">namespace</span> DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>.<span class="me1">Models</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> GanttDto
+    <span class="br0">&#123;</span>
+        <span class="kw2">public</span> IEnumerable<span class="sy0">&lt;</span>TaskDto<span class="sy0">&gt;</span> data <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> IEnumerable<span class="sy0">&lt;</span>LinkDto<span class="sy0">&gt;</span> links <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='step4implementingwebapi'><h2>Step 4. Implementing Web API</h2></a>
+
+<h3>General technique of loading data using REST API</h3>
+
+<p>Finally it's time to implement the API.</p>
+
+<p>As you can see from the <a class="link-" href="desktop__server_side.html#requestresponsedetails">API details</a> we'll need two controllers: one for tasks and one for links. 
+We will also need one more controller for the 'load data' action, since gantt expects a <a class="link-" href="desktop__supported_data_formats.html#json">mixed result</a> there.</p>
+
+<h3>Task Controller</h3>
+
+<p>To create a new controller:</p>
+
+<ul>
+<li>Activate the context menu for the Controllers folder and select Add -> Controller.</li>
+<li>Choose the Web API 2 Controller -> Empty. The new controller will be called "TaskController". </li>
+</ul>
+
+<p>Now we need to implement basic CRUD actions for the task entry:</p>
+
+<p class='snippet'> Controllers/TaskController.cs</p>
+
+<pre><code><pre class="js">using System.<span class="me1">Collections</span>.<span class="me1">Generic</span><span class="sy0">;</span>
+using System.<span class="me1">Data</span>.<span class="me1">Entity</span><span class="sy0">;</span>
+using System.<span class="me1">Linq</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span>.<span class="me1">Http</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span>.<span class="me1">UI</span>.<span class="me1">WebControls</span><span class="sy0">;</span>
+&nbsp;
+using DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>.<span class="me1">Models</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">namespace</span> DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>.<span class="me1">Controllers</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> TaskController <span class="sy0">:</span> ApiController
+    <span class="br0">&#123;</span>
+        <span class="kw2">private</span> GanttContext db <span class="sy0">=</span> <span class="kw2">new</span> GanttContext<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="co1">// GET api/Task</span>
+        <span class="kw2">public</span> IEnumerable<span class="sy0">&lt;</span>TaskDto<span class="sy0">&gt;</span> Get<span class="br0">&#40;</span><span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw1">return</span> db.<span class="me1">Tasks</span>
+                .<span class="me1">ToList</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+                .<span class="me1">Select</span><span class="br0">&#40;</span>t <span class="sy0">=&gt;</span> <span class="br0">&#40;</span>TaskDto<span class="br0">&#41;</span>t<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="co1">// GET api/Task/5</span>
+        <span class="br0">&#91;</span>System.<span class="me1">Web</span>.<span class="me1">Http</span>.<span class="me1">HttpGet</span><span class="br0">&#93;</span>
+        <span class="kw2">public</span> TaskDto Get<span class="br0">&#40;</span>int id<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw1">return</span> <span class="br0">&#40;</span>TaskDto<span class="br0">&#41;</span>db
+                .<span class="me1">Tasks</span>
+                .<span class="me1">Find</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="co1">// PUT api/Task/5</span>
+        <span class="br0">&#91;</span>System.<span class="me1">Web</span>.<span class="me1">Http</span>.<span class="me1">HttpPut</span><span class="br0">&#93;</span>
+        <span class="kw2">public</span> IHttpActionResult EditTask<span class="br0">&#40;</span>int id<span class="sy0">,</span> TaskDto taskDto<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw2">var</span> updatedTask <span class="sy0">=</span> <span class="br0">&#40;</span>Task<span class="br0">&#41;</span>taskDto<span class="sy0">;</span>
+            updatedTask.<span class="me1">Id</span> <span class="sy0">=</span> id<span class="sy0">;</span>
+            db.<span class="me1">Entry</span><span class="br0">&#40;</span>updatedTask<span class="br0">&#41;</span>.<span class="me1">State</span> <span class="sy0">=</span> EntityState.<span class="me1">Modified</span><span class="sy0">;</span>
+            db.<span class="me1">SaveChanges</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+            <span class="kw1">return</span> Ok<span class="br0">&#40;</span><span class="kw2">new</span>
+            <span class="br0">&#123;</span>
+                action <span class="sy0">=</span> <span class="st0">&quot;updated&quot;</span>
+            <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="co1">// POST api/Task</span>
+        <span class="br0">&#91;</span>System.<span class="me1">Web</span>.<span class="me1">Http</span>.<span class="me1">HttpPost</span><span class="br0">&#93;</span>
+        <span class="kw2">public</span> IHttpActionResult CreateTask<span class="br0">&#40;</span>TaskDto taskDto<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw2">var</span> newTask <span class="sy0">=</span> <span class="br0">&#40;</span>Task<span class="br0">&#41;</span>taskDto<span class="sy0">;</span>
+&nbsp;
+            db.<span class="me1">Tasks</span>.<span class="me1">Add</span><span class="br0">&#40;</span>newTask<span class="br0">&#41;</span><span class="sy0">;</span>
+            db.<span class="me1">SaveChanges</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+            <span class="kw1">return</span> Ok<span class="br0">&#40;</span><span class="kw2">new</span>
+            <span class="br0">&#123;</span>
+                tid <span class="sy0">=</span> newTask.<span class="me1">Id</span><span class="sy0">,</span>
+                action <span class="sy0">=</span> <span class="st0">&quot;inserted&quot;</span>
+            <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="co1">// DELETE api/Task/5</span>
+        <span class="br0">&#91;</span>System.<span class="me1">Web</span>.<span class="me1">Http</span>.<span class="me1">HttpDelete</span><span class="br0">&#93;</span>
+        <span class="kw2">public</span> IHttpActionResult DeleteTask<span class="br0">&#40;</span>int id<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw2">var</span> task <span class="sy0">=</span> db.<span class="me1">Tasks</span>.<span class="me1">Find</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="kw1">if</span> <span class="br0">&#40;</span>task <span class="sy0">!=</span> <span class="kw2">null</span><span class="br0">&#41;</span>
+            <span class="br0">&#123;</span>
+                db.<span class="me1">Tasks</span>.<span class="me1">Remove</span><span class="br0">&#40;</span>task<span class="br0">&#41;</span><span class="sy0">;</span>
+                db.<span class="me1">SaveChanges</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="br0">&#125;</span>
+&nbsp;
+            <span class="kw1">return</span> Ok<span class="br0">&#40;</span><span class="kw2">new</span>
+            <span class="br0">&#123;</span>
+                action <span class="sy0">=</span> <span class="st0">&quot;deleted&quot;</span>
+            <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="kw2">protected</span> override <span class="kw1">void</span> Dispose<span class="br0">&#40;</span>bool disposing<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw1">if</span> <span class="br0">&#40;</span>disposing<span class="br0">&#41;</span>
+            <span class="br0">&#123;</span>
+                db.<span class="me1">Dispose</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="br0">&#125;</span>
+            base.<span class="me1">Dispose</span><span class="br0">&#40;</span>disposing<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Everything is pretty straightforward here:</p>
+
+<ul>
+<li>in the GET actions we load tasks from database and output their data transfer objects </li>
+<li>in the PUT/POST actions we're getting DTOs as an input, converting it to a Task model and saving changes to the DB Context</li>
+</ul>
+
+<p>Now let's do the same for the links.</p>
+
+<h3>Link Controller</h3>
+
+<p>We'll create an empty Web API Controller for links like this:</p>
+
+<p class='snippet'> Controllers/LinkController.cs</p>
+
+<pre><code><pre class="js">using System<span class="sy0">;</span>
+using System.<span class="me1">Collections</span>.<span class="me1">Generic</span><span class="sy0">;</span>
+using System.<span class="me1">Data</span>.<span class="me1">Entity</span><span class="sy0">;</span>
+using System.<span class="me1">Linq</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span>.<span class="me1">Http</span><span class="sy0">;</span>
+using DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>.<span class="me1">Models</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">namespace</span> DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>.<span class="me1">Controllers</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> LinkController <span class="sy0">:</span> ApiController
+    <span class="br0">&#123;</span>
+        <span class="kw2">private</span> GanttContext db <span class="sy0">=</span> <span class="kw2">new</span> GanttContext<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="co1">// GET api/Link</span>
+        <span class="br0">&#91;</span>System.<span class="me1">Web</span>.<span class="me1">Http</span>.<span class="me1">HttpGet</span><span class="br0">&#93;</span>
+        <span class="kw2">public</span> IEnumerable<span class="sy0">&lt;</span>LinkDto<span class="sy0">&gt;</span> Get<span class="br0">&#40;</span><span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw1">return</span> db
+                .<span class="me1">Links</span>
+                .<span class="me1">ToList</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+                .<span class="me1">Select</span><span class="br0">&#40;</span>l <span class="sy0">=&gt;</span> <span class="br0">&#40;</span>LinkDto<span class="br0">&#41;</span>l<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="co1">// GET api/Link/5</span>
+        <span class="br0">&#91;</span>System.<span class="me1">Web</span>.<span class="me1">Http</span>.<span class="me1">HttpGet</span><span class="br0">&#93;</span>
+        <span class="kw2">public</span> LinkDto Get<span class="br0">&#40;</span>int id<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw1">return</span> <span class="br0">&#40;</span>LinkDto<span class="br0">&#41;</span>db
+                .<span class="me1">Links</span>
+                .<span class="me1">Find</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="co1">// POST api/Link</span>
+        <span class="br0">&#91;</span>System.<span class="me1">Web</span>.<span class="me1">Http</span>.<span class="me1">HttpPost</span><span class="br0">&#93;</span>
+        <span class="kw2">public</span> IHttpActionResult CreateLink<span class="br0">&#40;</span>LinkDto linkDto<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw2">var</span> newLink <span class="sy0">=</span> <span class="br0">&#40;</span>Link<span class="br0">&#41;</span>linkDto<span class="sy0">;</span>
+            db.<span class="me1">Links</span>.<span class="me1">Add</span><span class="br0">&#40;</span>newLink<span class="br0">&#41;</span><span class="sy0">;</span>
+            db.<span class="me1">SaveChanges</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+            <span class="kw1">return</span> Ok<span class="br0">&#40;</span><span class="kw2">new</span>
+            <span class="br0">&#123;</span>
+                tid <span class="sy0">=</span> newLink.<span class="me1">Id</span><span class="sy0">,</span>
+                action <span class="sy0">=</span> <span class="st0">&quot;inserted&quot;</span>
+            <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="co1">// PUT api/Link/5</span>
+        <span class="br0">&#91;</span>System.<span class="me1">Web</span>.<span class="me1">Http</span>.<span class="me1">HttpPut</span><span class="br0">&#93;</span>
+        <span class="kw2">public</span> IHttpActionResult EditLink<span class="br0">&#40;</span>int id<span class="sy0">,</span> LinkDto linkDto<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw2">var</span> clientLink <span class="sy0">=</span> <span class="br0">&#40;</span>Link<span class="br0">&#41;</span>linkDto<span class="sy0">;</span>
+            clientLink.<span class="me1">Id</span> <span class="sy0">=</span> id<span class="sy0">;</span>
+&nbsp;
+            db.<span class="me1">Entry</span><span class="br0">&#40;</span>clientLink<span class="br0">&#41;</span>.<span class="me1">State</span> <span class="sy0">=</span> EntityState.<span class="me1">Modified</span><span class="sy0">;</span>
+            db.<span class="me1">SaveChanges</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+            <span class="kw1">return</span> Ok<span class="br0">&#40;</span><span class="kw2">new</span>
+            <span class="br0">&#123;</span>
+                action <span class="sy0">=</span> <span class="st0">&quot;updated&quot;</span>
+            <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="co1">// DELETE api/Link/5</span>
+        <span class="br0">&#91;</span>System.<span class="me1">Web</span>.<span class="me1">Http</span>.<span class="me1">HttpDelete</span><span class="br0">&#93;</span>
+        <span class="kw2">public</span> IHttpActionResult DeleteLink<span class="br0">&#40;</span>int id<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw2">var</span> link <span class="sy0">=</span> db.<span class="me1">Links</span>.<span class="me1">Find</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="kw1">if</span> <span class="br0">&#40;</span>link <span class="sy0">!=</span> <span class="kw2">null</span><span class="br0">&#41;</span>
+            <span class="br0">&#123;</span>
+                db.<span class="me1">Links</span>.<span class="me1">Remove</span><span class="br0">&#40;</span>link<span class="br0">&#41;</span><span class="sy0">;</span>
+                db.<span class="me1">SaveChanges</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="br0">&#125;</span>
+            <span class="kw1">return</span> Ok<span class="br0">&#40;</span><span class="kw2">new</span>
+            <span class="br0">&#123;</span>
+                action <span class="sy0">=</span> <span class="st0">&quot;deleted&quot;</span> 
+            <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="kw2">protected</span> override <span class="kw1">void</span> Dispose<span class="br0">&#40;</span>bool disposing<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw1">if</span> <span class="br0">&#40;</span>disposing<span class="br0">&#41;</span>
+            <span class="br0">&#123;</span>
+                db.<span class="me1">Dispose</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="br0">&#125;</span>
+            base.<span class="me1">Dispose</span><span class="br0">&#40;</span>disposing<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Data Controller</h3>
+
+<p>Finally, we will add a controller for the data action:</p>
+
+<p class='snippet'> Controllers/DataController.cs</p>
+
+<pre><code><pre class="js">using System<span class="sy0">;</span>
+using System.<span class="me1">Collections</span>.<span class="me1">Generic</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span>.<span class="me1">Http</span><span class="sy0">;</span>
+using DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span><span class="sy0">;</span>
+using DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>.<span class="me1">Models</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">namespace</span> DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>.<span class="me1">Controllers</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> DataController <span class="sy0">:</span> ApiController
+    <span class="br0">&#123;</span>
+        <span class="co1">// GET api/</span>
+        <span class="br0">&#91;</span>System.<span class="me1">Web</span>.<span class="me1">Http</span>.<span class="me1">HttpGet</span><span class="br0">&#93;</span>
+        <span class="kw2">public</span> GanttDto Get<span class="br0">&#40;</span><span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw1">return</span> <span class="kw2">new</span> GanttDto
+            <span class="br0">&#123;</span>
+                data <span class="sy0">=</span> <span class="kw2">new</span> TaskController<span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">Get</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span>
+                links <span class="sy0">=</span> <span class="kw2">new</span> LinkController<span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">Get</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+            <span class="br0">&#125;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Now everything is ready. Run the application and a fully-fledged Gantt should appear on the page:</p>
+
+<p><img src="media/desktop/ready_gantt_dotnet.png"></p>
+
+<p><a href="https://github.com/DHTMLX/gantt-howto-dotnet">You can find a ready demo at github</a>.</p>
+
+<a name='errorhandling'><h2>Error handling</h2></a>
+
+<p><a href="https://msdn.microsoft.com/en-us/library/gg416513(v=vs.98).aspx">Exception filters</a> can be used for capturing exceptions in CRUD handlers and returning a client response 
+that can be <a class="link-" href="desktop__server_side.html#errorhandling">recognized</a> by the client-side gantt.</p>
+
+<p>To provide error handling for the gantt, follow the steps below:</p>
+
+<p>Go to <em>App_Start</em> and add a new class called <em>GanttAPIExceptionFilterAttribute</em>:</p>
+
+<p class='snippet'> App_Start/GanttAPIExceptionFilterAttribute.cs</p>
+
+<pre><code><pre class="js">using System<span class="sy0">;</span>
+using System.<span class="me1">Net</span><span class="sy0">;</span>
+using System.<span class="me1">Net</span>.<span class="me1">Http</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span>.<span class="me1">Http</span>.<span class="me1">Filters</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">namespace</span> DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> GanttAPIExceptionFilterAttribute <span class="sy0">:</span> ExceptionFilterAttribute
+    <span class="br0">&#123;</span>
+        <span class="kw2">public</span> override <span class="kw1">void</span> OnException<span class="br0">&#40;</span>HttpActionExecutedContext context<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+&nbsp;
+            context.<span class="me1">Response</span> <span class="sy0">=</span> context.<span class="me1">Request</span>.<span class="me1">CreateResponse</span><span class="br0">&#40;</span>
+                HttpStatusCode.<span class="me1">InternalServerError</span><span class="sy0">,</span> <span class="kw2">new</span>
+                    <span class="br0">&#123;</span>
+                        action <span class="sy0">=</span> <span class="st0">&quot;error&quot;</span><span class="sy0">,</span>
+                        message <span class="sy0">=</span> context.<span class="me1">Exception</span>.<span class="me1">Message</span>
+                    <span class="br0">&#125;</span>
+            <span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Then we will add this class to our WebAPI controllers:</p>
+
+<ul>
+<li>Data controller:</li>
+</ul>
+
+<p class='snippet'> Controllers/DataController.cs</p>
+
+<pre><code><pre class="js"><span class="kw2">namespace</span> DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>.<span class="me1">Controllers</span>
+<span class="br0">&#123;</span>
+<span class="xtra ln-xtra">    <span class="br0">&#91;</span>GanttAPIExceptionFilter<span class="br0">&#93;</span></span>    <span class="kw2">public</span> <span class="kw2">class</span> DataController <span class="sy0">:</span> ApiController</pre></code></pre>
+
+<ul>
+<li>Link controller:</li>
+</ul>
+
+<p class='snippet'> Controllers/LinkController.cs</p>
+
+<pre><code><pre class="js"><span class="kw2">namespace</span> DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>.<span class="me1">Controllers</span>
+<span class="br0">&#123;</span>
+<span class="xtra ln-xtra">    <span class="br0">&#91;</span>GanttAPIExceptionFilter<span class="br0">&#93;</span></span>    <span class="kw2">public</span> <span class="kw2">class</span> LinkController <span class="sy0">:</span> ApiController</pre></code></pre>
+
+<ul>
+<li>and Task controller:</li>
+</ul>
+
+<p class='snippet'> Controllers/TaskController.cs</p>
+
+<pre><code><pre class="js"><span class="kw2">namespace</span> DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>.<span class="me1">Controllers</span>
+<span class="br0">&#123;</span>
+<span class="xtra ln-xtra">    <span class="br0">&#91;</span>GanttAPIExceptionFilter<span class="br0">&#93;</span></span>    <span class="kw2">public</span> <span class="kw2">class</span> TaskController <span class="sy0">:</span> ApiController</pre></code></pre>
+
+<p>Now if any Web API controller fires an exception while processing the request, 
+the client side will receive an error status and an error message that can be either somehow processed or shown to the user.</p>
+
+<p>Note that returning an exception message to the client might not be the best idea for a production environment.</p>
+
+<a name='storingtheorderoftasks'><h2>Storing the order of tasks</h2></a>
+
+<p>The client-side gantt allows <a class="link-" href="desktop__reordering_tasks.html">reordering tasks</a> using drag and drop. So if you use this feature, you'll have to store this order in the database.
+You can <a class="link-" href="desktop__server_side.html#storingtheorderoftasks">check the common description here</a>.</p>
+
+<p>Let's now add this feature to our app.</p>
+
+<h3>Enable tasks reordering on the client</h3>
+
+<p>Firstly, we need to allow users to change the tasks order in the UI.</p>
+
+<p>Open the <em>Index</em> view and update the configuration of gantt:</p>
+
+<p class='snippet'> Views/Home/Index.cshtml</p>
+
+<pre><code><pre class="js"><span class="xtra ln-xtra">gantt.<span class="me1">config</span>.<span class="me1">order_branch</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></span><span class="xtra ln-xtra">gantt.<span class="me1">config</span>.<span class="me1">order_branch_free</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></span>&nbsp;
+<span class="co1">// specifying the date format</span>
+gantt.<span class="me1">config</span>.<span class="me1">date_format</span> <span class="sy0">=</span> <span class="st0">&quot;%Y-%m-%d %H:%i&quot;</span><span class="sy0">;</span>
+<span class="co1">// initializing gantt</span>
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Adding tasks order to the model</h3>
+
+<p>Now, let's reflect these changes on the backend.</p>
+
+<p>We are going to store the order in the property named SortOrder, so let's update the <em>Task</em> class accordingly:</p>
+
+<p class='snippet'> Models/Task.cs</p>
+
+<pre><code><pre class="js">using System<span class="sy0">;</span>
+using System.<span class="me1">ComponentModel</span>.<span class="me1">DataAnnotations</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">namespace</span> DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>.<span class="me1">Models</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> Task
+    <span class="br0">&#123;</span>
+        <span class="kw2">public</span> int Id <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="br0">&#91;</span>MaxLength<span class="br0">&#40;</span><span class="nu0">255</span><span class="br0">&#41;</span><span class="br0">&#93;</span>
+        <span class="kw2">public</span> string Text <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> DateTime StartDate <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> int Duration <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> decimal Progress <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> int<span class="sy0">?</span> ParentId <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> string Type <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+<span class="xtra ln-xtra">        <span class="kw2">public</span> int SortOrder <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span></span>    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Now we need to update TaskController, namely:</p>
+
+<ul>
+<li>the client side should receive tasks ordered by the SortOrder value:</li>
+</ul>
+
+<p class='snippet'> Controllers/TaskController.cs</p>
+
+<pre><code><pre class="js"><span class="kw2">namespace</span> DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>.<span class="me1">Controllers</span>
+<span class="br0">&#123;</span>
+    <span class="br0">&#91;</span>GanttAPIExceptionFilter<span class="br0">&#93;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> TaskController <span class="sy0">:</span> ApiController
+    <span class="br0">&#123;</span>
+        <span class="kw2">private</span> GanttContext db <span class="sy0">=</span> <span class="kw2">new</span> GanttContext<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="co1">// GET api/Task</span>
+        <span class="kw2">public</span> IEnumerable<span class="sy0">&lt;</span>TaskDto<span class="sy0">&gt;</span> Get<span class="br0">&#40;</span><span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw1">return</span> db.<span class="me1">Tasks</span>
+<span class="xtra ln-xtra">                .<span class="me1">OrderBy</span><span class="br0">&#40;</span>t <span class="sy0">=&gt;</span> t.<span class="me1">SortOrder</span><span class="br0">&#41;</span> </span>                .<span class="me1">ToList</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+                .<span class="me1">Select</span><span class="br0">&#40;</span>t <span class="sy0">=&gt;</span> <span class="br0">&#40;</span>TaskDto<span class="br0">&#41;</span>t<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>new tasks should receive the default value SortOrder: </li>
+</ul>
+
+<p class='snippet'> Controllers/TaskController.cs</p>
+
+<pre><code><pre class="js"><span class="kw2">namespace</span> DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>.<span class="me1">Controllers</span>
+<span class="br0">&#123;</span>
+    <span class="br0">&#91;</span>System.<span class="me1">Web</span>.<span class="me1">Http</span>.<span class="me1">HttpPost</span><span class="br0">&#93;</span>
+    <span class="kw2">public</span> IHttpActionResult CreateTask<span class="br0">&#40;</span>TaskDto taskDto<span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span class="kw2">var</span> newTask <span class="sy0">=</span> <span class="br0">&#40;</span>Task<span class="br0">&#41;</span>taskDto<span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra">        newTask.<span class="me1">SortOrder</span> <span class="sy0">=</span> db.<span class="me1">Tasks</span>.<span class="me1">Max</span><span class="br0">&#40;</span>t <span class="sy0">=&gt;</span> t.<span class="me1">SortOrder</span><span class="br0">&#41;</span> <span class="sy0">+</span> <span class="nu0">1</span><span class="sy0">;</span></span>&nbsp;
+        db.<span class="me1">Tasks</span>.<span class="me1">Add</span><span class="br0">&#40;</span>newTask<span class="br0">&#41;</span><span class="sy0">;</span>
+        db.<span class="me1">SaveChanges</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">return</span> Ok<span class="br0">&#40;</span><span class="kw2">new</span>
+        <span class="br0">&#123;</span>
+            tid <span class="sy0">=</span> newTask.<span class="me1">Id</span><span class="sy0">,</span>
+            action <span class="sy0">=</span> <span class="st0">&quot;inserted&quot;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>SortOrder should be updated when the task order is modified on the client. </li>
+</ul>
+
+<p>When a user changes the order of tasks, gantt will call a PUT action providing an info about a new task position in the 
+<a class="link-" href="desktop__server_side.html#storingtheorderoftasks">'target'</a> property of the request, together with the rest of task properties.</p>
+
+<p>Thus, we should add an extra property to the task DTO class:</p>
+
+<p class='snippet'> Models/TaskDto.cs</p>
+
+<pre><code><pre class="js"><span class="kw2">namespace</span> DHX.<span class="me1">Gantt</span>.<span class="me1">Web</span>.<span class="me1">Models</span>
+<span class="br0">&#123;</span>
+  <span class="kw2">public</span> <span class="kw2">class</span> TaskDto
+  <span class="br0">&#123;</span>
+    <span class="kw2">public</span> int id <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+    <span class="kw2">public</span> string text <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+    <span class="kw2">public</span> string start_date <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+    <span class="kw2">public</span> int duration <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+    <span class="kw2">public</span> decimal progress <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+    <span class="kw2">public</span> int<span class="sy0">?</span> parent <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+    <span class="kw2">public</span> string type <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+    <span class="kw2">public</span> bool <span class="kw3">open</span><span class="br0">&#123;</span> get <span class="br0">&#123;</span> <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span> <span class="br0">&#125;</span> set <span class="br0">&#123;</span> <span class="br0">&#125;</span> <span class="br0">&#125;</span>
+<span class="xtra ln-xtra">    <span class="kw2">public</span> string target <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span></span>&nbsp;
+    ...
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>And now we will implement reordering in our PUT (EditTask) action:</p>
+
+<p class='snippet'> Controllers/TaskController.cs</p>
+
+<pre><code><pre class="js">    <span class="co1">// PUT api/Task/5</span>
+    <span class="br0">&#91;</span>System.<span class="me1">Web</span>.<span class="me1">Http</span>.<span class="me1">HttpPut</span><span class="br0">&#93;</span>
+    <span class="kw2">public</span> IHttpActionResult EditTask<span class="br0">&#40;</span>int id<span class="sy0">,</span> TaskDto taskDto<span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+      <span class="kw2">var</span> updatedTask <span class="sy0">=</span> <span class="br0">&#40;</span>Task<span class="br0">&#41;</span>taskDto<span class="sy0">;</span>
+      updatedTask.<span class="me1">Id</span> <span class="sy0">=</span> id<span class="sy0">;</span>
+&nbsp;
+      <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span>string.<span class="me1">IsNullOrEmpty</span><span class="br0">&#40;</span>taskDto.<span class="me1">target</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+      <span class="br0">&#123;</span>
+        <span class="co1">// reordering occurred</span>
+<span class="xtra ln-xtra">        <span class="kw1">this</span>._UpdateOrders<span class="br0">&#40;</span>updatedTask<span class="sy0">,</span> taskDto.<span class="me1">target</span><span class="br0">&#41;</span><span class="sy0">;</span></span>      <span class="br0">&#125;</span>
+&nbsp;
+      db.<span class="me1">Entry</span><span class="br0">&#40;</span>updatedTask<span class="br0">&#41;</span>.<span class="me1">State</span> <span class="sy0">=</span> EntityState.<span class="me1">Modified</span><span class="sy0">;</span>
+      db.<span class="me1">SaveChanges</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+      <span class="kw1">return</span> Ok<span class="br0">&#40;</span><span class="kw2">new</span>
+      <span class="br0">&#123;</span>
+        action <span class="sy0">=</span> <span class="st0">&quot;updated&quot;</span>
+      <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+<span class="xtra ln-xtra">    <span class="kw2">private</span> <span class="kw1">void</span> _UpdateOrders<span class="br0">&#40;</span>Task updatedTask<span class="sy0">,</span> string orderTarget<span class="br0">&#41;</span></span>    <span class="br0">&#123;</span>
+      int adjacentTaskId<span class="sy0">;</span>
+      <span class="kw2">var</span> nextSibling <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span>
+&nbsp;
+      <span class="kw2">var</span> targetId <span class="sy0">=</span> orderTarget<span class="sy0">;</span>
+&nbsp;
+      <span class="co1">// adjacent task id is sent either as '{id}' or as 'next:{id}' depending </span>
+      <span class="co1">// on whether it's the next or the previous sibling</span>
+      <span class="kw1">if</span> <span class="br0">&#40;</span>targetId.<span class="me1">StartsWith</span><span class="br0">&#40;</span><span class="st0">&quot;next:&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+      <span class="br0">&#123;</span>
+        targetId <span class="sy0">=</span> targetId.<span class="me1">Replace</span><span class="br0">&#40;</span><span class="st0">&quot;next:&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        nextSibling <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+      <span class="br0">&#125;</span>
+&nbsp;
+      <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span>int.<span class="me1">TryParse</span><span class="br0">&#40;</span>targetId<span class="sy0">,</span> out adjacentTaskId<span class="br0">&#41;</span><span class="br0">&#41;</span>
+      <span class="br0">&#123;</span>
+        <span class="kw1">return</span><span class="sy0">;</span>
+      <span class="br0">&#125;</span>
+&nbsp;
+      <span class="kw2">var</span> adjacentTask <span class="sy0">=</span> db.<span class="me1">Tasks</span>.<span class="me1">Find</span><span class="br0">&#40;</span>adjacentTaskId<span class="br0">&#41;</span><span class="sy0">;</span>
+      <span class="kw2">var</span> startOrder <span class="sy0">=</span> adjacentTask.<span class="me1">SortOrder</span><span class="sy0">;</span>
+&nbsp;
+      <span class="kw1">if</span> <span class="br0">&#40;</span>nextSibling<span class="br0">&#41;</span>
+        startOrder<span class="sy0">++;</span>
+&nbsp;
+      updatedTask.<span class="me1">SortOrder</span> <span class="sy0">=</span> startOrder<span class="sy0">;</span>
+&nbsp;
+      <span class="kw2">var</span> updateOrders <span class="sy0">=</span> db.<span class="me1">Tasks</span>
+       .<span class="me1">Where</span><span class="br0">&#40;</span>t <span class="sy0">=&gt;</span> t.<span class="me1">Id</span> <span class="sy0">!=</span> updatedTask.<span class="me1">Id</span><span class="br0">&#41;</span>
+       .<span class="me1">Where</span><span class="br0">&#40;</span>t <span class="sy0">=&gt;</span> t.<span class="me1">SortOrder</span> <span class="sy0">&gt;=</span> startOrder<span class="br0">&#41;</span>
+       .<span class="me1">OrderBy</span><span class="br0">&#40;</span>t <span class="sy0">=&gt;</span> t.<span class="me1">SortOrder</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+       <span class="kw2">var</span> taskList <span class="sy0">=</span> updateOrders.<span class="me1">ToList</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+       taskList.<span class="me1">ForEach</span><span class="br0">&#40;</span>t <span class="sy0">=&gt;</span> t.<span class="me1">SortOrder</span><span class="sy0">++</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span></pre></code></pre>
+
+<a name='knownissues'><h2>Known issues</h2></a>
+
+<p>HTTP PUT and DELETE requests return 405 or 401 error when an app is running on IIS.
+The issue may be caused by the <strong>WebDAV</strong> module which can conflict with RESTful handlers.</p>
+
+<p>As a common solution, the module can be disabled from the <strong>web.config</strong> file. More details are given <a href="https://forums.iis.net/t/1166025.aspx">here</a>.</p>
+
+<a name='applicationsecurity'><h2>Application security</h2></a>
+
+<p>Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details <a class="link-hidden" href="desktop__app_security.html">in the corresponding article</a>.</p>
+
+<a name='troubleshooting'><h2>Trouble shooting</h2></a>
+
+<p>In case you've completed the above steps to implement Gantt integration with ASP.NET MVC, but Gantt doesn't render tasks and links on a page, have a look at the <a class="link-" href="desktop__troubleshooting.html">Troubleshooting Backend Integration Issues</a> article. It describes 
+the ways of identifying the roots of the problems.</p>
+
+<a name='whatsnext'><h2>What's next</h2></a>
+
+<p>Now you have a fully functioning gantt. You can view the full code on <a href="https://github.com/DHTMLX/gantt-howto-dotnet">GitHub</a>, clone or download it and use it for your projects.</p>
+
+<p>You can also check <a class="link-" href="desktop__guides.html">guides on the numerous features of gantt</a> or tutorials on <a class="link-" href="desktop__howtostart_guides.html">integrating Gantt with other backend frameworks</a>.</p>
+
+<!-- Content Area End -->
+			<a href='desktop__howtostart_dotnet.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

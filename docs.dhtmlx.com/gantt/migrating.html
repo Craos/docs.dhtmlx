@@ -1,0 +1,689 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Migration from Older Versions  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__gantt.html">Gantt API</a></li><li class=""><a href="whatsnew.html">What's New</a></li><li class=" current"><a href="migrating.html">Migration from Older Versions</a></li><ul><li class="inner"><a href="migrating.html#6370">6.3 -> 7.0</a></li><li class="inner"><a href="migrating.html#6263">6.2 -> 6.3</a></li><li class="inner"><a href="migrating.html#6162">6.1 -> 6.2</a></li><li class="inner"><a href="migrating.html#6061">6.0 -> 6.1</a></li><li class="inner"><a href="migrating.html#5260">5.2 -> 6.0</a></li><li class="inner"><a href="migrating.html#3x40">3.x -> 4.0</a></li><li class="inner"><a href="migrating.html#2030">2.0 -> 3.0</a></li><li class="inner"><a href="migrating.html#1020">1.0 -> 2.0</a></li><li><a href="desktop__migrating_renamedcss.html">CSS classes renamed in v.3.0</a></li></ul><li class=""><a href="desktop__guides.html">Guides</a></li><li class=""><a href="desktop__video_guides.html">Video Guides</a></li><li class=""><a href="desktop__copyright.html">Third Party Licenses</a></li><li class=""><a href="faq.html">FAQ</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Migration from Older Versions</h1>
+
+<p><style>
+    table.my_table {
+        width: 100%;
+    }
+    table.my_table td {
+        text-align: left;
+        vertical-align: middle;
+        width: 50%;
+    }
+    table.my_table td.type_info {
+        text-align: center;
+        background-color: #E3F6FF;
+    }
+    table.my_table td.version_info {
+        text-align: center;
+        background-color: #FFDAFF;
+    }
+</style></p>
+
+<a name='6370'><h2>6.3 -> 7.0</h2></a>
+
+<h3>Extensions and locale files</h3>
+
+<p>The newest update v7.0 introduces two major changes in the structure of the Gantt package:</p>
+
+<p>1) All files of extensions are now bundled with the <em>dhtmlxgantt.js</em> file. 
+Therefore, in order to activate any of extra extensions provided by dhtmlxGantt you need to use the API call.</p>
+
+<ul>
+<li>If you have already included any extension files from the built-in package on your page, for example:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>script src<span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlxgantt.js&quot;</span><span class="sy0">&gt;&lt;/</span>script<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>script src<span class="sy0">=</span><span class="st0">&quot;../codebase/ext/dhtmlxgantt_auto_scheduling.js&quot;</span><span class="sy0">&gt;&lt;/</span>script<span class="sy0">&gt;</span></pre></code></pre>
+
+<p>or</p>
+
+<pre><code><pre class="js"><span class="kw2">import</span> <span class="st0">&quot;dhtmlx-gantt&quot;</span><span class="sy0">;</span>
+<span class="kw2">import</span> <span class="st0">&quot;dhtmlx-gantt/ext/dhtmlxgantt_auto_scheduling&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Then you need to remove the extension file and enable the extension using the <strong>gantt.plugins</strong> method:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">plugins</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+   auto_scheduling<span class="sy0">:</span> <span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>See the full list of extensions <a class="link-" href="desktop__extensions_list.html">here</a>.</p>
+
+<ul>
+<li><p>If you use a modified version of extension files or have developed custom extensions, include them as files on a page and they will work.</p></li>
+<li><p><strong>Note</strong>, that the <strong>dhtmlxgantt_smart_rendering.js</strong> and <strong>dhtmlxgantt_csp.js</strong> extensions are completely removed and do not need to be enabled manually.
+<br></p></li>
+</ul>
+
+<p>2) All locales are now embedded into the <em>dhtmlxgantt.js</em> file. To activate them, use the API call.</p>
+
+<ul>
+<li>If you have included any locale on a page, you need to remove it from the page and enable the required locale using <strong>gantt.i18n.setLocale</strong>:</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">i18n</span>.<span class="me1">setLocale</span><span class="br0">&#40;</span><span class="st0">&quot;de&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>If you use a custom locale file, it can be loaded as before.</li>
+</ul>
+
+<h3>Default settings of the working time are changed</h3>
+
+<p>In all versions before 7.0, the default working hours were from 8:00 till 17:00 that is 9 hours per day.<br>
+Starting from v7.0, the working hours are 8:00-12:00, 13:00-17:00 that is 8 hours per day.</p>
+
+<p>If you want to revert to the previous settings, you'll need to set it manually:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">setWorkTime</span><span class="br0">&#40;</span><span class="br0">&#123;</span>hours<span class="sy0">:</span> <span class="br0">&#91;</span><span class="nu0">8</span><span class="sy0">,</span> <span class="nu0">17</span><span class="br0">&#93;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Content Security Policy</h3>
+
+<p>The <strong>ext/dhtmlxgantt_csp.js</strong> extension is no longer needed as it is removed and replaced with the <a class="link-" href="api__gantt_csp_config.html">csp config</a> which is enabled by default; the extension should be removed from the gantt.</p>
+
+<p>Since the <strong>csp</strong> property is added to the dhtmlxGantt library, valid HTML 5 attributes, that can be used in any browser that supports HTML5 doctypes, will be assigned to all elements of Gantt. <br></p>
+
+<p>Therefore, we recommend that you update already existing attributes with new ones:</p>
+
+<ul>
+<li>"task_id" -> <a class="link-" href="api__gantt_task_attribute_config.html">"data-task-id"</a></li>
+<li>"link_id" -> <a class="link-" href="api__gantt_link_attribute_config.html">"data-link-id"</a></li>
+<li>"resource_id" -> <a class="link-" href="api__gantt_resource_attribute_config.html">"data-resource-id"</a></li>
+<li>"column_index" -> <a class="link-" href="api__gantt_grid_resizer_column_attribute_config.html">"data-column-index"</a></li>
+</ul>
+
+<p>However, the old attributes are included in the markup, so if you don't change the attributes' names, your code will continue working.</p>
+
+<h3>Styling grid cells</h3>
+
+<p>Earlier, alignment of grid cells was accomplished via <code>display:inline-block</code>. Starting from v7.0, <code>display:flex</code> is used instead and cells are positioned inside a flex container.</p>
+
+<p>This change doesn't affect the UI visible to the user (it remains 100% identical) and shouldn't cause any migration issues.
+However, some regressions with styling of the grid cells may be related to this update.</p>
+
+<h3>"xml_date" config and template, and "xml_format" templates are removed</h3>
+
+<p>Deprecated in v6.2 config and templates are removed in v7.0 and replaced with new ones:</p>
+
+<ul>
+<li>gantt.config.xml_date →  <a class="link-" href="api__gantt_date_format_config.html">gantt.config.date_format</a></li>
+<li>gantt.templates.xml_date → <a class="link-" href="api__gantt_parse_date_template.html">gantt.templates.parse_date</a></li>
+<li>gantt.templates.xml_format → <a class="link-" href="api__gantt_format_date_template.html">gantt.templates.format_date</a></li>
+</ul>
+
+<p>If you have already defined the old names in your code, they will continue work. In other case, use a newer version of the API.</p>
+
+<a name='6263'><h2>6.2 -> 6.3</h2></a>
+
+<h3>Multi-task selection</h3>
+
+<p>Since v6.3 the <strong>ext/dhtmlxgantt_multiselect.js</strong> extension automatically allows to drag horizontally several tasks that are selected  at once.
+If you want to disable this functionality make use of the <a class="link-" href="api__gantt_drag_multiple_config.html">drag_multiple</a> property and set it to <em>false</em> (by default it is enabled).</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">drag_multiple</span> <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Google Roboto font is no longer included into Material skin</h3>
+
+<p>Until v6.3, Google <a href="https://fonts.google.com/specimen/Roboto">Roboto</a> font was included into the <a class="link-" href="desktop__skins.html#materialskin">'Material' skin</a> of dhtmlxGantt via the <code>import</code> statement.
+Starting from v6.3, the import was removed, therefore you need to add <code>Roboto</code> font manually:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;https://fonts.googleapis.com/css?family=Open+Sans|Roboto:regular,medium,thin,bold&quot;</span>&gt;</span></pre></code></pre>
+
+<h3>Usage with Require.JS</h3>
+
+<p>Earlier you could use any arbitrary names for different files of dhtmlxGantt library included into a RequireJS-based app:</p>
+
+<pre><code><pre class="js">requirejs.<span class="me1">config</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+  paths<span class="sy0">:</span> <span class="br0">&#123;</span>
+    <span class="st0">&quot;gantt&quot;</span><span class="sy0">:</span> <span class="st0">&quot;../../codebase/dhtmlxgantt&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;tooltip&quot;</span><span class="sy0">:</span> <span class="st0">&quot;../../codebase/ext/dhtmlxgantt_tooltip&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;marker&quot;</span><span class="sy0">:</span> <span class="st0">&quot;../../codebase/ext/dhtmlxgantt_marker&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;locale_de&quot;</span><span class="sy0">:</span> <span class="st0">&quot;../../codebase/locale/locale_de&quot;</span><span class="sy0">,</span>
+  <span class="br0">&#125;</span><span class="sy0">,</span>
+  shim<span class="sy0">:</span> <span class="br0">&#123;</span>
+    <span class="st0">&quot;tooltip&quot;</span><span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;gantt&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="st0">&quot;marker&quot;</span><span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;gantt&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="st0">&quot;locale_de&quot;</span><span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;gantt&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+requirejs<span class="br0">&#40;</span><span class="br0">&#91;</span><span class="st0">&quot;gantt&quot;</span><span class="sy0">,</span> <span class="st0">&quot;tooltip&quot;</span><span class="sy0">,</span> <span class="st0">&quot;marker&quot;</span><span class="sy0">,</span> <span class="st0">&quot;locale_de&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+<span class="kw2">function</span> <span class="br0">&#40;</span>dhx<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="kw2">var</span> gantt <span class="sy0">=</span> dhx.<span class="me1">gantt</span><span class="sy0">;</span>
+ ...
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Starting from version 6.3 names of modules must be fixed according to the folder structure of dhtmlxGantt library:</p>
+
+<pre><code><pre class="js">requirejs.<span class="me1">config</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+  paths<span class="sy0">:</span> <span class="br0">&#123;</span>
+    <span class="st0">&quot;dhtmlxgantt&quot;</span><span class="sy0">:</span> <span class="st0">&quot;../../codebase/dhtmlxgantt&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;ext/dhtmlxgantt_tooltip&quot;</span><span class="sy0">:</span> <span class="st0">&quot;../../codebase/ext/dhtmlxgantt_tooltip&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;ext/dhtmlxgantt_critical_path&quot;</span><span class="sy0">:</span> <span class="st0">&quot;../../codebase/ext/dhtmlxgantt_critical_path&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;locale/locale_de&quot;</span><span class="sy0">:</span> <span class="st0">&quot;../../codebase/locale/locale_de&quot;</span><span class="sy0">,</span>
+  <span class="br0">&#125;</span><span class="sy0">,</span>
+  shim<span class="sy0">:</span> <span class="br0">&#123;</span>
+    <span class="st0">&quot;ext/dhtmlxgantt_tooltip&quot;</span><span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;dhtmlxgantt&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="st0">&quot;ext/dhtmlxgantt_critical_path&quot;</span><span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;dhtmlxgantt&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="st0">&quot;locale/locale_de&quot;</span><span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;dhtmlxgantt&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+requirejs<span class="br0">&#40;</span><span class="br0">&#91;</span><span class="st0">&quot;dhtmlxgantt&quot;</span><span class="sy0">,</span> <span class="st0">&quot;ext/dhtmlxgantt_tooltip&quot;</span><span class="sy0">,</span> <span class="st0">&quot;ext/dhtmlxgantt_critical_path&quot;</span><span class="sy0">,</span> 
+            <span class="st0">&quot;locale/locale_de&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span> 
+<span class="kw2">function</span> <span class="br0">&#40;</span>dhx<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="kw2">var</span> gantt <span class="sy0">=</span> dhx.<span class="me1">gantt</span><span class="sy0">;</span>
+...
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Check that the module name for any file inside the package is specified as <em>a relative path inside the 'codebase' folder of the package</em> plus <em>the filename</em>, for instance:</p>
+
+<p><strong>core library:</strong></p>
+
+<ul>
+<li>"dhtmlxgantt": "./vendor/dhtmlxgantt/dhtmlxgantt"</li>
+</ul>
+
+<p><strong>extensions:</strong></p>
+
+<ul>
+<li>"ext/dhtmlxgantt_critical_path": "./vendor/dhtmlxgantt/ext/dhtmlxgantt_critical_path"</li>
+<li>"ext/dhtmlxgantt_tooltip": "./vendor/dhtmlxgantt/ext/dhtmlxgantt_tooltip"</li>
+</ul>
+
+<p><strong>locales:</strong></p>
+
+<ul>
+<li>"locale/locale_de": "./vendor/dhtmlxgantt/locale/locale_de"</li>
+<li>"locale/locale_be": "./vendor/dhtmlxgantt/locale/locale_be"</li>
+</ul>
+
+<h3 id="inline_editors">Inline Editors</h3>
+
+<p>Before version 6.3, minimal and maximal values of the <strong>date</strong> <a class="link-" href="desktop__inline_editing.html#typesofeditors">inline editor</a> were limited by the dates visible  on the time scale, unless custom min/max values were provided.</p>
+
+<p>Starting from v6.3 there are no default limits for minimal and maximal values of date editors.</p>
+
+<p>In order to restore the previous behavior you can specify dynamic <strong>min</strong>/<strong>max</strong> values:</p>
+
+<pre><code><pre class="js"><span class="kw2">const</span> dateEditor <span class="sy0">=</span> <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;date&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> 
+  min<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>taskId<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> gantt.<span class="me1">getState</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">min_date</span>
+  <span class="br0">&#125;</span><span class="sy0">,</span>
+  max<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span> taskId <span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> gantt.<span class="me1">getState</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">max_date</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='6162'><h2>6.1 -> 6.2</h2></a>
+
+<p>The update to v6.2 is generally compatible with v6.1 and should not require any changes in code.
+However, some behavior of the component has been changed (old behavior can be restored via config), and some APIs has been deprecated.</p>
+
+<h3>Smart rendering and static background</h3>
+
+<p>Smart rendering functionality has been updated and is now embedded into the component. It should now work both in the main timeline area and in resource panels. From now on, all timelines should render only rows and cells that are currently visible.</p>
+
+<p>Smart rendering can be disabled via the <strong>smart_rendering</strong> config, which will return gantt to the default behavior of v6.1:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">smart_rendering</span> <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The <strong>dhtmlxgantt_smart_rendering</strong> extension is no longer needed and should be removed from gantt. The extension itself is still available in the package in case of compatibility issues.
+If the extension is added to the page, gantt will revert to the v6.1 smart rendering mode.</p>
+
+<p>The behavior of the <strong><a class="link-pro" href="api__gantt_static_background_config.html">static_background</a></strong> config has been updated as well. Starting from v6.2 it will render PNG background AND any cells that have CSS class attached to them via template function.</p>
+
+<p>If you need to revert to v6.1 behavior, use the <strong>static_background_cells</strong> config:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">static_background_cells</span> <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Time scale settings</h3>
+
+<p>Configuration of time scale has been simplified. Instead of specifying a bunch of scale settings for each scale separately, now you should use just one configuration option <a class="link-" href="api__gantt_scales_config.html">scales</a> that will contain 
+a number of scale objects with settings for them.</p>
+
+<p>All in all, the following time scale APIs are deprecated:</p>
+
+<ul>
+<li>gantt.config.scale_unit</li>
+<li>gantt.config.step</li>
+<li>gantt.config.date_scale</li>
+<li>gantt.templates.date_scale</li>
+<li>gantt.config.subscales</li>
+</ul>
+
+<p>For example, the code below:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">scale_unit</span> <span class="sy0">=</span> <span class="st0">&quot;day&quot;</span><span class="sy0">;</span> 
+gantt.<span class="me1">config</span>.<span class="me1">step</span> <span class="sy0">=</span> <span class="nu0">1</span><span class="sy0">;</span> 
+gantt.<span class="me1">config</span>.<span class="me1">date_scale</span> <span class="sy0">=</span> <span class="st0">&quot;%d %M&quot;</span><span class="sy0">;</span> 
+gantt.<span class="me1">templates</span>.<span class="me1">date_scale</span> <span class="sy0">=</span> <span class="kw2">null</span><span class="sy0">;</span> 
+gantt.<span class="me1">config</span>.<span class="me1">subscales</span> <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Now looks like this:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">scales</span> <span class="sy0">=</span> <span class="br0">&#91;</span> <span class="br0">&#123;</span> unit<span class="sy0">:</span><span class="st0">&quot;day&quot;</span><span class="sy0">,</span> step<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> format<span class="sy0">:</span> <span class="st0">&quot;%d %M&quot;</span><span class="br0">&#125;</span> <span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<h4>task_cell_class template renamed</h4>
+
+<p>The template used to define the CSS class applied to the cells of the timeline area is renamed as follows:</p>
+
+<ul>
+<li>gantt.templates.task_cell_class → <a class="link-" href="api__gantt_timeline_cell_class_template.html">gantt.templates.timeline_cell_class</a></li>
+</ul>
+
+<p>An example of using the renamed template is:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>style<span class="sy0">&gt;</span>
+.<span class="me1">weekend</span><span class="br0">&#123;</span> background<span class="sy0">:</span> #f4f7f4 <span class="sy0">!</span>important<span class="sy0">;</span><span class="br0">&#125;</span>
+<span class="sy0">&lt;/</span>style<span class="sy0">&gt;</span>
+&nbsp;
+gantt.<span class="me1">templates</span>.<span class="me1">timeline_cell_class</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>task<span class="sy0">,</span>date<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>date.<span class="me1">getDay</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">==</span><span class="nu0">0</span><span class="sy0">||</span>date.<span class="me1">getDay</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">==</span><span class="nu0">6</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">return</span> <span class="st0">&quot;weekend&quot;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>"xml_date" config and template, and "xml_format" templates are renamed</h3>
+
+<p>Below there is the scheme of replacing previously used API:</p>
+
+<ul>
+<li>gantt.config.xml_date →  <a class="link-" href="api__gantt_date_format_config.html">gantt.config.date_format</a></li>
+<li>gantt.templates.xml_date → <a class="link-" href="api__gantt_parse_date_template.html">gantt.templates.parse_date</a></li>
+<li>gantt.templates.xml_format → <a class="link-" href="api__gantt_format_date_template.html">gantt.templates.format_date</a></li>
+</ul>
+
+<p>Since v6.2 the default values of the <strong>xml_date</strong> config, and <strong>xml_date</strong> and <strong>xml_format</strong> templates are <em>undefined</em>. Thus if you haven't assigned any values to them, they won't work.</p>
+
+<p>However, Gantt will continue to use the old names of the config and templates, so if you've redefined those APIs in your code, they will work as before. For example:</p>
+
+<pre><code><pre class="js"><span class="co1">// will work correctly</span>
+gantt.<span class="me1">templates</span>.<span class="me1">xml_date</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>datestring<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span>datestring<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Unused API removed</h3>
+
+<p>The <strong>gantt.config.api_date</strong> config and <strong>gantt.templates.api_date</strong> template are removed from API as they weren't used inside gantt code. If you've used them in your code, you need to declare them once again.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">api_date</span> <span class="sy0">=</span> <span class="st0">&quot;%d-%m-%Y %H:%i&quot;</span><span class="sy0">;</span>
+gantt.<span class="me1">templates</span>.<span class="me1">api_date</span> <span class="sy0">=</span> gantt.<span class="me1">date</span>.<span class="me1">date_to_str</span><span class="br0">&#40;</span>gantt.<span class="me1">config</span>.<span class="me1">api_date</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='6061'><h2>6.0 -> 6.1</h2></a>
+
+<h3>Time constraints and auto scheduling</h3>
+
+<p>The <strong>dhtmlxgantt_auto_scheduling.js</strong> extension is upgraded with the <a class="link-pro" href="desktop__auto_scheduling.html#tasksconstraints">tasks constraints</a> functionality. Since this feature modifies the default behavior of auto scheduling, 
+Gantt supports the compatibility mode that allows you to restore the previous behavior and not to take into account tasks constraints during auto scheduling.</p>
+
+<p>To enter the compatibility mode, make use of the following configuration option:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">auto_scheduling_compatibility</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Tooltips displaying area</h3>
+
+<p>Before version 6.1 <a class="link-" href="desktop__tooltips.html">tooltips</a> have been displayed only inside the timeline area. After v6.1 release tooltips displaying isn't limited, and a tooltip follows the movement of the mouse pointer.</p>
+
+<p>If necessary, you can restore the previous behavior by using the code below before initialization of Gantt:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onGanttReady&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> tooltips <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">tooltips</span><span class="sy0">;</span>
+    tooltips.<span class="me1">tooltip</span>.<span class="me1">setViewport</span><span class="br0">&#40;</span>gantt.$task_data<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">parse</span><span class="br0">&#40;</span>demo_tasks<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='5260'><h2>5.2 -> 6.0</h2></a>
+
+<p>In the version 6.0 the <strong>getSlack()</strong> method is deprecated. Two methods are added instead:</p>
+
+<ul>
+<li><a class="link-pro" href="api__gantt_getfreeslack.html">getFreeSlack</a> - to return the free slack of a task</li>
+<li><a class="link-pro" href="api__gantt_gettotalslack.html">getTotalSlack</a> - to return the total slack of a task</li>
+</ul>
+
+<p>Methods marked as deprecated in v<a href="migrating.html#3x40">4.0</a> stopped working in v6.0. The <strong>dhtmlx</strong> object definition was removed from <em>dhtmlxgantt.js</em>.</p>
+
+<p>If you use any of the obsolete methods, you'll need to replace them with supported implementations according to the table below. No changes in the arguments or behavior of the methods were made.</p>
+
+<table class="my_table">
+
+<tr><td class="version_info">Obsolete methods</td><td class="version_info">Working methods</td></tr>
+
+<tr><td>dhtmlx.alert</td><td>gantt.alert</td></tr>
+<tr><td>dhtmlx.confirm</td><td>gantt.confirm</td></tr>
+<tr><td>dhtmlx.modalbox</td><td>gantt.modalbox</td></tr>
+<tr><td>dhtmlx.uid</td><td>gantt.uid</td></tr>
+<tr><td>dhtmlx.copy</td><td>gantt.copy</td></tr>
+<tr><td>dhtmlx.mixin</td><td>gantt.mixin</td></tr>
+<tr><td>dhtmlx.defined</td><td>gantt.defined</td></tr>
+<tr><td>dhtmlx.bind</td><td>gantt.bind</td></tr>
+<tr><td>dhtmlx.assert</td><td>gantt.assert</td></tr>
+<tr><td>window.dataProcessor</td><td>gantt.dataProcessor</td></tr>
+</table>
+
+<a name='3x40'><h2>3.x -> 4.0</h2></a>
+
+<p>Version 4.0 introduces some changes in public API, namely:</p>
+
+<ul>
+<li>legacy modules as well as the modules that intersect with dhtmlxSuite modules are no longer defined by the dhtmlxGantt library</li>
+<li>commonly used modules, such as dhtmlxMessage, dataProcessor, Ajax are moved to the <strong>window.gantt</strong> namespace and became a part of dhtmlxGantt public API</li>
+</ul>
+
+<p>A fallback to the old API is included in v4.x, so the code written for v3.3 and earlier will continue working. However in some cases changes are required.
+Generally, all global declarations, except for <strong>window.gantt</strong> and <strong>window.Gantt</strong> (enterprise version only) are deprecated and will be removed in version 5.0.</p>
+
+<h3>Deprecated API</h3>
+
+<p>There are methods that have been deprecated. They will continue working in v4.x, but will trigger a console warning (not visible to the end users) each time they are called.</p>
+
+<p><img src="media/desktop/gantt_deprecated_warning.png"></p>
+
+<p>Overview:</p>
+
+<ul>
+<li>dhtmlxMessage module has been moved from the <strong>window.dhtmlx</strong> object to the <strong>window.gantt</strong> object. Read more about Message Boxes <a class="link-" href="desktop__message_boxes.html">here</a></li>
+<li>dhtmlxDataProcessor constructor has been moved from <strong>window.dataProcessor</strong> to <strong>window.gantt.dataProcessor</strong></li>
+<li>utility methods such as <strong>dhtmlx.copy</strong>, <strong>dhtmlx.uid</strong> and <strong>dhtmlx.mixin</strong> have been moved to <strong>window.gantt</strong> object</li>
+</ul>
+
+<p>If you use these methods, your application will continue working after updating to v4.0 without requiring any immediate changes. In future we recommend updating them to a newer version of the API.</p>
+
+<p>The complete list of deprecated methods includes:</p>
+
+<table class="my_table">
+
+<tr><td class="version_info">Up to version 3.3</td><td class="version_info">From version 4.0</td></tr>
+
+<tr><td>dhtmlx.alert</td><td>gantt.alert</td></tr>
+<tr><td>dhtmlx.confirm</td><td>gantt.confirm</td></tr>
+<tr><td>dhtmlx.modalbox</td><td>gantt.modalbox</td></tr>
+<tr><td>dhtmlx.uid</td><td>gantt.uid</td></tr>
+<tr><td>dhtmlx.copy</td><td>gantt.copy</td></tr>
+<tr><td>dhtmlx.mixin</td><td>gantt.mixin</td></tr>
+<tr><td>dhtmlx.defined</td><td>gantt.defined</td></tr>
+<tr><td>dhtmlx.bind</td><td>gantt.bind</td></tr>
+<tr><td>dhtmlx.assert</td><td>gantt.assert</td></tr>
+<tr><td>window.dataProcessor</td><td>gantt.dataProcessor</td></tr>
+</table>
+
+<h3>Obsolete API</h3>
+
+<p>Some methods have become obsolete and will no longer be used in v4.x.
+If you still use these methods or objects, you'll need either to modify the code of an application or to include the <strong>dhtmlxgantt_deprecated.js</strong> file to the page.</p>
+
+<p>Overview:</p>
+
+<ul>
+<li><strong>window.dhx4</strong> is no longer defined by <strong>dhtmlxgantt.js</strong></li>
+<li>Environment variables that were defined in <strong>window.dhx4</strong> are now available in the <strong>gantt.env</strong> object</li>
+<li>Ajax module has been moved from <strong>dhx4.ajax</strong> to <strong>gantt.ajax</strong></li>
+<li><strong>gantt.event</strong>, <strong>gantt.eventRemove</strong> should be used instead of <strong>dhtmlxEvent/dhtmlxDetachEvent</strong></li>
+</ul>
+
+<p>The whole list of the obsolete API is given below:</p>
+
+<table class="my_table">
+
+<tr><td class="version_info">Up to version 3.3</td><td class="version_info">From version 4.0</td></tr>
+<tr><td>window.dhtmlxEvent</td><td>gantt.event</td></tr>
+<tr><td>window.dhtmlxDetachEvent</td><td>gantt.eventRemove</td></tr>
+<tr><td>window.dhx4.isIE</td><td>gantt.env.isIE</td></tr>
+<tr><td>window.dhx4.isIE6</td><td>gantt.env.isIE6</td></tr>
+<tr><td>window.dhx4.isIE7</td><td>gantt.env.isIE7</td></tr>
+<tr><td>window.dhx4.isIE8</td><td>gantt.env.isIE8</td></tr>
+<tr><td>window.dhx4.isOpera</td><td>gantt.env.isOpera</td></tr>
+<tr><td>window.dhx4.isChrome</td><td>gantt.env.isChrome</td></tr>
+<tr><td>window.dhx4.isKHTML</td><td>gantt.env.isKHTML</td></tr>
+<tr><td>window.dhx4.isFF</td><td>gantt.env.isFF</td></tr>
+<tr><td>window.dhx4.isIPad</td><td>gantt.env.isIPad</td></tr>
+</table>
+
+<a name='2030'><h2>2.0 -> 3.0</h2></a>
+
+<p>1) In order to prevent CSS conflicts with dhtmlxScheduler, the class names that have been used by both components were renamed in dhtmlxGantt (all classes were related to the lightbox).
+If you have customized styling for  the lightbox, the migration will consist in renaming to appropriate CSS classes.</p>
+
+<p>There is 2 renamed patterns:</p>
+
+<ul>
+<li>Replace <b>'.dhx_gantt_'</b> to <b>'.gantt_'</b> (.dhx_gantt_duration -> .gantt_duration)</li>
+<li>Replace <b>'.dhx_'</b> prefix with <b>'.gantt_'</b> (.dhx_custom_button -> .gantt_custom_button)</li>
+</ul>
+
+<p><em>If you encounter difficulties with migrating CSS classes,please, see the full  list of renamed classes <a class="link-" href="desktop__migrating_renamedcss.html">here</a></em>.</p>
+
+<p><br></p>
+
+<p>2) The default values of the <a class="link-" href="api__gantt_buttons_right_config.html">buttons_right</a> and <a class="link-" href="api__gantt_buttons_left_config.html">buttons_left</a> configs were changed in the following way:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">buttons_left</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+        <span class="st0">&quot;dhx_save_btn&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;dhx_cancel_btn&quot;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+gantt.<span class="me1">config</span>.<span class="me1">buttons_right</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+        <span class="st0">&quot;dhx_delete_btn&quot;</span>
+<span class="br0">&#93;</span><span class="sy0">,</span>
+&nbsp;
+<span class="sy0">--&gt;</span>
+&nbsp;
+gantt.<span class="me1">config</span>.<span class="me1">buttons_left</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+        <span class="st0">&quot;gantt_save_btn&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;gantt_cancel_btn&quot;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+gantt.<span class="me1">config</span>.<span class="me1">buttons_right</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+        <span class="st0">&quot;gantt_delete_btn&quot;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Old configurations ( "dhx_save_btn", "dhx_cancel_btn", "gantt_delete_btn") will still work. Changes does not break any existing behavior.</p>
+
+<p>3) The following features are now available only in the Commercial or Enterprise version of the component (not available in the GPL version of dhtmlxGantt):</p>
+
+<ul>
+<li>Ability to hide days in week, month, timeline view</li>
+<li>Projects, milestones and other custom types</li>
+</ul>
+
+<a name='1020'><h2>1.0 -> 2.0</h2></a>
+
+<p>1) A variety of objects (<strong>GanttProjectInfo</strong>, <strong>GanttTaskInfo</strong>, <strong>GanttChart</strong>, <strong>GanttProject</strong>, <strong>GanttTask</strong>) are replaced with 1 static object -  <strong>gantt</strong>. <br> 
+The <strong>gantt</strong> object contains a set of methods and 2 main properties: <a class="link-" href="api__refs__gantt_props.html">config</a> and <a class="link-" href="api__refs__gantt_templates.html">templates</a>.</p>
+
+<ul>
+<li><a class="link-" href="api__refs__gantt.html#properties">gantt.config</a> - configuration options for dates, scale, controls etc.</li>
+<li><a class="link-" href="api__refs__gantt.html#templates">gantt.templates</a> - formatting templates for dates and labels used in the Gantt chart.</li>
+</ul>
+
+<p><br></p>
+
+<p>2) dhtmlxGantt is initialized through the <a class="link-" href="api__gantt_init.html">init</a> method <br>  <code> var gantt = new GanttChart()</code> -> <code>gantt.init("gantt_div")</code>.</p>
+
+<p><br></p>
+
+<p>3) Instead of GanttProject and GanttTask, data is stored as <a class="link-" href="desktop__loading.html#specifyingdataproperties">an array of plain objects with a number of mandatory properties and any custom properties</a>:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    data<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Project #2&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;01-04-2013&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">18</span><span class="sy0">,</span>
+    progress<span class="sy0">:</span><span class="nu0">0.4</span><span class="sy0">,</span> <span class="kw3">open</span><span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span>    start_date<span class="sy0">:</span><span class="st0">&quot;02-04-2013&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span>
+    progress<span class="sy0">:</span><span class="nu0">0.6</span><span class="sy0">,</span> parent<span class="sy0">:</span><span class="nu0">1</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #2&quot;</span><span class="sy0">,</span>    start_date<span class="sy0">:</span><span class="st0">&quot;11-04-2013&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span>
+    progress<span class="sy0">:</span><span class="nu0">0.6</span><span class="sy0">,</span> parent<span class="sy0">:</span><span class="nu0">1</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    links<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> source<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> target<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;1&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> source<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> target<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;0&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> source<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> target<span class="sy0">:</span><span class="nu0">4</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;0&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">4</span><span class="sy0">,</span> source<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> target<span class="sy0">:</span><span class="nu0">5</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;2&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+  <span class="br0">&#93;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p><br></p>
+
+<p>4) The <a class="link-" href="desktop__supported_data_formats.html#xmldhtmlxgantt20">XML format</a> was changed but the <a class="link-" href="desktop__supported_data_formats.html#xmldhtmlxganttlt20">old XML format</a> is still can be <a class="link-" href="api__gantt_load.html">loaded</a>.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;tasks.xml&quot;</span><span class="sy0">,</span><span class="st0">&quot;oldxml&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/01_initialization/09_backward_compatibility.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Loading data in Gantt 1.6 format</a></p>
+
+<p><br></p>
+
+<p>5) <strong>Design-time Objects</strong>:</p>
+
+<ul>
+<li>Methods of the <strong><i>GanttProjectInfo</i></strong> object are replaced with:
+
+<ul>
+<li>addTask  -> <a class="link-" href="api__gantt_addtask.html">gantt.addTask()</a></li>
+<li>deleteTask  ->  <a class="link-" href="api__gantt_deletetask.html">gantt.deleteTask()</a></li>
+<li>getTaskById  -> <a class="link-" href="api__gantt_gettask.html">gantt.getTask()</a></li>
+</ul></li>
+<li>Methods of the <strong><i>GanttTaskInfo</i></strong> object are replaced with:
+
+<ul>
+<li>addChildTask -> <a class="link-" href="api__gantt_addtask.html">gantt.addTask()</a> (property "parent" of the task object sets the parent for the task)</li>
+</ul></li>
+</ul>
+
+<p><br></p>
+
+<p>6) <strong>Run-time Objects</strong>:</p>
+
+<p>dhtmlxGantt 2.0 doesn't use different types for project and task objects. Instead of this, any task object can have 1 parent object and any number of child tasks.</p>
+
+<ul>
+<li><strong><i>GanttProject</i></strong> 
+
+<ul>
+<li>Instead of getDuration(), getId(), getName(), getPercentCompleted(), getStartDate(), project properties are accessed through <strong>gantt.getTask(projectTaskId).{name_of_property}</strong></li>
+</ul></li>
+<li><strong><i>GanttTask</i></strong> 
+
+<ul>
+<li>Instead of getDuration(), getId(), getName(), getParentTaskId(), getPercentCompleted(), getPredecessorTaskId(), setDuration(, ) task properties are accessed through <strong>gantt.getTask(taskId).{name_of_property}</strong></li>
+</ul></li>
+</ul>
+
+<p>A list of methods to get parent/child objects:</p>
+
+<ul>
+<li><a class="link-" href="api__gantt_gettask.html">getTask</a></li>
+<li><a class="link-" href="api__gantt_haschild.html">hasChild</a></li>
+<li><a class="link-" href="api__gantt_getchildren.html">getChildren</a></li>
+</ul>
+
+<div class='note'><p><p>The id of the parent task can be accessed as <strong>gantt.getTask(task_id).parent</strong>. The root element doesn't have the 'parent' property.</p>
+</p></div>
+
+<!-- Content Area End -->
+			<a href='migrating.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

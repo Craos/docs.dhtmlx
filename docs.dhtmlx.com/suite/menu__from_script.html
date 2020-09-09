@@ -1,0 +1,314 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Data Loading  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="menu__api__refs__menu.html">Menu API</a></li><li class=""><a href="menu__how_to_start.html">Initialization</a></li><li class=""><a href="menu__configuring_menu_items.html">List of Menu Controls</a></li><li class=" current"><a href="menu__from_script.html">Data Loading</a></li><ul><li class="inner"><a href="menu__from_script.html#preparingdataset">Preparing data set</a></li><li class="inner"><a href="menu__from_script.html#loadingfromalocalsource">Loading from a local source</a></li><li class="inner"><a href="menu__from_script.html#loadingfromanexternalfile">Loading from an external file</a></li><li class="inner"><a href="menu__from_script.html#jsonformattemplates">JSON format templates</a></li><li class="inner"><a href="menu__from_script.html#savingandrestoringstate">Saving and restoring state</a></li></ul><li class=""><a href="menu__work_with_menu.html">Work with Menu</a></li><li class=""><a href="menu__creating_context_menu.html">Context Menu</a></li><li class=""><a href="menu__fa_icons.html">Customization</a></li><li class=""><a href="menu__handling_events.html">Event Handling</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="menu__index.html">Menu</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Data Loading</h1>
+
+<p>There are several simple ways of loading options into dhtmlxMenu:</p>
+
+<ul>
+<li>load data from an external file</li>
+<li>load data from a local data source</li>
+</ul>
+
+<p>First, you need to prepare a data set that will be loaded into Menu.</p>
+
+<a name='preparingdataset'><h2>Preparing data set</h2></a>
+
+<p>dhtmlxMenu expects loaded data in the JSON format. Here is an example of an appropriate data set:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> value<span class="sy0">:</span> <span class="st0">&quot;File&quot;</span><span class="sy0">,</span> 
+        items<span class="sy0">:</span> <span class="br0">&#91;</span>
+            <span class="br0">&#123;</span>
+                value<span class="sy0">:</span> <span class="st0">&quot;New File&quot;</span><span class="sy0">,</span>
+                icon<span class="sy0">:</span> <span class="st0">&quot;dxi dxi-file-outline&quot;</span><span class="sy0">,</span>
+            <span class="br0">&#125;</span><span class="sy0">,</span>                      
+            <span class="br0">&#123;</span>
+                value<span class="sy0">:</span> <span class="st0">&quot;Remove File&quot;</span><span class="sy0">,</span>
+                icon<span class="sy0">:</span> <span class="st0">&quot;dxi dxi-delete&quot;</span><span class="sy0">,</span>
+            <span class="br0">&#125;</span>        
+        <span class="br0">&#93;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>
+        type<span class="sy0">:</span> <span class="st0">&quot;separator&quot;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> value<span class="sy0">:</span> <span class="st0">&quot;Edit&quot;</span><span class="sy0">,</span>
+        items<span class="sy0">:</span> <span class="br0">&#91;</span>
+            <span class="br0">&#123;</span>
+                value<span class="sy0">:</span> <span class="st0">&quot;Undo&quot;</span><span class="sy0">,</span>
+                icon<span class="sy0">:</span> <span class="st0">&quot;dxi dxi-undo&quot;</span><span class="sy0">,</span>
+            <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>
+                value<span class="sy0">:</span>  <span class="st0">&quot;Redo&quot;</span><span class="sy0">,</span>
+                icon<span class="sy0">:</span> <span class="st0">&quot;dxi dxi-redo&quot;</span><span class="sy0">,</span>
+            <span class="br0">&#125;</span>
+         <span class="br0">&#93;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>
+        type<span class="sy0">:</span> <span class="st0">&quot;spacer&quot;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#93;</span></pre></code></pre>
+
+<p>A data set consists of objects with configurations of menu controls. Templates for Menu controls in JSON format are given <a href="menu__from_script.html#jsonformattemplates">below</a>.</p>
+
+<a name='loadingfromalocalsource'><h2>Loading from a local source</h2></a>
+
+<p>You can load data to a menu from an array with the <strong>parse()</strong> method of TreeCollection. Pass <a href="menu__from_script.html#preparingdataset">a predefined data set</a> as a parameter of this method:</p>
+
+<pre><code><pre class="js">menu.<span class="me1">data</span>.<span class="me1">parse</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/cg62qa9v' target='blank'><span class='sample'>Related sample: </span>&nbsp;Menu. Basic Initialization</a></p>
+
+<a name='loadingfromanexternalfile'><h2>Loading from an external file</h2></a>
+
+<p>The <strong>load</strong> method of Tree Collection loads menu data from an external JSON file. All the data are loaded at once. The parameter of the method is the path to the JSON file.</p>
+
+<pre><code><pre class="js">menu.<span class="me1">data</span>.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;[path to this file]/file.json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/cg62qa9v' target='blank'><span class='sample'>Related sample: </span>&nbsp;Menu. Basic Initialization</a></p>
+
+<p>The component will make an AJAX call and expect the remote URL to provide valid JSON data.</p>
+
+<p>Data loading is asynchronous, so you need to wrap any after-loading code into a promise:</p>
+
+<pre><code><pre class="js">menu.<span class="me1">data</span>.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/some/data&quot;</span><span class="br0">&#41;</span>.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+   <span class="co1">// some logic here</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='jsonformattemplates'><h2>JSON format templates</h2></a>
+
+<p>This section will give you the idea of JSON format templates for separate Menu controls.</p>
+
+<h3>MenuItem</h3>
+
+<p>The <strong>menuItem</strong> object has the following properties:</p>
+
+<ul>
+<li><strong>type</strong> - (<em>string</em>) required, the type of a control, set it to "menuItem"</li>
+<li><strong>id</strong> - (<em>string</em>) the id of a control, auto-generated if not set</li>
+<li><strong>icon</strong> - (<em>string</em>) optional, the name of an icon from the used icon font</li>
+<li><strong>items</strong> - (<em>array</em>) optional, an array of children controls (note that all the children should have the type <em>menuItem</em>)</li>
+<li><strong>value</strong> - (<em>string</em>)  optional, the value of a menu item</li>
+<li><strong>hotkey</strong> - (<em>string</em>) optional, the name of a keyboard shortcut for a menu item</li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">// menuItem</span>
+<span class="br0">&#123;</span>
+    id<span class="sy0">:</span>         <span class="st0">&quot;print&quot;</span><span class="sy0">,</span>             
+    type<span class="sy0">:</span>       <span class="st0">&quot;menuItem&quot;</span><span class="sy0">,</span>          
+    value<span class="sy0">:</span>      <span class="st0">&quot;Print&quot;</span><span class="sy0">,</span>             
+    icon<span class="sy0">:</span>       <span class="st0">&quot;dxi-printer&quot;</span><span class="sy0">,</span>      
+    hotkey<span class="sy0">:</span>     <span class="st0">&quot;Alt+P&quot;</span><span class="sy0">,</span>                
+    items<span class="sy0">:</span><span class="br0">&#91;</span>                     
+        <span class="br0">&#123;</span>
+            type<span class="sy0">:</span>   <span class="st0">&quot;menuItem&quot;</span><span class="sy0">,</span>
+            value<span class="sy0">:</span>  <span class="st0">&quot;Print&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>
+            type<span class="sy0">:</span>   <span class="st0">&quot;menuItem&quot;</span><span class="sy0">,</span>
+            value<span class="sy0">:</span>  <span class="st0">&quot;Preview and print&quot;</span><span class="sy0">,</span>
+            icon<span class="sy0">:</span>   <span class="st0">&quot;dxi-magnify&quot;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Separator</h3>
+
+<p>You can add separators that will draw horizontal lines between menu options or vertical lines between menu items. The <strong>separator</strong> object has the following properties:</p>
+
+<ul>
+<li><strong>type</strong> - (<em>string</em>) required, the type of a control, set it to "separator"</li>
+<li><strong>id</strong> - (<em>string</em>) the id of a control, auto-generated if not set</li>
+</ul>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    id<span class="sy0">:</span>   <span class="st0">&quot;s_id&quot;</span><span class="sy0">,</span>        
+    type<span class="sy0">:</span> <span class="st0">&quot;separator&quot;</span>   
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Spacer</h3>
+
+<p>The <strong>spacer</strong> object has the following properties:</p>
+
+<ul>
+<li><strong>type</strong> - (<em>string</em>) required, the type of a control, set it to "spacer"</li>
+<li><strong>id</strong> - (<em>string</em>) the id of a control, auto-generated if not set</li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">// spacer</span>
+<span class="br0">&#123;</span>
+    id<span class="sy0">:</span>     <span class="st0">&quot;spacerId&quot;</span><span class="sy0">,</span>     
+    type<span class="sy0">:</span>   <span class="st0">&quot;spacer&quot;</span>        
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='savingandrestoringstate'><h2>Saving and restoring state</h2></a>
+
+<p>To save the current state of a toolbar, use the <strong>serialize()</strong> method of Tree Collection. It converts the data of a menu into an array of JSON objects. 
+Each JSON object contains the configuration of a separate Menu item.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> state <span class="sy0">=</span> menu1.<span class="me1">data</span>.<span class="me1">serialize</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Then you can parse the data stored in the saved state array to a different menu. For example:</p>
+
+<pre><code><pre class="js"><span class="co1">// creating a new menu</span>
+<span class="kw2">var</span> menu2 <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Menu</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// parsing the state of menu1 into menu2</span>
+menu2.<span class="me1">data</span>.<span class="me1">parse</span><span class="br0">&#40;</span>state<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='menu__from_script.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

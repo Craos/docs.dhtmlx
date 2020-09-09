@@ -1,0 +1,550 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>dhtmlxScheduler with Ruby on Rails  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="howtostart_dotnet_core.html">dhtmlxScheduler with ASP.NET Core</a></li><li class=""><a href="howtostart_nodejs.html">dhtmlxScheduler with Node.js</a></li><li class=""><a href="howtostart_dotnet.html">dhtmlxScheduler with ASP.NET MVC</a></li><li class=""><a href="howtostart_plain_php.html">dhtmlxScheduler with PHP</a></li><li class=""><a href="howtostart_php_laravel.html">dhtmlxScheduler with PHP:Laravel</a></li><li class=""><a href="howtostart_php_slim4.html">dhtmlxScheduler with PHP:Slim</a></li><li class=" current"><a href="howtostart_ruby.html">dhtmlxScheduler with Ruby on Rails</a></li><ul><li class="inner"><a href="howtostart_ruby.html#step1creatingaproject">Step 1. Creating a project</a></li><li class="inner"><a href="howtostart_ruby.html#step2creatingacontroller">Step 2. Creating a controller</a></li><li class="inner"><a href="howtostart_ruby.html#step3specifyingrouting">Step 3. Specifying routing</a></li><li class="inner"><a href="howtostart_ruby.html#step4includingsourcefiles">Step 4. Including source files</a></li><li class="inner"><a href="howtostart_ruby.html#step5creatingviews">Step 5. Creating views</a></li><li class="inner"><a href="howtostart_ruby.html#step6creatingmodels">Step 6. Creating models</a></li><li class="inner"><a href="howtostart_ruby.html#step7creatingeventcontroller">Step 7. Creating event controller</a></li><li class="inner"><a href="howtostart_ruby.html#step8initializingscheduler">Step 8. Initializing Scheduler</a></li><li class="inner"><a href="howtostart_ruby.html#recurringevents">Recurring events</a></li><li class="inner"><a href="howtostart_ruby.html#troubleshooting">Trouble shooting</a></li><li class="inner"><a href="howtostart_ruby.html#whatsnext">What's next</a></li></ul><li class=""><a href="howtostart_connector.html">dhtmlxScheduler with dhtmlxConnector</a></li><li class=""><a href="howtostart_php.html">dhtmlxScheduler with PHP:Slim 3</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="howtostart_guides.html">How to Start with dhtmlxScheduler</a></div>
+<!-- Content Area -->
+
+
+
+<h1>dhtmlxScheduler with Ruby on Rails</h1>
+
+<p>In this article we'll show you how to create a Scheduler and implement server-side integration based on <a href="http://rubyonrails.org/">Ruby on Rails</a> framework and REST API.</p>
+
+<p>If you use some other technology, check the list of available integration variants below:</p>
+
+<ul>
+<li><a class="link-" href="howtostart_dotnet_core.html">dhtmlxScheduler with ASP.NET Core</a></li>
+<li><a class="link-" href="howtostart_dotnet.html">dhtmlxScheduler with ASP.NET MVC</a></li>
+<li><a class="link-" href="howtostart_nodejs.html">dhtmlxScheduler with Node.js</a></li>
+<li><a class="link-" href="howtostart_plain_php.html">dhtmlxScheduler with PHP</a></li>
+<li><a class="link-" href="howtostart_php_slim4.html">dhtmlxScheduler with PHP:Slim</a></li>
+<li><a class="link-" href="howtostart_php_laravel.html">dhtmlxScheduler with PHP:Laravel</a></li>
+<li><a class="link-" href="howtostart_connector.html">dhtmlxScheduler with dhtmlxConnector</a></li>
+</ul>
+
+<p>If you have Ruby on Rails installed, you can begin to implement the integration at once. 
+Otherwise, you should install the framework by following the steps described in the <a href="http://guides.rubyonrails.org/getting_started.html#installing-rails">installation guide</a>.</p>
+
+<p>Once everything is ready, you can start completing the integration step by step.</p>
+
+<a name='step1creatingaproject'><h2>Step 1. Creating a project</h2></a>
+
+<p>To add a new project just run the following command in the terminal:</p>
+
+<pre><code><pre class="js">rails <span class="kw2">new</span> path<span class="sy0">/</span>to<span class="sy0">/</span>your<span class="sy0">/</span>project</pre></code></pre>
+
+<a name='step2creatingacontroller'><h2>Step 2. Creating a controller</h2></a>
+
+<p>Now you need to add a controller that will process users' request to the server through the application.
+Since requests differ in their type, you need to separate controllers for certain requests.</p>
+
+<p>To define the connection between a controller and the type of request, routing will be used. Different routes can be served by different actions.
+The actions collect information which will be passed to the view.</p>
+
+<p>Let's create a new controller with the name "home" and a new action called "index".</p>
+
+<pre><code><pre class="js">cd path<span class="sy0">/</span>to<span class="sy0">/</span>your<span class="sy0">/</span>project
+rails generate controller <span class="kw3">home</span> index</pre></code></pre>
+
+<p>The output should confirm that new files were created.</p>
+
+<a name='step3specifyingrouting'><h2>Step 3. Specifying routing</h2></a>
+
+<p>To configure the routing, open the file <em>config/routes.rb</em>. Find the following line at the very beginning of this file:</p>
+
+<pre><code><pre class="js">get <span class="st0">'home/index'</span></pre></code></pre>
+
+<p>and replace it with the following one:</p>
+
+<pre><code><pre class="js">root <span class="sy0">:</span>to <span class="sy0">=&gt;</span> <span class="st0">'home#index'</span>
+get <span class="st0">&quot;data&quot;</span><span class="sy0">,</span> <span class="sy0">:</span>to<span class="sy0">=&gt;</span><span class="st0">&quot;event#get&quot;</span><span class="sy0">,</span> <span class="sy0">:</span><span class="kw1">as</span><span class="sy0">=&gt;</span><span class="st0">&quot;data&quot;</span>
+post <span class="st0">&quot;data(/:id)&quot;</span><span class="sy0">,</span> <span class="sy0">:</span>to <span class="sy0">=&gt;</span> <span class="st0">&quot;event#add&quot;</span>
+put <span class="st0">&quot;data/:id&quot;</span><span class="sy0">,</span> <span class="sy0">:</span>to <span class="sy0">=&gt;</span> <span class="st0">&quot;event#update&quot;</span>
+<span class="kw1">delete</span> <span class="st0">&quot;data/:id&quot;</span><span class="sy0">,</span> <span class="sy0">:</span>to <span class="sy0">=&gt;</span> <span class="st0">&quot;event#delete&quot;</span></pre></code></pre>
+
+<p>After that you can test the server by running in the command line:</p>
+
+<pre><code><pre class="js">rails server</pre></code></pre>
+
+<p>Open <em>http://localhost:3000/</em> in your browser. The result should be like this:</p>
+
+<p><img src="media/ruby_routing.png"></p>
+
+<p>So the server is ready and you can proceed with views adding.</p>
+
+<a name='step4includingsourcefiles'><h2>Step 4. Including source files</h2></a>
+
+<p>To begin with, you should <a href="https://dhtmlx.com/docs/products/dhtmlxScheduler/download.shtml">download the dhtmlxScheduler package</a>.</p>
+
+<p>Complete the next steps:</p>
+
+<p>1) Unpack the file <em>codebase/dhtmlxscheduler.js</em> and the directories <em>codebase/ext</em> and <em>codebase/locale</em> from the package to the directory <em>vendor/assets/javascripts/</em> of your project.</p>
+
+<p>You should get something like following:</p>
+
+<p><img src="media/ruby_unpack_js.png"></p>
+
+<p>2) Unpack the files</p>
+
+<ul>
+<li><em>codebase/dhtmlxscheduler.css</em></li>
+<li><em>codebase/dhtmlxscheduler_classic.css</em></li>
+<li><em>codebase/dhtmlxscheduler_flat.css</em> </li>
+<li><em>codebase/dhtmlxscheduler_glossy.css</em> </li>
+</ul>
+
+<p>from the package to the directory <em>vendor/assets/stylesheets/</em> of your project.</p>
+
+<p>The result should be like this:</p>
+
+<p><img src="media/ruby_unpack_styles.png"></p>
+
+<p>3) In the "public" directory create the "assets" folder and unpack the following files into it:</p>
+
+<ul>
+<li><em>codebase/imgs</em></li>
+<li><em>codebase/imgs_dhx_terrace</em></li>
+<li><em>codebase/imgs_flat</em></li>
+<li><em>codebase/imgs_glossy</em></li>
+</ul>
+
+<p>This is what you get:</p>
+
+<p><img src="media/ruby_unpack_assets.png"></p>
+
+<p>4) Open the <strong>config/initializers/assets.rb</strong> file and add <em>dhtmlxscheduler.js</em> and <em>dhtmlxscheduler.css</em> files to the precompile array. 
+For this purpose, use the code below:</p>
+
+<pre><code><pre class="js">Rails.<span class="me1">application</span>.<span class="me1">config</span>.<span class="me1">assets</span>.<span class="me1">precompile</span> <span class="sy0">+=</span> <span class="sy0">%</span>w<span class="br0">&#40;</span> dhtmlxscheduler.<span class="me1">css</span> <span class="br0">&#41;</span>
+Rails.<span class="me1">application</span>.<span class="me1">config</span>.<span class="me1">assets</span>.<span class="me1">precompile</span> <span class="sy0">+=</span> <span class="sy0">%</span>w<span class="br0">&#40;</span> dhtmlxscheduler.<span class="me1">js</span> <span class="br0">&#41;</span></pre></code></pre>
+
+<a name='step5creatingviews'><h2>Step 5. Creating views</h2></a>
+
+<p>Now you are ready to create a view. Views will visualize the information gathered by actions.</p>
+
+<p>If there's no controller-specific layout, Rails will use the <em>app/views/layouts/application.html.erb</em> file as a template for all pages that have common elements. 
+You should add scheduler js and css files here, so add following strings to header:</p>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+ <span class="sc2">&lt;<span class="kw2">title</span>&gt;</span>SchedulerRubyRest<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">title</span>&gt;</span>
+ <span class="sc2">&lt;%<span class="sy0">=</span> stylesheet_link_tag <span class="st0">'application'</span>,<span class="kw3">media</span>:<span class="st0">'all'</span>,<span class="st0">'data-turbolinks-track'</span><span class="sy0">=</span>&gt;</span>true %&gt;
+ <span class="sc2">&lt;%<span class="sy0">=</span> javascript_include_tag <span class="st0">'application'</span>, <span class="st0">'data-turbolinks-track'</span> <span class="sy0">=</span>&gt;</span> true %&gt;
+ <span class="sc2">&lt;%<span class="sy0">=</span> stylesheet_link_tag <span class="st0">'dhtmlxscheduler'</span>,<span class="kw3">media</span>:<span class="st0">'all'</span>,<span class="st0">'data-turbolinks-track'</span><span class="sy0">=</span>&gt;</span>true %&gt;
+ <span class="sc2">&lt;%<span class="sy0">=</span> javascript_include_tag <span class="st0">'dhtmlxscheduler'</span>, <span class="st0">'data-turbolinks-track'</span> <span class="sy0">=</span>&gt;</span> true %&gt;
+ <span class="sc2">&lt;%<span class="sy0">=</span> csrf_meta_tags %&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;%<span class="sy0">=</span> yield %&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+<p>At this point you can specify a view for the "home" controller that was created at the <a class="link-" href="howtostart_ruby.html#step2creatingacontroller">Step 2</a>. 
+For this, open the file <em>app/views/home/index.html.erb</em>. You need to add a container for the future scheduler and initialize the Scheduler, like this:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;scheduler_here&quot;</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_container&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">'width:100%; height:800px;'</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_navline&quot;</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_prev_button&quot;</span>&gt;</span><span class="sc1">&amp;nbsp;</span><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_next_button&quot;</span>&gt;</span><span class="sc1">&amp;nbsp;</span><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_today_button&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_date&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;day_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;right:204px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;week_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;right:140px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;month_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;right:76px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_header&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_data&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">    scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;scheduler_here&quot;</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2016</span><span class="sy0">,</span><span class="nu0">4</span><span class="sy0">,</span><span class="nu0">27</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;week&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p>After that have a look at the current result. Open <em>http://localhost:3000/</em> (the rails server) in a browser. You will see an empty scheduler:</p>
+
+<p><img src="media/ruby_empty_scheduler.png"></p>
+
+<p>Thus you've got a scheduler where you can add events and modify them. But it lacks the saving ability. To provide it, you need to proceed with creating models.</p>
+
+<a name='step6creatingmodels'><h2>Step 6. Creating models</h2></a>
+
+<p>Since Scheduler operates events entities, you need to add a model for them.</p>
+
+<p>To create a model for events, run the following command that contains the event's properties:</p>
+
+<pre><code><pre class="js">rails generate model Event start_date<span class="sy0">:</span>datetime end_date<span class="sy0">:</span>datetime text<span class="sy0">:</span>string</pre></code></pre>
+
+<p>You can find the list of mandatory properties of the Event object with their descriptions in the <a class="link-" href="loading_data.html#dataproperties">corresponding article</a> of documentation.</p>
+
+<p>After that create a new database:</p>
+
+<pre><code><pre class="js">rake db<span class="sy0">:</span>migrate</pre></code></pre>
+
+<p>Now you can try to add an entry into it. The algorithm is the following:</p>
+
+<p>1 . Open the Rails console by running:</p>
+
+<pre><code><pre class="js">rails c</pre></code></pre>
+
+<p>2 . Add the desired events like this:</p>
+
+<pre><code><pre class="js">Event.<span class="me1">create</span> 
+    <span class="sy0">:</span>start_date <span class="sy0">=&gt;</span> <span class="st0">&quot;2016-05-27 10:00:00&quot;</span><span class="sy0">,</span> 
+    <span class="sy0">:</span>end_date <span class="sy0">=&gt;</span> <span class="st0">&quot;2016-05-27 15:00:00&quot;</span><span class="sy0">,</span> 
+    <span class="sy0">:</span>text <span class="sy0">=&gt;</span> <span class="st0">&quot;Test&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>3 . To display all events, run the command:</p>
+
+<pre><code><pre class="js">Event.<span class="me1">all</span></pre></code></pre>
+
+<p>4 . Enter "exit" to close the console.</p>
+
+<p><img src="media/ruby_console.png"></p>
+
+<p>Next you need to implement data loading and saving in the scheduler with the help of controllers.</p>
+
+<a name='step7creatingeventcontroller'><h2>Step 7. Creating event controller</h2></a>
+
+<h3>General technique of loading data using REST API</h3>
+
+<p>There's a <a class="link-" href="server_integration.html#technique">common technique</a> for loading data into Scheduler from the server side.</p>
+
+<p>You will find the requirements to the client side, as well as the <a class="link-" href="server_integration.html#requestresponsedetails">description of possible requests and responses</a> in the <a class="link-" href="server_integration.html">Server-Side Integration</a> article.</p>
+
+<p>Below you will fine the info on how to load data into Scheduler using Ruby on Rails server side.</p>
+
+<h3>Event Controller</h3>
+
+<p>To create a new controller event, run the following command:</p>
+
+<pre><code><pre class="js">rails generate controller event</pre></code></pre>
+
+<p>We will add the code that will enable data adding, changing and deleting into the file of this event - <em>app/controllers/event_controller.rb</em>:</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> EventController <span class="sy0">&lt;</span> ApplicationController
+    protect_from_forgery
+&nbsp;
+    def get
+         events <span class="sy0">=</span> Event.<span class="me1">all</span>
+&nbsp;
+        render <span class="sy0">:</span>json <span class="sy0">=&gt;</span> events.<span class="me1">map</span> <span class="br0">&#123;</span><span class="sy0">|</span>event<span class="sy0">|</span> <span class="br0">&#123;</span>
+            <span class="sy0">:</span>id <span class="sy0">=&gt;</span> event.<span class="me1">id</span><span class="sy0">,</span>
+            <span class="sy0">:</span>start_date <span class="sy0">=&gt;</span> event.<span class="me1">start_date</span>.<span class="me1">to_formatted_s</span><span class="br0">&#40;</span><span class="sy0">:</span>db<span class="br0">&#41;</span><span class="sy0">,</span>
+            <span class="sy0">:</span>end_date <span class="sy0">=&gt;</span> event.<span class="me1">end_date</span>.<span class="me1">to_formatted_s</span><span class="br0">&#40;</span><span class="sy0">:</span>db<span class="br0">&#41;</span><span class="sy0">,</span>
+            <span class="sy0">:</span>text <span class="sy0">=&gt;</span> event.<span class="me1">text</span>
+        <span class="br0">&#125;</span><span class="br0">&#125;</span>      
+    end
+&nbsp;
+    def add
+        event <span class="sy0">=</span> Event.<span class="me1">create</span> 
+            <span class="sy0">:</span>text<span class="sy0">=&gt;</span>params<span class="br0">&#91;</span><span class="st0">&quot;text&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span> 
+            <span class="sy0">:</span>start_date<span class="sy0">=&gt;</span>params<span class="br0">&#91;</span><span class="st0">&quot;start_date&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span> 
+            <span class="sy0">:</span>end_date<span class="sy0">=&gt;</span>params<span class="br0">&#91;</span><span class="st0">&quot;end_date&quot;</span><span class="br0">&#93;</span>
+&nbsp;
+        render <span class="sy0">:</span>json<span class="sy0">=&gt;</span><span class="br0">&#123;</span><span class="sy0">:</span>action <span class="sy0">=&gt;</span> <span class="st0">&quot;inserted&quot;</span><span class="sy0">,</span> <span class="sy0">:</span>tid <span class="sy0">=&gt;</span> event.<span class="me1">id</span><span class="br0">&#125;</span>
+    end
+&nbsp;
+    def update
+        event <span class="sy0">=</span> Event.<span class="me1">find</span><span class="br0">&#40;</span>params<span class="br0">&#91;</span><span class="st0">&quot;id&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span>
+        event.<span class="me1">text</span> <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">&quot;text&quot;</span><span class="br0">&#93;</span>
+        event.<span class="me1">start_date</span> <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">&quot;start_date&quot;</span><span class="br0">&#93;</span>
+        event.<span class="me1">end_date</span> <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">&quot;end_date&quot;</span><span class="br0">&#93;</span>
+        event.<span class="me1">save</span>
+&nbsp;
+        render <span class="sy0">:</span>json<span class="sy0">=&gt;</span><span class="br0">&#123;</span><span class="sy0">:</span>action <span class="sy0">=&gt;</span> <span class="st0">&quot;updated&quot;</span><span class="br0">&#125;</span>
+    end
+&nbsp;
+    def <span class="kw1">delete</span>
+        Event.<span class="me1">find</span><span class="br0">&#40;</span>params<span class="br0">&#91;</span><span class="st0">&quot;id&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span>.<span class="me1">destroy</span>
+&nbsp;
+        render <span class="sy0">:</span>json<span class="sy0">=&gt;</span><span class="br0">&#123;</span><span class="sy0">:</span>action <span class="sy0">=&gt;</span> <span class="st0">&quot;deleted&quot;</span><span class="br0">&#125;</span>
+    end
+end</pre></code></pre>
+
+<p>The code of Task Controller includes the following types of requests:</p>
+
+<ul>
+<li>GET request is used to load data into Scheduler</li>
+</ul>
+
+<p>It will make an object with data for a Gantt chart and will contain a list of events. The dates of events should be converted into appropriate strings.</p>
+
+<ul>
+<li>POST request means that a new item needs to be inserted into the database</li>
+<li>PUT request updates an existing record </li>
+<li>DELETE request goes for deleting</li>
+</ul>
+
+<p>All actions return a JSON response containing the type of the performed operation or "error" if something went wrong.</p>
+
+<p>Note that a response for the "insert" action also contains a database id of the new record. It will be applied on the client side, so the new item could be mapped to the database entity.</p>
+
+<a name='step8initializingscheduler'><h2>Step 8. Initializing Scheduler</h2></a>
+
+<p>The last thing you have to do is to put the following code into the &#60;script&#62;&#60;/script&#62; part of the <em>app/views/home/index.html.erb</em> file.</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">xml_date</span><span class="sy0">=</span><span class="st0">&quot;%Y-%m-%d %H:%i&quot;</span><span class="sy0">;</span>
+scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;scheduler_here&quot;</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2016</span><span class="sy0">,</span><span class="nu0">4</span><span class="sy0">,</span><span class="nu0">27</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;week&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;%= data_path %&gt;/&quot;</span><span class="sy0">,</span> <span class="st0">&quot;json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;&lt;%= data_path %&gt;/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">init</span><span class="br0">&#40;</span>scheduler<span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;REST&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>It initializes Scheduler and enables it to load and save data. That's all. Now you can run the application in a browser and see the result.</p>
+
+<p><img src="media/ruby_ready_scheduler.png"></p>
+
+<p>As you can see, an event appeared in the scheduler. You have added it at the <a class="link-" href="howtostart_ruby.html#step6creatingmodels">Step 6</a>. Now you can add more events and modify them. All the changes will be saved in the database.</p>
+
+<a name='recurringevents'><h2>Recurring events</h2></a>
+
+<p>For recurring events you need three additional fields:</p>
+
+<p>– <strong>rec_type</strong> (stores recurring logic);<br>
+– <strong>event_pid</strong> (parent ID of a series of events);<br>
+– <strong>event_length</strong> (a real length of a series of events).</p>
+
+<p>Also you should remove the old model. For this run the following line:</p>
+
+<pre><code><pre class="js">rails destroy model Event</pre></code></pre>
+
+<p>Use the following command to create a new model:</p>
+
+<pre><code><pre class="js">rails generate model Event start_date<span class="sy0">:</span>datetime end_date<span class="sy0">:</span>datetime text<span class="sy0">:</span>string 
+rec_type<span class="sy0">:</span>string event_length<span class="sy0">:</span>integer event_pid<span class="sy0">:</span>integer</pre></code></pre>
+
+<p>Remove the events table from the database or remove <em>db/development.sqlite3</em>.</p>
+
+<p>After that you need to run a migration:</p>
+
+<pre><code><pre class="js">rake db<span class="sy0">:</span>migrate</pre></code></pre>
+
+<p>Then open <em>app/controllers/home_controller.rb</em></p>
+
+<p>Here you should change "db_action" action and "data" for saving and loading of recurring events:</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> HomeController <span class="sy0">&lt;</span> ApplicationController
+ def index
+ end
+&nbsp;
+ def data
+   events <span class="sy0">=</span> Event.<span class="me1">all</span>
+&nbsp;
+   render <span class="sy0">:</span>json <span class="sy0">=&gt;</span> events.<span class="me1">map</span> <span class="br0">&#123;</span><span class="sy0">|</span>event<span class="sy0">|</span> <span class="br0">&#123;</span>
+              <span class="sy0">:</span>id <span class="sy0">=&gt;</span> event.<span class="me1">id</span><span class="sy0">,</span>
+              <span class="sy0">:</span>start_date <span class="sy0">=&gt;</span> event.<span class="me1">start_date</span>.<span class="me1">to_formatted_s</span><span class="br0">&#40;</span><span class="sy0">:</span>db<span class="br0">&#41;</span><span class="sy0">,</span>
+              <span class="sy0">:</span>end_date <span class="sy0">=&gt;</span> event.<span class="me1">end_date</span>.<span class="me1">to_formatted_s</span><span class="br0">&#40;</span><span class="sy0">:</span>db<span class="br0">&#41;</span><span class="sy0">,</span>
+              <span class="sy0">:</span>text <span class="sy0">=&gt;</span> event.<span class="me1">text</span><span class="sy0">,</span>
+              <span class="sy0">:</span>rec_type <span class="sy0">=&gt;</span> event.<span class="me1">rec_type</span><span class="sy0">,</span>
+              <span class="sy0">:</span>event_length <span class="sy0">=&gt;</span> event.<span class="me1">event_length</span><span class="sy0">,</span>
+              <span class="sy0">:</span>event_pid <span class="sy0">=&gt;</span> event.<span class="me1">event_pid</span>
+          <span class="br0">&#125;</span><span class="br0">&#125;</span>
+ end
+&nbsp;
+ def db_action
+   mode <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">'!nativeeditor_status'</span><span class="br0">&#93;</span>
+   id <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">'id'</span><span class="br0">&#93;</span>
+   start_date <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">'start_date'</span><span class="br0">&#93;</span>
+   end_date <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">'end_date'</span><span class="br0">&#93;</span>
+   text <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">'text'</span><span class="br0">&#93;</span>
+   rec_type <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">'rec_type'</span><span class="br0">&#93;</span>
+   event_length <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">'event_length'</span><span class="br0">&#93;</span>
+   event_pid <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">'event_pid'</span><span class="br0">&#93;</span>
+   tid <span class="sy0">=</span> id
+&nbsp;
+   <span class="kw1">case</span> mode
+     when <span class="st0">'inserted'</span>
+       event <span class="sy0">=</span> Event.<span class="me1">create</span> <span class="sy0">:</span>start_date <span class="sy0">=&gt;</span> start_date<span class="sy0">,</span> <span class="sy0">:</span>end_date <span class="sy0">=&gt;</span> end_date<span class="sy0">,</span> 
+                            <span class="sy0">:</span>text <span class="sy0">=&gt;</span> text<span class="sy0">,:</span>rec_type <span class="sy0">=&gt;</span> rec_type<span class="sy0">,</span> 
+                            <span class="sy0">:</span>event_length <span class="sy0">=&gt;</span> event_length<span class="sy0">,</span> <span class="sy0">:</span>event_pid <span class="sy0">=&gt;</span> event_pid
+       tid <span class="sy0">=</span> event.<span class="me1">id</span>
+       <span class="kw1">if</span> rec_type <span class="sy0">==</span> <span class="st0">'none'</span>
+         mode <span class="sy0">=</span> <span class="st0">'deleted'</span>
+       end
+&nbsp;
+     when <span class="st0">'deleted'</span>
+       <span class="kw1">if</span> rec_type <span class="sy0">!=</span> <span class="st0">''</span>
+         Event.<span class="me1">where</span><span class="br0">&#40;</span>event_pid<span class="sy0">:</span> id<span class="br0">&#41;</span>.<span class="me1">destroy_all</span>
+       end
+&nbsp;
+       <span class="kw1">if</span> event_pid <span class="sy0">!=</span> <span class="nu0">0</span> and event_pid <span class="sy0">!=</span> <span class="st0">''</span>
+         event <span class="sy0">=</span> Event.<span class="me1">find</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>
+         event.<span class="me1">rec_type</span> <span class="sy0">=</span> <span class="st0">'none'</span>
+         event.<span class="me1">save</span>
+       <span class="kw1">else</span>
+         Event.<span class="me1">find</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">destroy</span>
+       end
+&nbsp;
+     when <span class="st0">'updated'</span>
+       <span class="kw1">if</span> rec_type <span class="sy0">!=</span> <span class="st0">''</span>
+         Event.<span class="me1">where</span><span class="br0">&#40;</span>event_pid<span class="sy0">:</span> id<span class="br0">&#41;</span>.<span class="me1">destroy_all</span>
+       end
+       event <span class="sy0">=</span> Event.<span class="me1">find</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>
+       event.<span class="me1">start_date</span> <span class="sy0">=</span> start_date
+       event.<span class="me1">end_date</span> <span class="sy0">=</span> end_date
+       event.<span class="me1">text</span> <span class="sy0">=</span> text
+       event.<span class="me1">rec_type</span> <span class="sy0">=</span> rec_type
+       event.<span class="me1">event_length</span> <span class="sy0">=</span> event_length
+       event.<span class="me1">event_pid</span> <span class="sy0">=</span> event_pid
+       event.<span class="me1">save</span>
+   end
+&nbsp;
+   render <span class="sy0">:</span>json <span class="sy0">=&gt;</span> <span class="br0">&#123;</span>
+              <span class="sy0">:</span>type <span class="sy0">=&gt;</span> mode<span class="sy0">,</span>
+              <span class="sy0">:</span>sid <span class="sy0">=&gt;</span> id<span class="sy0">,</span>
+              <span class="sy0">:</span>tid <span class="sy0">=&gt;</span> tid<span class="sy0">,</span>
+          <span class="br0">&#125;</span>
+ end
+end</pre></code></pre>
+
+<p>After that open <em>config/initializers/assets.rb</em> and add the <strong>dhtmlxscheduler_recurring</strong> extension to the precompile array.</p>
+
+<p>For this, add the line below:</p>
+
+<pre><code><pre class="js">Rails.<span class="me1">application</span>.<span class="me1">config</span>.<span class="me1">assets</span>.<span class="me1">precompile</span> <span class="sy0">+=</span> <span class="sy0">%</span>w<span class="br0">&#40;</span> ext<span class="sy0">/</span>dhtmlxscheduler_recurring.<span class="me1">js</span> <span class="br0">&#41;</span></pre></code></pre>
+
+<p>Next open <em>views/layouts/application.html.erb</em> and include the <strong>dhtmlxscheduler_recurring.js</strong> extension.</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;!</span>DOCTYPE html<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>html<span class="sy0">&gt;</span>
+    <span class="sy0">&lt;</span>head<span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>title<span class="sy0">&gt;</span>Scheduler on Rails<span class="sy0">&lt;/</span>title<span class="sy0">&gt;</span>
+        <span class="sy0">&lt;%=</span> csrf_meta_tags <span class="sy0">%&gt;</span>
+        <span class="sy0">&lt;%=</span> stylesheet_link_tag  <span class="st0">'application'</span><span class="sy0">,</span> media<span class="sy0">:</span> <span class="st0">'all'</span><span class="sy0">,</span> 
+            <span class="st0">'data-turbolinks-track'</span> <span class="sy0">=&gt;</span> <span class="kw2">true</span> <span class="sy0">%&gt;</span>
+        <span class="sy0">&lt;%=</span> stylesheet_link_tag <span class="st0">'dhtmlxscheduler'</span><span class="sy0">,</span> media<span class="sy0">:</span> <span class="st0">'all'</span><span class="sy0">,</span> 
+            <span class="st0">'data-turbolinks-track'</span> <span class="sy0">=&gt;</span> <span class="kw2">true</span> <span class="sy0">%&gt;</span>
+        <span class="sy0">&lt;%=</span> javascript_include_tag <span class="st0">'application'</span><span class="sy0">,</span> <span class="st0">'data-turbolinks-track'</span> <span class="sy0">=&gt;</span> <span class="kw2">true</span> <span class="sy0">%&gt;</span>
+        <span class="sy0">&lt;%=</span> javascript_include_tag <span class="st0">'dhtmlxscheduler'</span><span class="sy0">,</span><span class="st0">'data-turbolinks-track'</span> <span class="sy0">=&gt;</span> <span class="kw2">true</span> <span class="sy0">%&gt;</span>
+        <span class="sy0">&lt;%=</span> javascript_include_tag <span class="st0">'ext/dhtmlxscheduler_recurring'</span><span class="sy0">,</span> 
+            <span class="st0">'data-turbolinks-track'</span> <span class="sy0">=&gt;</span> <span class="kw2">true</span> <span class="sy0">%&gt;</span>
+    <span class="sy0">&lt;/</span>head<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>body<span class="sy0">&gt;</span>
+    <span class="sy0">&lt;%=</span> yield <span class="sy0">%&gt;</span>
+<span class="sy0">&lt;/</span>body<span class="sy0">&gt;</span>
+<span class="sy0">&lt;/</span>html<span class="sy0">&gt;</span></pre></code></pre>
+
+<p>Finally, run the server once again to check scheduler with recurring events:</p>
+
+<pre><code><pre class="js">rails server
+recurring events on rails</pre></code></pre>
+
+<p>If you've precisely followed the given instructions, you should now have a ready-to-use scheduler with recurring events that perfectly works with Rails framework.</p>
+
+<a name='troubleshooting'><h2>Trouble shooting</h2></a>
+
+<p>In case you've completed the above steps to implement Scheduler integration with Ruby on Rails, but Scheduler doesn't render events on a page, have a look at the <a class="link-" href="troubleshooting.html">Troubleshooting Backend Integration Issues</a> article. It describes 
+the ways of identifying the roots of the problems.</p>
+
+<a name='whatsnext'><h2>What's next</h2></a>
+
+<p>You can check <a class="link-" href="guides.html">guides on the numerous features of Scheduler</a> or tutorials on <a class="link-" href="howtostart_guides.html">integration of Scheduler with other backend frameworks</a>.</p>
+
+<!-- Content Area End -->
+			<a href='howtostart_ruby.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

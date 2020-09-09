@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1589296882.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1589296882.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Vault Docs" href="https://docs.dhtmlx.com/vault/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Handling Events  Vault Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/c/widgets/vault">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="installation.html">How to Install dhtmlxVault</a></li><li class=""><a href="initialize.html">Initialization</a></li><li class=""><a href="configuring.html">Configuration</a></li><li class=""><a href="localization.html">Localization</a></li><li class=""><a href="work_with_vault.html">Working with Vault</a></li><li class=""><a href="loading_files.html">Loading List of Files</a></li><li class=""><a href="uploading_files.html">Uploading Files</a></li><li class=""><a href="managing_files.html">Managing Files</a></li><li class=" current"><a href="events.html">Handling Events</a></li><ul><li class="inner"><a href="events.html#attachingeventlisteners">Attaching Event Listeners</a></li><li class="inner"><a href="events.html#detachingeventlisteners">Detaching Event Listeners</a></li><li class="inner"><a href="events.html#callingevents">Calling Events</a></li></ul><li class=""><a href="customization.html">Customizing Vault</a></li><li class=""><a href="angular_integration.html">Integrating Vault with Angular</a></li><li class=""><a href="react_integration.html">Integrating Vault with React</a></li><li class=""><a href="vuejs_integration.html">Integrating Vault with Vue.js</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Handling Events</h1>
+
+<a name='attachingeventlisteners'><h2>Attaching Event Listeners</h2></a>
+
+<p>You can attach event listeners with <a class="link-" href="api__events__on.html">vault.events.on()</a>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> info <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">&quot;events-info&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+vault.<span class="me1">events</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">&quot;BeforeAdd&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>obj<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    info.<span class="me1">innerHTML</span> <span class="sy0">+=</span> <span class="st0">&quot;before file add: &quot;</span> <span class="sy0">+</span> JSON.<span class="me1">stringify</span><span class="br0">&#40;</span>obj<span class="br0">&#41;</span> <span class="sy0">+</span> <span class="st0">&quot;&lt;/br&gt;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/05_events/01_events.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Events</a></p>
+
+<div class='note'><p><p>The names of events are case-insensitive.</p>
+</p></div>
+
+<a name='detachingeventlisteners'><h2>Detaching Event Listeners</h2></a>
+
+<p>To detach events, use <a class="link-" href="api__events__detach.html">vault.events.detach()</a>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> onbeforeadd <span class="sy0">=</span> vault.<span class="me1">events</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">&quot;BeforeAdd&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>obj<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    console.<span class="me1">log</span><span class="br0">&#40;</span><span class="st0">&quot;before file add: &quot;</span><span class="sy0">,</span>JSON.<span class="me1">stringify</span><span class="br0">&#40;</span>obj<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+vault.<span class="me1">events</span>.<span class="me1">detach</span><span class="br0">&#40;</span>onbeforeadd<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='callingevents'><h2>Calling Events</h2></a>
+
+<p>To call events, use <a class="link-" href="api__events__fire.html">vault.events.fire()</a>:</p>
+
+<pre><code><pre class="js">vault.<span class="me1">events</span>.<span class="me1">fire</span><span class="br0">&#40;</span><span class="st0">&quot;name&quot;</span><span class="sy0">,</span>args<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// where args is an array of arguments</span></pre></code></pre>
+
+<p>The list of events is available in the <a class="link-" href="api__refs__vault_events.html">API section</a>.</p>
+
+<!-- Content Area End -->
+			<a href='events.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			
+<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='loading_files.html'>Loading List of Files</a></li>	
+	<li><a href='managing_files.html'>Managing Files</a></li>
+	<li><a href='work_with_vault.html'>Working with Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Look and Feel</li>
+	<li><a href='configuring.html'>Configuration</a></li>
+	<li><a href='customization.html'>Customization</a></li>
+	<li><a href='localization.html'>Localization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Integration</li>
+	<li><a href='angular_integration.html'>Vault and Angular</a></li>
+	<li><a href='react_integration.html'>Vault and React</a></li>
+	<li><a href='vuejs_integration.html'>Vault and Vue.js</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__vault.html#methods'>Methods</a></li>
+	<li><a href='api__refs__vault_props.html'>Properties</a></li>
+	<li><a href='api__refs__vault_events.html'>Events</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

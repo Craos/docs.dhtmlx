@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1591766949.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1591766949.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="RichText Docs" href="https://docs.dhtmlx.com/richtext/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Configuration  RichText Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/c/widgets/richtext">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="initialization.html">Initialization</a></li><li class=" current"><a href="configuration.html">Configuration</a></li><ul><li class="inner"><a href="configuration.html#workingmodes">Working modes</a></li><li class="inner"><a href="configuration.html#toolbar">Toolbar</a></li></ul><li class=""><a href="localization.html">Localization</a></li><li class=""><a href="loading_data.html">Setting Content</a></li><li class=""><a href="working_with_richtext.html">Working with RichText</a></li><li class=""><a href="customization.html">Customization</a></li><li class=""><a href="event_handling.html">Event Handling</a></li><li class=""><a href="angular_integration.html">Integration with Angular</a></li><li class=""><a href="react_integration.html">Integration with React</a></li><li class=""><a href="vuejs_integration.html">Integration with Vue.js</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Configuration</h1>
+
+<p>With RichText configuration options, you can make your work with text even more comfortable. It is possible to define the desired working mode and set the blocks of toolbar buttons you need in the order you want.</p>
+
+<a name='workingmodes'><h2>Working modes</h2></a>
+
+<p>There are two modes of RichText editor between which you can select to get the best working place for creating your perfect texts. The modes are:</p>
+
+<ul>
+<li>"classic"</li>
+</ul>
+
+<p><img src="media/classic_mode.png" alt="Classic mode" /></p>
+
+<ul>
+<li>"document"</li>
+</ul>
+
+<p><img src="media/doc_mode.png" alt="Document mode" /></p>
+
+<p>To specify the desired mode, you need to define it in the <a class="link-" href="api__richtext_mode_config.html">mode</a> option of the Richtext configuration object during initialization of the component:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> richtext <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Richtext</span><span class="br0">&#40;</span><span class="st0">&quot;rich&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    mode<span class="sy0">:</span> <span class="st0">&quot;document&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_configuration/01_modes.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;RichText Editor modes.</a></p>
+
+<a name='toolbar'><h2>Toolbar</h2></a>
+
+<h3>Default toolbar</h3>
+
+<p>The RichText toolbar consists of several blocks of controls that can be changed according to your needs. By default, there are the following blocks of controls in the toolbar:</p>
+
+<ul>
+<li><em>"undo"</em> - to undo/redo recent actions</li>
+<li><em>"style"</em> - to change the font, font size, turn plain text into a heading and vice versa, and make a quote out of the text</li>
+<li><em>"decoration"</em> - to make text bold, italic, underlined or strike-through</li>
+<li><em>"colors"</em> - to change the color of the text or its background</li>
+<li><em>"align"</em> - to adjust the alignment of the text on a page</li>
+<li><em>"link"</em> - to add a link into the text</li>
+</ul>
+
+<p>The structure of toolbar is defined via the <a class="link-" href="api__richtext_toolbarblocks_config.html">toolbarBlocks</a> configuration option of the component, which is an array with strings presenting the names of controls.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> richtext <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Richtext</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    <span class="co1">// default toolbar</span>
+    toolbarBlocks<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="st0">&quot;undo&quot;</span><span class="sy0">,</span> <span class="st0">&quot;style&quot;</span><span class="sy0">,</span> <span class="st0">&quot;decoration&quot;</span><span class="sy0">,</span> <span class="st0">&quot;colors&quot;</span><span class="sy0">,</span> 
+        <span class="st0">&quot;align&quot;</span><span class="sy0">,</span> <span class="st0">&quot;link&quot;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/default_toolbar.png" alt="Default toolbar" /></p>
+
+<p><a href='samples/01_init/01_basic.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Basic initialization.</a></p>
+
+<p>You can add several more blocks to make the full toolbar:</p>
+
+<ul>
+<li><em>"clear"</em> - to clear formatting applied to the text</li>
+<li><em>"fullscreen"</em> - to enter/exit the full screen mode</li>
+<li><em>"stats"</em> - to display statistics about the text: the count of words, characters and characters excluding spaces or some custom statistical data</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> richtext <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Richtext</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    <span class="co1">// full toolbar</span>
+    toolbarBlocks<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="st0">&quot;undo&quot;</span><span class="sy0">,</span> <span class="st0">&quot;style&quot;</span><span class="sy0">,</span> <span class="st0">&quot;decoration&quot;</span><span class="sy0">,</span> <span class="st0">&quot;colors&quot;</span><span class="sy0">,</span> <span class="st0">&quot;align&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;link&quot;</span><span class="sy0">,</span> <span class="st0">&quot;clear&quot;</span><span class="sy0">,</span> <span class="st0">&quot;stats&quot;</span><span class="sy0">,</span> <span class="st0">&quot;fullscreen&quot;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/full_toolbar.png" alt="Full toolbar" /></p>
+
+<p><a href='samples/02_configuration/03_full_toolbar.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Full toolbar.</a></p>
+
+<h3>Short toolbar definition</h3>
+
+<p>There is also a possibility to specify the default set of buttons via the <em>"default"</em> definition in the <strong>toolbarBlocks</strong> array, like this:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> richtext <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Richtext</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    <span class="co1">// full toolbar</span>
+    toolbarBlocks<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;default&quot;</span><span class="sy0">,</span> <span class="st0">&quot;clear&quot;</span><span class="sy0">,</span> <span class="st0">&quot;stats&quot;</span><span class="sy0">,</span> <span class="st0">&quot;fullscreen&quot;</span><span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>where the "default" string includes the default set of controls: <em>"undo"</em>, <em>"style"</em>, <em>"decoration"</em>, <em>"colors"</em>, <em>"align"</em> and <em>"link"</em>.</p>
+
+<h3>Custom toolbar</h3>
+
+<p>You can specify your own structure of the toolbar by enumerating the necessary elements of the <strong>toolbarBlocks</strong> array in the desired order, for example:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> richtext <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Richtext</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    toolbarBlocks<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;clear&quot;</span><span class="sy0">,</span> <span class="st0">&quot;colors&quot;</span><span class="sy0">,</span> <span class="st0">&quot;align&quot;</span><span class="sy0">,</span><span class="st0">&quot;decoration&quot;</span><span class="sy0">,</span> 
+        <span class="st0">&quot;undo&quot;</span><span class="sy0">,</span> <span class="st0">&quot;fullscreen&quot;</span><span class="sy0">,</span><span class="st0">&quot;link&quot;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/custom_toolbar.png" alt="Custom toolbar" /></p>
+
+<p><a href='samples/02_configuration/02_toolbar_blocks.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Configuration of toolbar blocks.</a></p>
+
+<p>Toolbar is <a class="link-" href="customization.html">highly customizable</a>. You can add new controls, change the icons of controls and apply the desired icon pack.</p>
+
+<!-- Content Area End -->
+			<a href='configuration.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='initialization.html'>Initialization</a></li>	
+	<li><a href='working_with_richtext.html'>Main Operations</a></li>
+	<li><a href='loading_data.html'>Setting Content</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Look and Feel</li>
+	<li><a href='configuration.html'>Configuration</a></li>
+	<li><a href='customization.html'>Customization</a></li>
+	<li><a href='localization.html'>Localization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Integration</li>
+	<li><a href='angular_integration.html'>RichText and Angular</a></li>
+	<li><a href='react_integration.html'>RichText and React</a></li>
+	<li><a href='vuejs_integration.html'>RichText and Vue.js</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__richtext.html#methods'>Methods</a></li>
+	<li><a href='api__refs__richtext.html#config'>Properties</a></li>
+	<li><a href='api__refs__richtext.html#events'>Events</a></li>
+</ul>
+
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

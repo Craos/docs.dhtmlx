@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Using Windows from Accordion  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxaccordion.html">dhtmlXAccordion API</a></li><li class=""><a href="api__refs__dhtmlxaccordioncell.html">dhtmlXAccordionCell API</a></li><li class=""><a href="accordion__init.html">Initializing Accordion on a Page</a></li><li class=""><a href="accordion__skins.html">Accordion Skins</a></li><li class=""><a href="accordion__icons.html">Icons in the Header</a></li><li class=""><a href="accordion__modes.html">Single Mode and Multi Mode</a></li><li class=""><a href="accordion__offsets.html">Accordion Offsets</a></li><li class=""><a href="accordion__manipulation.html">Manipulating Cells</a></li><li class=""><a href="accordion__docking.html">Docking/Undocking Cells</a></li><li class=""><a href="accordion__iterator.html">Iterator</a></li><li class=" current"><a href="accordion__dhxwins.html">Using Windows from Accordion</a></li><li class=""><a href="accordion__attach_components.html">Attaching Components</a></li><li class=""><a href="accordion__attach_mtb.html">Attaching Menu/Status Bar</a></li><li class=""><a href="accordion__attach_html.html">Attaching HTML</a></li><li class=""><a href="accordion__attach_urls.html">Attaching URL</a></li><li class=""><a href="accordion__attach_google_map.html">Attaching Google Maps</a></li><li class=""><a href="accordion__progress.html">Progress Bar</a></li><li class=""><a href="accordion__views.html">Different Content in the Same Cell</a></li><li class=""><a href="accordion__coloring_text_selection.html">Coloring Text Selection</a></li><li class=""><a href="accordion__migration.html">Migration from 3.6 to 4.0</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="accordion__index.html">Accordion</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Using Windows from Accordion</h1>
+
+<p>Sometimes while using accordion you may need to show a pop-up window. If windows .js/.css files are included on the page, there's no need to create an extra windows instance,
+as the accordion has one already (it is used for the "dock/undock" functionality)</p>
+
+<p><br></p>
+
+<pre><code><pre class="js"><span class="co1">// creating an accordion instance</span>
+<span class="kw2">var</span> myAcc <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXAccordion<span class="br0">&#40;</span><span class="st0">&quot;accObj&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="co1">// creating a pop-up window from the accordion's windows instance</span>
+<span class="kw2">var</span> popupWindow <span class="sy0">=</span> myAcc.<span class="me1">dhxWins</span>.<span class="me1">createWindow</span><span class="br0">&#40;</span><span class="st0">&quot;popupWindow&quot;</span><span class="sy0">,</span> ...<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><br></p>
+
+<p>If you're using the "dock/undock" functionality at the same time, you need to make sure your windows ids
+and the accordion's windows ids will not overwrite each other.</p>
+
+<p><br></p>
+
+<p>Remember: accordion uses the same ids for windows and for its cells. You've specified these ids by the <a class="link-" href="api__dhtmlxaccordion_additem.html">addItem()</a> method.</p>
+
+<p><br></p>
+
+<p>You can read more details <a class="link-" href="api__dhtmlxaccordion_dhxwins_other.html">here</a>.</p>
+
+<!-- Content Area End -->
+			<a href='accordion__dhxwins.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

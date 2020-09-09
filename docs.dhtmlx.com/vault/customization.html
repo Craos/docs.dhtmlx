@@ -1,0 +1,393 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1589296882.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1589296882.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Vault Docs" href="https://docs.dhtmlx.com/vault/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Customizing Vault  Vault Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/c/widgets/vault">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="installation.html">How to Install dhtmlxVault</a></li><li class=""><a href="initialize.html">Initialization</a></li><li class=""><a href="configuring.html">Configuration</a></li><li class=""><a href="localization.html">Localization</a></li><li class=""><a href="work_with_vault.html">Working with Vault</a></li><li class=""><a href="loading_files.html">Loading List of Files</a></li><li class=""><a href="uploading_files.html">Uploading Files</a></li><li class=""><a href="managing_files.html">Managing Files</a></li><li class=""><a href="events.html">Handling Events</a></li><li class=" current"><a href="customization.html">Customizing Vault</a></li><ul><li class="inner"><a href="customization.html#toolbarcontrols">Toolbar controls</a></li><li class="inner"><a href="customization.html#iconsforfilesextensions">Icons for files extensions</a></li><li class="inner"><a href="customization.html#statusbar">Status bar</a></li></ul><li class=""><a href="angular_integration.html">Integrating Vault with Angular</a></li><li class=""><a href="react_integration.html">Integrating Vault with React</a></li><li class=""><a href="vuejs_integration.html">Integrating Vault with Vue.js</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Customizing Vault</h1>
+
+<p><style>
+table,td{
+    text-align:center;
+}</p>
+
+<p>table,thead{margin-bottom}
+</style></p>
+
+<a name='toolbarcontrols'><h2>Toolbar controls</h2></a>
+
+<p>By default the <a class="link-" href="overview.html#vaultinterface">toolbar of dhtmlxVault</a> has three icon buttons:</p>
+
+<ul>
+<li>the <strong>Add</strong> icon button for adding files into Vault (id:"add")</li>
+<li>the <strong>Upload</strong> icon button for upload files to the server (id:"upload") (if the automatic upload is disabled by the <strong>autosend:false</strong> property)</li>
+<li>the <strong>Clear all</strong> icon button for clearing the list of files for upload (id: "remove-all")</li>
+</ul>
+
+<p>To add new controls to the toolbar and delete unnecessary ones, you should make use of the toolbar data collection API. It will be described in detail in the next sections of this chapter.</p>
+
+<h3>Using icons</h3>
+
+<p>dhtmlxVault uses the <a href="https://materialdesignicons.com/">Material Design Icons</a> for toolbar controls by default. You can also use a different icon font.
+To apply a different icon font, e.g. <a href="https://fontawesome.com/">Font Awesome</a>, include it on the page with dhtmlxVault and use desired icons in the toolbar.</p>
+
+<p>Font Awesome can be used <a href="https://fontawesome.com/how-to-use/on-the-web/setup/getting-started?using=web-fonts-with-css">from CDN</a>. It should be included after <em>vault.js</em> and <em>vault.css</em> files like this:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../../codebase/vault.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../../codebase/vault.css&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> </span>
+<span class="sc2"><span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;https://use.fontawesome.com/releases/v5.0.8/css/all.css&quot;</span> </span>
+<span class="sc2">integrity<span class="sy0">=</span><span class="st0">&quot;sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU&quot;</span> </span>
+<span class="sc2">crossorigin<span class="sy0">=</span><span class="st0">&quot;anonymous&quot;</span>&gt;</span></pre></code></pre>
+
+<p>Then you can apply any Font Awesome icon for toolbar icon buttons. Use the name of the icon as the value of the <strong>icon</strong> property in the object with the control parameters. See details below.</p>
+
+<h3>Adding controls</h3>
+
+<p>To add a control into the toolbar, apply the <strong>vault.toolbar.data.add()</strong> method. It takes as parameters an object with the control config and the index of the position to place the icon button into:</p>
+
+<pre><code><pre class="js">vault.<span class="me1">toolbar</span>.<span class="me1">data</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;iconButton&quot;</span><span class="sy0">,</span>
+    id<span class="sy0">:</span> <span class="st0">&quot;buttonId&quot;</span><span class="sy0">,</span>
+    tooltip<span class="sy0">:</span> <span class="st0">&quot;Some tooltip&quot;</span><span class="sy0">,</span>
+    icon<span class="sy0">:</span> <span class="st0">&quot;icon name&quot;</span>
+<span class="br0">&#125;</span><span class="sy0">,</span> <span class="nu0">2</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The object of an icon button has the following properties:</p>
+
+<ul>
+<li><strong>type</strong> - the type of a button, set it to the "iconButton" value</li>
+<li><strong>id</strong> - the id of an icon button</li>
+<li><strong>tooltip</strong> - the tooltip of an icon button</li>
+<li><strong>css</strong> - the CSS style to apply to an icon button</li>
+<li><strong>icon</strong> - the name of an icon from the used icon font</li>
+<li><strong>twoState</strong> - the flag that defines whether an icon button can be used in two states</li>
+<li><strong>active</strong> - specifies the state of an icon button: <em>true</em> - active, <em>false</em> - inactive</li>
+</ul>
+
+<p>For example:</p>
+
+<pre><code><pre class="js">vault.<span class="me1">toolbar</span>.<span class="me1">data</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;iconButton&quot;</span><span class="sy0">,</span>
+    id<span class="sy0">:</span> <span class="st0">&quot;calc-size&quot;</span><span class="sy0">,</span>
+    tooltip<span class="sy0">:</span> <span class="st0">&quot;calculate total size&quot;</span><span class="sy0">,</span>
+    icon<span class="sy0">:</span> <span class="st0">&quot;fas fa-calculator&quot;</span> 
+<span class="br0">&#125;</span><span class="sy0">,</span> <span class="nu0">2</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/custom_button.png" alt="Custom button in the toolbar" /></p>
+
+<p><a href='samples/04_customization/01_custom_button.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom button</a></p>
+
+<h3>Updating controls</h3>
+
+<p>You can change the icon of the Toolbar control and its other config options with the help of the <strong>vault.toolbar.data.update()</strong> method. It takes two parameters:</p>
+
+<ul>
+<li>the id of an icon button</li>
+<li>an object with new configuration of the control</li>
+</ul>
+
+<pre><code><pre class="js">vault.<span class="me1">toolbar</span>.<span class="me1">data</span>.<span class="me1">update</span><span class="br0">&#40;</span><span class="st0">&quot;add&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    icon<span class="sy0">:</span> <span class="st0">&quot;icon_name&quot;</span> 
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In the example below the default icons of the toolbar icon buttons are changed to Font Awesome ones:</p>
+
+<pre><code><pre class="js">vault.<span class="me1">toolbar</span>.<span class="me1">data</span>.<span class="me1">update</span><span class="br0">&#40;</span><span class="st0">&quot;add&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>icon<span class="sy0">:</span> <span class="st0">&quot;far fa-plus-square&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+vault.<span class="me1">toolbar</span>.<span class="me1">data</span>.<span class="me1">update</span><span class="br0">&#40;</span><span class="st0">&quot;remove-all&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>icon<span class="sy0">:</span> <span class="st0">&quot;far fa-trash-alt&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+vault.<span class="me1">toolbar</span>.<span class="me1">data</span>.<span class="me1">update</span><span class="br0">&#40;</span><span class="st0">&quot;upload&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>icon<span class="sy0">:</span> <span class="st0">&quot;far fa-save&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/custom_icons_for_buttons.png" alt="Custom icons in the toolbar" /></p>
+
+<p><a href='samples/04_customization/05_toolbar_custom_icons.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom icons for toolbar</a></p>
+
+<h3>Deleting controls</h3>
+
+<p>To remove a control from the toolbar, make use of the <strong>vault.toolbar.data.remove()</strong> method. Pass the id of the control that should be removed to the method:</p>
+
+<pre><code><pre class="js">vault.<span class="me1">toolbar</span>.<span class="me1">data</span>.<span class="me1">remove</span><span class="br0">&#40;</span><span class="st0">&quot;switch&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='iconsforfilesextensions'><h2>Icons for files extensions</h2></a>
+
+<p>Vault provides icons for various types of files. Similar files extensions are combined into groups, for example: the "icon_image" group contains <em>jpg,gif,png</em>,etc. extensions and for
+all types in the group Vault uses the same icon. For all extensions that do not suit any of the groups the default icon is used.</p>
+
+<h3>Default icons</h3>
+
+<table class="list" cellspacing="0" cellpadding="5" border="0">
+    <thead>
+    <tr>
+        <th>
+            Group
+        </th>
+        <th>
+            Icon
+        </th>
+        <th>
+            Extensions
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>icon_image</td>
+        <td><img src="media/img/jpg.svg.html" height=40px;/></td>
+        <td>jpg, jpeg, gif, png, bmp, tiff, pcx, svg, ico</td>
+    </tr>
+    <tr>
+        <td>icon_psd </td>
+        <td><img src="media/img/psd.svg.html" height=40px;/></td>
+        <td>psd</td>
+    </tr>
+    <tr>
+        <td>icon_video</td>
+        <td><img src="media/img/mpg.svg.html" height=40px;/></td>
+        <td>avi, mpg, mpeg, rm, move, mov, mkv, flv, f4v, mp4, 3gp, wmv, webm, vob</td>
+    </tr>
+    <tr>
+        <td>icon_audio</td>
+        <td><img src="media/img/wav.svg.html" height=40px;/></td>
+        <td>wav, aiff, au, mp3, aac, wma, ogg, flac, ape, wv, m4a, mid, midi</td>
+    </tr>
+    <tr>
+        <td>icon_arch</td>
+        <td><img src="media/img/zip.svg.html" height=40px;/></td>
+        <td>rar, zip, tar, tgz, arj, gzip, bzip2, 7z, ace, apk, deb, zipx, cab, tar-gz, rpm, xar </td>
+    </tr>
+    <tr>
+        <td>icon_text</td>
+        <td><img src="media/img/txt.svg.html" height=40px;/></td>
+        <td>txt, nfo, djvu, xml, tex</td>
+    </tr>
+    <tr>
+        <td>icon_html</td>
+        <td><img src="media/img/html.svg.html" height=40px;/></td>
+        <td>html, htm, eml</td>
+    </tr>
+    <tr>
+        <td>icon_doc</td>
+        <td><img src="media/img/doc.svg.html" height=40px;/></td>
+        <td>doc, docx, docm, dot, dotx, odt, wpd, wps, pages, rtf</td>
+    </tr>
+    <tr>
+        <td>icon_pdf</td>
+        <td><img src="media/img/pdf.svg.html" height=40px;/></td>
+        <td>pdf, ps, eps</td>
+    </tr>
+    <tr>
+        <td>icon_xls</td>
+        <td><img src="media/img/xls.svg.html" height=40px;/></td>
+        <td>xlr, xls, xlsm, xlsx, ods, csv, tsv</td>
+    </tr>
+    <tr>
+        <td>icon_exe</td>
+        <td><img src="media/img/exe.svg.html" height=40px;/></td>
+        <td>exe</td>
+    </tr>
+    <tr>
+        <td>icon_dmg</td>
+        <td><img src="media/img/dmg.svg.html" height=40px;/></td>
+        <td>dmg</td>
+    </tr>
+    <tr>
+        <td>icon_ppt</td>
+        <td><img src="media/img/ppt.svg.html" height=40px;/></td>
+        <td>pot, potm, potx, pps, ppsm, ppsx, ppt, pptx, pptm, odp</td>
+    </tr>
+    <tr>
+        <td>other</td>
+        <td><img src="media/img/other.svg.html" height=40px;/></td>
+        <td>for all other formats the default icon is used</td>
+    </tr>
+    </tbody>
+</table>
+
+<h3>Custom icons for file extensions</h3>
+
+<p>To specify custom icons for file extensions, you need to change the related styles. A style for a particular group of extensions has a name formed as <strong>.extension-[name]</strong>, like <em>.extension-js</em>.
+To change the default icon of a group, set the path to a custom icon as a background of the corresponding style:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>style<span class="sy0">&gt;</span>
+    .<span class="me1">extension</span><span class="sy0">-</span>js <span class="br0">&#123;</span>
+        background<span class="sy0">:</span> url<span class="br0">&#40;</span>..<span class="sy0">/</span>JS<span class="sy0">-</span>custom.<span class="me1">svg</span><span class="br0">&#41;</span> no<span class="sy0">-</span>repeat center center<span class="sy0">!</span>important<span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    .<span class="me1">extension</span><span class="sy0">-</span>doc <span class="br0">&#123;</span>
+        background<span class="sy0">:</span> url<span class="br0">&#40;</span>..<span class="sy0">/</span>DOC<span class="sy0">-</span>custom.<span class="me1">svg</span><span class="br0">&#41;</span> no<span class="sy0">-</span>repeat center center<span class="sy0">!</span>important<span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="sy0">&lt;/</span>style<span class="sy0">&gt;</span></pre></code></pre>
+
+<p><img src="media/custom_icons_for_files.png" alt="Custom Icons" /></p>
+
+<p><a href='samples/04_customization/02_custom_icons.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom icons</a></p>
+
+<a name='statusbar'><h2>Status bar</h2></a>
+
+<p>You can add a status bar for Vault to show some information about the files in the queue. A status bar can be placed in any place on a page and contain any data related to files.</p>
+
+<p>For example, here is an example of a status bar that shows the number of files and their size:</p>
+
+<p><img src="media/status_bar.png" alt="Status bar" /></p>
+
+<p>To reproduce the same implementation, follow the step-by-step instruction below:</p>
+
+<ul>
+<li>specify the structure of the status bar</li>
+</ul>
+
+<p>The container of the status bar has the "info-line" class. Add two more divs for the number of files and the size of files. In their turn, they will have two more divs each:
+for value and text. You can also wrap the div with status bar into another container to present it in a separate block:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;top-rect-block&quot;</span><span class="sy0">&gt;</span>
+    <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;info-line&quot;</span><span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;files-count&quot;</span><span class="sy0">&gt;</span>
+            <span class="sy0">&lt;</span>div id<span class="sy0">=</span><span class="st0">&quot;files-count-value&quot;</span> <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;number-value&quot;</span><span class="sy0">&gt;</span><span class="nu0">0</span><span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span>
+            <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;text-value&quot;</span><span class="sy0">&gt;</span>Files <span class="sy0">/&amp;</span>nbsp<span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span>
+        <span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;files-size&quot;</span><span class="sy0">&gt;</span>
+            <span class="sy0">&lt;</span>div id<span class="sy0">=</span><span class="st0">&quot;files-size-value&quot;</span> <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;number-value&quot;</span><span class="sy0">&gt;</span><span class="nu0">0</span><span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span>
+            <span class="sy0">&lt;</span>div id<span class="sy0">=</span><span class="st0">&quot;files-size-text&quot;</span> <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;text-value&quot;</span><span class="sy0">&gt;</span>b<span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span>
+        <span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span>
+   <span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span>
+<span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span></pre></code></pre>
+
+<ul>
+<li>define a container for Vault and initialize it</li>
+</ul>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>div id<span class="sy0">=</span><span class="st0">&quot;vault&quot;</span> <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;container with-header&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+&nbsp;
+<span class="kw2">var</span> vault <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Vault</span><span class="br0">&#40;</span><span class="st0">&quot;vault&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    uploader<span class="sy0">:</span> <span class="br0">&#123;</span>
+       target<span class="sy0">:</span> <span class="st0">&quot;/backend/upload&quot;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>use the <a class="link-" href="api__vault_change_event.html">Change</a> event to describe that on each change in the list of files Vault should iterate through its data collection and calculate the number of files, 
+their total size and change the text for size units accordingly:</li>
+</ul>
+
+<pre><code><pre class="js">vault.<span class="me1">events</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">&quot;change&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw2">var</span> count <span class="sy0">=</span> vault.<span class="me1">data</span>.<span class="me1">getLength</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw2">var</span> size <span class="sy0">=</span> vault.<span class="me1">data</span>.<span class="me1">reduce</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>sum<span class="sy0">,</span> <span class="kw1">item</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">return</span> sum <span class="sy0">+</span> <span class="kw1">item</span>.<span class="me1">size</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span> <span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    filesCountValue.<span class="me1">textContent</span> <span class="sy0">=</span> count<span class="sy0">;</span>
+&nbsp;
+    <span class="kw2">var</span> basis <span class="sy0">=</span> getBasis<span class="br0">&#40;</span>size<span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    filesSizeValue.<span class="me1">textContent</span> <span class="sy0">=</span> basis.<span class="me1">size</span><span class="sy0">;</span>
+    filesSizeText.<span class="me1">textContent</span> <span class="sy0">=</span> basis.<span class="me1">metric</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>provide variables that will write the resulting values into the corresponding divs of the status bar:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> filesCountValue <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">&quot;files-count-value&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> filesSizeValue <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">&quot;files-size-value&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> filesSizeText <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">&quot;files-size-text&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/04_customization/04_info_line.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Info line</a></p>
+
+<!-- Content Area End -->
+			<a href='customization.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			
+<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='loading_files.html'>Loading List of Files</a></li>	
+	<li><a href='managing_files.html'>Managing Files</a></li>
+	<li><a href='work_with_vault.html'>Working with Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Look and Feel</li>
+	<li><a href='configuring.html'>Configuration</a></li>
+	<li><a href='customization.html'>Customization</a></li>
+	<li><a href='localization.html'>Localization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Integration</li>
+	<li><a href='angular_integration.html'>Vault and Angular</a></li>
+	<li><a href='react_integration.html'>Vault and React</a></li>
+	<li><a href='vuejs_integration.html'>Vault and Vue.js</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__vault.html#methods'>Methods</a></li>
+	<li><a href='api__refs__vault_props.html'>Properties</a></li>
+	<li><a href='api__refs__vault_events.html'>Events</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

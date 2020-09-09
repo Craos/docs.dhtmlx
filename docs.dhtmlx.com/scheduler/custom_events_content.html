@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Custom Event's Content  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="custom_events_display.html">Custom Event's Box</a></li><li class=""><a href="custom_events_color.html">Custom Event's Color</a></li><li class=" current"><a href="custom_events_content.html">Custom Event's Content</a></li><ul><li class="inner"><a href="custom_events_content.html#customizingtheeventsheader">Customizing the event's header</a></li><li class="inner"><a href="custom_events_content.html#customizingtheeventstext">Customizing the event's text</a></li></ul><li class=""><a href="tooltips.html">Tooltips</a></li><li class=""><a href="customizing_edit_select_bars.html">Customizing "Select" and "Edit" Bars</a></li><li class=""><a href="sizing.html">Sizing the Scale and Events Boxes</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="customizing_events.html">Customizing Events</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Custom Event's Content</h1>
+
+<p>To customize the event's content and specify the data to display, you should use templates. 
+Various views use various templates and to find out which templates some view uses, see the article  - <a class="link-" href="templates.html">Formatting Labels, Dates, Styles</a>.</p>
+
+<p>In this article we will consider, how to alter templates for most popular views - <a class="link-" href="day_view.html">Day View</a> and <a class="link-" href="week_view.html">Week View</a>.</p>
+
+<p>These views use 2 templates to customize the events' text:</p>
+
+<ul>
+<li><a class="link-" href="api__scheduler_event_header_template.html">event_header</a> - specifies the event's header</li>
+<li><a class="link-" href="api__scheduler_event_text_template.html">event_text</a> - specifies the event's text</li>
+</ul>
+
+<p>There's also the <a class="link-" href="api__scheduler_event_bar_text_template.html">event_bar_text</a> template that specifies the event's text of multi-day events. 
+It is used by the <a class="link-" href="month_view.html">Month View</a> and <a class="link-pro" href="timeline_view.html">Timeline View</a>.</p>
+
+<div class='note'><p><p>We strongly encourage you to redefine templates within a handler function of the <a class="link-" href="api__scheduler_ontemplatesready_event.html">onTemplatesReady</a> event, 
+as it ensures that your template won't be rewritten with the default one.</p>
+</p></div>
+
+<a name='customizingtheeventsheader'><h2>Customizing the event's header</h2></a>
+
+<p>The event's header is specified by the <a class="link-" href="api__scheduler_event_header_template.html">event_header</a> template.</p>
+
+<pre><code><pre class="js"><span class="co1">//default definition</span>
+scheduler.<span class="me1">templates</span>.<span class="me1">event_header</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span>end<span class="sy0">,</span>ev<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> scheduler.<span class="me1">templates</span>.<span class="me1">event_date</span><span class="br0">&#40;</span>start<span class="br0">&#41;</span><span class="sy0">+</span><span class="st0">&quot; - &quot;</span><span class="sy0">+</span>
+    scheduler.<span class="me1">templates</span>.<span class="me1">event_date</span><span class="br0">&#40;</span>end<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><em>Let's assume that your data objects have a special boolean property <strong>important</strong> that indicates, whether the related event is important. 
+You want to highlight the headers of important events by adding the icon - a red check - 
+and coloring the event's duration into orange color.</em></p>
+
+<p><br></p>
+
+<p><img src="media/custom_event_header.png"/></p>
+
+<p>Then, here is the code you should use:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onTemplatesReady&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    scheduler.<span class="me1">templates</span>.<span class="me1">event_header</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span>end<span class="sy0">,</span>ev<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>event.<span class="me1">important</span> <span class="sy0">==</span> <span class="kw2">true</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+            <span class="kw1">return</span> <span class="br0">&#40;</span><span class="st0">&quot;&lt;img src='red_check.png'/&gt; &lt;b style='color:#F08080'&gt;&quot;</span><span class="sy0">+</span>
+                scheduler.<span class="me1">templates</span>.<span class="me1">event_date</span><span class="br0">&#40;</span>start<span class="br0">&#41;</span><span class="sy0">+</span><span class="st0">&quot; - &quot;</span><span class="sy0">+</span>
+        <span class="br0">&#125;</span> <span class="kw1">else</span> <span class="br0">&#123;</span>
+            <span class="kw1">return</span><span class="br0">&#40;</span>scheduler.<span class="me1">templates</span>.<span class="me1">event_date</span><span class="br0">&#40;</span>start<span class="br0">&#41;</span><span class="sy0">+</span><span class="st0">&quot; - &quot;</span><span class="sy0">+</span>
+            scheduler.<span class="me1">templates</span>.<span class="me1">event_date</span><span class="br0">&#40;</span>end<span class="br0">&#41;</span><span class="br0">&#41;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+...
+<span class="me1">scheduler</span>.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">6</span><span class="sy0">,</span> <span class="nu0">5</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;week&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='customizingtheeventstext'><h2>Customizing the event's text</h2></a>
+
+<p>The event text is specified by the <a class="link-" href="api__scheduler_event_text_template.html">event_text</a> template.</p>
+
+<pre><code><pre class="js"><span class="co1">//default definition</span>
+scheduler.<span class="me1">templates</span>.<span class="me1">event_text</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span>end<span class="sy0">,</span>ev<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> ev.<span class="me1">text</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><em>Let's assume that your data objects have an additional property <strong>location</strong> that indicates the place that the event takes place in. You want to display the location together with the text in the event box.</em></p>
+
+<p><br></p>
+
+<p><img src="media/custom_event_text.png"/></p>
+
+<p>Then, here is the code you should use:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onTemplatesReady&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    scheduler.<span class="me1">templates</span>.<span class="me1">event_text</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span>end<span class="sy0">,</span>event<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">return</span> <span class="st0">&quot;&lt;b&gt;&quot;</span> <span class="sy0">+</span> event.<span class="me1">text</span> <span class="sy0">+</span> <span class="st0">&quot;&lt;/b&gt;&lt;br&gt;&lt;i&gt;&quot;</span> <span class="sy0">+</span> event.<span class="me1">location</span> <span class="sy0">+</span> <span class="st0">&quot;&lt;/i&gt;&quot;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+...
+<span class="me1">scheduler</span>.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">6</span><span class="sy0">,</span> <span class="nu0">5</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;week&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='custom_events_content.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

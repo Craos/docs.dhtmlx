@@ -1,0 +1,359 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Migration From Older Versions  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__scheduler.html">Scheduler API</a></li><li class=""><a href="what_s_new.html">What's New</a></li><li class=" current"><a href="migration_from_older_version.html">Migration From Older Versions</a></li><ul><li class="inner"><a href="migration_from_older_version.html#5253">5.2 -> 5.3</a></li><li class="inner"><a href="migration_from_older_version.html#5152">5.1 -> 5.2</a></li><li class="inner"><a href="migration_from_older_version.html#5051">5.0 -> 5.1</a></li><li class="inner"><a href="migration_from_older_version.html#4450">4.4 -> 5.0</a></li><li class="inner"><a href="migration_from_older_version.html#4x43">4.x -> 4.3</a></li><li class="inner"><a href="migration_from_older_version.html#3640">3.6 -> 4.0</a></li><li class="inner"><a href="migration_from_older_version.html#3637">3.6 -> 3.7</a></li><li class="inner"><a href="migration_from_older_version.html#3536">3.5 -> 3.6</a></li><li class="inner"><a href="migration_from_older_version.html#3035">3.0 -> 3.5</a></li><li class="inner"><a href="migration_from_older_version.html#2330">2.3 -> 3.0</a></li><li class="inner"><a href="migration_from_older_version.html#2223">2.2 -> 2.3</a></li><li class="inner"><a href="migration_from_older_version.html#2122">2.1 -> 2.2</a></li><li class="inner"><a href="migration_from_older_version.html#2021">2.0 -> 2.1</a></li><li class="inner"><a href="migration_from_older_version.html#1020">1.0 -> 2.0</a></li><li><a href="scheduler_3.0.html">Migration to the Scheduler 3.0</a></li></ul><li class=""><a href="views.html">Views</a></li><li class=""><a href="guides.html">Guides</a></li><li class=""><a href="copyright.html">Third Party Licenses</a></li><li class=""><a href="faq.html">FAQ</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Migration From Older Versions</h1>
+
+<a name='5253'><h2>5.2 -> 5.3</h2></a>
+
+<h3>Touch gestures</h3>
+
+<p>The default handler for the <a class="link-" href="touch_support.html#touchgesturesinthescheduler">swipe gesture</a> has been disabled by default.</p>
+
+<p>You can re-enable it using the <a class="link-" href="api__scheduler_touch_swipe_dates_config.html">scheduler.config.touch_swipe_dates</a> config, as follows:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">touch_swipe_dates</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Markup and styles</h3>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing">Box-sizing mode</a> of event elements in 
+<a class="link-" href="month_view.html">Month View</a> has been changed from <strong>content-box</strong> to <strong>border-box</strong> in all skins.</p>
+
+<p>The affected elements are: <strong>.dhx_cal_event_clear</strong> and <strong>.dhx_cal_event_line</strong>.</p>
+
+<p>It shouldn't cause any visible changes, but if you redefined the render of Month view events, or use a custom skin, you may need to take this change into account.</p>
+
+<a name='5152'><h2>5.1 -> 5.2</h2></a>
+
+<h3 id="dnd">Drag-n-drop behavior</h3>
+
+<p>Since version 5.2 it is possible to drag events by any part of the body, not just by the header as it worked in the earlier versions. If you want to restore the previous functionality, make use of the 
+<a class="link-" href="api__scheduler_drag_event_body_config.html">drag_event_body</a> and set it to <em>false</em> (by default the property is enabled).</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">drag_event_body</span> <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>onXLE/onXLS events are deprecated</h3>
+
+<p>They still work, but will be removed in future. Here is how they should be replaced:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onXLS&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span> → 
+scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onLoadStart&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onXLE&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span> → 
+scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onLoadEnd&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>"xml_date" config and template, and "xml_format" templates are renamed</h3>
+
+<p>Below there is the scheme of replacing previously used API:</p>
+
+<ul>
+<li>scheduler.config.xml_date →  <a class="link-" href="api__scheduler_date_format_config.html">scheduler.config.date_format</a></li>
+<li>scheduler.templates.xml_date → <a class="link-" href="api__scheduler_parse_date_template.html">scheduler.templates.parse_date</a></li>
+<li>scheduler.templates.xml_format → <a class="link-" href="api__scheduler_format_date_template.html">scheduler.templates.format_date</a></li>
+</ul>
+
+<p>Since v5.2 the default values of the <strong>xml_date</strong> config, and <strong>xml_date</strong> and <strong>xml_format</strong> templates are <em>undefined</em>. Thus if you haven't assigned any values to them, they won't work.</p>
+
+<p>However, Scheduler will continue to use the old names of the config and templates, so if you've redefined those APIs in your code, they will work as before. For example:</p>
+
+<pre><code><pre class="js"><span class="co1">// will work correctly</span>
+scheduler.<span class="me1">templates</span>.<span class="me1">xml_date</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>datestring<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span>datestring<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<h4>Default date format has changed</h4>
+
+<ul>
+<li>before v5.2 it was set by the <strong>scheduler.config.xml_date</strong> property and its value was "%m/%d/%Y %H:%i"</li>
+<li>after v5.2 it is set by the <a class="link-" href="api__scheduler_date_format_config.html">scheduler.config.date_format</a> property and its value is "%Y-%m-%d %H:%i"</li>
+</ul>
+
+<p>To restore the previous default date format, specify the setting below:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">date_format</span> <span class="sy0">=</span> <span class="st0">&quot;%m/%d/%Y %H:%i&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<h4>Improved parsing of dates</h4>
+
+<p>Since v5.2 Scheduler tries to automatically identify the format of dates that should be parsed, so there can be some changes in the work of related functions <strong>scheduler.date.str_to_date</strong>, 
+<strong>scheduler.templates.format_date</strong>, and <strong>scheduler.templates.parse_date</strong>.</p>
+
+<p>If you want to restore previous behavior and get dates in the format defined by the user, use the <a class="link-" href="api__scheduler_parse_exact_format_config.html">parse_exact_format</a> configuration option:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">parse_exact_format</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>"vertical" setting of the <a class="link-" href="multiselect.html#properties">Multiselect</a> control can't take string value</h3>
+
+<p>In previous versions it was possible to set the value of the <em>vertical</em> setting of the Multiselect control as a string, like this:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;userselect&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;multiselect&quot;</span><span class="sy0">,</span> ...<span class="sy0">,</span> vertical<span class="sy0">:</span><span class="st0">&quot;false&quot;</span> <span class="br0">&#125;</span></pre></code></pre>
+
+<p>Since v5.2 the property takes just a boolean value, i.e. <em>true</em> or <em>false</em>.</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;userselect&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;multiselect&quot;</span><span class="sy0">,</span> ...<span class="sy0">,</span> vertical<span class="sy0">:</span> <span class="kw2">false</span> <span class="br0">&#125;</span></pre></code></pre>
+
+<p>In case you've used the string "false" value for the <strong>vertical</strong> property, you need to change it into the boolean one.</p>
+
+<a name='5051'><h2>5.0 -> 5.1</h2></a>
+
+<p>Smart rendering and horizontal scroll features required a complete remaking of the timeline markup. It affected Timeline, TreeTimeline and all modes of these views.</p>
+
+<p>The most notable change is that HTML elements TABLE, TR, TD were removed from the markup and replaced with DIVs with appropriate class names.</p>
+
+<p>If you use table tags in CSS selectors for styling the timeline, an action will be needed in order to migrate such CSS.
+The overall DOM structure didn't undergo many changes, thus migration would mostly require rewriting several CSS selectors in order for them to match the new markup.</p>
+
+<p>For the reference, here is a sample of CSS selectors before and after the update given below.</p>
+
+<p>Before:</p>
+
+<ul>
+<li><strong>.dhx_cal_data > table > tbody > tr > td.dhx_matrix_scell</strong> - the lefthand label column</li>
+<li><strong>.dhx_cal_data > table > tbody > tr > td > div.dhx_matrix_line</strong> - the timeline row with date cells</li>
+<li><strong>.dhx_cal_data > table > tbody > tr > td > div.dhx_matrix_line > table > tbody > tr > td.dhx_matrix_cell</strong> - a single date cell inside a timeline row</li>
+</ul>
+
+<p>After:</p>
+
+<ul>
+<li><strong>.dhx_cal_data .dhx_timeline_table_wrapper .dhx_timeline_label_row .dhx_matrix_scell</strong> - the lefthand label column</li>
+<li><strong>.dhx_cal_data .dhx_timeline_data_wrapper .dhx_matrix_line</strong> - the timeline row with date cells</li>
+<li><strong>.dhx_cal_data .dhx_timeline_data_wrapper .dhx_matrix_line .dhx_matrix_cell</strong> - a single date cell inside a timeline row</li>
+</ul>
+
+<a name='4450'><h2>4.4 -> 5.0</h2></a>
+
+<h3>Removed skins</h3>
+
+<p><strong>Glossy</strong> and <strong>Classic</strong> skins were deprecated and removed since v5.0.
+If you use them, you'll either need to migrate to another <a class="link-" href="skins.html">skin</a> or keep using a corresponding CSS file from an older version.</p>
+
+<h3>Major CSS refactoring</h3>
+
+<p>Release of v5.0 involves a major CSS overhaul, which may create issues with updating heavily CSS-customized applications: the existing styles may stop working due to the specificity of renewed dhtmlxScheduler styles.
+There is no general solution for this, the migration will require investigating and correcting CSS issues.</p>
+
+<h3>POST route in the REST mode fixed</h3>
+
+<p>The update also fixes the <strong>POST</strong> (insert) route of dataProcessor in the <strong>REST</strong> mode, the request no longer sends a temporary event id to the server.</p>
+
+<p>The following route:</p>
+
+<pre><code><pre class="js">POST <span class="sy0">/</span>api<span class="sy0">/</span><span class="br0">&#123;</span>tempId<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">//e.g.</span>
+POST <span class="sy0">/</span>api<span class="sy0">/</span><span class="nu0">1234567890</span></pre></code></pre>
+
+<p>should be changed to this one:</p>
+
+<pre><code><pre class="js">POST <span class="sy0">/</span>api</pre></code></pre>
+
+<a name='4x43'><h2>4.x -> 4.3</h2></a>
+
+<p>Since v.4.3 the extensions <a class="link-pro" href="weekagenda_view.html">Week Agenda View</a>, <a href="grid_view.html">Grid View</a>, <a class="link-pro" href="timeline_view.html">Timeline View</a>, <a class="link-pro" href="units_view.html">Units View</a>, <a class="link-pro" href="api__scheduler_multisection_config.html">Multisection Events</a> 
+are no longer available in the Standard Edition that is distributed under GNU GPL v2.</p>
+
+<p>If you still want to use them, you may either continue using the version 4.2 (or older), or obtain either Commercial or Enterprise license.</p>
+
+<p>Please check the license details <a href="http://dhtmlx.com/docs/products/dhtmlxScheduler/#licenses">here</a>.</p>
+
+<a name='3640'><h2>3.6 -> 4.0</h2></a>
+
+<p>Public API is fully backward compatible.</p>
+
+<h3>Changed defaults</h3>
+
+<ul>
+<li><p>The default skin is changed to "terrace", ext/dhtmlxscheduler_dhx_terrace.js is removed. To change the skin back to the classic one, just include the related CSS file (codebase/dhtmlxscheduler_classic.css). 
+For more details check <a class="link-" href="skins.html">Skins</a>.</p></li>
+<li><p><a class="link-" href="api__scheduler_multi_day_config.html">multi_day</a> is enabled by default, and if you want to revert such a behavior, add:</p></li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">multi_day</span> <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Custom skins</h3>
+
+<p>Scheduler detects the used skin, based on the name of the CSS file, so if you are using a custom skin (which is not based on "terrace"), rename its css file to <em>dhtmlxscheduler_{skin name}.css</em>. 
+Also, you can disable the skin auto-detection by adding the following line before <em>scheduler.init</em>:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">skin</span> <span class="sy0">=</span> <span class="st0">&quot;{skin name}&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Deprecated API</h3>
+
+<p>The following API is deprecated: getEventText, getEventStartDate, getEventEndDate, setEventText, setEventStartDate, setEventEndDate  (those methods are still available, but will be removed in Scheduler 5.x).</p>
+
+<p>Instead, you can use <em>scheduler.getEvent()</em> and set/get properties directly from the event object.</p>
+
+<a name='3637'><h2>3.6 -> 3.7</h2></a>
+
+<p>Fully backward compatible</p>
+
+<a name='3536'><h2>3.5 -> 3.6</h2></a>
+
+<p>Fully backward compatible</p>
+
+<a name='3035'><h2>3.0 -> 3.5</h2></a>
+
+<p>Public API is fully backward compatible.</p>
+
+<ul>
+<li>'Mark now' functionality was moved to the dhtmlxscheduler_limit.js extension. </li>
+<li>Scheduler now accepts <a class="link-" href="server_integration.html#retrievingdatainjsonformat">JSON generated by dhtmlxConnector</a>. 
+If there are no special reasons to use XML, consider switching to JSON (will decrease file size and, as a result, increase load speed).</li>
+</ul>
+
+<a name='2330'><h2>2.3 -> 3.0</h2></a>
+
+<p>Public API is fully backward compatible.</p>
+
+<p>For private API, check  <a class="link-" href="scheduler_3.0.html">Scheduler 3.0</a>.</p>
+
+<ul>
+<li>File structure was changed a bit - ext/dhtmlxscheduler_ext.css and dhtmlxscheduler_recurring.css were removed (all styles now available in the dhtmlxscheduler.css).</li>
+<li>Several templates arguments were changed to match the rest of them: scheduler.templates.agenda_text, scheduler.templates.map_text now use (start_date, end_date, event) as incoming parameters. Before only 'event' was used.</li>
+</ul>
+
+<a name='2223'><h2>2.2 -> 2.3</h2></a>
+
+<ul>
+<li>full backward compatibility</li>
+<li>Swedish locale file was renamed according to the iso 639-1</li>
+</ul>
+
+<pre><code><pre class="js">sources<span class="sy0">/</span>locale_se.<span class="me1">js</span> <span class="sy0">=&gt;</span> sources<span class="sy0">/</span>locale_sv.<span class="me1">js</span>
+sources<span class="sy0">/</span>locale_recurring_se.<span class="me1">js</span> <span class="sy0">=&gt;</span> sources<span class="sy0">/</span>locale_recurring_sv.<span class="me1">js</span></pre></code></pre>
+
+<a name='2122'><h2>2.1 -> 2.2</h2></a>
+
+<ul>
+<li>full backward compatibility</li>
+<li>'createUnitsView' command accepts different set of parameters, but previous syntax will work as well</li>
+</ul>
+
+<a name='2021'><h2>2.0 -> 2.1</h2></a>
+
+<ul>
+<li>formatting rules were corrected, now %d and %m always return 2 digits, if you need the previous behavior, use %j and %n accordingly</li>
+<li>path to files inside the package is changed a bit</li>
+</ul>
+
+<pre><code><pre class="js">codebase<span class="sy0">/</span>dhtmlxgrid_recurring.<span class="me1">js</span> <span class="sy0">=&gt;</span> codebase<span class="sy0">/</span>ext<span class="sy0">/</span>dhtmlxgrid_recurring.<span class="me1">js</span>
+codebase<span class="sy0">/</span>dhtmlxgrid_recurring.<span class="me1">css</span> <span class="sy0">=&gt;</span> codebase<span class="sy0">/</span>ext<span class="sy0">/</span>dhtmlxgrid_recurring.<span class="me1">css</span>
+codebase<span class="sy0">/</span>dhtmlxgrid_units.<span class="me1">js</span> <span class="sy0">=&gt;</span> codebase<span class="sy0">/</span>ext<span class="sy0">/</span>dhtmlxgrid_units.<span class="me1">js</span></pre></code></pre>
+
+<a name='1020'><h2>1.0 -> 2.0</h2></a>
+
+<ul>
+<li>API and data format are fully backward compatible</li>
+<li>'onEventChanged' and 'onEventAdded' events will not fire during data loading</li>
+<li>Spanish locale renamed from locale_sp.js to locale_es.js</li>
+<li>'drag_create' option now controls only the ability to create a new event by dnd, creating a new event by dblclick now is controlled by 'dblclick_create'</li>
+</ul>
+
+<!-- Content Area End -->
+			<a href='migration_from_older_version.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

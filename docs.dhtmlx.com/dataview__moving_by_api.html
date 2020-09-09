@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Moving Items by API  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxdataview.html">dhtmlXDataView API</a></li><li class=""><a href="dataview__object_constructor.html">Object Constructor</a></li><li class=""><a href="dataview__initialization.html">Initializing DataView</a></li><li class=""><a href="dataview__templates.html">Specifying Templates</a></li><li class=""><a href="dataview__paging.html">Paging</a></li><li class=""><a href="dataview__data_loading.html">Loading Data</a></li><li class=""><a href="dataview__dynamic_loading.html">Dynamic Loading</a></li><li class=""><a href="dataview__connecting_to_database.html">Connecting to Database</a></li><li class=""><a href="dataview__manipulating_data.html">Operating Items</a></li><li class=""><a href="dataview__dnd_customization.html">Drag-n-Drop</a></li><li class=" current"><a href="dataview__moving_by_api.html">Moving Items by API</a></li><ul><li class="inner"><a href="dataview__moving_by_api.html#moving">Moving</a></li><li class="inner"><a href="dataview__moving_by_api.html#copying">Copying</a></li></ul><li class=""><a href="dataview__events.html">Handling Events</a></li><li class=""><a href="dataview__migration_from_dhtmlxfolders.html">Migration from dhtmlxFolders</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="dataview__index.html">DataView</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Moving Items by API</h1>
+
+<a name='moving'><h2>Moving</h2></a>
+
+<p>There's a possibility to move items with the help of special methods. You may move the items to the very top/bottom of the dataview or move them up/down by the specified number of steps:</p>
+
+<pre><code><pre class="js">view.<span class="me1">moveUp</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>
+view.<span class="me1">moveUp</span><span class="br0">&#40;</span>id<span class="sy0">,</span>step<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+view.<span class="me1">moveDown</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>
+view.<span class="me1">moveDown</span><span class="br0">&#40;</span>id<span class="sy0">,</span>step<span class="br0">&#41;</span>
+&nbsp;
+view.<span class="me1">moveTop</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>
+&nbsp;
+view.<span class="me1">moveBottom</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span></pre></code></pre>
+
+<p>Items can also be moved to the specified position or to a different view by using the method <a class="link-" href="api__dhtmlxdataview_move.html">move()</a>:</p>
+
+<pre><code><pre class="js"><span class="co1">//move to the position</span>
+view.<span class="me1">move</span><span class="br0">&#40;</span>id<span class="sy0">,</span> index<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//move to a different view</span>
+view.<span class="me1">move</span><span class="br0">&#40;</span>id<span class="sy0">,</span> index<span class="sy0">,</span> some_other_view<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//or</span>
+view.<span class="me1">move</span><span class="br0">&#40;</span>id<span class="sy0">,</span> <span class="kw2">null</span><span class="sy0">,</span> some_other_view<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">//move to different view and change the ID</span>
+<span class="co1">//scenario may be needed to prevent the ID collision</span>
+view.<span class="me1">move</span><span class="br0">&#40;</span>id<span class="sy0">,</span> index<span class="sy0">,</span> some_other_view<span class="sy0">,</span> target_id<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>ID of the item is preserved while moving.</p>
+
+<a name='copying'><h2>Copying</h2></a>
+
+<p>It's also possible to copy an item to the defined position. For this purpose the method <a class="link-" href="api__dhtmlxdataview_copy.html">copy()</a> is used:</p>
+
+<pre><code><pre class="js"><span class="co1">//make a copy of element</span>
+<span class="kw2">var</span> new_id <span class="sy0">=</span> view.<span class="me1">copy</span><span class="br0">&#40;</span>source_id<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//make a copy at the specific position</span>
+<span class="kw2">var</span> new_id <span class="sy0">=</span> view.<span class="me1">copy</span><span class="br0">&#40;</span>source_id<span class="sy0">,</span> index<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//make a copy in a different view</span>
+<span class="kw2">var</span> new_id <span class="sy0">=</span> view.<span class="me1">copy</span><span class="br0">&#40;</span>source_id<span class="sy0">,</span> index<span class="sy0">,</span> some_other_view<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//or</span>
+<span class="kw2">var</span> new_id <span class="sy0">=</span> view.<span class="me1">copy</span><span class="br0">&#40;</span>source_id<span class="sy0">,</span> <span class="kw2">null</span> <span class="sy0">,</span> some_other_view<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">//make a copy with the defined ID</span>
+view.<span class="me1">copy</span><span class="br0">&#40;</span>source_id<span class="sy0">,</span> <span class="kw2">null</span><span class="sy0">,</span> <span class="kw2">null</span><span class="sy0">,</span> target_id<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//or</span>
+view.<span class="me1">copy</span><span class="br0">&#40;</span>source_id<span class="sy0">,</span> index<span class="sy0">,</span> <span class="kw2">null</span><span class="sy0">,</span> target_id<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//or</span>
+view.<span class="me1">copy</span><span class="br0">&#40;</span>source_id<span class="sy0">,</span> index<span class="sy0">,</span> some_other_view<span class="sy0">,</span> target_id<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The method returns the ID of the copied item which is autogenerated or can be specified as the last parameter.</p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxDataView/samples/04_manipulations/03_moving.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Moving items within DataView</a>
+<a href='http://dhtmlx.com/docs/products/dhtmlxDataView/samples/04_manipulations/04_moving.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Moving items between DataViews</a></p>
+
+<!-- Content Area End -->
+			<a href='dataview__moving_by_api.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

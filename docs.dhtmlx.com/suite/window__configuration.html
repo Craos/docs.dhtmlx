@@ -1,0 +1,300 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Configuration  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="window__api__refs__window.html">Window API</a></li><li class=""><a href="window__how_to_start.html">Initialization</a></li><li class=" current"><a href="window__configuration.html">Configuration</a></li><ul><li class="inner"><a href="window__configuration.html#closability">Closability</a></li><li class="inner"><a href="window__configuration.html#customnode">Custom node</a></li><li class="inner"><a href="window__configuration.html#footer">Footer</a></li><li class="inner"><a href="window__configuration.html#modality">Modality</a></li><li class="inner"><a href="window__configuration.html#movability">Movability</a></li><li class="inner"><a href="window__configuration.html#overflowingbrowserwindow">Overflowing browser window</a></li><li class="inner"><a href="window__configuration.html#resizing">Resizing</a></li><li class="inner"><a href="window__configuration.html#settinghtmlcontent">Setting HTML content</a></li><li class="inner"><a href="window__configuration.html#sizing">Sizing</a></li><li class="inner"><a href="window__configuration.html#title">Title</a></li></ul><li class=""><a href="window__usage.html">Work with Window</a></li><li class=""><a href="window__customization.html">Customization</a></li><li class=""><a href="window__handling_events.html">Event Handling</a></li><li class=""><a href="window__migration.html">Migration from 6.2 to 6.3</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="window__index.html">Window</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Configuration</h1>
+
+<p>dhtmlxWindow provides a set of configuration options you can define in the constructor of the component before its initialization. It's possible to set a title into the header of a window, add a footer with controls,
+specify the sizes of a window and decide whether it should be resizable, movable or modal, set some HTML content and define other useful settings to adapt the component to your needs.</p>
+
+<a name='closability'><h2>Closability</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/window/closable.png" alt=""/></p>
+
+<p>There is the <a class="link-" href="window__api__window_closable_config.html">closable</a> property that adds a Close button into the right top part of a window to allow a user to close a window on clicking it. This option is set to <em>true</em> by default.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dhxWindow <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Window</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    closable<span class="sy0">:</span><span class="kw2">false</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/d1nbhada' target='blank'><span class='sample'>Related sample: </span>&nbsp;Window. Closable Window</a></p>
+
+<a name='customnode'><h2>Custom node</h2></a>
+
+<p>To place a window into a custom node you need to specify the container for a window via the <a class="link-" href="window__api__window_node_config.html">node</a> property:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dhxWindow <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Window</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    node<span class="sy0">:</span><span class="st0">&quot;customDiv&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/2rrclo09' target='blank'><span class='sample'>Related sample: </span>&nbsp;Window. Window Container</a></p>
+
+<div class='note'><p><p>If no HTML container is specified, the window will be placed in the body.</p>
+</p></div>
+
+<a name='footer'><h2>Footer</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/window/with_footer.png" alt=""/></p>
+
+<p>You can provide a window with a footer that will include some additional controls for manipulating the content.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dhxWindow <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Window</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    footer<span class="sy0">:</span><span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/qu5j85ag' target='blank'><span class='sample'>Related sample: </span>&nbsp;Window. Window With Footer</a></p>
+
+<p>By default a footer is initialized with no controls. To add a control into the footer, you need to manipulate the <a class="link-" href="window__api__window_footer_config.html">footer</a> object of the toolbar. Follow the instructions given in the article <a class="link-" href="window__customization.html">Customization</a>.</p>
+
+<a name='modality'><h2>Modality</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/window/modal_window.png" alt=""/></p>
+
+<p>It is possible to make a window modal, if there's a necessity. Use the <a class="link-" href="window__api__window_modal_config.html">modal</a> property to turn this functionality on:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dhxWindow <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Window</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    modal<span class="sy0">:</span><span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/ioejsm4e' target='blank'><span class='sample'>Related sample: </span>&nbsp;Window. Modal Window</a></p>
+
+<p>A modal window blocks the main window on its calling. It means that only the modal window remains active, while the main window becomes gray and unresponsive.</p>
+
+<a name='movability'><h2>Movability</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/window/movable.png" alt=""/></p>
+
+<p>To equip a window with the ability to be moved around the screen, you should set the <a class="link-" href="window__api__window_movable_config.html">movable</a> property to <em>true</em>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dhxWindow <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Window</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    movable<span class="sy0">:</span><span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/mkwuasj0' target='blank'><span class='sample'>Related sample: </span>&nbsp;Window.  Movable Window</a></p>
+
+<a name='overflowingbrowserwindow'><h2>Overflowing browser window</h2></a>
+
+<p>By default, a window can't cross the borders of a browser window. To enable such a possibility, make use of the <a class="link-" href="window__api__window_viewportoverflow_config.html">viewportOverflow</a> configuration property.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dhxWindow <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Window</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    viewportOverflow<span class="sy0">:</span><span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/qfhdlzri' target='blank'><span class='sample'>Related sample: </span>&nbsp;Window. Viewport Overflow</a></p>
+
+<div class='note'><p><p>The property makes sense when set together with the <a class="link-" href="window__api__window_movable_config.html">movable</a> property.</p>
+</p></div>
+
+<a name='resizing'><h2>Resizing</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/window/resizable.png" alt=""/></p>
+
+<p>The default window has fixed sizes with no possibility to change them from UI. You can switch on the corresponding configuration option to make a window resizable.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dhxWindow <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Window</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    resizable<span class="sy0">:</span><span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/1suzi8gj' target='blank'><span class='sample'>Related sample: </span>&nbsp;Window. Resizable Window.</a></p>
+
+<p>Then you will be able to regulate the sizes of a window by dragging resizers that appear on hovering sides of a window.</p>
+
+<div class='note'><p><p>To define the resizing limits, set necessary values to the <a class="link-" href="window__api__window_minwidth_config.html">minWidth</a> / <a class="link-" href="window__api__window_minheight_config.html">minHeight</a> properties.</p>
+</p></div>
+
+<a name='settinghtmlcontent'><h2>Setting HTML content</h2></a>
+
+<p>You can set some HTML content into a window via the <a class="link-" href="window__api__window_html_config.html">html</a> configuration option, as in:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dhxWindow <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Window</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    htmlContent<span class="sy0">:</span><span class="st0">&quot;&lt;h1&gt;Header&lt;/h1&gt;&lt;p&gt;paragraph&lt;/p&gt;&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='sizing'><h2>Sizing</h2></a>
+
+<p>You can adjust the size of a window via a set of options that define both the initial width and height of a window and the minimal dimensions of the component.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dhxWindow <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Window</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    width<span class="sy0">:</span><span class="nu0">250</span><span class="sy0">,</span>
+    height<span class="sy0">:</span><span class="nu0">250</span><span class="sy0">,</span>
+    minWidth<span class="sy0">:</span><span class="nu0">170</span><span class="sy0">,</span>
+    minHeight<span class="sy0">:</span><span class="nu0">170</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/1suzi8gj' target='blank'><span class='sample'>Related sample: </span>&nbsp;Window. Resizable Window.</a></p>
+
+<p>Default values of the size-related properties are:</p>
+
+<ul>
+<li><a class="link-" href="window__api__window_minwidth_config.html">minWidth</a> - 100</li>
+<li><a class="link-" href="window__api__window_minheight_config.html">minHeight</a> - 100</li>
+<li><a class="link-" href="window__api__window_width_config.html">width</a> -  50% of the browser window's width</li>
+<li><a class="link-" href="window__api__window_height_config.html">height</a> - 50% of the browser window's height </li>
+</ul>
+
+<a name='title'><h2>Title</h2></a>
+
+<p>dhtmlxWindow is initialized with an empty header. You can provide some text label for the header of the window via the <a class="link-" href="window__api__window_title_config.html">title</a> property.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dhxWindow <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Window</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    title<span class="sy0">:</span> <span class="st0">&quot;DHX Window&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The header can also contain some buttons. You can control them via the <a class="link-" href="window__api__window_header_config.html">header</a> object of the toolbar. Check details in the article <a class="link-" href="window__customization.html">Customization</a>.</p>
+
+<!-- Content Area End -->
+			<a href='window__configuration.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Configuring DataProcessor  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dataprocessor.html">dataProcessor API</a></li><li class=""><a href="dataprocessor__basic_principles.html">Basic Operating Principles</a></li><li class=""><a href="dataprocessor__initialization.html">Initializing DataProcessor</a></li><li class=" current"><a href="dataprocessor__configuration.html">Configuring DataProcessor</a></li><ul><li class="inner"><a href="dataprocessor__configuration.html#meaningfulnames">Meaningful Names</a></li><li class="inner"><a href="dataprocessor__configuration.html#sendingmodes">Sending Modes</a></li><li class="inner"><a href="dataprocessor__configuration.html#additionalsettingsforsendingdata">Additional Settings for Sending Data</a></li><li class="inner"><a href="dataprocessor__configuration.html#validation">Validation</a></li><li class="inner"><a href="dataprocessor__configuration.html#styling">Styling</a></li><li class="inner"><a href="dataprocessor__configuration.html#debugging">Debugging</a></li></ul><li class=""><a href="dataprocessor__common_tasks.html">Common Tasks & Errors</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="connector__index.html">Client-Server Communication</a><a class="n3" href="dataprocessor__index.html">DataProcessor</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Configuring DataProcessor</h1>
+
+<p>Here we collect all the information concerning dataProcessor configuration:</p>
+
+<ul>
+<li><a class="link-" href="dataprocessor__configuration.html#sendingmodes">Sending modes</a></li>
+<li><a class="link-" href="dataprocessor__configuration.html#validation">Validation</a></li>
+<li><a class="link-" href="dataprocessor__configuration.html#styling">Styling</a></li>
+<li><a class="link-" href="dataprocessor__configuration.html#debugging">Debugging</a></li>
+</ul>
+
+<a name='meaningfulnames'><h2>Meaningful Names</h2></a>
+
+<p>The parameters <a class="link-" href="dataprocessor__basic_principles.html#incomingparameters">c0-cN</a> used by default aren't very useful on the server side. 
+The dataprocessor allows using the grid columns' IDs instead of these params.</p>
+
+<p>For this purpose use the <a class="link-" href="api__dataprocessor_enabledatanames.html">enableDataNames</a> method:</p>
+
+<pre><code><pre class="js">grid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Name of the book,Name of the author&quot;</span><span class="br0">&#41;</span>
+grid.<span class="me1">setColumnIds</span><span class="br0">&#40;</span><span class="st0">&quot;book,author&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">dp</span>.<span class="me1">enableDataNames</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// on the server side you'll get:</span>
+<span class="co1">// $_GET['c0']     =&gt;     $_GET['book']\\</span>
+<span class="co1">// $_GET['c1']     =&gt;     $_GET['author']</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/04_dataprocessor/03_name_sending.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Meaningful names</a></p>
+
+<a name='sendingmodes'><h2>Sending Modes</h2></a>
+
+<p>There are different ways of sending data to dataProcessor. You can set the desired mode using the <a class="link-" href="api__dataprocessor_settransactionmode.html">setTransactionMode</a> method.
+The following transaction modes are available: "POST", "GET", "REST", "JSON".</p>
+
+<h3>POST or GET</h3>
+
+<p>dataProcessor uses the GET command by default. But if you have dhtmlxConnector included on the page, dataProcessor will send parameters through the POST command.
+To set the GET of POST transaction mode, use the <a class="link-" href="api__dataprocessor_settransactionmode.html">setTransactionMode</a> method:</p>
+
+<pre><code><pre class="js">dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;POST&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/04_dataprocessor/02_all_at_once.html' target='blank'><span class='sample'>Related sample: </span>&nbsp; Sending all at once</a></p>
+
+<h4>Sending all at once</h4>
+
+<p>The update for each row is sent as a separate request by default, i.e. when 20 rows are updated - 20 requests are sent to the server. 
+This is not a good approach and instead of it, a single (more complex) request can be sent to the server side:</p>
+
+<pre><code><pre class="js">dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;POST&quot;</span><span class="sy0">,</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/04_dataprocessor/02_all_at_once.html' target='blank'><span class='sample'>Related sample: </span>&nbsp; Sending all at once</a></p>
+
+<p>In this case the server side receives a slightly different set of parameters:</p>
+
+<ul>
+<li><strong>ids</strong> - a comma-separated list of the updated rows' IDs. For each ID in this list, the request will contain a set of details.</li>
+</ul>
+
+<p>For example, if we have two updated rows on the client side with IDs = r2 and  r3, the server-side code will receive the following: ids = r2,r3</p>
+
+<ul>
+<li><strong>r2_!nativeeditor_status</strong> - the status of an operation for the row r2</li>
+<li><strong>r2_c0 .. r2_cN</strong> - the data for a column of the row r2</li>
+<li><strong>r3_!nativeeditor_status</strong> - the status of an operation for the row r3</li>
+<li><strong>r3_c0 .. r3_cN</strong> - the data for a column of the row r3</li>
+</ul>
+
+<p>The awaited server-side response must be presented in the same format as a usual one, but it must include the data for all the processed rows:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>data<span class="sy0">&gt;</span>
+   <span class="sy0">&lt;</span>action type<span class="sy0">=</span><span class="st0">&quot;some&quot;</span> sid<span class="sy0">=</span><span class="st0">&quot;r2&quot;</span> tid<span class="sy0">=</span><span class="st0">&quot;r2&quot;</span> <span class="sy0">/&gt;</span>
+   <span class="sy0">&lt;</span>action type<span class="sy0">=</span><span class="st0">&quot;some&quot;</span> sid<span class="sy0">=</span><span class="st0">&quot;r3&quot;</span> tid<span class="sy0">=</span><span class="st0">&quot;r3&quot;</span> <span class="sy0">/&gt;</span>
+<span class="sy0">&lt;/</span>data<span class="sy0">&gt;</span></pre></code></pre>
+
+<div class='note'><p><p>It's not recommended to set this mode if you use dhtmlxConnector. dhtmlxConnector requires using POST and sending all data at once (set by default): dp.setTransactionMode("POST",true).</p>
+</p></div>
+
+<h3>REST</h3>
+
+<p>This mode allows <a class="link-" href="dataprocessor__initialization.html#usingdataprocessorinjsonmode">using dataProcessor with the REST API</a>.</p>
+
+<p>To enable this mode, pass the "REST" parameter to the <a class="link-" href="api__dataprocessor_settransactionmode.html">setTransactionMode</a> method:</p>
+
+<pre><code><pre class="js">dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;REST&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>After that all requests to the server will be processed according to the rules of the REST protocol.</p>
+
+<p><strong>Request</strong></p>
+
+<ul>
+<li>the type of the request depends on the operation type POST|PUT|DELETE</li>
+<li>each request contains only one object</li>
+<li>id of the changed item is sent with the request URL as data.php/12</li>
+<li>instead of using columns' data, columns' ids are used. It's rather handy and dataProcessor 
+allows <a href="dataprocessor__configuration.html#names">changing the default incoming parameters (column indexes c0-cN) to the columns' ids</a></li>
+</ul>
+
+<p>Thus, you can set the columns' ids and then apply them as follows:</p>
+
+<pre><code><pre class="js">grid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Name of the book,Name of the author&quot;</span><span class="br0">&#41;</span>
+grid.<span class="me1">setColumnIds</span><span class="br0">&#40;</span><span class="st0">&quot;Book,Author&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">dp</span>.<span class="me1">enableDataNames</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>and your request will look like this:</p>
+
+<pre><code><pre class="js">URL<span class="sy0">:</span> <span class="sy0">/</span>api
+POST<span class="sy0">:</span>
+Form data<span class="sy0">:</span>
+Book<span class="sy0">=</span>The Green Mile
+Author<span class="sy0">=</span>Stephen King</pre></code></pre>
+
+<p><strong>Response</strong></p>
+
+<p>An example of the response in the REST mode is:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span><span class="st0">&quot;action&quot;</span><span class="sy0">:</span><span class="st0">&quot;updated&quot;</span><span class="sy0">,</span> <span class="st0">&quot;sid&quot;</span><span class="sy0">:</span><span class="nu0">12</span><span class="sy0">,</span> <span class="st0">&quot;tid&quot;</span><span class="sy0">:</span><span class="nu0">12</span><span class="br0">&#125;</span></pre></code></pre>
+
+<h3>JSON</h3>
+
+<p>This mode allows <a class="link-" href="dataprocessor__initialization.html#usingdataprocessorinjsonmode">using dataProcessor in JSON mode</a>.</p>
+
+<p>To enable this mode, pass the "JSON" parameter to the <a class="link-" href="api__dataprocessor_settransactionmode.html">setTransactionMode</a> method:</p>
+
+<pre><code><pre class="js">dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;JSON&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><strong>Request</strong></p>
+
+<p>This mode is used only for the POST operation and is useful for sending complex (nested) objects:</p>
+
+<p>For example, for the Grid you can send a request as:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span> <span class="st0">&quot;action&quot;</span><span class="sy0">:</span><span class="st0">&quot;inserted&quot;</span><span class="sy0">,</span> <span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="st0">&quot;12&quot;</span><span class="sy0">,</span> data<span class="sy0">:</span><span class="br0">&#123;</span>
+    <span class="st0">&quot;book&quot;</span><span class="sy0">:</span><span class="st0">&quot;The Green Mile&quot;</span><span class="sy0">,</span> <span class="st0">&quot;author&quot;</span><span class="sy0">:</span><span class="st0">&quot;Stephen King&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#125;</span></pre></code></pre>
+
+<p><strong>Response</strong></p>
+
+<p>A simple response should look as follows:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span><span class="st0">&quot;action&quot;</span><span class="sy0">:</span><span class="st0">&quot;updated&quot;</span><span class="br0">&#125;</span></pre></code></pre>
+
+<a name='additionalsettingsforsendingdata'><h2>Additional Settings for Sending Data</h2></a>
+
+<h3>Sending custom parameters with HTTP request</h3>
+
+<p>You can send custom parameters with HTTP request to the server. For this purpose, you should pass to the <a class="link-" href="api__dataprocessor_settransactionmode.html">setTransactionMode</a> method.
+It takes two parameters:</p>
+
+<ul>
+<li><strong>parameters</strong> - (object) a set of request parameters:
+
+<ul>
+<li><strong>mode</strong> - (string) data sending mode, GET or POST</li>
+<li><strong>headers</strong> - (object) a set of headers, defined as "key":"value" pairs that should be sent with a request</li>
+<li><strong>payload</strong> - (object) additional data, set as "key":"value" pairs that should be sent to the server </li>
+</ul></li>
+<li><strong>total</strong> - (boolean) defines, whether to send all data at once, or each record by a separate request</li>
+</ul>
+
+<pre><code><pre class="js">dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    mode<span class="sy0">:</span><span class="st0">&quot;POST&quot;</span><span class="sy0">,</span>
+    headers<span class="sy0">:</span><span class="br0">&#123;</span>
+        <span class="st0">&quot;Header-Name1&quot;</span> <span class="sy0">:</span> <span class="st0">&quot;HeaderValue1&quot;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    payload<span class="sy0">:</span><span class="br0">&#123;</span>
+        <span class="st0">&quot;key1&quot;</span><span class="sy0">:</span><span class="st0">&quot;value1&quot;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="sy0">,</span> <span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Sending just changed items</h3>
+
+<p>A user can enable the mode just when the changed fields and row IDs are sent to the server-side (instead of all the fields in the default mode). To enable the mode, use the <a class="link-" href="api__dataprocessor_enablepartialdatasend.html">enablePartialDataSend</a> method:</p>
+
+<pre><code><pre class="js">dp.<span class="me1">enablePartialDataSend</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Active fields</h3>
+
+<p>There is a possibility to define which column may trigger the update. To define the so-called 'active' columns, use the <em>setDataColumns()</em> method:</p>
+
+<pre><code><pre class="js">dp.<span class="me1">setDataColumns</span><span class="br0">&#40;</span><span class="br0">&#91;</span><span class="kw2">false</span><span class="sy0">,</span><span class="kw2">true</span><span class="sy0">,</span><span class="kw2">true</span><span class="sy0">,</span><span class="kw2">true</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/04_dataprocessor/04_active_fields.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Active fields</a></p>
+
+<p>In that case, changing the first column values will not trigger data sending to the server. Such mode makes sense only if auto-update is enabled.</p>
+
+<a name='validation'><h2>Validation</h2></a>
+
+<p>Grid allows defining the validators which will be activated before data sending.</p>
+
+<p>For this purpose the method <a class="link-" href="api__dataprocessor_setverificator.html">setVerificator(index,method)</a> is used. Where:</p>
+
+<ul>
+<li>index - the index of the column to which verificator will be assigned;</li>
+<li>method - the verification function.</li>
+</ul>
+
+<p>The verificator function is a function which will receive the following parameters:</p>
+
+<ul>
+<li>the value of a cell;</li>
+<li>the id of a row;</li>
+<li>indexes of columns.</li>
+</ul>
+
+<p>The function, based on such values, must return <strong>true</strong> (to accept a value) or <strong>false</strong> (to deny a value).
+If any value was denied during validation, data sending will be blocked and the <a class="link-" href="api__dataprocessor_onvalidationerror_event.html">onValidatationError</a> event generated.</p>
+
+<p>Inside of the verificator function, "this" points to the object which dataProcessor is attached to (grid or tree).</p>
+
+<p>Verificator functions are called before sending data. The exact time depends on the way DataProcessor is initialized:</p>
+
+<ul>
+<li>in <strong>auto update mode</strong> the functions will be called after each operation of editing a cell (when the editor is closed).</li>
+<li>in <strong>manual sending mode</strong> - after the <a class="link-" href="api__dataprocessor_senddata.html">sendData</a>() call.</li>
+</ul>
+
+<h3>Validate message</h3>
+
+<p>If you need to collect all validation errors and output them as a single error message, you can make it by setting the second parameter of the validation function to <strong>true</strong> (now the function will return a text message).</p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/19_validation/07_basic_validation.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Basic validation</a></p>
+
+<a name='styling'><h2>Styling</h2></a>
+
+<p>You can define the style that the string will have after one of the predefined actions has been completed. For example, after you've updated a string it will have the style defined in the property <strong>dp.styles.updated</strong>.</p>
+
+<p>The styles which an object can have after changing but before saving:</p>
+
+<ul>
+<li><em>dp.styles.updated</em> - string's style for the updated status;</li>
+<li><em>dp.styles.inserted</em>- string's style for the inserted status;</li>
+<li><em>dp.styles.deleted</em> - string's style for the deleted status;</li>
+</ul>
+
+<p>The styles which an object can have after getting the response:</p>
+
+<ul>
+<li><em>dp.styles.invalid</em> - string's style for the invalid status;</li>
+<li><em>dp.styles.invalid_cell</em> - style assigned to the cell the validation of which failed;</li>
+<li><em>dp.styles.error</em> - string's style for the error status;</li>
+</ul>
+
+<p>Default style:</p>
+
+<ul>
+<li><em>dp.styles.clear</em> - default style of a row.</li>
+</ul>
+
+<p>For example the default style for the updated record is the following:</p>
+
+<pre><code><pre class="js">dp.<span class="me1">styles</span>.<span class="me1">updated</span><span class="sy0">=</span><span class="st0">&quot;font-weight:bold;&quot;</span></pre></code></pre>
+
+<p>You can redefine it like this for example:</p>
+
+<pre><code><pre class="js">dp.<span class="me1">styles</span>.<span class="me1">updated</span><span class="sy0">=</span><span class="st0">&quot;font-style:italic; color:green;&quot;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/04_dataprocessor/11_custom_styles.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom styles</a></p>
+
+<a name='debugging'><h2>Debugging</h2></a>
+
+<p>In order to execute dataProcessor debugging, you need to enable it using the corresponding method - <a class="link-" href="api__dataprocessor_enabledebug.html">enableDebug</a>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span>url<span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">enableDebug</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>After that you will be able to check dataProcessor debug info in the browser's console.</p>
+
+<p>In case you use dhtmlxConnector, you can enable a similar functionality on the server side and write server-side exceptions into a log file.</p>
+
+<!-- Content Area End -->
+			<a href='dataprocessor__configuration.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

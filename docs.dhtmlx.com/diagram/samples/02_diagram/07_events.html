@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- meta block -->
+		<title>Events - DHTMLX Diagram</title>
+		<meta name="description" content="Check interactive samples of DHTMLX Diagram to explore its diagram and other details.">
+		<!-- end meta block -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+		<script type="text/javascript" src="../../codebase/diagram-v=3.0.2.js"></script>
+		<link rel="stylesheet" href="../../codebase/diagram-v=3.0.2.css">
+		<link rel="stylesheet" href="../common/index-v=3.0.2.css">
+		<link rel="stylesheet" href="../common/diagram-v=3.0.2.css">
+		<script type="text/javascript" src="../common/diagram-v=3.0.2.js"></script>
+		<!-- custom sample head -->
+			<style>
+			.dhx_sample-container {
+				width: 1000px;
+			}
+			.dhx_sample-container__widget {
+				width: 600px;
+				flex: 0 1 auto
+			}
+			.dhx_sample-container__sidebar {
+				background: #fff;
+			}
+			.template {
+				height:100%;
+				background: rgb(206, 239, 225);
+				border: 2px solid rgb(10, 177, 105);
+				border-radius: 10px;
+				overflow: hidden;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+		</style>
+	<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                        'gtm.start':
+                                new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5M5RCSJ');</script>
+<!-- End Google Tag Manager -->
+
+<!-- error tracking -->
+<script src="https://cdn.ravenjs.com/3.19.1/raven.min.js" crossorigin="anonymous"></script>
+<script>Raven.config('https://a2578da6be394598bfe003e4dbb3a394@sentry.dhtmlx.ru/13').install()</script></head>
+	<body>
+		<header class="dhx_sample-header">
+			<div class="dhx_sample-header__main">
+				<nav class="dhx_sample-header__breadcrumbs">
+					<ul class="dhx_sample-header-breadcrumbs">
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="../index.html" class="dhx_sample-header-breadcrumbs__link">Diagram samples</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="index.html" class="dhx_sample-header-breadcrumbs__link">Diagram</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<span class="dhx_sample-header-breadcrumbs__link">Events</span>
+						</li>
+					</ul>
+				</nav>
+				<h1 class="dhx_sample-header__title">
+					<div class="dhx_sample-header__content">
+						Events.
+					</div>
+				</h1>
+		<div class="dhx_sample-header__cta" id="dhx_sample-cta">
+			<a title="Free Trial" target="_blank" class="dhx_sample-btn dhx_sample-btn--flat dhx_sample-btn--cta" 
+			href="https://dhtmlx.com/docs/products/dhtmlxDiagram/download.shtml">Free Trial</a>
+		</div>
+	</div>
+</header>
+		<section class="dhx_sample-container">
+			<div class="dhx_sample-container__widget" id="diagram"></div>
+			<div class="dhx_sample-container__sidebar" id="events"> </div>
+		</section>
+		<script>
+			var diagram = new dhx.Diagram("diagram");
+
+			function template(config) {
+				var template = "<section class='template'>"
+					template += "<span>" + config.text +"</span>";
+					template += "</section>";
+				return template;
+			};
+
+			diagram.addShape("template", { template: template });
+
+			diagram.data.parse(diagramMixedShape);
+
+			var events = [
+				"scroll",
+				"beforecollapse",
+				"aftercollapse",
+				"beforeexpand",
+				"afterexpand",
+				"shapemousedown",
+				"shapeclick",
+				"shapedblclick",
+				"shapeiconclick",
+				"beforerender",
+				"shapeHover",
+				"emptyAreaClick"
+			];
+			var eventsContainer = document.querySelector(".dhx_sample-container__sidebar")
+			var counter = 1;
+			events.forEach(function (event) {
+				diagram.events.on(event, function () {
+					eventsContainer.insertAdjacentHTML('afterbegin', getEvent(event, arguments));
+				});
+			});
+			function getEvent(event, args) {
+				var argsList = "<div class='arguments'>Arguments:</div>";
+				for (var i = 0; i < args.length; i++) {
+					
+					argsList += "<div>" + args[i] + "</div>";
+				}
+				return "<div class=\"dhx_sample-event\">Event " + counter++ + ": " + event + argsList + "</div>";
+			}
+		</script>
+	</body>
+</html>

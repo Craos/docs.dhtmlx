@@ -1,0 +1,489 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1546520180.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1546520180.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Formulas  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');   ga('create', 'UA-11031269-1', 'auto'); ga('send', 'pageview');</script><!-- Yandex.Metrika counter --><script type='text/javascript'>(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter22235746 = new Ya.Metrika({id:22235746, clickmap:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName('script')[0], s = d.createElement('script'), f = function () { n.parentNode.insertBefore(s, n); }; s.type = 'text/javascript'; s.async = true; s.src = (d.location.protocol == 'https:' ? 'https:' : 'http:') + '//mc.yandex.ru/metrika/watch.js'; if (w.opera == '[object Opera]') { d.addEventListener('DOMContentLoaded', f, false); } else { f(); } })(document, window, 'yandex_metrika_callbacks');</script><noscript><div><img src='https://mc.yandex.ru/watch/22235746' style='position:absolute; left:-9999px;' alt='' /></div></noscript>
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='http://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="http://dhtmlx.com/docs/products/docsExplorer/samples.shtml">Samples</a>
+				<a href="http://forum.dhtmlx.com/">Forum</a>
+				<a href="http://support.dhtmlx.com/">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="spreadsheet__configuration.html">Configuration</a></li><li class=""><a href="spreadsheet__init.html">Initialization and Read-Only Mode</a></li><li class=""><a href="spreadsheet__client_server_protocol.html">Client-Server Protocol</a></li><li class=""><a href="spreadsheet__reference.html">API Reference</a></li><li class=""><a href="spreadsheet__userguide_basicdefinitions.html">Fundamental Definitions</a></li><li class=""><a href="spreadsheet__userguide_navigation.html">Hot Keys</a></li><li class=""><a href="spreadsheet__userguide_settings.html">Worksheet Settings</a></li><li class=""><a href="spreadsheet__userguide_controls.html">Main Toolbar</a></li><li class=""><a href="spreadsheet__userguide_text.html">Selecting Cell and Entering Text</a></li><li class=""><a href="spreadsheet__userguide_formatting.html">Formatting</a></li><li class=""><a href="spreadsheet__userguide_locking_and_validation.html">Cells Locking and Validation</a></li><li class=""><a href="spreadsheet__userguide_copying.html">Copying/Moving Data Between Cells</a></li><li class=" current"><a href="spreadsheet__userguide_formulas.html">Formulas</a></li><ul><li class="inner"><a href="spreadsheet__userguide_formulas.html#constructingaformula">Constructing a formula</a></li><li class="inner"><a href="spreadsheet__userguide_formulas.html#enteringformula">Entering formula</a></li><li class="inner"><a href="spreadsheet__userguide_formulas.html#usingfunctionsinaformula">Using functions in a formula</a></li><li class="inner"><a href="spreadsheet__userguide_formulas.html#cellreferences">Cell references</a></li><li class="inner"><a href="spreadsheet__userguide_formulas.html#functioncheatsheet">Function Cheat Sheet</a></li></ul><li class=""><a href="spreadsheet__userguide_export.html">Data Export</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="spreadsheet__index.html">SpreadSheet</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Formulas</h1>
+
+<p>A formula is a mathematical equation used to calculate a value. It can be entered directly in a cell or through the Formula Bar.</p>
+
+<p>A formula can contain both mathematical expressions created by yourself and the ones already available in Spreadsheet (hereafter referred to as <strong>functions</strong>).</p>
+
+<a name='constructingaformula'><h2>Constructing a formula</h2></a>
+
+<ul>
+<li>All formulas begin with the equal sign ( = ). The symbol tells Spreadsheet that the following numbers, operators, cells' references make up a formula;</li>
+<li>A formula that contains just numbers won't ever change the result value (e.g. formula =100/5+2 produces the result 22);</li>
+<li>A formula that contains cell or range references will change the produced result each time cells' values are changed (e.g. formula =A1+B1 produces the result that depends on the values of the cells A1 and B1);</li>
+<li>A formula can contain the following mathematical operators:
+
+<ul>
+<li>"&#8727;" (multiplication);</li>
+<li>"/" (division);</li>
+<li>"+" (addition);</li>
+<li>"-" (subtraction).</li>
+</ul></li>
+</ul>
+
+<h3>Order of operations</h3>
+
+<p>In case a formula uses more than one operator, there is a specific order that Spreadsheet will follow to perform the mathematical operations.</p>
+
+<p>The order of operations is:</p>
+
+<ol>
+<li>Calculations inside of parentheses;</li>
+<li>Multiplications;</li>
+<li>Divisions;</li>
+<li>Additions;</li>
+<li>Subtractions.</li>
+</ol>
+
+<ul>
+<li>Any operation(s) contained in the parentheses will be carried out before the rest of the formula operations;</li>
+<li>Division and multiplication operations have equal importance, and after calculations in the parentheses 
+are finished Spreadsheet performs these operations working from left to right in the equation;</li>
+<li>Addition and subtraction are also equal in the order of operations. The operation that goes first in the equation (left to right) will be carried out first.</li>
+</ul>
+
+<a name='enteringformula'><h2>Entering formula</h2></a>
+
+<h3>Entering a formula in a cell</h3>
+
+<ul>
+<li><a class="link-" href="spreadsheet__userguide_text.html#selectingcells">Select the cell</a> in which you want to enter a formula.</li>
+<li><p>Type the equal sign '=' to activate the Formula Window and type a formula.</p>
+
+<p><img src="media/spreadsheet/entering_formula_common.png" alt="spreadsheet/entering_formula_common.png" /></p></li>
+</ul>
+
+<p>When the formula is typed in and the ENTER button is pressed the result is immediately shown in the cell.</p>
+
+<h3>Entering a formula through the Formula Bar</h3>
+
+<ul>
+<li><a class="link-" href="spreadsheet__userguide_text.html#selectingcells">Select the cell</a> in which you want to enter a formula.</li>
+<li><p>Click on <img src="media/spreadsheet/edit_item.png" alt="spreadsheet/edit_item.png" /> to activate the Formula Bar and type a formula.</p>
+
+<p><img src="media/spreadsheet/entering_formula_bar.png" alt="spreadsheet/entering_formula_bar.png" /></p></li>
+<li><p>After you have completed the formula, press the ENTER button or click the <strong>Save</strong> button.</p></li>
+<li>To close the Formula Bar and cancel the currently typed formula click the <strong>Cancel</strong> button.</li>
+</ul>
+
+<a name='usingfunctionsinaformula'><h2>Using functions in a formula</h2></a>
+
+<p>Generally, to add a function to a formula you need just type it according to the syntax shown in the table below (it concerns typing both in a cell and in the Formula Bar).</p>
+
+<p>You can simply enter the first letter(s) of the desired function and the drop-down list, populated with the items that start from the specified letter(s), will appear.</p>
+
+<h3>Formula bar</h3>
+
+<p>From the Formula Bar you also have the possibility to select a function from the Formula Palette without typing it out manually.</p>
+
+<p>To use the Formula Palette act as it's stated below:</p>
+
+<ul>
+<li><p>click the <img src="media/spreadsheet/function_button.png" alt="spreadsheet/function_button.png" /> button in the Formula Bar:</p>
+
+<p><img src="media/spreadsheet/formula_bar.png" alt="spreadsheet/formula_bar.png" /></p></li>
+<li><p>in the opened window select the desired function and click:</p>
+
+<ul>
+<li>the button <strong>Insert</strong> to enter a function and close the window;</li>
+<li>the button <strong>Cancel</strong> to cancel inserting and close the window.</li>
+</ul>
+
+<p><img src="media/spreadsheet/functions_window.png" alt="spreadsheet/functions_window.png" /></p></li>
+</ul>
+
+<a name='cellreferences'><h2>Cell references</h2></a>
+
+<p>You can use three types of cell references in Spreadsheet:</p>
+
+<ol>
+<li>Relative</li>
+<li>Absolute</li>
+<li>Mixed </li>
+</ol>
+
+<p>Let's suppose that you have a sheet similar to the one given below and need to copy the formula from the cell B1 (formula is '=A1*100') to the cell C3. 
+The formula you will finally have in the cell C3 depends on the reference type you use in the cell B1.</p>
+
+<p><img src="media/spreadsheet/cell_referencies.png" alt="spreadsheet/cell_referencies.png" /></p>
+
+<table style='border-collapse: collapse; color:#444444' >
+<tr><td style='font-weight:bold; border:1px solid #AAA;'>
+  Reference Type  
+</td><td style='font-weight:bold; border:1px solid #AAA;'>
+  Formula in cell B1 
+</td><td style='font-weight:bold; border:1px solid #AAA;'>
+  Formula in cell C3  
+</td><td style='font-weight:bold; border:1px solid #AAA;'>
+ Calculated value in cell C3  
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+Relative (default)
+</td><td style='border:1px solid #AAA;'>
+    =A1&#8727;100
+</td><td style='border:1px solid #AAA;'>
+    =B3&#8727;100
+</td><td style='border:1px solid #AAA;'>
+ 30000 
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+Absolute
+</td><td style='border:1px solid #AAA;'>
+=$A$1&#8727;100
+</td><td style='border:1px solid #AAA;'>
+=$A$1&#8727;100
+</td><td style='border:1px solid #AAA;'>
+  100 
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+Mixed
+</td><td style='border:1px solid #AAA;'>
+=$A1&#8727;100
+</td><td style='border:1px solid #AAA;'>
+=$A3&#8727;100
+</td><td style='border:1px solid #AAA;'>
+  300
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+Mixed
+</td><td style='border:1px solid #AAA;'>
+=A$1&#8727;100
+</td><td style='border:1px solid #AAA;'>
+=B$1&#8727;100
+</td><td style='border:1px solid #AAA;'>
+  10000
+</td></tr>
+</table>
+
+<a name='functioncheatsheet'><h2>Function Cheat Sheet</h2></a>
+
+<table style='border-collapse: collapse; color:#444444' >
+<tr><td style='font-weight:bold; border:1px solid #AAA;'>
+  Function  
+</td><td style='font-weight:bold; border:1px solid #AAA;'>
+  Details  
+</td><td style='font-weight:bold; border:1px solid #AAA;'>
+  Syntax  
+</td><td style='font-weight:bold; border:1px solid #AAA;'>
+  Example  
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+  <strong>ABS</strong>  
+</td><td style='border:1px solid #AAA;'>
+ Returns the absolute value of the argument  
+</td><td style='border:1px solid #AAA;'>
+ ABS(arg1)  
+</td><td style='border:1px solid #AAA;'>
+ ABS(-5) (returns 5)  
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+  <strong>ACOS</strong>  
+</td><td style='border:1px solid #AAA;'>
+ Returns the arc cosine (in radians) of the arqument  
+</td><td style='border:1px solid #AAA;'>
+ ACOS(arg1)  
+</td><td style='border:1px solid #AAA;'>
+ACOS(1) (returns 0)
+</td></tr>
+<tr><td style='border:1px solid #AAA;' >
+  <strong>ASIN</strong>  
+</td><td style='border:1px solid #AAA;'>
+ Returns the arc sine (in radians) of the argument  
+</td><td style='border:1px solid #AAA;'>
+ ASIN(arg1)  
+</td><td style='border:1px solid #AAA;'>
+ASIN(0) (returns 0)
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+  <strong>ATAN</strong>  
+</td><td style='border:1px solid #AAA;'>
+ Returns the arctangent (in radians) of the argument  
+</td><td style='border:1px solid #AAA;'>
+ ATAN(arg1)  
+</td><td style='border:1px solid #AAA;'>
+ATAN(1) (returns 0.78539816)
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+  <strong>COS</strong>  
+</td><td style='border:1px solid #AAA;'>
+ Returns the cosine of the arqument  
+</td><td style='border:1px solid #AAA;'>
+ COS(arg1)  
+</td><td style='border:1px solid #AAA;'>
+COS(0) (returns 1)
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+  <strong>DIV</strong>  
+</td><td style='border:1px solid #AAA;'>
+ Divides the first argument by the second and subsequent arguments  
+</td><td style='border:1px solid #AAA;'>
+ DIV(arg1; arg2; arg3; ...)  
+</td><td style='border:1px solid #AAA;'>
+ DIV(I11;I9;I5) (equal to I11/(I9&#8727;I5))  
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+  <strong>EXP</strong>  
+</td><td style='border:1px solid #AAA;'>
+ Returns e raised to power of the argument  
+</td><td style='border:1px solid #AAA;'>
+ EXP(arg1)  
+</td><td style='border:1px solid #AAA;'>
+ EXP(2) (returns 7.3890561)  
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+  <strong>LN</strong>  
+</td><td style='border:1px solid #AAA;'>
+ Returns the natural logarithm of the argument  
+</td><td style='border:1px solid #AAA;'>
+ LN(arg1)  
+</td><td style='border:1px solid #AAA;'>
+ LN(7.3890561) (returns 2)  
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+  <strong>LOG</strong>  
+</td><td style='border:1px solid #AAA;'>
+ Returns the logarithm of the first argument to a base of the second argument  
+</td><td style='border:1px solid #AAA;'>
+ LOG(arg1;arg2)  
+</td><td style='border:1px solid #AAA;'>
+LOG(32;2) (returns 5)
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+  <strong>LOG10</strong>  
+</td><td style='border:1px solid #AAA;'>
+ Returns the base-10 logarithm of the argument  
+</td><td style='border:1px solid #AAA;'>
+ LOG10(arg1)  
+</td><td style='border:1px solid #AAA;'>
+LOG10(100) (returns 2)
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+  <strong>MOD</strong>  
+</td><td style='border:1px solid #AAA;'>
+ Returns the remainder after the first argument is divided by the second argument  
+</td><td style='border:1px solid #AAA;'>
+ MOD(arg1;arg2)  
+</td><td style='border:1px solid #AAA;'>
+ MOD(10;4) (returns 2)  
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+  <strong>MULT</strong>  
+</td><td style='border:1px solid #AAA;'>
+ Multiplies the arquments  
+</td><td style='border:1px solid #AAA;'>
+ MULT(arg1; arg2; arg3; ...)  
+</td><td style='border:1px solid #AAA;'>
+ MULT(A2:D2;A6)  
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+  <strong>PI</strong>  
+</td><td style='border:1px solid #AAA;'>
+ Returns the mathematical constant called pi  
+</td><td style='border:1px solid #AAA;'>
+ PI()  
+</td><td style='border:1px solid #AAA;'>
+ PI() (returns 3.14159265)  
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+  <strong>POW</strong>  
+</td><td style='border:1px solid #AAA;'>
+ Returns the first argument raised to power of the second argument  
+</td><td style='border:1px solid #AAA;'>
+ POW(arg1; arg2)  
+</td><td style='border:1px solid #AAA;'>
+ POW(2;5) (returns 32)  
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+  <strong>SIN</strong>  
+</td><td style='border:1px solid #AAA;'>
+ Returns the sine of the argument  
+</td><td style='border:1px solid #AAA;'>
+ SIN(arg1)  
+</td><td style='border:1px solid #AAA;'>
+SIN(0) (returns 0)
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+  <strong>SQR</strong>  
+</td><td style='border:1px solid #AAA;'>
+ Returns the square of the arqument  
+</td><td style='border:1px solid #AAA;'>
+ SQR(arg1)  
+</td><td style='border:1px solid #AAA;'>
+ SQR(3) (returns 9)  
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+  <strong>SQRT</strong>  
+</td><td style='border:1px solid #AAA;'>
+ Returns the square root of the argument  
+</td><td style='border:1px solid #AAA;'>
+ SQRT(arg1)  
+</td><td style='border:1px solid #AAA;'>
+ SQRT(16) (returns 4)  
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+  <strong>SUB</strong>  
+</td><td style='border:1px solid #AAA;'>
+ Subtracts the second and subsequent arguments from the first argument  
+</td><td style='border:1px solid #AAA;'>
+ SUB(arg1; arg2; arg3; ...)  
+</td><td style='border:1px solid #AAA;'>
+ SUB(A10;B3;C3;D3) (equal to A10-B3-C3-D3)  
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+  <strong>SUM</strong>  
+</td><td style='border:1px solid #AAA;'>
+ Sums the arquments  
+</td><td style='border:1px solid #AAA;'>
+ SUM(arg1; arg2; arg3; ...)  
+</td><td style='border:1px solid #AAA;'>
+ SUM(A5;B6;C8)  
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+  <strong>TAN</strong>  
+</td><td style='border:1px solid #AAA;'>
+ Returns the tangent of the argument  
+</td><td style='border:1px solid #AAA;'>
+ TAN(arg1)  
+</td><td style='border:1px solid #AAA;'>
+TAN(0) (returns 0)
+</td></tr>
+</table>
+
+<p>Note, instead of digits used in the examples in the table above you can use cell or range references and vice versa.</p>
+
+<!-- Content Area End -->
+			<a href='spreadsheet__userguide_formulas.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

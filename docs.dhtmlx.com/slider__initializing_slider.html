@@ -1,0 +1,289 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Initializing Slider  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxslider.html">dhtmlXSlider API</a></li><li class=" current"><a href="slider__initializing_slider.html">Initializing Slider</a></li><ul><li class="inner"><a href="slider__initializing_slider.html#makingpreparations">Making Preparations</a></li><li class="inner"><a href="slider__initializing_slider.html#minimalinitialization">Minimal Initialization</a></li><li class="inner"><a href="slider__initializing_slider.html#extendedinitialization">Extended Initialization</a></li><li class="inner"><a href="slider__initializing_slider.html#initializationbyobjectnotation">Initialization by Object Notation</a></li><li class="inner"><a href="slider__initializing_slider.html#inlineinitialization">Inline Initialization</a></li></ul><li class=""><a href="slider__constructor.html">Object Constructor</a></li><li class=""><a href="slider__skinning_slider.html">Skinning Slider</a></li><li class=""><a href="slider__configuring_slider.html">Configuring Slider</a></li><li class=""><a href="slider__range_slider.html">Range Mode</a></li><li class=""><a href="slider__handling_events.html">Handling Events</a></li><li class=""><a href="slider__migration.html">Migration from 3.6 to 4.0</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="slider__index.html">Slider</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Initializing Slider</h1>
+
+<p>dhtmlxSlider can be initialized on page using one of the following initialization schemes:</p>
+
+<ul>
+<li><a class="link-" href="slider__initializing_slider.html#minimalinitialization">Minimal Initialization</a></li>
+<li><a class="link-" href="slider__initializing_slider.html#extendedinitialization">Extended Initialization</a></li>
+<li><a class="link-" href="slider__initializing_slider.html#initializationbyobjectnotation">Initialization by Object Notation</a></li>
+<li><a class="link-" href="slider__initializing_slider.html#inlineinitialization">Inline Initialization</a></li>
+</ul>
+
+<a name='makingpreparations'><h2>Making Preparations</h2></a>
+
+<p>The first things that need to be done for any type of dhtmlxSlider's initialization are the following:</p>
+
+<ul>
+<li><a href="https://dhtmlx.com/docs/products/dhtmlxSlider/">Download the dhtmlxSlider package</a> from the server and place it in a folder</li>
+<li>Create an HTML file;</li>
+<li>Place full paths to dhtmlxSlider's CSS and JS files into the header of the created HTML file;</li>
+</ul>
+
+<p>If you use dhtmlxSlider standalone you need to include 2 files:</p>
+
+<ul>
+<li><em>dhtmlxslider.js</em></li>
+<li><em>dhtmlxslider.css</em></li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlxslider.css&quot;</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlxslider.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+    ...
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+<p>If you use dhtmlxSlider as a part of "dhtmlxSuite" package you need to include 2 files:</p>
+
+<ul>
+<li><em>dhtmlx.js</em></li>
+<li><em>dhtmlx.css</em></li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;STYLESHEET&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlx.css&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlx.js&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<h3>Including source files from CDN</h3>
+
+<p>To include JS/CSS files of "dhtmlxSuite" package from CDN, you should set direct links to <em>dhtmlx.js</em> and <em>dhtmlx.css</em> files:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;http://cdn.dhtmlx.com/edge/dhtmlx.css&quot;</span> </span>
+<span class="sc2">    <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span>&gt;</span> 
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;http://cdn.dhtmlx.com/edge/dhtmlx.js&quot;</span> </span>
+<span class="sc2">    <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p>By setting links in this way you will get the latest version of dhtmlxSuite. 
+To get some particular version, just specify the number of the required version in the link, like this:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;http://cdn.dhtmlx.com/5.0/dhtmlx.css&quot;</span> </span>
+<span class="sc2">    <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span>&gt;</span> 
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;http://cdn.dhtmlx.com/5.0/dhtmlx.js&quot;</span> </span>
+<span class="sc2">    <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<a name='minimalinitialization'><h2>Minimal Initialization</h2></a>
+
+<p>The user needs to create an object where dhtmlxSlider will be placed later. In this example the object is a &#60;div&#62; 
+element on page which is placed in the &#60;body&#62; tag:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;sliderObj&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+<p>The next step is to create a new dhtmlxSlider and place it after the &#60;div&#62; element (object) that we've just created:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> mySlider <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXSlider<span class="br0">&#40;</span>parent<span class="sy0">,</span> size<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The parameters in the above mentioned code string are the following:</p>
+
+<ul>
+<li><em>parent</em> - (id) id of the object inside which the Slider will be created</li>
+<li><em>size</em> - (number) the size of the slider (in pixels)</li>
+</ul>
+
+<p>When the page is loaded, the slider will be displayed on a page with the minimum value set in it.</p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxSlider/samples/01_init/03_init_html.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Init from HTML</a></p>
+
+<a name='extendedinitialization'><h2>Extended Initialization</h2></a>
+
+<p>While creating a Slider with extended initialization, the user should call the same commands described in the 
+<a class="link-" href="slider__initializing_slider.html#minimalinitialization">Minimal Initialization</a> section.</p>
+
+<p>The code for extended initialization should be like this:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> mySlider <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXSlider<span class="br0">&#40;</span>parent<span class="sy0">,</span> size<span class="sy0">,</span> skin<span class="sy0">,</span> vertical<span class="sy0">,</span> min<span class="sy0">,</span> max<span class="sy0">,</span> value<span class="sy0">,</span> step<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The parameters the user should indicate are as follows:</p>
+
+<ul>
+<li><em>parent</em> - (id) id of the object inside which Slider will be created</li>
+<li><em>size</em> - (number) the size of the slider (in pixels)</li>
+<li><em>skin</em> - (string) the name of the applied skin </li>
+<li><em>vertical</em> - (boolean) vertical orientation flag, set to <em>false</em> by default</li>
+<li><em>minValue</em> - (number) minimum slider's value</li>
+<li><em>maxValue</em> - (number) maximum slider's value</li>
+<li><em>value</em> - (number) slider's current value</li>
+<li><em>step</em> - (number) step of the slider</li>
+</ul>
+
+<p>When the page is loaded, the slider will be displayed on page with the current value set in it.</p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxSlider/samples/01_init/02_init_arguments.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Init with arguments</a></p>
+
+<a name='initializationbyobjectnotation'><h2>Initialization by Object Notation</h2></a>
+
+<p>Initialization of this kind is similar to the above mentioned types. The only difference is that the second parameter is an object containing all the initialization parameters:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;slider&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">    <span class="kw2">var</span> mySlider <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXSlider<span class="br0">&#40;</span><span class="br0">&#123;</span>
+        parent<span class="sy0">:</span> <span class="st0">&quot;sliderObj&quot;</span><span class="sy0">,</span>
+        size<span class="sy0">:</span>   <span class="nu0">100</span><span class="sy0">,</span>           
+        step<span class="sy0">:</span>   <span class="nu0">1</span><span class="sy0">,</span>
+        min<span class="sy0">:</span>    <span class="nu0">1</span><span class="sy0">,</span>
+        max<span class="sy0">:</span>    <span class="nu0">100</span><span class="sy0">,</span>
+        value<span class="sy0">:</span>  <span class="nu0">50</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p>Other available parameters are enumerated in the article <a class="link-" href="slider__constructor.html">Object Constructor</a>.</p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxSlider/samples/01_init/01_init_object.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Init from object</a></p>
+
+<a name='inlineinitialization'><h2>Inline Initialization</h2></a>
+
+<p>This type of initialization presupposes that Slider can be created without indicating an object for it.
+It should be noted that Slider will be created at the same place where the initialization script was called:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> mySlider <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXSlider<span class="br0">&#40;</span><span class="kw2">null</span><span class="sy0">,</span> <span class="nu0">300</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//or</span>
+<span class="kw2">var</span> mySlider <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXSlider<span class="br0">&#40;</span><span class="kw2">null</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    size<span class="sy0">:</span><span class="nu0">100</span><span class="sy0">,</span>           
+    skin<span class="sy0">:</span> <span class="st0">&quot;ball&quot;</span><span class="sy0">,</span>
+    vertical<span class="sy0">:</span><span class="kw2">false</span><span class="sy0">,</span>
+    step<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span>
+    min<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span>
+    max<span class="sy0">:</span><span class="nu0">100</span><span class="sy0">,</span>
+    value<span class="sy0">:</span><span class="nu0">50</span>           
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='slider__initializing_slider.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Sorting Columns  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__specifying_columns.html">Specifying Columns</a></li><li class=""><a href="desktop__tree_column.html">Configuring the Tree Column</a></li><li class=""><a href="desktop__reordering_tasks.html">Reordering Tasks</a></li><li class=" current"><a href="desktop__sorting.html">Sorting Columns</a></li><ul><li class="inner"><a href="desktop__sorting.html#sortingbyaclickontheheader">Sorting by a click on the header</a></li><li class="inner"><a href="desktop__sorting.html#programmaticsorting">Programmatic sorting</a></li><li class="inner"><a href="desktop__sorting.html#customsortingfunctions">Custom sorting functions</a></li><li class="inner"><a href="desktop__sorting.html#percolumngridsorting">Per column Grid sorting</a></li></ul><li class="toc-pro"><a href="desktop__grouping.html">Grouping Tasks</a></li><li class=""><a href="desktop__filtering.html">Filtering Tasks</a></li><li class=""><a href="desktop__inline_editing.html">Inline Editing in Grid</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__table.html">Configuring Grid Area</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Sorting Columns</h1>
+
+<p>dhtmlxGantt allows you to sort data in the columns of the grid (on the client side). <br>
+There are 2 ways you can provide sorting in the grid:</p>
+
+<ol>
+<li>By a single click on the header of a column with the enabled <a class="link-" href="api__gantt_sort_config.html">sort</a> attribute;</li>
+<li>By the API call (can be called from some event or action, i.e. a button click or a page load) of the <a class="link-" href="api__gantt_sort.html">sort</a> method.</li>
+</ol>
+
+<div class='note'><p><p>Please note that Gantt can only sort tasks by values from data and doesn't sort values set by the template attribute of a column.</p>
+</p></div>
+
+<a name='sortingbyaclickontheheader'><h2>Sorting by a click on the header</h2></a>
+
+<p>Once the user clicks on the header, the Gantt chart starts to display a special control indicating which column the table is currently sorted by and the direction of this sorting (ascending or descending).
+Each next click on the same header will reverse the sorting direction.</p>
+
+<p><img src="media/desktop/gantt_sorting.png"/></p>
+
+<p>To enable sorting in the Gantt chart, set the <a class="link-" href="api__gantt_sort_config.html">sort</a> property to <em>true</em>:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">sort</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span> 
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/07_grid/01_builtin_sorting.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Built-in sorting</a></p>
+
+<a name='programmaticsorting'><h2>Programmatic sorting</h2></a>
+
+<p>To sort the grid  on some action or event (i.e. button click or page load), call the <a class="link-" href="api__gantt_sort.html">sort</a> method.</p>
+
+<p class='snippet'>  Sorting  on the button click</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">'button'</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">'Sort by task name'</span> <span class="kw3">onclick</span><span class="sy0">=</span><span class="st0">'gantt.sort(&quot;text&quot;, true);'</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span> <span class="kw3">charset</span><span class="sy0">=</span><span class="st0">&quot;utf-8&quot;</span>&gt;</span><pre class="js">    gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+    gantt.<span class="me1">parse</span><span class="br0">&#40;</span>tasks<span class="br0">&#41;</span><span class="sy0">;</span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p><a href='samples/07_grid/05_sort_api.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Using sorting methods</a></p>
+
+<a name='customsortingfunctions'><h2>Custom sorting functions</h2></a>
+
+<p>To apply a custom sorting function to the grid, call the <a class="link-" href="api__gantt_sort.html">sort</a> method with the name of your custom function as the first (and only) parameter.</p>
+
+<p>A custom sorting function is called for each pair of adjacent values and returns 1,-1 or 0:</p>
+
+<ul>
+<li><strong>1</strong> - an object with the first value in pair must go before the second one;</li>
+<li><strong>-1</strong> - the second object goes before the first one;</li>
+<li><strong>0</strong> - the order of both objects doesn't change.</li>
+</ul>
+
+<p class='snippet'>
+Using a custom function to sort a Gantt chart
+</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">'button'</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">'Sort by the number of holders'</span> </span>
+<span class="sc2">       <span class="kw3">onclick</span><span class="sy0">=</span><span class="st0">'sortByHolders(direction)'</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span> <span class="kw3">charset</span><span class="sy0">=</span><span class="st0">&quot;utf-8&quot;</span>&gt;</span><pre class="js">    <span class="kw2">var</span> direction <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw2">function</span> sortByHolders<span class="br0">&#40;</span>direction1<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        direction <span class="sy0">=</span> <span class="sy0">!</span>direction<span class="sy0">;</span>
+        gantt.<span class="me1">sort</span><span class="br0">&#40;</span>sortHolders<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="sy0">;</span>
+    <span class="kw2">function</span> sortHolders<span class="br0">&#40;</span>a<span class="sy0">,</span>b<span class="br0">&#41;</span><span class="br0">&#123;</span>
+         a <span class="sy0">=</span> a.<span class="me1">users</span>.<span class="me1">length</span><span class="sy0">;</span>
+         b <span class="sy0">=</span> b.<span class="me1">users</span>.<span class="me1">length</span><span class="sy0">;</span>
+&nbsp;
+         <span class="kw1">if</span> <span class="br0">&#40;</span>direction<span class="br0">&#41;</span><span class="br0">&#123;</span>
+            <span class="kw1">return</span> a<span class="sy0">&gt;</span>b<span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:</span><span class="br0">&#40;</span>a<span class="sy0">&lt;</span>b<span class="sy0">?-</span><span class="nu0">1</span><span class="sy0">:</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span>
+         <span class="br0">&#125;</span> <span class="kw1">else</span> <span class="br0">&#123;</span>
+            <span class="kw1">return</span> a<span class="sy0">&gt;</span>b<span class="sy0">?-</span><span class="nu0">1</span><span class="sy0">:</span><span class="br0">&#40;</span>a<span class="sy0">&lt;</span>b<span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span>
+         <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span><span class="sy0">;</span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p><a href='samples/07_grid/04_custom_sorting.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom sorting function</a></p>
+
+<a name='percolumngridsorting'><h2>Per column Grid sorting</h2></a>
+
+<p>It's possible to specify a custom sorting rule for each particular column. There are three most common sorting scenarios per column:</p>
+
+<p>1) disabling sorting for a column by setting <em>sort</em> to false</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">columns</span><span class="br0">&#91;</span><span class="nu0">1</span><span class="br0">&#93;</span>.<span class="me1">sort</span> <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span></pre></code></pre>
+
+<p>2) sorting a column according to the provided sorting functions by setting <em>sort</em> to a function</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">columns</span><span class="br0">&#91;</span><span class="nu0">1</span><span class="br0">&#93;</span>.<span class="me1">sort</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>a<span class="sy0">,</span>b<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> custom_function<span class="br0">&#40;</span>a<span class="sy0">,</span>b<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>A custom sorting function is called for a pair of task objects (a and b) and returns 1,-1 or 0:</p>
+
+<ul>
+<li><strong>1</strong> - an object with the first value in pair must go before the second one;</li>
+<li><strong>-1</strong> - the second object goes before the first one;</li>
+<li><strong>0</strong> - the order of both objects doesn't change.</li>
+</ul>
+
+<p>3) sorting a column according to the values of a different field of the task by
+setting <em>sort</em> to that field</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">columns</span><span class="br0">&#91;</span><span class="nu0">1</span><span class="br0">&#93;</span>.<span class="me1">sort</span> <span class="sy0">=</span> <span class="st0">'other_field'</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='desktop__sorting.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

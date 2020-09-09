@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Progress Bar  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxlayout.html">dhtmlXLayout API</a></li><li class=""><a href="api__refs__dhtmlxlayoutcell.html">dhtmlXLayoutCell API</a></li><li class=""><a href="layout__init.html">Initializing Layout on a Page</a></li><li class=""><a href="layout__skins.html">Layout Skins</a></li><li class=""><a href="layout__patterns.html">Layout Patterns</a></li><li class=""><a href="layout__offsets.html">Layout Offsets</a></li><li class=""><a href="layout__header.html">Cell Header</a></li><li class=""><a href="layout__sizing.html">Sizing Cells</a></li><li class=""><a href="layout__docking.html">Docking/Undocking Cells</a></li><li class=""><a href="layout__expanding.html">Expanding/Collapsing Cells</a></li><li class=""><a href="layout__iterator.html">Iterator</a></li><li class=""><a href="layout__dhxwins.html">Using Windows from Layout</a></li><li class=""><a href="layout__attach_components.html">Attaching Components</a></li><li class=""><a href="layout__attach_mtb.html">Attaching Menu/Status Bar</a></li><li class=""><a href="layout__attach_html.html">Attaching HTML</a></li><li class=""><a href="layout__attach_urls.html">Attaching URL</a></li><li class=""><a href="layout__attach_google_map.html">Attaching Google Maps</a></li><li class=" current"><a href="layout__progress.html">Progress Bar</a></li><li class=""><a href="layout__views.html">Different Content in the Same Cell</a></li><li class=""><a href="layout__coloring_text_selection.html">Coloring Text Selection</a></li><li class=""><a href="layout__migration.html">Migration from 3.6 to 4.0</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="layout__index.html">Layout</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Progress Bar</h1>
+
+<p>A progress control is a state indicator. It can be used to indicate content loading or updating.
+While the cell is visually disabled and not accessible for user actions the progress is enabled.</p>
+
+<p>This functionality will not start automatically when some content is loaded into a cell, it needs to be triggered by calling the appropriate API method.</p>
+
+<p>Here is the code for a cell's progress control:</p>
+
+<pre><code><pre class="js"><span class="co1">// turning progress on</span>
+dhxComponent.<span class="me1">cells</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">progressOn</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// turning progress off</span>
+dhxComponent.<span class="me1">cells</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">progressOff</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><br>
+In practical scenario, you can place the <a class="link-" href="api__dhtmlxcell_progresson.html">progressOn()</a> call before loading data in some component, and <a class="link-" href="api__dhtmlxcell_progressoff.html">progressOff()</a> in data loading callback, for example:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myLayout<span class="sy0">;</span>
+<span class="kw2">var</span> myGrid<span class="sy0">;</span>
+&nbsp;
+<span class="co1">// init layout and attach grid</span>
+<span class="kw2">function</span> initControls<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    myLayout <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXLayoutObject<span class="br0">&#40;</span><span class="br0">&#123;</span>
+        parent<span class="sy0">:</span> <span class="st0">&quot;layoutObj&quot;</span><span class="sy0">,</span>
+        pattern<span class="sy0">:</span> <span class="st0">&quot;2U&quot;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    myGrid <span class="sy0">=</span> myLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;a&quot;</span><span class="br0">&#41;</span>.<span class="me1">attachGrid</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    loadGridData<span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">// load/reload grid data</span>
+<span class="kw2">function</span> loadGridData<span class="br0">&#40;</span>firstLoad<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    myLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;a&quot;</span><span class="br0">&#41;</span>.<span class="me1">progressOn</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>firstLoad <span class="sy0">==</span> <span class="kw2">true</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        myGrid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;server.php&quot;</span><span class="sy0">,</span> doOnGridLoaded<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span> <span class="kw1">else</span> <span class="br0">&#123;</span>
+        myGrid.<span class="me1">updateFromXML</span><span class="br0">&#40;</span><span class="st0">&quot;server.php&quot;</span><span class="sy0">,</span> <span class="kw2">true</span><span class="sy0">,</span> <span class="kw2">false</span><span class="sy0">,</span> doOnGridLoaded<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">// grid dataload callback</span>
+<span class="kw2">function</span> doOnGridLoaded<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    myLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;a&quot;</span><span class="br0">&#41;</span>.<span class="me1">progressOff</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">body</span> <span class="kw3">onload</span><span class="sy0">=</span><span class="st0">&quot;initControls();&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;layoutObj&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width: 600px; height: 400px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;button&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;refresh grid&quot;</span> <span class="kw3">onclick</span><span class="sy0">=</span><span class="st0">&quot;loadGridData();&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span></pre></code></pre>
+
+<p><br>
+Each time you will click the button, the loadGridData() method will be called and you will see the progress of loading over the cell with grid.</p>
+
+<!-- Content Area End -->
+			<a href='layout__progress.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

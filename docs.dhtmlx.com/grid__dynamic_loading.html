@@ -1,0 +1,641 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Dynamic Loading  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="grid__smart_rendering.html">Smart Rendering</a></li><li class="toc-pro"><a href="grid__paging.html">Paging</a></li><li class=" current"><a href="grid__dynamic_loading.html">Dynamic Loading</a></li><ul><li class="inner"><a href="grid__dynamic_loading.html#settingthetask">Setting the Task</a></li><li class="inner"><a href="grid__dynamic_loading.html#smartrenderingoptionsingrid">Smart Rendering Options in Grid</a></li><li class="inner"><a href="grid__dynamic_loading.html#step1includescriptandcssfiles">Step 1. Include Script and CSS Files</a></li><li class="inner"><a href="grid__dynamic_loading.html#step2initializegridwithsmartrendering">Step 2. Initialize Grid with Smart Rendering</a></li><li class="inner"><a href="grid__dynamic_loading.html#step3loaddataserversidesupportforsmartrendering">Step 3. Load Data. Server-side Support for Smart Rendering</a></li><li class="inner"><a href="grid__dynamic_loading.html#step4filterdatapassextraparameterstotheserver">Step 4. Filter data. Pass extra parameters to the server</a></li><li class="inner"><a href="grid__dynamic_loading.html#step5sortdata">Step 5. Sort data</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__loading_data.html">Loading and Storing Data</a><a class="n4" href="grid__big_datasets_loading.html">Loading Big Datasets</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Dynamic Loading</h1>
+
+<p>Keeping  thousands of records in the grid is a common requirement for most business applications. 
+These records can be goods, names of employees, invoices, etc.</p>
+
+<p>This step-by-step tutorial will let you load 50,000 records into your grid and still have it working fast.</p>
+
+<a name='settingthetask'><h2>Setting the Task</h2></a>
+
+<p>Firstly, let's outline a problem.</p>
+
+<p>For example, you load a dataset with 10,000 records. Let's make some calculations.
+It takes a second to load this dataset from the server to your browser, half a second to convert it to the grid internal format,
+and 0.01 second to draw each row in the grid (all these figures are approximate, but you get the idea, we hope).
+The result of our calculation is 1+0.5+0.01*10000 = 101,5 seconds - more than a minute.</p>
+
+<p>But why do you need to wait for 10,000 records to be rendered? 
+We think that you don't! You just need the first 100 rows to start working with as this is the number of rows that is visible in the grid's frame.</p>
+
+<p>So we added some ingenious code to the grid and called this new possibility "Smart Rendering", as our grid now needs to be smart enough to know which records to render and which of them should be put off.</p>
+
+<a name='smartrenderingoptionsingrid'><h2>Smart Rendering Options in Grid</h2></a>
+
+<p>There are 2 variants of Smart Rendering in dhtmlxGrid:</p>
+
+<ol>
+<li>You just turn Smart Rendering on and load the entire dataset with the <a class="link-" href="api__dhtmlxgrid_load.html">load</a> method. This way is easy and doesn't require any server side support but... (as there are always some "buts").
+If you load 100,000 records at once, they will take some memory of your computer. Not a big deal, but still it can affect the performance. 
+What is more, this variant is available only for Grid Professional Edition users.</li>
+<li>You put the dataset into your browser by portions (dynamic loading). Grid will tell you what portion it needs (start and end record index).</li>
+</ol>
+
+<p>Thus, for the first variant the format of XML remains the same as in a common grid, and it generally can be a static XML file:</p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;rows<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;row</span> <span class="re0">id</span>=<span class="st0">&quot;xx&quot;</span><span class="re2">&gt;</span></span>
+        <span class="sc3"><span class="re1">&lt;cell<span class="re2">&gt;</span></span></span>
+        ...
+        <span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/row<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/rows<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<p>For the variant with dynamic loading it gets <a class="link-" href="grid__data_formats.html#dynamic_loading">2 additional parameters: <strong>total_count</strong>, <strong>pos</strong></a>
+and (as far as we should process some incoming arguments) needs to be created dynamically with some server side programming language:</p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;rows</span> <span class="re0">total_count</span>=<span class="st0">&quot;x&quot;</span> <span class="re0">pos</span>=<span class="st0">&quot;y&quot;</span><span class="re2">&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;row</span> <span class="re0">id</span>=<span class="st0">&quot;xx&quot;</span><span class="re2">&gt;</span></span>
+        <span class="sc3"><span class="re1">&lt;cell<span class="re2">&gt;</span></span></span>
+        ...
+        <span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/row<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/rows<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<p>Thus, this tutorial is not just about JavaScript, but also about server side a little bit. We'll show you the server-side code for PHP, JSP, ColdFusion. But let's do everything in its turn.
+By the way, if some of the readers can send us the necessary code for some other languages/technologies, we'll definitely put it here and will be very grateful to the author.</p>
+
+<a name='step1includescriptandcssfiles'><h2>Step 1. Include Script and CSS Files</h2></a>
+
+<p>Once again we start with including external JavaScript and CSS files into the page.</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;STYLESHEET&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlx.css&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlx.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js"><span class="kw2">var</span> gridQString <span class="sy0">=</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span><span class="co1">//we'll save here last url with query string we used for loading grid </span>
+    <span class="co1">//we'll use this script block for functions</span>
+    <span class="co1">//(see step 5 for details)</span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<a name='step2initializegridwithsmartrendering'><h2>Step 2. Initialize Grid with Smart Rendering</h2></a>
+
+<p>Depending on the data structure you'll need a grid with different columns set. 
+In our example, we have 4 columns in the database table: unique ID (id), some name (nm), related alphanumeric code (code) and numeric value (num_val).</p>
+
+<p>This is an abstract sample, but we can think about those names as the names of some pharmaceuticals.
+The codes will be their internal product codes, and numeric values will be the prices.
+So the initialization code for such kind of a grid will be as follows:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;products_grid&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width:500px;height:200px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+<pre><code><pre class="js"><span class="kw2">var</span> mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'products_grid'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Product Name,Internal Code,Price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setInitWidths</span><span class="br0">&#40;</span><span class="st0">&quot;*,150,150&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setColAlign</span><span class="br0">&#40;</span><span class="st0">&quot;left,left,right&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;modern&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">enableSmartRendering</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>As you probably remember from the previous chapter, we used body "onload" event to call grid initialization function. The above mentioned code is another case,
+as it calls script methods on the page, placing them after the DIV container we want to place our grid into.
+The goal here is the same: to call the grid constructor after the DIV container was initialized.</p>
+
+<p>So what is new in this script? 
+A new line of code was added to enable the Smart Rendering mode. As you can see, it is quite simple: just one command and you are ready to load thousands of records. It's very simple, indeed.</p>
+
+<p>So here is what we have now:</p>
+
+<p><img src="media/grid/grid_smr.png"/></p>
+
+<a name='step3loaddataserversidesupportforsmartrendering'><h2>Step 3. Load Data. Server-side Support for Smart Rendering</h2></a>
+
+<p>As you already know from the introduction, there are two variants of Smart Rendering in dhtmlxGrid.
+We'll concentrate on the more complex one, which allows you working with much bigger datasets - Smart Rendering with Dynamic Loading.</p>
+
+<p>Below there are samples of server side code for creating an output XML based on incoming arguments and MySQL database for 4 most popular technologies. Load your variant of file with the following command (put it into script block right after mygrid.enableSmartRendering):</p>
+
+<pre><code><pre class="js">gridQString <span class="sy0">=</span> <span class="st0">&quot;getGridRecords.php&quot;</span><span class="sy0">;</span> <span class="co1">// save query string to global variable (see step 5)</span>
+mygrid.<span class="me1">load</span><span class="br0">&#40;</span>gridQString <span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>By sending the request to the URL you specify in the load() method, grid adds two properties:</p>
+
+<ul>
+<li><strong>posStart</strong> - the starting record position in the dataset (if this property was skipped, the load() method returns records starting from the beginning of the dataset);</li>
+<li><strong>count</strong> - the number of records to be returned with response.</li>
+</ul>
+
+<p>Thus GET request which comes to the server will look like this: <strong>getGridRecords.php?posStart=199&amp;count=100</strong>.</p>
+
+<h3>Sample of Server-Side Code. PHP</h3>
+
+<pre><code><pre class="php">    <span class="kw2">&lt;?php</span>
+        <span class="co1">//set content type and xml tag</span>
+        <a href="http://www.php.net/header"><span class="kw3">header</span></a><span class="br0">&#40;</span><span class="st0">&quot;Content-type:text/xml&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">print</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;?xml version=&quot;</span><span class="nu19">1.0</span><span class="st0">&quot;?&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="co1">//define variables from incoming values</span>
+        <span class="kw1">if</span><span class="br0">&#40;</span><a href="http://www.php.net/isset"><span class="kw3">isset</span></a><span class="br0">&#40;</span><span class="re0">$_GET</span><span class="br0">&#91;</span><span class="st0">&quot;posStart&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+            <span class="re0">$posStart</span> <span class="sy0">=</span> <span class="re0">$_GET</span><span class="br0">&#91;</span><span class="st_h">'posStart'</span><span class="br0">&#93;</span><span class="sy0">;</span>
+        <span class="kw1">else</span>
+            <span class="re0">$posStart</span> <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span>
+        <span class="kw1">if</span><span class="br0">&#40;</span><a href="http://www.php.net/isset"><span class="kw3">isset</span></a><span class="br0">&#40;</span><span class="re0">$_GET</span><span class="br0">&#91;</span><span class="st0">&quot;count&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+            <span class="re0">$count</span> <span class="sy0">=</span> <span class="re0">$_GET</span><span class="br0">&#91;</span><span class="st_h">'count'</span><span class="br0">&#93;</span><span class="sy0">;</span>
+        <span class="kw1">else</span>
+            <span class="re0">$count</span> <span class="sy0">=</span> <span class="nu0">100</span><span class="sy0">;</span>
+&nbsp;
+        <span class="co1">//connect to database</span>
+        <span class="re0">$db</span> <span class="sy0">=</span> <span class="kw2">new</span> PDO<span class="br0">&#40;</span><span class="st0">&quot;mysql:dbname=sampleDB;host=localhost&quot;</span><span class="sy0">,</span><span class="st0">&quot;root&quot;</span><span class="sy0">,</span><span class="st0">&quot;user&quot;</span><span class="sy0">,</span><span class="st0">&quot;pwd&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="co1">//create query to products table</span>
+        <span class="re0">$sql</span> <span class="sy0">=</span> <span class="st0">&quot;SELECT  * FROM products&quot;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="co1">//if this is the first query - get total number of records in the query result</span>
+        <span class="kw1">if</span><span class="br0">&#40;</span><span class="re0">$posStart</span><span class="sy0">==</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+            <span class="re0">$sqlCount</span> <span class="sy0">=</span> <span class="st0">&quot;Select count(*) as cnt from (<span class="es4">$sql</span>) as tbl&quot;</span><span class="sy0">;</span>
+            <span class="re0">$resCount</span> <span class="sy0">=</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">query</span><span class="br0">&#40;</span><span class="re0">$sqlCount</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$rowCount</span> <span class="sy0">=</span> <span class="re0">$resCount</span><span class="sy0">-&gt;</span><span class="me1">fetch</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$totalCount</span> <span class="sy0">=</span> <span class="re0">$rowCount</span><span class="br0">&#91;</span><span class="st0">&quot;cnt&quot;</span><span class="br0">&#93;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="co1">//add limits to query to get only rows necessary for the output</span>
+        <span class="re0">$sql</span><span class="sy0">.=</span> <span class="st0">&quot; LIMIT &quot;</span><span class="sy0">.</span><span class="re0">$posStart</span><span class="sy0">.</span><span class="st0">&quot;,&quot;</span><span class="sy0">.</span><span class="re0">$count</span><span class="sy0">;</span>
+&nbsp;
+        <span class="co1">//query database to retrieve necessary block of data</span>
+        <span class="re0">$res</span> <span class="sy0">=</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">query</span><span class="br0">&#40;</span><span class="re0">$sql</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="co1">//output data in XML format   </span>
+        <span class="kw1">print</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;rows total_count='&quot;</span><span class="sy0">.</span><span class="re0">$totalCount</span><span class="sy0">.</span><span class="st0">&quot;' pos='&quot;</span><span class="sy0">.</span><span class="re0">$posStart</span><span class="sy0">.</span><span class="st0">&quot;'&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>   
+        <span class="kw1">while</span><span class="br0">&#40;</span><span class="re0">$row</span><span class="sy0">=</span><span class="re0">$res</span><span class="sy0">-&gt;</span><span class="me1">fetch</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+            <span class="kw1">print</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;row id='&quot;</span><span class="sy0">.</span><span class="re0">$row</span><span class="br0">&#91;</span><span class="st_h">'id'</span><span class="br0">&#93;</span><span class="sy0">.</span><span class="st0">&quot;'&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                <span class="kw1">print</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;cell&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                    <span class="kw1">print</span><span class="br0">&#40;</span><span class="re0">$row</span><span class="br0">&#91;</span><span class="st_h">'nm'</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>  <span class="co1">//value for product name</span>
+                <span class="kw1">print</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;/cell&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                <span class="kw1">print</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;cell&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                    <span class="kw1">print</span><span class="br0">&#40;</span><span class="re0">$row</span><span class="br0">&#91;</span><span class="st_h">'code'</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>  <span class="co1">//value for internal code</span>
+                <span class="kw1">print</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;/cell&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                <span class="kw1">print</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;cell&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                    <span class="kw1">print</span><span class="br0">&#40;</span><span class="re0">$row</span><span class="br0">&#91;</span><span class="st_h">'num_val'</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>    <span class="co1">//value for price</span>
+                <span class="kw1">print</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;/cell&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+             <span class="kw1">print</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;/row&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+        <span class="kw1">print</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;/rows&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="sy1">?&gt;</span></pre></code></pre>
+
+<p>The sample code was simplified to concentrate you on the main commands. Some necessary error handlers, etc. were omitted.</p>
+
+<h3>Sample of Server Side Code. JSP.</h3>
+
+<pre><code><pre class="js">  <span class="sy0">&lt;%@</span> page <span class="kw2">import</span> <span class="sy0">=</span> <span class="st0">&quot;java.sql.*&quot;</span> <span class="sy0">%&gt;</span>
+  <span class="sy0">&lt;%</span>
+      String db_ipp_addr <span class="sy0">=</span> <span class="st0">&quot;localhost&quot;</span><span class="sy0">;</span>
+      String db_username <span class="sy0">=</span> <span class="st0">&quot;root&quot;</span><span class="sy0">;</span>
+      String db_password <span class="sy0">=</span> <span class="st0">&quot;1&quot;</span><span class="sy0">;</span>
+      String db_name <span class="sy0">=</span> <span class="st0">&quot;sampleDB&quot;</span><span class="sy0">;</span>
+&nbsp;
+      <span class="co1">// set content type and xml tag</span>
+      response.<span class="me1">setContentType</span><span class="br0">&#40;</span><span class="st0">&quot;text/xml&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+      out.<span class="me1">println</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;?xml version=&quot;</span><span class="nu0">1.0</span><span class="st0">&quot; encoding=&quot;</span>UTF<span class="sy0">-</span><span class="nu0">8</span><span class="st0">&quot;?&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+      <span class="co1">// define variables from incoming values</span>
+      String posStart <span class="sy0">=</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+      <span class="kw1">if</span> <span class="br0">&#40;</span>request.<span class="me1">getParameter</span><span class="br0">&#40;</span><span class="st0">&quot;posStart&quot;</span><span class="br0">&#41;</span> <span class="sy0">!=</span> <span class="kw2">null</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+          posStart <span class="sy0">=</span> request.<span class="me1">getParameter</span><span class="br0">&#40;</span><span class="st0">&quot;posStart&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+      <span class="br0">&#125;</span><span class="kw1">else</span><span class="br0">&#123;</span>
+          posStart <span class="sy0">=</span> <span class="st0">&quot;0&quot;</span><span class="sy0">;</span>
+      <span class="br0">&#125;</span>   
+&nbsp;
+      String count <span class="sy0">=</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+      <span class="kw1">if</span> <span class="br0">&#40;</span>request.<span class="me1">getParameter</span><span class="br0">&#40;</span><span class="st0">&quot;count&quot;</span><span class="br0">&#41;</span> <span class="sy0">!=</span> <span class="kw2">null</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+          count <span class="sy0">=</span> request.<span class="me1">getParameter</span><span class="br0">&#40;</span><span class="st0">&quot;count&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+      <span class="br0">&#125;</span><span class="kw1">else</span><span class="br0">&#123;</span>
+          count <span class="sy0">=</span> <span class="st0">&quot;100&quot;</span><span class="sy0">;</span>   
+      <span class="br0">&#125;</span>   
+&nbsp;
+      <span class="co1">// connect to database</span>
+      Connection connection <span class="sy0">=</span> <span class="kw2">null</span><span class="sy0">;</span>
+      Statement statement <span class="sy0">=</span> <span class="kw2">null</span><span class="sy0">;</span>
+      ResultSet rs <span class="sy0">=</span> <span class="kw2">null</span><span class="sy0">;</span>
+      String connectionURL <span class="sy0">=</span> <span class="st0">&quot;jdbc:mysql://&quot;</span> <span class="sy0">+</span> db_ipp_addr <span class="sy0">+</span> <span class="st0">&quot;:3306/&quot;</span> <span class="sy0">+</span> db_name<span class="sy0">;</span>
+&nbsp;
+      <span class="kw2">Class</span>.<span class="me1">forName</span><span class="br0">&#40;</span><span class="st0">&quot;com.mysql.jdbc.Driver&quot;</span><span class="br0">&#41;</span>.<span class="me1">newInstance</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+      connection <span class="sy0">=</span> DriverManager.<span class="me1">getConnection</span><span class="br0">&#40;</span>connectionURL<span class="sy0">,</span>db_username<span class="sy0">,</span>db_password<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+      <span class="co1">// query to products table</span>
+      String sql <span class="sy0">=</span> <span class="st0">&quot;SELECT  * FROM products&quot;</span><span class="sy0">;</span>
+&nbsp;
+      <span class="co1">// if this is the first query - get total number of records in the query result</span>
+      String totalCount <span class="sy0">=</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+      <span class="kw1">if</span> <span class="br0">&#40;</span>posStart.<span class="me1">equals</span><span class="br0">&#40;</span><span class="st0">&quot;0&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+          String sqlCount <span class="sy0">=</span> <span class="st0">&quot;Select count(*) as cnt from (&quot;</span> <span class="sy0">+</span> sql <span class="sy0">+</span> <span class="st0">&quot;) as tbl&quot;</span><span class="sy0">;</span>
+          statement <span class="sy0">=</span> connection.<span class="me1">createStatement</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+          rs <span class="sy0">=</span> statement.<span class="me1">executeQuery</span><span class="br0">&#40;</span>sqlCount<span class="br0">&#41;</span><span class="sy0">;</span>
+          rs.<span class="me1">next</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+          totalCount <span class="sy0">=</span> rs.<span class="me1">getString</span><span class="br0">&#40;</span><span class="st0">&quot;cnt&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+          rs.<span class="kw3">close</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+      <span class="br0">&#125;</span> <span class="kw1">else</span> <span class="br0">&#123;</span>
+          totalCount <span class="sy0">=</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+      <span class="br0">&#125;</span>
+&nbsp;
+      <span class="co1">// add limits to query to get only rows necessary for output</span>
+      sql <span class="sy0">+=</span> <span class="st0">&quot; LIMIT &quot;</span> <span class="sy0">+</span> posStart <span class="sy0">+</span> <span class="st0">&quot;,&quot;</span> <span class="sy0">+</span> count<span class="sy0">;</span>
+&nbsp;
+      <span class="co1">// Execute the query</span>
+      statement <span class="sy0">=</span> connection.<span class="me1">createStatement</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+      rs <span class="sy0">=</span> statement.<span class="me1">executeQuery</span><span class="br0">&#40;</span>sql<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+      <span class="co1">// output data in XML format  </span>
+      out.<span class="me1">println</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;rows total_count='&quot;</span> <span class="sy0">+</span> totalCount <span class="sy0">+</span> <span class="st0">&quot;' pos='&quot;</span> <span class="sy0">+</span> posStart <span class="sy0">+</span> <span class="st0">&quot;'&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+      <span class="kw1">while</span> <span class="br0">&#40;</span>rs.<span class="me1">next</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+          out.<span class="me1">println</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;row id='&quot;</span> <span class="sy0">+</span> rs.<span class="me1">getString</span><span class="br0">&#40;</span><span class="st0">&quot;id&quot;</span><span class="br0">&#41;</span> <span class="sy0">+</span> <span class="st0">&quot;'&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+              out.<span class="me1">println</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;cell&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                  out.<span class="me1">println</span><span class="br0">&#40;</span>rs.<span class="me1">getString</span><span class="br0">&#40;</span><span class="st0">&quot;nm&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>  <span class="co1">// value for product name</span>
+              out.<span class="me1">println</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;/cell&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+              out.<span class="me1">println</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;cell&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                  out.<span class="me1">println</span><span class="br0">&#40;</span>rs.<span class="me1">getString</span><span class="br0">&#40;</span><span class="st0">&quot;code&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// value for internal code</span>
+              out.<span class="me1">println</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;/cell&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+              out.<span class="me1">println</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;cell&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                  out.<span class="me1">println</span><span class="br0">&#40;</span>rs.<span class="me1">getString</span><span class="br0">&#40;</span><span class="st0">&quot;num_val&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>   <span class="co1">// value for price</span>
+              out.<span class="me1">println</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;/cell&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+          out.<span class="me1">println</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;/row&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+      <span class="br0">&#125;</span>
+      out.<span class="kw1">write</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;/rows&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+      rs.<span class="kw3">close</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="sy0">%&gt;</span></pre></code></pre>
+
+<h3>Sample of Server Side Code. ASP</h3>
+
+<pre><code><pre class="html">  <span class="sc2">&lt;%@ <span class="kw3">LANGUAGE</span> <span class="sy0">=</span> VBScript %&gt;</span>
+  <span class="sc2">&lt;% option explicit %&gt;</span>
+&nbsp;
+  <span class="sc2">&lt;%</span>
+<span class="sc2">      Dim db_ipp_addr, db_username, db_password, db_name</span>
+<span class="sc2">      db_ipp_addr <span class="sy0">=</span> <span class="st0">&quot;localhost&quot;</span></span>
+<span class="sc2">      db_username <span class="sy0">=</span> <span class="st0">&quot;root&quot;</span></span>
+<span class="sc2">      db_password <span class="sy0">=</span> <span class="st0">&quot;1&quot;</span></span>
+<span class="sc2">      db_name <span class="sy0">=</span> <span class="st0">&quot;sampleDB&quot;</span></span>
+&nbsp;
+<span class="sc2">      <span class="st0">' set content type and xml tag</span>
+<span class="sc2">      Response.ContentType = &quot;text/xml&quot;</span>
+<span class="sc2">      Response.write(&quot;&lt;?xml version=&quot;&quot;1.0&quot;&quot; encoding=&quot;&quot;UTF-8&quot;&quot;?&gt;</span></span>&quot;)
+&nbsp;
+      ' define variables from incoming values
+      Dim posStart, count
+      If not isEmpty(Request.QueryString(&quot;posStart&quot;)) Then
+          posStart = Request.QueryString(&quot;posStart&quot;)
+      Else
+          posStart = 0
+      End If   
+&nbsp;
+      If not isEmpty(Request.QueryString(&quot;count&quot;)) Then
+          count = Request.QueryString(&quot;count&quot;)
+      Else
+          count = 100
+      End If   
+&nbsp;
+      ' connect to database
+      Dim objConnection, rs, connString, sql
+      Set objConnection = Server.CreateObject(&quot;ADODB.Connection&quot;)
+      Set rs = Server.CreateObject(&quot;ADODB.Recordset&quot;)
+      connString = &quot;DRIVERMySQL ODBC 3.51 Driver}; 
+        SERVER=&quot; <span class="sc1">&amp;amp;</span> db_ipp_addr <span class="sc1">&amp;amp;</span> &quot;; 
+        DATABASE=&quot; <span class="sc1">&amp;amp;</span> db_name <span class="sc1">&amp;amp;</span> &quot;; 
+        UID=&quot; <span class="sc1">&amp;amp;</span> db_username <span class="sc1">&amp;amp;</span> &quot;; 
+        PWD=&quot; <span class="sc1">&amp;amp;</span> db_password
+      objConnection.Open connString
+&nbsp;
+&nbsp;
+      ' query to products table
+      sql = &quot;SELECT  * FROM products&quot;
+&nbsp;
+      ' if this is the first query - get total number of records in the query result
+      Dim sqlCount, totalCount
+      If posStart = 0 Then
+          sqlCount = &quot;Select count(*) as cnt from (&quot; <span class="sc1">&amp;amp;</span> sql <span class="sc1">&amp;amp;</span> &quot;) as tbl&quot;
+          rs.Open sqlCount, objConnection
+          totalCount = rs(&quot;cnt&quot;)
+          rs.Close
+      Else
+          totalCount = &quot;&quot;   
+      End If
+&nbsp;
+      ' add limits to query to get only rows necessary for output
+      sql = sql <span class="sc1">&amp;amp;</span> &quot; LIMIT &quot; <span class="sc1">&amp;amp;</span> posStart <span class="sc1">&amp;amp;</span> &quot;,&quot; <span class="sc1">&amp;amp;</span> count
+&nbsp;
+      ' Execute the query
+      rs.Open sql, objConnection
+&nbsp;
+      ' output data in XML format  
+      Response.write(&quot;<span class="sc2">&lt;<span class="kw3">rows</span> total_count<span class="sy0">=</span><span class="st0">'&quot; &amp;amp; totalCount &amp;amp; &quot;'</span> </span>
+<span class="sc2">                            pos<span class="sy0">=</span><span class="st0">'&quot; &amp;amp; posStart &amp;amp; &quot;'</span>&gt;</span>&quot;)
+      Do while not rs.EOF
+          Response.write(&quot;<span class="sc2">&lt;row <span class="kw3">id</span><span class="sy0">=</span><span class="st0">'&quot; &amp;amp; rs(&quot;id&quot;) &amp;amp; &quot;'</span>&gt;</span>&quot;)
+              Response.write(&quot;<span class="sc2">&lt;cell&gt;</span>&quot;)
+                  Response.write(rs(&quot;nm&quot;))  ' value for product name
+              Response.write(&quot;<span class="sc2">&lt;<span class="sy0">/</span>cell&gt;</span>&quot;)
+              Response.write(&quot;<span class="sc2">&lt;cell&gt;</span>&quot;)
+                  Response.write(rs(&quot;code&quot;))  ' value for internal code
+              Response.write(&quot;<span class="sc2">&lt;<span class="sy0">/</span>cell&gt;</span>&quot;)
+              Response.write(&quot;<span class="sc2">&lt;cell&gt;</span>&quot;)
+                  Response.write(rs(&quot;num_val&quot;))    ' value for price
+              Response.write(&quot;<span class="sc2">&lt;<span class="sy0">/</span>cell&gt;</span>&quot;)
+          Response.write(&quot;<span class="sc2">&lt;<span class="sy0">/</span>row&gt;</span>&quot;)
+          rs.MoveNext
+      Loop
+      Response.write(&quot;<span class="sc2">&lt;<span class="sy0">/</span>rows&gt;</span>&quot;)
+      rs.Close
+      Set rs = Nothing
+      objConnection.Close
+      Set objConnection = Nothing
+  %&gt;</pre></code></pre>
+
+<h3>Sample of Server Side Code. Cold Fusion.</h3>
+
+<pre><code><pre class="html">  <span class="sc2">&lt;cfset dsn <span class="sy0">=</span> <span class="st0">&quot;sampleDB&quot;</span>&gt;</span>
+  <span class="sc2">&lt;cfsetting  enablecfoutputonly<span class="sy0">=</span><span class="st0">&quot;yes&quot;</span>&gt;</span>
+&nbsp;
+  <span class="sc-1">&lt;!--- set content type and xml tag ---&gt;</span>
+  <span class="sc2">&lt;cfcontent reset<span class="sy0">=</span><span class="st0">&quot;yes&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/xml; charset=UTF-8&quot;</span>&gt;</span>
+    <span class="sc2">&lt;cfoutput&gt;&lt;?xml <span class="kw3">version</span><span class="sy0">=</span><span class="st0">&quot;1.0&quot;</span>?&gt;&lt;<span class="sy0">/</span>cfoutput&gt;</span>
+&nbsp;
+      <span class="sc-1">&lt;!---    define variables from incoming values ---&gt;</span>
+      <span class="sc2">&lt;cfif isDefined<span class="br0">&#40;</span><span class="st0">&quot;url.posStart&quot;</span><span class="br0">&#41;</span>&gt;</span>
+          <span class="sc2">&lt;cfset posStart <span class="sy0">=</span> url.posStart&gt;</span>
+      <span class="sc2">&lt;cfelse&gt;</span>
+          <span class="sc2">&lt;cfset posStart <span class="sy0">=</span> <span class="nu0">0</span>&gt;</span>
+      <span class="sc2">&lt;<span class="sy0">/</span>cfif&gt;</span>   
+&nbsp;
+      <span class="sc2">&lt;cfif isDefined<span class="br0">&#40;</span><span class="st0">&quot;url.count&quot;</span><span class="br0">&#41;</span>&gt;</span>
+          <span class="sc2">&lt;cfset count <span class="sy0">=</span> url.count&gt;</span>
+      <span class="sc2">&lt;cfelse&gt;</span>
+          <span class="sc2">&lt;cfset count <span class="sy0">=</span> <span class="nu0">100</span>&gt;</span>
+      <span class="sc2">&lt;<span class="sy0">/</span>cfif&gt;</span>   
+&nbsp;
+    <span class="sc-1">&lt;!--- if it's the first query, get total number of records in the query result ---&gt;</span>
+      <span class="sc2">&lt;cfif posStart eq <span class="nu0">0</span>&gt;</span>
+          <span class="sc2">&lt;cfquery datasource<span class="sy0">=</span><span class="st0">&quot;#dsn#&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;getCount&quot;</span>&gt;</span>
+              Select count(*) as cnt
+              FROM products
+          <span class="sc2">&lt;<span class="sy0">/</span>cfquery&gt;</span>
+          <span class="sc2">&lt;cfset totalCount <span class="sy0">=</span> getCount.cnt&gt;</span>
+      <span class="sc2">&lt;cfelse&gt;</span>
+          <span class="sc2">&lt;Cfset totalCount <span class="sy0">=</span> <span class="st0">&quot;&quot;</span>&gt;</span>   
+      <span class="sc2">&lt;<span class="sy0">/</span>cfif&gt;</span>
+&nbsp;
+      <span class="sc-1">&lt;!--- query to products table ---&gt;</span>
+      <span class="sc2">&lt;cfquery datasource<span class="sy0">=</span><span class="st0">&quot;#dsn#&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;getRecords&quot;</span>&gt;</span>
+          SELECT  *
+          FROM products
+          <span class="sc-1">&lt;!--- add limits to query to get only rows necessary for output ---&gt;</span>
+          LIMIT #posStart#, #count#
+      <span class="sc2">&lt;<span class="sy0">/</span>cfquery&gt;</span>
+&nbsp;
+      <span class="sc-1">&lt;!--- output data in XML format   ---&gt;</span>
+      <span class="sc2">&lt;cfoutput&gt;&lt;<span class="kw3">rows</span> total_count<span class="sy0">=</span><span class="st0">&quot;#totalCount#&quot;</span> pos<span class="sy0">=</span><span class="st0">&quot;#posStart#&quot;</span>&gt;&lt;<span class="sy0">/</span>cfoutput&gt;</span>  
+      <span class="sc2">&lt;cfloop query<span class="sy0">=</span><span class="st0">&quot;getRecords&quot;</span>&gt;</span>
+          <span class="sc2">&lt;cfoutput&gt;&lt;row <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;#getRecords.id#&quot;</span>&gt;&lt;<span class="sy0">/</span>cfoutput&gt;</span>
+              <span class="sc-1">&lt;!--- value for product name ---&gt;</span>
+              <span class="sc2">&lt;cfoutput&gt;&lt;cell&gt;</span>#getRecords.nm#<span class="sc2">&lt;<span class="sy0">/</span>cell&gt;&lt;<span class="sy0">/</span>cfoutput&gt;</span>
+              <span class="sc-1">&lt;!--- value for internal code ---&gt;</span>
+              <span class="sc2">&lt;cfoutput&gt;&lt;cell&gt;</span>#getRecords.code#<span class="sc2">&lt;<span class="sy0">/</span>cell&gt;&lt;<span class="sy0">/</span>cfoutput&gt;</span>
+              <span class="sc-1">&lt;!--- value for price ---&gt;</span>
+              <span class="sc2">&lt;cfoutput&gt;&lt;cell&gt;</span>#getRecords.num_val#<span class="sc2">&lt;<span class="sy0">/</span>cell&gt;&lt;<span class="sy0">/</span>cfoutput&gt;</span>
+          <span class="sc2">&lt;cfoutput&gt;&lt;<span class="sy0">/</span>row&gt;&lt;<span class="sy0">/</span>cfoutput&gt;</span>
+      <span class="sc2">&lt;<span class="sy0">/</span>cfloop&gt;</span>
+      <span class="sc2">&lt;cfoutput&gt;&lt;<span class="sy0">/</span>rows&gt;&lt;<span class="sy0">/</span>cfoutput&gt;</span></pre></code></pre>
+
+<p>After loading the file the grid will look like in the picture below. When you stop scrolling, the grid will load and render a new portion of records.</p>
+
+<a name='step4filterdatapassextraparameterstotheserver'><h2>Step 4. Filter data. Pass extra parameters to the server</h2></a>
+
+<p>Why do you think you need additional parameters and why are we talking about them together with Smart Rendering? There are two possible situations:</p>
+
+<ul>
+<li>Filtering data;</li>
+<li>Server side sorting (the client-side sorting kills all the advantages of Smart Rendering, so you'd better move sorting to the server side. We'll tell you how to do this in Step 5).</li>
+</ul>
+
+<p>Let's add the possibility to filter grid data by the product name mask. Put the following code right before the DIV container we've used for grid initialization:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;Text&quot;</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;nm_mask&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;Button&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;Filter&quot;</span> <span class="kw3">onclick</span><span class="sy0">=</span><span class="st0">&quot;applyFilter()&quot;</span>&gt;</span></pre></code></pre>
+
+<p>As you see, by clicking the "Filter" button we call the applyFilter function, which doesn't exist as we haven't created it yet.</p>
+
+<p>Let's do it now. It will contain the magic of getting the content for grid based on additional parameter.</p>
+
+<pre><code><pre class="js"><span class="kw2">function</span> applyFilter<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    mygrid.<span class="me1">clearAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//remove all data</span>
+    <span class="co1">//save query string in global variable (see step 5 for details)</span>
+    gridQString <span class="sy0">=</span> <span class="st0">&quot;getGridRecords.php?name_mask=&quot;</span>
+      <span class="sy0">+</span>document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">&quot;nm_mask&quot;</span><span class="br0">&#41;</span>.<span class="me1">value</span><span class="sy0">;</span>
+    mygrid.<span class="me1">load</span><span class="br0">&#40;</span>gridQString<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// load new dataset from sever with additional param</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Put it into the script block we left for functions (or any other - it doesn't matter).
+Now the <strong>getGridRecords</strong> file gets an additional parameter named "name_mask", which you can add to the query to filter the results by name. For example (PHP):</p>
+
+<pre><code><pre class="php"><span class="co1">//query to products table</span>
+<span class="re0">$sql</span> <span class="sy0">=</span> <span class="st0">&quot;SELECT  * FROM products&quot;</span><span class="sy0">;</span>
+<span class="kw1">if</span><span class="br0">&#40;</span><a href="http://www.php.net/isset"><span class="kw3">isset</span></a><span class="br0">&#40;</span><span class="re0">$_GET</span><span class="br0">&#91;</span><span class="st0">&quot;name_mask&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+    <span class="re0">$sql</span><span class="sy0">.=</span><span class="st0">&quot; Where nm like '&quot;</span><span class="sy0">.</span><span class="re0">$_GET</span><span class="br0">&#91;</span><span class="st0">&quot;name_mask&quot;</span><span class="br0">&#93;</span><span class="sy0">.</span><span class="st0">&quot;%'&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='step5sortdata'><h2>Step 5. Sort data</h2></a>
+
+<p>When we have 50,000 records in the grid or just going to have but do not really have (as we work with Smart Rendering with Dynamic Loading) 
+the client-side sorting will not help a lot. Our grid just doesn't know all the values yet. 
+So we need to move sorting to the server side. It is really simple.</p>
+
+<p>There will be 3 stages of the plan:</p>
+
+<ul>
+<li>Cancel the client-side sorting;</li>
+<li>Clear the grid and load the data sorted on the server side;</li>
+<li>Set the position and direction of the marker in the grid header that shows sorting direction.</li>
+</ul>
+
+<p>To cancel the client-side sorting we need to enable sorting for the columns first.
+As it was described in the previous tutorial, you can do this with the <a class="link-" href="api__dhtmlxgrid_setcolsorting.html">setColSorting</a> method,
+but the sorting type for all the three columns will be "server":</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setColSorting</span><span class="br0">&#40;</span><span class="st0">&quot;server,server,server&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The "server" sorting type means nothing for the sorting routine of the grid, so it'll just ignore it.
+This information is mostly needed for us, as column sorting was moved to the server side. Put this command somewhere before mygrid.init(). <br></p>
+
+<p>Now we are ready to execute the stages 1 and 2 of the plan. We'll do this with the <a class="link-pro" href="api__dhtmlxgrid_onbeforesorting_event.html">onBeforeSorting</a> event handler.
+Firstly, let's define the handler function, it gets 3 incoming arguments:</p>
+
+<ul>
+<li>Column index;</li>
+<li>Grid object;</li>
+<li>Sorting direction (asc for ASC, des for DESC).</li>
+</ul>
+
+<p>And this function will work IN PROFESSIONAL EDITION of the grid only. Sorry, from now on only those who "got the tickets" go further...
+OK, if you are still reading, here is the complete code for the event handler function. Put it into the script block we've left for functions (or in some other one):</p>
+
+<pre><code><pre class="js"><span class="kw2">function</span> sortGridOnServer<span class="br0">&#40;</span>ind<span class="sy0">,</span>gridObj<span class="sy0">,</span>direct<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    mygrid.<span class="me1">clearAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    mygrid.<span class="me1">load</span><span class="br0">&#40;</span>gridQString<span class="sy0">+</span><span class="br0">&#40;</span>gridQString.<span class="me1">indexOf</span><span class="br0">&#40;</span><span class="st0">&quot;?&quot;</span><span class="br0">&#41;</span><span class="sy0">&gt;=</span><span class="nu0">0</span><span class="sy0">?</span><span class="st0">&quot;&amp;amp;&quot;</span><span class="sy0">:</span><span class="st0">&quot;?&quot;</span><span class="br0">&#41;</span>
+     <span class="sy0">+</span><span class="st0">&quot;orderby=&quot;</span><span class="sy0">+</span>ind<span class="sy0">+</span><span class="st0">&quot;&amp;amp;direct=&quot;</span><span class="sy0">+</span>direct<span class="br0">&#41;</span><span class="sy0">;</span>
+    mygrid.<span class="me1">setSortImgState</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="sy0">,</span>ind<span class="sy0">,</span>direct<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>The above mentioned code does the following:</p>
+
+<ul>
+<li>Removes all rows from grid;</li>
+<li>Loads a new content passing column index as the <strong>orderby</strong> parameter and the order direction (asc for ASC or des for DESC) as the direct parameter.
+Here it becomes clear why we needed to save <strong>gridQString</strong> at the previous steps - 
+because we need to sort exactly the same content which we got last time we loaded the grid.</li>
+<li>Sets Sort Image visible for the column we sort and with the direction we need.</li>
+<li>Cancels the client-side sorting by returning "false" from the event handler function for the <a class="link-pro" href="api__dhtmlxgrid_onbeforesorting_event.html">onBeforeSorting</a>event.
+This is what we meant in the point 1 of the plan.</li>
+</ul>
+
+<p>Now when we have the sortGridOnServer function, we can add the following command to set the event handler to the grid initialization script:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onBeforeSorting&quot;</span><span class="sy0">,</span>sortGridOnServer<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The server-side changes are simple, as we just add the <strong>Order by</strong> statement to the field in the table that corresponds to a column of the grid, and set the direction: ASC if asc, DESC if des.
+Here is a code sample for PHP:</p>
+
+<pre><code><pre class="php"><span class="co1">//order by</span>
+<span class="re0">$columns</span> <span class="sy0">=</span> <a href="http://www.php.net/array"><span class="kw3">array</span></a><span class="br0">&#40;</span><span class="st0">&quot;nm&quot;</span><span class="sy0">,</span><span class="st0">&quot;code&quot;</span><span class="sy0">,</span><span class="st0">&quot;num_val&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">if</span><span class="br0">&#40;</span><a href="http://www.php.net/isset"><span class="kw3">isset</span></a><span class="br0">&#40;</span><span class="re0">$_GET</span><span class="br0">&#91;</span><span class="st0">&quot;orderby&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span><span class="re0">$_GET</span><span class="br0">&#91;</span><span class="st0">&quot;direct&quot;</span><span class="br0">&#93;</span><span class="sy0">==</span><span class="st_h">'des'</span><span class="br0">&#41;</span>
+        <span class="re0">$direct</span> <span class="sy0">=</span> <span class="st0">&quot;DESC&quot;</span><span class="sy0">;</span>
+    <span class="kw1">else</span>   
+        <span class="re0">$direct</span> <span class="sy0">=</span> <span class="st0">&quot;ASC&quot;</span><span class="sy0">;</span>
+    <span class="re0">$sql</span><span class="sy0">.=</span><span class="st0">&quot; Order by &quot;</span><span class="sy0">.</span><span class="re0">$columns</span><span class="br0">&#91;</span><span class="re0">$_GET</span><span class="br0">&#91;</span><span class="st0">&quot;orderby&quot;</span><span class="br0">&#93;</span><span class="br0">&#93;</span><span class="sy0">.</span><span class="st0">&quot; &quot;</span><span class="sy0">.</span><span class="re0">$direct</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='grid__dynamic_loading.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

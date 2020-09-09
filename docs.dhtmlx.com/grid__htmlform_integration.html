@@ -1,0 +1,294 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Integration with HTML Form  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=" current"><a href="grid__htmlform_integration.html">Integration with HTML Form</a></li><ul><li class="inner"><a href="grid__htmlform_integration.html#submitmodes">Submit Modes</a></li><li class="inner"><a href="grid__htmlform_integration.html#submittingonlychangedrows">Submitting only changed rows</a></li><li class="inner"><a href="grid__htmlform_integration.html#submittingallrows">Submitting all rows</a></li><li class="inner"><a href="grid__htmlform_integration.html#submittingselectedrowsids">Submitting selected rows' IDs</a></li><li class="inner"><a href="grid__htmlform_integration.html#submittingvaluesofselectedrows">Submitting values of selected rows</a></li><li class="inner"><a href="grid__htmlform_integration.html#sendingformvaluesbydirectsubmitcall">Sending form values by direct submit call</a></li></ul><li class=""><a href="grid__tree_integration.html">Integration with dhtmlxTree</a></li><li class=""><a href="grid__chart_integration.html">Integration with dhtmlxChart</a></li><li class=""><a href="grid__combo_integration.html">Integration with dhtmlxCombo</a></li><li class=""><a href="grid__menu_integration.html">Integration with dhtmlxMenu</a></li><li class=""><a href="grid__datastore_integration.html">Integration with dhtmlxDataStore</a></li><li class=""><a href="grid__container_integration.html">Integration with Container Components</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__integration.html">Integrating with Other Components</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Integration with HTML Form</h1>
+
+<p>dhtmlxGrid can be used as a part of an HTML form, so that the grid's data could be sent to the server as a part of form submitting.
+It can be used to save changes in the grid, if you don't want to use the <a class="link-" href="grid__server_side.html">dataprocessor</a> library.</p>
+
+<p>To use the grid as a part of an HTML form, do the following:</p>
+
+<ol>
+    <li>Place the grid's container into an HTML form:
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;STYLESHEET&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlx.css&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlx.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+<span class="xtra ln-xtra">    <span class="sc2">&lt;<span class="kw2">form</span> <span class="kw3">action</span><span class="sy0">=</span><span class="st0">&quot;php/form.php&quot;</span> <span class="kw3">method</span><span class="sy0">=</span><span class="st0">&quot;post&quot;</span> <span class="kw3">target</span><span class="sy0">=</span><span class="st0">&quot;result&quot;</span>&gt;</span> </span>        <span class="sc2">&lt;<span class="kw2">table</span> <span class="kw3">width</span><span class="sy0">=</span><span class="st0">&quot;600&quot;</span>&gt;</span>
+            <span class="sc2">&lt;<span class="kw2">tr</span>&gt;</span>
+                <span class="sc2">&lt;<span class="kw2">td</span>&gt;</span>
+<span class="xtra ln-xtra">                    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;gridbox&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width:100%; height:270px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></span>                <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">td</span>&gt;</span>
+            <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">tr</span>&gt;</span>
+        <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">table</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;submit&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">form</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">    <span class="co1">//here you will place your JavaScript code</span></pre>    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+</li>
+    <li>Initialize dhtmlxGrid in <a class="link-" href="grid__basic_initialization.html">the usual way</a>:
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;STYLESHEET&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlx.css&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlx.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+<span class="xtra ln-xtra">    <span class="sc2">&lt;<span class="kw2">form</span> <span class="kw3">action</span><span class="sy0">=</span><span class="st0">&quot;php/form.php&quot;</span> <span class="kw3">method</span><span class="sy0">=</span><span class="st0">&quot;post&quot;</span> <span class="kw3">target</span><span class="sy0">=</span><span class="st0">&quot;result&quot;</span>&gt;</span> </span>        <span class="sc2">&lt;<span class="kw2">table</span> <span class="kw3">width</span><span class="sy0">=</span><span class="st0">&quot;600&quot;</span>&gt;</span>
+            <span class="sc2">&lt;<span class="kw2">tr</span>&gt;</span>
+                <span class="sc2">&lt;<span class="kw2">td</span>&gt;</span>
+<span class="xtra ln-xtra">                    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;gridbox&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width:100%; height:270px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></span>                <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">td</span>&gt;</span>
+            <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">tr</span>&gt;</span>
+        <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">table</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;submit&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">form</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js"><span class="xtra ln-xtra">        mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>&nbsp;
+        mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;./codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>          
+        mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Book title,Author,Price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre>    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>  
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+    </li>
+</ol>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/13_interaction_other_components/02_pro_form.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;FORM integration</a></p>
+
+<p><br></p>
+
+<p>Note,</p>
+
+<ul>
+    <li>As the names of fields contain the gridId you can include multiple grids inside one and the same form tag.</li>
+    <li>Pay your attention to the fact that only the rows edited by a user will be marked as changed. If you change some value by API calls, such row will not be included in the process of form submitting.
+You can mark any row in the grid as updated in the following way:
+
+
+<pre><code><pre class="js">grid.<span class="me1">cells</span><span class="br0">&#40;</span>i<span class="sy0">,</span>j<span class="br0">&#41;</span>.<span class="me1">cell</span>.<span class="me1">wasChanged</span><span class="sy0">=</span><span class="kw2">true</span><span class="sy0">;</span></pre></code></pre>
+
+    </li>
+</ul>
+
+<a name='submitmodes'><h2>Submit Modes</h2></a>
+
+<p>dhtmlxGrid can work in the following modes:</p>
+
+<ul>
+<li>Submitting only the changed rows (the default mode)</li>
+<li>Submitting all rows</li>
+<li>Submitting ID's of the selected rows</li>
+<li>Submitting values of the selected rows</li>
+</ul>
+
+<a name='submittingonlychangedrows'><h2>Submitting only changed rows</h2></a>
+
+<p>This is the default mode. In this mode the grid will include only the data of the changed rows in the process of form submitting.</p>
+
+<p>For each changed row a virtual input field will be added - <strong>[GRIDID]<em>[ROWID]</em>[CELLINDEX]</strong></p>
+
+<p>where</p>
+
+<ul>
+<li><strong>GRIDID</strong> - the id of the grid's container</li>
+<li><strong>ROWID</strong> - the id of the row with changed values</li>
+<li><strong>CELLINDEX</strong> - the index of the  cell with the changed value</li>
+</ul>
+
+<p>The value of the field is equal to the cell value.</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;./codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>          
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Book title,Author,Price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+mygrid.<span class="me1">addRow</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="br0">&#91;</span><span class="st0">&quot;The Rainmaker&quot;</span><span class="sy0">,</span> <span class="st0">&quot;John Grisham&quot;</span><span class="sy0">,</span> <span class="st0">&quot;7.99&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>For example, if the user changes the price of the added book from 7.99 to 10.99 and submits the form, you will get an input with the following name:</p>
+
+<pre><code><pre class="html">gridbox_row1_3=“10.99”</pre></code></pre>
+
+<ul>
+<li>If any row was added to the grid, all values of this new row will be marked as changed. Additional to it the
+<strong>[GRIDID]_ROWS_ADDED</strong> virtual input will be added. It will contain the list of IDs of the added rows (so on the server side it will be possible to separate added and updated rows).</li>
+<li>If any row was deleted, the <strong>[GRIDID]_ROWS_DELETED</strong> virtual input will be added. The same as for the added rows, it will contain the list of IDs of the deleted rows.</li>
+</ul>
+
+<p>Sending the information about the added/deleted rows is enabled by default. To disable it use the <a class="link-" href="api__dhtmlxgrid_submitaddedrows.html">submitAddedRows</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">submitAddedRows</span><span class="br0">&#40;</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='submittingallrows'><h2>Submitting all rows</h2></a>
+
+<p>To include into submitting all rows (changed and unchanged), call the <a class="link-" href="api__dhtmlxgrid_submitonlychanged.html">submitOnlyChanged</a> method with the 'false' value:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">submitOnlyChanged</span><span class="br0">&#40;</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In this mode a virtual input field will be created for each cell in the grid.</p>
+
+<a name='submittingselectedrowsids'><h2>Submitting selected rows' IDs</h2></a>
+
+<p>In this mode the grid will create a single virtual field: <strong>[GRIDID]_SELECTED</strong>.  This field will contain the list of rows' IDs 
+that are selected (in the single select mode it will be a single ID). The mode can be enabled by:</p>
+
+<p>To enable the mode, use the <a class="link-" href="api__dhtmlxgrid_submitonlyselected.html">submitOnlySelected</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">submitOnlySelected</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span>
+mygrid.<span class="me1">submitOnlyRowID</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='submittingvaluesofselectedrows'><h2>Submitting values of selected rows</h2></a>
+
+<p>This mode works almost in the same way as the default one. It will send only the updated values of the selected rows:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">submitOnlySelected</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">submitOnlyRowID</span><span class="br0">&#40;</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='sendingformvaluesbydirectsubmitcall'><h2>Sending form values by direct submit call</h2></a>
+
+<p>If you are sending form's values not by some submit button, but by the direct <strong>form.submit()</strong> call, 
+the grid won't add its data automatically. To correct this call the  <strong>parentFormOnSubmit()</strong> method before sending form's values to the server:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">parentFormOnSubmit</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+form.<span class="me1">submit</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='grid__htmlform_integration.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

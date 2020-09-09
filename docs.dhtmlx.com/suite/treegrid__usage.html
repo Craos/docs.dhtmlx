@@ -1,0 +1,643 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Work with TreeGrid  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="treegrid__api__refs__treegrid.html">Treegrid API</a></li><li class=""><a href="treegrid__initialization.html">Initialization</a></li><li class=""><a href="treegrid__configuration.html">Configuration</a></li><li class=""><a href="treegrid__data_loading.html">Data Loading</a></li><li class=" current"><a href="treegrid__usage.html">Work with TreeGrid</a></li><ul><li class="inner"><a href="treegrid__usage.html#workingwithcolumnsandcells">Working with columns and cells</a></li><li class="inner"><a href="treegrid__usage.html#hidingshowingacolumn">Hiding/showing a column</a></li><li class="inner"><a href="treegrid__usage.html#checkingvisibilityofacolumn">Checking visibility of a column</a></li><li class="inner"><a href="treegrid__usage.html#addingremovingspans">Adding/removing spans</a></li><li class="inner"><a href="treegrid__usage.html#controllingscrollbehavior">Controlling scroll behavior</a></li><li class="inner"><a href="treegrid__usage.html#groupingdata">Grouping data</a></li><li class="inner"><a href="treegrid__usage.html#filteringdata">Filtering data</a></li><li class="inner"><a href="treegrid__usage.html#sortingdata">Sorting data</a></li><li class="inner"><a href="treegrid__usage.html#gettingthesortingstate">Getting the sorting state</a></li><li class="inner"><a href="treegrid__usage.html#editingdata">Editing data</a></li><li class="inner"><a href="treegrid__usage.html#expandingcollapsingnodes">Expanding/collapsing nodes</a></li><li class="inner"><a href="treegrid__usage.html#exportingtreegrid">Exporting TreeGrid</a></li><li class="inner"><a href="treegrid__usage.html#repaintingtreegrid">Repainting TreeGrid</a></li><li class="inner"><a href="treegrid__usage.html#destructingtreegrid">Destructing TreeGrid</a></li><li class="inner"><a href="treegrid__usage.html#usingselectionapi">Using Selection API</a></li></ul><li class=""><a href="treegrid__customization.html">Customization</a></li><li class=""><a href="treegrid__events.html">Event Handling</a></li><li class=""><a href="treegrid__migration.html">Migration to Newer Versions</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="treegrid__index.html">TreeGrid</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Work with TreeGrid</h1>
+
+<a name='workingwithcolumnsandcells'><h2>Working with columns and cells</h2></a>
+
+<p>The API of dhtmlxTreeGrid allows setting configuration of columns, getting an object of a particular column as well as the parameters of a certain cell.</p>
+
+<h3>Setting columns configuration</h3>
+
+<p>You can specify the configuration of TreeGrid columns on the fly via the <a class="link-" href="treegrid__api__treegrid_setcolumns_method.html">setColumns()</a> method. It takes an array with columns objects as a parameter.</p>
+
+<pre><code><pre class="js">treegrid.<span class="me1">setColumns</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="st0">&quot;a&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;New header for column a&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="st0">&quot;b&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;New header for column b&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="co1">// more columns objects</span>
+<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>You can find the full list of the available configuration options of a TreeGrid column <a class="link-" href="treegrid__configuration.html#columns">here</a>.</p>
+
+<h3>Getting configuration of a column</h3>
+
+<p>It is possible to return an object with attributes of a column via its id. Use the <a class="link-" href="treegrid__api__treegrid_getcolumn_method.html">getColumn()</a> method for this purpose.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> column <span class="sy0">=</span> treegrid.<span class="me1">getColumn</span><span class="br0">&#40;</span><span class="st0">&quot;b&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt;</span>
+<span class="co1">// {width: 100, id: &quot;b&quot;, header: Array(1), $cellCss: {…}, type: &quot;string&quot;</span></pre></code></pre>
+
+<p>The method returns an object with configuration of the specified column. Such an object contains a set of fields:</p>
+
+<ul>
+<li><strong>id</strong> - (<em>string|number</em>) the id of a column</li>
+<li><strong>width</strong> - (<em>number</em>) the width of a column</li>
+<li><strong>header</strong> - (<em>array</em>) an array of objects with header rows configuration. Each header object may include:
+
+<ul>
+<li><strong>text</strong> - (<em>string</em>|<em>number</em>) the text of a header</li>
+<li><strong>align</strong> - (<em>string</em>) aligns data in the header: "left"|"center"|"right"</li>
+<li><strong>colspan</strong> - (<em>number</em>) the number of columns in a colspan</li>
+<li><strong>rowspan</strong> - (<em>number</em>) the number of rows in a rowspan </li>
+<li><strong>css</strong> - (<em>any</em>) styling to be applied to a header</li>
+<li><strong>content</strong> -  (<em>string</em>) additional content of a header, which can be:
+
+<ul>
+<li>a filter: "inputFilter" or "selectFilter"</li>
+<li>one of the methods that process values in a column and show result in the header: "avg" | "sum" | "max" | "min"</li>
+<li>some other string</li>
+</ul></li>
+<li><strong>filterConfig</strong> - (<em>object</em>) optional, a configuration object for "comboFilter". It can contain a set of properties:
+
+<ul>
+<li><strong>filter</strong> - (<em>function</em>) sets a custom function for filtering Combo Box options</li>
+<li><strong>readonly</strong> - (<em>boolean</em>) makes ComboBox readonly (it is only possible to select options from the list, without entering words in the input)</li>
+<li><strong>template</strong> - (<em>function</em>) sets a template of displaying options in the popup list</li>
+<li><strong>placeholder</strong> - (<em>string</em>) sets a placeholder in the input of ComboBox</li>
+<li><strong>virtual</strong> - (<em>boolean</em>) enables dynamic loading of data on scrolling the list of options</li>
+</ul></li>
+</ul></li>
+<li><strong>htmlEnable</strong> - (<em>boolean</em>) defines whether the content of a column is displayed as HTML content or as a string</li>
+<li><strong>footer</strong> - (<em>array</em>) an array of objects with footer rows configuration. Each footer object may include:
+
+<ul>
+<li><strong>text</strong> - (<em>string</em>|<em>number</em>) the text of a header</li>
+<li><strong>colspan</strong> - (<em>number</em>) the number of columns in a colspan</li>
+<li><strong>rowspan</strong> - (<em>number</em>) the number of rows in a rowspan</li>
+<li><strong>css</strong> - (<em>any</em>) styling to be applied to a header</li>
+<li><strong>content</strong> -  (<em>string</em>) additional content of a header, which can be:
+
+<ul>
+<li>a filter: "inputFilter" or "selectFilter"</li>
+<li>one of the methods that process values in a column and show result in the footer: "avg" | "sum" | "max" | "min"</li>
+<li>some other string</li>
+</ul></li>
+</ul></li>
+<li><strong>maxWidth</strong> - (<em>number</em>) the maximal width to be set for a column</li>
+<li><strong>minWidth</strong> - (<em>number</em>) the minimal width to be set for a column</li>
+<li><strong>mark</strong> - (<em>object|function</em>) returns a template for marking a cell(s)
+
+<ul>
+<li>as an <em>object</em> contains <strong>min</strong> and <strong>max</strong> properties, to apply desired CSS classes to cells with minimal|maximal values in a column </li>
+<li>as a <em>function</em> takes several parameters:
+
+<ul>
+<li><strong>cell</strong> - (<em>string</em>) the value of a cell</li>
+<li><strong>columnCells</strong> - (<em>array</em>) an array of all cell values in the specified column</li>
+<li><strong>row</strong> - (<em>object</em>) an object with all cells in a row</li>
+<li><strong>col</strong> - (<em>object</em>) the config of a column (see the <strong>columns</strong> config)</li>
+</ul></li>
+</ul></li>
+<li><strong>resizable</strong> - (<em>boolean</em>) defines whether a column is resizable </li>
+<li><strong>type</strong> - (<em>string</em>) the type of a column: "string"|"number"|"boolean"|"any"|"date"</li>
+<li><strong>dateFormat</strong> - (<em>string</em>) defines <a class="link-" href="calendar__api__calendar_dateformat_config.html">the format of dates</a> (type:"date")</li>
+<li><strong>editorType</strong> - (<em>string</em>) the type of an editor used in a column: "input"|"select"|"datepicker"</li>
+<li><strong>options</strong> - (<em>array</em>) a set of options to be displayed in the editor of a cell (editorType: "select"|"combobox")</li>
+<li><strong>template</strong> - (<em>function</em>) returns a template with content for a cell(s). Takes 3 parameters:
+
+<ul>
+<li><strong>cellValue</strong> - (<em>any</em>) the value of a cell</li>
+<li><strong>row</strong> - (<em>object</em>) an object with all cells in a row</li>
+<li><strong>col</strong> - (<em>object</em>) the config of a column (see the <strong>columns</strong> config)</li>
+</ul></li>
+<li><strong>hidden</strong> - (<em>boolean</em>) defines whether a column is hidden</li>
+<li><strong>draggable</strong> - (<em>boolean</em>) defines whether a column is draggable</li>
+<li><strong>editable</strong> - (<em>boolean</em>) defines whether a column is editable</li>
+<li><strong>sortable</strong> - (<em>boolean</em>) defines whether a column is sortable</li>
+<li><strong>adjust</strong> - (<em>boolean|string</em>) defines whether the width of a column is automatically adjusted to its content</li>
+<li><strong>autoWidth</strong> - (<em>boolean</em>) enables/disables the ability of a column to adjust its size to the size of TreeGrid</li>
+<li><strong>align</strong> - (<em>string</em>) aligns data in a column: "left" | "center" | "right"</li>
+<li><strong>tooltip</strong> - (<em>boolean</em>) enables a tooltip on hovering over the content of a column, <em>true</em> by default</li>
+<li><strong>$cellCss</strong> - (<em>array</em>) <strong>readonly</strong>, an array of objects with CSS classes (as key:value pairs) for each cell of a column</li>
+<li><strong>$uniqueData</strong> - (<em>array</em>) <strong>readonly</strong>, an array that contains some unique data, can't be redefined</li>
+</ul>
+
+<h3>Getting configuration of a cell</h3>
+
+<p>There is the <a class="link-" href="treegrid__api__treegrid_getcellrect_method.html">getCellRect()</a> method that returns an object with coordinates of a cell. The method takes as parameters the ids of the row and the column the cell belongs to:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> rect <span class="sy0">=</span> treegrid.<span class="me1">getCellRect</span><span class="br0">&#40;</span><span class="st0">&quot;1&quot;</span><span class="sy0">,</span><span class="st0">&quot;c&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// -&gt; {x: 200, y: -40, height: 40, width: 200}</span></pre></code></pre>
+
+<p>The return object includes the following attributes:</p>
+
+<ul>
+<li><strong>x</strong> - (<em>number</em>) the X coordinate of a cell</li>
+<li><strong>y</strong> - (<em>number</em>) the Y coordinate of a cell</li>
+<li><strong>height</strong> - (<em>number</em>) the height of a cell</li>
+<li><strong>width</strong> - (<em>number</em>) the width of a cell</li>
+</ul>
+
+<a name='hidingshowingacolumn'><h2>Hiding/showing a column</h2></a>
+
+<p>It is possible to show and hide a column in the grid via the <a class="link-" href="treegrid__api__treegrid_showcolumn_method.html">showColumn()</a> and <a class="link-" href="treegrid__api__treegrid_hidecolumn_method.html">hideColumn()</a> methods.</p>
+
+<pre><code><pre class="js"><span class="co1">//showing a column</span>
+treegrid.<span class="me1">showColumn</span><span class="br0">&#40;</span>col<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//hiding a column</span>
+treegrid.<span class="me1">hideColumn</span><span class="br0">&#40;</span>col<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/1gekn97m' target='blank'><span class='sample'>Related sample: </span>&nbsp;TreeGrid. Show/Hide column</a></p>
+
+<p>Since the object of a column has the <a class="link-" href="treegrid__configuration.html#hiddencolumns">hidden</a> property, the showColumn() method changes it value to <em>false</em> while the hideColumn() method changes the hidden property to <em>true</em>.</p>
+
+<a name='checkingvisibilityofacolumn'><h2>Checking visibility of a column</h2></a>
+
+<p>You can check whether a column is hidden or shown on a page using the <a class="link-" href="treegrid__api__treegrid_iscolumnhidden_method.html">isColumnHidden</a> method. The method returns <em>true</em>, if a column is visible, and <em>false</em> if it's hidden.</p>
+
+<pre><code><pre class="js">treegrid.<span class="me1">isColumnHidden</span><span class="br0">&#40;</span><span class="st0">&quot;country&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; true|false</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/fcjfp19d' target='blank'><span class='sample'>Related sample: </span>&nbsp;TreeGrid. Is column hidden</a></p>
+
+<a name='addingremovingspans'><h2>Adding/removing spans</h2></a>
+
+<p>You can manipulate columns and rows spans inside the grid with the help of corresponding API methods: <a class="link-" href="treegrid__api__treegrid_addspan_method.html">addSpan()</a>, <a class="link-" href="treegrid__api__treegrid_removespan_method.html">removeSpan()</a> and <a class="link-" href="treegrid__api__treegrid_getspan_method.html">getSpan()</a>.</p>
+
+<h3>Adding spans</h3>
+
+<p>In order to add a col/row span into the grid, use the <a class="link-" href="treegrid__api__treegrid_addspan_method.html">addSpan()</a> method. Pass an object with configuration of a span as a parameter:</p>
+
+<pre><code><pre class="js">treegrid.<span class="me1">addSpan</span><span class="br0">&#40;</span><span class="br0">&#123;</span> 
+    row<span class="sy0">:</span> <span class="st0">&quot;0&quot;</span><span class="sy0">,</span> 
+    column<span class="sy0">:</span> <span class="st0">&quot;a&quot;</span><span class="sy0">,</span> 
+    rowspan<span class="sy0">:</span> <span class="nu0">5</span> 
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>These are possible fields of a span object:</p>
+
+<ul>
+<li><strong>row</strong> - (<em>string|number</em>) mandatory, the id of a row</li>
+<li><strong>column</strong> - (<em>string|number</em>) mandatory, the id of a column</li>
+<li><strong>rowspan</strong> - (<em>number</em>) optional, the number of rows in a span</li>
+<li><strong>colspan</strong> - (<em>number</em>) optional, the number of columns in a span</li>
+<li><strong>text</strong> - (<em>string|number</em>) optional, the text in a spanned row/column</li>
+<li><strong>css</strong> - (<em>string</em>) optional, the name of the CSS class that will be applied to a span</li>
+</ul>
+
+<h3>Getting spans</h3>
+
+<p>You can return the col/row span a cell is a part of using the <a class="link-" href="treegrid__api__treegrid_getspan_method.html">getSpan()</a> method. It takes the ids of the row and the column the cell belongs to as parameters:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> span <span class="sy0">=</span> treegrid.<span class="me1">getSpan</span><span class="br0">&#40;</span><span class="st0">&quot;10&quot;</span><span class="sy0">,</span><span class="st0">&quot;a&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="co1">// -&gt; {row:&quot;10&quot;, column:&quot;a&quot;, colspan:4, text:&quot;Some header&quot;, css:&quot;myCustomColspan&quot;}</span></pre></code></pre>
+
+<p>As a result, you'll get an object with a span configuration, if any span includes the specified cell. Attributes of a span object are described above.</p>
+
+<h3>Removing spans</h3>
+
+<p>To remove an existing span, make use of the <a class="link-" href="treegrid__api__treegrid_removespan_method.html">removeSpan()</a> method. It takes the ids of the row and the column as parameters:</p>
+
+<pre><code><pre class="js">treegrid.<span class="me1">removeSpan</span><span class="br0">&#40;</span><span class="st0">&quot;10&quot;</span><span class="sy0">,</span><span class="st0">&quot;a&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='controllingscrollbehavior'><h2>Controlling scroll behavior</h2></a>
+
+<p>The API of dhtmlxTreeGrid provides the possibility to set scrolls to the nevessary position and to get the current state of scrolls.</p>
+
+<h3>Scrolling to specific coordinates</h3>
+
+<p>You can scroll grid content to exact position defined by x and y coordinates via the <a class="link-" href="treegrid__api__treegrid_scroll_method.html">scroll()</a> method. Pass the coordinates as parameters of the method.</p>
+
+<pre><code><pre class="js">treegrid.<span class="kw3">scroll</span><span class="br0">&#40;</span><span class="nu0">75</span><span class="sy0">,</span><span class="nu0">230</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Scrolling to specific treegrid cell</h3>
+
+<p>It is also possible to scroll treegrid content to a particular cell. Pass the ids of the row and the column as parameters:</p>
+
+<pre><code><pre class="js">treegrid.<span class="me1">scrollTo</span><span class="br0">&#40;</span><span class="st0">&quot;15&quot;</span><span class="sy0">,</span><span class="st0">&quot;c&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/kxytdnvi' target='blank'><span class='sample'>Related sample: </span>&nbsp;TreeGrid. Controlling Scroll Behavior</a></p>
+
+<h3>Getting the state of scroll</h3>
+
+<p>To return the current state of scroll, use the <a class="link-" href="treegrid__api__treegrid_getscrollstate_method.html">getScrollState()</a> method.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> state <span class="sy0">=</span> treegrid.<span class="me1">getScrollState</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; {x:0,y:0}</span></pre></code></pre>
+
+<p>It returns an object with x,y coordinates of a position the grid has been scrolled to.</p>
+
+<a name='groupingdata'><h2>Grouping data</h2></a>
+
+<p>To make data in TreeGrid well-structured and easily understood you can group data with the help of the <a class="link-" href="treegrid__api__treegrid_groupby_method.html">groupBy()</a> method. There are two options of grouping data.</p>
+
+<h3>Grouping by a column</h3>
+
+<p>To group the content of a treegrid by values of the specified column, pass the id of the column as a parameter to the <strong>groupBy()</strong> method:</p>
+
+<ul>
+<li><strong>id</strong> - (<em>string</em>) the id of a column</li>
+</ul>
+
+<pre><code><pre class="js">treegrid.<span class="me1">groupBy</span><span class="br0">&#40;</span><span class="st0">&quot;age&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/treegrid/03_usage/15_group_by.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Group data items by a property - DHTMLX TreeGrid</a></p>
+
+<h3>Grouping by the result of calculation</h3>
+
+<p>You can pass a function with a rule of grouping data in the treegrid as a parameter to the <strong>groupBy()</strong> method. The function returns the name of a group and takes one parameter:</p>
+
+<ul>
+<li><strong>item</strong> - a data item</li>
+</ul>
+
+<pre><code><pre class="js">treegrid.<span class="me1">groupBy</span><span class="br0">&#40;</span><span class="kw2">function</span> <span class="br0">&#40;</span><span class="kw1">item</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span><span class="kw1">item</span>.<span class="me1">area</span> <span class="sy0">||</span> <span class="kw1">item</span>.<span class="me1">area</span> <span class="sy0">&lt;</span> <span class="nu0">0</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">return</span> <span class="st0">&quot;N.A.&quot;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="kw1">item</span>.<span class="me1">area</span> <span class="sy0">&lt;</span> <span class="nu0">25000</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">return</span> <span class="st0">&quot;Small&quot;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span> <span class="kw1">else</span> <span class="kw1">if</span> <span class="br0">&#40;</span><span class="kw1">item</span>.<span class="me1">area</span> <span class="sy0">&lt;</span> <span class="nu0">60000</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">return</span> <span class="st0">&quot;Medium&quot;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;Big&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/treegrid/03_usage/15_group_by.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Group data items by a property - DHTMLX TreeGrid</a></p>
+
+<p>If necessary, you can set a template to the title of the group via the <a class="link-" href="treegrid__api__treegrid_grouptitletemplate_config.html">groupTitleTemplate</a> configuration option.</p>
+
+<a name='filteringdata'><h2>Filtering data</h2></a>
+
+<p>You can filter grid data by the specified criteria with the help of the <strong>filter()</strong> method of data collection. The method takes as a parameter an object with the properties described below:</p>
+
+<ul>
+<li><strong>rule</strong> - (<em>object|function</em>) the filtering criteria. It can be:
+
+<ul>
+<li>an object with the following attributes:
+
+<ul>
+<li><strong>by</strong> - (<em>string</em>) mandatory, the id of a column </li>
+<li><strong>match</strong> - (<em>string</em>) mandatory, a pattern to match</li>
+<li><strong>compare</strong> - (<em>function</em>) a function for extended filtering that takes three parameters:
+
+<ul>
+<li><strong>value</strong> - the value to compare (e.g. a column in a row)</li>
+<li><strong>match</strong> - a pattern to match</li>
+<li><strong>item</strong> - a data item the values of which should be compared (e.g. a row)<br>
+or:</li>
+</ul></li>
+</ul></li>
+<li>a filtering function for setting a "global" filter for data before applying "local" filters. It takes as a parameter a data item (e.g. a row) and returns an object with a filtering rule. Works all the time,
+unless redefined by a different global filter or removed</li>
+</ul></li>
+<li><strong>config</strong> - (<em>object</em>) optional, an object with two properties:
+
+<ul>
+<li><strong>add</strong> - (<em>boolean</em>) defines whether each next filtering will be applied to the already filtered data (<em>true</em>), or to the initial data (<em>false</em>, default)</li>
+<li><strong>multiple</strong> - (<em>boolean</em>) defines whether a filtering rule will be added to the already applied filters (<em>true</em>, default), or previous filters should be removed in advance (<em>false</em>)</li>
+</ul></li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">// prefiltering grid before using separate filters for columns</span>
+treegrid.<span class="me1">data</span>.<span class="me1">filter</span><span class="br0">&#40;</span><span class="br0">&#40;</span><span class="kw1">item</span><span class="br0">&#41;</span><span class="sy0">=&gt;</span><span class="br0">&#123;</span><span class="kw1">item</span>.<span class="me1">b</span><span class="sy0">&gt;</span><span class="nu0">43</span><span class="sy0">&amp;&amp;</span><span class="kw1">item</span>.<span class="me1">a</span><span class="sy0">!==</span><span class="st0">&quot;Some&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// filtering the &quot;b&quot; column by value &quot;Tyro&quot;</span>
+treegrid.<span class="me1">data</span>.<span class="me1">filter</span><span class="br0">&#40;</span><span class="br0">&#123;</span> by<span class="sy0">:</span><span class="st0">&quot;b&quot;</span><span class="sy0">,</span> match<span class="sy0">:</span><span class="st0">&quot;Tyro&quot;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// filtering data by several criteria at once</span>
+treegrid.<span class="me1">data</span>.<span class="me1">filter</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    by<span class="sy0">:</span><span class="st0">&quot;b&quot;</span><span class="sy0">,</span>
+    compare<span class="sy0">:</span><span class="kw2">function</span><span class="br0">&#40;</span>val<span class="sy0">,</span>match<span class="sy0">,</span><span class="kw1">item</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">if</span><span class="br0">&#40;</span><span class="kw1">item</span>.<span class="me1">a</span><span class="sy0">!==</span><span class="st0">&quot;Some&quot;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+            <span class="kw1">return</span> val <span class="sy0">===</span> <span class="st0">&quot;New&quot;</span>
+        <span class="br0">&#125;</span>
+        <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/epsslwcd' target='blank'><span class='sample'>Related sample: </span>&nbsp;TreeGrid. Basic Filter</a></p>
+
+<p><a href='https://snippet.dhtmlx.com/zdecovib' target='blank'><span class='sample'>Related sample: </span>&nbsp;TreeGrid. External filter</a></p>
+
+<a name='sortingdata'><h2>Sorting data</h2></a>
+
+<p>It is possible to sort data in the grid via the <strong>sort()</strong> method of data collection. The method takes an object with the following attributes:</p>
+
+<ul>
+<li><strong>by</strong> - (<em>string</em>) the id of a column</li>
+<li><strong>dir</strong> - (<em>string</em>) the direction of sorting "asc" or "desc"</li>
+<li><strong>as</strong> - (<em>function</em>) a function that specifies the type to sort data as </li>
+</ul>
+
+<pre><code><pre class="js">treeGrid.<span class="me1">data</span>.<span class="me1">sort</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    by<span class="sy0">:</span> <span class="st0">&quot;price&quot;</span><span class="sy0">,</span>
+    dir<span class="sy0">:</span> <span class="st0">&quot;asc&quot;</span><span class="sy0">,</span>
+    <span class="kw1">as</span><span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>value<span class="br0">&#41;</span> <span class="br0">&#123;</span> <span class="kw1">return</span> value <span class="sy0">?</span> value <span class="sy0">:</span> <span class="st0">&quot;&quot;</span> <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/bvfnpvwv' target='blank'><span class='sample'>Related sample: </span>&nbsp;TreeGrid. Sorting data</a></p>
+
+<p>To discard all applied sorting rules, call the method without parameters:</p>
+
+<pre><code><pre class="js">treegrid.<span class="me1">data</span>.<span class="me1">sort</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Custom sorting</h3>
+
+<p>You can also specify the <strong>rule</strong> attribute in a passed object instead of the default ones and set a custom function for sorting. For example:</p>
+
+<pre><code><pre class="js">treegrid.<span class="me1">data</span>.<span class="me1">sort</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    rule<span class="sy0">:</span> <span class="br0">&#40;</span>a<span class="sy0">,</span> b<span class="br0">&#41;</span> <span class="sy0">=&gt;</span> a.<span class="me1">id</span> <span class="sy0">&gt;</span> b.<span class="me1">id</span> <span class="sy0">?</span> <span class="nu0">1</span> <span class="sy0">:</span> <span class="br0">&#40;</span>a.<span class="me1">id</span> <span class="sy0">&lt;</span> b.<span class="me1">id</span> <span class="sy0">?</span> <span class="sy0">-</span><span class="nu0">1</span> <span class="sy0">:</span> <span class="nu0">0</span><span class="br0">&#41;</span> 
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='gettingthesortingstate'><h2>Getting the sorting state</h2></a>
+
+<p>To get the current state of sorting data in TreeGrid, use the <a class="link-" href="treegrid__api__treegrid_getsortingstate_method.html">getSortingState</a> method. The method returns an object with two attributes:</p>
+
+<ul>
+<li><strong>dir</strong> - (<em>string</em>) the sorting direction (desc, asc)</li>
+<li><strong>by</strong> - (<em>string</em>) the id of a column that the treegrid is sorted by</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> state <span class="sy0">=</span> treegrid.<span class="me1">getSortingState</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="co1">// -&gt; {dir: &quot;desc&quot;, by: &quot;country&quot;}</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/bdwwhvls' target='blank'><span class='sample'>Related sample: </span>&nbsp;TreeGrid. Get sorting state</a></p>
+
+<a name='editingdata'><h2>Editing data</h2></a>
+
+<p>You can easily edit the desired cell of a treegrid with the help of the <a class="link-" href="treegrid__api__treegrid_editcell_method.html">editCell()</a> method. It takes two parameters:</p>
+
+<ul>
+<li><strong>row</strong> - (<em>string</em>)  the id of a row</li>
+<li><strong>col</strong> - (<em>string</em>)  the id of a column</li>
+</ul>
+
+<p>For example, you can edit the first cell of the "project" column like this:</p>
+
+<pre><code><pre class="js">treegrid.<span class="me1">editCell</span><span class="br0">&#40;</span>grid.<span class="me1">data</span>.<span class="me1">getId</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="st0">&quot;project&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/zm6wh1ss' target='blank'><span class='sample'>Related sample: </span>&nbsp;TreeGrid. Editing data</a></p>
+
+<p>To finish editing of a cell, use the <a class="link-" href="treegrid__api__treegrid_editend_method.html">editEnd()</a> method. The method takes a <em>boolean</em> value as a parameter to define whether the edited data will be saved after the editing of a cell is complete (if <em>true</em>, the made changes won't be saved).</p>
+
+<pre><code><pre class="js">treegrid.<span class="me1">editEnd</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// the edited data will be saved</span>
+&nbsp;
+treegrid.<span class="me1">editEnd</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// the edited data won't be saved</span></pre></code></pre>
+
+<div class='note'><p><p>The <a class="link-" href="treegrid__api__treegrid_editend_method.html">editEnd()</a> method does not work if <a class="link-" href="treegrid__configuration.html#columneditors">the type of the column editor</a> is defined as <strong>checkbox</strong>.</p>
+</p></div>
+
+<a name='expandingcollapsingnodes'><h2>Expanding/collapsing nodes</h2></a>
+
+<h3>Expand/collapse a certain node</h3>
+
+<p>To expand a particular node in a treegrid by its id, use the <a class="link-" href="treegrid__api__treegrid_expand_method.html">expand</a> method:</p>
+
+<pre><code><pre class="js">treegrid.<span class="me1">expand</span><span class="br0">&#40;</span><span class="st0">&quot;native&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To collapse a treegrid node, make use of the <a class="link-" href="treegrid__api__treegrid_collapse_method.html">collapse</a> method:</p>
+
+<pre><code><pre class="js">treegrid.<span class="me1">collapse</span><span class="br0">&#40;</span><span class="st0">&quot;native&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/1grpsaa2' target='blank'><span class='sample'>Related sample: </span>&nbsp;TreeGrid. Expand/Collapse nodes</a></p>
+
+<h3>Expand/collapse all nodes</h3>
+
+<p>It is also possible to expand/collapse all TreeGrid nodes using the two corresponding methods - <a class="link-" href="treegrid__api__treegrid_expandall_method.html">expandAll</a> and <a class="link-" href="treegrid__api__treegrid_collapseall_method.html">collapseAll</a>:</p>
+
+<pre><code><pre class="js"><span class="co1">// expand all treegrid nodes</span>
+treegrid.<span class="me1">expandAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// collapse all treegrid nodes</span>
+treegrid.<span class="me1">collapseAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/1grpsaa2' target='blank'><span class='sample'>Related sample: </span>&nbsp;TreeGrid. Expand/Collapse nodes</a></p>
+
+<a name='exportingtreegrid'><h2>Exporting TreeGrid</h2></a>
+
+<p>You can easily export data of TreeGrid into the Excel or CSV format.</p>
+
+<h3>Exporting data to Excel</h3>
+
+<p>dhtmlxTreeGrid provides the possibility to export data from TreeGrid into an Excel file by calling the <strong>export()</strong> method of the export module. The method takes an object with export settings as a parameter.</p>
+
+<pre><code><pre class="js">treegrid.<span class="kw2">export</span>.<span class="me1">xls</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    url<span class="sy0">:</span> <span class="st0">&quot;//export.dhtmlx.com/excel&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/zyfois4q' target='blank'><span class='sample'>Related sample: </span>&nbsp;TreeGrid. Export</a></p>
+
+<p>Export settings include:</p>
+
+<ul>
+<li><strong>url</strong> - (<em>string</em>) the link to the server side where export will be processed. By default, it is <strong>"//export.dhtmlx.com/excel"</strong></li>
+<li><strong>name</strong> - (<em>string</em>) the name of a ready Excel file</li>
+</ul>
+
+<h3>Exporting data to CSV</h3>
+
+<p>You can export data from TreeGrid to the CSV format with the <strong>csv()</strong> method of the Export module. The method takes an object with export settings as a parameter:</p>
+
+<ul>
+<li><strong>asFile</strong> - (<em>boolean</em>) defines whether TreeGrid should be exported to a file, <em>true</em> by default. To export TreeGrid only as a CSV string, you need to set <em>asFile:false</em>.</li>
+<li><strong>name</strong> - (<em>string</em>) the name of the exported CSV file (if asFile is not set to <em>false</em>).</li>
+<li><strong>flat</strong> - (<em>boolean</em>) defines whether TreeGrid data should be exported as a flat structure. <em>false</em> by default. </li>
+<li><strong>rowDelimiter</strong> - (<em>string</em>) a newline ("\n") by default. A separator between rows, can be a tab - "\t", or any other value.</li>
+<li><strong>columnDelimiter</strong> - (<em>string</em>) a comma (",") by default. A separator between columns, can be a semicolon - ";", or any other value.</li>
+</ul>
+
+<pre><code><pre class="js">treegrid.<span class="kw2">export</span>.<span class="me1">csv</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;treegrid_data&quot;</span><span class="sy0">,</span> <span class="co1">// data will be exported to a CSV file named &quot;treegrid_data&quot;</span>
+    rowDelimiter<span class="sy0">:</span> <span class="st0">&quot;<span class="es0">\t</span>&quot;</span><span class="sy0">,</span> <span class="co1">// the tab delimiter will be used to separate rows</span>
+    columnDelimiter<span class="sy0">:</span> <span class="st0">&quot;;&quot;</span> <span class="co1">// the semicolon delimiter will be used to separate columns</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/zyfois4q' target='blank'><span class='sample'>Related sample: </span>&nbsp;TreeGrid. Export</a></p>
+
+<p>The <strong>csv()</strong> method returns a CSV string with TreeGrid data.</p>
+
+<a name='repaintingtreegrid'><h2>Repainting TreeGrid</h2></a>
+
+<p>In case you've changed some configuration settings of a treegrid, you can repaint it on a page via the <strong>paint()</strong> method:</p>
+
+<pre><code><pre class="js">treegrid.<span class="me1">paint</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='destructingtreegrid'><h2>Destructing TreeGrid</h2></a>
+
+<p>When it's necessary to release resources occupied by TreeGrid during its activity, you can make use of the <strong>destructor()</strong> method:</p>
+
+<pre><code><pre class="js">treegrid.<span class="me1">destructor</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='usingselectionapi'><h2>Using Selection API</h2></a>
+
+<p>You can manipulate with Grid cells via the API of the selection object. It is possible to get the object of a selected Grid cell or set the selection to a cell.</p>
+
+<h3>Setting selection to a cell</h3>
+
+<p>To set selection to a particular cell, make use of the <strong>setCell()</strong> method of the selection object. The method takes the following parameters:</p>
+
+<ul>
+<li><strong>row</strong> - (<em>object</em>) an object with a cell to be selected</li>
+<li><strong>column</strong> - (object) the config of a column</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> row <span class="sy0">=</span> treegrid.<span class="me1">data</span>.<span class="me1">getItem</span><span class="br0">&#40;</span>treegrid.<span class="me1">data</span>.<span class="me1">getId</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> column <span class="sy0">=</span> treegrid.<span class="me1">getColumn</span><span class="br0">&#40;</span><span class="st0">&quot;population&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+treegrid.<span class="me1">selection</span>.<span class="me1">setCell</span><span class="br0">&#40;</span>row<span class="sy0">,</span> column<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>It is also possible to remove selection from a selected cell with the <strong>setCell()</strong> method of the selection object:</p>
+
+<pre><code><pre class="js">treegrid.<span class="me1">selection</span>.<span class="me1">setCell</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Getting object of a selected cell</h3>
+
+<p>To get the object of a selected TreeGrid cell, use the <strong>getCell()</strong> method of the selection object:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> selectedCell <span class="sy0">=</span> treegrid.<span class="me1">selection</span>.<span class="me1">getCell</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// -&gt; {row: {…}, column: {…}}</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='treegrid__usage.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

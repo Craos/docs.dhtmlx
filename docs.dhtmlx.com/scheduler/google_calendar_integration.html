@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Integration with Google Calendar  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=" current"><a href="google_calendar_integration.html">Integration with Google Calendar</a></li><ul><li class="inner"><a href="google_calendar_integration.html#introduction">Introduction</a></li><li class="inner"><a href="google_calendar_integration.html#gettingstarted">Getting started</a></li><li class="inner"><a href="google_calendar_integration.html#howtopassadditionalinformationrelatedtotheevent">How to pass additional information related to the event</a></li><li><a href="synchronization_with_google_calendar.html">Integration with Google Calendar <br>(API v.2)</a></li></ul><li class=""><a href="pdf.html">Export to PDF</a></li><li class=""><a href="png.html">Export to PNG</a></li><li class=""><a href="excel.html">Export to Excel and iCal</a></li><li class=""><a href="export.html">Data Serialization to XML, JSON, iCal</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="data_export.html">Data Export and Import</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Integration with Google Calendar</h1>
+
+<p><strong>Download the package</strong> <a href="https://github.com/DHTMLX/scheduler-google-calendar/archive/master.zip">here</a>.</p>
+
+<a name='introduction'><h2>Introduction</h2></a>
+
+<p>In this chapter you'll find out, how to keep Scheduler and Google Calendar in sync.</p>
+
+<p>Note, that the sync is 2-way, i.e. any changes you make to events in either Scheduler or Google Calendar will be reflected in both applications.</p>
+
+<ul>
+<li>If you alter the same event in both applications, the latest update will be synced between Scheduler and Google Calendar.</li>
+<li>If you delete an event in one of the calendars, this event will be deleted from both applications.</li>
+<li>You sync Scheduler with the primary Google Calendar. Events from the secondary calendars won't be synced.</li>
+<li>Note, you sync all the events, containing in both Google Calendar and Scheduler, at once. You can't sync just some specific part of events.</li>
+<li>By default, Scheduler takes the text and duration (start and end times) of the Google Calendar event. If you need, you can get additional information of the event. See the details <a class="link-" href="synchronization_with_google_calendar.html#howtopassadditionalinformationrelatedtotheevent">below</a>. </li>
+</ul>
+
+<a name='gettingstarted'><h2>Getting started</h2></a>
+
+<p>To start the integration, do the following preparations:</p>
+
+<ol>
+<li>Login to the <strong>Google API console</strong> - <a href="https://code.google.com/apis/console">https://code.google.com/apis/console</a>.</li>
+<li>Click on the <strong>"Create new project"</strong> button. The <strong>"Google apis"</strong> screen opens.</li>
+<li>Enable the <strong>"Calendar API"</strong> service in the <strong>"Services"</strong> tab.</li>
+<li>Go to the "API Access" tab and click on <strong>"Create an OAuth2.0 Client ID"</strong> button. The <strong>"Create Client ID"</strong> form opens.</li>
+<li>Fill in the form  and click the <strong>"Next"</strong> button. The next screen of the form opens.</li>
+<li>Select the <strong>"Service account"</strong> option and click on the <strong>"Create client ID"</strong> button. As a result, you will have the private key file, Client ID and Email address - they will be necessary later.</li>
+<li>Login to  Google Calendar, which you want to use for the app, and share it on the Email address, which was used for login to the <strong>Google API console</strong> (step 1).</li>
+<li>Locate and save the calendar id (location of the calendar's id - <a href="https://drupal.org/node/589310">https://drupal.org/node/589310</a>).</li>
+</ol>
+
+<p><strong>Server-side:</strong></p>
+
+<ol>
+    <li> Create a php file with the name "data.php" with the code as in:
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw1">include</span><span class="br0">&#40;</span><span class="st_h">'../src/google_proxy.php'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$calendar</span> <span class="sy0">=</span> <span class="kw2">new</span> GoogleCalendarProxy<span class="br0">&#40;</span>
+    <span class="st0">&quot;&lt;account&gt;@developer.gserviceaccount.com&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;&lt;account&gt;.apps.googleusercontent.com&quot;</span><span class="sy0">,</span>
+    <a href="http://www.php.net/file_get_contents"><span class="kw3">file_get_contents</span></a><span class="br0">&#40;</span><span class="st0">&quot;&lt;key&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span>
+    <span class="st0">&quot;&lt;calendar id&gt;&quot;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$calendar</span><span class="sy0">-&gt;</span><span class="me1">connect</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="sy1">?&gt;</span></pre></code></pre>
+
+    </li>
+</ol>
+
+<p>where</p>
+
+<ul>
+<li><strong>&lt;account&gt;</strong> -  the "Email address", which was used for login to the Google API console.</li>
+<li><strong>&lt;key&gt;</strong> - the path to your private key</li>
+<li><strong>&lt;calendar_id&gt;</strong> - the calendar's id (can be taken from the settings of your Google Calendar account)</li>
+</ul>
+
+<p><strong>Client-side:</strong></p>
+
+<p>1&#46; Open the HTML file containing the initialized scheduler or initialize one in a standard way (see details in the <a class="link-" href="howtostart_php.html#step2addingschedulertothepage">How to Start</a> article.</p>
+
+<p>2&#46; Load Google Calendar's events to the scheduler through the <a class="link-" href="api__scheduler_load.html">load</a> method. The 1st parameter is the path to the 'data.php' file, the 2nd parameter - expected data format that should be 'json'.</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;./data.php&quot;</span><span class="sy0">,</span> <span class="st0">&quot;json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>3&#46; Initialize <a href="../dataprocessor__index.html">dataProcessor</a>, to provide 2-way sync (if you need the readonly access - ignore this code).</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dp <span class="sy0">=</span>  <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;./data.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">init</span><span class="br0">&#40;</span>scheduler<span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;POST&quot;</span><span class="sy0">,</span> <span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='howtopassadditionalinformationrelatedtotheevent'><h2>How to pass additional information related to the event</h2></a>
+
+<p>By default, the scheduler gets values of all Google Calendar fields, but processes only 4 of them. All other values are read-only.</p>
+
+<p><strong>There is the following mapping between Google Calendar and Scheduler:</strong></p>
+
+<p><em>Google Calendar</em> ->  Scheduler</p>
+
+<ul>
+<li>id -> id </li>
+<li>title -> text  </li>
+<li>startTime -> start_date  </li>
+<li>endTime -> end_date  </li>
+</ul>
+
+<p>To process some other properties, make changes in the <strong>"src/google_proxy.php"</strong> file, resided in the provided package 
+(<a href="https://github.com/DHTMLX/scheduler-google-calendar/archive/master.zip">link to download</a>).</p>
+
+<!-- Content Area End -->
+			<a href='google_calendar_integration.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

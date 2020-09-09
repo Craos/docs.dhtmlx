@@ -1,0 +1,290 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Initializing Scheduler on a Page  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=" current"><a href="initialization.html">Initializing Scheduler on a Page</a></li><ul><li class="inner"><a href="initialization.html#initializingschedulerviamarkup">Initializing Scheduler via markup</a></li><li class="inner"><a href="initialization.html#initializingschedulerviaheaderconfig">Initializing Scheduler via header config</a></li><li class="inner"><a href="initialization.html#requiredcodefiles">Required code files</a></li><li class="inner"><a href="initialization.html#schedulersizing">Scheduler sizing</a></li><li class="inner"><a href="initialization.html#makingschedulerresponsive">Making Scheduler responsive</a></li></ul><li class=""><a href="install_with_bower.html">Ways to Install Scheduler</a></li><li class=""><a href="configuration.html">Common Config Instructions</a></li><li class=""><a href="scheduler_markup.html">Scheduler Markup</a></li><li class="toc-pro"><a href="multiple_per_page.html">Creating Multiple Schedulers on a Page</a></li><li class=""><a href="rtl_mode.html">RTL (Right-to-left) Mode</a></li><li class=""><a href="localization.html">Localization</a></li><li class=""><a href="accessibility.html">Accessibility</a></li><li class=""><a href="extensions_list.html">Full List of Extensions</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="configuring_the_scheduler.html">Creating Scheduler on a Page</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Initializing Scheduler on a Page</h1>
+
+<p>When you develop an application with dhtmlxScheduler, the first thing you need is to initialize or, simply speaking, to display the Scheduler on the page.</p>
+
+<p>There are two ways of initializing scheduler on a page:</p>
+
+<ul>
+<li>via the scheduler's markup</li>
+<li>via the header configuration property</li>
+</ul>
+
+<a name='initializingschedulerviamarkup'><h2>Initializing Scheduler via markup</h2></a>
+
+<p>To display a basic Scheduler on the page through the markup, follow 3 steps:</p>
+
+<ol>
+<li>Include the <a href="initialization.html#requiredcodefiles">dhtmlxScheduler code files</a> on the page.</li>
+<li>Create a DIV container on the page and define the related DIV containers for its elements.</li>
+<li>Initialize dhtmlxScheduler in the newly created container with the <a class="link-" href="api__scheduler_init.html">init</a> method. As a parameter the method takes an HTML container (or its id) that the Scheduler will be displayed in.</li>
+</ol>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+   <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../scheduler/dhtmlxscheduler.js&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+   <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../scheduler/dhtmlxscheduler_material.css&quot;</span> </span>
+<span class="sc2">        <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+    <span class="sc-1">&lt;!--Container for Scheduler and the standard set of 'divs'--&gt;</span>
+   <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;scheduler_here&quot;</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_container&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">'width:100%; height:100vh;'</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_navline&quot;</span>&gt;</span>
+            <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_prev_button&quot;</span>&gt;</span><span class="sc1">&amp;nbsp;</span><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+            <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_next_button&quot;</span>&gt;</span><span class="sc1">&amp;nbsp;</span><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+            <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_today_button&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+            <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_date&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+            <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;day_tab&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+            <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;week_tab&quot;</span> &gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+            <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;month_tab&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_header&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_data&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>       
+   <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+   <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span>&gt;</span><pre class="js"><span class="xtra ln-xtra">     scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;scheduler_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre>   <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+<p><img src="media/init_scheduler_front.png" alt="Scheduler initialization" /></p>
+
+<p><a href='samples/01_initialization_loading/01_basic_init.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Basic initialization</a></p>
+
+<a name='initializingschedulerviaheaderconfig'><h2>Initializing Scheduler via header config</h2></a>
+
+<p>You need to initialize scheduler this way to make it <a class="link-" href="initialization.html#makingschedulerresponsive">responsive</a>.</p>
+
+<p>To display a basic Scheduler on the page, take the following steps:</p>
+
+<ol>
+<li>Include the <a href="initialization.html#requiredcodefiles">dhtmlxScheduler code files</a> on the page.</li>
+<li>Create a DIV container on the page.</li>
+<li>Specify the structure of the scheduler in the <a class="link-" href="api__scheduler_header_config.html">header</a> configuration object. </li>
+<li>Initialize dhtmlxScheduler in the newly created container with the <a class="link-" href="api__scheduler_init.html">init</a> method. As a parameter the method takes an HTML container (or its id) that the Scheduler will be displayed in.</li>
+</ol>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+   <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../scheduler/dhtmlxscheduler.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+   <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../scheduler/dhtmlxscheduler_material.css&quot;</span> </span>
+<span class="sc2">        <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+   <span class="sc-1">&lt;!--Container for Scheduler--&gt;</span>
+   <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;scheduler_here&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">'width:100%; height:100%;'</span>&gt;</span>
+   <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span>   
+<span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">    <span class="co1">//The structure of the scheduler</span>
+    scheduler.<span class="me1">config</span>.<span class="me1">header</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+        <span class="st0">&quot;day&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;week&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;month&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;date&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;prev&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;today&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;next&quot;</span>
+    <span class="br0">&#93;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">    scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2020</span><span class="sy0">,</span><span class="nu0">0</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="st0">&quot;week&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+<p><a href='samples/01_initialization_loading/13_touch_ui.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Responsive scheduler</a></p>
+
+<a name='requiredcodefiles'><h2>Required code files</h2></a>
+
+<p>The required code files are:</p>
+
+<ul>
+<li><em>dhtmlxscheduler.js</em></li>
+<li><em>dhtmlxscheduler_material.css</em> (for Material skin; you can also <a class="link-" href="skins.html">explore the available skins</a>)</li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../scheduler/dhtmlxscheduler.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../scheduler/dhtmlxscheduler_material.css&quot;</span> </span>
+<span class="sc2">        <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span>&gt;</span></pre></code></pre>
+
+<p>Let's quickly explore the structure of the dhtmlxScheduler package to find out where to look for the files.</p>
+
+<ul>
+<li><b>sources</b> - the source code files of the library. The files are not minified and easy-to-read. The package is mostly intended to be used for component's debugging.</li>
+</ul>
+
+<div class='note'><p><p>Note that the <strong>Trial</strong> version of the Scheduler library doesn't contain the <strong>sources</strong> folder.</p>
+</p></div>
+
+<ul>
+<li><b>samples</b> - the code samples.</li>
+<li><b>codebase</b> - the packed code files of the library. These files have much smaller size and intended for use in production. <b>In your apps you need to use files from this folder.</b></li>
+</ul>
+
+<a name='schedulersizing'><h2>Scheduler sizing</h2></a>
+
+<p>Scheduler takes up the whole size of its container element (<em>scheduler_here</em> div in the above example) without expanding it.
+Which means that if you don't specify the container height or set it to 0, scheduler will also have zero height and won't be displayed.</p>
+
+<p>In our samples we usually make scheduler full-screen by giving 100% width and height to both the document body and scheduler container element:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">style</span>&gt;</span><pre class="css">    html<span class="sy0">,</span> body<span class="br0">&#123;</span>
+        <span class="kw1">margin</span><span class="sy0">:</span><span class="re3">0px</span><span class="sy0">;</span>
+        <span class="kw1">padding</span><span class="sy0">:</span><span class="re3">0px</span><span class="sy0">;</span>
+        <span class="kw1">height</span><span class="sy0">:</span><span class="re3">100%</span><span class="sy0">;</span>
+        <span class="kw1">overflow</span><span class="sy0">:</span><span class="kw2">hidden</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span></pre>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">style</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+ <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;scheduler_here&quot;</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_container&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width:100%; height:100%;&quot;</span>&gt;</span></pre></code></pre>
+
+<p>It can easily go wrong if you place the <em>scheduler_here</em> element into a div with default sizes:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">style</span>&gt;</span><pre class="css">    html<span class="sy0">,</span> body<span class="br0">&#123;</span>
+        <span class="kw1">margin</span><span class="sy0">:</span><span class="re3">0px</span><span class="sy0">;</span>
+        <span class="kw1">padding</span><span class="sy0">:</span><span class="re3">0px</span><span class="sy0">;</span>
+        <span class="kw1">height</span><span class="sy0">:</span><span class="re3">100%</span><span class="sy0">;</span>
+        <span class="kw1">overflow</span><span class="sy0">:</span><span class="kw2">hidden</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span></pre>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">style</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+<span class="xtra ln-xtra"> <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;outer_container&quot;</span>&gt;</span> </span>   <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;scheduler_here&quot;</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_container&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width:100%;height:100%;&quot;</span>&gt;</span></pre></code></pre>
+
+<p>Scheduler won't be correctly displayed in this case, because "scheduler_here" is set to 100% of its parent, and the size of its parent is not specified.</p>
+
+<p>If you use relative sizes (%, percents) for the <em>.dhx_cal_container</em> element, make sure that its parent element also has some height set. Otherwise, the resulting height might be zero and scheduler won't be displayed.</p>
+
+<p>Or, you can use different units for the main scheduler div sizes. The following elements will have expected sizes regardless of the styles of outer elements:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;scheduler_here&quot;</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_container&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width:100%; height:100vh;&quot;</span>&gt;</span></pre></code></pre>
+
+<p>or:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;scheduler_here&quot;</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_container&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width:100%; height:800px;&quot;</span>&gt;</span></pre></code></pre>
+
+<h3>Scheduler autoresizing</h3>
+
+<p>There is a possibility to enable automatic resizing for the scheduler container. You just need to include the <b>ext/dhtmlxscheduler_container_autoresize.js</b> extension file on the page:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../codebase/ext/dhtmlxscheduler_container_autoresize.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p><a href='samples/03_extensions/28_container_autoresize.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Autoresizing the scheduler container</a></p>
+
+<p>As a result, scheduler container will change its size automatically and show the whole content without scrolling.</p>
+
+<a name='makingschedulerresponsive'><h2>Making Scheduler responsive</h2></a>
+
+<p>When you initialize Scheduler via <a href="initialization.html#initializingschedulerviaheaderconfig">the header configuration property</a> you'll be able to choose the header structure that fits the screen size of the client.
+It will also apply certain styles which will make elements and font sizes responsive on small screens.</p>
+
+<p>You can find more details in a separate article: <a class="link-" href="touch_support.html">Mobile Responsive Scheduler</a>.</p>
+
+<!-- Content Area End -->
+			<a href='initialization.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

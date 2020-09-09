@@ -1,0 +1,744 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>dhtmlxScheduler with PHP:Slim  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="howtostart_dotnet_core.html">dhtmlxScheduler with ASP.NET Core</a></li><li class=""><a href="howtostart_nodejs.html">dhtmlxScheduler with Node.js</a></li><li class=""><a href="howtostart_dotnet.html">dhtmlxScheduler with ASP.NET MVC</a></li><li class=""><a href="howtostart_plain_php.html">dhtmlxScheduler with PHP</a></li><li class=""><a href="howtostart_php_laravel.html">dhtmlxScheduler with PHP:Laravel</a></li><li class=" current"><a href="howtostart_php_slim4.html">dhtmlxScheduler with PHP:Slim</a></li><ul><li class="inner"><a href="howtostart_php_slim4.html#step1initializingaproject">Step 1. Initializing a project</a></li><li class="inner"><a href="howtostart_php_slim4.html#step2addingschedulertothepage">Step 2. Adding Scheduler to the page</a></li><li class="inner"><a href="howtostart_php_slim4.html#step3preparingdatabase">Step 3. Preparing database</a></li><li class="inner"><a href="howtostart_php_slim4.html#step4loadingdata">Step 4. Loading data</a></li><li class="inner"><a href="howtostart_php_slim4.html#step5savingchanges">Step 5. Saving changes</a></li><li class="inner"><a href="howtostart_php_slim4.html#recurringevents">Recurring events</a></li><li class="inner"><a href="howtostart_php_slim4.html#applicationsecurity">Application security</a></li><li class="inner"><a href="howtostart_php_slim4.html#errorhandling">Error handling</a></li><li class="inner"><a href="howtostart_php_slim4.html#troubleshooting">Trouble shooting</a></li><li class="inner"><a href="howtostart_php_slim4.html#whatsnext">What's next</a></li></ul><li class=""><a href="howtostart_ruby.html">dhtmlxScheduler with Ruby on Rails</a></li><li class=""><a href="howtostart_connector.html">dhtmlxScheduler with dhtmlxConnector</a></li><li class=""><a href="howtostart_php.html">dhtmlxScheduler with PHP:Slim 3</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="howtostart_guides.html">How to Start with dhtmlxScheduler</a></div>
+<!-- Content Area -->
+
+
+
+<h1>dhtmlxScheduler with PHP:Slim</h1>
+
+<p>In this tutorial you will find necessary information on how to create a PHP-based Scheduler using Slim 4 Framework and REST API on the server side.</p>
+
+<div class='note'><p><p>This tutorial uses Slim Framework v4.x.
+If you need a tutorial for an older version, check the <a href="howtostart_php.html">Slim Framework v3.x</a> guide.</p>
+</p></div>
+
+<p>There are tutorials intended for building server-side integration with the help of other platforms and frameworks:</p>
+
+<ul>
+<li><a class="link-" href="howtostart_dotnet_core.html">dhtmlxScheduler with ASP.NET Core</a></li>
+<li><a class="link-" href="howtostart_dotnet.html">dhtmlxScheduler with ASP.NET MVC</a></li>
+<li><a class="link-" href="howtostart_nodejs.html">dhtmlxScheduler with Node.js</a></li>
+<li><a class="link-" href="howtostart_plain_php.html">dhtmlxScheduler with PHP</a></li>
+<li><a class="link-" href="howtostart_php_laravel.html">dhtmlxScheduler with PHP:Laravel</a></li>
+<li><a class="link-" href="howtostart_ruby.html">dhtmlxScheduler with Ruby on Rails</a></li>
+<li><a class="link-" href="howtostart_connector.html">dhtmlxScheduler with dhtmlxConnector</a></li>
+</ul>
+
+<p>It seems obvious that while developing an application with PHP, one will use a ready framework instead of creating everything from scratch.</p>
+
+<p>We will use the <a href="https://www.slimframework.com/">Slim 4</a> framework together with REST API on the server side and MySQL as a data storage to create a Scheduler.
+CRUD logic will rely on PDO and will be generic enough to be usable with any other framework.</p>
+
+<p>You can have a look at the <a href="https://github.com/DHTMLX/scheduler-howto-php-slim">ready demo on GitHub</a>. Follow the step-by-step guide to create such an application.</p>
+
+<div class='note'><p><p>The complete source code is <a href="https://github.com/DHTMLX/scheduler-howto-php-slim">available on GitHub</a>.</p>
+</p></div>
+
+<a name='step1initializingaproject'><h2>Step 1. Initializing a project</h2></a>
+
+<h3>Creating a project</h3>
+
+<p>We will make use of a <a href="https://github.com/slimphp/Slim-Skeleton">skeleton application</a> for the Slim 4 framework.</p>
+
+<p>So you should start with creating an application with the help of Composer:</p>
+
+<pre><code><pre class="php">$ composer create<span class="sy0">-</span>project slim<span class="sy0">/</span>slim<span class="sy0">-</span>skeleton scheduler<span class="sy0">-</span>slim<span class="sy0">-</span>howto
+$ cd scheduler<span class="sy0">-</span>slim<span class="sy0">-</span>howto<span class="sy0">/</span></pre></code></pre>
+
+<a name='step2addingschedulertothepage'><h2>Step 2. Adding Scheduler to the page</h2></a>
+
+<p>The next step is to add a scheduler on a page. It includes two simple sub-steps, described below.</p>
+
+<h3>Creating a view</h3>
+
+<p>Create a * basic.html* file in the <code>app</code> app/templates folder:</p>
+
+<p class='snippet'> app/templates/basic.html</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;!doctype html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">title</span>&gt;</span> Getting started with dhtmlxScheduler<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">title</span>&gt;</span>
+      <span class="sc2">&lt;<span class="kw2">meta</span> <span class="kw3">charset</span><span class="sy0">=</span><span class="st0">&quot;utf-8&quot;</span>&gt;</span>
+       <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+       <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler_material.css&quot;</span> </span>
+<span class="sc2">            <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">charset</span><span class="sy0">=</span><span class="st0">&quot;utf-8&quot;</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">style</span>&gt;</span><pre class="css">            html<span class="sy0">,</span> body<span class="br0">&#123;</span>
+                <span class="kw1">margin</span><span class="sy0">:</span><span class="re3">0px</span><span class="sy0">;</span>
+                <span class="kw1">padding</span><span class="sy0">:</span><span class="re3">0px</span><span class="sy0">;</span>
+                <span class="kw1">height</span><span class="sy0">:</span><span class="re3">100%</span><span class="sy0">;</span>
+                <span class="kw1">overflow</span><span class="sy0">:</span><span class="kw2">hidden</span><span class="sy0">;</span>
+            <span class="br0">&#125;</span></pre>
+        <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">style</span>&gt;</span> 
+  <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span> 
+  <span class="sc2">&lt;<span class="kw2">body</span>&gt;</span> 
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;scheduler_here&quot;</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_container&quot;</span> </span>
+<span class="sc2">            <span class="kw3">style</span><span class="sy0">=</span><span class="st0">'width:100%; height:100%;'</span>&gt;</span> 
+            <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_navline&quot;</span>&gt;</span> 
+                <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_prev_button&quot;</span>&gt;</span><span class="sc1">&amp;nbsp;</span><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span> 
+                <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_next_button&quot;</span>&gt;</span><span class="sc1">&amp;nbsp;</span><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span> 
+                <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_today_button&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span> 
+                <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_date&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span> 
+                <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;day_tab&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span> 
+                <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;week_tab&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span> 
+                <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;month_tab&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span> 
+            <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span> 
+            <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_header&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span> 
+            <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_data&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span> 
+        <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span> 
+        <span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">            scheduler.<span class="me1">config</span>.<span class="me1">xml_date</span><span class="sy0">=</span><span class="st0">&quot;%Y-%m-%d %H:%i&quot;</span><span class="sy0">;</span>
+            scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span><span class="nu0">0</span><span class="sy0">,</span><span class="nu0">20</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;week&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/events&quot;</span><span class="sy0">,</span> <span class="st0">&quot;json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+            <span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;/events&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            dp.<span class="me1">init</span><span class="br0">&#40;</span>scheduler<span class="br0">&#41;</span><span class="sy0">;</span>
+            dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;REST&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// use to transfer data with REST</span></pre>        <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span> 
+  <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span> 
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+<h3>Setting up routes</h3>
+
+<p>After a new page is added, you need to make it accessible from a browser. Add a route to <strong>app/routes.php</strong>:</p>
+
+<p class='snippet'> app/routes.php </p>
+
+<pre><code><pre class="js">$app<span class="sy0">-&gt;</span>get<span class="br0">&#40;</span><span class="st0">'/'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>Request $request<span class="sy0">,</span> Response $response<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+$payload <span class="sy0">=</span> file_get_contents<span class="br0">&#40;</span><span class="st0">'../app/templates/basic.html'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+$response<span class="sy0">-&gt;</span>getBody<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="kw1">write</span><span class="br0">&#40;</span>$payload<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">return</span> $response<span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Now you can run the app to see that a scheduler is rendered on a page:</p>
+
+<p><img src="media/php_init_slim4.png" alt="Scheduler initialization" /></p>
+
+<a name='step3preparingdatabase'><h2>Step 3. Preparing database</h2></a>
+
+<p>So, you've got an empty scheduler. It's time to create a database and connect it to our app.</p>
+
+<h3>Creating database</h3>
+
+<p>You can create a database from your favorite mysql-client (for example, phpMyAdmin), or via the console. Here is SQL to create a new database with a table for calendar events:</p>
+
+<pre><code><pre class="js">CREATE DATABASE  <span class="kw1">IF</span> NOT EXISTS `scheduler`<span class="sy0">;</span>
+<span class="kw2">USE</span> `scheduler`<span class="sy0">;</span>
+&nbsp;
+DROP TABLE <span class="kw1">IF</span> EXISTS `events`<span class="sy0">;</span>
+CREATE TABLE `events` <span class="br0">&#40;</span>
+  `id` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> AUTO_INCREMENT<span class="sy0">,</span>
+  `start_date` datetime NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `end_date` datetime NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `text` varchar<span class="br0">&#40;</span><span class="nu0">255</span><span class="br0">&#41;</span> <span class="kw2">DEFAULT</span> <span class="kw2">NULL</span><span class="sy0">,</span>
+  PRIMARY KEY <span class="br0">&#40;</span>`id`<span class="br0">&#41;</span>
+<span class="br0">&#41;</span> <span class="kw2">DEFAULT</span> CHARSET<span class="sy0">=</span>utf8<span class="sy0">;</span></pre></code></pre>
+
+<p>To import via a mysql-console, create a <em>dump.sql</em> file with the code above. And execute the command below in the shell:</p>
+
+<pre><code><pre class="js">$ mysql <span class="sy0">-</span>uuser <span class="sy0">-</span>ppass scheduler <span class="sy0">&lt;</span> mysql_dump.<span class="me1">sql</span></pre></code></pre>
+
+<p>Open your <em>app/settings.php</em> file, add an array with database settings, and update it with your configurations:</p>
+
+<p class='snippet'> app/settings.php </p>
+
+<pre><code><pre class="php"><span class="st_h">'pdo'</span> <span class="sy0">=&gt;</span> <span class="br0">&#91;</span>
+    <span class="st_h">'engine'</span> <span class="sy0">=&gt;</span> <span class="st_h">'mysql'</span><span class="sy0">,</span>
+    <span class="st_h">'host'</span> <span class="sy0">=&gt;</span> <span class="st_h">'localhost'</span><span class="sy0">,</span>
+    <span class="st_h">'database'</span> <span class="sy0">=&gt;</span> <span class="st_h">'scheduler'</span><span class="sy0">,</span>
+    <span class="st_h">'username'</span> <span class="sy0">=&gt;</span> <span class="st_h">'user'</span><span class="sy0">,</span>
+    <span class="st_h">'password'</span> <span class="sy0">=&gt;</span> <span class="st_h">'pass'</span><span class="sy0">,</span>
+    <span class="st_h">'charset'</span> <span class="sy0">=&gt;</span> <span class="st_h">'utf8'</span><span class="sy0">,</span>
+    <span class="st_h">'collation'</span> <span class="sy0">=&gt;</span> <span class="st_h">'utf8_unicode_ci'</span><span class="sy0">,</span>
+&nbsp;
+    <span class="st_h">'options'</span> <span class="sy0">=&gt;</span> <span class="br0">&#91;</span>
+        PDO<span class="sy0">::</span><span class="me2">ATTR_ERRMODE</span> <span class="sy0">=&gt;</span> PDO<span class="sy0">::</span><span class="me2">ERRMODE_EXCEPTION</span><span class="sy0">,</span>
+        PDO<span class="sy0">::</span><span class="me2">ATTR_DEFAULT_FETCH_MODE</span> <span class="sy0">=&gt;</span> PDO<span class="sy0">::</span><span class="me2">FETCH_ASSOC</span><span class="sy0">,</span>
+        PDO<span class="sy0">::</span><span class="me2">ATTR_EMULATE_PREPARES</span> <span class="sy0">=&gt;</span> <span class="kw4">true</span><span class="sy0">,</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+<span class="br0">&#93;</span></pre></code></pre>
+
+<p>After that go to <em>app/dependencies.php</em> in order to add a PDO instance into the app:</p>
+
+<p class='snippet'> app/dependencies.php </p>
+
+<pre><code><pre class="js"><span class="co1">// Inject a new instance of PDO into the container</span>
+$containerBuilder<span class="sy0">-&gt;</span>addDefinitions<span class="br0">&#40;</span><span class="br0">&#91;</span>
+  PDO<span class="sy0">::</span><span class="kw2">class</span> <span class="sy0">=&gt;</span> <span class="kw2">function</span> <span class="br0">&#40;</span>ContainerInterface $container<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    $config <span class="sy0">=</span> $container<span class="sy0">-&gt;</span>get<span class="br0">&#40;</span><span class="st0">'settings'</span><span class="br0">&#41;</span><span class="br0">&#91;</span><span class="st0">'pdo'</span><span class="br0">&#93;</span><span class="sy0">;</span>
+    $dsn <span class="sy0">=</span> <span class="st0">&quot;{$config['engine']}:host={$config['host']};dbname={$config['database']};
+        charset={$config['charset']}&quot;</span><span class="sy0">;</span>
+    $username <span class="sy0">=</span> $config<span class="br0">&#91;</span><span class="st0">'username'</span><span class="br0">&#93;</span><span class="sy0">;</span>
+    $password <span class="sy0">=</span> $config<span class="br0">&#91;</span><span class="st0">'password'</span><span class="br0">&#93;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">new</span> PDO<span class="br0">&#40;</span>$dsn<span class="sy0">,</span> $username<span class="sy0">,</span> $password<span class="sy0">,</span> $config<span class="br0">&#91;</span><span class="st0">'options'</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span><span class="sy0">,</span>
+<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='step4loadingdata'><h2>Step 4. Loading data</h2></a>
+
+<p>Our scheduler already calls the "/events" URL to retrieve events. Now we can add a handler for that request and populate scheduler with actual data.</p>
+
+<p>Since scheduler will need several different handlers, we'll use <a href="https://www.slimframework.com/docs/v4/objects/routing.html#route-groups">route groups</a> of the Slim 4 framework in order to keep them organized.</p>
+
+<p>Open the <em>app/routes.php</em> file, and add a group "/events", and actions into it:</p>
+
+<p class='snippet'> app/routes.php</p>
+
+<pre><code><pre class="php"><span class="re0">$app</span><span class="sy0">-&gt;</span><span class="me1">group</span><span class="br0">&#40;</span><span class="st_h">'/events'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span><span class="re0">$group</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="re0">$group</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="st_h">''</span><span class="sy0">,</span>  <span class="kw2">function</span> <span class="br0">&#40;</span>Request <span class="re0">$request</span><span class="sy0">,</span> Response <span class="re0">$response</span><span class="sy0">,</span> <a href="http://www.php.net/array"><span class="kw3">array</span></a> <span class="re0">$args</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="re0">$db</span> <span class="sy0">=</span> <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="st_h">'PDO'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="re0">$queryText</span> <span class="sy0">=</span> <span class="st_h">'SELECT * FROM `events`'</span><span class="sy0">;</span>
+        <span class="re0">$params</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">getQueryParams</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="re0">$query</span> <span class="sy0">=</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$queryText</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="re0">$query</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="re0">$result</span> <span class="sy0">=</span> <span class="re0">$query</span><span class="sy0">-&gt;</span><span class="me1">fetchAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">withHeader</span><span class="br0">&#40;</span><span class="st_h">'Content-Type'</span><span class="sy0">,</span> <span class="st_h">'application/json'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Now if you add some events into the database, they will appear in your scheduler.</p>
+
+<h3>Dynamic loading</h3>
+
+<p>Currently scheduler loads all records from the events table on startup. It can work well if you know that the amount of data will remain small over time. But when scheduler is used for something like a planning/booking
+application and you don't delete or move obsolete records to another table, the amounts of data will build up fairly quickly. As a result, in a couple of months of active usage you may find that your app requests a couple of MBs 
+of events each time a user loads the page.</p>
+
+<p>It can be easily avoided by using dynamic loading. Scheduler will add the displayed dates to the request parameters and you'll be able to return only the records that need to be displayed. 
+Each time a user switches to a new data range, scheduler will request a new portion of data.</p>
+
+<p>To enable dynamic loading in UI, you can set the <em>setLoadMode</em> option to any of values: "day", "week", "month". Firstly, enable dynamic loading on the client using the <a class="link-" href="api__scheduler_setloadmode.html">setLoadMode</a> method:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">xml_date</span><span class="sy0">=</span><span class="st0">&quot;%Y-%m-%d %H:%i&quot;</span><span class="sy0">;</span>
+scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;scheduler_here&quot;</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">20</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;week&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">setLoadMode</span><span class="br0">&#40;</span><span class="st0">&quot;day&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/events&quot;</span><span class="sy0">,</span> <span class="st0">&quot;json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>On the server side it will be processed correctly by this code:</p>
+
+<p class='snippet'> app/routes.php</p>
+
+<pre><code><pre class="php"><span class="re0">$app</span><span class="sy0">-&gt;</span><span class="me1">group</span><span class="br0">&#40;</span><span class="st_h">'/events'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span><span class="re0">$group</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="re0">$group</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="st_h">''</span><span class="sy0">,</span>  <span class="kw2">function</span> <span class="br0">&#40;</span>Request <span class="re0">$request</span><span class="sy0">,</span> Response <span class="re0">$response</span><span class="sy0">,</span> <a href="http://www.php.net/array"><span class="kw3">array</span></a> <span class="re0">$args</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="re0">$db</span> <span class="sy0">=</span> <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="st_h">'PDO'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$queryText</span> <span class="sy0">=</span> <span class="st_h">'SELECT * FROM `events`'</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">            <span class="re0">$params</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">getQueryParams</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span><span class="xtra ln-xtra">            <span class="re0">$queryParams</span> <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">;</span> </span><span class="xtra ln-xtra">            <span class="kw1">if</span> <span class="br0">&#40;</span><a href="http://www.php.net/isset"><span class="kw3">isset</span></a><span class="br0">&#40;</span><span class="re0">$params</span><span class="br0">&#91;</span><span class="st_h">'from'</span><span class="br0">&#93;</span><span class="br0">&#41;</span> <span class="sy0">&amp;&amp;</span> <a href="http://www.php.net/isset"><span class="kw3">isset</span></a><span class="br0">&#40;</span><span class="re0">$params</span><span class="br0">&#91;</span><span class="st_h">'to'</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span> </span><span class="xtra ln-xtra">                <span class="re0">$queryText</span> <span class="sy0">.=</span> <span class="st0">&quot; WHERE `end_date`&gt;=? AND `start_date` &lt; ?;&quot;</span><span class="sy0">;</span> </span><span class="xtra ln-xtra">                <span class="re0">$queryParams</span> <span class="sy0">=</span> <span class="br0">&#91;</span><span class="re0">$params</span><span class="br0">&#91;</span><span class="st_h">'from'</span><span class="br0">&#93;</span><span class="sy0">,</span> <span class="re0">$params</span><span class="br0">&#91;</span><span class="st_h">'to'</span><span class="br0">&#93;</span><span class="br0">&#93;</span><span class="sy0">;</span> </span><span class="xtra ln-xtra">            <span class="br0">&#125;</span> </span>            <span class="re0">$query</span> <span class="sy0">=</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$queryText</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">            <span class="re0">$query</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><span class="re0">$queryParams</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>            <span class="re0">$result</span> <span class="sy0">=</span> <span class="re0">$query</span><span class="sy0">-&gt;</span><span class="me1">fetchAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+            <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">withHeader</span><span class="br0">&#40;</span><span class="st_h">'Content-Type'</span><span class="sy0">,</span> <span class="st_h">'application/json'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='step5savingchanges'><h2>Step 5. Saving changes</h2></a>
+
+<h3>Implementing backend handlers</h3>
+
+<p>For now, scheduler can read data from the backend. Let's make it write changes back to the database.</p>
+
+<p>The client side will work in the REST mode, meaning it will send POST/PUT/DELETE requests for events actions.
+<a class="link-" href="server_integration.html#requestandresponsedetails">Check the format of requests and all the routes the scheduler will use</a>.</p>
+
+<p>Now you need to define a controller that handles actions on the model, create route for it and enable data saving on the client side.</p>
+
+<p>Go back to <em>app/routes.php</em> and add a handler for a POST request to the "/events" group, it will handle inserting of new events:</p>
+
+<p class='snippet'> app/routes.php </p>
+
+<pre><code><pre class="php"><span class="re0">$group</span><span class="sy0">-&gt;</span><span class="me1">post</span><span class="br0">&#40;</span><span class="st_h">''</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>Request <span class="re0">$request</span><span class="sy0">,</span> Response <span class="re0">$response</span><span class="sy0">,</span> <a href="http://www.php.net/array"><span class="kw3">array</span></a> <span class="re0">$args</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="re0">$db</span> <span class="sy0">=</span> <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="st_h">'PDO'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$body</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">getParsedBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$queryText</span> <span class="sy0">=</span> <span class="st_h">'INSERT INTO `events` SET
+            `start_date`=?,
+            `end_date`=?,
+            `text`=?'</span><span class="sy0">;</span>
+    <span class="re0">$queryParams</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+        <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'start_date'</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'end_date'</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'text'</span><span class="br0">&#93;</span>
+    <span class="br0">&#93;</span><span class="sy0">;</span>
+    <span class="re0">$query</span> <span class="sy0">=</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$queryText</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$query</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><span class="re0">$queryParams</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$result</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+        <span class="st_h">'tid'</span> <span class="sy0">=&gt;</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">lastInsertId</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span>
+        <span class="st_h">'action'</span> <span class="sy0">=&gt;</span> <span class="st_h">'inserted'</span>
+    <span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">withHeader</span><span class="br0">&#40;</span><span class="st_h">'Content-Type'</span><span class="sy0">,</span> <span class="st_h">'application/json'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>When a new task is inserted, you return its id back to the client in the <code>tid</code> property of the response object.
+The response JSON can have any number of additional properties, they all can be accessed from the client-side handler.</p>
+</p></div>
+
+<p>The same way to add an action for a PUT request:</p>
+
+<pre><code><pre class="php"><span class="re0">$group</span><span class="sy0">-&gt;</span><span class="me1">put</span><span class="br0">&#40;</span><span class="st_h">'/{id}'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>Request <span class="re0">$request</span><span class="sy0">,</span> Response <span class="re0">$response</span><span class="sy0">,</span> <a href="http://www.php.net/array"><span class="kw3">array</span></a> <span class="re0">$args</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="re0">$db</span> <span class="sy0">=</span> <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="st_h">'PDO'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$id</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">getAttribute</span><span class="br0">&#40;</span><span class="st_h">'route'</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">getArgument</span><span class="br0">&#40;</span><span class="st_h">'id'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <a href="http://www.php.net/parse_str"><span class="kw3">parse_str</span></a><span class="br0">&#40;</span><a href="http://www.php.net/file_get_contents"><span class="kw3">file_get_contents</span></a><span class="br0">&#40;</span><span class="st0">&quot;php://input&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="re0">$body</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$queryText</span> <span class="sy0">=</span> <span class="st_h">'UPDATE `events` SET
+            `start_date`=?,
+            `end_date`=?,
+            `text`=?
+            WHERE `id`=?'</span><span class="sy0">;</span>
+    <span class="re0">$queryParams</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+        <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'start_date'</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'end_date'</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'text'</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="re0">$id</span>
+    <span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$query</span> <span class="sy0">=</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$queryText</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$query</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><span class="re0">$queryParams</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$result</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+        <span class="st_h">'action'</span> <span class="sy0">=&gt;</span> <span class="st_h">'updated'</span>
+    <span class="br0">&#93;</span><span class="sy0">;</span>
+    <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">withHeader</span><span class="br0">&#40;</span><span class="st_h">'Content-Type'</span><span class="sy0">,</span> <span class="st_h">'application/json'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>and for a DELETE request:</p>
+
+<pre><code><pre class="php"><span class="re0">$group</span><span class="sy0">-&gt;</span><span class="me1">delete</span><span class="br0">&#40;</span><span class="st_h">'/{id}'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>Request <span class="re0">$request</span><span class="sy0">,</span> Response <span class="re0">$response</span><span class="sy0">,</span> <a href="http://www.php.net/array"><span class="kw3">array</span></a> <span class="re0">$args</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="re0">$db</span> <span class="sy0">=</span> <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="st_h">'PDO'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$id</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">getAttribute</span><span class="br0">&#40;</span><span class="st_h">'route'</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">getArgument</span><span class="br0">&#40;</span><span class="st_h">'id'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$queryText</span> <span class="sy0">=</span> <span class="st_h">'DELETE FROM `events` WHERE `id`=? ;'</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$query</span> <span class="sy0">=</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$queryText</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$query</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><span class="br0">&#91;</span><span class="re0">$id</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$result</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+        <span class="st_h">'action'</span> <span class="sy0">=&gt;</span> <span class="st_h">'deleted'</span>
+    <span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">withHeader</span><span class="br0">&#40;</span><span class="st_h">'Content-Type'</span><span class="sy0">,</span> <span class="st_h">'application/json'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Enabling data saving on the client side</h3>
+
+<p>Finally, we will configure the client side to utilize the API we've just implemented:</p>
+
+<p class='snippet'> public/basic.phtml</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">xml_date</span><span class="sy0">=</span><span class="st0">&quot;%Y-%m-%d %H:%i&quot;</span><span class="sy0">;</span>
+scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;scheduler_here&quot;</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">20</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;week&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">setLoadMode</span><span class="br0">&#40;</span><span class="st0">&quot;day&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// load data from the backend</span>
+scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/events&quot;</span><span class="sy0">,</span> <span class="st0">&quot;json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// send updates to the backend</span>
+<span class="xtra ln-xtra"><span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;/events&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> dp.<span class="me1">init</span><span class="br0">&#40;</span>scheduler<span class="br0">&#41;</span><span class="sy0">;</span>  </span><span class="co1">// set data exchange mode</span>
+<span class="xtra ln-xtra">dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;REST&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p>If you restart the application now, you should be able to create delete and modify events in scheduler, all changes will be there after you reload the page.</p>
+
+<p><img src="media/php_crud_slim4.png" alt="Scheduler CRUD" /></p>
+
+<a name='recurringevents'><h2>Recurring events</h2></a>
+
+<p>In order to enable recurrence (e.g. "repeat event daily") you'll need to add an appropriate extension to the scheduler page:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;https://cdn.dhtmlx.com/scheduler/edge/ext/dhtmlxscheduler_recurring.js&quot;</span> &gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p>The "events" table needs additional columns to store recurrence info. Here is an SQL query for creating recurring events table:</p>
+
+<pre><code><pre class="js">CREATE DATABASE  <span class="kw1">IF</span> NOT EXISTS `scheduler`<span class="sy0">;</span>
+<span class="kw2">USE</span> `scheduler`<span class="sy0">;</span>
+&nbsp;
+DROP TABLE <span class="kw1">IF</span> EXISTS `events`<span class="sy0">;</span>
+CREATE TABLE `events` <span class="br0">&#40;</span>
+  `id` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> AUTO_INCREMENT<span class="sy0">,</span>
+  `start_date` datetime NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `end_date` datetime NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `text` varchar<span class="br0">&#40;</span><span class="nu0">255</span><span class="br0">&#41;</span> <span class="kw2">DEFAULT</span> <span class="kw2">NULL</span><span class="sy0">,</span>
+  `event_pid` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> <span class="kw2">DEFAULT</span> <span class="nu0">0</span><span class="sy0">,</span>
+  `event_length` bigint<span class="br0">&#40;</span><span class="nu0">20</span><span class="br0">&#41;</span> unsigned <span class="kw2">DEFAULT</span> <span class="nu0">0</span><span class="sy0">,</span>
+  `rec_type` varchar<span class="br0">&#40;</span><span class="nu0">25</span><span class="br0">&#41;</span> <span class="kw2">DEFAULT</span> <span class="st0">''</span><span class="sy0">,</span>
+  PRIMARY KEY <span class="br0">&#40;</span>`id`<span class="br0">&#41;</span>
+<span class="br0">&#41;</span> <span class="kw2">DEFAULT</span> CHARSET<span class="sy0">=</span>utf8<span class="sy0">;</span></pre></code></pre>
+
+<p>Or, you can update the events table from our previous step:</p>
+
+<pre><code><pre class="js">ALTER TABLE `events` ADD COLUMN `event_pid` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> <span class="kw2">DEFAULT</span> <span class="st0">'0'</span><span class="sy0">;</span>
+ALTER TABLE `events` ADD COLUMN `event_length` bigint<span class="br0">&#40;</span><span class="nu0">20</span><span class="br0">&#41;</span> unsigned <span class="kw2">DEFAULT</span> <span class="st0">'0'</span><span class="sy0">;</span>
+ALTER TABLE `events` ADD COLUMN `rec_type` varchar<span class="br0">&#40;</span><span class="nu0">25</span><span class="br0">&#41;</span> <span class="kw2">DEFAULT</span> <span class="st0">''</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Updating the backend</h3>
+
+<p>Finally, you'll need to <a class="link-" href="recurring_events.html#editingdeletingacertainoccurrenceintheseries">update our handlers</a></p>
+
+<p>Firstly, let's take a look at the <code>POST</code> route. Here you need to update the SQL query in order to add new columns.</p>
+
+<p>Secondly, you need to process a special case for recurring events - deletion of a specific occurrence of the recurring series requires creating a new database record and the client will call the <em>insert</em> action for it:</p>
+
+<p class='snippet'> app/routes.php</p>
+
+<pre><code><pre class="php"><span class="re0">$group</span><span class="sy0">-&gt;</span><span class="me1">post</span><span class="br0">&#40;</span><span class="st_h">''</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>Request <span class="re0">$request</span><span class="sy0">,</span> Response <span class="re0">$response</span><span class="sy0">,</span> <a href="http://www.php.net/array"><span class="kw3">array</span></a> <span class="re0">$args</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="re0">$db</span> <span class="sy0">=</span> <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="st_h">'PDO'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$body</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">getParsedBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$queryText</span> <span class="sy0">=</span> <span class="st_h">'INSERT INTO `events` SET</span>
+<span class="st_h">                `start_date`=?,</span>
+<span class="st_h">                `end_date`=?,</span>
+<span class="st_h">                `text`=?,</span>
+<span class="st_h">                `event_pid`=?, </span>
+<span class="st_h">                `event_length`=?, </span>
+<span class="st_h">                `rec_type`=?'</span><span class="sy0">;</span> 
+    <span class="re0">$queryParams</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+        <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'start_date'</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'end_date'</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'text'</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="co1">// recurring events columns</span>
+        <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'event_pid'</span><span class="br0">&#93;</span> ? <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'event_pid'</span><span class="br0">&#93;</span> <span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">,</span>
+        <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'event_length'</span><span class="br0">&#93;</span> ? <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'event_length'</span><span class="br0">&#93;</span> <span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">,</span> 
+        <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'rec_type'</span><span class="br0">&#93;</span> 
+    <span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="co1">// delete a single occurrence from  recurring series</span>
+<span class="xtra ln-xtra">    <span class="re0">$resultAction</span> <span class="sy0">=</span> <span class="st_h">'inserted'</span><span class="sy0">;</span> </span><span class="xtra ln-xtra">    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'rec_type'</span><span class="br0">&#93;</span> <span class="sy0">===</span> <span class="st0">&quot;none&quot;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span> </span><span class="xtra ln-xtra">        <span class="re0">$resultAction</span> <span class="sy0">=</span> <span class="st_h">'deleted'</span><span class="sy0">;</span> </span><span class="xtra ln-xtra">    <span class="br0">&#125;</span> </span>    <span class="coMULTI">/*</span>
+<span class="coMULTI">&nbsp;   end of recurring events data processing</span>
+<span class="coMULTI">&nbsp;   */</span>
+&nbsp;
+    <span class="re0">$query</span> <span class="sy0">=</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$queryText</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$query</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><span class="re0">$queryParams</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$result</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+        <span class="st_h">'tid'</span> <span class="sy0">=&gt;</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">lastInsertId</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span>
+        <span class="st_h">'action'</span> <span class="sy0">=&gt;</span> <span class="re0">$resultAction</span>
+    <span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">withHeader</span><span class="br0">&#40;</span><span class="st_h">'Content-Type'</span><span class="sy0">,</span> <span class="st_h">'application/json'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The <code>PUT</code> handler requires the same changes in the SQL query.
+Additionally, you need to handle a different special case there: when a recurring series is modified, you need to delete all modified occurrences of that series:</p>
+
+<p class='snippet'> app/routes.php</p>
+
+<pre><code><pre class="php"><span class="re0">$group</span><span class="sy0">-&gt;</span><span class="me1">put</span><span class="br0">&#40;</span><span class="st_h">'/{id}'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>Request <span class="re0">$request</span><span class="sy0">,</span> Response <span class="re0">$response</span><span class="sy0">,</span> <a href="http://www.php.net/array"><span class="kw3">array</span></a> <span class="re0">$args</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="re0">$db</span> <span class="sy0">=</span> <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="st_h">'PDO'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$id</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">getAttribute</span><span class="br0">&#40;</span><span class="st_h">'route'</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">getArgument</span><span class="br0">&#40;</span><span class="st_h">'id'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <a href="http://www.php.net/parse_str"><span class="kw3">parse_str</span></a><span class="br0">&#40;</span><a href="http://www.php.net/file_get_contents"><span class="kw3">file_get_contents</span></a><span class="br0">&#40;</span><span class="st0">&quot;php://input&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="re0">$body</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$queryText</span> <span class="sy0">=</span> <span class="st_h">'UPDATE `events` SET</span>
+<span class="st_h">            `start_date`=?,</span>
+<span class="st_h">            `end_date`=?,</span>
+<span class="st_h">            `text`=?,</span>
+<span class="st_h">            `event_pid`=?,</span>
+<span class="st_h">            `event_length`=?,</span>
+<span class="st_h">            `rec_type`=?</span>
+<span class="st_h">            WHERE `id`=?'</span><span class="sy0">;</span>
+    <span class="re0">$queryParams</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+        <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'start_date'</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'end_date'</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'text'</span><span class="br0">&#93;</span><span class="sy0">,</span>
+&nbsp;
+        <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'event_pid'</span><span class="br0">&#93;</span> ? <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'event_pid'</span><span class="br0">&#93;</span> <span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">,</span>
+        <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'event_length'</span><span class="br0">&#93;</span> ? <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'event_length'</span><span class="br0">&#93;</span> <span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">        <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'rec_type'</span><span class="br0">&#93;</span><span class="sy0">,</span></span>        <span class="re0">$id</span>
+    <span class="br0">&#93;</span><span class="sy0">;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'rec_type'</span><span class="br0">&#93;</span> <span class="sy0">&amp;&amp;</span> <span class="re0">$body</span><span class="br0">&#91;</span><span class="st_h">'rec_type'</span><span class="br0">&#93;</span> <span class="sy0">!=</span> <span class="st_h">'none'</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="co1">//all modified occurrences must be deleted when you update recurring series</span>
+        <span class="co1">//https://docs.dhtmlx.com/scheduler/server_integration.html#recurringevents</span>
+            <span class="re0">$subQueryText</span> <span class="sy0">=</span> <span class="st_h">'DELETE FROM `recurring_events` WHERE `event_pid`=? ;'</span><span class="sy0">;</span>
+            <span class="re0">$subQuery</span> <span class="sy0">=</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$subQueryText</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$subQuery</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><span class="br0">&#91;</span><span class="re0">$id</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="re0">$query</span> <span class="sy0">=</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$queryText</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$query</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><span class="re0">$queryParams</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$result</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+        <span class="st_h">'action'</span> <span class="sy0">=&gt;</span> <span class="st_h">'updated'</span>
+    <span class="br0">&#93;</span><span class="sy0">;</span>
+    <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">withHeader</span><span class="br0">&#40;</span><span class="st_h">'Content-Type'</span><span class="sy0">,</span> <span class="st_h">'application/json'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>And finally, the <code>DELETE</code> action. Here we have to check two special cases:</p>
+
+<ul>
+<li>if the event you are going to delete has a non-empty <code>event_pid</code>, it means a user deletes a modified instance of the recurring series. Instead of deleting such a record from the database, 
+you need to give it <code>rec_type='none'</code>, in order for scheduler to skip this occurrence.</li>
+<li>if a user deletes a whole recurring series, you also need to delete all the modified instances of that series.</li>
+</ul>
+
+<p class='snippet'> app/routes.php</p>
+
+<pre><code><pre class="php"><span class="re0">$group</span><span class="sy0">-&gt;</span><span class="me1">delete</span><span class="br0">&#40;</span><span class="st_h">'/{id}'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>Request <span class="re0">$request</span><span class="sy0">,</span> Response <span class="re0">$response</span><span class="sy0">,</span> <a href="http://www.php.net/array"><span class="kw3">array</span></a> <span class="re0">$args</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="re0">$db</span> <span class="sy0">=</span> <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="st_h">'PDO'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$id</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">getAttribute</span><span class="br0">&#40;</span><span class="st_h">'route'</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">getArgument</span><span class="br0">&#40;</span><span class="st_h">'id'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="co1">// some logic specific to recurring events support</span>
+    <span class="co1">// https://docs.dhtmlx.com/scheduler/server_integration.html#recurringevents</span>
+    <span class="re0">$subQueryText</span> <span class="sy0">=</span> <span class="st_h">'SELECT * FROM `recurring_events` WHERE id=? LIMIT 1;'</span><span class="sy0">;</span>
+    <span class="re0">$subQuery</span> <span class="sy0">=</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$subQueryText</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$subQuery</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><span class="br0">&#91;</span><span class="re0">$id</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$event</span> <span class="sy0">=</span> <span class="re0">$subQuery</span><span class="sy0">-&gt;</span><span class="me1">fetch</span><span class="br0">&#40;</span>PDO<span class="sy0">::</span><span class="me2">FETCH_ASSOC</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="re0">$event</span><span class="br0">&#91;</span><span class="st_h">'event_pid'</span><span class="br0">&#93;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="co1">// deleting a modified occurrence from a recurring series</span>
+        <span class="co1">// If an event with the event_pid value was deleted - it needs updating </span>
+        <span class="co1">// with rec_type==none instead of deleting.</span>
+        <span class="re0">$subQueryText</span><span class="sy0">=</span><span class="st_h">'UPDATE `recurring_events` SET `rec_type`=\'none\' WHERE `id`=?;'</span><span class="sy0">;</span>
+        <span class="re0">$subQuery</span> <span class="sy0">=</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$subQueryText</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="re0">$query</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><span class="re0">$queryParams</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="re0">$result</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+            <span class="st_h">'action'</span> <span class="sy0">=&gt;</span> <span class="st_h">'deleted'</span>
+        <span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">withHeader</span><span class="br0">&#40;</span><span class="st_h">'Content-Type'</span><span class="sy0">,</span> <span class="st_h">'application/json'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+<span class="xtra ln-xtra">    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="re0">$event</span><span class="br0">&#91;</span><span class="st_h">'rec_type'</span><span class="br0">&#93;</span> <span class="sy0">&amp;&amp;</span> <span class="re0">$event</span><span class="br0">&#91;</span><span class="st_h">'rec_type'</span><span class="br0">&#93;</span> <span class="sy0">!=</span> <span class="st_h">'none'</span><span class="br0">&#41;</span> <span class="br0">&#123;</span></span>        <span class="co1">// if a recurring series deleted, delete all modified occurrences of the series</span>
+        <span class="re0">$subQueryText</span> <span class="sy0">=</span> <span class="st_h">'DELETE FROM `recurring_events` WHERE `event_pid`=? ;'</span><span class="sy0">;</span>
+        <span class="re0">$subQuery</span> <span class="sy0">=</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$subQueryText</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="re0">$subQuery</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><span class="br0">&#91;</span><span class="re0">$id</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="coMULTI">/*</span>
+<span class="coMULTI">&nbsp;       end of recurring events data processing</span>
+<span class="coMULTI">&nbsp;   */</span>
+&nbsp;
+    <span class="re0">$queryText</span> <span class="sy0">=</span> <span class="st_h">'DELETE FROM `events` WHERE `id`=? ;'</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$query</span> <span class="sy0">=</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$queryText</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$query</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><span class="br0">&#91;</span><span class="re0">$id</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$result</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+        <span class="st_h">'action'</span> <span class="sy0">=&gt;</span> <span class="st_h">'deleted'</span>
+    <span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">withHeader</span><span class="br0">&#40;</span><span class="st_h">'Content-Type'</span><span class="sy0">,</span> <span class="st_h">'application/json'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Parsing recurring series</h3>
+
+<p>A recurring event is stored in the database as a single record that can be splitted up by Scheduler on the client side.
+If you need to get dates of separate events on the server side, use a helper library for parsing recurring events of dhtmlxScheduler on PHP. 
+<br>
+You will find <a href="https://github.com/DHTMLX/scheduler-helper-php">the ready library on GitHub</a>.</p>
+
+<a name='applicationsecurity'><h2>Application security</h2></a>
+
+<p>dhtmlxScheduler is a client-side component that doesn't have built-in security safeguards for the sake of flexibility. 
+Moreover, the client side only is not able to provide reliable security measures.</p>
+
+<p>It means that the application security is in the responsibility of a backend developer. The most obvious aspects to pay attention to are the following:</p>
+
+<ul>
+<li><p>SQL injections. All operations done in this example use parameterized SQL queries which should be safe in terms of SQL injections.</p></li>
+<li><p>XSS attacks. The client side doesn't sanitize neither user input before sending it to the backend, nor server data before displaying it on a page.
+This example doesn't contain any xss-filtering and you'll have to consider adding it, if you want to use this sample for your app.</p></li>
+</ul>
+
+<p>In order to prevent any possible XSS attacks, you’ll need to make sure you escape all strings that can be inserted into HTML.
+In our case it should be sufficient to escape the “text” properties of the events when they are loaded to the client:</p>
+
+<p class='snippet'> app\routes.php</p>
+
+<pre><code><pre class="php"><span class="re0">$app</span><span class="sy0">-&gt;</span><span class="me1">group</span><span class="br0">&#40;</span><span class="st_h">'/events'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span><span class="re0">$group</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="re0">$group</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="st_h">''</span><span class="sy0">,</span>  <span class="kw2">function</span> <span class="br0">&#40;</span>Request <span class="re0">$request</span><span class="sy0">,</span> Response <span class="re0">$response</span><span class="sy0">,</span> <a href="http://www.php.net/array"><span class="kw3">array</span></a> <span class="re0">$args</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="re0">$db</span> <span class="sy0">=</span> <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="st_h">'PDO'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="re0">$queryText</span> <span class="sy0">=</span> <span class="st_h">'SELECT * FROM `events`'</span><span class="sy0">;</span>
+        <span class="re0">$params</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">getQueryParams</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="re0">$queryParams</span> <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span><a href="http://www.php.net/isset"><span class="kw3">isset</span></a><span class="br0">&#40;</span><span class="re0">$params</span><span class="br0">&#91;</span><span class="st_h">'from'</span><span class="br0">&#93;</span><span class="br0">&#41;</span> <span class="sy0">&amp;&amp;</span> <a href="http://www.php.net/isset"><span class="kw3">isset</span></a><span class="br0">&#40;</span><span class="re0">$params</span><span class="br0">&#91;</span><span class="st_h">'to'</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="re0">$queryText</span> <span class="sy0">.=</span> <span class="st0">&quot; WHERE `end_date`&gt;=? AND `start_date` &lt; ?;&quot;</span><span class="sy0">;</span>
+            <span class="re0">$queryParams</span> <span class="sy0">=</span> <span class="br0">&#91;</span><span class="re0">$params</span><span class="br0">&#91;</span><span class="st_h">'from'</span><span class="br0">&#93;</span><span class="sy0">,</span> <span class="re0">$params</span><span class="br0">&#91;</span><span class="st_h">'to'</span><span class="br0">&#93;</span><span class="br0">&#93;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+        <span class="re0">$query</span> <span class="sy0">=</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$queryText</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="re0">$query</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><span class="re0">$queryParams</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="re0">$result</span> <span class="sy0">=</span> <span class="re0">$query</span><span class="sy0">-&gt;</span><span class="me1">fetchAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="co1">// escaping unsafe text</span>
+        <span class="kw1">foreach</span><span class="br0">&#40;</span><span class="re0">$result</span> <span class="kw1">as</span> <span class="re0">$index</span><span class="sy0">=&gt;</span><span class="re0">$event</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+            <span class="re0">$result</span><span class="br0">&#91;</span><span class="re0">$index</span><span class="br0">&#93;</span><span class="br0">&#91;</span><span class="st0">&quot;text&quot;</span><span class="br0">&#93;</span> <span class="sy0">=</span> <a href="http://www.php.net/htmlentities"><span class="kw3">htmlentities</span></a><span class="br0">&#40;</span><span class="re0">$event</span><span class="br0">&#91;</span><span class="st0">&quot;text&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">withHeader</span><span class="br0">&#40;</span><span class="st_h">'Content-Type'</span><span class="sy0">,</span> <span class="st_h">'application/json'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='errorhandling'><h2>Error handling</h2></a>
+
+<p>If the backend has failed to perform an action, the client side <a class="link-" href="server_integration.html#errorhandling">expects it to return the "error" status of an action</a>.</p>
+
+<p>You can do it by modifying the default Error Handler. Open the <code>src/Application/Handlers/HttpErrorHandler.php</code> file  and replace the following strings:</p>
+
+<p class='snippet'> rc/Application/Handlers/HttpErrorHandler.php</p>
+
+<pre><code><pre class="php"><span class="kw1">if</span> <span class="br0">&#40;</span>
+    <span class="sy0">!</span><span class="br0">&#40;</span><span class="re0">$exception</span> instanceof HttpException<span class="br0">&#41;</span>
+    <span class="sy0">&amp;&amp;</span> <span class="br0">&#40;</span><span class="re0">$exception</span> instanceof Exception <span class="sy0">||</span> <span class="re0">$exception</span> instanceof Throwable<span class="br0">&#41;</span>
+    <span class="sy0">&amp;&amp;</span> <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">displayErrorDetails</span>
+<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="re0">$error</span><span class="sy0">-&gt;</span><span class="me1">setDescription</span><span class="br0">&#40;</span><span class="re0">$exception</span><span class="sy0">-&gt;</span><span class="me1">getMessage</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>with the code:</p>
+
+<pre><code><pre class="php"><span class="kw1">if</span> <span class="br0">&#40;</span>
+    <span class="sy0">!</span><span class="br0">&#40;</span><span class="re0">$exception</span> instanceof HttpException<span class="br0">&#41;</span>
+    <span class="sy0">&amp;&amp;</span> <span class="br0">&#40;</span><span class="re0">$exception</span> instanceof Exception <span class="sy0">||</span> <span class="re0">$exception</span> instanceof Throwable<span class="br0">&#41;</span>
+    <span class="sy0">&amp;&amp;</span> <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">displayErrorDetails</span>
+<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="re0">$encodedPayload</span> <span class="sy0">=</span> <a href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="br0">&#91;</span>
+        <span class="st_h">'action'</span> <span class="sy0">=&gt;</span> <span class="st_h">'error'</span><span class="sy0">,</span> <span class="st_h">'message'</span> <span class="sy0">=&gt;</span> <span class="re0">$exception</span><span class="sy0">-&gt;</span><span class="me1">getMessage</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$response</span> <span class="sy0">=</span> <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">responseFactory</span><span class="sy0">-&gt;</span><span class="me1">createResponse</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$encodedPayload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">withHeader</span><span class="br0">&#40;</span><span class="st_h">'Content-Type'</span><span class="sy0">,</span> <span class="st_h">'application/json'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>On the client side you can capture these errors using the <a href="../api__dataprocessor_onafterupdate_event.html">onAfterUpdate</a> event of the dataProcessor:</p>
+
+<pre><code><pre class="php">dp<span class="sy0">.</span>init<span class="br0">&#40;</span>scheduler<span class="br0">&#41;</span><span class="sy0">;</span>
+dp<span class="sy0">.</span>attachEvent<span class="br0">&#40;</span><span class="st0">&quot;onAfterUpdate&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span> action<span class="sy0">,</span> tid<span class="sy0">,</span> response<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>action <span class="sy0">==</span> <span class="st0">&quot;error&quot;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="co1">// do something here</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='troubleshooting'><h2>Trouble shooting</h2></a>
+
+<p>In case you've completed the above steps to implement Scheduler integration with PHP, but Scheduler doesn't render events on a page, have a look at the <a class="link-" href="troubleshooting.html">Troubleshooting Backend Integration Issues</a> article. It describes 
+the ways of identifying the roots of the problems.</p>
+
+<a name='whatsnext'><h2>What's next</h2></a>
+
+<p>Now you have a fully functioning Scheduler. You can view the full code on <a href="https://github.com/DHTMLX/scheduler-howto-php-slim">GitHub</a>, clone or download it and use it for your projects.</p>
+
+<p>You can also check <a class="link-" href="guides.html">guides on the numerous features of Scheduler</a> or tutorials on <a class="link-" href="howtostart_guides.html">integration of Scheduler with other backend frameworks</a>.</p>
+
+<!-- Content Area End -->
+			<a href='howtostart_php_slim4.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

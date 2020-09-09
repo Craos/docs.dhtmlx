@@ -1,0 +1,280 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Step 5. Create a Scheduler  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="tutorials__connector_yii1.x__step1.html">Step 1.Create the App's File</a></li><li class=""><a href="tutorials__connector_yii1.x__step2.html">Step 2. Create a Data Source</a></li><li class=""><a href="tutorials__connector_yii1.x__step3.html">Step 3. Create a Model</a></li><li class=""><a href="tutorials__connector_yii1.x__step4.html">Step 4. Create a Grid</a></li><li class=" current"><a href="tutorials__connector_yii1.x__step5.html">Step 5. Create a Scheduler</a></li><ul><li class="inner"><a href="tutorials__connector_yii1.x__step5.html#step51configuringtheviewobject">Step 5.1. Configuring the View object</a></li><li class="inner"><a href="tutorials__connector_yii1.x__step5.html#step52configuringthecontrollerobject">Step 5.2. Configuring the Controller object</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="tutorials__index.html">Tutorials</a><a class="n3" href="tutorials__connector_yii__index.html">Using Connector with YII</a><a class="n4" href="tutorials__connector_yii1.x__index.html">Using Connector with YII 1.X</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Step 5. Create a Scheduler</h1>
+
+<p>And now, we're going to add a scheduler on the page. The <a class="link-" href="tutorials__connector_yii__step4.html">technique used for dhtmlxGrid</a> is the same for all other DHTMLX components, 
+including <a href="scheduler/index.html">dhtmlxScheduler</a>.<br>
+We will again divide the step into 2 substeps:</p>
+
+<ul>
+<li><a class="link-" href="tutorials__connector_yii__step4.html#step41configuringtheviewobject">Step 4.1. Configuring the View  object</a></li>
+<li><a class="link-" href="tutorials__connector_yii__step4.html#step42configuringthecontrollerobject">Step 4.2. Configuring the Conroller object</a></li>
+</ul>
+
+<p>If after completing the step, you will run <strong>webhost/cdemo/event/scheduler</strong>, the app will produce the following scheduler  that loads data from server and saves them back:</p>
+
+<p><img style="display:block; margin:20px auto 20px auto;" src="media/tutorials/connector_codeigniter/scheduler_yii.png"/></p>
+
+<a name='step51configuringtheviewobject'><h2>Step 5.1. Configuring the View object</h2></a>
+
+<p>Again, we will use a standard code initializing the component.</p>
+
+<p>For a deeper learning of dhtmlxScheduler initialization, read:</p>
+
+<ul>
+<li><a href="scheduler/how_to_start.html">How to start (step-by-step guide)</a>;</li>
+<li><a href="scheduler/scheduler_markup.html">Scheduler Markup</a></li>
+<li><a href="scheduler/configuration.html">Common Configuration Instructions</a>;</li>
+<li><a href="scheduler/server_integration.html">Server-side Integration</a>.</li>
+</ul>
+
+<div style="font-weight:bold; color:#404040; padding-top: 20px; font-size: 15px;">To configure the View object:</div>
+
+<ol>
+    <li>In the "<i>views</i> " folder create a new file and name it "<i>scheduler.php</i> "</li>
+    <li>Open the "<i>scheduler.php</i> " file and add the following code there:<br><br>
+<p class='snippet'>
+"views/scheduler.php" file
+</p>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">meta</span> <span class="kw3">http-equiv</span><span class="sy0">=</span><span class="st0">&quot;Content-type&quot;</span> <span class="kw3">content</span><span class="sy0">=</span><span class="st0">&quot;text/html; charset=utf-8&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;/dhtmlx/scheduler/dhtmlxscheduler.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;/dhtmlx/scheduler/dhtmlxscheduler_glossy.css&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;scheduler_here&quot;</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_container&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">'width:800px; height:600px;'</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_navline&quot;</span>&gt;</span>
+            <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_prev_button&quot;</span>&gt;</span><span class="sc1">&amp;nbsp;</span><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+            <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_next_button&quot;</span>&gt;</span><span class="sc1">&amp;nbsp;</span><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+            <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_today_button&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+            <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_date&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+            <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;day_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;right:204px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+            <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;week_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;right:140px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+            <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;month_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;right:76px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_header&quot;</span>&gt;</span>
+        <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_data&quot;</span>&gt;</span>
+        <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span> <span class="kw3">charset</span><span class="sy0">=</span><span class="st0">&quot;utf-8&quot;</span>&gt;</span><pre class="js">    scheduler.<span class="me1">config</span>.<span class="me1">multi_day</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+&nbsp;
+    scheduler.<span class="me1">config</span>.<span class="me1">xml_date</span><span class="sy0">=</span><span class="st0">&quot;%Y-%m-%d %H:%i&quot;</span><span class="sy0">;</span>
+    scheduler.<span class="me1">config</span>.<span class="me1">first_hour</span> <span class="sy0">=</span> <span class="nu0">5</span><span class="sy0">;</span>
+    scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2010</span><span class="sy0">,</span><span class="nu0">7</span><span class="sy0">,</span><span class="nu0">5</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="st0">&quot;week&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+     <span class="co1">//refers to the 'data' action that we will create in the next substep</span>
+    <span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;/scheduler/data&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/scheduler/data&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="co1">//refers to the 'data' action as well</span>
+    <span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;/scheduler/data&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    dp.<span class="me1">action_param</span> <span class="sy0">=</span><span class="st0">&quot;dhx_editor_status&quot;</span><span class="sy0">;</span>
+&nbsp;
+    dp.<span class="me1">init</span><span class="br0">&#40;</span>scheduler<span class="br0">&#41;</span><span class="sy0">;</span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span></pre></code></pre>
+
+    </li>
+</ol>
+
+<a name='step52configuringthecontrollerobject'><h2>Step 5.2. Configuring the Controller object</h2></a>
+
+<p>We won't create a separate controller file for the scheduler and just add the required functionality to the grid's controller.</p>
+
+<div style="font-weight:bold; color:#404040; padding-top: 20px; font-size: 15px;">To configure the Controller object:</div>
+
+<ol>
+    <li>Create an action that will load the view displaying the scheduler in the "<i>EventController.php</i> " file:<br><br>
+<p class='snippet'>
+"controllers/EventController.php" file
+ </p>
+
+<pre><code><pre class="php"><span class="kw2">class</span> EventController <span class="kw2">extends</span> Controller <span class="br0">&#123;</span>   
+    <span class="kw2">public</span> <span class="kw2">function</span> actionIndex<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>         
+        <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">render</span><span class="br0">&#40;</span><span class="st_h">'index'</span><span class="br0">&#41;</span><span class="sy0">;</span>              
+    <span class="br0">&#125;</span>   
+    <span class="kw2">public</span> <span class="kw2">function</span> actionGrid<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>                      
+        <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">render</span><span class="br0">&#40;</span><span class="st_h">'grid'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>   
+    <span class="kw2">public</span> <span class="kw2">function</span> actionGrid_data<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>                                            
+        <span class="re0">$grid</span> <span class="sy0">=</span> <span class="kw2">new</span> GridConnector<span class="br0">&#40;</span>Events<span class="sy0">::</span><span class="me2">model</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;PHPYii&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>                      
+        <span class="re0">$grid</span><span class="sy0">-&gt;</span><span class="me1">configure</span><span class="br0">&#40;</span><span class="st0">&quot;-&quot;</span><span class="sy0">,</span> <span class="st0">&quot;event_id&quot;</span><span class="sy0">,</span> <span class="st0">&quot;start_date, end_date, event_name&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>    
+        <span class="re0">$grid</span><span class="sy0">-&gt;</span><span class="me1">render</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>                                                          
+    <span class="br0">&#125;</span> 
+<span class="xtra ln-xtra">    <span class="kw2">public</span> <span class="kw2">function</span> actionScheduler<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>                             </span><span class="xtra ln-xtra">        <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">render</span><span class="br0">&#40;</span><span class="st_h">'scheduler'</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//loads the 'scheduler' view    </span></span><span class="xtra ln-xtra">    <span class="br0">&#125;</span>                                                               </span><span class="br0">&#125;</span></pre></code></pre>
+
+    </li>
+    <li>Create an action that will load data to the scheduler:<br><br>
+<p class='snippet'>
+"controllers/EventController.php" file
+ </p>
+
+<pre><code><pre class="php"><span class="kw2">class</span> EventController <span class="kw2">extends</span> Controller <span class="br0">&#123;</span>   
+    <span class="kw2">public</span> <span class="kw2">function</span> actionIndex<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>         
+        <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">render</span><span class="br0">&#40;</span><span class="st_h">'index'</span><span class="br0">&#41;</span><span class="sy0">;</span>              
+    <span class="br0">&#125;</span>   
+    <span class="kw2">public</span> <span class="kw2">function</span> actionGrid<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>                      
+        <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">render</span><span class="br0">&#40;</span><span class="st_h">'grid'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>   
+    <span class="kw2">public</span> <span class="kw2">function</span> actionGrid_data<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>                                            
+        <span class="re0">$grid</span> <span class="sy0">=</span> <span class="kw2">new</span> GridConnector<span class="br0">&#40;</span>Events<span class="sy0">::</span><span class="me2">model</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;PHPYii&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>                      
+        <span class="re0">$grid</span><span class="sy0">-&gt;</span><span class="me1">configure</span><span class="br0">&#40;</span><span class="st0">&quot;-&quot;</span><span class="sy0">,</span> <span class="st0">&quot;event_id&quot;</span><span class="sy0">,</span> <span class="st0">&quot;start_date, end_date, event_name&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>    
+        <span class="re0">$grid</span><span class="sy0">-&gt;</span><span class="me1">render</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>                                                          
+    <span class="br0">&#125;</span> 
+    <span class="kw2">public</span> <span class="kw2">function</span> actionScheduler<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>                             
+        <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">render</span><span class="br0">&#40;</span><span class="st_h">'scheduler'</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//loads the 'scheduler' view   </span>
+    <span class="br0">&#125;</span> 
+<span class="xtra ln-xtra">    <span class="kw2">public</span> <span class="kw2">function</span> actionScheduler_data<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>                                         </span><span class="xtra ln-xtra">        <span class="re0">$scheduler</span> <span class="sy0">=</span> <span class="kw2">new</span> SchedulerConnector<span class="br0">&#40;</span>Events<span class="sy0">::</span><span class="me2">model</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;PHPYii&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>              </span><span class="xtra ln-xtra">        <span class="re0">$scheduler</span><span class="sy0">-&gt;</span><span class="me1">configure</span><span class="br0">&#40;</span><span class="st0">&quot;-&quot;</span><span class="sy0">,</span><span class="st0">&quot;event_id&quot;</span><span class="sy0">,</span><span class="st0">&quot;start_date,end_date,event_name&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>  </span><span class="xtra ln-xtra">        <span class="re0">$scheduler</span><span class="sy0">-&gt;</span><span class="me1">render</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>                                                        </span><span class="xtra ln-xtra">    <span class="br0">&#125;</span>                                                                                </span><span class="br0">&#125;</span></pre></code></pre>
+
+    </li>
+</ol>
+
+<div style="font-weight:bold; color: rgb(65, 65, 65); padding-top: 10px;" >That's all. We believe you have enjoyed the tutorial and seen   how easy you could integrate Yii with dhtmlxConnector. 
+The final application logic was not the goal of this article, but the interface built here is a good start for creating a fully-functional web application.
+<br><br>
+Follow our other tutorials to become a true DHTMLX expert.</div>
+
+<div id="tutorial_step">
+    <a id="next_step" class="link-" href="tutorials__index.html"></a>
+</div>
+
+<!-- Content Area End -->
+			<a href='tutorials__connector_yii1.x__step5.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

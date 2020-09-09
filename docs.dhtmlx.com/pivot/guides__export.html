@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599137912.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599137912.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Pivot Docs" href="https://docs.dhtmlx.com/pivot/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Exporting Pivot  Pivot Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=27">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="guides__initialization.html">Creating Pivot on a Page</a></li><li class=""><a href="guides__loading_data.html">Loading Data into Pivot</a></li><li class=""><a href="guides__working_with_pivot.html">Working with Pivot</a></li><li class=" current"><a href="guides__export.html">Exporting Pivot</a></li><ul><li class="inner"><a href="guides__export.html#exporttoexcel">Export to Excel</a></li><li class="inner"><a href="guides__export.html#exporttocsv">Export to CSV</a></li></ul><li class=""><a href="guides__configuration.html">Configuring Pivot</a></li><li class=""><a href="guides__customization.html">Customizing Pivot</a></li><li class=""><a href="guides__using_filters.html">Manipulating with Filters</a></li><li class=""><a href="guides__localization.html">Localizing Pivot</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Exporting Pivot</h1>
+
+<p>The content of dhtmlxPivot can be easily exported to the Excel or CSV format.</p>
+
+<a name='exporttoexcel'><h2>Export to Excel</h2></a>
+
+<p>To export Pivot to an Excel file make use of the <strong>xlsx()</strong> method of the Export module. As a parameter, you should pass an <strong>object</strong> with export settings:</p>
+
+<ul>
+<li><strong>name</strong> - (<em>string</em>) the name of the exported Excel file.</li>
+<li><strong>url</strong> - (<em>string</em>) the URL that will execute export.</li>
+</ul>
+
+<pre><code><pre class="js">pivot.<span class="kw2">export</span>.<span class="me1">xlsx</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;pivot_data&quot;</span><span class="sy0">,</span>
+    url<span class="sy0">:</span><span class="st0">&quot;//export.dhtmlx.com/excel&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Returned object</h3>
+
+<p>The <strong>xlsx()</strong> method returns an object with data and export parameters:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;pivot_data&quot;</span><span class="sy0">,</span>
+    columns<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">100</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">100</span> <span class="br0">&#125;</span>
+        <span class="co1">// more objects</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    header<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#91;</span><span class="st0">&quot; &quot;</span><span class="sy0">,</span> <span class="st0">&quot; &quot;</span><span class="sy0">,</span> <span class="st0">&quot;Q1&quot;</span><span class="sy0">,</span> <span class="st0">&quot; &quot;</span><span class="sy0">,</span> <span class="st0">&quot;Q2&quot;</span><span class="sy0">,</span> <span class="st0">&quot; &quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="br0">&#91;</span><span class="st0">&quot; &quot;</span><span class="sy0">,</span> <span class="st0">&quot; &quot;</span><span class="sy0">,</span> <span class="st0">&quot;Oil (Max)&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Oil (Min)&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Oil (Max)&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Oil (Min)&quot;</span><span class="br0">&#93;</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    data<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#91;</span><span class="st0">&quot;Constitutional monarchy&quot;</span><span class="sy0">,</span> <span class="st0">&quot; &quot;</span><span class="sy0">,</span> <span class="st0">&quot;78.276&quot;</span><span class="sy0">,</span> <span class="st0">&quot;2.946&quot;</span><span class="sy0">,</span> <span class="st0">&quot;80.259&quot;</span><span class="sy0">,</span> <span class="st0">&quot;5.564&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="br0">&#91;</span><span class="st0">&quot; &quot;</span><span class="sy0">,</span> <span class="nu0">2012</span><span class="sy0">,</span> <span class="st0">&quot;23.650&quot;</span><span class="sy0">,</span> <span class="st0">&quot;23.650&quot;</span><span class="sy0">,</span> <span class="st0">&quot;80.259&quot;</span><span class="sy0">,</span> <span class="st0">&quot;51.127&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="co1">// more arrays with cells values</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    styles<span class="sy0">:</span><span class="br0">&#91;</span>
+        css<span class="sy0">:</span><span class="br0">&#123;</span>
+            major<span class="sy0">:</span><span class="br0">&#123;</span> color<span class="sy0">:</span> <span class="st0">&quot;#ff00ff&quot;</span><span class="sy0">,</span> background<span class="sy0">:</span> <span class="st0">&quot;#0000AA&quot;</span><span class="sy0">,</span> fontSize<span class="sy0">:</span> <span class="nu0">14</span> <span class="br0">&#125;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        cells<span class="sy0">:</span><span class="br0">&#91;</span>
+            <span class="br0">&#91;</span><span class="nu0">1</span><span class="sy0">,</span><span class="nu0">2</span><span class="sy0">,</span><span class="st0">&quot;major&quot;</span><span class="br0">&#93;</span>
+        <span class="br0">&#93;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Below you will find the details on each of the data parameters:</p>
+
+<ul>
+<li>the <strong>name</strong> of the exported Excel file</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;pivot_data&quot;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li><strong>columns configuration</strong> set as an array of objects. Each object stores the width of a column:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#123;</span>
+    columns<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">100</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">100</span> <span class="br0">&#125;</span>
+        <span class="co1">// more objects</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li><strong>column headers</strong> set as a matrix of header cells, <em>null</em> values are provided for cells in colspans or rowspans:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#123;</span>
+    header<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#91;</span><span class="st0">&quot; &quot;</span><span class="sy0">,</span> <span class="st0">&quot; &quot;</span><span class="sy0">,</span> <span class="st0">&quot;Q1&quot;</span><span class="sy0">,</span> <span class="st0">&quot; &quot;</span><span class="sy0">,</span> <span class="st0">&quot;Q2&quot;</span><span class="sy0">,</span> <span class="st0">&quot; &quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="br0">&#91;</span><span class="st0">&quot; &quot;</span><span class="sy0">,</span> <span class="st0">&quot; &quot;</span><span class="sy0">,</span> <span class="st0">&quot;Oil (Max)&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Oil (Min)&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Oil (Max)&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Oil (Min)&quot;</span><span class="br0">&#93;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li><strong>data</strong> defined as a matrix, where each cell stores a single value - the value of the related cell:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#123;</span>
+    data<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#91;</span><span class="st0">&quot;Constitutional monarchy&quot;</span><span class="sy0">,</span> <span class="st0">&quot; &quot;</span><span class="sy0">,</span> <span class="st0">&quot;78.276&quot;</span><span class="sy0">,</span> <span class="st0">&quot;2.946&quot;</span><span class="sy0">,</span> <span class="st0">&quot;80.259&quot;</span><span class="sy0">,</span> <span class="st0">&quot;5.564&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="br0">&#91;</span><span class="st0">&quot; &quot;</span><span class="sy0">,</span> <span class="nu0">2012</span><span class="sy0">,</span> <span class="st0">&quot;23.650&quot;</span><span class="sy0">,</span> <span class="st0">&quot;23.650&quot;</span><span class="sy0">,</span> <span class="st0">&quot;80.259&quot;</span><span class="sy0">,</span> <span class="st0">&quot;51.127&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="br0">&#91;</span><span class="st0">&quot; &quot;</span><span class="sy0">,</span> <span class="nu0">2013</span><span class="sy0">,</span> <span class="st0">&quot;71.218&quot;</span><span class="sy0">,</span> <span class="st0">&quot;2.946&quot;</span><span class="sy0">,</span> <span class="st0">&quot;71.663&quot;</span><span class="sy0">,</span> <span class="st0">&quot;47.657&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        <span class="co1">// more arrays with cells values</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>the <strong>styles</strong> array that includes:
+
+<ul>
+<li>a set of styles. It is specified as a <strong>css</strong> object. Each style is defined as a hash of <em>key:value</em> pairs, where the <em>key</em> is the name of the style and 
+the <em>value</em> is an object with the style attributes</li>
+<li>a set of cells. It is specified as a <strong>cells</strong> matrix. Each cell is defined as an array that contains three elements: the number of a column, the number of a row,
+and the name of a CSS class applied to this cell (from the <strong>css</strong> object) </li>
+</ul></li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#123;</span>
+    styles<span class="sy0">:</span><span class="br0">&#91;</span>
+        css<span class="sy0">:</span><span class="br0">&#123;</span>
+            major<span class="sy0">:</span><span class="br0">&#123;</span> color<span class="sy0">:</span> <span class="st0">&quot;#ff00ff&quot;</span><span class="sy0">,</span> background<span class="sy0">:</span> <span class="st0">&quot;#0000AA&quot;</span><span class="sy0">,</span> fontSize<span class="sy0">:</span> <span class="nu0">14</span> <span class="br0">&#125;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        cells<span class="sy0">:</span><span class="br0">&#91;</span>
+            <span class="br0">&#91;</span><span class="nu0">1</span><span class="sy0">,</span><span class="nu0">2</span><span class="sy0">,</span><span class="st0">&quot;major&quot;</span><span class="br0">&#93;</span>
+        <span class="br0">&#93;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p><a href='samples/03_usage/04_export.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Export - DHTMLX Pivot</a></p>
+
+<a name='exporttocsv'><h2>Export to CSV</h2></a>
+
+<p>You can export data from Pivot to the CSV format with the <strong>csv()</strong> method of the Export module. The method takes an object with export settings as a parameter:</p>
+
+<ul>
+<li><strong>asFile</strong> - (<em>boolean</em>) defines whether Pivot should be exported to a file, <em>true</em> by default. To export Pivot only as a CSV string, you need to set <em>asFile:false</em>.</li>
+<li><strong>name</strong> - (<em>string</em>) the name of the exported CSV file (if asFile is not set to <em>false</em>).</li>
+<li><strong>flat</strong> - (<em>boolean</em>) defines whether Pivot data should be exported as a flat structure. <em>false</em> by default. </li>
+<li><strong>rowDelimiter</strong> - (<em>string</em>) a newline ("\n") by default. A separator between rows, can be a tab - "\t", or any other value.</li>
+<li><strong>columnDelimiter</strong> - (<em>string</em>) a comma (",") by default. A separator between columns, can be a semicolon - ";", or any other value.</li>
+</ul>
+
+<pre><code><pre class="js">pivot.<span class="kw2">export</span>.<span class="me1">csv</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;pivot_data&quot;</span><span class="sy0">,</span> <span class="co1">// pivot data will be exported to a CSV file named &quot;pivot_data&quot;</span>
+    flat<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span> <span class="co1">// pivot data will be presented as a flat structure</span>
+    rowDelimiter<span class="sy0">:</span> <span class="st0">&quot;<span class="es0">\t</span>&quot;</span><span class="sy0">,</span> <span class="co1">// the tab delimiter will be used to separate rows</span>
+    columnDelimiter<span class="sy0">:</span> <span class="st0">&quot;;&quot;</span> <span class="co1">// the semicolon delimiter will be used to separate columns</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The <strong>csv()</strong> method returns a CSV string with Pivot data.</p>
+
+<p><a href='samples/03_usage/04_export.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Export - DHTMLX Pivot</a></p>
+
+<!-- Content Area End -->
+			<a href='guides__export.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Overview</li>
+	<li><a href='overview.html'>Pivot Overview</a></li>
+	<li><a href='how_to_start.html'>How to Start</a></li>
+	<li><a href='migrating.html'>Migration</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='guides__initialization.html'>Initialization</a></li>
+	<li><a href='guides__loading_data.html'>Data Loading</a></li>
+	<li><a href='guides__working_with_pivot.html#definingdataoperations'>Data Operations</a></li>	
+	
+</ul>
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='guides__configuration.html#definingpivotlookandfeel'>Pivot Layout</a></li>	
+	<li><a href='guides__configuration.html'>Fields and Operations</a></li>
+	<li><a href='guides__localization.html'>Localization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__pivot.html#constructor'>Constructor</a></li>
+	<li><a href='api__refs__pivot_methods.html'>Methods</a></li>
+	<li><a href='api__refs__pivot_props.html'>Properties</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

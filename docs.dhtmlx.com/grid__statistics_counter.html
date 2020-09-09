@@ -1,0 +1,345 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Statistics Counters  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="grid__iterators.html">Iterating Over Data</a></li><li class=""><a href="grid__sorting.html">Sorting Data</a></li><li class=""><a href="grid__filtering.html">Filtering Data</a></li><li class=""><a href="grid__searching.html">Searching in Grid</a></li><li class=""><a href="grid__grouping_rows.html">Grouping Data by Rows</a></li><li class=""><a href="grid__formatting.html">Formatting Number and Date Values</a></li><li class=" current"><a href="grid__statistics_counter.html">Statistics Counters</a></li><ul><li class="inner"><a href="grid__statistics_counter.html#basicbuiltincounters">Basic built-in counters</a></li><li class="inner"><a href="grid__statistics_counter.html#creatingcustomcounters">Creating custom counters</a></li><li class="inner"><a href="grid__statistics_counter.html#settingthecountertotheformatofthecolumn">Setting the counter to the format of the column</a></li><li class="inner"><a href="grid__statistics_counter.html#integratingcountersintohtml">Integrating counters into HTML</a></li></ul><li class=""><a href="grid__validation.html">Validating Data Items</a></li><li class=""><a href="grid__math.html">Using Math Formulas for Data</a></li><li class=""><a href="grid__clipboard.html">Clipboard Operations</a></li><li class=""><a href="grid__undo_redo.html">Providing Undo/Redo Operations</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__managing_data.html">Managing Data in Grid</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Statistics Counters</h1>
+
+<p>The library provides a list of statistics counters that can be used to get some total value in the 
+footer of a column.</p>
+
+<p><a href="">
+    <img src='media/grid/statistics_counters.png'/>
+</a></p>
+
+<a name='basicbuiltincounters'><h2>Basic built-in counters</h2></a>
+
+<p>Statistics counters are set by the method <a class="link-pro" href="api__dhtmlxgrid_attachfooter.html">attachFooter()</a>.</p>
+
+<p class='snippet'>
+General specifying a statistics counter for a column
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Sales,Book Title,Author&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">attachFooter</span><span class="br0">&#40;</span><span class="st0">&quot;#stat_average,,&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">attachFooter</span><span class="br0">&#40;</span><span class="st0">&quot;#stat_max,,&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...</pre></code></pre>
+
+<ul>
+<li>While specifying a counter you should write '#' before the counter's name;</li>
+<li>If you add some text directly before or after the counter, you should place the counter in curly brackets </br>('<strong>text {<i>#stat_count</i> } text</strong>').</li>
+</ul>
+
+<table class="common_table" cellspacing="0" cellpadding="5" border="0">
+    <caption class="caption">
+        <strong>Table 1 </strong>
+        Statistics counters
+    </caption>
+    <thead>
+    <tr>
+        <th align="center" width=100px>
+            <strong>Counter</strong> 
+        </th>
+        <th align="center">
+            <strong >Description</strong>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><b>stat_total</b></td>
+        <td>calculates the sum of all values in a column</td>
+    </tr>
+    <tr>
+        <td align="center"><b>stat_multi_total</b></td>
+        <td>calculates the product of 2 columns totals</td>
+    </tr>
+    <tr>
+        <td><b>stat_max</b></td>
+        <td>presents the maximum value in the column</td>
+    </tr>
+    <tr>
+        <td><b>stat_min</b></td>
+        <td>presents the minimum value in the column</td>
+    </tr>
+    <tr>
+        <td><b>stat_average</b></td>
+        <td>calculates the average of all values in a column</td>
+    </tr>
+    <tr>
+        <td><b>stat_count</b></td>
+        <td>counts the number of rows in the column</td>
+    </tr>
+    </tbody>
+</table>
+
+<p>If you add the counter after loading data, you need to force calculation by the following command:</p>
+
+<p class='snippet'>
+Forced invoking calculation in the grid
+</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">callEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onGridReconstructed&quot;</span><span class="sy0">,</span><span class="br0">&#91;</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='creatingcustomcounters'><h2>Creating custom counters</h2></a>
+
+<p>You can easily create a custom counter using the technique shown below:</p>
+
+<p class='snippet'>
+The simplest custom counter
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+&nbsp;
+<span class="me1">mygrid</span>._in_header_stat_rowcount<span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>tag<span class="sy0">,</span>index<span class="sy0">,</span>data<span class="br0">&#41;</span><span class="br0">&#123;</span><span class="co1">//'stat_rowcount'-counter name</span>
+    <span class="kw2">var</span> calc<span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>                       <span class="co1">// function used for calculations</span>
+        <span class="kw1">return</span> <span class="kw1">this</span>.<span class="me1">getRowsNum</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">this</span>._stat_in_header<span class="br0">&#40;</span>tag<span class="sy0">,</span>calc<span class="sy0">,</span>index<span class="sy0">,</span>data<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// default statistics handler processor</span>
+<span class="br0">&#125;</span>
+&nbsp;
+mygrid.<span class="me1">attachFooter</span><span class="br0">&#40;</span><span class="st0">&quot;#stat_rowcount, , &quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<ol>
+<li>The <strong>_in_header_stat_rowcount()</strong> function takes 3 parameters:
+
+<ul>
+<li><strong><i>tag</i></strong> - the HTML node of the footer;</li>
+<li><strong><i>index</i></strong> - the index of the column (zero-based numbering);</li>
+<li><strong><i>data</i></strong> - an array of 2 elements presenting the text before/after the counter. data[0] contains the text before, data[1] - the text after the counter.</li>
+</ul></li>
+<li>The <strong>calc()</strong> function is called each time the data is changed in the grid and the results in the footer value;</li>
+<li>The <strong>_stat_in_header()</strong> method provides automatic processing of the counter, e.g. invokes the <strong>calc()</strong> function, sets the calculated result, etc.</li>
+<li>The name of a counter must start form <strong>stat_</strong>.</li>
+</ol>
+
+<p class='snippet'>
+Understanding the "data" parameter 
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">mygrid</span>.<span class="me1">attachFooter</span><span class="br0">&#40;</span><span class="st0">&quot; , ,text1{#stat_rowcount}text2&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+&nbsp;
+<span class="co1">// the '_in_header_stat_rowcount()' function takes parameter data=[text1,text2]</span></pre></code></pre>
+
+<h3>Global counters</h3>
+
+<p>To make the counter available for any grid initialized in the app you should specify the counter globally, on the prototype level:</p>
+
+<pre><code><pre class="js">dhtmlXGridObject.<span class="me1">prototype</span>._in_header_stat_rowcount<span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>tag<span class="sy0">,</span>index<span class="sy0">,</span>data<span class="br0">&#41;</span><span class="br0">&#123;</span> 
+    <span class="kw2">var</span> calc<span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>                       <span class="co1">// function used for calculations</span>
+        <span class="kw1">return</span> <span class="kw1">this</span>.<span class="me1">getRowsNum</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">this</span>._stat_in_header<span class="br0">&#40;</span>tag<span class="sy0">,</span>calc<span class="sy0">,</span>index<span class="sy0">,</span>data<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// default statistics handler processor</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='settingthecountertotheformatofthecolumn'><h2>Setting the counter to the format of the column</h2></a>
+
+<p>To set the same numeric format for the counter as the one set for the related column, you may use the inner grid function <strong>_aplNF(</strong><i>value,column_index</i><strong>)</strong>. 
+In this case, the counter will take the format set by the <a class="link-pro" href="api__dhtmlxgrid_setnumberformat.html">setNumberFormat()</a> method.</p>
+
+<p><a href="">
+    <img src='media/grid/counters_column_format.png'/>
+</a></p>
+
+<p class='snippet'>
+Setting the counter to the format of the column
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Sales, Book title, Author,Price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setNumberFormat</span><span class="br0">&#40;</span><span class="st0">&quot;0,000.00&quot;</span><span class="sy0">,</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">// sets the format for the 'Sales' column</span>
+&nbsp;
+mygrid._in_header_stat_sum<span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>tag<span class="sy0">,</span>index<span class="sy0">,</span>data<span class="br0">&#41;</span><span class="br0">&#123;</span>       
+    <span class="kw2">var</span> calck<span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>                              
+        <span class="kw2">var</span> sum<span class="sy0">=</span><span class="nu0">0</span><span class="sy0">;</span>                                     
+        <span class="kw1">this</span>.<span class="me1">forEachRow</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="br0">&#123;</span>                   
+            sum<span class="sy0">+=</span><span class="kw1">this</span>.<span class="me1">cellById</span><span class="br0">&#40;</span>id<span class="sy0">,</span>index<span class="br0">&#41;</span>.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">*</span><span class="nu0">1</span><span class="sy0">;</span>     
+        <span class="br0">&#125;</span><span class="br0">&#41;</span>
+    <span class="kw1">return</span> <span class="kw1">this</span>._aplNF<span class="br0">&#40;</span>sum<span class="sy0">,</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">this</span>._stat_in_header<span class="br0">&#40;</span>tag<span class="sy0">,</span>calck<span class="sy0">,</span>index<span class="sy0">,</span>data<span class="br0">&#41;</span><span class="sy0">;</span>            
+<span class="br0">&#125;</span>
+mygrid.<span class="me1">attachFooter</span><span class="br0">&#40;</span><span class="st0">&quot;#stat_sum, , ,&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">mygrid</span>.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='integratingcountersintohtml'><h2>Integrating counters into HTML</h2></a>
+
+<p>You have the possibility to integrate the value return by any statictics counter into HTML.</p>
+
+<p><a href="">
+    <img src='media/grid/counter_and_html.png'/>
+</a></p>
+
+<p class='snippet'>
+Integrating a counter into HTML
+</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>span id<span class="sy0">=</span><span class="st0">&quot;average_sale&quot;</span><span class="sy0">&gt;&lt;/</span>span<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>div 
+    id<span class="sy0">=</span><span class="st0">&quot;gridbox&quot;</span> 
+    style<span class="sy0">=</span><span class="st0">&quot;margin-top:10px; width:379px;height:270px;background-color:white;&quot;</span>
+<span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+&nbsp;
+<span class="sy0">&lt;</span>script<span class="sy0">&gt;</span>
+    mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    ...
+    <span class="me1">mygrid</span>._in_header_stat_average<span class="br0">&#40;</span>document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">'total_sales'</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="nu0">3</span><span class="sy0">,</span>
+    <span class="br0">&#91;</span><span class="st0">&quot;&lt;b&gt;Average price per store: &lt;/b&gt;&quot;</span><span class="sy0">,</span><span class="st0">&quot;$&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="sy0">&lt;/</span>script<span class="sy0">&gt;</span></pre></code></pre>
+
+<p><strong>mygrid._in_header_<i>[name of the counter]</i></strong>  takes the following parameters:</p>
+
+<ol>
+<li>The id of an HTML element;</li>
+<li>The index of the column which will be used in calculation;</li>
+<li>An array of 2 elements presenting the text before/after the counter. If you don't add any text, specify an empty array - ["",""]</li>
+</ol>
+
+<p>The function can be called both before and after grid initialization.</p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/08_filtering/03_pro_filter_num.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Numeric filtering and master checkbox</a></p>
+
+<!-- Content Area End -->
+			<a href='grid__statistics_counter.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

@@ -1,0 +1,627 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Inline Editing in Grid  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__specifying_columns.html">Specifying Columns</a></li><li class=""><a href="desktop__tree_column.html">Configuring the Tree Column</a></li><li class=""><a href="desktop__reordering_tasks.html">Reordering Tasks</a></li><li class=""><a href="desktop__sorting.html">Sorting Columns</a></li><li class="toc-pro"><a href="desktop__grouping.html">Grouping Tasks</a></li><li class=""><a href="desktop__filtering.html">Filtering Tasks</a></li><li class=" current"><a href="desktop__inline_editing.html">Inline Editing in Grid</a></li><ul><li class="inner"><a href="desktop__inline_editing.html#typesofeditors">Types of editors</a></li><li class="inner"><a href="desktop__inline_editing.html#custominlineeditor">Custom inline editor</a></li><li class="inner"><a href="desktop__inline_editing.html#inlineeditingmodes">Inline editing modes</a></li><li class="inner"><a href="desktop__inline_editing.html#validationofinputvalues">Validation of input values</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__table.html">Configuring Grid Area</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Inline Editing in Grid</h1>
+
+<p>dhtmlxGantt provides two options for editing the content:</p>
+
+<ul>
+<li>with the help of the <a class="link-" href="desktop__default_edit_form.html">Lightbox</a> edit form</li>
+<li>by using inline editors in the Grid area</li>
+</ul>
+
+<p>Inline editing lets you make any changes right through the grid: create and update tasks, set connections between them, define the start and end dates, or modify the duration - all via the built-in editors.</p>
+
+<p><img src="media/desktop/inline_grid_editing.png" alt="Inline grid editing" /></p>
+
+<p>To enable inline editing, you need to:</p>
+
+<ul>
+<li>specify the list of editors configurations and use the <strong>map_to</strong> property of an editor object to map the necessary editor to a grid column</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> textEditor <span class="sy0">=</span> <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;text&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;text&quot;</span><span class="br0">&#125;</span><span class="sy0">;</span>
+<span class="kw2">var</span> dateEditor <span class="sy0">=</span> <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;date&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> min<span class="sy0">:</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2018</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">,</span> 
+    max<span class="sy0">:</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="br0">&#125;</span><span class="sy0">;</span>
+<span class="kw2">var</span> durationEditor <span class="sy0">=</span> <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;number&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> min<span class="sy0">:</span><span class="nu0">0</span><span class="sy0">,</span> max<span class="sy0">:</span> <span class="nu0">100</span><span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>in the column configuration use the <strong>editor</strong> property to define the editor that should be used in the column</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">columns</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;text&quot;</span><span class="sy0">,</span> tree<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="st0">'*'</span><span class="sy0">,</span> resize<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> editor<span class="sy0">:</span> textEditor<span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span><span class="sy0">,</span> resize<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> editor<span class="sy0">:</span> dateEditor<span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span><span class="sy0">,</span> editor<span class="sy0">:</span> durationEditor<span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;add&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">44</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/07_grid/11_inline_edit_basic.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Inline editing</a></p>
+
+<div class='note'><p><p>Read details about the <em>inlineEditors</em> object API in the <a class="link-" href="desktop__inline_editors_ext.html">Inline Editors Extension</a> article.</p>
+</p></div>
+
+<p>You can take a look at the video guide that shows how to implement inline editing in the grid.</p>
+
+<iframe width="704" height="400" src="https://www.youtube.com/embed/0rIPrC0GtME" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<a name='typesofeditors'><h2>Types of editors</h2></a>
+
+<p>The inline editors are stored in the <a class="link-" href="api__gantt_editor_types_config.html">editor_types</a> configuration object.</p>
+
+<p>There are several predefined inline editors:</p>
+
+<ul>
+<li><strong>text</strong> editor - for editing text columns, e.g. task name</li>
+<li><strong>number</strong> editor - for editing number columns, e.g. task duration, order, etc.</li>
+<li><strong>date</strong> editor - for editing date columns, e.g. start and end dates of the task</li>
+<li><strong>select</strong> editor - for choosing an option from a list</li>
+<li><strong>predecessor</strong> editor - for setting task-predecessor for the currently edited task. This editor gets the <a class="link-" href="desktop__specifying_columns.html#wbscode">WBS codes of tasks</a> to set connection with the predecessor task.</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> editors <span class="sy0">=</span> <span class="br0">&#123;</span>
+    text<span class="sy0">:</span> <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;text&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;text&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    start_date<span class="sy0">:</span> <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;date&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> min<span class="sy0">:</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2018</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">,</span> 
+        max<span class="sy0">:</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    end_date<span class="sy0">:</span> <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;date&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;end_date&quot;</span><span class="sy0">,</span> min<span class="sy0">:</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2018</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">,</span> 
+        max<span class="sy0">:</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    duration<span class="sy0">:</span> <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;number&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> min<span class="sy0">:</span><span class="nu0">0</span><span class="sy0">,</span> max<span class="sy0">:</span> <span class="nu0">100</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    priority<span class="sy0">:</span> <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;select&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;priority&quot;</span><span class="sy0">,</span> options<span class="sy0">:</span>gantt.<span class="me1">serverList</span><span class="br0">&#40;</span><span class="st0">&quot;priority&quot;</span><span class="br0">&#41;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    predecessors<span class="sy0">:</span> <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;predecessor&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;auto&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3 id="dateslimits">Dates limits in date editor</h3>
+
+<p>Starting from v6.3, there are no default limits to minimal and maximal input values of <strong>date</strong> inline editors.</p>
+
+<p>In case you want the dates visible on the time scale to limit the minimal and maximal values of the <strong>date</strong> inline editor (unless custom min/max values are provided), you can specify dynamic <strong>min/max</strong> values:</p>
+
+<pre><code><pre class="js"><span class="kw2">const</span> dateEditor <span class="sy0">=</span> <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;date&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> 
+    min<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>taskId<span class="br0">&#41;</span><span class="br0">&#123;</span>
+      <span class="kw1">return</span> gantt.<span class="me1">getState</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">min_date</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    max<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span> taskId <span class="br0">&#41;</span><span class="br0">&#123;</span>
+      <span class="kw1">return</span> gantt.<span class="me1">getState</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">max_date</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3 id="linkformatter">Formatting values of the Predecessor editor</h3>
+
+<div class='pronote'><p><p>This functionality is available in the PRO edition only.</p>
+</p></div>
+
+<p>Starting from v6.3 Gantt allows specifying types of links as well as lag/lead values directly from inline editor.</p>
+
+<p>In order to do so, you need to use the <a class="link-pro" href="desktop__formatters_ext.html#linkformatter">Link Formatter</a> module and provide an instance of the <em>LinksFormatter</em> into the <strong>predecessor</strong> editor:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> formatter <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">formatters</span>.<span class="me1">durationFormatter</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    enter<span class="sy0">:</span> <span class="st0">&quot;day&quot;</span><span class="sy0">,</span> 
+    store<span class="sy0">:</span> <span class="st0">&quot;day&quot;</span><span class="sy0">,</span> 
+    format<span class="sy0">:</span> <span class="st0">&quot;auto&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> linksFormatter <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">formatters</span>.<span class="me1">linkFormatter</span><span class="br0">&#40;</span><span class="br0">&#123;</span>durationFormatter<span class="sy0">:</span> formatter<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> editors <span class="sy0">=</span> <span class="br0">&#123;</span>
+    text<span class="sy0">:</span> <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;text&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;text&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    start_date<span class="sy0">:</span> <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;date&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> 
+                min<span class="sy0">:</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2018</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">,</span> max<span class="sy0">:</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    end_date<span class="sy0">:</span> <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;date&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;end_date&quot;</span><span class="sy0">,</span> 
+                min<span class="sy0">:</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2018</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">,</span> max<span class="sy0">:</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    duration<span class="sy0">:</span> <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> 
+                min<span class="sy0">:</span><span class="nu0">0</span><span class="sy0">,</span> max<span class="sy0">:</span> <span class="nu0">100</span><span class="sy0">,</span> formatter<span class="sy0">:</span> formatter<span class="br0">&#125;</span><span class="sy0">,</span>
+    priority<span class="sy0">:</span> <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;select&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;priority&quot;</span><span class="sy0">,</span> 
+                options<span class="sy0">:</span>gantt.<span class="me1">serverList</span><span class="br0">&#40;</span><span class="st0">&quot;priority&quot;</span><span class="br0">&#41;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    predecessors<span class="sy0">:</span> <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;predecessor&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;auto&quot;</span><span class="sy0">,</span> formatter<span class="sy0">:</span> linksFormatter<span class="br0">&#125;</span> </span><span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">config</span>.<span class="me1">columns</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;wbs&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;#&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">60</span><span class="sy0">,</span> align<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span><span class="sy0">,</span> template<span class="sy0">:</span> gantt.<span class="me1">getWBSCode</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;text&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Name&quot;</span><span class="sy0">,</span> tree<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">200</span><span class="sy0">,</span> editor<span class="sy0">:</span> editors.<span class="me1">text</span><span class="sy0">,</span> resize<span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Start&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="nu0">80</span><span class="sy0">,</span> align<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span><span class="sy0">,</span> 
+      editor<span class="sy0">:</span> editors.<span class="me1">start_date</span><span class="sy0">,</span> resize<span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;predecessors&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Predecessors&quot;</span><span class="sy0">,</span>width<span class="sy0">:</span><span class="nu0">80</span><span class="sy0">,</span> align<span class="sy0">:</span> <span class="st0">&quot;left&quot;</span><span class="sy0">,</span> 
+      editor<span class="sy0">:</span> editors.<span class="me1">predecessors</span><span class="sy0">,</span> resize<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> template<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+            <span class="kw2">var</span> links <span class="sy0">=</span> task.$target<span class="sy0">;</span>
+            <span class="kw2">var</span> labels <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">;</span>
+            <span class="kw1">for</span><span class="br0">&#40;</span><span class="kw2">var</span> i <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span> i <span class="sy0">&lt;</span> links.<span class="me1">length</span><span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+                <span class="kw2">var</span> link <span class="sy0">=</span> gantt.<span class="me1">getLink</span><span class="br0">&#40;</span>links<span class="br0">&#91;</span>i<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">                labels.<span class="me1">push</span><span class="br0">&#40;</span>linksFormatter.<span class="me1">format</span><span class="br0">&#40;</span>link<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>            <span class="br0">&#125;</span>
+            <span class="kw1">return</span> labels.<span class="me1">join</span><span class="br0">&#40;</span><span class="st0">&quot;, &quot;</span><span class="br0">&#41;</span>
+        <span class="br0">&#125;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;add&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/07_grid/12_inline_edit_key_nav.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Inline editing - keyboard navigation mode</a></p>
+
+<a name='custominlineeditor'><h2>Custom inline editor</h2></a>
+
+<p>You can also specify a custom inline editor. For this, you need to create a new editor object in the following way:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">editor_types</span>.<span class="me1">custom_editor</span> <span class="sy0">=</span> <span class="br0">&#123;</span>
+  show<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>id<span class="sy0">,</span> column<span class="sy0">,</span> config<span class="sy0">,</span> placeholder<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="co1">// called when input is displayed, put html markup of the editor into placeholder </span>
+    <span class="co1">// and initialize your editor if needed:</span>
+    <span class="kw2">var</span> html <span class="sy0">=</span> <span class="st0">&quot;&lt;div&gt;&lt;input type='text' name='&quot;</span> <span class="sy0">+</span> column.<span class="kw3">name</span> <span class="sy0">+</span> <span class="st0">&quot;'&gt;&lt;/div&gt;&quot;</span><span class="sy0">;</span>
+    placeholder.<span class="me1">innerHTML</span> <span class="sy0">=</span> html<span class="sy0">;</span>
+  <span class="br0">&#125;</span><span class="sy0">,</span>
+  hide<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="co1">// called when input is hidden </span>
+    <span class="co1">// destroy any complex editors or detach event listeners from here</span>
+  <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+  set_value<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>value<span class="sy0">,</span> id<span class="sy0">,</span> column<span class="sy0">,</span> node<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="co1">// set input value</span>
+  <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+  get_value<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>id<span class="sy0">,</span> column<span class="sy0">,</span> node<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="co1">// return input value</span>
+  <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+  is_changed<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>value<span class="sy0">,</span> id<span class="sy0">,</span> column<span class="sy0">,</span> node<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="co1">// called before save/close. Return true if new value differs from the original one</span>
+    <span class="co1">// returning true will trigger saving changes, returning false will skip saving </span>
+  <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+  is_valid<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>value<span class="sy0">,</span> id<span class="sy0">,</span> column<span class="sy0">,</span> node<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="co1">// validate, changes will be discarded if the method returns false</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">/</span><span class="kw2">false</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+  save<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>id<span class="sy0">,</span> column<span class="sy0">,</span> node<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+     <span class="co1">// only for inputs with map_to:auto. complex save behavior goes here</span>
+  <span class="br0">&#125;</span><span class="sy0">,</span>
+  <span class="kw3">focus</span><span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>node<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>There are some key points to remember in order to implement a reusable editor:</p>
+
+<ul>
+<li>As a rule, <strong><code>get_value</code></strong> does not modify the task object. The method only returns the current value of the inline editor. If the value is deemed valid, Gantt will automatically update the related task with this value.</li>
+<li>Use the <strong><code>map_to</code></strong> configuration option of the editor to specify which property of the task should be updated by the editor, but don't hardcode it into the editor. This way allows you to reuse the editor for different columns.</li>
+<li>Unless you use a complex javascript widget, you don't need to specify any logic in the <strong><code>hide</code></strong> function, so you can leave it empty. Otherwise, use this method to call a destructor or to clean up any of event handlers you've attached when displaying the editor.</li>
+<li>Make sure to implement the <strong><code>is_changed</code></strong> and <strong><code>is_valid</code></strong> functions: 
+
+<ul>
+<li>If <strong><code>is_changed</code></strong> always returns <em>true</em>, the editor will trigger the update (which can be sent to the backend) each time the editor is closed. This method should return <em>true</em> only if the input value was actually changed in comparison to the initial state; </li>
+<li><strong><code>is_valid</code></strong> is used for preventing input of invalid values.</li>
+</ul></li>
+<li>If you're implementing an editor that makes something more complex than writing a value to a property of a task - a good example is the built-in <a class="link-" href="desktop__inline_editing.html#typesofeditors">predecessor editor</a> - you need to implement a required logic in the <strong><code>save</code></strong> function and specify the <strong><code>map_to</code></strong> option of the input to <em>"auto"</em>. In this case, the gantt won't modify the task object, but instead will call the <strong><code>save</code></strong> function when it's time to apply the changes made to the editor.</li>
+</ul>
+
+<p>Here is an example of the implementation of a simple number input.
+Note, that the <strong><code>hide</code></strong> method can be an empty function, and the <strong><code>save</code></strong> method can be skipped completely.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> getInput <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>node<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> node.<span class="me1">querySelector</span><span class="br0">&#40;</span><span class="st0">&quot;input&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">config</span>.<span class="me1">editor_types</span>.<span class="me1">simpleNumber</span> <span class="sy0">=</span> <span class="br0">&#123;</span>
+    show<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>id<span class="sy0">,</span> column<span class="sy0">,</span> config<span class="sy0">,</span> placeholder<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw2">var</span> min <span class="sy0">=</span> config.<span class="me1">min</span> <span class="sy0">||</span> <span class="nu0">0</span><span class="sy0">,</span>
+        max <span class="sy0">=</span> config.<span class="me1">max</span> <span class="sy0">||</span> <span class="nu0">100</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw2">var</span> html <span class="sy0">=</span> <span class="st0">&quot;&lt;div&gt;&lt;input type='number' min='&quot;</span> <span class="sy0">+</span> min <span class="sy0">+</span> 
+                      <span class="st0">&quot;' max='&quot;</span> <span class="sy0">+</span> max <span class="sy0">+</span> <span class="st0">&quot;' name='&quot;</span> <span class="sy0">+</span> column.<span class="kw3">name</span> <span class="sy0">+</span> <span class="st0">&quot;'&gt;&lt;/div&gt;&quot;</span><span class="sy0">;</span>
+        placeholder.<span class="me1">innerHTML</span> <span class="sy0">=</span> html<span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    hide<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+      <span class="co1">// can be empty since we don't have anything to clean up after the editor </span>
+          <span class="co1">// is detached</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    set_value<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>value<span class="sy0">,</span> id<span class="sy0">,</span> column<span class="sy0">,</span> node<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        getInput<span class="br0">&#40;</span>node<span class="br0">&#41;</span>.<span class="me1">value</span> <span class="sy0">=</span> value<span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    get_value<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>id<span class="sy0">,</span> column<span class="sy0">,</span> node<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">return</span> getInput<span class="br0">&#40;</span>node<span class="br0">&#41;</span>.<span class="me1">value</span> <span class="sy0">||</span> <span class="nu0">0</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    is_changed<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>value<span class="sy0">,</span> id<span class="sy0">,</span> column<span class="sy0">,</span> node<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw2">var</span> currentValue <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">get_value</span><span class="br0">&#40;</span>id<span class="sy0">,</span> column<span class="sy0">,</span> node<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">return</span> Number<span class="br0">&#40;</span>value<span class="br0">&#41;</span> <span class="sy0">!==</span> Number<span class="br0">&#40;</span>currentValue<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    is_valid<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>value<span class="sy0">,</span> id<span class="sy0">,</span> column<span class="sy0">,</span> node<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">return</span> <span class="sy0">!</span>isNaN<span class="br0">&#40;</span>parseInt<span class="br0">&#40;</span>value<span class="sy0">,</span> <span class="nu0">10</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="kw3">focus</span><span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>node<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw2">var</span> input <span class="sy0">=</span> getInput<span class="br0">&#40;</span>node<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span>input<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="kw1">return</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>input.<span class="kw3">focus</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            input.<span class="kw3">focus</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="kw1">if</span> <span class="br0">&#40;</span>input.<span class="me1">select</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+          input.<span class="me1">select</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>After that, you can use the editor in the same way as built-in editors:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> numberEditor <span class="sy0">=</span> <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;simpleNumber&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;quantity&quot;</span><span class="sy0">,</span> min<span class="sy0">:</span><span class="nu0">0</span><span class="sy0">,</span> max<span class="sy0">:</span> <span class="nu0">50</span><span class="br0">&#125;</span><span class="sy0">;</span> 
+&nbsp;
+gantt.<span class="me1">config</span>.<span class="me1">columns</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    ...
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;quantity&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Quantity&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">80</span><span class="sy0">,</span> editor<span class="sy0">:</span> numberEditor<span class="sy0">,</span> 
+        resize<span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    ...
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Note, that we don't need to implement the <strong><code>hide</code></strong> method in this case, since Gantt detaches the DOM element of the editor automatically and there is nothing else that we need to clean up after the editor closes.</p>
+
+<h3>editor.hide</h3>
+
+<p>You may need to add a <strong><code>hide</code></strong> logic if you use a complex widget inside an inline editor.</p>
+
+<p>For example, let's consider the following implementation of the DatePicker input using the jQuery one.
+In this case we need to destroy the date picker widget after it's detached from DOM.</p>
+
+<p>Prerequisites:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>link rel<span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> href<span class="sy0">=</span><span class="st0">&quot;//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css&quot;</span><span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>script src<span class="sy0">=</span><span class="st0">&quot;https://code.jquery.com/jquery-1.12.4.js&quot;</span><span class="sy0">&gt;&lt;/</span>script<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>script src<span class="sy0">=</span><span class="st0">&quot;https://code.jquery.com/ui/1.12.1/jquery-ui.js&quot;</span><span class="sy0">&gt;&lt;/</span>script<span class="sy0">&gt;</span></pre></code></pre>
+
+<p>Editor:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">editor_types</span>.<span class="me1">custom_datepicker_editor</span> <span class="sy0">=</span> <span class="br0">&#123;</span>
+    show<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>id<span class="sy0">,</span> column<span class="sy0">,</span> config<span class="sy0">,</span> placeholder<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        placeholder.<span class="me1">innerHTML</span> <span class="sy0">=</span> <span class="st0">&quot;&lt;div&gt;&lt;input type='text' id='datepicker' name='&quot;</span> <span class="sy0">+</span> 
+                                  column.<span class="kw3">name</span> <span class="sy0">+</span> <span class="st0">&quot;'&gt;&lt;/div&gt;&quot;</span><span class="sy0">;</span>
+        $<span class="br0">&#40;</span><span class="st0">&quot;#datepicker&quot;</span><span class="br0">&#41;</span>.<span class="me1">datepicker</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+            dateFormat<span class="sy0">:</span> <span class="st0">&quot;yy-mm-dd&quot;</span><span class="sy0">,</span>
+            onSelect<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>dateStr<span class="br0">&#41;</span><span class="br0">&#123;</span>
+                gantt.<span class="me1">ext</span>.<span class="me1">inlineEditors</span>.<span class="me1">save</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+            <span class="br0">&#125;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    hide<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>node<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        $<span class="br0">&#40;</span><span class="st0">&quot;#datepicker&quot;</span><span class="br0">&#41;</span>.<span class="me1">datepicker</span><span class="br0">&#40;</span> <span class="st0">&quot;destroy&quot;</span> <span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+    set_value<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>value<span class="sy0">,</span> id<span class="sy0">,</span> column<span class="sy0">,</span> node<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        $<span class="br0">&#40;</span><span class="st0">&quot;#datepicker&quot;</span><span class="br0">&#41;</span>.<span class="me1">datepicker</span><span class="br0">&#40;</span><span class="st0">&quot;setDate&quot;</span><span class="sy0">,</span> value<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+    get_value<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>id<span class="sy0">,</span> column<span class="sy0">,</span> node<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">return</span> $<span class="br0">&#40;</span><span class="st0">&quot;#datepicker&quot;</span><span class="br0">&#41;</span>.<span class="me1">datepicker</span><span class="br0">&#40;</span> <span class="st0">&quot;getDate&quot;</span> <span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+    is_changed<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>value<span class="sy0">,</span> id<span class="sy0">,</span> column<span class="sy0">,</span> node<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">return</span> <span class="br0">&#40;</span><span class="sy0">+</span>$<span class="br0">&#40;</span><span class="st0">&quot;#datepicker&quot;</span><span class="br0">&#41;</span>.<span class="me1">datepicker</span><span class="br0">&#40;</span> <span class="st0">&quot;getDate&quot;</span> <span class="br0">&#41;</span> <span class="sy0">!==</span> <span class="sy0">+</span>value<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    is_valid<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>value<span class="sy0">,</span> id<span class="sy0">,</span> column<span class="sy0">,</span> node<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">return</span> <span class="sy0">!</span><span class="br0">&#40;</span>isNaN<span class="br0">&#40;</span><span class="sy0">+</span>$<span class="br0">&#40;</span><span class="st0">&quot;#datepicker&quot;</span><span class="br0">&#41;</span>.<span class="me1">datepicker</span><span class="br0">&#40;</span> <span class="st0">&quot;getDate&quot;</span> <span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    save<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>id<span class="sy0">,</span> column<span class="sy0">,</span> node<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="kw3">focus</span><span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>node<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+let dateEditor <span class="sy0">=</span> <span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;custom_datepicker_editor&quot;</span><span class="sy0">,</span>
+    map_to<span class="sy0">:</span> <span class="st0">&quot;start_date&quot;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">config</span>.<span class="me1">columns</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;text&quot;</span><span class="sy0">,</span> tree<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="st0">'*'</span><span class="sy0">,</span> resize<span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span><span class="sy0">,</span> resize<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> editor<span class="sy0">:</span> dateEditor<span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;add&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">44</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://plnkr.co/edit/U3vHJvleRBJ1Js0N?preview' target='blank'><span class='sample'>Related sample: </span>&nbsp;Using jQuery Datepicker in the editor</a></p>
+
+<h3>editor.save</h3>
+
+<p>You need to make use of the <strong><code>save</code></strong> function only when your editor needs to modify multiple properties of the task at once, or if you want it to modify objects different from tasks.</p>
+
+<p>In this case, you can keep a proper implementation of <strong><code>get_value</code></strong> for the sake of built-in validation, but the gantt itself won't try to apply the value of the editor to the task and will call the <strong><code>save</code></strong> function instead.</p>
+
+<p>After <strong><code>save</code></strong> is called, you need to interpret the input values and apply changes to the gantt with a custom code.
+Gantt will call the <a class="link-" href="desktop__inline_editors_ext.html#events">onSave</a> event after the <strong><code>save</code></strong> method is completed, but won't call <a class="link-" href="api__gantt_updatetask.html">gantt.updateTask</a> for the modified row.</p>
+
+<p><strong>Note!</strong> The <strong><code>save</code></strong> method will be called only if you specify <strong><code>map_to:"auto"</code></strong> in the configuration of the editor:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> editors <span class="sy0">=</span> <span class="br0">&#123;</span>
+    ...
+    <span class="me1">predecessors</span><span class="sy0">:</span> <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;predecessor&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;auto&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>A good example of such a control is a built-in predecessor editor. You can find its simplified implementation in the related sample:</p>
+
+<p><a href='https://snippet.dhtmlx.com/5/bf98a4228' target='blank'><span class='sample'>Related sample: </span>&nbsp;Built-in predecessor editor</a></p>
+
+<a name='inlineeditingmodes'><h2>Inline editing modes</h2></a>
+
+<h3>Basic inline editing</h3>
+
+<p>This mode presupposes the use of a mouse pointer for setting focus on cells and hotkeys that allow navigating the cells:</p>
+
+<ul>
+<li>Tab - to move focus to the next editor</li>
+<li>Shift+Tab - to return to the previous editor.</li>
+</ul>
+
+<p><a href='samples/07_grid/11_inline_edit_basic.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Inline editing</a></p>
+
+<h3>Keyboard navigation mode</h3>
+
+<p>In this mode keyboard is used both for navigating and editing grid cells with the help of the predefined keys or keys combinations.</p>
+
+<ul>
+<li>Enter - to open/close the editor</li>
+<li>Space bar - to open the editor</li>
+<li>Arrow keys - to navigate grid cells</li>
+<li>Shift+Right Arrow Key - to move a task right, i.e. to make a nested task, while the above task becomes a project</li>
+<li>Shift+Left Arrow Key - to turn a project into a simple task</li>
+<li>Shift+Up Arrow Key - to collapse a branch with tasks</li>
+<li>Shift+Down Arrow Key - to expand a branch with tasks</li>
+</ul>
+
+<p>To enable keyboard navigation for editing, you need to:</p>
+
+<ul>
+<li>enable the <strong>keyboard_navigation</strong> plugin using the <a class="link-" href="api__gantt_plugins.html">gantt.plugins</a> method.</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">plugins</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    keyboard_navigation<span class="sy0">:</span> <span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>enable <a class="link-" href="desktop__keyboard_navigation.html">keyboard navigation</a> and navigation by cells:</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">keyboard_navigation</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+gantt.<span class="me1">config</span>.<span class="me1">keyboard_navigation_cells</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Additionally, you can activate a <a class="link-" href="api__gantt_placeholder_task_config.html">placeholder row</a>, an empty row displayed at the end of the list of tasks. Your end user can edit it to add new tasks into gantt.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">placeholder_task</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></pre></code></pre>
+
+<p>If needed, you can also add <a class="link-pro" href="api__gantt_auto_types_config.html">automatic detection of the types of tasks</a>:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">auto_types</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/07_grid/12_inline_edit_key_nav.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Inline editing - keyboard navigation mode</a></p>
+
+<h3>Custom inline editing</h3>
+
+<p>You can also provide custom keyboard mapping, i.e. describe the logic of editors opening by a user, specify handlers of editor-related events (opening, closing of editors, start and end of editing, etc.)
+in a separate object and then pass this object to the special method that will apply your mapping scheme:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> mapping <span class="sy0">=</span> <span class="br0">&#123;</span>
+ init<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>inlineEditors<span class="br0">&#41;</span><span class="br0">&#123;</span>
+  <span class="co1">// inlineEditor module is initialized</span>
+  <span class="co1">// add global listeners for starting/ending editing</span>
+ <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+ onShow<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>inlineEditors<span class="sy0">,</span> node<span class="br0">&#41;</span><span class="br0">&#123;</span>
+  <span class="co1">// the editor is displayed</span>
+ <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+ onHide<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>inlineEditors<span class="sy0">,</span> node<span class="br0">&#41;</span><span class="br0">&#123;</span>
+  <span class="co1">// the editor is hidden</span>
+  <span class="co1">// clean the onShow changes if needed</span>
+ <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">ext</span>.<span class="me1">inlineEditors</span>.<span class="me1">setMapping</span><span class="br0">&#40;</span>mapping<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/07_grid/13_custom_mapping.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Inline editing - Custom keyboard mapping</a></p>
+
+<a name='validationofinputvalues'><h2>Validation of input values</h2></a>
+
+<p>You can make mistakes while editing a cell in Grid.</p>
+
+<p>To avoid saving of incorrect values you need to validate the input values before closing an editor. It can be implemented in one of two ways:</p>
+
+<ul>
+<li>via  the <strong>is_valid</strong> method  of the <a class="link-" href="desktop__inline_editing.html#custominlineeditor">custom editor object</a></li>
+<li>via the <strong>onBeforeSave</strong> event of  the <a class="link-" href="desktop__inline_editors_ext.html">inlineEditors object</a>  </li>
+</ul>
+
+<p>Let’s consider behavior of the editor when validation is enabled.</p>
+
+<p>For example, you have opened the editor in a Grid cell via a mouse pointer. The following approach will be applied for your further action:</p>
+
+<ul>
+<li>Pressing Escape after editing a cell will close the editor without saving any changes. </li>
+<li>Pressing Enter will confirm and close the editor if the value is valid, otherwise the input value will be discarded.</li>
+<li>Pressing Tab or using a mouse pointer while editing a cell will save the valid value and move focus to another cell, whereas the invalid value will be reset and the editor will be closed. </li>
+</ul>
+
+<div class='note'><p><p>For information about how to perform validation on the client side or on the server side, see the <a class="link-" href="desktop__validation.html">Validation</a> article.</p>
+</p></div>
+
+<h3>Preventing editor from closing</h3>
+
+<p>When validation of editors is enabled Gantt does not save incorrect input values but resets them and closes the editor. So you need to open the cell and to change the values again.</p>
+
+<p>A good way for preventing the editor from closing is to pop up an alert box that gives a user the opportunity to fix the incorrect value. For this purpose you need to use custom keyboard mapping, as in:</p>
+
+<pre><code><pre class="js"><span class="kw2">function</span> editAnotherCell<span class="br0">&#40;</span>inlineEditors<span class="br0">&#41;</span><span class="br0">&#123;</span>
+  <span class="kw2">var</span> value <span class="sy0">=</span> inlineEditors.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="kw1">if</span><span class="br0">&#40;</span><span class="kw3">confirm</span><span class="br0">&#40;</span>`does <span class="st0">'${value}'</span> look ok to you<span class="sy0">?</span>`<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    inlineEditors.<span class="me1">save</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="kw2">var</span> mapping <span class="sy0">=</span> <span class="br0">&#123;</span>
+  init<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>inlineEditors<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onTaskClick&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>id<span class="sy0">,</span> e<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+      <span class="kw2">var</span> cell <span class="sy0">=</span> inlineEditors.<span class="me1">locateCell</span><span class="br0">&#40;</span>e.<span class="me1">target</span><span class="br0">&#41;</span><span class="sy0">;</span>
+      <span class="kw1">if</span> <span class="br0">&#40;</span>cell <span class="sy0">&amp;&amp;</span> inlineEditors.<span class="me1">getEditorConfig</span><span class="br0">&#40;</span>cell.<span class="me1">columnName</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>inlineEditors.<span class="me1">isVisible</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span> edit_another_cell<span class="br0">&#40;</span>inlineEditors<span class="br0">&#41;</span>
+        <span class="kw1">else</span> inlineEditors.<span class="me1">startEdit</span><span class="br0">&#40;</span>cell.<span class="me1">id</span><span class="sy0">,</span> cell.<span class="me1">columnName</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+      <span class="br0">&#125;</span>
+      <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onEmptyClick&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+      inlineEditors.<span class="me1">hide</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+      <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+  onShow<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>inlineEditors<span class="sy0">,</span> node<span class="br0">&#41;</span><span class="br0">&#123;</span>
+&nbsp;
+    node.<span class="me1">onkeydown</span> <span class="sy0">=</span> <span class="kw2">function</span> <span class="br0">&#40;</span>e<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+      e <span class="sy0">=</span> e <span class="sy0">||</span> window.<span class="me1">event</span><span class="sy0">;</span>
+      <span class="kw1">if</span><span class="br0">&#40;</span>e.<span class="me1">defaultPrevented</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">return</span><span class="sy0">;</span>
+      <span class="br0">&#125;</span>
+&nbsp;
+      <span class="kw2">var</span> keyboard <span class="sy0">=</span> gantt.<span class="me1">constants</span>.<span class="me1">KEY_CODES</span><span class="sy0">;</span>
+&nbsp;
+      <span class="kw2">var</span> shouldPrevent <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+      <span class="kw1">switch</span> <span class="br0">&#40;</span>e.<span class="me1">keyCode</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">case</span> gantt.<span class="me1">keys</span>.<span class="me1">edit_save</span><span class="sy0">:</span>
+          <span class="kw2">var</span> value <span class="sy0">=</span> inlineEditors.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+          <span class="kw1">if</span><span class="br0">&#40;</span><span class="kw3">confirm</span><span class="br0">&#40;</span>`does <span class="st0">'${value}'</span> look ok to you<span class="sy0">?</span>`<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+            inlineEditors.<span class="me1">save</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+          <span class="br0">&#125;</span>
+&nbsp;
+          <span class="kw1">break</span><span class="sy0">;</span>
+        <span class="kw1">case</span> gantt.<span class="me1">keys</span>.<span class="me1">edit_cancel</span><span class="sy0">:</span>
+          inlineEditors.<span class="me1">hide</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+          <span class="kw1">break</span><span class="sy0">;</span>
+        <span class="kw1">case</span> keyboard.<span class="me1">TAB</span><span class="sy0">:</span>
+          <span class="kw1">if</span><span class="br0">&#40;</span>e.<span class="me1">shiftKey</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+            <span class="kw1">if</span> <span class="br0">&#40;</span>inlineEditors.<span class="me1">isVisible</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span> editAnotherCell<span class="br0">&#40;</span>inlineEditors<span class="br0">&#41;</span>
+            <span class="kw1">else</span> inlineEditors.<span class="me1">editPrevCell</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span>
+          <span class="br0">&#125;</span><span class="kw1">else</span><span class="br0">&#123;</span>
+            <span class="kw1">if</span> <span class="br0">&#40;</span>inlineEditors.<span class="me1">isVisible</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span> editAnotherCell<span class="br0">&#40;</span>inlineEditors<span class="br0">&#41;</span>
+            <span class="kw1">else</span> inlineEditors.<span class="me1">editNextCell</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span>
+          <span class="br0">&#125;</span>
+          <span class="kw1">break</span><span class="sy0">;</span>
+        <span class="kw2">default</span><span class="sy0">:</span>
+          shouldPrevent <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span>
+          <span class="kw1">break</span><span class="sy0">;</span>
+      <span class="br0">&#125;</span>
+&nbsp;
+      <span class="kw1">if</span><span class="br0">&#40;</span>shouldPrevent<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        e.<span class="me1">preventDefault</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+      <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+  onHide<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>inlineEditors<span class="sy0">,</span> node<span class="br0">&#41;</span><span class="br0">&#123;</span><span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">ext</span>.<span class="me1">inlineEditors</span>.<span class="me1">setMapping</span><span class="br0">&#40;</span>mapping<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/5da351260' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom keyboard mapping</a></p>
+
+<!-- Content Area End -->
+			<a href='desktop__inline_editing.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

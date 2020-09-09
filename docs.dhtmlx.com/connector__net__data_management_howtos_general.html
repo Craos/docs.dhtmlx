@@ -1,0 +1,292 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>General HowTos  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=" current"><a href="connector__net__data_management_howtos_general.html">General HowTos</a></li><ul><li class="inner"><a href="connector__net__data_management_howtos_general.html#howcaniassignaliasestodbcolumns">How can I assign aliases to DB columns?</a></li><li class="inner"><a href="connector__net__data_management_howtos_general.html#howcaniattachevent">How can I attach event?</a></li><li class="inner"><a href="connector__net__data_management_howtos_general.html#howcanicreateacustomdatabaseerrormessage">How can I create a custom database error message?</a></li><li class="inner"><a href="connector__net__data_management_howtos_general.html#howcanidenyaccesstoacertainoperation">How can I deny access to a certain operation?</a></li><li class="inner"><a href="connector__net__data_management_howtos_general.html#howcanicustomizethecontentofacell">How can I customize the content of a cell?</a></li><li class="inner"><a href="connector__net__data_management_howtos_general.html#howcanifilterdataontheserverside">How can I filter data on the server side?</a></li><li class="inner"><a href="connector__net__data_management_howtos_general.html#howcanihandleerrorsandlogthem">How can I handle errors and log them?</a></li><li class="inner"><a href="connector__net__data_management_howtos_general.html#howcanisortdataontheserverside">How can I sort data on the server side?</a></li><li class="inner"><a href="connector__net__data_management_howtos_general.html#howcanivalidatedataontheclientside">How can I validate data on the client side?</a></li><li class="inner"><a href="connector__net__data_management_howtos_general.html#howcanivalidatedataontheserverside">How can I validate data on the server side?</a></li></ul><li class=""><a href="connector__net__data_management_howtos_loading.html">Data Loading HowTos</a></li><li class=""><a href="connector__net__data_management_howtos_updating.html">Data Updating HowTos</a></li><li class=""><a href="connector__net__component-specific_howtos_combo.html">Combo Specific HowTos</a></li><li class=""><a href="connector__net__component-specific_howtos_grid.html">Grid Specific HowTos</a></li><li class=""><a href="connector__net__scheduler-specific_howtos.html">Scheduler Specific HowTos</a></li><li class=""><a href="connector__net__component-specific_howtos_tree_treegrid.html">Tree(TreeGrid) Specific HowTos</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="connector__index.html">Client-Server Communication</a><a class="n3" href="connector__net__index.html">.Net Connector</a><a class="n4" href="connector__net__coding_howtos.html">HowTos</a></div>
+<!-- Content Area -->
+
+
+
+<h1>General HowTos</h1>
+
+<a name='howcaniassignaliasestodbcolumns'><h2>How can I assign aliases to DB columns?</h2></a>
+
+<p>You can assign aliases to the required tables or columns. For this purpose, use the word 'as' (as in any usual sql statement) in your connector's constructor.</p>
+
+<pre><code><pre class="js">dhtmlxTreeConnector connector <span class="sy0">=</span> <span class="kw2">new</span> dhtmlxTreeConnector<span class="br0">&#40;</span>
+   <span class="st0">&quot;Folders&quot;</span><span class="sy0">,</span> 
+   <span class="st0">&quot;FolderID AS ID&quot;</span><span class="sy0">,</span> 
+   <span class="st0">&quot;ParentID&quot;</span><span class="sy0">,</span> 
+   dhtmlxDatabaseAdapterType.<span class="me1">SqlServer2005</span><span class="sy0">,</span> 
+   ConfigurationManager.<span class="me1">ConnectionStrings</span><span class="br0">&#91;</span><span class="st0">&quot;SamplesDatabase&quot;</span><span class="br0">&#93;</span>.<span class="me1">ConnectionString</span><span class="sy0">,</span>
+   <span class="st0">&quot;FolderName AS Text&quot;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='howcaniattachevent'><h2>How can I attach event?</h2></a>
+
+<p>To attach event you should use <strong>EventHandler&lt;...></strong>. For more details on this topic, see the '<a class="link-" href="connector__net__events_system.html">Event handling</a>' quide.</p>
+
+<pre><code><pre class="js">connector.<span class="me1">BeforeUpdate</span> <span class="sy0">+=</span> <span class="kw2">new</span> EventHandler<span class="sy0">&lt;</span>DataActionProcessingEventArgs<span class="sy0">&gt;</span><span class="br0">&#40;</span>
+connector_BeforeUpdate
+<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">void</span> connector_BeforeUpdate<span class="br0">&#40;</span>object sender<span class="sy0">,</span> DataActionProcessingEventArgs e<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+   <span class="co1">//custom code</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='howcanicreateacustomdatabaseerrormessage'><h2>How can I create a custom database error message?</h2></a>
+
+<p>To add a custom error message you can use the event <a class="link-" href="connector__net__event_dberror.html">onDBError</a> and write the desired message in the appropriate handler.</p>
+
+<pre><code><pre class="js"><span class="kw2">public</span> <span class="kw1">void</span> error_details<span class="br0">&#40;</span>object sender<span class="sy0">,</span> DataActionProcessingEventArgs args<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+   args.<span class="me1">DataAction</span>.<span class="me1">Details</span> <span class="sy0">=</span> <span class="st0">&quot;DB operation was failed&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+connector.<span class="me1">OnDBError</span> <span class="sy0">+=</span> <span class="kw2">new</span> EventHandler<span class="sy0">&lt;</span>DataActionProcessingEventArgs<span class="sy0">&gt;</span><span class="br0">&#40;</span>error_details<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='howcanidenyaccesstoacertainoperation'><h2>How can I deny access to a certain operation?</h2></a>
+
+<p>By default, connector allows all operations. To deny some operation use <strong><em>deny(name_of_operation)</em></strong> method that can get one of the following:<em>select/update/insert/delete/all/none</em>. For more details see '<a class="link-" href="connector__net__security.html">Security</a>' guide.</p>
+
+<pre><code><pre class="js">connector.<span class="me1">Request</span>.<span class="me1">AllowedAccess</span> <span class="sy0">=</span> AccessRights.<span class="me1">Update</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='howcanicustomizethecontentofacell'><h2>How can I customize the content of a cell?</h2></a>
+
+<p>You can use the <a class="link-" href="connector__net__event_itemprerender.html">ItemPrerender</a> event to define how the content of a cell must be formatted.</p>
+
+<pre><code><pre class="js">dhtmlxGridConnector connector <span class="sy0">=</span> <span class="kw2">new</span> dhtmlxGridConnector<span class="br0">&#40;</span><span class="coMULTI">/*...*/</span><span class="br0">&#41;</span><span class="sy0">;</span>
+connector.<span class="me1">ItemPrerender</span> <span class="sy0">+=</span> <span class="kw2">new</span> EventHandler<span class="sy0">&lt;</span>ItemPrerenderEventArgs<span class="sy0">&lt;</span>dhtmlxGridDataItem<span class="sy0">&gt;&gt;</span><span class="br0">&#40;</span>
+connector_ItemPrerender
+<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">void</span> connector_ItemPrerender<span class="br0">&#40;</span>object sender<span class="sy0">,</span>ItemPrerenderEventArgs<span class="sy0">&lt;</span>dhtmlxGridDataItem<span class="sy0">&gt;</span> e<span class="br0">&#41;</span>
+   <span class="br0">&#123;</span>
+      <span class="kw1">if</span> <span class="br0">&#40;</span>e.<span class="me1">DataItem</span>.<span class="me1">Index</span> <span class="sy0">%</span> <span class="nu0">2</span> <span class="sy0">==</span> <span class="nu0">0</span><span class="br0">&#41;</span>
+      e.<span class="me1">DataItem</span>.<span class="me1">BgColor</span> <span class="sy0">=</span> <span class="st0">&quot;gray&quot;</span><span class="sy0">;</span>
+   <span class="br0">&#125;</span></pre></code></pre>
+
+<a name='howcanifilterdataontheserverside'><h2>How can I filter data on the server side?</h2></a>
+
+<p>You have 3 ways to filter data on the server backend:</p>
+
+<ul>
+<li>by specifying additional parameters in URL (on the client side)</li>
+</ul>
+
+<pre><code><pre class="js">grid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;some.ashx?connector=true&amp;dhx_filter[1]=mask&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>by using in-header filter types during the component configuration (on the client side)</li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Column A, Column B&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">attachHeader</span><span class="br0">&#40;</span><span class="st0">&quot;#connector_text_filter,#connector_select_filter&quot;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<ul>
+<li>by means of the <a class="link-" href="connector__net__event_beforeselect.html">beforeSelect</a> event (on the server side)</li>
+</ul>
+
+<pre><code><pre class="js">connector.<span class="me1">BeforeSelect</span> <span class="sy0">+=</span> <span class="kw2">new</span> EventHandler<span class="br0">&#40;</span>connector_BeforeSelect<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">void</span> connector_BeforeSelect<span class="br0">&#40;</span>object sender<span class="sy0">,</span> EventArgs e<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+   <span class="kw1">this</span>.<span class="me1">Connector</span>.<span class="me1">Request</span>.<span class="me1">Rules</span>.<span class="me1">Add</span><span class="br0">&#40;</span>
+      <span class="kw2">new</span> FieldRule<span class="br0">&#40;</span><span class="st0">&quot;CreatedDate&quot;</span><span class="sy0">,</span> Operator.<span class="me1">GreaterOrEqual</span><span class="sy0">,</span> <span class="st0">&quot;2009-01-01&quot;</span><span class="br0">&#41;</span>
+   <span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>See the guide '<a class="link-" href="connector__net__filtration.html">Filtration</a>' for more information.</p>
+
+<a name='howcanihandleerrorsandlogthem'><h2>How can I handle errors and log them?</h2></a>
+
+<p>You can enable logging by means of using the <strong>Log.Enabled</strong> property. For more details see the '<a class="link-" href="connector__net__errors.html">Error handling and logging</a>' guide.</p>
+
+<pre><code><pre class="js">connector.<span class="me1">Begin</span> <span class="sy0">+=</span> <span class="kw2">new</span> EventHandler<span class="br0">&#40;</span>connector_Begin<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">private</span> StringBuilder _LogContent <span class="sy0">=</span> <span class="kw2">new</span> StringBuilder<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">void</span> connector_Begin<span class="br0">&#40;</span>object sender<span class="sy0">,</span> EventArgs e<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+   Log.<span class="me1">Enabled</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+   Log.<span class="me1">Listeners</span>.<span class="me1">Add</span><span class="br0">&#40;</span><span class="kw2">new</span> TextWriterTraceListener<span class="br0">&#40;</span><span class="kw2">new</span> StringWriter<span class="br0">&#40;</span><span class="kw1">this</span>._LogContent<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='howcanisortdataontheserverside'><h2>How can I sort data on the server side?</h2></a>
+
+<p>You have 2 ways to sort data on the server backend:</p>
+
+<ul>
+<li>by specifying additional parameters in URL (on the client side)</li>
+</ul>
+
+<pre><code><pre class="js">grid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;some.ashx?connector=true&amp;dhx_sort[2]=asc&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>by using the sorting type 'connector' during the component configuration (on the client side)</li>
+</ul>
+
+<pre><code><pre class="js">grid.<span class="me1">setColSorting</span><span class="br0">&#40;</span><span class="st0">&quot;connector,str,na);</span></pre></code></pre>
+
+<p>See the guide '<a class="link-" href="connector__net__sort.html">Sorting</a>' for more information.</p>
+
+<a name='howcanivalidatedataontheclientside'><h2>How can I validate data on the client side?</h2></a>
+
+<p>dataProcessor lets you validate data on the client side. Use the <strong>setVerificator(index,method)</strong> method to define the appropriate columns and validators.
+See details in the <a class="link-" href="dataprocessor__configuration.html#validation">related chapter of dataProcessor's documentation</a>.</p>
+
+<pre><code><pre class="js">dp.<span class="me1">setVerificator</span><span class="br0">&#40;</span>column_index<span class="sy0">,</span>verification_func<span class="br0">&#41;</span></pre></code></pre>
+
+<a name='howcanivalidatedataontheserverside'><h2>How can I validate data on the server side?</h2></a>
+
+<p>To perform server-side validation you should use one of the dhtmlxConnector events stated below and specify the needed validation rules in the appropriate events' handlers functions:</p>
+
+<ul>
+<li><a class="link-" href="connector__net__event_beforeupdate.html">beforeUpdate</a></li>
+<li><a class="link-" href="connector__net__event_beforeinsert.html">beforeInsert</a></li>
+<li><a class="link-" href="connector__net__event_beforedelete.html">beforeDelete</a></li>
+<li><a class="link-" href="connector__net__event_beforeprocessing.html">beforeProcessing</a></li>
+</ul>
+
+<pre><code><pre class="js">connector.<span class="me1">BeforeInsert</span> <span class="sy0">+=</span> <span class="kw2">new</span> EventHandler<span class="sy0">&lt;</span>DataActionProcessingEventArgs<span class="sy0">&gt;</span><span class="br0">&#40;</span>
+connector_BeforeInsert
+<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">void</span> connector_BeforeProcessing<span class="br0">&#40;</span>object sender<span class="sy0">,</span> DataActionProcessingEventArgs e<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+   <span class="kw1">if</span> <span class="br0">&#40;</span>string.<span class="me1">IsNullOrEmpty</span><span class="br0">&#40;</span>e.<span class="me1">DataAction</span>.<span class="me1">Data</span><span class="br0">&#91;</span><span class="br0">&#40;</span>TableField<span class="br0">&#41;</span><span class="st0">&quot;title&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+   ...
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>For more details on the server-side validation, see the guide '<a class="link-" href="connector__net__validating_data.html">Validation</a>'.</p>
+
+<!-- Content Area End -->
+			<a href='connector__net__data_management_howtos_general.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

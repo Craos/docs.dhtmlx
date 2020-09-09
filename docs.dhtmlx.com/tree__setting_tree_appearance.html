@@ -1,0 +1,437 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Setting Tree Appearance  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxtree.html">dhtmlXTree API</a></li><li class=""><a href="tree__initialization_of_dhtmlxtree.html">Initializing Tree</a></li><li class=""><a href="tree__syntax_templates.html">Syntax Templates</a></li><li class=" current"><a href="tree__setting_tree_appearance.html">Setting Tree Appearance</a></li><ul><li class="inner"><a href="tree__setting_tree_appearance.html#treelinesandiconsmanipulation">Tree Lines and Icons Manipulation</a></li><li class="inner"><a href="tree__setting_tree_appearance.html#treeimagesmanipulation">Tree Images Manipulation</a></li><li class="inner"><a href="tree__setting_tree_appearance.html#textmanipulation">Text Manipulation</a></li><li class="inner"><a href="tree__setting_tree_appearance.html#stylemanipulation">Style Manipulation</a></li></ul><li class=""><a href="tree__navigation_and_selection_in_tree.html">Navigation and Selection in Tree</a></li><li class=""><a href="tree__searching_and_sorting_in_tree.html">Searching and Sorting in Tree</a></li><li class=""><a href="tree__serialization_caching_and_removing_tree.html">Serializing and Caching Tree</a></li><li class=""><a href="tree__increasing_tree_s_performance.html">Loading Big Datasets</a></li><li class=""><a href="tree__nodes_manipulation.html">Manipulating Nodes</a></li><li class=""><a href="tree__drag_and_drop_handling.html">Handling Drag-and-Drop</a></li><li class=""><a href="tree__checkboxes_manipulation.html">Manipulating Checkboxes</a></li><li class=""><a href="tree__radio_buttons_manipulation.html">Manipulating Radio Buttons</a></li><li class=""><a href="tree__simultaneous_server_update.html">Simultaneous Server Update</a></li><li class=""><a href="tree__compatibility_with_other_dhtmlx_components.html">Compatibility with Other DHTMLX Components</a></li><li class=""><a href="tree__events_handling.html">Handling Events</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="tree__index.html">Tree</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Setting Tree Appearance</h1>
+
+<a name='treelinesandiconsmanipulation'><h2>Tree Lines and Icons Manipulation</h2></a>
+
+<h3>Enabling/Disabling Tree Lines</h3>
+
+<p>Tree lines are tiny lines that visually "connect" elements of the tree. These lines can be easily enabled/disabled from script:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">enableTreeLines</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="sy0">/</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// true by default</span></pre></code></pre>
+
+<h3>Setting +/- Icons</h3>
+
+<p>"+" and "-" icons indicate whether a parent node is closed or opened. The <a class="link-" href="api__dhtmlxtree_setimagearrays.html">setImageArrays()</a> method is used to set these images:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">setImageArrays</span><span class="br0">&#40;</span>arrayName<span class="sy0">,</span>image1<span class="sy0">,</span>image2<span class="sy0">,</span>image3<span class="sy0">,</span>image4<span class="sy0">,</span>image5<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The parameters for this method are as follows:</p>
+
+<ul>
+<li>arrayName - name of an array: plus, minus;</li>
+<li>image1 - crossed lines image (+);</li>
+<li>image2 - image with top line (г);</li>
+<li>image3 - image with bottom line (L);</li>
+<li>image4 - image without lines ( );</li>
+<li>image5 - single root image (-).</li>
+</ul>
+
+<h3>Showing/Hiding +/- Icons</h3>
+
+<p>There is a simple way of showing/hiding +/- signs of a certain item:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">showItemSign</span><span class="br0">&#40;</span>itemId<span class="sy0">,</span>mode<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The following parameters should be indicated:</p>
+
+<ul>
+<li>itemId - id of the item the +/- icon of which will be shown/hidden;</li>
+<li>mode(true/false) - true stands for showing the icon, false means hiding it.</li>
+</ul>
+
+<p>This method works only for individual items not for the entire tree.</p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxTree/samples/01_appearance/02_pro_item_signs.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Item's sign and highlighting</a></p>
+
+<h3>Specifying Icons for Locked Items</h3>
+
+<p>If the user wants to specify the icons for the locked state of tree items, they should be indicated before any of the data loading methods:</p>
+
+<pre><code><pre class="js">...
+<span class="me1">tree</span>.<span class="me1">setLockedIcons</span><span class="br0">&#40;</span><span class="st0">&quot;lock.gif&quot;</span><span class="sy0">,</span><span class="st0">&quot;lock.gif&quot;</span><span class="sy0">,</span><span class="st0">&quot;lock.gif&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+tree.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;tree.xml&quot;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<p>The parameters of <a class="link-pro" href="api__dhtmlxtree_setlockedicons.html">setLockedIcons</a> method indicate paths to the icons that will be used for locked nodes:</p>
+
+<ul>
+<li>m0 - icon for a locked leaf;</li>
+<li>im1 - icon for a closed branch;</li>
+<li>im2 - icon for an opened branch.</li>
+</ul>
+
+<a name='treeimagesmanipulation'><h2>Tree Images Manipulation</h2></a>
+
+<h3>Setting Images for Items</h3>
+
+<p>It should be noted that the tree will get images for its nodes from the path the user specified in the setImagePath() method.</p>
+
+<p>But there are also other ways available for setting custom images of nodes in the tree. The difference between these two methods lies in the way the user adds item to the tree:</p>
+
+<p><strong>JavaScript way: using arguments of the insertNewChild() or insertNewNext() methods</strong>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> im0 <span class="sy0">=</span> <span class="st0">&quot;doc.gif&quot;</span><span class="sy0">;</span> <span class="co1">// the icon for a leaf node</span>
+<span class="kw2">var</span> im1 <span class="sy0">=</span> <span class="st0">&quot;opened.gif&quot;</span><span class="sy0">;</span> <span class="co1">// the icon for an expanded parent node</span>
+<span class="kw2">var</span> im2 <span class="sy0">=</span> <span class="st0">&quot;closed.gif&quot;</span><span class="sy0">;</span> <span class="co1">// the icon for a collapsed parent node</span>
+&nbsp;
+&nbsp;
+tree.<span class="me1">insertNewItem</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="sy0">,</span><span class="nu0">1</span><span class="sy0">,</span><span class="st0">&quot;New Node 1&quot;</span><span class="sy0">,</span><span class="nu0">0</span><span class="sy0">,</span>im0<span class="sy0">,</span>im1<span class="sy0">,</span>im2<span class="br0">&#41;</span><span class="sy0">;</span>
+tree.<span class="me1">insertNewNext</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="sy0">,</span><span class="nu0">2</span><span class="sy0">,</span><span class="st0">&quot;New Node 2&quot;</span><span class="sy0">,</span><span class="nu0">0</span><span class="sy0">,</span><span class="st0">&quot;txt.gif&quot;</span><span class="sy0">,</span><span class="st0">&quot;opened.gif&quot;</span><span class="sy0">,</span><span class="st0">&quot;closed.gif&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><strong>JavaScript way: using the setItemImage() and setItemImage2() methods</strong>:</p>
+
+<p>The first method for setting an image for an item should be written in this way:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">setItemImage</span><span class="br0">&#40;</span>itemId<span class="sy0">,</span>image1<span class="sy0">,</span>image2<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The parameters are as follows:</p>
+
+<ul>
+<li>itemId - id of the item in question;</li>
+<li>image1 - image for the leaf item or image for the collapsed parent item (if the third parameter is indicated);</li>
+<li>image2 - image for the expanded parent item.</li>
+</ul>
+
+<p>The second method for setting an image is the following:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">setItemImage2</span><span class="br0">&#40;</span>itemId<span class="sy0">,</span>image1<span class="sy0">,</span>image2<span class="sy0">,</span> image3<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The parameters are as follows:</p>
+
+<ul>
+<li>itemId - id of the item in question;</li>
+<li>image1 - image for a leaf item;</li>
+<li>image2 - image for a collapsed parent item;</li>
+<li>image3 - image for an expanded parent item.</li>
+</ul>
+
+<p><strong>XML way: using parameters of the &#60;item&#62; tag</strong>:</p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">'1.0'</span> <span class="re0">encoding</span>=<span class="st0">'iso-8859-1'</span><span class="re2">&gt;</span></span>
+ <span class="sc3"><span class="re1">&lt;tree</span> <span class="re0">id</span>=<span class="st0">&quot;0&quot;</span><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">text</span>=<span class="st0">&quot;My Computer&quot;</span> <span class="re0">id</span>=<span class="st0">&quot;1&quot;</span> <span class="re0">child</span>=<span class="st0">&quot;1&quot;</span> <span class="re0">im0</span>=<span class="st0">&quot;doc.gif&quot;</span> <span class="re0">im1</span>=<span class="st0">&quot;my_open.gif&quot;</span> </span>
+<span class="sc3">        <span class="re0">im2</span>=<span class="st0">&quot;my_closed.gif&quot;</span><span class="re2">&gt;</span></span>
+ <span class="sc3"><span class="re1">&lt;/tree<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<p>See <a class="link-" href="tree__syntax_templates.html#xmlformattemplate">XML Format Template</a>.</p>
+
+<h3>Getting Item's Image</h3>
+
+<p>Item's image can be got with the help of getItemImage() method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> image <span class="sy0">=</span> tree.<span class="me1">getItemImage</span><span class="br0">&#40;</span>itemId<span class="sy0">,</span>imageInd<span class="sy0">,</span>fullPath<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In order to get items image, the user should indicate:</p>
+
+<ul>
+<li>itemId - id of the item the image of which should be got;</li>
+<li>imageInd - index of the image (0 - leaf image, 1 - closed parent node image, 2 - open parent node image);</li>
+<li>fullPath (true/false) - indicates whether the method returns full path to the image (true), or just the name of the image file (false).</li>
+</ul>
+
+<h3>Enabling Tree Images</h3>
+
+<p>Images are enabled in dhtmlxTree by default. To disable images the user should call the following method:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">enableTreeImages</span><span class="br0">&#40;</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// true to enable</span></pre></code></pre>
+
+<h3>Setting Default Item's Images</h3>
+
+<p>There is a simple way of setting default item's images in Tree:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">setStdImages</span><span class="br0">&#40;</span>image1<span class="sy0">,</span>image2<span class="sy0">,</span>image3<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>This method should be called before XML loading takes place. It is useful when a lot of similar images are going to be used in the tree. 
+It is better to use this method once rather than specify these images every time for every item.</p>
+
+<p>The parameters that the user should specify are the following:</p>
+
+<ul>
+<li>image1 - image for a leaf node;</li>
+<li>image2 - image for a closed parent node;</li>
+<li>image3 - image for an opened parent node.</li>
+</ul>
+
+<h3>Changing Icon Sets</h3>
+
+<p>dhtmlxTree is a highly customizable component. You can use different icon sets for trees simply by changing the image path:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;[full path to this folder]/codebase/images/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//default icons set</span>
+    <span class="co1">//or</span>
+tree.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;[full path to this folder]/codebase/images/dhxtree_web/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="co1">// or</span>
+tree.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;[full path to this folder]/codebase/images/dhxtree_terrace/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Setting Icon's Size</h3>
+
+<p>Setting icon's size is quite simple with the setIconSize() method. The default size of tree icons is 18x18 px.</p>
+
+<pre><code><pre class="js">tree.<span class="me1">setIconSize</span><span class="br0">&#40;</span>newWidth<span class="sy0">,</span>newHeight<span class="sy0">,</span>itemId<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The parameters the user should specify are:</p>
+
+<ul>
+<li>newWidth - new width of the icon;</li>
+<li>newHeight- new height of the icon;</li>
+<li>itemId - the item that the new sizes will be applied to (optional parameter).</li>
+</ul>
+
+<p>If the last parameter is not indicated, new sizes will be applied to all icons in the tree.</p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxTree/samples/01_appearance/01_pro_icon_size.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Icon size</a></p>
+
+<h3>Making Images Clickable</h3>
+
+<p>There is a simple method used to make all images in the tree clickable:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">enableActiveImages</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="sy0">/</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// enabled by default</span></pre></code></pre>
+
+<h3>Enabling Image Dragging</h3>
+
+<p>There is a method that is responsible for allowing the user to drag items not only by text, but also by their images. This functionality is enabled by default.</p>
+
+<pre><code><pre class="js">tree.<span class="me1">enableImageDrag</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="sy0">/</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Enabling IE Images Fixing</h3>
+
+<p>There is a special method to change the way of images rendering in IE. It also helps to solve the problem of images caching in IE:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">enableIEImageFix</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="sy0">|</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// disabled by default</span></pre></code></pre>
+
+<a name='textmanipulation'><h2>Text Manipulation</h2></a>
+
+<h3>Setting text Direction</h3>
+
+<p>dhtmlxTree supports both LTR and RTL text directions. LTR is set by default in the tree. The user can set the text direction to RTL like this:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">enableRTL</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// false to disable</span></pre></code></pre>
+
+<p>To set text direction to LTR again, use <strong>false</strong> in the above mentioned method.</p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxTree/samples/01_appearance/03_pro_ltr.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Text direction (LTR/RTL)</a></p>
+
+<h3>Enabling Multiline</h3>
+
+<p>Tree nodes' labels can contain only one text line by default. However, in some situations it can be useful to make them multiline.
+There is a special method for this in dhtmlxTree. It is recommended to turn tree lines off for better appearance:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">enableTreeLines</span><span class="br0">&#40;</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+tree.<span class="me1">enableMultiLineItems</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="sy0">/</span><span class="kw2">false</span><span class="sy0">/</span>width<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>This method should be called before loading tree data takes place.
+The parameter of this method can be one of these options:</p>
+
+<ul>
+<li>true - the multiline is enabled;</li>
+<li>false - the multiline is disabled;</li>
+<li>width - the multiline is enabled and set in pixels (for example, "50px").</li>
+</ul>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxTree/samples/01_appearance/04_pro_multi_line.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Multi-line items</a></p>
+
+<h3>Setting Text Signs</h3>
+
+<p>There is the possibility to enable/disable text signs [+] and [-] instead of corresponding icons. This can be done in the following way:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">enableTextSigns</span><span class="br0">&#40;</span>mode<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Setting this method to <strong>true</strong> equals enabling text signs for the tree, while <strong>false</strong> means disabling them.</p>
+
+<h3>Making Plain Text Tree</h3>
+
+<p>There is also a possibility to create a plain one-level tree. The steps the user should take for this are quite simple:</p>
+
+<ul>
+<li><p>Add the following style in the HTML file where the tree will be created:</p>
+
+<pre><code><pre class="js">treeboxbox_tree.<span class="me1">standartTreeImage</span> img<span class="br0">&#123;</span>
+    width<span class="sy0">:</span>0px<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre></li>
+<li><p>Create a div element on a page and write the following script lines:</p></li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;treeboxbox_tree&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width:200;height:200&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">    tree<span class="sy0">=</span><span class="kw2">new</span> dhtmlXTreeObject<span class="br0">&#40;</span><span class="st0">&quot;treeboxbox_tree&quot;</span><span class="sy0">,</span><span class="st0">&quot;100%&quot;</span><span class="sy0">,</span><span class="st0">&quot;100%&quot;</span><span class="sy0">,</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    tree.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;[full path to this folder]/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    tree.<span class="me1">enableTreeImages</span><span class="br0">&#40;</span><span class="st0">&quot;false&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// disable tree images</span>
+    tree.<span class="me1">enableTreeLines</span><span class="br0">&#40;</span><span class="st0">&quot;false&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// disable tree lines</span>
+    tree.<span class="me1">load</span><span class="br0">&#40;</span>file<span class="br0">&#41;</span><span class="sy0">;</span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<h3>Enabling Loading Text</h3>
+
+<p>The user can set loading text for a tree item. This text will appear on item loading instead of its original text, and will be replaced by the original text when loading is done:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">enableLoadingItem</span><span class="br0">&#40;</span>text<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The default loading text set in dhtmlxTree is "Loading...".</p>
+
+<h3>Using HTML in Item's Text</h3>
+
+<p>The user may use HTML escape characters in the <strong>text</strong> attribute of an <strong>item</strong> tag to include some HTML into a node's label, 
+or he can use the nested &#60;itemtext&#62; tag with CDATA for the same purpose (this tag is supported only in PRO edition):</p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span><span class="re2">&gt;</span></span>
+ <span class="sc3"><span class="re1">&lt;tree</span> <span class="re0">id</span>=<span class="st0">&quot;0&quot;</span><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;1&quot;</span> <span class="re0">text</span>=<span class="st0">&quot;&amp;amp;lt; img src='some.gif' &amp;amp;gt;&quot;</span><span class="re2">/&gt;</span></span> //using HTML escape characters
+ <span class="sc3"><span class="re1">&lt;/tree<span class="re2">&gt;</span></span></span>
+ <span class="sc3"><span class="re1">&lt;tree</span> <span class="re0">id</span>=<span class="st0">&quot;0&quot;</span><span class="re2">&gt;</span></span>
+ <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;1&quot;</span><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;itemtext<span class="re2">&gt;</span></span>&lt;!<span class="br0">&#91;</span>CDATA <span class="re1">&lt;img</span> <span class="re0">src</span>=<span class="st0">'some.gif'</span><span class="re2">&gt;</span></span> ]]&gt;<span class="sc3"><span class="re1">&lt;/itemtext<span class="re2">&gt;</span></span></span> //using <span class="sc3"><span class="re1">&lt;itemtext<span class="re2">&gt;</span></span></span> tag with CDATA
+ <span class="sc3"><span class="re1">&lt;/item<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/tree<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxTree/samples/13_nodes_manipulation/02_pro_item_text_html.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;<span class='doc_error'>Sample without title: dhtmlxTree/samples/13_nodes_manipulation/02_pro_item_text_html.html</span></a></p>
+
+<a name='stylemanipulation'><h2>Style Manipulation</h2></a>
+
+<h3>Setting Individual Style for an Item</h3>
+
+<p>The user can set individual style for any item in the tree in the following way:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">setItemStyle</span><span class="br0">&#40;</span>itemId<span class="sy0">,</span>style_string<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The parameters here are responsible for:</p>
+
+<ul>
+<li>itemId - id of the item;</li>
+<li>style_string - valid CSS string.</li>
+</ul>
+
+<!-- Content Area End -->
+			<a href='tree__setting_tree_appearance.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

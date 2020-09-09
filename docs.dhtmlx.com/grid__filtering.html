@@ -1,0 +1,359 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Filtering Data  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="grid__iterators.html">Iterating Over Data</a></li><li class=""><a href="grid__sorting.html">Sorting Data</a></li><li class=" current"><a href="grid__filtering.html">Filtering Data</a></li><ul><li class="inner"><a href="grid__filtering.html#filtersintheheader">Filters in the header</a></li><li class="inner"><a href="grid__filtering.html#htmlinputasafilterforthegrid">HTML input as a filter for the grid</a></li><li class="inner"><a href="grid__filtering.html#programmaticfiltering">Programmatic Filtering</a></li><li class="inner"><a href="grid__filtering.html#redefiningdefaultfilterlogic">Redefining default filter logic</a></li><li class="inner"><a href="grid__filtering.html#filteringevents">Filtering events</a></li><li class="inner"><a href="grid__filtering.html#addingdeletingrowsinthefilteredgrid">Adding/deleting rows in the filtered grid</a></li></ul><li class=""><a href="grid__searching.html">Searching in Grid</a></li><li class=""><a href="grid__grouping_rows.html">Grouping Data by Rows</a></li><li class=""><a href="grid__formatting.html">Formatting Number and Date Values</a></li><li class=""><a href="grid__statistics_counter.html">Statistics Counters</a></li><li class=""><a href="grid__validation.html">Validating Data Items</a></li><li class=""><a href="grid__math.html">Using Math Formulas for Data</a></li><li class=""><a href="grid__clipboard.html">Clipboard Operations</a></li><li class=""><a href="grid__undo_redo.html">Providing Undo/Redo Operations</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__managing_data.html">Managing Data in Grid</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Filtering Data</h1>
+
+<p>The library provides a special extension for filtering dhtmlxGrid data on the client side (for server-side filtering, use the <a class="link-" href="connector__php__index.html">dhtmlxConnector</a> library).</p>
+
+<a name='filtersintheheader'><h2>Filters in the header</h2></a>
+
+<p>You can define a built-in auto filter in the header or in the footer of a column. The following types of filters are available:</p>
+
+<ul>
+<li><strong>text_filter</strong> - a text filter. Retrieves values which contain mask defined through text field.</li>
+<li><strong>select_filter</strong> - a select filter. Retrieves values which contain mask defined through dropdown list of possible values.</li>
+<li><strong>combo_filter</strong> - a filter based on the dhtmlxCombo component. Retrieves values which contain mask defined through combo box.</li>
+<li><strong>text_search</strong> - an input box. Doesn't filter the grid but moves the selection to the nearest row containing a text input.</li>
+<li><strong>numeric_filter</strong> - a text filter that allows using comparison operators in it. Retrieves values which contain mask defined through text field. <br> The possible comparison operators are:
+
+<ul>
+<li>'=' - equal to;</li>
+<li>'>' - greater than;</li>
+<li>'&lt;' - less than;</li>
+<li>'?' - less or equal to;</li>
+<li>'>=' - greater or equal to;</li>
+<li>'n1..n2' - a range of values.</li>
+</ul></li>
+</ul>
+
+<p>Built-in filters are set by the method <a class="link-" href="api__dhtmlxgrid_attachheader.html">attachHeader()</a>. Note, when specifying a filter you should write '#' before its name.</p>
+
+<p class='snippet'>
+General specifying auto filters for columns
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Book Title,Author,Price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">attachHeader</span><span class="br0">&#40;</span><span class="st0">&quot;#text_filter, #select_filter,#numeric_filter&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...</pre></code></pre>
+
+<p>In order not to specify a filter for some of columns use the <strong>null</strong> value:</p>
+
+<p class='snippet'>
+Specifying an auto filter for a particular column of the header
+</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Book Title,Author,Price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">attachHeader</span><span class="br0">&#40;</span><span class="st0">&quot;#text_filter, , ,&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Note, each time you start typing text in such a filter, dhtmlxGrid invokes the <a class="link-pro" href="api__dhtmlxgrid_filterbyall.html">filterByAll()</a> method. 
+Each time the method is called, all data is re-filtered (previous results aren't preserved).</p>
+
+<h3>AND logic</h3>
+
+<p>When you specify filters in several columns, dhtmlxGrid applies the AND logic to them by default, i.e. the grid will display just the records that meet 
+all criteria at once.</p>
+
+<h3>OR logic</h3>
+
+<p>In case you want to apply OR logic (display records that meet at least one of the criteria) you should redefine the <strong>filterByAll()</strong> method. For example, it can look like this:</p>
+
+<p class='snippet'>
+Implementing OR logic for filters
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Book Title,Released&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">attachHeader</span><span class="br0">&#40;</span><span class="st0">&quot;#text_filter, #select_filter&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setColumnIds</span><span class="br0">&#40;</span><span class="st0">&quot;title,year&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">mygrid</span>.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+mygrid.<span class="me1">filterByAll</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">//gets filter values</span>
+        <span class="kw2">var</span> title <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">getFilterElement</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="br0">&#41;</span>.<span class="me1">value</span><span class="sy0">;</span>
+        <span class="kw2">var</span> year <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">getFilterElement</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">value</span><span class="sy0">;</span>
+    <span class="co1">//unfilters if values were not selected</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span>title  <span class="sy0">&amp;&amp;</span> <span class="sy0">!</span>year<span class="br0">&#41;</span> <span class="kw1">return</span> <span class="kw1">this</span>.<span class="me1">filter</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="co1">//filters using OR logic</span>
+        <span class="kw1">this</span>.<span class="me1">filter</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="br0">&#123;</span>
+            <span class="kw1">if</span> <span class="br0">&#40;</span>data <span class="sy0">==</span> year<span class="br0">&#41;</span> <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+            <span class="kw1">if</span> <span class="br0">&#40;</span>data<span class="sy0">!=-</span><span class="nu0">1</span><span class="br0">&#41;</span> <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+            <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In order to programmatically simulate entering specific data in a header filter you can use the following technique:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> inp <span class="sy0">=</span> mygrid.<span class="me1">getFilterElement</span><span class="br0">&#40;</span><span class="nu0">3</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// '3'-index of the column (zero-based numbering)</span>
+inp.<span class="me1">value</span> <span class="sy0">=</span> <span class="nu0">12.99</span><span class="sy0">;</span> <span class="co1">// inputted value</span>
+mygrid.<span class="me1">filterByAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">// invokes re-filtering</span></pre></code></pre>
+
+<a name='htmlinputasafilterforthegrid'><h2>HTML input as a filter for the grid</h2></a>
+
+<p>An HTML input can act as an auto filter for a specific column of the grid. It's achieved with the help of the <a class="link-pro" href="api__dhtmlxgrid_makefilter.html">makeFilter()</a> method.</p>
+
+<p>In addition to 'input', you can use 'select' and 'div' HTML elements.</p>
+
+<p>'input' and 'select' serve as text and select filters.<br>
+When you specify the id of the 'div' element, the grid creates a combo filter based on that 'div' and populated with unique values from the specified column. 
+Note, to use 'div' as a filter you should include on the page the dhtmlxcombo.js file.</p>
+
+<p>In case of the auto filter, filtering will be invoked automatically as soon as you start typing something in the input.</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>input type<span class="sy0">=</span><span class="st0">&quot;text&quot;</span> id<span class="sy0">=</span><span class="st0">&quot;textFilter&quot;</span><span class="sy0">&gt;&lt;/</span>input<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>select type<span class="sy0">=</span><span class="st0">&quot;text&quot;</span> id<span class="sy0">=</span><span class="st0">&quot;selectFilter&quot;</span><span class="sy0">&gt;&lt;/</span>select<span class="sy0">&gt;</span>
+&nbsp;
+<span class="sy0">&lt;</span>script<span class="sy0">&gt;</span>
+mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Book Title,Author,Price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">mygrid</span>.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+mygrid.<span class="me1">makeFilter</span><span class="br0">&#40;</span><span class="st0">&quot;textFilter&quot;</span><span class="sy0">,</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//params:input's id, column's index(0-based numbering)</span>
+<span class="co1">//items for options list added automatically according to column the control assigned to</span>
+mygrid.<span class="me1">makeFilter</span><span class="br0">&#40;</span><span class="st0">&quot;selectFilter&quot;</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="sy0">&lt;/</span>script<span class="sy0">&gt;</span></pre></code></pre>
+
+<a name='programmaticfiltering'><h2>Programmatic Filtering</h2></a>
+
+<p>If you want to invoke filtering programmatically, you may use 2 methods:</p>
+
+<ul>
+<li><a class="link-pro" href="api__dhtmlxgrid_filterby.html">filterBy()</a> - filters the specified column by some value (string or function);</li>
+<li><a class="link-pro" href="api__dhtmlxgrid_filterbyall.html">filterByAll()</a> - invokes auto filters (defined in the header of set by the method <a class="link-pro" href="api__dhtmlxgrid_makefilter.html">makeFilter()</a>).</li>
+</ul>
+
+<h3>Method filterBy()</h3>
+
+<p>The method filterBy(column, value) allows you to filter the specific column of the grid by the specified value:</p>
+
+<p>The second parameter can be both a string and a function.</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Sales, Book Title,Author&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">mygrid</span>.<span class="me1">filterBy</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="sy0">,</span> <span class="st0">&quot;John Grisham&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// filters the 2nd column by value &quot;John Grisham&quot;</span>
+mygrid.<span class="me1">filterBy</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>a<span class="br0">&#41;</span><span class="br0">&#123;</span> <span class="kw1">return</span> <span class="br0">&#40;</span>a<span class="sy0">&lt;</span><span class="nu0">500</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="br0">&#125;</span><span class="br0">&#41;</span> <span class="co1">// true/false - shows/hides a row</span></pre></code></pre>
+
+<p>Note, every next call of the filterBy() method  will reset the grid to its initial state and filter it from the start. 
+To specify several rules (of AND logic) for one and the same column you should specify an additional parameter 
+in the method.</p>
+
+<p class='snippet'>
+Programmatic filtering of the column by several criteria
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Sales, Book Title,Author&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+&nbsp;
+<span class="me1">mygrid</span>.<span class="me1">filterBy</span><span class="br0">&#40;</span><span class="nu0">3</span><span class="sy0">,</span><span class="st0">&quot;John Grisham&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">// filters the 2nd column by value &quot;John Grisham&quot;</span>
+mygrid.<span class="me1">filterBy</span><span class="br0">&#40;</span><span class="nu0">3</span><span class="sy0">,</span><span class="st0">&quot;Stephen King&quot;</span><span class="sy0">,</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//each next method's call has 3rd param - true</span></pre></code></pre>
+
+<h3>Method filterByAll()</h3>
+
+<p>The method allows you to programmatically invoke filtering by auto filters.</p>
+
+<p>You can use this method to redefine the default logic of the built-in filters. For example, to define OR logic or simulate entering some data in the filter.</p>
+
+<a name='redefiningdefaultfilterlogic'><h2>Redefining default filter logic</h2></a>
+
+<p>Any filter you assign to the grid (both by adding it to the header and by creating through the <a class="link-pro" href="api__dhtmlxgrid_makefilter.html">makeFilter()</a> function) can use a custom logic instead of the default one.</p>
+
+<p>To change the filtering logic of a filter assigned to the grid you should redefine its _filter function as in:</p>
+
+<pre><code><pre class="js">grid.<span class="me1">getFilterElement</span><span class="br0">&#40;</span>col_index<span class="br0">&#41;</span>._filter <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+     <span class="co1">// your custom logic</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>For example, you can use the following definition to create a filter (based on text_filter) that makes a search in all columns of the grid:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">getFilterElement</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="br0">&#41;</span>._filter <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> input <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">value</span><span class="sy0">;</span> <span class="co1">// gets the text of the filter input</span>
+    <span class="kw1">return</span> <span class="kw2">function</span><span class="br0">&#40;</span>value<span class="sy0">,</span> id<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">for</span><span class="br0">&#40;</span><span class="kw2">var</span> i<span class="sy0">=</span><span class="nu0">0</span><span class="sy0">;</span>i<span class="sy0">&lt;</span>mygrid.<span class="me1">getColumnsNum</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>i<span class="sy0">++</span><span class="br0">&#41;</span><span class="br0">&#123;</span> <span class="co1">// iterating through the columns</span>
+            <span class="kw2">var</span> val<span class="sy0">=</span>mygrid.<span class="me1">cells</span><span class="br0">&#40;</span>id<span class="sy0">,</span>i<span class="br0">&#41;</span>.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="co1">// gets the value of the current cell</span>
+            <span class="co1">// checks if the value of a cell has the text from the filter </span>
+            <span class="kw1">if</span> <span class="br0">&#40;</span>val.<span class="me1">toLowerCase</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">indexOf</span><span class="br0">&#40;</span>input.<span class="me1">toLowerCase</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">!==-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="br0">&#123;</span> 
+                <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+            <span class="br0">&#125;</span>
+        <span class="br0">&#125;</span>
+        <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='filteringevents'><h2>Filtering events</h2></a>
+
+<p>The library provides the following filtering-related events:</p>
+
+<ul>
+<li><a class="link-notsure" href="api__dhtmlxgrid_onfilterstart_event.html">onFilterStart</a> - fires when filtering is triggered in some input (doesn't occur for direct filterBy() calls);</li>
+<li><a class="link-notsure" href="api__dhtmlxgrid_onfilterend_event.html">onFilterEnd</a> - fires after filtering is finished (doesn't occur for direct filterBy() calls);</li>
+<li><a class="link-notsure" href="api__dhtmlxgrid_oncollectvalues_event.html">onCollectValues</a> - fires when the select filter collects values for the options list.</li>
+</ul>
+
+<a name='addingdeletingrowsinthefilteredgrid'><h2>Adding/deleting rows in the filtered grid</h2></a>
+
+<p>The grid doesn't preserve row changes (adding, deleting), 
+which are made when the grid is filtered. After resetting back to the not-filtered state,
+the grid restores deleted rows and removes the newly created ones. To work around the issue you can use the following order of actions:</p>
+
+<ol>
+<li>Unfilter the grid;</li>
+<li>Add/remove the desired rows;</li>
+<li>Filter the grid back.</li>
+</ol>
+
+<p class='snippet'>
+Adding rows in the filtered grid
+</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">filterBy</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//unfilters the grid</span>
+mygrid._f_rowsBuffer <span class="sy0">=</span> <span class="kw2">null</span><span class="sy0">;</span> <span class="co1">//clears the cache</span>
+&nbsp;
+grid.<span class="me1">addRow</span><span class="br0">&#40;</span>...<span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">// adds some row</span>
+&nbsp;
+grid.<span class="me1">filterByAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">// filters the grid back</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/08_filtering/01_pro_filter.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Filtering</a></p>
+
+<!-- Content Area End -->
+			<a href='grid__filtering.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

@@ -1,0 +1,76 @@
+<html>
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Custom button</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+
+        <script type="text/javascript" src="../../codebase/vault-v=3.0.0.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../codebase/vault-v=3.0.0.css">
+
+        <script type="text/javascript" src="../common/js/index-v=3.0.0.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css?v=3.0.0" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="../common/dhx_samples-v=3.0.0.css">
+   
+
+        <!-- metrics -->
+        <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-11031269-1', 'auto');
+        ga('send', 'pageview');
+        </script>
+
+        <!-- error tracking -->
+        <script src="https://cdn.ravenjs.com/3.19.1/raven.min.js" crossorigin="anonymous"></script>
+        <script>Raven.config('https://a2578da6be394598bfe003e4dbb3a394@sentry.dhtmlx.ru/13').install()</script>
+</head>
+    <body>
+        <div class="top-rect-block">
+            <div class="text-value">Click the calculator button to get total size of files</div>
+        </div>
+        <div id="vault" class="container with-header"></div>
+        <script>
+            var vault = new dhx.Vault("vault", {
+                mode: "grid",
+                uploader: {
+                    target: "/vault/backend/upload"
+                }
+            });
+            vault.data.parse(filesData);
+
+            vault.toolbar.data.add({
+                type: "iconButton",
+                id: "calc-size",
+				tooltip: "calculate total size",
+				icon: "fas fa-calculator"
+            }, 2);
+            vault.toolbar.data.add({
+                type: "text",
+                id: "size"
+            }, 3);
+
+            vault.toolbar.events.on("click", function(id) {
+                if (id === "calc-size") {
+                    var size = vault.data.reduce(function(sum, item) {
+                        return sum + item.size;
+                    }, 0);
+                    vault.toolbar.data.update("size", {value: getBasis(size)});
+                    vault.toolbar.show("size");
+                }
+            });
+            vault.data.events.on("change", function() {
+                if (!vault.data.getLength()) {
+                    vault.toolbar.data.update("size", {value: ""});
+                    vault.toolbar.hide(["calc-size", "size"]);
+                } else {
+                    vault.toolbar.show(["calc-size", "size"]);
+                }
+            })
+
+        </script>
+    </body>
+</html>

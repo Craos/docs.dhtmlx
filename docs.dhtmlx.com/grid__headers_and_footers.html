@@ -1,0 +1,330 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Headers and Footers  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="grid__basic_operations.html">Common Operations with Grid and its Elements</a></li><li class=""><a href="grid__columns_types.html">Column Types</a></li><li class=" current"><a href="grid__headers_and_footers.html">Headers and Footers</a></li><ul><li class="inner"><a href="grid__headers_and_footers.html#header">Header</a></li><li class="inner"><a href="grid__headers_and_footers.html#headeralignment">Header alignment</a></li><li class="inner"><a href="grid__headers_and_footers.html#headermenu">Header menu</a></li><li class="inner"><a href="grid__headers_and_footers.html#gridwithoutaheader">Grid without a header</a></li><li class="inner"><a href="grid__headers_and_footers.html#multilineheadersfooters">Multi-line headers/footers</a></li><li class="inner"><a href="grid__headers_and_footers.html#footer">Footer</a></li><li class="inner"><a href="grid__headers_and_footers.html#detachingheaderfooter">Detaching header(footer)</a></li><li class="inner"><a href="grid__headers_and_footers.html#changingheaderslabels">Changing header's labels</a></li><li class="inner"><a href="grid__headers_and_footers.html#gettingheaderslabels">Getting header's labels</a></li><li class="inner"><a href="grid__headers_and_footers.html#colspansrowspans">Colspans (rowspans)</a></li><li class="inner"><a href="grid__headers_and_footers.html#initializationfromxml">Initialization from XML</a></li><li class="inner"><a href="grid__headers_and_footers.html#iconsintheheader">Icons in the header</a></li><li class="inner"><a href="grid__headers_and_footers.html#treatingheaderslabelsasimages">Treating header's labels as images</a></li></ul><li class=""><a href="grid__frozen_columns.html">Freezing Columns (the 'Split' Mode)</a></li><li class=""><a href="grid__navigation.html">Enabling Keyboard Navigation</a></li><li class=""><a href="grid__selection.html">Managing the Selection</a></li><li class=""><a href="grid__drag_and_drop.html">Drag-and-Drop Support</a></li><li class=""><a href="grid__handling_cookies.html">Saving Grid Configuration in Cookies</a></li><li class=""><a href="grid__xml_configuration.html">Configuring Grid from XML</a></li><li class=""><a href="grid__json_configuration.html">Configuring Grid from JSON</a></li><li class=""><a href="grid__grouping_columns.html">Grouping Columns</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__configuring_the_grid.html">Configuring Grid</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Headers and Footers</h1>
+
+<a name='header'><h2>Header</h2></a>
+
+<p>To set the header for the grid, use the <a class="link-" href="api__dhtmlxgrid_setheader.html">setHeader</a> method:</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;./codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>         
+<span class="xtra ln-xtra">mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Sales,Book title,Author,Price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Note, the header's values are treated as HTML, so you can use any HTML tags in the <a class="link-" href="api__dhtmlxgrid_setheader.html">setHeader</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;img src='book_icon.png'&gt;,&lt;b&gt;Sales&lt;/b&gt;,Book title,Author,Price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//the image &quot;book_icon.png&quot; will be used as the header of the 1st column</span></pre></code></pre>
+
+<a name='headeralignment'><h2>Header alignment</h2></a>
+
+<p>To align the header's labels, use related CSS rules in the <a class="link-" href="api__dhtmlxgrid_setheader.html">setHeader</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span>
+    <span class="st0">&quot;A,B,C&quot;</span><span class="sy0">,</span>
+    <span class="kw2">null</span><span class="sy0">,</span>
+    <span class="br0">&#91;</span><span class="st0">&quot;text-align:right;&quot;</span><span class="sy0">,</span><span class="st0">&quot;text-align:left;&quot;</span><span class="sy0">,</span><span class="st0">&quot;text-align:center&quot;</span><span class="br0">&#93;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//or</span>
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;&lt;div style='width:100%; text-align:left;'&gt;A&lt;/div&gt;,B,C&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='headermenu'><h2>Header menu</h2></a>
+
+<p>Starting from v4.1, users can enable dhtmlxMenu for setting visibility of different columns (hide/show them) right on the fly. 
+To do this, the user just needs to call the following command:</p>
+
+<pre><code><pre class="js">grid.<span class="me1">enableHeaderMenu</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='gridwithoutaheader'><h2>Grid without a header</h2></a>
+
+<p>The <a class="link-" href="api__dhtmlxgrid_setheader.html">setHeader</a> method must be called anytime you initialize the grid, 
+dhtmlxGrid detects the number of columns depending on the values specified in this method. The only way to display the grid without the header is to hide it.</p>
+
+<p>To hide the grid's header, use the <a class="link-" href="api__dhtmlxgrid_setnoheader.html">setNoHeader</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;A,B,C&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//must be called anyway as it sets the number of cols</span>
+mygrid.<span class="me1">setNoHeader</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span>  <span class="co1">//hides the header</span></pre></code></pre>
+
+<a name='multilineheadersfooters'><h2>Multi-line headers/footers</h2></a>
+
+<p>To add one more header line, use the <a class="link-" href="api__dhtmlxgrid_attachheader.html">attachHeader</a> method:</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;./codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>         
+<span class="xtra ln-xtra">mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Sales,Book title,Author,Price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span><span class="xtra ln-xtra">mygrid.<span class="me1">attachHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Second header,,&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Assigning a custom style to the additional headers is quite similar:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Sales,Book title,Author,Price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">attachHeader</span><span class="br0">&#40;</span>
+    <span class="st0">&quot;Second header,,&quot;</span><span class="sy0">,</span>
+    <span class="br0">&#91;</span><span class="st0">&quot;text-align:right;&quot;</span><span class="sy0">,</span><span class="st0">&quot;text-align:left;&quot;</span><span class="sy0">,</span><span class="st0">&quot;text-align:center&quot;</span><span class="br0">&#93;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/11_header_footer/01_grid_complexheader.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Multirow header</a></p>
+
+<a name='footer'><h2>Footer</h2></a>
+
+<p>To set the footer(or several footers) for the grid, use the <a class="link-pro" href="api__dhtmlxgrid_attachfooter.html">attachFooter</a> method:</p>
+
+<p>There is a sibling command to attach footers (the first line and more):</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;./codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>         
+<span class="xtra ln-xtra">mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Sales,Book title,Author,Price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span><span class="xtra ln-xtra">mygrid.<span class="me1">attachFooter</span><span class="br0">&#40;</span><span class="st0">&quot;Sales,Book title,Author,Price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>  </span>mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>The footer's values are treated as HTML</p>
+</p></div>
+
+<p>The CSS style for the footer is assigned through the 2nd parameter of the <a class="link-pro" href="api__dhtmlxgrid_attachfooter.html">attachFooter</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">attachFooter</span><span class="br0">&#40;</span>
+    <span class="st0">&quot;Sales,Book title,Author,Price&quot;</span><span class="sy0">,</span>
+    <span class="br0">&#91;</span><span class="st0">&quot;text-align:right;&quot;</span><span class="sy0">,</span><span class="st0">&quot;text-align:left;&quot;</span><span class="sy0">,</span><span class="st0">&quot;text-align:center&quot;</span><span class="br0">&#93;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='detachingheaderfooter'><h2>Detaching header(footer)</h2></a>
+
+<p>To detach some header(footer) from the grid, use the <a class="link-" href="api__dhtmlxgrid_detachheader.html">detachHeader</a> (<a class="link-pro" href="api__dhtmlxgrid_detachfooter.html">detachFooter</a>) method:</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;./codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>         
+<span class="xtra ln-xtra">mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Sales,Book title,Author,Price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span><span class="xtra ln-xtra">mygrid.<span class="me1">attachFooter</span><span class="br0">&#40;</span><span class="st0">&quot;Sales,Book title,Author,Price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>  </span>mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+&nbsp;
+mygrid.<span class="me1">detachFooter</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//detaches the 1st footer(zero-based numbering)</span></pre></code></pre>
+
+<div class='note'><p><p>The 1st header can't be detached</p>
+</p></div>
+
+<a name='changingheaderslabels'><h2>Changing header's labels</h2></a>
+
+<p>To change the header's label of some column, use the <a class="link-" href="api__dhtmlxgrid_setcolumnlabel.html">setColumnLabel</a> method:</p>
+
+<pre><code><pre class="js"><span class="co1">//sets new label for the 1st column</span>
+mygrid.<span class="me1">setColLabel</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="sy0">,</span><span class="st0">&quot;New Column Label&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//sets new label for the 2nd header the 1st column</span>
+mygrid.<span class="me1">setColLabel</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="sy0">,</span><span class="st0">&quot;New Column Label&quot;</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='gettingheaderslabels'><h2>Getting header's labels</h2></a>
+
+<p>To get the header's labels, use the <a class="link-" href="api__dhtmlxgrid_getcolumnlabel.html">getColumnLabel</a> method:</p>
+
+<pre><code><pre class="js"><span class="co1">//gets the  label of the 1st column</span>
+<span class="kw2">var</span> colLabel<span class="sy0">=</span>mygrid.<span class="me1">getColLabel</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//gets the label of the 2nd header of the 1st column</span>
+<span class="kw2">var</span> colLabel<span class="sy0">=</span>mygrid.<span class="me1">getColLabel</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='colspansrowspans'><h2>Colspans (rowspans)</h2></a>
+
+<p>Multi-line headers (footers) can have colspans and rowspans. There is no special API for such a task, the functionality is based on special cell values.</p>
+
+<p>To set a colspan(rowspan) you need to use special keywords in the <a class="link-" href="api__dhtmlxgrid_setheader.html">setHeader</a> (<a class="link-" href="api__dhtmlxgrid_setfooterlabel.html">setFooterLabel</a>) methods instead of the text
+labels:</p>
+
+<ul>
+<li><strong>#cspan</strong> - the cell will be joined with the left cell</li>
+<li><strong>#rspan</strong> - the cell will be joined with the above cell</li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;A,#cspan,#cspan&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">attachHeader</span><span class="br0">&#40;</span><span class="st0">&quot;A1,B1,#cspan&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">attachHeader</span><span class="br0">&#40;</span><span class="st0">&quot;#rspan,B2,C2&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>The same cell can't be included in both rowspan and colspan at the same time</p>
+</p></div>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/11_header_footer/04_pro_grid_footer.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Footer</a></p>
+
+<a name='initializationfromxml'><h2>Initialization from XML</h2></a>
+
+<p>If you're initializing dhtmlxGrid from XML, the labels of the 1st header are set with the <strong>column</strong> tags.</p>
+
+<p>Additional headers(footers) are specified with the afterInit/call tags:</p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;rows<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;head<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;column</span> ... <span class="re2">&gt;</span></span>A<span class="sc3"><span class="re1">&lt;/column<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;column</span> ... <span class="re2">&gt;</span></span>B<span class="sc3"><span class="re1">&lt;/column<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;column</span> ... <span class="re2">&gt;</span></span>C<span class="sc3"><span class="re1">&lt;/column<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;afterInit<span class="re2">&gt;</span></span></span>
+            <span class="sc3"><span class="re1">&lt;call</span> <span class="re0">command</span>=<span class="st0">&quot;attachHeader&quot;</span><span class="re2">&gt;</span><span class="re1">&lt;param<span class="re2">&gt;</span></span></span>A1,B1,C1<span class="sc3"><span class="re1">&lt;/param<span class="re2">&gt;</span></span><span class="re1">&lt;/call<span class="re2">&gt;</span></span></span>
+            <span class="sc3"><span class="re1">&lt;call</span> <span class="re0">command</span>=<span class="st0">&quot;attachHeader&quot;</span><span class="re2">&gt;</span><span class="re1">&lt;param<span class="re2">&gt;</span></span></span>A2,B2,C2<span class="sc3"><span class="re1">&lt;/param<span class="re2">&gt;</span></span><span class="re1">&lt;/call<span class="re2">&gt;</span></span></span>
+            <span class="sc3"><span class="re1">&lt;call</span> <span class="re0">command</span>=<span class="st0">&quot;attachFooter&quot;</span><span class="re2">&gt;</span><span class="re1">&lt;param<span class="re2">&gt;</span></span></span>AF,BF,CF<span class="sc3"><span class="re1">&lt;/param<span class="re2">&gt;</span></span><span class="re1">&lt;/call<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;/afterInit<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/head<span class="re2">&gt;</span></span></span>
+    ...
+<span class="sc3"><span class="re1">&lt;/rows<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<p>The same syntax is used to define colspans and rowspans (whitespaces around #rspan and #cspan values must be omitted).</p>
+
+<a name='iconsintheheader'><h2>Icons in the header</h2></a>
+
+<p>dhtmlxGrid has a special support for icons in the header. Note, the expected size of icons is 18x18 pixels.</p>
+
+<p>To present an icon in the header, use the following technique:</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;./codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>         
+<span class="xtra ln-xtra">mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Without Icon,img:[path/to/icon.gif]With Icon&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>If you're using XML configuration, set an icon in the header as in:</p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;head<span class="re2">&gt;</span></span></span> 
+    <span class="sc3"><span class="re1">&lt;column</span> <span class="re0">width</span>=<span class="st0">&quot;50&quot;</span> <span class="re0">type</span>=<span class="st0">&quot;dyn&quot;</span><span class="re2">&gt;</span></span>Without Icon<span class="sc3"><span class="re1">&lt;/column<span class="re2">&gt;</span></span></span> 
+    <span class="sc3"><span class="re1">&lt;column</span> <span class="re0">width</span>=<span class="st0">&quot;150&quot;</span> <span class="re0">type</span>=<span class="st0">&quot;ed&quot;</span><span class="re2">&gt;</span></span>img:[path/to/icon.gif]With Icon<span class="sc3"><span class="re1">&lt;/column<span class="re2">&gt;</span></span></span>
+   ...
+<span class="sc3"><span class="re1">&lt;/head<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<a name='treatingheaderslabelsasimages'><h2>Treating header's labels as images</h2></a>
+
+<p>By default, dhtmlxGrid treats the header's labels as text values. To make the grid treat labels as images files' names, use the <a class="link-" href="api__dhtmlxgrid_enableheaderimages.html">enableHeaderImages</a>
+method:</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;./codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>         
+<span class="xtra ln-xtra">mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;img_01,img_02,img_03&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>mygrid.<span class="me1">enableHeaderImages</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='grid__headers_and_footers.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

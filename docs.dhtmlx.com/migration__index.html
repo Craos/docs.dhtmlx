@@ -1,0 +1,658 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="Detailed migration guide that includes important changes in the DHTMLX Suite components functionality from version to version." />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Migration to Newer Versions  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=" current"><a href="migration__index.html">Migration to Newer Versions</a></li><ul><li class="inner"><a href="migration__index.html#46150">4.6.1 -> 5.0</a></li><li class="inner"><a href="migration__index.html#4344">4.3 -> 4.4</a></li><li class="inner"><a href="migration__index.html#3641">3.6 -> 4.1</a></li><li class="inner"><a href="migration__index.html#3640">3.6 -> 4.0</a></li></ul><li class="toc-hidden"><a href="dhx5_2_whats_new.html">DHTMLX 5.2 - Full List of Changes</a></li><li class="toc-hidden"><a href="dhx5_1_whats_new.html">DHTMLX 5.1 - Full List of Changes</a></li><li class="toc-hidden"><a href="dhx5_0_whats_new.html">DHTMLX 5.0 - Full List of Changes</a></li><li class="toc-hidden"><a href="dhx4_5_whats_new.html">DHTMLX 4.5 - Full List of Changes</a></li><li class="toc-hidden"><a href="dhx4_3_whats_new.html">DHTMLX 4.3 - Full List of Changes</a></li><li class="toc-hidden"><a href="dhx4_2_whats_new.html">DHTMLX 4.2 - Full List of Changes</a></li><li class="toc-hidden"><a href="dhx4_1_whats_new.html">DHTMLX 4.1 - Full List of Changes</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="dhx4_whats_new.html">DHTMLX What's New</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Migration to Newer Versions</h1>
+
+<p><a name="migrationfrom43to44"></a></p>
+
+<a name='46150'><h2>4.6.1 -> 5.0</h2></a>
+
+<h3>Tree => TreeView</h3>
+
+<p>Starting from version 5.0, the <a class="link-" href="tree__index.html">Tree</a> component is replaced with the <a class="link-" href="treeview__index.html">TreeView</a> one. 
+<a class="link-" href="tree__index.html">Tree</a> will still be supported, but we highly recommend to use TreeView instead.</p>
+
+<h3>window.dhx4 => window.dhx</h3>
+
+<p>In the version 5.0 the <em>window.dhx4</em> variable is replaced with the <em>window.dhx</em> one.</p>
+
+<a name='4344'><h2>4.3 -> 4.4</h2></a>
+
+<p>Since version 4.4, some load methods of Grid and Tree were deprecated. You can find the details of their new usage below:</p>
+
+<h3>Grid</h3>
+
+<table class="my_table">
+
+<tr><td class="version_info">Up to version 4.3</td><td class="version_info">From version 4.4</td></tr>
+
+<tr><td colspan="2" class="type_info">Function names changed</td></tr>
+
+<tr><td>myGrid.loadCSV(csvFile, afterCall, "csv")</td><td>myGrid.load(csvFile, afterCall, "csv")</td></tr>
+<tr><td>myGrid.loadCSVString(csvString, afterCall, "csv") </td><td>myGrid.parse(csvString, "csv")</td></tr>
+<tr><td>myGrid.loadJSArrayFile(jsarrayFile, afterCall, "jsarray")</td><td>myGrid.load(jsarrayFile, afterCall, "jsarray")</td></tr>
+<tr><td>myGrid.loadJSArray(JSArray, afterCall "jsarray")</td><td>myGrid.parse(JSArray, "jsarray")</td></tr>
+<tr><td>myGrid.loadJSON(jsonFile, afterCall, "json")</td><td>myGrid.load(jsonFile, afterCall, "json")</td></tr>
+<tr><td>myGride.loadJSONObject(jsonObject, afterCall, "json")</td><td>myGrid.parse(jsonObject, "json")</td></tr>
+<tr><td>myGrid.loadXML(xmlFile, afterCall, "xml")</td><td>myGrid.load(xmlFile, afterCall, "xml")</td></tr>
+<tr><td>myGrid.loadXMLString(xmlString, afterCall,"xml") </td><td>myGrid.parse(xmlString, "xml")</td></tr>
+</table>
+
+<h3>Tree</h3>
+
+<table class="my_table">
+
+<tr><td class="version_info">Up to version 4.3</td><td class="version_info">From version 4.4</td></tr>
+
+<tr><td colspan="2" class="type_info">Function names changed</td></tr>
+
+<tr><td>myTree.loadCSV(csvFile, afterCall, "csv")</td><td>myTree.load(csvFile, afterCall, "csv")</td></tr>
+<tr><td>myTree.loadCSVString(csvString, afterCall, "csv") </td><td>myTree.parse(csvString, "csv")</td></tr>
+<tr><td>myTree.loadJSArrayFile(jsarrayFile, afterCall, "jsarray")</td><td>myTree.load(jsarrayFile, afterCall, "jsarray")</td></tr>
+<tr><td>myTree.loadJSArray(JSArray, afterCall "jsarray")</td><td>myTree.parse(JSArray, "jsarray")</td></tr>
+<tr><td>myTree.loadJSON(jsonFile, afterCall, "json")</td><td>myTree.load(jsonFile, afterCall, "json")</td></tr>
+<tr><td>myTree.loadJSONObject(jsonObject, afterCall, "json")</td><td>myTree.parse(jsonObject, "json")</td></tr>
+<tr><td>myTree.loadXML(xmlFile, afterCall, "xml")</td><td>myTree.load(xmlFile, afterCall, "xml")</td></tr>
+<tr><td>myTree.loadXMLString(xmlString, afterCall,"xml") </td><td>myTree.parse(xmlString, "xml")</td></tr>
+</table>
+
+<a name='3641'><h2>3.6 -> 4.1</h2></a>
+
+<h3>Changes in Ajax API</h3>
+
+<h4>dhtmlxAjax => ajax</h4>
+
+<p>Instead of dhtmlxAjax you should use <strong>dhx.ajax</strong> for ajax operations. See <a class="link-" href="api__refs__dhtmlxajax.html">dhtmlxAjax API</a> for details.</p>
+
+<h4>Handling errors</h4>
+
+<p>Instead of dhtmlxError.catchError you should use <a class="link-" href="api__dhtmlxajax_onloadxmlerror_event.html">onLoadXMLError</a> handler.</p>
+
+<h4>XPath</h4>
+
+<p>Similar to doXpath in older version of API you can use xmltop and xpath methods</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> root <span class="sy0">=</span> dhx.<span class="me1">ajax</span>.<span class="me1">xmltop</span><span class="br0">&#40;</span><span class="st0">&quot;rows&quot;</span><span class="sy0">,</span> xml_object<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> nodes <span class="sy0">=</span> dhx.<span class="me1">ajax</span>.<span class="me1">xpath</span><span class="br0">&#40;</span>xpath_expression<span class="sy0">,</span> root_node<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>"rows" - name of root XML tag</li>
+<li>xml_object - raw xml object, result of dhx.ajax</li>
+<li>xpath_expression -  path expression used to select nodes or node-sets in XML</li>
+<li>root_node - node from which XPath will be applied, you can use xmltop to get it</li>
+</ul>
+
+<a name='3640'><h2>3.6 -> 4.0</h2></a>
+
+<h3>Changes in the content of package</h3>
+
+<p>From version 4.0 the <strong>codebase</strong> folder contains the <strong>dhtmlx.js</strong> and <strong>dhtmlx.css</strong> files - the
+compilation of all dhtmlx components. So instead of including separate js files for each component
+you can include a single .js and a single .css files.</p>
+
+<p>The default skin is "skyblue". To set a different skin you need to include the related css file - 
+skins/web/dhtmlx.css for the "web" skin or skins/terrace/dhtmlx.css for the "terrace" skin.</p>
+
+<p>You don't need to include the files <strong>dhtmlxdataprocessor.js</strong> and <strong>connector.js</strong> additionally, as they're part of the <strong>dhtmlx.js</strong> file.</p>
+
+<h3>Including separate files</h3>
+
+<p>1) If you need separate js files for some components, you can take them from the <br> <b>sources/{component name}/codebase</b> folders.</p>
+
+<p>In the version 3.6 the file <strong>dhtmlxcommon.js</strong> was placed in the folder of each component separately. 
+Now you can find this file in <strong>sources/dhtmlxCommon/codebase</strong>. The files <strong>dhtmlxdataprocessor.js</strong>, <strong>connector.js</strong> and <strong>dhtmlxcontainer.js</strong> are also located here.</p>
+
+<p>2) To use styles and skins for Grid in the version 3.6 you should have included the file <strong>dhtmlxgrid.css</strong> together with one of the skin files from <strong>codebase/skins/</strong> folder, such as 
+<strong>dhtmlxgrid_dhx_skyblue.css</strong>, for example.</p>
+
+<p>Now the only thing you should do is to include one of the css files from <strong>sources/dhtmlxGrid/codebase/skins/dhtmlxgrid_skin_name.css</strong>.</p>
+
+<p>3) The components Chart and DataView require the file <strong>dhtmlxcore.js</strong> to be included instead of the <strong>dhtmlxcommon.js</strong> file.</p>
+
+<p>4) Since version 4.0 you don't need to include any additional extensions on the page. All of them are included into <strong>dhtmlx.js</strong>.</p>
+
+<h3>Common principles of API migration</h3>
+
+<p>1) In the new version of DHTMLX Library the names of some methods were changed.  We've made these changes as the previous
+names of the methods under question didn't reflect their functionality precisely, which could cause ambiguity
+or misunderstanding.</p>
+
+<p><br></p>
+
+<p>2) Since the release of the latest version of DHTMLX library some functionality has been removed. It was made as this functionality is 
+no longer needed and therefore isn't supported.</p>
+
+<p><br></p>
+
+<p>3) Functionality moved from object to object</p>
+
+<p>There were changes in the methods of layout components (Layout, Windows, Accordion, Tabbar). It concerns the methods that don't operate
+on the components in whole, but affect their cells (windows, tabs) directly.</p>
+
+<p>Such methods have earlier been called through myLayout object and now they are called through myLayout.cells() object. Be careful, as the names of these methods are
+also changed to more logical ones.</p>
+
+<p><br></p>
+
+<p>4) In the version 4.0 the methods loadXML() and loadXMLString() are replaced by the methods <strong>load</strong> and <strong>loadStruct</strong>. 
+The load() method loads data to the component via xml or json and the loadStruct() method loads component's configuration via xml or json.</p>
+
+<p>These new methods send POST request by default, and to prevent caching in some browsers extra param like "dhxr0123456789" is added. 
+To disable this additional param, set the <a class="link-" href="api__dhtmlxajax_cache_other.html">cache</a> property to <strong>true</strong>: <span style='color:#3366CC;'>dhx.ajax.cache=true</span>.</p>
+
+<p>To send GET request instead of POST the property <a class="link-" href="api__dhtmlxajax_method_other.html">method</a> is used: <span style='color:#3366CC;'>dhx.ajax.method = "get"</span>.</p>
+
+<p><br></p>
+
+<h3>Accordion</h3>
+
+<p><style>
+    table.my_table {
+        width: 100%;
+    }
+    table.my_table td {
+        text-align: left;
+        vertical-align: middle;
+        width: 50%;
+    }
+    table.my_table td.type_info {
+        text-align: center;
+        background-color: #E3F6FF;
+    }
+    table.my_table td.version_info {
+        text-align: center;
+        background-color: #FFDAFF;
+    }
+</style></p>
+
+<table class="my_table">
+
+<tr><td class="version_info">Up to version 3.6</td><td class="version_info">From version 4.0</td></tr>
+
+<tr><td colspan="2" class="type_info">Function names changed</td></tr>
+
+<tr><td>myAcc.loadJSON(data, callback)</td><td>myAcc.loadStruct(data, callback)</td></tr>
+<tr><td>myAcc.loadXML(data, callback)</td><td>myAcc.loadStruct(data, callback)</td></tr>
+<tr><td>myAcc.setSkinParameters(ofsBetween, ofsCont)</td><td>myAcc.setOffset(ofsBetween)</td></tr>
+
+<tr><td colspan="2" class="type_info">Functionality was removed</td></tr>
+
+<tr><td>myAcc.setEffect(mode)</td><td>Since 4.0 effects are enabled for modern browsers by default</td></tr>
+
+<tr><td colspan="2" class="type_info">Functionality moved from object to object</td></tr>
+
+<tr><td>myAcc.setIcon(id, icon)   </td><td>myAcc.cells(id).setIcon(icon)</td></tr>
+<tr><td>myAcc.clearIcon(id)       </td><td>myAcc.cells(id).clearIcon()  </td></tr>
+<tr><td>myAcc.setActive(id)       </td><td>myAcc.cells(id).open()       </td></tr>
+<tr><td>myAcc.isActive(id)        </td><td>myAcc.cells(id).isOpened()   </td></tr>
+<tr><td>myAcc.openItem(id)        </td><td>myAcc.cells(id).open()       </td></tr>
+<tr><td>myAcc.closeItem(id)       </td><td>myAcc.cells(id).close()      </td></tr>
+<tr><td>myAcc.moveOnTop(id)       </td><td>myAcc.cells(id).moveOnTop()  </td></tr>
+<tr><td>myAcc.setItemHeight(id,h) </td><td>myAcc.cells(id).setHeight(h) </td></tr>
+<tr><td>myAcc.setText(id,text)    </td><td>myAcc.cells(id).setText(text)</td></tr>
+<tr><td>myAcc.getText(id)         </td><td>myAcc.cells(id).getText()    </td></tr>
+<tr><td>myAcc.showItem(id)        </td><td>myAcc.cells(id).show()       </td></tr>
+<tr><td>myAcc.hideItem(id)        </td><td>myAcc.cells(id).hide()       </td></tr>
+<tr><td>myAcc.isItemHidden(id)    </td><td>myAcc.cells(id).isVisible()  </td></tr>
+
+</table>
+
+<p><br></p>
+
+<h3>Cell</h3>
+
+<p><strong>Views functionality was changed</strong>:</p>
+
+<p><br></p>
+
+<p>Until 3.6 you could attach components to a view without switching to it:</p>
+
+<pre><code><pre class="js">dhxComponent.<span class="me1">cells</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">view</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="br0">&#41;</span>.<span class="me1">attachMenu</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dhxComponent.<span class="me1">cells</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">view</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="br0">&#41;</span>.<span class="me1">attachGrid</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dhxComponent.<span class="me1">cells</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">view</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="br0">&#41;</span>.<span class="me1">setActive</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><br></p>
+
+<p>Starting from 4.0, firstly you need to show a view and then attach components to it:</p>
+
+<pre><code><pre class="js"><span class="co1">// firstly make a view active</span>
+dhxComponent.<span class="me1">cells</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">showView</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// then attach any components</span>
+dhxComponent.<span class="me1">cells</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">attachMenu</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dhxComponent.<span class="me1">cells</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">attachGrid</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><br></p>
+
+<h3>ColorPicker</h3>
+
+<table class="my_table">
+
+<tr><td class="version_info">Up to version 3.6</td><td class="version_info">From version 4.0</td></tr>
+
+<tr><td colspan="2" class="type_info">Function names changed</td></tr>
+
+<tr><td>new dhtmlXColorPickerInput()</td><td>new dhtmlXColorPicker()</td></tr>
+<tr><td>myColorPicker.setOnSelectHandler(function(){})</td><td>myColorPicker.attachEvent("onSelect", function(){})</td></tr>
+<tr><td>myColorPicker.setOnCancelHandler(function(){})</td><td>myColorPicker.attachEvent("onCancel", function(){})</td></tr>
+<tr><td>window.dhtmlxColorPickerLangModules</td><td>dhtmlXColorPicker.prototype.i18n</td></tr>
+<tr><td>myColorPicker.close()</td><td>myColorPicker.hide()</td></tr>
+
+<tr><td colspan="2" class="type_info">Functionality was removed</td></tr>
+
+<tr><td>myColorPicker.init()</td><td>initialized automatically</td></tr>
+<tr><td>myColorPicker.setImagePath(path)</td><td>no longer used</td></tr>
+
+</table>
+
+<p><br></p>
+
+<h3>Combo</h3>
+
+<table class="my_table">
+
+<tr><td class="version_info">Up to version 3.6</td><td class="version_info">From version 4.0</td></tr>
+
+<tr><td colspan="2" class="type_info">Function names changed</td></tr>
+
+<tr><td>myCombo.loadXML(url, call)</td><td>myCombo.load(url, call)</td></tr>
+<tr><td>myCombo.loadXMLString(url, call)</td><td>myCombo.load(url, call)</td></tr>
+<tr><td>myCombo.destructor()</td><td>myCombo.unload()</td></tr>
+
+<tr><td colspan="2" class="type_info">Functionality was removed</td></tr>
+
+<tr><td>myCombo.enableOptionAutoHeight()</td><td rowspan="4">adjusted automatically</td></tr>
+<tr><td>myCombo.enableOptionAutoPositioning()</td></tr>
+<tr><td>myCombo.enableOptionAutoWidth()</td></tr>
+<tr><td>myCombo.setOptionHeight()</td></tr>
+<tr><td>myCombo.render()</td><td>rendered automatically</td></tr>
+<tr><td>myCombo.attachChildCombo()</td><td rowspan="2">
+<a href='http://dhtmlx.com/docs/products/dhtmlxCombo/samples/08_advanced/01_grouping_combos.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Grouping combos</a>
+</td></tr>
+<tr><td>myCombo.setAutoSubCombo()</td></tr>
+
+</table>
+
+<p><br></p>
+
+<h3>Grid</h3>
+
+<p>From version 4.0 the files <strong>dhtmlxgrid.js</strong> and <strong>dhtmlxgridcell.js</strong> are united into one file named <strong>dhtmlxgrid.js</strong>.</p>
+
+<p><br></p>
+
+<h3>Layout</h3>
+
+<table class="my_table">
+
+<tr><td class="version_info">Up to version 3.6</td><td class="version_info">From version 4.0</td></tr>
+
+<tr><td colspan="2" class="type_info">Functions' names changed</td></tr>
+
+<tr><td>myLayout.listViews()</td><td>myLayout.listPatterns()</td></tr>
+
+<tr><td colspan="2" class="type_info">Functionality was removed</td></tr>
+
+<tr><td>myLayout.setEffect()</td><td rowspan="2">Since 4.0 effects are enabled for modern browsers by default</td></tr>
+<tr><td>myLayout.getEffect()</td></tr>
+<tr><td>myLayout.setImagePath()</td><td>Used for windows, since 4.0 windows don't use imagePath, icons can be set in css</td></tr>
+
+<tr><td colspan="2" class="type_info">Functionality moved from object to object</td></tr>
+
+<tr><td>myLayout.dockWindow(id)</td><td>myLayout.cells(id).dock()</td></tr>
+<tr><td>myLayout.unDockWindow(id)</td><td>myLayout.cells(id).undock()</td></tr>
+<tr><td>myLayout.setCollapsedText(id, text)</td><td>myLayout.cells(id).setCollapsedText(text)</td></tr>
+<tr><td>myLayout.showPanel(id)</td><td>myLayout.cells(id).showHeader()</td></tr>
+<tr><td>myLayout.hidePanel(id)</td><td>myLayout.cells(id).hideHeader()</td></tr>
+<tr><td>myLayout.isPanelVisible(id)</td><td>myLayout.cells(id).isHeaderVisible()</td></tr>
+
+</table>
+
+<p><strong>Access to cells by index removed</strong></p>
+
+<p>Layout has a possibility to access cells by id - myLayout.cells(id) or by index - myLayout.items&#91;&#93;. Until 3.6 both methods had used to get cell object,
+since version 4.0 we've kept only accessing cells by id. The access to cells by index still works if the file "dhtmlxlayout_deprecated.js" is included on the page.</p>
+
+<p><br></p>
+
+<table class="my_table">
+
+<tr><td class="version_info">Up to version 3.6</td><td class="version_info">From version 4.0</td></tr>
+
+<tr><td colspan="2" class="type_info">Access to cells by index</td></tr>
+
+<tr><td>myLayout.cells(id).getIndex()</td><td></td></tr>
+<tr><td>myLayout.getIdByIndex(index)</td><td></td></tr>
+<tr><td>myLayout.getIndexById(id)</td><td></td></tr>
+<tr><td>myLayout.items[] (array)</td><td></td></tr>
+</table>
+
+<p><br></p>
+
+<p><strong>Offsets (margins)</strong></p>
+
+<p>In all layout versions there is a possibility to set offsets (margins). They are mostly used in full-screen init type. We haven't removed this
+functionality but updated the used techniques.</p>
+
+<p><br></p>
+
+<p>Old techniques (all versions up to 3.6):</p>
+
+<pre><code><pre class="js"><span class="co1">// init</span>
+<span class="kw2">var</span> myLayout <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXLayoutObject<span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="st0">&quot;3L&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// modify some private properties</span>
+myLayout.<span class="me1">cont</span>.<span class="me1">obj</span>._offsetTop <span class="sy0">=</span> <span class="nu0">10</span><span class="sy0">;</span> <span class="co1">// top margin</span>
+myLayout.<span class="me1">cont</span>.<span class="me1">obj</span>._offsetLeft <span class="sy0">=</span> <span class="nu0">10</span><span class="sy0">;</span> <span class="co1">// left margin</span>
+myLayout.<span class="me1">cont</span>.<span class="me1">obj</span>._offsetHeight <span class="sy0">=</span> <span class="sy0">-</span><span class="nu0">20</span><span class="sy0">;</span> <span class="co1">// bottom margin</span>
+myLayout.<span class="me1">cont</span>.<span class="me1">obj</span>._offsetWidth <span class="sy0">=</span> <span class="sy0">-</span><span class="nu0">20</span><span class="sy0">;</span> <span class="co1">// right margin</span>
+&nbsp;
+<span class="co1">// adjust size</span>
+myLayout.<span class="me1">setSizes</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><br>
+New techniques (from version 4.0):</p>
+
+<pre><code><pre class="js"><span class="co1">// on init stage</span>
+<span class="kw2">var</span> myLayout <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXLayoutObject<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    parent<span class="sy0">:</span> document.<span class="me1">body</span><span class="sy0">,</span>
+    pattern<span class="sy0">:</span> <span class="st0">&quot;3L&quot;</span><span class="sy0">,</span>
+    offsets<span class="sy0">:</span> <span class="br0">&#123;</span>
+        top<span class="sy0">:</span> <span class="nu0">10</span><span class="sy0">,</span>
+        right<span class="sy0">:</span> <span class="nu0">20</span><span class="sy0">,</span>
+        bottom<span class="sy0">:</span> <span class="nu0">30</span><span class="sy0">,</span>
+        left<span class="sy0">:</span> <span class="nu0">40</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// at any place in the code</span>
+myLayout.<span class="me1">setOffsets</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    top<span class="sy0">:</span> <span class="nu0">10</span><span class="sy0">,</span>
+    right<span class="sy0">:</span> <span class="nu0">20</span><span class="sy0">,</span>
+    bottom<span class="sy0">:</span> <span class="nu0">30</span><span class="sy0">,</span>
+    left<span class="sy0">:</span> <span class="nu0">40</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><strong>Events</strong></p>
+
+<p>Until the version 3.6 layout had the event onResize. If layout was attached to a window, this event was called after the window was resized. 
+Starting from the version 4.0 the event onResizeFinish should be used instead.</p>
+
+<pre><code><pre class="js">myLayout.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onResizeFinish&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// your code here</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxLayout/samples/06_events/03_onresizefinish.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;onResizeFinish event</a></p>
+
+<p><br></p>
+
+<h3>Menu</h3>
+
+<table class="my_table">
+
+<tr><td class="version_info">Up to version 3.6</td><td class="version_info">From version 4.0</td></tr>
+
+<tr><td colspan="2" class="type_info">Function names changed</td></tr>
+
+<tr><td>myMenu.loadXML(xmlFile, onLoad)</td><td>myMenu.loadStruct(xmlFile, onLoad)</td></tr>
+<tr><td>myMenu.loadXMLString(xmlString, onLoad)</td><td>myMenu.loadStruct(xmlString, onLoad)</td></tr>
+
+<tr><td colspan="2" class="type_info">Functionality was removed</td></tr>
+
+<tr><td>myMenu.setIconPath(path)</td><td>myMenu.setIconsPath(path)</td></tr>
+<tr><td>myMenu.setImagePath()</td><td>myMenu.setIconsPath(path)</td></tr>
+
+</table>
+
+<p><br></p>
+
+<h3>Slider</h3>
+
+<table class="my_table">
+
+<tr><td class="version_info">Up to version 3.6</td><td class="version_info">From version 4.0</td></tr>
+
+<tr><td colspan="2" class="type_info">Function names changed</td></tr>
+
+<tr><td>new dhtmlxSlider()</td><td>new dhtmlXSlider()</td></tr>
+
+<tr><td>mySlider.setOnChangeHandler(function(){})</td><td>mySlider.attachEvent("onChange", function(){})</td></tr>
+
+<tr><td colspan="2" class="type_info">Functionality was removed</td></tr>
+
+<tr><td>mySlider.init()</td><td>no longer used, initialized on constructor stage</td></tr>
+<tr><td>mySlider.setImagePath()</td><td>no longer used</td></tr>
+
+</table>
+
+<p><br></p>
+
+<h3>Tabbar</h3>
+
+<table class="my_table">
+
+<tr><td class="version_info">Up to version 3.6</td><td class="version_info">From version 4.0</td></tr>
+
+<tr><td colspan="2" class="type_info">Function names changed</td></tr>
+
+<tr><td>myTabbar.destructor()</td><td>myTabbar.unload()</td></tr>
+<tr><td>myTabbar.adjustOuterSize()</td><td>myTabbar.setSizes()</td></tr>
+<tr><td>myTabbar.loadXML(url, onLoad)</td><td>myTabbar.loadStruct(url, onLoad)</td></tr>
+<tr><td>myTabbar.loadXMLString(xmlString, onLoad)</td><td>myTabbar.loadStruct(xmlString, onLoad)</td></tr>
+<tr><td>myTabbar.attachEvent("onTabContentLoaded", function(id){})</td><td>myTabbar.attachEvent("onContentLoaded", function(id){})</td></tr>
+<tr><td>myTabbar.setOnSelectHandler(tabClicked)</td><td>myTabbar.attachEvent(("onSelect",<br>function(tabClicked){})</td></tr>
+
+
+<tr><td colspan="2" class="type_info">Functionality was removed</td></tr>
+
+<tr><td>myTabbar.normalize()</td><td>code improved</td></tr>
+<tr><td>myTabbar.setStyle()</td><td>controlled by skin</td></tr>
+<tr><td>myTabbar.setImagePath()</td><td>all images moved to css</td></tr>
+<tr><td>myTabbar.setSkinColors()</td><td>controlled by skin</td></tr>
+<tr><td>myTabbar.enableScroll() </td><td>code improved</td></tr>
+<tr><td>myTabbar.enableForceHiding()</td><td>code improved</td></tr>
+<tr><td>myTabbar.enableAutoSize()</td><td>code improved</td></tr>
+<tr><td>myTabbar.setCustomStyle(id, style)</td><td>you can use html for tabs(id).setText()</td></tr>
+<tr><td>myTabbar.setMargin()</td><td>controlled by skin</td></tr>
+<tr><td>myTabbar.setOffset()</td><td>controlled by skin</td></tr>
+<tr><td>myTabbar.setSize(x, y)</td><td>you need to change parent container's width/height and then call myTabbar.setSizes()</td></tr>
+<tr><td>myTabbar.setHrefMode(mode)</td><td>url or ajax via myTabbar.tabs(id).attachURL()</td></tr>
+
+<tr><td colspan="2" class="type_info">Functionality moved from object to object</td></tr>
+
+<tr><td>myTabbar.setContent(id, value)</td><td>myTabbar.tabs(id).attachObject(value)</td></tr>
+<tr><td>myTabbar.setContentHTML(id, value)</td><td>myTabbar.tabs(id).attachHTMLString(value)</td></tr>
+<tr><td>myTabbar.tabWindow(id)</td><td>myTabbar.tabs(id).getFrame()</td></tr>
+<tr><td>myTabbar.showInnerScroll(id)</td><td>myTabbar.tabs(id).showInnerScroll()</td></tr>
+<tr><td>myTabbar.hideTab(id, mode)</td><td>myTabbar.tabs(id).hide(mode)</td></tr>
+<tr><td>myTabbar.showTab(id, mode)</td><td>myTabbar.tabs(id).show(mode)</td></tr>
+<tr><td>myTabbar.enableTab(id)</td><td>myTabbar.tabs(id).enable()</td></tr>
+<tr><td>myTabbar.disableTab(id)</td><td>myTabbar.tabs(id).disable()</td></tr>
+<tr><td>myTabbar.getIndex(id)</td><td>myTabbar.tabs(id).getIndex()</td></tr>
+<tr><td>myTabbar.getLabel(id)</td><td>myTabbar.tabs(id).getText()</td></tr>
+<tr><td>myTabbar.setLabel(id, text)</td><td>myTabbar.tabs(id).setText(text)</td></tr>
+<tr><td>myTabbar.setTabActive(id)</td><td>myTabbar.tabs(id).setActive()</td></tr>
+<tr><td>myTabbar.removeTab(id)</td><td>myTabbar.tabs(id).close()</td></tr>
+<tr><td>myTabbar.forceLoad(id)</td><td>myTabbar.tabs(id).reloadURL()</td></tr>
+<tr><td>myTabbar.setContentHref(id, href)</td><td>myTabbar.tabs(id).attachURL(href, mode)</td></tr>
+
+
+</table>
+
+<p><br></p>
+
+<h3>Toolbar</h3>
+
+<table class="my_table">
+
+<tr><td class="version_info">Up to version 3.6</td><td class="version_info">From version 4.0</td></tr>
+
+<tr><td colspan="2" class="type_info">Function names changed</td></tr>
+
+<tr><td>myToolbar.loadXML(xmlFile, onLoad)</td><td>myToolbar.loadStruct(xmlFile, onLoad)</td></tr>
+<tr><td>myToolbar.loadXMLString(xmlString, onLoad) </td><td>myToolbar.loadStruct(xmlString, onLoad)</td></tr>
+<tr><td>myToolbar.setIconPath(path) </td><td>myToolbar.setIconsPath(path)</td></tr>
+
+</table>
+
+<p><br></p>
+
+<h3>Windows</h3>
+
+<table class="my_table">
+
+<tr><td class="version_info">Up to version 3.6</td><td class="version_info">From version 4.0</td></tr>
+
+<tr><td colspan="2" class="type_info">Functionality was removed</td></tr>
+
+<tr><td>myWins.enableAutoViewport()</td><td>called automatically inside attachViewportTo()</td></tr>
+<tr><td>myWins.setImagePath()</td><td>no longer used</td></tr>
+<tr><td>myWins.setEffect()</td><td rowspan="2">Since 4.0 effects are enabled for modern browsers by default</td></tr>
+<tr><td>myWins.getEffect()</td></tr>
+
+<tr><td>myWins.window(id).setIcon()</td><td rowspan="4">myWins.window(id).setIconCss(css)</td></tr>
+<tr><td>myWins.window(id).getIcon()</td></tr>
+<tr><td>myWins.window(id).restoreIcon()</td></tr>
+<tr><td>myWins.window(id).clearIcon()</td></tr>
+
+</table>
+
+<p>before 3.6 there were "minmax1" and "minmax2" button names for "maximize/minimize" button,
+since 4.0 the common name "minmax" is used</p>
+
+<!-- Content Area End -->
+			<a href='migration__index.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

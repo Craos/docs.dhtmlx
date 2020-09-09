@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Custom icons.</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+	<script type="text/javascript" src="../../codebase/richtext-v=1.1.2.js"></script>
+	<link rel="stylesheet" href="../../codebase/richtext-v=1.1.2.css">
+	<link rel="stylesheet" href="../common/index-v=1.1.2.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css?v=1.1.2" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                        'gtm.start':
+                                new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5M5RCSJ');</script>
+<!-- End Google Tag Manager -->
+
+<!-- error tracking -->
+<script src="https://cdn.ravenjs.com/3.19.1/raven.min.js" crossorigin="anonymous"></script>
+<script>Raven.config('https://a2578da6be394598bfe003e4dbb3a394@sentry.dhtmlx.ru/13').install()</script></head>
+
+<body>
+<header class="dhx_sample-header">
+<div class="dhx_sample-header__main">
+	<nav class="dhx_sample-header__breadcrumbs">
+		<ul class="dhx_sample-header-breadcrumbs">
+			<li class="dhx_sample-header-breadcrumbs__item">
+				<a href="../index.html" class="dhx_sample-header-breadcrumbs__link">RichText samples</a>
+			</li>
+			<li class="dhx_sample-header-breadcrumbs__item">
+				<a href="index.html" class="dhx_sample-header-breadcrumbs__link">customization</a>
+			</li>
+			<li class="dhx_sample-header-breadcrumbs__item">
+				<span class="dhx_sample-header-breadcrumbs__link">custom icons</span>
+			</li>
+		</ul>
+	</nav>
+	<h1 class="dhx_sample-header__title">
+		Custom icons.
+		Check documentation:
+		<a href="../../customization.html#icons" target="_blank" class="dhx_sample-header-link">Icons</a>
+		<a href="../../customization.html#toolbar" target="_blank" class="dhx_sample-header-link">Toolbar</a>
+	</h1>
+		<div class="dhx_sample-header__cta" id="dhx_sample-cta">
+			<a title="Free Trial" target="_blank" class="dhx_sample-btn dhx_sample-btn--flat dhx_sample-btn--cta" 
+			href="https://dhtmlx.com/docs/products/dhtmlxRichtext/download.shtml">Free Trial</a>
+		</div>
+	</div>
+</header>
+	<section class="dhx_sample-controls">
+		<div class="dhx_sample-input__wrapper dhx_sample-input__wrapper--pl-16">
+			<input checked name="locale" id="material" value="material" onchange="handleChange(this.value)" type="radio" class="dhx_sample-radio__input">
+			<label for="material" class="dhx_sample-radio__label">Material Icons</label>
+		</div>
+		<div class="dhx_sample-input__wrapper dhx_sample-input__wrapper--pl-16">
+			<input name="locale" id="awesome" value="awesome" onchange="handleChange(this.value)" type="radio" class="dhx_sample-radio__input">
+			<label for="awesome" class="dhx_sample-radio__label">Font Awesome</label>
+		</div>
+	</section>
+	<section class="dhx_sample-container">
+		<div class="dhx_sample-container__widget" id="richtext"></div>
+	</section>
+
+	<script>
+		var richtext = new dhx.Richtext("richtext");
+		var awesome = [
+			["bold", "fas fa-bold"],
+			["underline", "fas fa-underline"],
+			["italic", "fas fa-italic"],
+			["strike", "fas fa-strikethrough"],
+		];
+		var material = [
+			["bold", "dxi dxi-format-bold"],
+			["underline", "dxi dxi-format-underline"],
+			["italic", "dxi dxi-format-italic"],
+			["strike", "dxi dxi-format-strikethrough"],
+		];
+		function handleChange(mode) {
+			if (mode === 'awesome') {
+				for (var i = 0; i < awesome.length; i++) {
+					var toolbarId = awesome[i][0];
+					var iconName = awesome[i][1];
+					richtext.toolbar.data.update(toolbarId, { icon: iconName });
+				}
+			} else {
+				for (var i = 0; i < material.length; i++) {
+					var toolbarId = material[i][0];
+					var iconName = material[i][1];
+					richtext.toolbar.data.update(toolbarId, { icon: iconName });
+				}
+			}
+		}
+	</script>
+
+</body>
+
+</html>

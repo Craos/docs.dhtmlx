@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599137912.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599137912.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Pivot Docs" href="https://docs.dhtmlx.com/pivot/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Creating Pivot on a Page  Pivot Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=27">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=" current"><a href="guides__initialization.html">Creating Pivot on a Page</a></li><ul><li class="inner"><a href="guides__initialization.html#includingrequiredcodefiles">Including Required Code Files</a></li><li class="inner"><a href="guides__initialization.html#creatingcontainer">Creating Container</a></li><li class="inner"><a href="guides__initialization.html#initializingpivot">Initializing Pivot</a></li></ul><li class=""><a href="guides__loading_data.html">Loading Data into Pivot</a></li><li class=""><a href="guides__working_with_pivot.html">Working with Pivot</a></li><li class=""><a href="guides__export.html">Exporting Pivot</a></li><li class=""><a href="guides__configuration.html">Configuring Pivot</a></li><li class=""><a href="guides__customization.html">Customizing Pivot</a></li><li class=""><a href="guides__using_filters.html">Manipulating with Filters</a></li><li class=""><a href="guides__localization.html">Localizing Pivot</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Creating Pivot on a Page</h1>
+
+<p>In order to create dhtmlxPivot on a page, you should initialize it. There are several main steps you need to take:</p>
+
+<ol>
+<li><a href="guides__initialization.html#codefiles">Include the dhtmlxPivot source files on a page</a>. </li>
+<li><a href="guides__initialization.html#container">Create a container to place the Pivot into</a>.</li>
+<li><a href="guides__initialization.html#initialization">Initialize the Pivot using the object constructor</a>.</li>
+</ol>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../../codebase/pivot.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>    
+  <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../../codebase/pivot.css&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;container&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">        <span class="kw2">var</span> myPivot <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Pivot</span><span class="br0">&#40;</span><span class="st0">&quot;container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+            fields<span class="sy0">:</span> <span class="br0">&#123;</span>
+                <span class="co1">// initial pivot structure</span>
+            <span class="br0">&#125;</span><span class="sy0">,</span>
+            fieldList<span class="sy0">:</span> <span class="br0">&#91;</span>        
+                <span class="co1">// the full list of fields</span>
+            <span class="br0">&#93;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre>    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+<p><a href='samples/01_init/01_init.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Basic initialization - DHTMLX Pivot</a></p>
+
+<a name='includingrequiredcodefiles'><h2 id="codefiles">Including Required Code Files</h2></a>
+
+<p>You have to include 2 code files for using dhtmlxPivot:</p>
+
+<ul>
+<li><strong>pivot.js</strong></li>
+<li><strong>pivot.css</strong></li>
+</ul>
+
+<p>Check that you set right relative paths to these files:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/pivot.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>    
+<span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;codebase/pivot.css&quot;</span>&gt;</span></pre></code></pre>
+
+<p>Let's have a look at the structure of the dhtmlxPivot package to find out where to look for the files.</p>
+
+<ul>
+<li><strong>sources</strong> - the source code files of the library. The files are not minified and easy-to-read.
+The package is mostly intended to be used for component's debugging</li>
+<li><strong>samples</strong> - the code samples</li>
+<li><strong>docs</strong> - the full documentation of the component</li>
+<li><strong>codebase</strong> - the packed code files of the library. These files are much smaller and intended for use in production. 
+<strong>In your apps you need to use files from this folder</strong></li>
+</ul>
+
+<a name='creatingcontainer'><h2 id="container">Creating Container</h2></a>
+
+<p>Next you need to add an HTML container to put a future Pivot component into:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;container&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+<a name='initializingpivot'><h2 id="initialization">Initializing Pivot</h2></a>
+
+<p>To initialize dhtmlxPivot, you should use the <code>dhx.Pivot</code> constructor. The constructor function takes two parameters:</p>
+
+<ul>
+<li>a container to place a Pivot into </li>
+<li>a configuration object with the initial Pivot structure, fields, data and other properties. <a class="link-" href="guides__initialization.html#listofproperties">See the full list below</a>.</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myPivot <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Pivot</span><span class="br0">&#40;</span><span class="st0">&quot;container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    data<span class="sy0">:</span> dataset<span class="sy0">,</span>
+    fields<span class="sy0">:</span> <span class="br0">&#123;</span>
+        rows<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;form&quot;</span><span class="sy0">,</span> <span class="st0">&quot;name&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        columns<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;year&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        values<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="st0">&quot;oil&quot;</span><span class="sy0">,</span> method<span class="sy0">:</span> <span class="st0">&quot;max&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span> <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="st0">&quot;oil&quot;</span><span class="sy0">,</span> method<span class="sy0">:</span> <span class="st0">&quot;sum&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    fieldList<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="st0">&quot;name&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;name&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="st0">&quot;year&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;year&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="st0">&quot;continent&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Continent&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="co1">// more fields</span>
+    <span class="br0">&#93;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>It is also possible to skip setting a container for Pivot and to add it right into the document's body:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myPivot <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Pivot</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    fields<span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="co1">// initial pivot structure</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    fieldList<span class="sy0">:</span> <span class="br0">&#91;</span>        
+       <span class="co1">// the full list of fields</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3 id="config_object">Pivot configuration object</h3>
+
+<p><span id="listofproperties">The list of possible properties of the Pivot configuration object (the second parameter of the constructor):</span></p>
+
+<ul>
+<li><strong>fields</strong> - (<em>object</em>) mandatory, specifies the initial Pivot structure and fields, and sets the scheme for data analysis.</li>
+<li><strong>fieldList</strong> - (<em>array</em>) mandatory, defines an array of fields from the dataset that will be used in Pivot. Besides, it allows setting custom labels for fields.</li>
+<li><strong>data</strong> - (<em>array</em>) optional, a dataset or a link to it. Defines the data to be loaded into Pivot. 
+You can also load data in a different way. See details in the article <a class="link-" href="guides__loading_data.html">Loading Data into Pivot</a>.</li>
+<li><strong>types</strong> - (<em>object</em>) optional, defines the types of data operations that can be applied to columns, allows setting custom labels for the types of operations. 
+Read more in the section <a class="link-" href="guides__configuration.html#configuringoperations">Configuring operations</a>.</li>
+<li><strong>layout</strong> - (<em>object</em>) optional, sets an object with 
+<a class="link-" href="guides__configuration.html#definingpivotlookandfeel">properties that define the appearance of the Pivot layout</a>.</li>
+<li><strong>mark</strong> - (<em>object</em>|<em>function</em>) optional, defines the styling of cells</li>
+<li><strong>customFormat</strong> - (<em>function</em>) optional, specifies a function that redefines the default formatting of cells values and sets a custom format</li>
+</ul>
+
+<h3 id="fields_object">Pivot fields object</h3>
+
+<ul>
+<li><strong>rows</strong> - an array of fields that will be used as Pivot rows and shown in the left part of the component</li>
+<li><strong>columns</strong> - an array of fields that will be used as Pivot columns and form the top part of the datatable's header</li>
+<li><strong>values</strong> - an array of fields that will be used as Pivot data and shown in the datatable's cells. Besides, it sets the bottom part of the datatable's header </li>
+</ul>
+
+<p><a href='samples/01_init/01_init.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Basic initialization - DHTMLX Pivot</a></p>
+
+<!-- Content Area End -->
+			<a href='guides__initialization.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Overview</li>
+	<li><a href='overview.html'>Pivot Overview</a></li>
+	<li><a href='how_to_start.html'>How to Start</a></li>
+	<li><a href='migrating.html'>Migration</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='guides__initialization.html'>Initialization</a></li>
+	<li><a href='guides__loading_data.html'>Data Loading</a></li>
+	<li><a href='guides__working_with_pivot.html#definingdataoperations'>Data Operations</a></li>	
+	
+</ul>
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='guides__configuration.html#definingpivotlookandfeel'>Pivot Layout</a></li>	
+	<li><a href='guides__configuration.html'>Fields and Operations</a></li>
+	<li><a href='guides__localization.html'>Localization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__pivot.html#constructor'>Constructor</a></li>
+	<li><a href='api__refs__pivot_methods.html'>Methods</a></li>
+	<li><a href='api__refs__pivot_props.html'>Properties</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

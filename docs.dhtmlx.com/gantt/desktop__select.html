@@ -1,0 +1,249 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Select Control  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__textarea.html">Textarea Control</a></li><li class=""><a href="desktop__duration.html">Duration Control</a></li><li class=""><a href="desktop__time.html">Time Control</a></li><li class=" current"><a href="desktop__select.html">Select Control</a></li><ul><li class="inner"><a href="desktop__select.html#initialization">Initialization</a></li><li class="inner"><a href="desktop__select.html#properties">Properties</a></li><li class="inner"><a href="desktop__select.html#populatingcontrolwithdata">Populating control with data</a></li><li class="inner"><a href="desktop__select.html#populatingcontrolwithdatafromtheserver">Populating control with data from the server</a></li></ul><li class="toc-pro"><a href="desktop__typeselect.html">Typeselect Control</a></li><li class=""><a href="desktop__parent.html">Parent Control</a></li><li class=""><a href="desktop__template.html">Template Control</a></li><li class=""><a href="desktop__checkbox.html">Checkbox Control</a></li><li class=""><a href="desktop__radio.html">Radio Button Control</a></li><li class="toc-pro"><a href="desktop__resources.html">Resources Control</a></li><li class="toc-pro"><a href="desktop__constraint.html">Constraint Control</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__edit_form.html">Configuring Edit Form</a><a class="n4" href="desktop__default_edit_form.html">Configuring Lightbox Elements</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Select Control</h1>
+
+<p>A drop-down list box.</p>
+
+<p><img src="media/desktop/select_control.png"/></p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">38</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span> <span class="kw3">focus</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;priority&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">22</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;priority&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;select&quot;</span><span class="sy0">,</span> options<span class="sy0">:</span> <span class="br0">&#91;</span> </span><span class="xtra ln-xtra">        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;High&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>                                               </span><span class="xtra ln-xtra">        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Normal&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>                                             </span><span class="xtra ln-xtra">        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Low&quot;</span><span class="br0">&#125;</span>                                                 </span><span class="xtra ln-xtra">     <span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">,</span>                                                                      </span>    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">72</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;auto&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">section_priority</span> <span class="sy0">=</span> <span class="st0">&quot;Priority&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/05_lightbox/12_select.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Select control</a></p>
+
+<a name='initialization'><h2>Initialization</h2></a>
+
+<p>To add the <strong>select</strong> control to the lightbox, follow these steps:</p>
+
+<p>1) Add a section to the lightbox configuration:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> opts <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;High&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>                                            
+    <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Normal&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>                                         
+    <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Low&quot;</span><span class="br0">&#125;</span>                                            
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">38</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span><span class="kw3">focus</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;priority&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">22</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;priority&quot;</span><span class="sy0">,</span>type<span class="sy0">:</span><span class="st0">&quot;select&quot;</span><span class="sy0">,</span>options<span class="sy0">:</span>opts<span class="br0">&#125;</span><span class="sy0">,</span>                                                                       </span>    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">72</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;auto&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>2) Set a label for the section:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">section_priority</span> <span class="sy0">=</span> <span class="st0">&quot;Priority&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/05_lightbox/12_select.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Select control</a></p>
+
+<a name='properties'><h2>Properties</h2></a>
+
+<p>The following properties are mostly important and commonly set for the <strong>select</strong> control (see the full list <a class="link-" href="api__gantt_lightbox_config.html">here</a>):</p>
+
+<ul>
+<li><strong>name</strong> - (<em>string</em>) the section name </li>
+<li><strong>height</strong> - (<em>number</em>) the section height</li>
+<li><strong>map_to</strong> - (<em>string</em>) the name of a data property that will be mapped to the section</li>
+<li><strong>type</strong> - (<em>string</em>) the type of the <a class="link-" href="desktop__default_edit_form.html#lightboxcontrols">section control</a></li>
+<li><strong>focus</strong> - (<em>boolean</em>) if set to <em>true</em>, the section will take focus on opening the lightbox</li>
+<li><strong>options</strong> - (<em>array</em>) an array of objects. Defines select options of the control (<em>used for the <strong>select</strong>, <strong>checkbox</strong>  and <strong>radio</strong>  controls</em>). Each object in the array specifies a single option and takes
+the following properties:
+
+<ul>
+<li><strong>key</strong> - (<em>string</em>) the option id. This attribute is compared with the task data property to assign options to tasks</li>
+<li><strong>label</strong> - (<em>string</em>) the option label</li>
+</ul></li>
+<li><strong>default_value</strong> - (<em>any</em>) the default value of the section's control. Applied only if the input value is underfined </li>
+<li><strong>onchange</strong> - (<em>function</em>) specifies the 'onChange' event handler function for the section's control </li>
+</ul>
+
+<a name='populatingcontrolwithdata'><h2>Populating control with data</h2></a>
+
+<p>Generally, to set values for the <strong>select</strong> control, use the <a class="link-" href="api__gantt_lightbox_config.html">options</a> parameter:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;priority&quot;</span><span class="sy0">,</span>height<span class="sy0">:</span><span class="nu0">22</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;priority&quot;</span><span class="sy0">,</span>type<span class="sy0">:</span><span class="st0">&quot;select&quot;</span><span class="sy0">,</span>
+      options<span class="sy0">:</span> <span class="br0">&#91;</span> 
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;High&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>                                               
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Normal&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>                                             
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Low&quot;</span><span class="br0">&#125;</span>                                                
+    <span class="br0">&#93;</span><span class="br0">&#125;</span>                                                                    
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Items in the <a class="link-" href="api__gantt_lightbox_config.html">options</a> parameter have 2 mandatory properties:</p>
+
+<ul>
+<li><strong>key</strong> - the option id</li>
+<li><strong>label</strong> - the option label</li>
+</ul>
+
+<a name='populatingcontrolwithdatafromtheserver'><h2>Populating control with data from the server</h2></a>
+
+<p>To populate the control from the server, set the <a class="link-" href="api__gantt_lightbox_config.html">options</a> option to the value returned by the <a class="link-" href="api__gantt_serverlist.html">serverList</a> method:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;description&quot;</span><span class="sy0">,</span> ...<span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;priority&quot;</span><span class="sy0">,</span>map_to<span class="sy0">:</span><span class="st0">&quot;priority&quot;</span><span class="sy0">,</span>type<span class="sy0">:</span><span class="st0">&quot;select&quot;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">        options<span class="sy0">:</span>gantt.<span class="me1">serverList</span><span class="br0">&#40;</span><span class="st0">&quot;priority&quot;</span><span class="br0">&#41;</span><span class="br0">&#125;</span><span class="sy0">,</span> </span>    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;category&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;category&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;select&quot;</span><span class="sy0">,</span> 
+<span class="xtra ln-xtra">        options<span class="sy0">:</span>gantt.<span class="me1">serverList</span><span class="br0">&#40;</span><span class="st0">&quot;category&quot;</span><span class="br0">&#41;</span><span class="br0">&#125;</span><span class="sy0">,</span> </span>    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span> ...<span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/data&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The output of the <strong>/data</strong> url is the following:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+  <span class="st0">&quot;tasks&quot;</span><span class="sy0">:</span><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span><span class="st0">&quot;text&quot;</span><span class="sy0">:</span><span class="st0">&quot;Project #2&quot;</span><span class="sy0">,</span><span class="st0">&quot;start_date&quot;</span><span class="sy0">:</span><span class="st0">&quot;01-04-2020&quot;</span><span class="sy0">,</span><span class="st0">&quot;duration&quot;</span><span class="sy0">:</span><span class="nu0">18</span><span class="sy0">,</span><span class="st0">&quot;parent&quot;</span><span class="sy0">:</span><span class="nu0">0</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span><span class="st0">&quot;text&quot;</span><span class="sy0">:</span><span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span><span class="st0">&quot;start_date&quot;</span><span class="sy0">:</span><span class="st0">&quot;02-04-2020&quot;</span><span class="sy0">,</span><span class="st0">&quot;duration&quot;</span><span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span><span class="st0">&quot;parent&quot;</span><span class="sy0">:</span><span class="nu0">1</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span><span class="st0">&quot;text&quot;</span><span class="sy0">:</span><span class="st0">&quot;Task #2&quot;</span><span class="sy0">,</span><span class="st0">&quot;start_date&quot;</span><span class="sy0">:</span><span class="st0">&quot;11-04-2020&quot;</span><span class="sy0">,</span><span class="st0">&quot;duration&quot;</span><span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span><span class="st0">&quot;parent&quot;</span><span class="sy0">:</span><span class="nu0">1</span><span class="br0">&#125;</span>
+  <span class="br0">&#93;</span><span class="sy0">,</span>
+  <span class="st0">&quot;links&quot;</span><span class="sy0">:</span><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span><span class="st0">&quot;source&quot;</span><span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span><span class="st0">&quot;target&quot;</span><span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span><span class="st0">&quot;type&quot;</span><span class="sy0">:</span><span class="st0">&quot;1&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span><span class="st0">&quot;source&quot;</span><span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span><span class="st0">&quot;target&quot;</span><span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span><span class="st0">&quot;type&quot;</span><span class="sy0">:</span><span class="st0">&quot;0&quot;</span><span class="br0">&#125;</span>
+  <span class="br0">&#93;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">  <span class="st0">&quot;collections&quot;</span><span class="sy0">:</span> <span class="br0">&#123;</span> </span>    <span class="st0">&quot;priority&quot;</span><span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span><span class="st0">&quot;value&quot;</span><span class="sy0">:</span><span class="st0">&quot;1&quot;</span><span class="sy0">,</span><span class="st0">&quot;label&quot;</span><span class="sy0">:</span><span class="st0">&quot;Low&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span><span class="st0">&quot;value&quot;</span><span class="sy0">:</span><span class="st0">&quot;2&quot;</span><span class="sy0">,</span><span class="st0">&quot;label&quot;</span><span class="sy0">:</span><span class="st0">&quot;Medium&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span><span class="st0">&quot;value&quot;</span><span class="sy0">:</span><span class="st0">&quot;3&quot;</span><span class="sy0">,</span><span class="st0">&quot;label&quot;</span><span class="sy0">:</span><span class="st0">&quot;High&quot;</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="st0">&quot;category&quot;</span><span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span><span class="st0">&quot;value&quot;</span><span class="sy0">:</span><span class="st0">&quot;1&quot;</span><span class="sy0">,</span><span class="st0">&quot;label&quot;</span><span class="sy0">:</span><span class="st0">&quot;Simple&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span><span class="st0">&quot;value&quot;</span><span class="sy0">:</span><span class="st0">&quot;2&quot;</span><span class="sy0">,</span><span class="st0">&quot;label&quot;</span><span class="sy0">:</span><span class="st0">&quot;Complex&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span><span class="st0">&quot;value&quot;</span><span class="sy0">:</span><span class="st0">&quot;3&quot;</span><span class="sy0">,</span><span class="st0">&quot;label&quot;</span><span class="sy0">:</span><span class="st0">&quot;Unknown&quot;</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Loading options via dhtmlxConnector</h3>
+
+<p>Here is a sample of <a class="link-" href="desktop__howtostart_connector.html">dhtmlxConnector</a> initialization:</p>
+
+<pre><code><pre class="php">//data.php
+<span class="kw2">&lt;?php</span>
+    <span class="kw1">include</span><span class="br0">&#40;</span><span class="st_h">'connector-php/codebase/gantt_connector.php'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$res</span> <span class="sy0">=</span> <span class="kw2">new</span> PDO<span class="br0">&#40;</span><span class="st0">&quot;mysql:host=localhost;dbname=gantt&quot;</span><span class="sy0">,</span> <span class="st0">&quot;root&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$list</span> <span class="sy0">=</span> <span class="kw2">new</span> OptionsConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$list</span><span class="sy0">-&gt;</span><span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;priorities&quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span><span class="st0">&quot;id(value),name(label)&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$gantt</span> <span class="sy0">=</span> <span class="kw2">new</span> JSONGanttConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$gantt</span><span class="sy0">-&gt;</span><span class="me1">set_options</span><span class="br0">&#40;</span><span class="st0">&quot;priority&quot;</span><span class="sy0">,</span> <span class="re0">$list</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$gantt</span><span class="sy0">-&gt;</span><span class="me1">render_links</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_links&quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span><span class="st0">&quot;source_task(source),
+                    target_task(target),type&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>    
+    <span class="re0">$gantt</span><span class="sy0">-&gt;</span><span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_tasks&quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span><span class="st0">&quot;start_date,duration,text,progress,
+                    sortorder,parent&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="sy1">?&gt;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='desktop__select.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

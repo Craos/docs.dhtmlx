@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- meta block -->
+		<title>Message system colors - DHTMLX Message</title>
+		<meta name="description" content="Check interactive samples of DHTMLX Message to explore its customization and other details.">
+		<!-- end meta block -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+		<script type="text/javascript" src="../../../codebase/suite-v=6.5.3.js"></script>
+		<link rel="stylesheet" href="../../../codebase/suite-v=6.5.3.css">
+		<link rel="stylesheet" href="../../common/index-v=6.5.3.css">
+		<!-- custom sample head -->
+	<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                        'gtm.start':
+                                new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5M5RCSJ');</script>
+<!-- End Google Tag Manager -->
+
+<!-- error tracking -->
+<script src="https://cdn.ravenjs.com/3.19.1/raven.min.js" crossorigin="anonymous"></script>
+<script>Raven.config('https://a2578da6be394598bfe003e4dbb3a394@sentry.dhtmlx.ru/13').install()</script></head>
+	<body>
+		<header class="dhx_sample-header">
+			<div class="dhx_sample-header__main">
+				<nav class="dhx_sample-header__breadcrumbs">
+					<ul class="dhx_sample-header-breadcrumbs">
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="../../index.html" class="dhx_sample-header-breadcrumbs__link">Suite samples</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="../index.html" class="dhx_sample-header-breadcrumbs__link">Message samples</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="index.html" class="dhx_sample-header-breadcrumbs__link">Customization</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<span class="dhx_sample-header-breadcrumbs__link">Message system colors</span>
+						</li>
+					</ul>
+				</nav>
+				<h1 class="dhx_sample-header__title">
+					<div class="dhx_sample-header__content">
+						Message system colors.
+					</div>
+				</h1>
+		<div class="dhx_sample-header__cta" id="dhx_sample-cta">
+			<a title="Free Trial" target="_blank" class="dhx_sample-btn dhx_sample-btn--flat dhx_sample-btn--cta" 
+			href="https://dhtmlx.com/docs/products/dhtmlxSuite/download.shtml">Free Trial</a>
+		</div>
+	</div>
+		</header>
+		<section class="dhx_sample-controls">
+			<label class="dhx_form-group dhx_radiobutton dhx_form-group--inline dhx_form-group--no-message-holder dhx_sample-input__wrapper--pl-16">
+				<input checked type="radio" name="color" id="default" class="dhx_radiobutton__input" onchange="updateCss(this.id)">
+				<span class="dhx_radiobutton__visual-input"></span>
+				<span class="dhx_label">Default</span>
+			</label>
+			<label class="dhx_form-group dhx_radiobutton dhx_form-group--inline dhx_form-group--no-message-holder dhx_sample-input__wrapper--pl-16">
+				<input type="radio" name="color" id="error" class="dhx_radiobutton__input" onchange="updateCss(this.id)">
+				<span class="dhx_radiobutton__visual-input"></span>
+				<span class="dhx_label">Error</span>
+			</label>
+			<label class="dhx_form-group dhx_radiobutton dhx_form-group--inline dhx_form-group--no-message-holder dhx_sample-input__wrapper--pl-16">
+				<input type="radio" name="color" id="success" class="dhx_radiobutton__input" onchange="updateCss(this.id)">
+				<span class="dhx_radiobutton__visual-input"></span>
+				<span class="dhx_label">Success</span>
+			</label>
+			<button id="show" type="button" class="dhx_sample-btn dhx_sample-btn--flat" onclick="show()">show</button>
+		</section>
+
+		<script>
+			var config = {
+				text: "Here is dhtmlxMessage",
+				icon: "dxi dxi-close"
+			};
+			function updateCss(value) {
+				if (value === "default") {
+					config.css = "";
+				} else {
+					config.css = "dhx_message--" + value; // add css modifiers
+				}
+				config.text = value.charAt(0).toUpperCase() + value.slice(1);
+			}
+			function show() {
+				dhx.message(config);
+			}
+		</script>
+	</body>
+</html>

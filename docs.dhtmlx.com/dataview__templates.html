@@ -1,0 +1,356 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Specifying Templates  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxdataview.html">dhtmlXDataView API</a></li><li class=""><a href="dataview__object_constructor.html">Object Constructor</a></li><li class=""><a href="dataview__initialization.html">Initializing DataView</a></li><li class=" current"><a href="dataview__templates.html">Specifying Templates</a></li><ul><li class="inner"><a href="dataview__templates.html#basicinformation">Basic Information</a></li><li class="inner"><a href="dataview__templates.html#typesoftemplates">Types of Templates</a></li><li class="inner"><a href="dataview__templates.html#templatessyntax">Templates Syntax</a></li><li class="inner"><a href="dataview__templates.html#changingparametersoftemplates">Changing Parameters of Templates</a></li><li class="inner"><a href="dataview__templates.html#predefinedpropertiesoftemplates">Predefined Properties of Templates</a></li><li class="inner"><a href="dataview__templates.html#stylingoftemplates">Styling of Templates</a></li><li class="inner"><a href="dataview__templates.html#specialtemplates">Special Templates</a></li></ul><li class=""><a href="dataview__paging.html">Paging</a></li><li class=""><a href="dataview__data_loading.html">Loading Data</a></li><li class=""><a href="dataview__dynamic_loading.html">Dynamic Loading</a></li><li class=""><a href="dataview__connecting_to_database.html">Connecting to Database</a></li><li class=""><a href="dataview__manipulating_data.html">Operating Items</a></li><li class=""><a href="dataview__dnd_customization.html">Drag-n-Drop</a></li><li class=""><a href="dataview__moving_by_api.html">Moving Items by API</a></li><li class=""><a href="dataview__events.html">Handling Events</a></li><li class=""><a href="dataview__migration_from_dhtmlxfolders.html">Migration from dhtmlxFolders</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="dataview__index.html">DataView</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Specifying Templates</h1>
+
+<a name='basicinformation'><h2>Basic Information</h2></a>
+
+<p>Templates define the way data is rendered inside of DataView. You can define multiple templates and switch between them dynamically.</p>
+
+<pre><code><pre class="js">view <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXDataView<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    container<span class="sy0">:</span><span class="st0">&quot;data_container&quot;</span><span class="sy0">,</span>
+    type<span class="sy0">:</span><span class="br0">&#123;</span>
+        template<span class="sy0">:</span><span class="st0">&quot;#Package# : #Version#&lt;br/&gt;#Maintainer#&quot;</span><span class="sy0">,</span>
+        height<span class="sy0">:</span><span class="nu0">40</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The { Package:"a", Version:"b", Maintainer:"c"} will be rendered as:</p>
+
+<pre><code><pre class="html">a : b <span class="sc2">&lt;<span class="kw2">br</span><span class="sy0">/</span>&gt;</span> c</pre></code></pre>
+
+<p>A template can be defined as a part of the constructor (or not) as:</p>
+
+<pre><code><pre class="js">view.<span class="me1">define</span><span class="br0">&#40;</span><span class="st0">&quot;type&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    template<span class="sy0">:</span><span class="st0">&quot;#Package# : #Version#&lt;br/&gt;#Maintainer#&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>If you need to provide only a text string and don't need any extra properties, you can use the "template" property directly on the top level (i.e. don't use the <strong>type</strong> parameter):</p>
+
+<pre><code><pre class="js">view <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXDataView<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    container<span class="sy0">:</span><span class="st0">&quot;data_container&quot;</span><span class="sy0">,</span>
+    template<span class="sy0">:</span><span class="st0">&quot;#Package# : #Version#&lt;br/&gt;#Maintainer#&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='typesoftemplates'><h2>Types of Templates</h2></a>
+
+<h4>JS string</h4>
+
+<pre><code><pre class="js">view.<span class="me1">define</span><span class="br0">&#40;</span><span class="st0">&quot;type&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    template<span class="sy0">:</span><span class="st0">&quot;#Package# : #Version#&lt;br/&gt;#Maintainer#&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxDataView/samples/02_templates/01_jshtml.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Template from JS string</a></p>
+
+<h4>JS method</h4>
+
+<pre><code><pre class="js">view.<span class="me1">define</span><span class="br0">&#40;</span><span class="st0">&quot;type&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    template<span class="sy0">:</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span> <span class="kw1">return</span> obj.<span class="kw2">Package</span> <span class="sy0">+</span><span class="st0">&quot;&lt;br/&gt;&quot;</span><span class="sy0">+</span>obj.<span class="me1">Maintainer</span><span class="sy0">;</span> <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxDataView/samples/02_templates/02_js.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Template from JS function</a></p>
+
+<h4>HTML container</h4>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>textarea id<span class="sy0">=</span><span class="st0">&quot;template_container&quot;</span> rows<span class="sy0">=</span><span class="st0">&quot;5&quot;</span> cols<span class="sy0">=</span><span class="st0">&quot;60&quot;</span><span class="sy0">&gt;</span>
+#Package# <span class="sy0">:</span> #Version#
+<span class="sy0">&lt;</span>br<span class="sy0">/&gt;</span>#Maintainer#<span class="sy0">&lt;/</span>textarea<span class="sy0">&gt;</span>
+...
+<span class="me1">view</span>.<span class="me1">define</span><span class="br0">&#40;</span><span class="st0">&quot;type&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    template<span class="sy0">:</span><span class="st0">&quot;html-&gt;template_container&quot;</span><span class="sy0">,</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxDataView/samples/02_templates/03_html.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Template from HTML container</a></p>
+
+<h4>HTML file</h4>
+
+<pre><code><pre class="js">view.<span class="me1">define</span><span class="br0">&#40;</span><span class="st0">&quot;type&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    template<span class="sy0">:</span><span class="st0">&quot;http-&gt;../common/template.html&quot;</span><span class="sy0">,</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxDataView/samples/02_templates/04_external.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Template from HTML file</a></p>
+
+<h4>Named templates</h4>
+
+<pre><code><pre class="js">dhtmlx.<span class="me1">Type</span>.<span class="me1">add</span><span class="br0">&#40;</span>dhtmlXDataView<span class="sy0">,</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;dataA&quot;</span><span class="sy0">,</span>
+    template<span class="sy0">:</span><span class="st0">&quot;#Package# : #Version#&lt;br/&gt;#Maintainer#&quot;</span><span class="sy0">,</span>
+    height<span class="sy0">:</span><span class="nu0">40</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+data <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXDataView<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    container<span class="sy0">:</span><span class="st0">&quot;data_container&quot;</span><span class="sy0">,</span> 
+    type<span class="sy0">:</span><span class="st0">&quot;dataA&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxDataView/samples/02_templates/05_named.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Named templates</a></p>
+
+<a name='templatessyntax'><h2>Templates Syntax</h2></a>
+
+<p>"#property#" - replaced with a value of the related property</p>
+
+<pre><code><pre class="js">view.<span class="me1">define</span><span class="br0">&#40;</span><span class="st0">&quot;type&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    template<span class="sy0">:</span><span class="st0">&quot;#a# - #b#&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span>
+<span class="co1">// a - b</span></pre></code></pre>
+
+<p>"{common.property}" - replaced with a constant value from the template</p>
+
+<pre><code><pre class="js">view.<span class="me1">define</span><span class="br0">&#40;</span><span class="st0">&quot;type&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    template<span class="sy0">:</span><span class="st0">&quot;#a# - {common.mydata}&quot;</span><span class="sy0">,</span>
+    mydata<span class="sy0">:</span><span class="nu0">25</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span>
+<span class="co1">// a - 25</span></pre></code></pre>
+
+<p>"{common.method()}" - replaced with the result of a method call</p>
+
+<pre><code><pre class="js">view.<span class="me1">define</span><span class="br0">&#40;</span><span class="st0">&quot;type&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    template<span class="sy0">:</span><span class="st0">&quot;#a# - {common.mymethod()}&quot;</span><span class="sy0">,</span>
+    mymethod<span class="sy0">:</span><span class="kw2">function</span><span class="br0">&#40;</span>obj<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">return</span> obj.<span class="me1">b</span>.<span class="me1">toUpperCase</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span>
+<span class="co1">// a - B</span></pre></code></pre>
+
+<p>"#property?valueA:valueB#" - ternary operator</p>
+
+<pre><code><pre class="js">view.<span class="me1">define</span><span class="br0">&#40;</span><span class="st0">&quot;type&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    template<span class="sy0">:</span><span class="st0">&quot;#a# - #flag?exist:not exist#&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span>
+<span class="co1">// a - not exist</span></pre></code></pre>
+
+<p>"{-obj" - replaced with #</p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxDataView/samples/02_templates/07_syntax.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Template syntax</a></p>
+
+<a name='changingparametersoftemplates'><h2>Changing Parameters of Templates</h2></a>
+
+<p>Sometimes it can be useful to change some parameter of a template. As a result, the view will be repainted with new configuration.</p>
+
+<pre><code><pre class="js">view.<span class="me1">customize</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    height<span class="sy0">:</span><span class="nu0">100</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>If you define some property in template as {common.some}, you will be able to change it any time by using the "customize" command.</p>
+
+<a name='predefinedpropertiesoftemplates'><h2>Predefined Properties of Templates</h2></a>
+
+<pre><code><pre class="js">view <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXDataView<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    container<span class="sy0">:</span><span class="st0">&quot;data_container&quot;</span><span class="sy0">,</span>
+    type<span class="sy0">:</span><span class="br0">&#123;</span>
+        template<span class="sy0">:</span><span class="st0">&quot;#Package# : #Version#&lt;br/&gt;#Maintainer#&quot;</span><span class="sy0">,</span>
+        css<span class="sy0">:</span><span class="st0">&quot;some&quot;</span><span class="sy0">,</span>
+        width<span class="sy0">:</span><span class="nu0">120</span><span class="sy0">,</span>
+        height<span class="sy0">:</span><span class="nu0">40</span><span class="sy0">,</span>
+        margin<span class="sy0">:</span><span class="nu0">5</span><span class="sy0">,</span>
+        padding<span class="sy0">:</span><span class="nu0">0</span><span class="sy0">,</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>template - (string) the template definition</li>
+<li>height - (number) the item height. The default value - 115;</li>
+<li>width - (number) the item width. The default value - 210;</li>
+<li>margin - (number) the item margin. The default value - 0;</li>
+<li>padding - (number) the item padding. The default value - 0;</li>
+<li>border - (number) sets the border of the item container. The default value - 1;</li>
+<li>css - (string) allows applying an additional css class to the template (see details below). The default value - 'default'.</li>
+</ul>
+
+<a name='stylingoftemplates'><h2>Styling of Templates</h2></a>
+
+<p>If you want apply a custom CSS style to the template, use the following technique:</p>
+
+<ol>
+    <li>
+Set the css property of the type parameter to some value, for example 'custom' 
+
+
+<pre><code><pre class="js">view <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXDataView<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    container<span class="sy0">:</span><span class="st0">&quot;data_container&quot;</span><span class="sy0">,</span>
+    type<span class="sy0">:</span><span class="br0">&#123;</span>
+        template<span class="sy0">:</span><span class="st0">&quot;#Package# : #Version#&lt;br/&gt;#Maintainer#&quot;</span><span class="sy0">,</span>
+        css<span class="sy0">:</span><span class="st0">&quot;custom&quot;</span><span class="sy0">,</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+    </li>
+<li>Define 2 css classes on the page with the following names (use the <b>!important</b> declaration to guarantee that the defined css property will be surely applied):
+    <ul>
+<li><i>.dhx_dataview_[css]_item</i> - applied to items in the unselected state</li>
+<li><i>.dhx_dataview_[css]_item_selected</i> - applied to items in the selected state</li>
+    </ul>
+
+<pre><code><pre class="js">.<span class="me1">dhx_dataview_custom_item_selected</span><span class="br0">&#123;</span>
+    font<span class="sy0">-</span>weight<span class="sy0">:</span>bold <span class="sy0">!</span>important<span class="sy0">;</span>
+<span class="br0">&#125;</span>
+.<span class="me1">dhx_dataview_custom_item</span><span class="br0">&#123;</span>
+    font<span class="sy0">-</span>size<span class="sy0">:</span>12px <span class="sy0">!</span>important<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+    </li>
+</ol>
+
+<p>Note, the css property has the default value - 'default'. So, you can skip step 1 and define the css classes with the following names:</p>
+
+<ul>
+<li><i>.dhx_dataview_default_item</i> - applied to items in the unselected state</li>
+<li><i>.dhx_dataview_default_item_selected</i> - applied to items in the selected state</li>
+</ul>
+
+<a name='specialtemplates'><h2>Special Templates</h2></a>
+
+<p>In addition to a standard template, dataview can have additional task-specific templates defined:</p>
+
+<ul>
+<li>template_edit - applied to items during the <a class="link-" href="dataview__manipulating_data.html#editingitems">Items editing</a> process</li>
+<li>template_loading - used as a stub during the <a class="link-" href="dataview__dynamic_loading.html">Dynamic loading</a> of data from the server</li>
+</ul>
+
+<pre><code><pre class="js">view <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXDataView<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    container<span class="sy0">:</span><span class="st0">&quot;data_container&quot;</span><span class="sy0">,</span>
+    edit<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span>
+    type<span class="sy0">:</span><span class="br0">&#123;</span>
+        template<span class="sy0">:</span><span class="st0">&quot;#Package# : #Version#&lt;br/&gt;#Maintainer#&quot;</span><span class="sy0">,</span>
+        template_edit<span class="sy0">:</span><span class="st0">&quot;&lt;input class='dhx_item_editor' bind='obj.Package'&gt;&quot;</span><span class="sy0">,</span>
+        template_loading<span class="sy0">:</span><span class="st0">&quot;Loading...&quot;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='dataview__templates.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

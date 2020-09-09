@@ -1,0 +1,359 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1589882915.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1589882915.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Spreadsheet Docs" href="https://docs.dhtmlx.com/spreadsheet/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Integration with React  Spreadsheet Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/c/widgets/dhtmlxspreadsheet-jsmessage">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="initialization.html">Initialization</a></li><li class=""><a href="configuration.html">Configuration</a></li><li class=""><a href="localization.html">Localization</a></li><li class=""><a href="loading_data.html">Data Loading and Export</a></li><li class=""><a href="working_with_ssheet.html">Work with SpreadSheet</a></li><li class=""><a href="number_formatting.html">Number Formatting</a></li><li class=""><a href="handling_events.html">Event Handling</a></li><li class=""><a href="customization.html">Customization</a></li><li class=""><a href="angular_integration.html">Integration with Angular</a></li><li class=" current"><a href="react_integration.html">Integration with React</a></li><ul><li class="inner"><a href="react_integration.html#includingsourcefiles">Including source files</a></li><li class="inner"><a href="react_integration.html#initialization">Initialization</a></li></ul><li class=""><a href="vuejs_integration.html">Integration with Vue.js</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Integration with React</h1>
+
+<p>You can use dhtmlxSpreadSheet in an application created with the <a href="https://reactjs.org/">React</a> framework. <a href="https://github.com/DHTMLX/react-widgets">Check the demo on Github</a>.</p>
+
+<div class='note'><p><p>Please note that the implementation provided below is not the only way to use dhtmlxSpreadSheet in a React-based application. It gives you initial schema of the integration and implies further 
+extension of the app functionality depending on your goals.</p>
+</p></div>
+
+<a name='includingsourcefiles'><h2>Including source files</h2></a>
+
+<p>To add SpreadSheet package into your React-based app you need to <a href="https://dhtmlx.com/docs/products/dhtmlxSpreadsheet/download.shtml">download the component package</a> and unpack it into a folder of your project.</p>
+
+<p>Then include <strong>spreadsheet.js</strong> and <strong>spreadsheet.css</strong> files into a page.</p>
+
+<p>The source files are represented in two versions: the <strong>full</strong> version and the <strong>minified</strong> one. Make sure that you set correct relative paths to these files:</p>
+
+<p class='snippet'> index.html</p>
+
+<pre><code><pre class="html">// full version
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/spreadsheet.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>  
+<span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;codebase/spreadsheet.css&quot;</span>&gt;</span>
+&nbsp;
+// minified version
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/spreadsheet.min.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>  
+<span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;codebase/spreadsheet.min.css&quot;</span>&gt;</span></pre></code></pre>
+
+<a name='initialization'><h2>Initialization</h2></a>
+
+<p>There are two possible scenarios of initializing SpreadSheet inside a React application. One consists in isolating SpreadSheet structure and data inside of the React component and another one suggests 
+separating view and data parts with the possibility of interaction between them.</p>
+
+<h3>Scenario 1. Isolating SpreadSheet in a React component</h3>
+
+<p>In this variant SpreadSheet configuration and data are held inside of the React component with no bonds with the external part of the application.</p>
+
+<h4>SpreadSheet initialization</h4>
+
+<ul>
+<li>Create a <em>SpreadSheet.js</em> file, then create the <em>SpreadSheet</em> class and add a container for SpreadSheet using the <strong>render()</strong> function. Store the reference to the container in the <strong>el</strong> property:</li>
+</ul>
+
+<p class='snippet'> SpreadSheet.js</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> SpreadSheetComponent <span class="kw2">extends</span> Component <span class="br0">&#123;</span>
+  render<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="br0">&#40;</span>
+      <span class="sy0">&lt;</span>div ref<span class="sy0">=</span><span class="br0">&#123;</span>el <span class="sy0">=&gt;</span> <span class="kw1">this</span>.<span class="me1">el</span> <span class="sy0">=</span> el<span class="br0">&#125;</span> className<span class="sy0">=</span><span class="st0">&quot;widget-box&quot;</span> style<span class="sy0">=:</span><span class="nu0">800</span><span class="sy0">,</span>height<span class="sy0">:</span><span class="nu0">400</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+    <span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>After that use the <code>new SpreadsheetBase</code> constructor to initialize SpreadSheet in the container created above: </li>
+</ul>
+
+<p class='snippet'> SpreadSheet.js</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> SpreadsheetComponent <span class="kw2">extends</span> Component <span class="br0">&#123;</span>
+  componentDidMount<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">this</span>.<span class="me1">spreadsheet</span> <span class="sy0">=</span> <span class="kw2">new</span> SpreadsheetBase<span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">el</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+      editLine<span class="sy0">:</span> <span class="kw2">false</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h4>Loading data and changing config</h4>
+
+<ul>
+<li>Next you can load data into the SpreadSheet and do some actions, e.g. change style of a cell:</li>
+</ul>
+
+<p class='snippet'> SpreadSheet.js</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> SpreadSheetComponent <span class="kw2">extends</span> Component <span class="br0">&#123;</span>
+  componentDidMount<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">this</span>.<span class="me1">spreadsheet</span> <span class="sy0">=</span> <span class="kw2">new</span> SpreadsheetBase<span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">el</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+      editLine<span class="sy0">:</span> <span class="kw2">false</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">this</span>.<span class="me1">spreadsheet</span>.<span class="me1">parse</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+      <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;A1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">10</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;B1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">20</span> <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">this</span>.<span class="me1">spreadsheet</span>.<span class="me1">setStyle</span><span class="br0">&#40;</span><span class="st0">&quot;A1&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> background<span class="sy0">:</span> <span class="st0">&quot;#F4D679&quot;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+  render<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="br0">&#40;</span>
+      <span class="sy0">&lt;</span>div ref<span class="sy0">=</span><span class="br0">&#123;</span>el <span class="sy0">=&gt;</span> <span class="kw1">this</span>.<span class="me1">el</span> <span class="sy0">=</span> el<span class="br0">&#125;</span> className<span class="sy0">=</span><span class="st0">&quot;widget-box&quot;</span> style<span class="sy0">=:</span><span class="nu0">800</span><span class="sy0">,</span>height<span class="sy0">:</span><span class="nu0">400</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+    <span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Scenario 2. Exposing SpreadSheet data and config</h3>
+
+<p>This variant adds flexibility in the control over SpreadSheet data and configuration by allowing access to them from other parts of the application.</p>
+
+<h4>SpreadSheet initialization</h4>
+
+<ul>
+<li>The first step is the same. Create a file, let it be <em>SpreadSheet2.js</em> this time, and add the <em>SpreadSheet</em> class and use the <code>new SpreadSheetBase</code> constructor to initialize SpreadSheet.</li>
+</ul>
+
+<p class='snippet'> SpreadSheet2.js</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> SpreadSheetComponent <span class="kw2">extends</span> Component <span class="br0">&#123;</span>
+  componentDidMount<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">this</span>.<span class="me1">spreadsheet</span> <span class="sy0">=</span> <span class="kw2">new</span> SpreadsheetBase<span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">el</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+      <span class="co1">// config here</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>Define the configuration properties of SpreadSheet in the object passed as a second parameter of the constructor:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">class</span> SpreadSheetComponent <span class="kw2">extends</span> Component <span class="br0">&#123;</span>
+  componentDidMount<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">this</span>.<span class="me1">spreadsheet</span> <span class="sy0">=</span> <span class="kw2">new</span> SpreadsheetBase<span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">el</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+      menu<span class="sy0">:</span> <span class="kw1">this</span>.<span class="me1">props</span>.<span class="me1">menu</span><span class="sy0">,</span>
+      editLine<span class="sy0">:</span> <span class="kw1">this</span>.<span class="me1">props</span>.<span class="me1">editLine</span><span class="sy0">,</span>
+      toolbar<span class="sy0">:</span> <span class="kw1">this</span>.<span class="me1">props</span>.<span class="me1">toolbar</span><span class="sy0">,</span>
+      rowsCount<span class="sy0">:</span> <span class="kw1">this</span>.<span class="me1">props</span>.<span class="me1">rowsCount</span><span class="sy0">,</span>
+      colsCount<span class="sy0">:</span> <span class="kw1">this</span>.<span class="me1">props</span>.<span class="me1">colsCount</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Thus the <strong>props</strong> configuration option will be applied to the SpreadSheet widget configuration.</p>
+
+<ul>
+<li>Then create a container for SpreadSheet using the <strong>render()</strong> function:</li>
+</ul>
+
+<p class='snippet'> SpreadSheet2.js</p>
+
+<pre><code><pre class="js">render<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="br0">&#40;</span>
+      <span class="sy0">&lt;</span>div ref<span class="sy0">=</span><span class="br0">&#123;</span>el <span class="sy0">=&gt;</span> <span class="kw1">this</span>.<span class="me1">el</span> <span class="sy0">=</span> el<span class="br0">&#125;</span> className<span class="sy0">=</span><span class="st0">&quot;widget-box&quot;</span> style<span class="sy0">=:</span><span class="nu0">800</span><span class="sy0">,</span>height<span class="sy0">:</span><span class="nu0">400</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+    <span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h4>Working with configuration options</h4>
+
+<p>Since the properties of SpreadSheet are exposed they are available to work with outside the component. In the example below editing line is disabled in the spreadsheet:</p>
+
+<p class='snippet'> BasicSample.js</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>div className<span class="sy0">=</span><span class="st0">'app-box'</span><span class="sy0">&gt;</span>
+    <span class="sy0">&lt;</span>Spreadsheet editLine<span class="sy0">=</span><span class="br0">&#123;</span><span class="kw2">false</span><span class="br0">&#125;</span> <span class="sy0">&gt;&lt;/</span>Spreadsheet<span class="sy0">&gt;</span>
+<span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span></pre></code></pre>
+
+<h4>Working with SpreadSheet API</h4>
+
+<p>This variant of using SpreadSheet in a React application allows working with its API moving all calls of methods and event handlers into a separate file.</p>
+
+<ul>
+<li>Create a <em>DataSample.js</em> file and add a link to the spreadsheet: </li>
+</ul>
+
+<p class='snippet'> DataSample.js</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> SpreadsheetComponent <span class="kw2">extends</span> Component <span class="br0">&#123;</span>
+  constructor<span class="br0">&#40;</span>props<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw2">super</span><span class="br0">&#40;</span>props<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">this</span>.<span class="me1">spreadsheet</span> <span class="sy0">=</span> React.<span class="me1">createRef</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+  render<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="br0">&#40;</span>
+      <span class="sy0">&lt;</span>div className<span class="sy0">=</span><span class="st0">'app-box'</span><span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>Spreadsheet ref<span class="sy0">=</span><span class="br0">&#123;</span><span class="kw1">this</span>.<span class="me1">spreadsheet</span><span class="br0">&#125;</span><span class="sy0">&gt;&lt;/</span>Spreadsheet<span class="sy0">&gt;</span>
+      <span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span>
+    <span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>Define some actions that will be implemented on initialization of the SpreadSheet. For example, attach the <em>afterValueChange</em> event that will fire after changing the value of a cell, and add the <em>setValue()</em> method
+that will set certain values in particular cells:</li>
+</ul>
+
+<p class='snippet'> DataSample.js</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> SpreadsheetComponent <span class="kw2">extends</span> Component <span class="br0">&#123;</span>
+  constructor<span class="br0">&#40;</span>props<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw2">super</span><span class="br0">&#40;</span>props<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">this</span>.<span class="me1">spreadsheet</span> <span class="sy0">=</span> React.<span class="me1">createRef</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">this</span>.<span class="me1">state</span> <span class="sy0">=</span> <span class="br0">&#123;</span>
+      event<span class="sy0">:</span> <span class="st0">&quot;&quot;</span>
+    <span class="br0">&#125;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+  componentDidMount<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">this</span>.<span class="me1">spreadsheet</span>.<span class="me1">current</span>.<span class="me1">spreadsheet</span>.<span class="me1">events</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">&quot;afterValueChange&quot;</span><span class="sy0">,</span> <span class="br0">&#40;</span>cell<span class="sy0">,</span> value<span class="br0">&#41;</span> <span class="sy0">=&gt;</span> <span class="br0">&#123;</span>
+      <span class="kw1">this</span>.<span class="me1">setState</span><span class="br0">&#40;</span><span class="br0">&#123;</span> event<span class="sy0">:</span> `Value <span class="kw1">in</span> cell $<span class="br0">&#123;</span>cell<span class="br0">&#125;</span> changed to $<span class="br0">&#123;</span>value<span class="br0">&#125;</span>` <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">this</span>.<span class="me1">spreadsheet</span>.<span class="me1">current</span>.<span class="me1">spreadsheet</span>.<span class="me1">setValue</span><span class="br0">&#40;</span><span class="st0">&quot;A1&quot;</span><span class="sy0">,</span> <span class="nu0">10</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+  render<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="br0">&#40;</span>
+      <span class="sy0">&lt;</span>div className<span class="sy0">=</span><span class="st0">'app-box'</span><span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>Spreadsheet ref<span class="sy0">=</span><span class="br0">&#123;</span><span class="kw1">this</span>.<span class="me1">spreadsheet</span><span class="br0">&#125;</span><span class="sy0">&gt;&lt;/</span>Spreadsheet<span class="sy0">&gt;</span>
+      <span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span>
+    <span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>Describe the methods you want to use while working with the spreadsheet: </li>
+</ul>
+
+<p class='snippet'> DataSample.js</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> SpreadsheetComponent <span class="kw2">extends</span> Component <span class="br0">&#123;</span>
+  ...
+  <span class="me1">render</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="br0">&#40;</span>
+      <span class="sy0">&lt;</span>div className<span class="sy0">=</span><span class="st0">'app-box'</span><span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>Spreadsheet ref<span class="sy0">=</span><span class="br0">&#123;</span><span class="kw1">this</span>.<span class="me1">spreadsheet</span><span class="br0">&#125;</span><span class="sy0">&gt;&lt;/</span>Spreadsheet<span class="sy0">&gt;</span>        
+      <span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span>
+    <span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+  clearAll <span class="sy0">=</span> <span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">=&gt;</span> <span class="br0">&#123;</span>
+    <span class="kw1">this</span>.<span class="me1">spreadsheet</span>.<span class="me1">current</span>.<span class="me1">spreadsheet</span>.<span class="me1">parse</span><span class="br0">&#40;</span><span class="br0">&#91;</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">this</span>.<span class="me1">setState</span><span class="br0">&#40;</span><span class="br0">&#123;</span> event<span class="sy0">:</span> <span class="st0">&quot;&quot;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+  parseData <span class="sy0">=</span> <span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">=&gt;</span> <span class="br0">&#123;</span>
+    <span class="kw1">this</span>.<span class="me1">spreadsheet</span>.<span class="me1">current</span>.<span class="me1">spreadsheet</span>.<span class="me1">parse</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+      <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;A1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">1000</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;B1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">5300</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;C1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">2900</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>Bind related buttons to the SpreadSheet methods by subscribing them to the <em>onClick</em> event to make changes in the data:</li>
+</ul>
+
+<p class='snippet'> DataSample.js</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> SpreadsheetComponent <span class="kw2">extends</span> Component <span class="br0">&#123;</span>
+  ...
+  <span class="me1">render</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="br0">&#40;</span>
+      <span class="sy0">&lt;</span>div className<span class="sy0">=</span><span class="st0">'app-box'</span><span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>Spreadsheet ref<span class="sy0">=</span><span class="br0">&#123;</span><span class="kw1">this</span>.<span class="me1">spreadsheet</span><span class="br0">&#125;</span><span class="sy0">&gt;&lt;/</span>Spreadsheet<span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>button onClick<span class="sy0">=</span><span class="br0">&#123;</span><span class="kw1">this</span>.<span class="me1">parseData</span><span class="br0">&#125;</span><span class="sy0">&gt;</span>Parse data<span class="sy0">&lt;/</span>button<span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>button onClick<span class="sy0">=</span><span class="br0">&#123;</span><span class="kw1">this</span>.<span class="me1">clearAll</span><span class="br0">&#125;</span><span class="sy0">&gt;</span>Clear all<span class="sy0">&lt;/</span>button<span class="sy0">&gt;</span>
+      <span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span>
+    <span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+  ...
+<span class="br0">&#125;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='react_integration.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='loading_data.html'>Loading Data</a></li>	
+	<li><a href='working_with_ssheet.html'>Main Operations</a></li>
+	<li><a href='handling_events.html'>Handling Events</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Look and Feel</li>
+	<li><a href='configuration.html'>Configuration</a></li>
+	<li><a href='localization.html'>Localization</a></li>
+	<li><a href='customization.html'>Customization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Integration</li>
+	<li><a href='angular_integration.html'>Angular</a></li>
+	<li><a href='react_integration.html'>React</a></li>
+	<li><a href='vuejs_integration.html'>Vue.js</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__spreadsheet.html#methods'>Methods</a></li>
+	<li><a href='api__refs__spreadsheet.html#config'>Properties</a></li>
+	<li><a href='api__refs__spreadsheet.html#events'>Events</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

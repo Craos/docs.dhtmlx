@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1589296882.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1589296882.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Vault Docs" href="https://docs.dhtmlx.com/vault/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Working with Vault  Vault Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/c/widgets/vault">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="installation.html">How to Install dhtmlxVault</a></li><li class=""><a href="initialize.html">Initialization</a></li><li class=""><a href="configuring.html">Configuration</a></li><li class=""><a href="localization.html">Localization</a></li><li class=" current"><a href="work_with_vault.html">Working with Vault</a></li><ul><li class="inner"><a href="work_with_vault.html#repaintingvault">Repainting Vault</a></li><li class="inner"><a href="work_with_vault.html#callingdestructor">Calling destructor</a></li><li class="inner"><a href="work_with_vault.html#cancelingfileupload">Canceling file upload</a></li><li class="inner"><a href="work_with_vault.html#addingextradroparea">Adding extra drop area</a></li><li class="inner"><a href="work_with_vault.html#selectingfilesforupload">Selecting files for upload</a></li><li class="inner"><a href="work_with_vault.html#startingfilesupload">Starting files upload</a></li></ul><li class=""><a href="loading_files.html">Loading List of Files</a></li><li class=""><a href="uploading_files.html">Uploading Files</a></li><li class=""><a href="managing_files.html">Managing Files</a></li><li class=""><a href="events.html">Handling Events</a></li><li class=""><a href="customization.html">Customizing Vault</a></li><li class=""><a href="angular_integration.html">Integrating Vault with Angular</a></li><li class=""><a href="react_integration.html">Integrating Vault with React</a></li><li class=""><a href="vuejs_integration.html">Integrating Vault with Vue.js</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Working with Vault</h1>
+
+<p>You can repaint Vault, if needed, or call the destructor to free up occupied resources. It is also possible to execute operations with dhtmlxVault via the API of the <a class="link-hidden" href="api__refs__uploader_api.html">Uploader</a> object.
+Check the list below to explore the available options.</p>
+
+<a name='repaintingvault'><h2>Repainting Vault</h2></a>
+
+<p>If you need to repaint Vault by some reason, you should call the <a class="link-" href="api__vault_paint.html">paint</a> method.</p>
+
+<pre><code><pre class="js">vault.<span class="me1">paint</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='callingdestructor'><h2>Calling destructor</h2></a>
+
+<p>When it's necessary to release resources occupied by Vault during its activity, you can make use of the <a class="link-" href="api__vault_destructor.html">destructor</a> method:</p>
+
+<pre><code><pre class="js">vault.<span class="me1">destructor</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The <strong>destructor()</strong> method performs the following actions:</p>
+
+<ul>
+<li>removes toolbar hotkeys</li>
+<li>unlinks all linked drop areas</li>
+<li>cancels files uploading</li>
+</ul>
+
+<a name='cancelingfileupload'><h2>Canceling file upload</h2></a>
+
+<p>Users can cancel upload by clicking the <strong>Cancel</strong> button. You can also cancel the upload of a specific file by calling the <a class="link-" href="api__uploader__abort.html">abort</a> method of Uploader:</p>
+
+<pre><code><pre class="js">vault.<span class="me1">uploader</span>.<span class="me1">abort</span><span class="br0">&#40;</span><span class="st0">&quot;file_id&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='addingextradroparea'><h2>Adding extra drop area</h2></a>
+
+<p>Vault itself is an area for dropping files for upload. You can add extra areas for the same purpose and use the <a class="link-" href="api__uploader__linkdroparea.html">linkDropArea</a> method to allow dropping files to them:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;drophere&quot;</span>&gt;</span>DROP HERE<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+<pre><code><pre class="js">vault.<span class="me1">uploader</span>.<span class="me1">linkDropArea</span><span class="br0">&#40;</span><span class="st0">&quot;drophere&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_usage/01_droparea.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Drop area</a></p>
+
+<p>To unlink an extra drop area from Vault, call the <a class="link-" href="api__uploader__unlinkdroparea.html">unlinkDropArea</a> method of Uploader:</p>
+
+<pre><code><pre class="js">vault.<span class="me1">uploader</span>.<span class="me1">unlinkDropArea</span><span class="br0">&#40;</span><span class="st0">&quot;drophere&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='selectingfilesforupload'><h2>Selecting files for upload</h2></a>
+
+<p>New files for upload can be selected by clicking the <strong>"+"</strong> button or they can be dragged to dhtmlxVault. You can also do this with the help of the 
+<a class="link-" href="api__uploader__selectfile.html">selectFile</a> method of Uploader. It opens the file dialog box for selecting a new file (files).</p>
+
+<pre><code><pre class="js">vault.<span class="me1">uploader</span>.<span class="me1">selectFile</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='startingfilesupload'><h2>Starting files upload</h2></a>
+
+<p>Files in the queue are uploaded automatically by default, since the <a class="link-" href="api__uploader__autosend_config.html">autosend</a> property is enabled, or after a click on the <strong>Upload</strong> button, if autosend is disabled. 
+You can also upload files with the help of the <a class="link-" href="api__uploader__send.html">send</a> method:</p>
+
+<pre><code><pre class="js">vault.<span class="me1">uploader</span>.<span class="me1">send</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Check the <a class="link-" href="uploading_files.html">Uploading Files</a> article to get information on how to process file upload on the server side.</p>
+
+<!-- Content Area End -->
+			<a href='work_with_vault.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			
+<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='loading_files.html'>Loading List of Files</a></li>	
+	<li><a href='managing_files.html'>Managing Files</a></li>
+	<li><a href='work_with_vault.html'>Working with Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Look and Feel</li>
+	<li><a href='configuring.html'>Configuration</a></li>
+	<li><a href='customization.html'>Customization</a></li>
+	<li><a href='localization.html'>Localization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Integration</li>
+	<li><a href='angular_integration.html'>Vault and Angular</a></li>
+	<li><a href='react_integration.html'>Vault and React</a></li>
+	<li><a href='vuejs_integration.html'>Vault and Vue.js</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__vault.html#methods'>Methods</a></li>
+	<li><a href='api__refs__vault_props.html'>Properties</a></li>
+	<li><a href='api__refs__vault_events.html'>Events</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

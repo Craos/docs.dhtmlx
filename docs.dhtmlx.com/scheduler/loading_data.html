@@ -1,0 +1,452 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Loading Data  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=" current"><a href="loading_data.html">Loading Data</a></li><ul><li class="inner"><a href="loading_data.html#loadingdatafromaninlinedataset">Loading data from an inline dataset</a></li><li class="inner"><a href="loading_data.html#loadingdatafromadatafile">Loading data from a data file</a></li><li class="inner"><a href="loading_data.html#loadingdatafromadatabase">Loading data from a database</a></li><li class="inner"><a href="loading_data.html#loadingdatafrommultiplesources">Loading data from multiple sources</a></li><li class="inner"><a href="loading_data.html#dataproperties">Data Properties</a></li><li class="inner"><a href="loading_data.html#databasestructure">Database Structure</a></li><li class="inner"><a href="loading_data.html#dynamicloading">Dynamic loading</a></li><li class="inner"><a href="loading_data.html#loadingdatawithtimelineandunitssectionsfromtheserver">Loading data with Timeline and Units sections from the server</a></li><li><a href="data_formats.html">Examples of Data Formats</a></li></ul><li class=""><a href="server_integration.html">Server-Side Integration</a></li><li class=""><a href="troubleshooting.html">Troubleshooting Backend Integration Issues</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="loading_and_storing_data.html">Loading and Storing Data</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Loading Data</h1>
+
+<p>dhtmlxScheduler can load data of 3 formats which are:</p>
+
+<ol>
+<li>JSON;</li>
+<li>XML;</li>
+<li>ICal.</li>
+</ol>
+
+<p><a class="link-" href="data_formats.html">Examples of Data Formats</a></p>
+
+<a name='loadingdatafromaninlinedataset'><h2>Loading data from an inline dataset</h2></a>
+
+<p>To load data from an inline dataset, use the <a class="link-" href="api__scheduler_parse.html">parse</a> method:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2009</span><span class="sy0">,</span><span class="nu0">10</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="st0">&quot;month&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">scheduler</span>.<span class="me1">parse</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>text<span class="sy0">:</span><span class="st0">&quot;Meeting&quot;</span><span class="sy0">,</span>    start_date<span class="sy0">:</span><span class="st0">&quot;2019-04-11 14:00&quot;</span><span class="sy0">,</span> end_date<span class="sy0">:</span><span class="st0">&quot;2019-04-11 17:00&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>text<span class="sy0">:</span><span class="st0">&quot;Conference&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;2019-04-15 12:00&quot;</span><span class="sy0">,</span> end_date<span class="sy0">:</span><span class="st0">&quot;2019-04-18 19:00&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>text<span class="sy0">:</span><span class="st0">&quot;Interview&quot;</span><span class="sy0">,</span>  start_date<span class="sy0">:</span><span class="st0">&quot;2019-04-24 09:00&quot;</span><span class="sy0">,</span> end_date<span class="sy0">:</span><span class="st0">&quot;2019-04-24 10:00&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">,</span><span class="st0">&quot;json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_customization/24_cascade_event_display.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Displaying events as a cascade</a></p>
+
+<a name='loadingdatafromadatafile'><h2>Loading data from a data file</h2></a>
+
+<p>To load data from a file, use the <a class="link-" href="api__scheduler_load.html">load</a> method:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2018</span><span class="sy0">,</span><span class="nu0">10</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="st0">&quot;month&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">scheduler</span>.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;data.json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//loading data from a file</span></pre></code></pre>
+
+<p><a href='samples/01_initialization_loading/01_basic_init.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Basic initialization</a></p>
+
+<a name='loadingdatafromadatabase'><h2>Loading data from a database</h2></a>
+
+<p>There are two ways to load data from a database. In both cases, you need to deal with both the client and the server side.</p>
+
+<p>1) The first way includes the usage of REST API for communication with server.</p>
+
+<ul>
+<li>The server-side implementation depends on the framework you want to use. 
+For example, in case of Node.js we should add a server route for the URL to which Scheduler will send an AJAX request for data.</li>
+</ul>
+
+<p>It will generate the corresponding response in JSON format.</p>
+
+<pre><code><pre class="js">app.<span class="me1">get</span><span class="br0">&#40;</span><span class="st0">'/data'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>req<span class="sy0">,</span> res<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    db.<span class="me1">event</span>.<span class="me1">find</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">toArray</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>err<span class="sy0">,</span> data<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="co1">//set id property for all records</span>
+        <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw2">var</span> i <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span> i <span class="sy0">&lt;</span> data.<span class="me1">length</span><span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span>
+            data<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="me1">id</span> <span class="sy0">=</span> data<span class="br0">&#91;</span>i<span class="br0">&#93;</span>._id<span class="sy0">;</span>
+&nbsp;
+        <span class="co1">//output response</span>
+        res.<span class="me1">send</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>On the client side we will use the <a class="link-" href="api__scheduler_load.html">load</a> method and specify the necessary URL where an AJAX request for Scheduler data will be sent:</li>
+</ul>
+
+<p class='snippet'>
+Loading from a database. Client-side code
+</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;month&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;apiUrl&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>The detailed information on Scheduler server-side integration using REST API is given in the article <a class="link-" href="server_integration.html">Server-Side Integration</a>.</p>
+</p></div>
+
+<p>2) The second way presupposes loading data from database table(s) using <a href="../connector__php__index.html">PHP Connector</a>.</p>
+
+<ul>
+<li>On the server-side, realize the server script that returns data in the XML or JSON format:</li>
+</ul>
+
+<p class='snippet'>
+Static loading from db. Server-side code
+</p>
+
+<pre><code><pre class="php"><span class="kw1">include</span> <span class="br0">&#40;</span><span class="st_h">'dhtmlxConnector/codebase/scheduler_connector.php'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$res</span><span class="sy0">=</span><a href="http://www.php.net/mysql_connect"><span class="kw3">mysql_connect</span></a><span class="br0">&#40;</span><span class="st0">&quot;localhost&quot;</span><span class="sy0">,</span><span class="st0">&quot;root&quot;</span><span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<a href="http://www.php.net/mysql_select_db"><span class="kw3">mysql_select_db</span></a><span class="br0">&#40;</span><span class="st0">&quot;sampleDB&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$calendar</span> <span class="sy0">=</span> <span class="kw2">new</span> SchedulerConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$calendar</span><span class="sy0">-&gt;</span><span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;events&quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span><span class="st0">&quot;event_start,event_end,text&quot;</span><span class="sy0">,</span><span class="st0">&quot;type&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>On the client side, use the <a class="link-" href="api__scheduler_load.html">load</a> method where specify the path to the server-side script:</li>
+</ul>
+
+<p class='snippet'>
+Static loading from db. Client-side code
+</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;month&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;events.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>See the detailed information in the <a class="link-" href="howtostart_connector.html">dhtmlxScheduler with dhtmlxConnector</a> guide.</p>
+</p></div>
+
+<a name='loadingdatafrommultiplesources'><h2>Loading data from multiple sources</h2></a>
+
+<p>To load data from multiple sources, use a special extension  - <em>'multisource'</em> provided in the  <strong>ext/dhtmlxscheduler_multisource.js</strong> file.</p>
+
+<div class='note'><p><p>Multiple sources can be used for both static and dynamic loading</p>
+</p></div>
+
+<p>Include the aforementioned file on the page and use the same <a class="link-" href="api__scheduler_load.html">load</a> method as in:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="br0">&#91;</span><span class="st0">&quot;first/source/some&quot;</span><span class="sy0">,</span><span class="st0">&quot;second/source/other&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='dataproperties'><h2>Data Properties</h2></a>
+
+<h3>Mandatory properties</h3>
+
+<p>To be correctly parsed, data items must have at least 3 properties:</p>
+
+<ul>
+<li><strong>start_date</strong> -  (<em>string</em>) the date when an event is scheduled to begin;</li>
+<li><strong>end_date</strong> - (<em>string</em>) the date when an event is scheduled to be completed;</li>
+<li><strong>text</strong> - (<em>string</em>) the event text.</li>
+</ul>
+
+<p>To be loaded from a database, data items should have one more mandatory property:</p>
+
+<ul>
+<li><strong>id</strong> -  (<em>string, number</em>) the event id.</li>
+</ul>
+
+<p>The default date format for JSON and XML data is <strong>'%Y-%m-%d %H:%i'</strong> (see the <a class="link-" href="settings_format.html"> date format specification</a>).<br> To change it, use the <a class="link-" href="api__scheduler_date_format_config.html">date_format</a> configuration option.</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">date_format</span><span class="sy0">=</span><span class="st0">&quot;%Y-%m-%d %H:%i&quot;</span><span class="sy0">;</span>
+...
+<span class="me1">scheduler</span>.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">3</span><span class="sy0">,</span> <span class="nu0">18</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;week&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Custom properties</h3>
+
+<p>You are not limited to the mandatory properties listed above and can add any custom ones to data items. 
+Extra data properties will be parsed as strings and loaded to the client side where you can use them according to your needs.</p>
+
+<p>See examples of data with custom properties <a class="link-" href="data_formats.html#datawithcustomproperties">here</a>.</p>
+
+<a name='databasestructure'><h2>Database Structure</h2></a>
+
+<p>When you set up a database, the expected structure for scheduler events is the following:</p>
+
+<ul>
+<li><strong>events table</strong> - specifies scheduler events
+
+<ul>
+<li><strong>id</strong> - (<em>string/int/guid</em>) - the event id. Primary key, auto increment.</li>
+<li><strong>start_date</strong> - (<em>DateTime</em>) - the start date of event, not nullable.</li>
+<li><strong>end_date</strong> - (<em>DateTime</em>) - the start date of event, not nullable.</li>
+<li><strong>text</strong> - (<em>string</em>) - the description of a task.</li>
+</ul></li>
+</ul>
+
+<p>If you have recurring events, you need some extra columns for them:</p>
+
+<ul>
+<li><strong>events table</strong> - specifies scheduler events
+
+<ul>
+<li><strong>id</strong> - (<em>string/int/guid</em>) - the event id. Primary key, auto increment.</li>
+<li><strong>start_date</strong> - (<em>DateTime</em>) - the start date of event, not nullable.</li>
+<li><strong>end_date</strong> - (<em>DateTime</em>) - the start date of event, not nullable.</li>
+<li><strong>text</strong> - (<em>string</em>) - the description of a task.</li>
+<li><strong>event_pid</strong> - (<em>string/int/guid</em>) - the reference to the parent event series id. Must be nullable or have an empty default value (empty string, numeric zero).</li>
+<li><strong>event_length</strong> - (<em>string/bigint</em>) - an event duration or a timestamp of modified occurrence. Must be nullable or have an empty default value (empty string, numeric zero). Max length (string values) is 10.</li>
+<li><strong>rec_type</strong> - (<em>string</em>) - a recurring rule. Must be nullable or have an empty string as a default value. Max length is 50.</li>
+</ul></li>
+</ul>
+
+<p>You can define any additional columns, they can be loaded to the client and made available for the client-side API.</p>
+
+<a name='dynamicloading'><h2>Dynamic loading</h2></a>
+
+<p>By default, dhtmlxScheduler loads all data at once. It may become problematic when you are using big event collections. 
+In such situations you may use the dynamic loading mode and load data by parts, necessary to fill the current viewable area  of the scheduler.</p>
+
+<h3>Technique</h3>
+
+<p>To enable the dynamic loading, call the <a class="link-" href="api__scheduler_setloadmode.html">setLoadMode</a> method:</p>
+
+<p class='snippet'>
+Enabling the dynamic loading
+</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">setLoadMode</span><span class="br0">&#40;</span><span class="st0">&quot;month&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>As a parameter the method takes the loading mode that defines the size of the data to load: <em>day, week, month or year.</em></p>
+
+<p>For example, if you set the 'week' mode, the scheduler will request data just for the current week and load remaining ones on demand.<br></p>
+
+<h4>How loading modes work</h4>
+
+<p>The predefined loading modes specify the interval of loading data within the set period. For example, you open the Week View in the scheduler for the following dates: from 2018-01-29 to 2018-02-05.
+Depending on the chosen mode, the dynamic loading will go like this:</p>
+
+<ul>
+<li>for the "day" mode</li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">setLoadMode</span><span class="br0">&#40;</span><span class="st0">&quot;day&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Scheduler will request data by days, i.e.: from 2018-01-29 to 2018-02-05.</p>
+
+<ul>
+<li>for the "month" mode</li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">setLoadMode</span><span class="br0">&#40;</span><span class="st0">&quot;month&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Scheduler will request data by whole months, i.e.: from 2018-01-01 to 2018-03-01.</p>
+
+<ul>
+<li>for the "year" mode</li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">setLoadMode</span><span class="br0">&#40;</span><span class="st0">&quot;year&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Scheduler will request data by whole years, i.e.: from 2018-01-01 to 2019-01-01.</p>
+
+<p>In any case, the requested interval won't be smaller than the rendered one.</p>
+
+<p>The loading interval defines:</p>
+
+<ul>
+<li>the frequency of dynamic loading calls</li>
+</ul>
+
+<p>The greater the loading interval is, the less the frequency of calls for dynamic loading will be. Scheduler keeps in memory the already loaded data portion and won't repeat a call for it.</p>
+
+<ul>
+<li>the duration of processing a separate request</li>
+</ul>
+
+<p>The greater the loading interval is, the longer a request is being processed, since the more data are being loaded at once.</p>
+
+<h4>Request</h4>
+
+<p>Generated requests look as in:</p>
+
+<pre><code><pre class="js">some.<span class="me1">php</span><span class="sy0">?</span>from<span class="sy0">=</span>DATEHERE<span class="sy0">&amp;</span>to<span class="sy0">=</span>DATEHERE</pre></code></pre>
+
+<p><em>where DATEHERE - a valid date value in the format defined by the <a class="link-" href="api__scheduler_load_date_config.html">load_date</a> option.</em> <br></p>
+
+<p>If you are using <a href="../connector__php__index.html">dhtmlxConnector</a> at the server side, 
+you don't need to do any additional server-side operations to parse the data.</p>
+
+<h3>Loading spinner</h3>
+
+<p>When you deal with a large data size, it's useful to display the loading spinner. It will show users that the app is actually doing something.</p>
+
+<p>To enable the loading spinner for the scheduler, set the <a class="link-" href="api__scheduler_show_loading_config.html">show_loading</a> property to <em>true</em>.</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">show_loading</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+...
+<span class="me1">scheduler</span>.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2018</span><span class="sy0">,</span><span class="nu0">0</span><span class="sy0">,</span><span class="nu0">10</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="st0">&quot;month&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>To change the spinner image - replace 'imgs/loading.gif' with your custom image.</p>
+</p></div>
+
+<a name='loadingdatawithtimelineandunitssectionsfromtheserver'><h2>Loading data with Timeline and Units sections from the server</h2></a>
+
+<p>While loading data into <a class="link-pro" href="timeline_view.html#loadingdatatotheview">Timeline</a> and <a class="link-pro" href="units_view.html#loadingdatatotheview">Units</a> views, you need to set an array of sections that will be loaded into views.</p>
+
+<p>In order to load data containing Timeline and Units sections from the backend, you need to implement a more extended configuration:</p>
+
+<ul>
+<li>during Timeline view initialization, instead of sections array you should use the <a class="link-" href="api__scheduler_serverlist.html">serverList</a> method and pass the name of a collection as an argument:</li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createTimelineView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+   ....
+   <span class="me1">y_unit</span><span class="sy0">:</span> scheduler.<span class="me1">serverList</span><span class="br0">&#40;</span><span class="st0">&quot;sections&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span>
+   ...
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>to load data into scheduler, use the <a class="link-" href="api__scheduler_load.html">load</a> method:</li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;data.json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>while implementing scheduler data response on the backend, use the following format:</li>
+</ul>
+
+<p class='snippet'> "data.json"</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span> 
+   <span class="st0">&quot;data&quot;</span><span class="sy0">:</span><span class="br0">&#91;</span>
+      <span class="br0">&#123;</span>
+          <span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="st0">&quot;1&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;start_date&quot;</span><span class="sy0">:</span><span class="st0">&quot;2018-03-02 00:00:00&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;end_date&quot;</span><span class="sy0">:</span><span class="st0">&quot;2018-03-04 00:00:00&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;text&quot;</span><span class="sy0">:</span><span class="st0">&quot;dblclick me!&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;type&quot;</span><span class="sy0">:</span><span class="st0">&quot;1&quot;</span>
+      <span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="br0">&#123;</span>
+          <span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="st0">&quot;2&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;start_date&quot;</span><span class="sy0">:</span><span class="st0">&quot;2018-03-09 00:00:00&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;end_date&quot;</span><span class="sy0">:</span><span class="st0">&quot;2018-03-11 00:00:00&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;text&quot;</span><span class="sy0">:</span><span class="st0">&quot;and me!&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;type&quot;</span><span class="sy0">:</span><span class="st0">&quot;2&quot;</span>
+      <span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="br0">&#123;</span>
+          <span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="st0">&quot;3&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;start_date&quot;</span><span class="sy0">:</span><span class="st0">&quot;2018-03-16 00:00:00&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;end_date&quot;</span><span class="sy0">:</span><span class="st0">&quot;2018-03-18 00:00:00&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;text&quot;</span><span class="sy0">:</span><span class="st0">&quot;and me too!&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;type&quot;</span><span class="sy0">:</span><span class="st0">&quot;3&quot;</span>
+      <span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="br0">&#123;</span> 
+          <span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="st0">&quot;4&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;start_date&quot;</span><span class="sy0">:</span><span class="st0">&quot;2018-03-02 08:00:00&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;end_date&quot;</span><span class="sy0">:</span><span class="st0">&quot;2018-03-02 14:10:00&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;text&quot;</span><span class="sy0">:</span><span class="st0">&quot;Type 2 event&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;type&quot;</span><span class="sy0">:</span><span class="st0">&quot;2&quot;</span>
+      <span class="br0">&#125;</span>
+   <span class="br0">&#93;</span><span class="sy0">,</span> 
+   <span class="st0">&quot;collections&quot;</span><span class="sy0">:</span> <span class="br0">&#123;</span>
+      <span class="st0">&quot;sections&quot;</span><span class="sy0">:</span><span class="br0">&#91;</span>
+         <span class="br0">&#123;</span><span class="st0">&quot;value&quot;</span><span class="sy0">:</span><span class="st0">&quot;1&quot;</span><span class="sy0">,</span><span class="st0">&quot;label&quot;</span><span class="sy0">:</span><span class="st0">&quot;Simple&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+         <span class="br0">&#123;</span><span class="st0">&quot;value&quot;</span><span class="sy0">:</span><span class="st0">&quot;2&quot;</span><span class="sy0">,</span><span class="st0">&quot;label&quot;</span><span class="sy0">:</span><span class="st0">&quot;Complex&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+         <span class="br0">&#123;</span><span class="st0">&quot;value&quot;</span><span class="sy0">:</span><span class="st0">&quot;3&quot;</span><span class="sy0">,</span><span class="st0">&quot;label&quot;</span><span class="sy0">:</span><span class="st0">&quot;Unknown&quot;</span><span class="br0">&#125;</span>
+      <span class="br0">&#93;</span>
+   <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>In the above example the "data" array contains calendar events, and the "collections" hash contains collections that can be referenced via the <a class="link-" href="api__scheduler_serverlist.html">serverList</a> method.</p>
+
+<!-- Content Area End -->
+			<a href='loading_data.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

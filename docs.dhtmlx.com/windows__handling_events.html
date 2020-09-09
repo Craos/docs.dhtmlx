@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Handling Events  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxwindows.html">dhtmlXWindows API</a></li><li class=""><a href="api__refs__dhtmlxwindowscell.html">dhtmlXWindowsCell API</a></li><li class=""><a href="api__refs__dhtmlxwindowsbutton.html">dhtmlXWindowsButton API</a></li><li class=""><a href="windows__how_to_start.html">How to Start with Windows</a></li><li class=""><a href="windows__object_constructor.html">Object Constructor</a></li><li class=""><a href="windows__configuring_windows.html">Configuring Windows</a></li><li class=""><a href="windows__operating_windows.html">Operating Windows</a></li><li class=""><a href="windows__operating_buttons.html">Operating Buttons</a></li><li class=""><a href="windows__creating_custom_buttons.html">Creating Custom Buttons</a></li><li class=""><a href="windows__attaching_url.html">Adding External Resource to Window</a></li><li class=""><a href="windows__attaching_dhtmlx.html">Adding DHTMLX Components to Window</a></li><li class=" current"><a href="windows__handling_events.html">Handling Events</a></li><ul><li class="inner"><a href="windows__handling_events.html#defaultevents">Default Events</a></li><li class="inner"><a href="windows__handling_events.html#redefiningdefaultbuttonevent">Redefining Default Button Event</a></li><li class="inner"><a href="windows__handling_events.html#attachingwindoweventshandlers">Attaching Window Events Handlers</a></li><li class="inner"><a href="windows__handling_events.html#attachingglobaleventhandlersforwindows">Attaching Global Event Handlers for Windows</a></li><li class="inner"><a href="windows__handling_events.html#attachingpersonalwindoweventhandler">Attaching Personal Window Event Handler</a></li><li class="inner"><a href="windows__handling_events.html#detachingpersonaleventhandler">Detaching Personal Event Handler</a></li><li class="inner"><a href="windows__handling_events.html#detachingglobaleventhandler">Detaching Global Event Handler</a></li><li class="inner"><a href="windows__handling_events.html#understandingeventhandlerspriority">Understanding Event Handlers Priority</a></li></ul><li class=""><a href="windows__using_iterator.html">Using Iterator</a></li><li class=""><a href="windows__attach_components.html">Attaching Components</a></li><li class=""><a href="windows__attach_mtb.html">Attaching Menu/Status Bar</a></li><li class=""><a href="windows__attach_html.html">Attaching HTML</a></li><li class=""><a href="windows__attach_urls.html">Attaching URL</a></li><li class=""><a href="windows__attach_google_map.html">Attaching Google Maps</a></li><li class=""><a href="windows__progress.html">Progress Bar</a></li><li class=""><a href="windows__views.html">Different Content in the Same Cell</a></li><li class=""><a href="windows__coloring_text_selection.html">Coloring Text Selection</a></li><li class=""><a href="windows__migration.html">Migration from 3.6 to 4.0</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="windows__index.html">Windows</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Handling Events</h1>
+
+<a name='defaultevents'><h2>Default Events</h2></a>
+
+<p>Default events signal various actions, such as the user clicking a button to Park a window, or a window is being closed. Default events are usually button events.</p>
+
+<p>Button events can be as follows:</p>
+
+<ul>
+<li><a class="link-" href="api__dhtmlxwindowsbutton_onclick_event.html">onClick</a> Event executes the specified JS code or function, when the user clicks the left mouse button on the object. <br></li>
+</ul>
+
+<p>Default events can be redefined by user, who can choose to assign other user-defined events instead. In this case, default events will be ignored until they are restored by user.</p>
+
+<a name='redefiningdefaultbuttonevent'><h2>Redefining Default Button Event</h2></a>
+
+<p>The user can choose to redefine a default button event by adding any user-defined event instead. 
+To redefine a button default event the user can use <a class="link-" href="api__link__dhtmlxwindowsbutton_attachevent.html">attachEvent()</a> method:</p>
+
+<pre><code><pre class="js">myWins.<span class="me1">window</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">button</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">attachEvent</span><span class="br0">&#40;</span>eventName<span class="sy0">,</span> handler<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='attachingwindoweventshandlers'><h2>Attaching Window Events Handlers</h2></a>
+
+<p>The entire point of an event is to inform a handler that something has happened to a component in the GUI. A handler can figure out what exactly happened and respond in a meaningful way.</p>
+
+<p>The full list of events to which user-defined handlers can be attached is given in the <a class="link-" href="api__refs__dhtmlxwindowscell.html#events">dhtmlXWindowsCell API</a>.</p>
+
+<a name='attachingglobaleventhandlersforwindows'><h2>Attaching Global Event Handlers for Windows</h2></a>
+
+<p>The user can add global event handlers for windows.</p>
+
+<p>To do this he should use attachEvent() method with the following parameters:</p>
+
+<ul>
+<li>evName - name of the event;</li>
+<li>evHandler - user-defined event handler.</li>
+</ul>
+
+<pre><code><pre class="js">myWins.<span class="me1">attachEvent</span><span class="br0">&#40;</span>evName<span class="sy0">,</span> evHandler<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Events can also be attached directly in the object constructor:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> win <span class="sy0">=</span> myWins.<span class="me1">createWindow</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    id<span class="sy0">:</span><span class="st0">&quot;about&quot;</span><span class="sy0">,</span>
+    onClose<span class="sy0">:</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw3">alert</span><span class="br0">&#40;</span><span class="st0">&quot;Window is closing&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+        <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Several handlers can be attached to one and the same event, and all of them will be executed.</p>
+
+<div class='note'><p><p>The names of the events are case-insensitive.</p>
+</p></div>
+
+<p>You can find the full list of global windows events in the <a class="link-" href="api__refs__dhtmlxwindows.html">Windows API</a>.</p>
+
+<a name='attachingpersonalwindoweventhandler'><h2>Attaching Personal Window Event Handler</h2></a>
+
+<p>If there is a window to which the user wants to assign a special handler, this can be done by adding the handler to the window directly. 
+While other windows will be calling global handlers, this window with personal handler will call this personal handler:</p>
+
+<pre><code><pre class="js">myWins.<span class="me1">window</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">attachEvent</span><span class="br0">&#40;</span>eventName<span class="sy0">,</span> handler<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='detachingpersonaleventhandler'><h2>Detaching Personal Event Handler</h2></a>
+
+<p>The user can detach a personal event from a window. In this case a global event handler will be restored for this window, i.e. when personal handler is removed from the window, the window will call global handler.</p>
+
+<pre><code><pre class="js">myWins.<span class="me1">window</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">detachEvent</span><span class="br0">&#40;</span>eventId<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='detachingglobaleventhandler'><h2>Detaching Global Event Handler</h2></a>
+
+<p>Global handlers can be easily removed with the help of the following method:</p>
+
+<pre><code><pre class="js">myWins.<span class="me1">detachEvent</span><span class="br0">&#40;</span>eventId<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='understandingeventhandlerspriority'><h2>Understanding Event Handlers Priority</h2></a>
+
+<p><img src="media/windows/event_handler_priority.gif"/></p>
+
+<p>In the situation described above windows w2 and w3 will call "globalHandler" when they are focused.</p>
+
+<p>The window w1 will call personal "w1Handler" when focused.</p>
+
+<!-- Content Area End -->
+			<a href='windows__handling_events.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

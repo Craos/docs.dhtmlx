@@ -1,0 +1,240 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Grid Specific HowTos  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="connector__java__data_management_howtos_general.html">General HowTos</a></li><li class=""><a href="connector__java__data_management_howtos_loading.html">Data Loading HowTos</a></li><li class=""><a href="connector__java__data_management_howtos_updating.html">Data Updating HowTos</a></li><li class=""><a href="connector__java__component-specific_howtos_combo.html">Combo Specific HowTos</a></li><li class=""><a href="connector__java__component-specific_howtos_form.html">Form Specific HowTos</a></li><li class=" current"><a href="connector__java__component-specific_howtos_grid.html">Grid Specific HowTos</a></li><ul><li class="inner"><a href="connector__java__component-specific_howtos_grid.html#howcanidefinegridstructureontheserverside">How can I define grid structure on the server side?</a></li><li class="inner"><a href="connector__java__component-specific_howtos_grid.html#howcaniloaddatafromatablethatdoesntcontaintheidentityfield">How can I load data from a table that doesn't contain the identity field?</a></li><li class="inner"><a href="connector__java__component-specific_howtos_grid.html#howcanisetacustomstyleforaroworacell">How can I set a custom style for a row or a cell?</a></li></ul><li class=""><a href="connector__java__component-specific_howtos_tree_treegrid.html">Tree(TreeGrid) Specific HowTos</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="connector__index.html">Client-Server Communication</a><a class="n3" href="connector__java__index.html">Java Connector</a><a class="n4" href="connector__java__coding_howtos.html">HowTos</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Grid Specific HowTos</h1>
+
+<a name='howcanidefinegridstructureontheserverside'><h2>How can I define grid structure on the server side?</h2></a>
+
+<p>To define grid structure on the server side you can choose one of two ways:</p>
+
+<ul>
+<li>define the configuration in the constructor;</li>
+<li>create an empty object and then specify its configuration through the related methods.</li>
+</ul>
+
+<p>The first case:</p>
+
+<pre><code><pre class="js">GridColumn column1 <span class="sy0">=</span> <span class="kw2">new</span> GridColumn<span class="br0">&#40;</span>
+    String header<span class="sy0">,</span> 
+    String type<span class="sy0">,</span> 
+    String id<span class="sy0">,</span> 
+    int width<span class="sy0">,</span>
+    String align<span class="sy0">,</span> 
+    String valign<span class="sy0">,</span> 
+    String sort<span class="sy0">,</span> 
+    String color<span class="sy0">,</span> 
+    Boolean hidden
+<span class="br0">&#41;</span><span class="sy0">;</span>
+GridColumn column2 <span class="sy0">=</span> ...
+&nbsp;
+<span class="me1">GridConfiguration</span> myConfig<span class="sy0">=</span> <span class="kw2">new</span> GridConfiguration<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+myConfig.<span class="me1">addColumn</span><span class="br0">&#40;</span>column1<span class="br0">&#41;</span><span class="sy0">;</span>
+myConfig.<span class="me1">addColumn</span><span class="br0">&#40;</span>column2<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The second case:</p>
+
+<pre><code><pre class="js">GridColumn column1 <span class="sy0">=</span> <span class="kw2">new</span> GridColumn<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+GridColumn column2 <span class="sy0">=</span> ...
+&nbsp;
+<span class="me1">column1</span>.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Column1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+column1.<span class="me1">setType</span><span class="br0">&#40;</span><span class="st0">&quot;ed&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">GridConfiguration</span> myConfig<span class="sy0">=</span> <span class="kw2">new</span> GridConfiguration<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+myConfig.<span class="me1">addColumn</span><span class="br0">&#40;</span>column1<span class="br0">&#41;</span><span class="sy0">;</span>
+myConfig.<span class="me1">addColumn</span><span class="br0">&#40;</span>column2<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='howcaniloaddatafromatablethatdoesntcontaintheidentityfield'><h2>How can I load data from a table that doesn't contain the identity field?</h2></a>
+
+<p>By using KeyGridConnector instead of GridConnector, you can load data from a table without identity field. In this case, any data field will serve as the identity one.</p>
+
+<pre><code><pre class="js">Connection conn <span class="sy0">=</span> <span class="br0">&#40;</span> <span class="kw2">new</span> DataBaseConnection<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>.<span class="me1">getConnection</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+KeyGridConnector data <span class="sy0">=</span> <span class="kw2">new</span> KeyGridConnector<span class="br0">&#40;</span>conn<span class="br0">&#41;</span><span class="sy0">;</span>
+data.<span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;mytable&quot;</span><span class="sy0">,</span><span class="st0">&quot;name&quot;</span><span class="sy0">,</span><span class="st0">&quot;name,address,phone&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>For more details, see the '<a class="link-" href="connector__java__keygridconnector.html">KeyGridConnector</a>' guide.</p>
+
+<a name='howcanisetacustomstyleforaroworacell'><h2>How can I set a custom style for a row or a cell?</h2></a>
+
+<p>dhtmlxConnector contains a bit of methods that allow setting the appearance of a grid.</p>
+
+<p>These methods can be divided into 2 groups:</p>
+
+<p><strong>for a cell customization:</strong></p>
+
+<ul>
+<li><strong><em>set_cell_attribute</em></strong></li>
+<li><strong><em>set_cell_class</em></strong></li>
+<li><strong><em>set_cell_style</em></strong></li>
+</ul>
+
+<p><strong>for a row customization:</strong></p>
+
+<ul>
+<li><strong><em>set_row_attribute</em></strong></li>
+<li><strong><em>set_row_color</em></strong></li>
+<li><strong><em>set_row_style</em></strong></li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">class</span> RenderBehavior <span class="kw2">extends</span> ConnectorBehavior<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw1">void</span> beforeRender<span class="br0">&#40;</span>DataItem data<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>data<span class="sy0">-&gt;</span>get_index<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">%</span> <span class="nu0">2</span> <span class="sy0">==</span> <span class="nu0">1</span> <span class="br0">&#41;</span>
+        data.<span class="me1">set_row_color</span><span class="br0">&#40;</span><span class="st0">&quot;red&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span> 
+<span class="br0">&#125;</span>
+Connection res <span class="sy0">=</span> <span class="br0">&#40;</span> <span class="kw2">new</span> DataBaseConnection<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>.<span class="me1">getConnection</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+GridConnector grid <span class="sy0">=</span> <span class="kw2">new</span> GridConnector<span class="br0">&#40;</span>res<span class="br0">&#41;</span><span class="sy0">;</span>
+grid.<span class="me1">event</span>.<span class="me1">attach</span><span class="br0">&#40;</span><span class="kw2">new</span> RenderBehavior<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+grid.<span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;grid50000&quot;</span><span class="sy0">,</span><span class="st0">&quot;item_id&quot;</span><span class="sy0">,</span><span class="st0">&quot;item_nm,item_cd&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Tips:</p>
+
+<ul>
+<li>to overwrite the background you should use the '<strong>background</strong>' attribute, not the '<strong>background-color</strong>' one.</li>
+<li>skin's css can overwrite a number of css attributes. To avoid it, use the <strong>!important</strong> flag.</li>
+</ul>
+
+<pre><code><pre class="php">data<span class="sy0">.</span>set_row_attribute<span class="br0">&#40;</span><span class="st0">&quot;class&quot;</span><span class="sy0">,</span><span class="st0">&quot;backrgroundclass&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><br></p>
+
+<pre><code><pre class="js">.<span class="me1">backrgroundclass</span><span class="br0">&#123;</span>
+   background<span class="sy0">:</span>red <span class="sy0">!</span>important<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='connector__java__component-specific_howtos_grid.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

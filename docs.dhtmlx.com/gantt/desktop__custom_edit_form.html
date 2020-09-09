@@ -1,0 +1,259 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Custom Lightbox  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__default_edit_form.html">Configuring Lightbox Elements</a></li><li class=""><a href="desktop__lightbox_manipulations.html">Working with Lightbox Elements</a></li><li class=""><a href="desktop__custom_editor.html">Creating Custom Element</a></li><li class=" current"><a href="desktop__custom_edit_form.html">Custom Lightbox</a></li><ul><li class="inner"><a href="desktop__custom_edit_form.html#thewaysofcreatingacustomlightbox">The ways of creating a custom lightbox</a></li><li class="inner"><a href="desktop__custom_edit_form.html#processingactionsinthecustomform">Processing actions in the custom form</a></li></ul><li class=""><a href="desktop__custom_button.html">Changing Buttons in the Lightbox</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__edit_form.html">Configuring Edit Form</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Custom Lightbox</h1>
+
+<a name='thewaysofcreatingacustomlightbox'><h2>The ways of creating a custom lightbox</h2></a>
+
+<p>You can create a fully custom lightbox for gantt and replace the default one with it. There are two possible ways to do it:</p>
+
+<p>1) By redefining the <a class="link-" href="api__gantt_showlightbox.html">showLightbox</a> method:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">showLightbox</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// code of the custom form</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>id - (string/number) - the task id</li>
+</ul>
+
+<p>There's also the <a class="link-" href="api__gantt_hidelightbox.html">hideLightbox</a> method that will help in the lightbox implementation.</p>
+
+<p>Let's create an HTML container "my-form" where we'll put a custom lightbox:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;my-form&quot;</span>&gt;</span>
+ <span class="sc2">&lt;<span class="kw2">label</span> <span class="kw3">for</span><span class="sy0">=</span><span class="st0">&quot;description&quot;</span>&gt;</span>Task text
+  <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;description&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;&quot;</span> &gt;</span>
+ <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">label</span>&gt;</span>
+ <span class="sc2">&lt;<span class="kw2">br</span>&gt;</span>
+ <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;button&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;save&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;Save&quot;</span>&gt;</span>
+ <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;button&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;close&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;Close&quot;</span>&gt;</span>
+ <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;button&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;delete&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;Delete&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+<p>Then to make a custom lightbox, you can use the configuration similar to this:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> taskId <span class="sy0">=</span> <span class="kw2">null</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">showLightbox</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    taskId <span class="sy0">=</span> id<span class="sy0">;</span>
+    <span class="kw2">var</span> task <span class="sy0">=</span> gantt.<span class="me1">getTask</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw2">var</span> form <span class="sy0">=</span> getForm<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw2">var</span> input <span class="sy0">=</span> form.<span class="me1">querySelector</span><span class="br0">&#40;</span><span class="st0">&quot;[name='description']&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    input.<span class="kw3">focus</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    input.<span class="me1">value</span> <span class="sy0">=</span> task.<span class="me1">text</span><span class="sy0">;</span>
+&nbsp;
+    form.<span class="me1">style</span>.<span class="me1">display</span> <span class="sy0">=</span> <span class="st0">&quot;block&quot;</span><span class="sy0">;</span>
+&nbsp;
+    form.<span class="me1">querySelector</span><span class="br0">&#40;</span><span class="st0">&quot;[name='save']&quot;</span><span class="br0">&#41;</span>.<span class="me1">onclick</span> <span class="sy0">=</span> save<span class="sy0">;</span>
+    form.<span class="me1">querySelector</span><span class="br0">&#40;</span><span class="st0">&quot;[name='close']&quot;</span><span class="br0">&#41;</span>.<span class="me1">onclick</span> <span class="sy0">=</span> cancel<span class="sy0">;</span>
+    form.<span class="me1">querySelector</span><span class="br0">&#40;</span><span class="st0">&quot;[name='delete']&quot;</span><span class="br0">&#41;</span>.<span class="me1">onclick</span> <span class="sy0">=</span> remove<span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">hideLightbox</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    getForm<span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">style</span>.<span class="me1">display</span> <span class="sy0">=</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+    taskId <span class="sy0">=</span> <span class="kw2">null</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+&nbsp;
+<span class="kw2">function</span> getForm<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">&quot;my-form&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">function</span> save<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw2">var</span> task <span class="sy0">=</span> gantt.<span class="me1">getTask</span><span class="br0">&#40;</span>taskId<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    task.<span class="me1">text</span> <span class="sy0">=</span> getForm<span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">querySelector</span><span class="br0">&#40;</span><span class="st0">&quot;[name='description']&quot;</span><span class="br0">&#41;</span>.<span class="me1">value</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">if</span><span class="br0">&#40;</span>task.$new<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">delete</span> task.$new<span class="sy0">;</span>
+        gantt.<span class="me1">addTask</span><span class="br0">&#40;</span>task<span class="sy0">,</span>task.<span class="me1">parent</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="kw1">else</span><span class="br0">&#123;</span>
+        gantt.<span class="me1">updateTask</span><span class="br0">&#40;</span>task.<span class="me1">id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    gantt.<span class="me1">hideLightbox</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="kw2">function</span> cancel<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw2">var</span> task <span class="sy0">=</span> gantt.<span class="me1">getTask</span><span class="br0">&#40;</span>taskId<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">if</span><span class="br0">&#40;</span>task.$new<span class="br0">&#41;</span>
+    gantt.<span class="me1">deleteTask</span><span class="br0">&#40;</span>task.<span class="me1">id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    gantt.<span class="me1">hideLightbox</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="kw2">function</span> remove<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    gantt.<span class="me1">deleteTask</span><span class="br0">&#40;</span>taskId<span class="br0">&#41;</span><span class="sy0">;</span>
+    gantt.<span class="me1">hideLightbox</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>2) Using the <a class="link-" href="api__gantt_onbeforelightbox_event.html">onBeforeLightbox</a> event. In this case the algorithm of actions is the following:</p>
+
+<ul>
+<li>detect when the lightbox is about to be shown</li>
+<li>block the default lightbox</li>
+<li>show a custom form and fill-in the task data.</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onBeforeLightbox&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw2">var</span> task <span class="sy0">=</span> gantt.<span class="me1">getTask</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>task.$new<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        dhtmlx.<span class="kw3">confirm</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+            text<span class="sy0">:</span><span class="st0">&quot;Create task?&quot;</span><span class="sy0">,</span>
+            callback<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>res<span class="br0">&#41;</span><span class="br0">&#123;</span>
+                <span class="kw1">if</span><span class="br0">&#40;</span>res<span class="br0">&#41;</span><span class="br0">&#123;</span>
+                    <span class="co1">//..apply values</span>
+                    <span class="kw1">delete</span> task.$new<span class="sy0">;</span>
+                    gantt.<span class="me1">addTask</span><span class="br0">&#40;</span>task<span class="br0">&#41;</span><span class="sy0">;</span>
+                <span class="br0">&#125;</span><span class="kw1">else</span><span class="br0">&#123;</span>
+                    gantt.<span class="me1">deleteTask</span><span class="br0">&#40;</span>task.<span class="me1">id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                <span class="br0">&#125;</span>
+            <span class="br0">&#125;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='processingactionsinthecustomform'><h2>Processing actions in the custom form</h2></a>
+
+<p>When user saves the form, you'll need to manually get form values and update the appropriate task using the public API: <a class="link-" href="api__gantt_addtask.html">addTask</a>, <a class="link-" href="api__gantt_updatetask.html">updateTask</a> and <a class="link-" href="api__gantt_deletetask.html">deleteTask</a>.</p>
+
+<p>Note that when a lightbox is triggered by a new task (on clicking the 'plus' button) which should be deleted if the user clicks 'Cancel' to revert the task creation,
+the task object will have the '$new' property set.</p>
+
+<p>You can process lightbox closing, as shown in the example below. The type of an action - 'save', 'cancel' or 'delete' is passed as the "action" parameter:</p>
+
+<pre><code><pre class="js"><span class="kw1">switch</span><span class="br0">&#40;</span>action<span class="br0">&#41;</span><span class="br0">&#123;</span>
+   <span class="kw1">case</span> <span class="st0">&quot;save&quot;</span><span class="sy0">:</span>
+      task.<span class="me1">text</span> <span class="sy0">=</span> <span class="st0">''</span><span class="sy0">;</span><span class="co1">// apply values from form</span>
+&nbsp;
+      <span class="co1">// add new task or update already existing one</span>
+      <span class="kw1">if</span><span class="br0">&#40;</span>task.$new<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">delete</span> task.$new<span class="sy0">;</span>
+        gantt.<span class="me1">addTask</span><span class="br0">&#40;</span>task<span class="sy0">,</span>task.<span class="me1">parent</span><span class="br0">&#41;</span>
+      <span class="br0">&#125;</span><span class="kw1">else</span><span class="br0">&#123;</span>
+        gantt.<span class="me1">updateTask</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+      <span class="br0">&#125;</span>
+&nbsp;
+      <span class="kw1">break</span><span class="sy0">;</span>
+   <span class="kw1">case</span> <span class="st0">&quot;cancel&quot;</span><span class="sy0">:</span>
+      <span class="co1">// if cancel popup for creating a new task - delete it, otherwise do nothing</span>
+      <span class="kw1">if</span><span class="br0">&#40;</span>task.$new<span class="br0">&#41;</span>
+         gantt.<span class="me1">deleteTask</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+      <span class="kw1">break</span><span class="sy0">;</span>
+   <span class="kw1">case</span> <span class="st0">&quot;delete&quot;</span><span class="sy0">:</span>
+      gantt.<span class="me1">deleteTask</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+      <span class="kw1">break</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='desktop__custom_edit_form.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

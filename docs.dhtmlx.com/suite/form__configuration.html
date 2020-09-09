@@ -1,0 +1,407 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Configuration  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="form__api__refs__form.html">Form API</a></li><li class=""><a href="form__how_to_start.html">Initialization</a></li><li class=""><a href="form__controls_list.html">List of Form Controls</a></li><li class=""><a href="form__localization.html">Localization</a></li><li class=" current"><a href="form__configuration.html">Configuration</a></li><ul><li class="inner"><a href="form__configuration.html#alignment">Alignment</a></li><li class="inner"><a href="form__configuration.html#groupingcontrolsinform">Grouping Controls in Form</a></li><li class="inner"><a href="form__configuration.html#makingformdisabled">Making Form disabled</a></li><li class="inner"><a href="form__configuration.html#makingformhidden">Making Form hidden</a></li><li class="inner"><a href="form__configuration.html#padding">Padding</a></li><li class="inner"><a href="form__configuration.html#title">Title</a></li><li class="inner"><a href="form__configuration.html#widthheight">Width/Height</a></li></ul><li class=""><a href="form__work_with_form.html">Work with Form</a></li><li class=""><a href="form__customization.html">Customization</a></li><li class=""><a href="form__handling_events.html">Event Handling</a></li><li class=""><a href="form__migration.html">Migration to Newer Versions</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="form__index.html">Form</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Configuration</h1>
+
+<a name='alignment'><h2>Alignment</h2></a>
+
+<p>The <a class="link-" href="form__api__form_align_property.html">align</a> property allows you to set aligning direction for all controls in Form.</p>
+
+<p>You can apply various align attributes for different <a class="link-" href="form__configuration.html#groupingcontrolsinform">control groups</a> by specifying the <a class="link-" href="form__api__form_align_property.html">align</a> property for the <a class="link-" href="form__api__form_rows_property.html">rows</a> and <a class="link-" href="form__api__form_cols_property.html">cols</a>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> form <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Form</span><span class="br0">&#40;</span><span class="st0">&quot;form_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    css<span class="sy0">:</span> <span class="st0">&quot;dhx_widget--bordered&quot;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    align<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span><span class="sy0">,</span> <span class="co1">// set alignment for rows </span></span>    rows<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+<span class="xtra ln-xtra">            align<span class="sy0">:</span> <span class="st0">&quot;start&quot;</span><span class="sy0">,</span> <span class="co1">// set alignment for cols </span></span>            css<span class="sy0">:</span> <span class="st0">&quot;dhx_layout-cell--bordered&quot;</span><span class="sy0">,</span>
+            cols<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span>
+                type<span class="sy0">:</span> <span class="st0">&quot;checkbox&quot;</span><span class="sy0">,</span>
+                label<span class="sy0">:</span> <span class="st0">&quot;start&quot;</span><span class="sy0">,</span>
+                <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;align&quot;</span><span class="sy0">,</span>
+                gravity<span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span>
+                labelInline<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+                value<span class="sy0">:</span> <span class="st0">&quot;start&quot;</span><span class="sy0">,</span>
+                checked<span class="sy0">:</span> <span class="kw2">true</span>
+            <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>
+                type<span class="sy0">:</span> <span class="st0">&quot;checkbox&quot;</span><span class="sy0">,</span>
+                label<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span><span class="sy0">,</span>
+                gravity<span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span>
+                <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;align&quot;</span><span class="sy0">,</span>
+                labelInline<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+                value<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span>
+            <span class="br0">&#125;</span><span class="br0">&#93;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/1pzybtja' target='blank'><span class='sample'>Related sample: </span>&nbsp;Form. Blocks</a></p>
+
+<p>The tables below demonstrate using the possible values for the <strong>align</strong> property in Form:</p>
+
+<p><style>
+    table.my_table {
+        width: 100%;<br />
+    }
+    table.my_table caption{
+        vertical-align: center;
+        width: 100%;
+    }
+    table.my_table caption.title{
+        font-size: 15px;
+        padding: 10px;
+        text-align: center;
+    }
+    .img_center {
+        padding-top: 10px;
+        height: 100%;
+    }
+</style></p>
+
+<table class="my_table">
+    <tbody>
+    <caption class="title">Basic positional alignment</caption>
+    <tr>
+    <th>"start"</th>
+    <th>"center"</th>
+    <th>"end"</th></tr>
+    <tr>
+        <td id="start" class="img_center"><img src="media/form/alignment_start.png">
+        </td>
+        <td id="center" class="img_center"><img src="media/form/alignment_center.png"></td>
+        <td id="end" class="img_center"><img src="media/form/alignment_end.png"></td>
+    </tr>           
+    </tbody>
+</table>
+
+<p><br></p>
+
+<table class="my_table">
+    <tbody>
+    <caption class="title">Distributed alignment</caption>
+    <tr>
+    <th>"between"</th>
+    <th>"around"</th>
+    <th>"evenly"</th></tr>
+    <tr>
+        <td id="between" class="img_center"><img src="media/form/alignment_between.png">
+        </td>
+        <td id="around" class="img_center"><img src="media/form/alignment_around.png"></td>
+        <td id="evenly" class="img_center"><img src="media/form/alignment_evenly.png"></td>
+    </tr>           
+    </tbody>
+</table>
+
+<a name='groupingcontrolsinform'><h2>Grouping Controls in Form</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/form/blocks.png"></p>
+
+<p><a href='https://snippet.dhtmlx.com/1pzybtja' target='blank'><span class='sample'>Related sample: </span>&nbsp;Form. Blocks</a></p>
+
+<p>You can combine controls into groups by placing controls into rows and columns with any level of complexity. To do this, use the <a class="link-" href="form__api__form_rows_property.html">rows</a> and <a class="link-" href="form__api__form_cols_property.html">cols</a> options in the configuration object of the component:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> form <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Form</span><span class="br0">&#40;</span><span class="st0">&quot;form_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    css<span class="sy0">:</span> <span class="st0">&quot;dhx_widget--bordered&quot;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    cols<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> </span>        padding<span class="sy0">:</span> <span class="st0">&quot;20px&quot;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">        rows<span class="sy0">:</span> <span class="br0">&#91;</span> </span>            <span class="br0">&#123;</span>
+                type<span class="sy0">:</span> <span class="st0">&quot;input&quot;</span><span class="sy0">,</span>
+                gravity<span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span>
+                label<span class="sy0">:</span> <span class="st0">&quot;title&quot;</span><span class="sy0">,</span>
+                <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;title&quot;</span><span class="sy0">,</span>
+                value<span class="sy0">:</span> blockConfig.<span class="me1">title</span><span class="sy0">,</span>
+                labelWidth<span class="sy0">:</span> <span class="st0">&quot;100px&quot;</span><span class="sy0">,</span>
+                labelPosition<span class="sy0">:</span> <span class="st0">&quot;right&quot;</span>
+            <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>
+                type<span class="sy0">:</span> <span class="st0">&quot;input&quot;</span><span class="sy0">,</span>
+                gravity<span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span>
+                label<span class="sy0">:</span> <span class="st0">&quot;width&quot;</span><span class="sy0">,</span>
+                <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;width&quot;</span><span class="sy0">,</span>
+                value<span class="sy0">:</span> blockConfig.<span class="me1">width</span><span class="sy0">,</span>
+                labelWidth<span class="sy0">:</span> <span class="st0">&quot;100px&quot;</span><span class="sy0">,</span>
+                labelPosition<span class="sy0">:</span> <span class="st0">&quot;right&quot;</span>
+            <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>
+                <span class="co1">// more controls</span>
+            <span class="br0">&#125;</span>
+        <span class="br0">&#93;</span>
+    <span class="br0">&#125;</span><span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='makingformdisabled'><h2>Making Form disabled</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/form/disabled.png"></p>
+
+<p><a href='https://snippet.dhtmlx.com/7qjwg2sw' target='blank'><span class='sample'>Related sample: </span>&nbsp;Form. Disabled</a></p>
+
+<p>By default, Form is enabled. To make Form disabled, set the <a class="link-" href="form__api__form_disabled_property.html">disabled</a> configuration property to <em>true</em>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> form <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Form</span><span class="br0">&#40;</span><span class="st0">&quot;form_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    css<span class="sy0">:</span> <span class="st0">&quot;dhx_widget--bordered&quot;</span><span class="sy0">,</span>
+    disabled<span class="sy0">:</span> <span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='makingformhidden'><h2>Making Form hidden</h2></a>
+
+<p>By default, Form is visible. To make Form hidden, set the <a class="link-" href="form__api__form_hidden_property.html">hidden</a> configuration property to <em>true</em>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> form <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Form</span><span class="br0">&#40;</span><span class="st0">&quot;form_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    css<span class="sy0">:</span> <span class="st0">&quot;dhx_widget--bordered&quot;</span><span class="sy0">,</span>
+    hidden<span class="sy0">:</span> <span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='padding'><h2>Padding</h2></a>
+
+<p>To generate space around a <a class="link-" href="form__configuration.html#groupingcontrolsinform">control group</a>, make use of the <a class="link-" href="form__api__form_padding_property.html">padding</a> parameter:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> form <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Form</span><span class="br0">&#40;</span><span class="st0">&quot;form_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    css<span class="sy0">:</span> <span class="st0">&quot;dhx_widget--bordered&quot;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    padding<span class="sy0">:</span> <span class="st0">&quot;10px&quot;</span><span class="sy0">,</span>  <span class="co1">// padding for rows</span></span>    rows<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+<span class="xtra ln-xtra">            padding<span class="sy0">:</span> <span class="st0">&quot;10px&quot;</span><span class="sy0">,</span>  <span class="co1">// padding for cols</span></span>            css<span class="sy0">:</span> <span class="st0">&quot;dhx_layout-cell--bordered&quot;</span><span class="sy0">,</span>
+            cols<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span>
+                type<span class="sy0">:</span> <span class="st0">&quot;checkbox&quot;</span><span class="sy0">,</span>
+                label<span class="sy0">:</span> <span class="st0">&quot;start&quot;</span><span class="sy0">,</span>
+                <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;align&quot;</span><span class="sy0">,</span>
+                gravity<span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span>
+                labelInline<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+                value<span class="sy0">:</span> <span class="st0">&quot;start&quot;</span><span class="sy0">,</span>
+                checked<span class="sy0">:</span> <span class="kw2">true</span>
+            <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>
+                type<span class="sy0">:</span> <span class="st0">&quot;checkbox&quot;</span><span class="sy0">,</span>
+                label<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span><span class="sy0">,</span>
+                gravity<span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span>
+                <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;align&quot;</span><span class="sy0">,</span>
+                labelInline<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+                value<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span>
+            <span class="br0">&#125;</span><span class="br0">&#93;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/1pzybtja' target='blank'><span class='sample'>Related sample: </span>&nbsp;Form. Blocks</a></p>
+
+<a name='title'><h2>Title</h2></a>
+
+<p>You can define a title for a <a class="link-" href="form__configuration.html#groupingcontrolsinform">control group</a> with the help of the <a class="link-" href="form__api__form_title_property.html">title</a> property:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> form <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Form</span><span class="br0">&#40;</span><span class="st0">&quot;form_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    css<span class="sy0">:</span> <span class="st0">&quot;dhx_widget--bordered&quot;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    title<span class="sy0">:</span> <span class="st0">&quot;Form&quot;</span><span class="sy0">,</span>  <span class="co1">// title for rows</span></span>    rows<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+<span class="xtra ln-xtra">            title<span class="sy0">:</span> <span class="st0">&quot;Controls&quot;</span><span class="sy0">,</span>  <span class="co1">// title for cols</span></span>            css<span class="sy0">:</span> <span class="st0">&quot;dhx_layout-cell--bordered&quot;</span><span class="sy0">,</span>
+            cols<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span>
+                type<span class="sy0">:</span> <span class="st0">&quot;checkbox&quot;</span><span class="sy0">,</span>
+                label<span class="sy0">:</span> <span class="st0">&quot;start&quot;</span><span class="sy0">,</span>
+                <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;align&quot;</span><span class="sy0">,</span>
+                gravity<span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span>
+                labelInline<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+                value<span class="sy0">:</span> <span class="st0">&quot;start&quot;</span><span class="sy0">,</span>
+                checked<span class="sy0">:</span> <span class="kw2">true</span>
+            <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>
+                type<span class="sy0">:</span> <span class="st0">&quot;checkbox&quot;</span><span class="sy0">,</span>
+                label<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span><span class="sy0">,</span>
+                gravity<span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span>
+                <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;align&quot;</span><span class="sy0">,</span>
+                labelInline<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+                value<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span>
+            <span class="br0">&#125;</span><span class="br0">&#93;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/1pzybtja' target='blank'><span class='sample'>Related sample: </span>&nbsp;Form. Blocks</a></p>
+
+<a name='widthheight'><h2>Width/Height</h2></a>
+
+<p>You can adjust sizes of a <a class="link-" href="form__configuration.html#groupingcontrolsinform">control group</a> with the corresponding properties <a class="link-" href="form__api__form_height_property.html">height</a> and <a class="link-" href="form__api__form_width_property.html">width</a>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> form <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Form</span><span class="br0">&#40;</span><span class="st0">&quot;form_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    css<span class="sy0">:</span> <span class="st0">&quot;dhx_widget--bordered&quot;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    height<span class="sy0">:</span> <span class="st0">&quot;300px&quot;</span><span class="sy0">,</span> <span class="co1">// height for rows </span></span><span class="xtra ln-xtra">    width<span class="sy0">:</span> <span class="st0">&quot;&quot;</span><span class="sy0">,</span> <span class="co1">// width for rows </span></span><span class="xtra ln-xtra">    cols<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> </span>        padding<span class="sy0">:</span> <span class="st0">&quot;20px&quot;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">        rows<span class="sy0">:</span> <span class="br0">&#91;</span> </span>            <span class="br0">&#123;</span>
+                type<span class="sy0">:</span> <span class="st0">&quot;input&quot;</span><span class="sy0">,</span>
+                gravit<span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span>
+                label<span class="sy0">:</span> <span class="st0">&quot;title&quot;</span><span class="sy0">,</span>
+                <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;title&quot;</span><span class="sy0">,</span>
+                value<span class="sy0">:</span> blockConfig.<span class="me1">title</span><span class="sy0">,</span>
+                labelWidth<span class="sy0">:</span> <span class="st0">&quot;100px&quot;</span><span class="sy0">,</span>
+                labelPosition<span class="sy0">:</span> <span class="st0">&quot;right&quot;</span>
+            <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>
+                type<span class="sy0">:</span> <span class="st0">&quot;input&quot;</span><span class="sy0">,</span>
+                gravit<span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span>
+                label<span class="sy0">:</span> <span class="st0">&quot;width&quot;</span><span class="sy0">,</span>
+                <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;width&quot;</span><span class="sy0">,</span>
+                value<span class="sy0">:</span> blockConfig.<span class="me1">width</span><span class="sy0">,</span>
+                labelWidth<span class="sy0">:</span> <span class="st0">&quot;100px&quot;</span><span class="sy0">,</span>
+                labelPosition<span class="sy0">:</span> <span class="st0">&quot;right&quot;</span>
+            <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>
+                <span class="co1">// more controls</span>
+            <span class="br0">&#125;</span>
+        <span class="br0">&#93;</span>
+    <span class="br0">&#125;</span><span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/1pzybtja' target='blank'><span class='sample'>Related sample: </span>&nbsp;Form. Blocks</a></p>
+
+<!-- Content Area End -->
+			<a href='form__configuration.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

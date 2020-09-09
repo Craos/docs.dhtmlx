@@ -1,0 +1,336 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Integration with Google Calendar <br>(API v.2)  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=" current"><a href="synchronization_with_google_calendar.html">Integration with Google Calendar <br>(API v.2)</a></li><ul><li class="inner"><a href="synchronization_with_google_calendar.html#gettingstarted">Getting started</a></li><li class="inner"><a href="synchronization_with_google_calendar.html#export">Export</a></li><li class="inner"><a href="synchronization_with_google_calendar.html#import">Import</a></li><li class="inner"><a href="synchronization_with_google_calendar.html#howtopassadditionalinformationrelatedtotheevent"> How to pass additional information related to the event</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="data_export.html">Data Export and Import</a><a class="n4" href="google_calendar_integration.html">Integration with Google Calendar</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Integration with Google Calendar <br>(API v.2)</h1>
+
+<div class='note'><p><p>This article refers to Google Calendar API v2, which isn't used any more. The details on actual version of Google Calendar API v3, are given <a class="link-" href="google_calendar_integration.html">here</a>.</p>
+</p></div>
+
+<a name='gettingstarted'><h2>Getting started</h2></a>
+
+<p>First of all, to start sync, check whether the extension <em>php_curl.dll</em> is enabled.</p>
+
+<p>If it's not, activate it by removing a semicolon from the following line in the <em>php.ini</em> file, used by your web server:</p>
+
+<pre><code><pre class="php"><span class="sy0">;</span>extension<span class="sy0">=</span>php_curl<span class="sy0">.</span>dll</pre></code></pre>
+
+<p>Once you are sure that the needed extension is enabled, you can move to setup.</p>
+
+<p><strong>To sync Scheduler with Google Calendar, do the following:</strong></p>
+
+<ul>
+<li>Download the '<strong>gCal_proxy_v2</strong>' package. (<a href="http://dhtmlx.com/x/download/regular/gCal_proxy_v2.zip">download link</a>)</li>
+<li>Unzip the package into the root directory of your web server.</li>
+</ul>
+
+<p><strong>Server-side:</strong></p>
+
+<ul>
+<li>Open the <em>'01_proxy.php'</em> file placed at <strong>[rootFolder] gCal_proxy server</strong> in notepad. The file contains the standard proxy initialization code:</li>
+</ul>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="re0">$email</span> <span class="sy0">=</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+<span class="re0">$pass</span> <span class="sy0">=</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+<span class="re0">$cal</span> <span class="sy0">=</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">include</span><span class="br0">&#40;</span><span class="st_h">'google_proxy.php'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$calendar</span> <span class="sy0">=</span> <span class="kw2">new</span> GoogleCalendarProxy<span class="br0">&#40;</span><span class="re0">$email</span><span class="sy0">,</span> <span class="re0">$pass</span><span class="sy0">,</span> <span class="re0">$cal</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//$calendar-&gt;map(&quot;location&quot;, &quot;details&quot;);</span>
+<span class="re0">$calendar</span><span class="sy0">-&gt;</span><span class="me1">connect</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="sy1">?&gt;</span></pre></code></pre>
+
+<ul>
+<li>Set values for 3 variables and leave the rest of the code, as it is.<br> Variables that you should set values for, are:
+
+<ul>
+<li><strong>$email</strong>  - the user name of your Gmail account;</li>
+<li><strong>$pass</strong> - the password of your Gmail account;</li>
+<li><strong>$cal</strong> - the name of your Google Calendar.</li>
+</ul></li>
+</ul>
+
+<p>Make sure that you wrote the correct values. For example, if the name of your calendar is <em>test@googlemail.com</em>, the value <em>test@gmail.com</em> results in error.</p>
+
+<ul>
+<li>Save the changes and close the file.</li>
+</ul>
+
+<p><strong>Client-side:</strong></p>
+
+<ul>
+<li>Open the HTML file containing the initialized scheduler. If you don't have any scheduler initialized, create a new HTML file in the root folder of your web server.</li>
+<li>Initialize scheduler in a standard way (see details in <a class="link-" href="howtostart_php.html#step2addingschedulertothepage">How to Start</a>).</li>
+<li>Load Google Calendar's events to Scheduler through the <a class="link-" href="api__scheduler_load.html">load</a> method. Set its parameter to the path to the '<em>01_proxy.php</em>' file, which you've recently modified.</li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;../gCal_proxy/server/01_proxy.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><p>Initialize <a href="../dataprocessor__index.html">dataProcessor</a>, to provide 2-way sync.</p></li>
+<li><p>Include one more file.</p></li>
+</ul>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>script src<span class="sy0">=</span><span class="st0">&quot;../gCal_proxy/sample/codebase/dhtmlxdataprocessor.js&quot;</span><span class="sy0">&gt;&lt;/</span>script<span class="sy0">&gt;</span></pre></code></pre>
+
+<ul>
+<li>Take the path to the same php file '<em>01_proxy.php</em>', as the parameter of the constructor. </li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dp <span class="sy0">=</span>  <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;../gCal_proxy/server/01_proxy.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">init</span><span class="br0">&#40;</span>scheduler<span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//'scheduler' is the name of the scheduler instance.</span></pre></code></pre>
+
+<p>The sync is finished. You can find the  ready-to-use example '<em>sample.html</em>' at [rootFolder] gCal_proxy sample.</p>
+
+<a name='export'><h2>Export</h2></a>
+
+<p>To export events from Google Calendar to your database, just follow these steps:</p>
+
+<ol>
+<li>Open the <em>'03_export.php'</em> file placed at <strong>[<em>rootFolder</em>] gCal_proxy server</strong> in notepad.</li>
+<li>Set values for the variables and leave the rest of the code as it is.<br> Variables that you should set values for:
+
+<ul>
+<li><strong>$email</strong>  - the user name of your Gmail account;</li>
+<li><strong>$pass</strong> - the password of your Gmail account;</li>
+<li><strong>$cal</strong> - the name of your Google Calendar;</li>
+<li><strong>$db_host</strong>  - the name of your MySQL server host or IP-address;</li>
+<li><strong>$db_user</strong>  - the username of your MySQL account;</li>
+<li><strong>$db_pass</strong> - the password of your MySQL account;</li>
+<li><strong>$db_name</strong>  - the name of your MySQL database;</li>
+<li><strong>$db_table</strong> - the name of the database table;</li>
+</ul></li>
+<li>Save changes and close the file.</li>
+<li>Run the '<em>03_export.php</em>'.</li>
+<li>Once the file has been run, events from Google Calendar will be saved to the appropriate database table.</li>
+</ol>
+
+<div class='note'><p><p>The function 'export()' returns a number of records that have been exported from Google Calendar</p>
+</p></div>
+
+<a name='import'><h2>Import</h2></a>
+
+<p>To import events from your database to Google calendar, just follow these steps:</p>
+
+<ol>
+<li>Open the <em>'02_import.php'</em> file placed at <strong>[<em>rootFolder</em>] gCal_proxy server</strong> in notepad.</li>
+<li>Set values for the variables and leave the rest of the code as it is. Variables that you should set values for are the same as in case of exporting.</li>
+<li>Save changes and close the file.</li>
+<li>Run the '<em>02_import.php</em>'.</li>
+<li>Once the file has been run, events from the database will be moved to the Google Calendar.</li>
+</ol>
+
+<div class='note'><p><p>The function 'import()' returns a number of records that have been imported to Google Calendar</p>
+</p></div>
+
+<a name='howtopassadditionalinformationrelatedtotheevent'><h2> How to pass additional information related to the event</h2></a>
+
+<p>Google Calendar has one set of fields and Scheduler has the other. So, to sync (import or export) the event information correctly, you should set mapping between the related fields of the calendars.</p>
+
+<p><strong>By default, there is the following mapping between Google Calendar and Scheduler:</strong></p>
+
+<p><em>Google Calendar</em> ->  Scheduler</p>
+
+<ul>
+<li>id -> id </li>
+<li>title -> text  </li>
+<li>startTime -> start_date  </li>
+<li>endTime -> end_date  </li>
+</ul>
+
+<p><strong>Additionally, you can pass information of the following Google Calendar fields:</strong></p>
+
+<table style='border-collapse: collapse; color:#444444' >
+<tr><td style='font-weight:bold; border:1px solid #AAA;'>
+  Field  
+</td><td style='font-weight:bold; border:1px solid #AAA;'>
+  Description   
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+<strong><em>canEdit</em></strong>  
+</td><td style='border:1px solid #AAA;'>
+ defines whether the logged-in user can edit the current event. Possible values: '0' or '1' 
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+<strong><em>created</em></strong>  
+</td><td style='border:1px solid #AAA;'>
+ the event's creation date in <em>gcal</em> format 
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+<strong><em>details</em></strong>  
+</td><td style='border:1px solid #AAA;'>
+ the event's details
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+<strong><em>updated</em></strong>  
+</td><td style='border:1px solid #AAA;'>
+ the last update date of the event in <em>gcal</em> format 
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+<strong><em>location</em></strong>  
+</td><td style='border:1px solid #AAA;'>
+ the location, where the event takes place 
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+<strong><em>status</em></strong>  
+</td><td style='border:1px solid #AAA;'>
+ shows the current status of the event: <em>cancelled</em> (the event is canceled), <em>confirmed</em> (the event is confirmed), <em>tentative</em> (the event is tentatively scheduled) 
+</td></tr>
+</table>
+
+<p><strong>To pass some additional info, follow the steps below:</strong></p>
+
+<p><strong>Server-side:</strong></p>
+
+<ul>
+<li>According to the desired action, open in notepad the appropriate file placed at <strong>[rootFolder] gCal_proxy server</strong>: to sync - <em>'01_proxy.php'</em>, to import - <em>'02_import.php'</em>, to export - <em>'03_export.php'</em>. </li>
+<li>Map the desired fields by using the method <strong>map()</strong>. For example, if you want to get the location of the event (in addition to the text, start and end times) you should write the following line:</li>
+</ul>
+
+<pre><code><pre class="php"><span class="re0">$calendar</span><span class="sy0">-&gt;</span><span class="me1">map</span><span class="br0">&#40;</span><span class="st0">&quot;location&quot;</span><span class="sy0">,</span> <span class="st0">&quot;place&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><strong><em>location</em></strong> - the name of the Google Calendar field;</li>
+<li><p><strong><em>place</em></strong> - the name of the related Scheduler field. You can write any name here.</p></li>
+<li><p>Save changes and close the file.</p></li>
+</ul>
+
+<p><strong>Client-side:</strong></p>
+
+<ul>
+<li>Open the HTML file containing the initialized scheduler.</li>
+<li>Add to the definition of the scheduler:</li>
+</ul>
+
+<p>The lightbox section:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span><span class="sy0">=</span><span class="br0">&#91;</span>
+    ...
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;placeField&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">50</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;place&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>where the <strong>map_to</strong> parameter must be set to the value, specified on server-side (see above).</p>
+
+<ul>
+<li>the label of the newly added section:</li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">section_placeField</span> <span class="sy0">=</span> <span class="st0">'Place'</span><span class="sy0">;</span></pre></code></pre>
+
+<p>where after the underscore you should specify the name of the related section.</p>
+
+<ul>
+<li>Save changes and close the file.</li>
+</ul>
+
+<!-- Content Area End -->
+			<a href='synchronization_with_google_calendar.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

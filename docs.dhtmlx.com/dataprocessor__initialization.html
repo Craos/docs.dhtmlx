@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Initializing DataProcessor  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dataprocessor.html">dataProcessor API</a></li><li class=""><a href="dataprocessor__basic_principles.html">Basic Operating Principles</a></li><li class=" current"><a href="dataprocessor__initialization.html">Initializing DataProcessor</a></li><ul><li class="inner"><a href="dataprocessor__initialization.html#objectconstructor">Object constructor</a></li><li class="inner"><a href="dataprocessor__initialization.html#attachingdataprocessorobjecttoadatacomponent">Attaching dataProcessor object to a data component</a></li><li class="inner"><a href="dataprocessor__initialization.html#usingdataprocessorwithdhtmlxconnector">Using dataProcessor with dhtmlxConnector</a></li><li class="inner"><a href="dataprocessor__initialization.html#usingdataprocessorwithrestapi">Using dataProcessor with REST API</a></li><li class="inner"><a href="dataprocessor__initialization.html#usingdataprocessorinjsonmode">Using dataProcessor in JSON mode</a></li></ul><li class=""><a href="dataprocessor__configuration.html">Configuring DataProcessor</a></li><li class=""><a href="dataprocessor__common_tasks.html">Common Tasks & Errors</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="connector__index.html">Client-Server Communication</a><a class="n3" href="dataprocessor__index.html">DataProcessor</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Initializing DataProcessor</h1>
+
+<a name='objectconstructor'><h2>Object constructor</h2></a>
+
+<p>To create a dataProcessor object, use the dataProcessor constructor:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;php/update.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//&quot;php/update.php&quot; - url to the data feed</span></pre></code></pre>
+
+<a name='attachingdataprocessorobjecttoadatacomponent'><h2>Attaching dataProcessor object to a data component</h2></a>
+
+<p>To attach a dataProcessor to a data component, use the <a class="link-" href="api__dataprocessor_init.html">init()</a> method:</p>
+
+<pre><code><pre class="js"><span class="xtra ln-xtra">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>  </span>mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>                
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Book Title, Author, Sales&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>  
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;data.xml&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+&nbsp;
+<span class="xtra ln-xtra"><span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;php/update.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span><span class="xtra ln-xtra">dp.<span class="me1">init</span><span class="br0">&#40;</span>mygrid<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// mygrid - object of the component dataProcessor will be attached to</span></span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/04_dataprocessor/01_basic_init.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Basic init of dataprocessor</a></p>
+
+<p>dataProcessor is initialized in the auto-update mode by default, i.e. after each change in the grid, data is sent to the server.</p>
+
+<p>In some cases it makes sense to disable the auto-update mode and send data to the server manually:</p>
+
+<pre><code><pre class="js">dp.<span class="me1">setUpdateMode</span><span class="br0">&#40;</span><span class="st0">&quot;off&quot;</span><span class="br0">&#41;</span>
+...
+<span class="me1">dp</span>.<span class="me1">sendData</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//sends data of the attached component to the server</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/04_dataprocessor/02_all_at_once.html' target='blank'><span class='sample'>Related sample: </span>&nbsp; Sending all at once</a></p>
+
+<p>So now dataProcessor stores the information about all the changes made in the grid and sends them to the server only after the <a class="link-" href="api__dataprocessor_senddata.html">sendData()</a> method was called.</p>
+
+<a name='usingdataprocessorwithdhtmlxconnector'><h2>Using dataProcessor with dhtmlxConnector</h2></a>
+
+<p>If you use dhtmlxConnector (php, java, .net) you can take its connector file as a parameter of the constructor.</p>
+
+<pre><code><pre class="js">myDP <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;myconnector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+myDP.<span class="me1">init</span><span class="br0">&#40;</span>mygrid<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Note, the client side encodes data as UTF-8, and if your server doesn't use it as the default encoding, it may process the incoming data as a differently encoded one, which may lead to problems.</p>
+
+<a name='usingdataprocessorwithrestapi'><h2>Using dataProcessor with REST API</h2></a>
+
+<p>Since version 4.1 of DHTMLX library dataProcessor can be used not only with dhtmlxConnector, but also with server-side <a href="http://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> API.
+The obvious advantage of this technology is that it's used by various frameworks (PHP,.NET an so on).</p>
+
+<p>To set the REST mode, use the <a class="link-" href="api__dataprocessor_settransactionmode.html">setTransactionMode</a> function with the REST parameter (upper case is a must).
+Pay attention, that you should set the REST mode only after the initialization of dataProcessor.</p>
+
+<pre><code><pre class="js">myDataProcessor <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;php/json.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//lock feed url</span>
+myDataProcessor.<span class="me1">init</span><span class="br0">&#40;</span>mygrid<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//link dataprocessor to the grid</span>
+<span class="xtra ln-xtra">myDataProcessor.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;REST&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p>After that all requests to the server will be processed according to the rules of the REST protocol.</p>
+
+<h3 id="json_responses">JSON responses</h3>
+
+<p>REST API returns a JSON object, thus giving dataProcessor the ability to work with JSON responses.</p>
+
+<p>So instead of the long XML response</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;data&gt;</span>
+   <span class="sc2">&lt;<span class="kw3">action</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;some&quot;</span> sid<span class="sy0">=</span><span class="st0">&quot;some&quot;</span> tid<span class="sy0">=</span><span class="st0">&quot;some&quot;</span> <span class="sy0">/</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span>data&gt;</span></pre></code></pre>
+
+<p>You get a short one in JSON format:</p>
+
+<pre><code><pre class="js"><span class="co1">//for example</span>
+<span class="br0">&#123;</span><span class="st0">&quot;status&quot;</span><span class="sy0">:</span><span class="st0">&quot;ok&quot;</span><span class="br0">&#125;</span>
+<span class="co1">//or</span>
+<span class="br0">&#123;</span><span class="st0">&quot;tid&quot;</span><span class="sy0">:</span><span class="nu0">121</span><span class="br0">&#125;</span></pre></code></pre>
+
+<p>A more complex example can look as:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span><span class="st0">&quot;action&quot;</span><span class="sy0">:</span><span class="st0">&quot;updated&quot;</span><span class="sy0">,</span> <span class="st0">&quot;sid&quot;</span><span class="sy0">:</span><span class="nu0">15</span><span class="sy0">,</span> <span class="st0">&quot;tid&quot;</span><span class="sy0">:</span><span class="nu0">15</span><span class="br0">&#125;</span></pre></code></pre>
+
+<p>If you need to return an error, the response should be as follows:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span><span class="st0">&quot;action&quot;</span><span class="sy0">:</span><span class="st0">&quot;error&quot;</span><span class="sy0">,</span> ...<span class="br0">&#125;</span></pre></code></pre>
+
+<p>You can pass any data in a JSON response. Besides, the response can be received on the client side by means of the <a class="link-" href="api__dataprocessor_onafterupdate_event.html">onAfterUpdate</a> event.</p>
+
+<a name='usingdataprocessorinjsonmode'><h2>Using dataProcessor in JSON mode</h2></a>
+
+<p>Since version 5.1 of DHTMLX library dataProcessor can be used with JSON data sending mode.<br />
+In this mode the client side sends a serialized object as a payload of data saving request.</p>
+
+<pre><code><pre class="js">myDataProcessor <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;php/json.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//lock feed url</span>
+myDataProcessor.<span class="me1">init</span><span class="br0">&#40;</span>mygrid<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//link dataprocessor to the grid</span>
+<span class="xtra ln-xtra">myDataProcessor.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;JSON&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p>On the server side, you can read the body of request and deserialize it like this:</p>
+
+<pre><code><pre class="php"><span class="re0">$pack</span> <span class="sy0">=</span> <a href="http://www.php.net/json_decode"><span class="kw3">json_decode</span></a><span class="br0">&#40;</span><a href="http://www.php.net/file_get_contents"><span class="kw3">file_get_contents</span></a><span class="br0">&#40;</span><span class="st_h">'php://input'</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="kw4">true</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$id</span>     <span class="sy0">=</span> <span class="re0">$pack</span><span class="br0">&#91;</span><span class="st0">&quot;id&quot;</span><span class="br0">&#93;</span><span class="sy0">;</span>          <span class="co1">//id of data object</span>
+<span class="re0">$action</span> <span class="sy0">=</span> <span class="re0">$pack</span><span class="br0">&#91;</span><span class="st0">&quot;action&quot;</span><span class="br0">&#93;</span><span class="sy0">;</span>      <span class="co1">//operation type - inserted, updated, deleted</span>
+<span class="re0">$data</span>   <span class="sy0">=</span> <span class="re0">$pack</span><span class="br0">&#91;</span><span class="st0">&quot;data&quot;</span><span class="br0">&#93;</span><span class="sy0">;</span>        <span class="co1">//data object</span></pre></code></pre>
+
+<p>As a response, the client side expects any valid JSON object which may contain a new id (can be used during data inserting):</p>
+
+<pre><code><pre class="js"><span class="co1">//for example</span>
+<span class="br0">&#123;</span><span class="st0">&quot;status&quot;</span><span class="sy0">:</span><span class="st0">&quot;ok&quot;</span><span class="br0">&#125;</span>
+<span class="co1">//or</span>
+<span class="br0">&#123;</span><span class="st0">&quot;tid&quot;</span><span class="sy0">:</span><span class="nu0">121</span><span class="br0">&#125;</span></pre></code></pre>
+
+<p>or on returning an error:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span><span class="st0">&quot;action&quot;</span><span class="sy0">:</span><span class="st0">&quot;error&quot;</span> <span class="br0">&#125;</span></pre></code></pre>
+
+<p>You can pass any extra data in a JSON response. Extra attributes can be retrieved on the client side by means of the <a class="link-" href="api__dataprocessor_onafterupdate_event.html">onAfterUpdate</a> event.</p>
+
+<!-- Content Area End -->
+			<a href='dataprocessor__initialization.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

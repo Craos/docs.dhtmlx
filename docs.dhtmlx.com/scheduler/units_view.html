@@ -1,0 +1,410 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Units View  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="day_view.html">Day View</a></li><li class=""><a href="week_view.html">Week View</a></li><li class=""><a href="month_view.html">Month View</a></li><li class=""><a href="agenda_view.html">Agenda View</a></li><li class=""><a href="map_view.html">Map View</a></li><li class="toc-pro"><a href="timeline_view.html">Timeline View</a></li><li class="toc-pro"><a href="weekagenda_view.html">Week Agenda View</a></li><li class="toc-pro current"><a href="units_view.html">Units View</a></li><ul><li class="inner"><a href="units_view.html#initialization">Initialization</a></li><li class="inner"><a href="units_view.html#loadingdatatotheview">Loading data to the view</a></li><li class="inner"><a href="units_view.html#displayingunitsformultipledays">Displaying units for multiple days</a></li><li class="inner"><a href="units_view.html#assigningeventstoseveralunits">Assigning events to several units</a></li><li class="inner"><a href="units_view.html#dataforthexaxissections">Data for the X-Axis sections</a></li><li class="inner"><a href="units_view.html#dataforthexaxissectionsfromtheserver">Data for the X-Axis sections from the server</a></li><li class="inner"><a href="units_view.html#scrollingunits">Scrolling Units</a></li><li class="inner"><a href="units_view.html#skippingeventsthatdontbelongtoanyoftheunits">Skipping events that don't belong to any of the units</a></li><li class="inner"><a href="units_view.html#relatedguides">Related guides</a></li></ul><li class=""><a href="year_view.html">Year View</a></li><li class="toc-pro"><a href="grid_view.html">Grid View</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="views.html">Views</a></div>
+<!-- Content Area -->
+
+
+<p class='promarker'>Available only in <b>PRO Edition</b></p>
+<h1>Units View</h1>
+
+<div class='pronote'><p><p>This view is available in the Scheduler PRO version only.</p>
+</p></div>
+
+<p>The Units view is a view, where X-Axis is based on some property of events (not only on time).</p>
+
+<p><img src="media/units_view.png"/></p>
+
+<a name='initialization'><h2>Initialization</h2></a>
+
+<p>To add the Units view to the scheduler, follow these steps:</p>
+
+<ol>
+    <li><b>Include the Units code file on the page:</b>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>script src<span class="sy0">=</span><span class="st0">&quot;codebase/ext/dhtmlxscheduler_units.js&quot;</span><span class="sy0">&gt;&lt;/</span>script<span class="sy0">&gt;</span></pre></code></pre>
+
+    </li>
+    <li> <b>Add the view's tab to the scheduler's markup:</b>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;scheduler_here&quot;</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_container&quot;</span> ...&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_navline&quot;</span>&gt;</span>
+       ...
+       <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;unit_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;right:280px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    ... 
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+    </li>
+    <li><b>Set the label for the tab:</b>
+
+<pre><code><pre class="js"><span class="co1">//'unit_tab' is the name of our div</span>
+scheduler.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">unit_tab</span> <span class="sy0">=</span> <span class="st0">&quot;Unit&quot;</span></pre></code></pre>
+
+    </li>
+    <li> <b>Call the <a class="link-pro" href="api__scheduler_createunitsview.html">createUnitsView</a> method:</b>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createUnitsView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;unit&quot;</span><span class="sy0">,</span>
+    property<span class="sy0">:</span><span class="st0">&quot;unit_id&quot;</span><span class="sy0">,</span> <span class="co1">//the mapped data property</span>
+    list<span class="sy0">:</span><span class="br0">&#91;</span>              <span class="co1">//defines the units of the view</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Section A&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Section B&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Section C&quot;</span><span class="br0">&#125;</span>  
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+    </li>
+</ol>
+
+<p><a href='samples/03_extensions/02_units_view.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Units view</a></p>
+
+<a name='loadingdatatotheview'><h2>Loading data to the view</h2></a>
+
+<p>Unlike basic views (such as Day, Month, Year etc.), multiple-resource views(that are Units and Timeline) require data items to have one more mandatory field:</p>
+
+<ul>
+<li><a class="link-pro" href="api__scheduler_createunitsview.html">property</a> - (string) the name of a data property that will be used to assign events to certain units</li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createUnitsView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;unit&quot;</span><span class="sy0">,</span>
+    property<span class="sy0">:</span><span class="st0">&quot;unit_id&quot;</span><span class="sy0">,</span> 
+    list<span class="sy0">:</span><span class="br0">&#91;</span>             
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Section A&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Section B&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Section C&quot;</span><span class="br0">&#125;</span>  
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">parse</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;2019-09-17 12:00&quot;</span><span class="sy0">,</span> end_date<span class="sy0">:</span><span class="st0">&quot;2019-09-18 21:00&quot;</span><span class="sy0">,</span> 
+    unit_id<span class="sy0">:</span><span class="st0">&quot;1&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task2&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;2019-09-17 09:00&quot;</span><span class="sy0">,</span> end_date<span class="sy0">:</span><span class="st0">&quot;2019-09-17 21:00&quot;</span><span class="sy0">,</span> 
+    unit_id<span class="sy0">:</span><span class="st0">&quot;3&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task3&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;2019-09-17 15:00&quot;</span><span class="sy0">,</span> end_date<span class="sy0">:</span><span class="st0">&quot;2019-09-18 15:00&quot;</span><span class="sy0">,</span> 
+    unit_id<span class="sy0">:</span><span class="st0">&quot;2&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>By comparing <strong>unit_id</strong> and <strong>list.key</strong> values, the scheduler assigns events to certain units.</p>
+
+<p><a href='samples/03_extensions/02_units_view.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Units view</a></p>
+
+<a name='displayingunitsformultipledays'><h2>Displaying units for multiple days</h2></a>
+
+<p>To display units for multiple days, use  the <a class="link-pro" href="api__scheduler_createunitsview.html">days</a> parameter:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createUnitsView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;week_unit&quot;</span><span class="sy0">,</span>
+    property<span class="sy0">:</span><span class="st0">&quot;section_id&quot;</span><span class="sy0">,</span>
+    list<span class="sy0">:</span>sections<span class="sy0">,</span>
+<span class="xtra ln-xtra">    days<span class="sy0">:</span><span class="nu0">3</span> </span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/multiday_units.png"/></p>
+
+<p><a href='samples/03_extensions/31_units_view_multiple_days.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Multiday Units view</a></p>
+
+<p><br></p>
+
+<p>A scale with days is appeared as the 2nd horizontal scale.<br> To set the format of the 2nd horizontal scale, use the scheduler.templates[name+"_second_scale_date"] template:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">units_second_scale_date</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>date<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> scheduler.<span class="me1">templates</span>.<span class="me1">week_scale_date</span><span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Note,</p>
+
+<ol>
+    <li>The 1st scale is specified as usual, with the <a href="api__scheduler_%7Bunitsname%7D_scale_text_template.html">scale_text_template</a> template. 
+    The height of the scale can be set with the <a class="link-" href="api__scheduler_xy_other.html">scale_height</a> config.
+    <li>You can hide unnecessary time units in the 2nd horizontal scale of a view using a common approach - <a class="link-" href="custom_scales.html">Hiding Time Units in X-Axis of View</a></li>
+    <li> <a class="link-pro" href="api__scheduler_createunitsview.html">size</a> and <a class="link-pro" href="api__scheduler_createunitsview.html">step</a> parameters won't work with multiday units</li>
+    <li>Exporting to PDF can be implemented  only with the <a class="link-" href="pdf.html">new service</a> and not possible with <a class="link-" href="pdf_v4.html">old export tools</a></li>
+    <li>To change the start day of the displayable interval, use the <b>scheduler.date.{units_name}_start</b> function:
+
+<pre><code><pre class="js">scheduler.<span class="me1">date</span>.<span class="me1">units_start</span> <span class="sy0">=</span> <span class="kw2">function</span> <span class="br0">&#40;</span>date<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> scheduler.<span class="me1">date</span>.<span class="me1">week_start</span><span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+</li>
+</ol>
+
+<a name='assigningeventstoseveralunits'><h2>Assigning events to several units</h2></a>
+
+<p>Starting from version 4.1, you have a possibility to assign events to several units.</p>
+
+<p><img src="media/multiple_sections.png"/></p>
+
+<p><br></p>
+
+<p>To enable the possibility:</p>
+
+<ol>
+<li>Include the <strong>ext/dhtmlxscheduler_multisection.js</strong> file on the page</li>
+<li>Set the <a class="link-pro" href="api__scheduler_multisection_config.html">multisection</a> property to <em>true</em></li>
+<li>(Optional) Include "ext/dhtmlxscheduler_multiselect.js" file on the page to use <a class="link-" href="multiselect.html">Multiselect</a> control in the scheduler (a comfortable way to switch between sections)</li>
+</ol>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>script src<span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlxscheduler.js&quot;</span><span class="sy0">&gt;&lt;/</span>script<span class="sy0">&gt;</span>
+<span class="xtra ln-xtra"><span class="sy0">&lt;</span>script src<span class="sy0">=</span><span class="st0">&quot;codebase/ext/dhtmlxscheduler_multisection.js&quot;</span><span class="sy0">&gt;&lt;/</span>script<span class="sy0">&gt;</span> </span><span class="sy0">&lt;</span>link rel<span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> href<span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlxscheduler.css&quot;</span> type<span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span><span class="sy0">&gt;</span>
+&nbsp;
+<span class="sy0">&lt;</span>script src<span class="sy0">=</span><span class="st0">&quot;codebase/ext/dhtmlxscheduler_units.js&quot;</span><span class="sy0">&gt;&lt;/</span>script<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>script src<span class="sy0">=</span><span class="st0">&quot;codebase/ext/dhtmlxscheduler_multiselect.js&quot;</span><span class="sy0">&gt;&lt;/</span>script<span class="sy0">&gt;</span>
+&nbsp;
+<span class="sy0">&lt;</span>script<span class="sy0">&gt;</span>
+<span class="xtra ln-xtra">    scheduler.<span class="me1">config</span>.<span class="me1">multisection</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span> </span>    scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="sy0">&lt;/</span>script<span class="sy0">&gt;</span></pre></code></pre>
+
+<p>After this you can specify several sections (<a class="link-" href="api__scheduler_section_delimiter_config.html">by default, delimited with a comma</a>)
+in the related data property of the event and the event will be rendered in all specified units:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createUnitsView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;unit&quot;</span><span class="sy0">,</span>
+    list<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;James Smith&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span> <span class="nu0">2</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;John Williams&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span> <span class="nu0">3</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;David Miller&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span> <span class="nu0">4</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Linda Brown&quot;</span><span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    property<span class="sy0">:</span> <span class="st0">&quot;section_id&quot;</span><span class="sy0">,</span> </span>    ...
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">5</span><span class="sy0">,</span> <span class="nu0">30</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;unit&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+scheduler.<span class="me1">parse</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+<span class="xtra ln-xtra">    <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task A&quot;</span><span class="sy0">,</span> section_id<span class="sy0">:</span><span class="st0">'1'</span><span class="sy0">,</span>      ...<span class="br0">&#125;</span><span class="sy0">,</span></span><span class="xtra ln-xtra">    <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task B&quot;</span><span class="sy0">,</span> section_id<span class="sy0">:</span><span class="st0">'1,3'</span><span class="sy0">,</span>    ...<span class="br0">&#125;</span><span class="sy0">,</span></span><span class="xtra ln-xtra">    <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task C&quot;</span><span class="sy0">,</span> section_id<span class="sy0">:</span><span class="st0">'4'</span><span class="sy0">,</span>      ...<span class="br0">&#125;</span><span class="sy0">,</span></span><span class="xtra ln-xtra">    <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">4</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task D&quot;</span><span class="sy0">,</span> section_id<span class="sy0">:</span><span class="st0">'2,3,4'</span><span class="sy0">,</span>  ...<span class="br0">&#125;</span></span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/12_multisection_events/01_multisection_events.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Multisection events in Timeline and Units view</a></p>
+
+<a name='dataforthexaxissections'><h2>Data for the X-Axis sections</h2></a>
+
+<p>To set values for the X-Axis, use the <a class="link-pro" href="api__scheduler_createunitsview.html">list</a> parameter:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createUnitsView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;unit&quot;</span><span class="sy0">,</span>
+    ...
+    <span class="me1">list</span><span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Section A&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Section B&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Section C&quot;</span><span class="br0">&#125;</span> 
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To be correctly processed, <a class="link-pro" href="api__scheduler_createunitsview.html">list</a> items must have 2 mandatory properties:</p>
+
+<ul>
+<li><strong>key</strong> - the item's id</li>
+<li><strong>label</strong> - the item's label</li>
+</ul>
+
+<a name='dataforthexaxissectionsfromtheserver'><h2>Data for the X-Axis sections from the server</h2></a>
+
+<p>To load X-Axis data (sections) from the server, use:</p>
+
+<ul>
+<li>On the client side -  the <a class="link-" href="api__scheduler_serverlist.html">serverList</a> method:</li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createUnitsView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;unit&quot;</span><span class="sy0">,</span>
+    property<span class="sy0">:</span><span class="st0">&quot;type_id&quot;</span><span class="sy0">,</span>
+    list<span class="sy0">:</span>scheduler.<span class="me1">serverList</span><span class="br0">&#40;</span><span class="st0">&quot;units&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span>
+    size<span class="sy0">:</span><span class="nu0">20</span><span class="sy0">,</span>                                     
+    step<span class="sy0">:</span><span class="nu0">1</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><em>where <a class="link-" href="api__scheduler_serverlist.html">serverList</a>  returns a list of options with the name 'units'</em>.</p>
+
+<ul>
+<li>On the server side </li>
+</ul>
+
+<p>The data response for the <a class="link-" href="api__scheduler_load.html">load</a> method should contain a collection with the server list name specified in JSON
+<a class="link-" href="data_formats.html#jsonwithcollections">of the following format</a>:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span> 
+   <span class="st0">&quot;data&quot;</span><span class="sy0">:</span><span class="br0">&#91;</span>
+      <span class="br0">&#123;</span>
+          <span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="st0">&quot;1&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;start_date&quot;</span><span class="sy0">:</span><span class="st0">&quot;2019-03-02 15:00:00&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;end_date&quot;</span><span class="sy0">:</span><span class="st0">&quot;2019-03-04 16:00:00&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;text&quot;</span><span class="sy0">:</span><span class="st0">&quot;Team meeting&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;type_id&quot;</span><span class="sy0">:</span><span class="st0">&quot;1&quot;</span>
+      <span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="br0">&#123;</span>
+          <span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="st0">&quot;2&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;start_date&quot;</span><span class="sy0">:</span><span class="st0">&quot;2019-03-02 17:00:00&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;end_date&quot;</span><span class="sy0">:</span><span class="st0">&quot;2019-03-04 18:00:00&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;text&quot;</span><span class="sy0">:</span><span class="st0">&quot;Strategy meeting&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;type_id&quot;</span><span class="sy0">:</span><span class="st0">&quot;2&quot;</span>
+      <span class="br0">&#125;</span>
+   <span class="br0">&#93;</span><span class="sy0">,</span> 
+<span class="xtra ln-xtra">   <span class="st0">&quot;collections&quot;</span><span class="sy0">:</span> <span class="br0">&#123;</span></span><span class="xtra ln-xtra">      <span class="st0">&quot;units&quot;</span><span class="sy0">:</span><span class="br0">&#91;</span>      </span><span class="xtra ln-xtra">         <span class="br0">&#123;</span><span class="st0">&quot;value&quot;</span><span class="sy0">:</span><span class="st0">&quot;1&quot;</span><span class="sy0">,</span><span class="st0">&quot;label&quot;</span><span class="sy0">:</span><span class="st0">&quot;Conference room 1&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span></span><span class="xtra ln-xtra">         <span class="br0">&#123;</span><span class="st0">&quot;value&quot;</span><span class="sy0">:</span><span class="st0">&quot;2&quot;</span><span class="sy0">,</span><span class="st0">&quot;label&quot;</span><span class="sy0">:</span><span class="st0">&quot;Conference room 2&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span></span><span class="xtra ln-xtra">         <span class="br0">&#123;</span><span class="st0">&quot;value&quot;</span><span class="sy0">:</span><span class="st0">&quot;3&quot;</span><span class="sy0">,</span><span class="st0">&quot;label&quot;</span><span class="sy0">:</span><span class="st0">&quot;Conference room 3&quot;</span><span class="br0">&#125;</span></span><span class="xtra ln-xtra">      <span class="br0">&#93;</span></span><span class="xtra ln-xtra">   <span class="br0">&#125;</span></span><span class="br0">&#125;</span></pre></code></pre>
+
+<p>You can also use the <a href="../connector__php__optionsconnector.html">OptionsConnector</a> connector:</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+    <span class="kw1">include</span><span class="br0">&#40;</span><span class="st_h">'connector-php/codebase/scheduler_connector.php'</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//includes the file</span>
+&nbsp;
+    <span class="re0">$res</span><span class="sy0">=</span><a href="http://www.php.net/mysql_connect"><span class="kw3">mysql_connect</span></a><span class="br0">&#40;</span><span class="st0">&quot;localhost&quot;</span><span class="sy0">,</span><span class="st0">&quot;root&quot;</span><span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//connects to the server with our DB</span>
+    <a href="http://www.php.net/mysql_select_db"><span class="kw3">mysql_select_db</span></a><span class="br0">&#40;</span><span class="st0">&quot;sampleDB&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//connects to the DB.'sampleDB' is the DB's name</span>
+&nbsp;
+    <span class="re0">$list</span> <span class="sy0">=</span> <span class="kw2">new</span> OptionsConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="sy0">,</span> <span class="re0">$dbtype</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$list</span><span class="sy0">-&gt;</span><span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;types&quot;</span><span class="sy0">,</span><span class="st0">&quot;type_id&quot;</span><span class="sy0">,</span><span class="st0">&quot;type_id(value),name(label)&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$scheduler</span> <span class="sy0">=</span> <span class="kw2">new</span> schedulerConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="sy0">,</span> <span class="re0">$dbtype</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="co1">//we set the same name as used on the client side - 'units'</span>
+    <span class="re0">$scheduler</span><span class="sy0">-&gt;</span><span class="me1">set_options</span><span class="br0">&#40;</span><span class="st0">&quot;units&quot;</span><span class="sy0">,</span> <span class="re0">$list</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+    <span class="re0">$scheduler</span><span class="sy0">-&gt;</span><span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;events&quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span><span class="st0">&quot;start_date,end_date,text,type_id&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="sy1">?&gt;</span></pre></code></pre>
+
+<p><img src="media/server_list_db.png"/></p>
+
+<p><br>
+Note, you can create a collection manually, instead of using dhtmlxConnector. In this case, to update the collection, use the <a class="link-" href="api__scheduler_updatecollection.html">updateCollection</a> method:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">updateCollection</span><span class="br0">&#40;</span><span class="st0">&quot;units&quot;</span><span class="sy0">,</span> new_sections_array<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/03_extensions/17_connector_units.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Loading Units sections from the server</a></p>
+
+<a name='scrollingunits'><h2>Scrolling Units</h2></a>
+
+<p>If you have many units, you can enable horizontal scrolling by using the <a class="link-pro" href="api__scheduler_createunitsview.html">size</a>, <a class="link-pro" href="api__scheduler_createunitsview.html">step</a> properties:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createUnitsView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;unit&quot;</span><span class="sy0">,</span>
+    ...
+    <span class="me1">size</span><span class="sy0">:</span><span class="nu0">10</span><span class="sy0">,</span> <span class="co1">// the number of units that should be shown in the view </span>
+    step<span class="sy0">:</span><span class="nu0">5</span>   <span class="co1">// the number of units that will be scrolled at once</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/units_scroll.png" alt="Units scrolling" /></p>
+
+<p><a href='samples/03_extensions/18_scroll_units.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Horizontal scrolling sections in Units view </a></p>
+
+<a name='skippingeventsthatdontbelongtoanyoftheunits'><h2>Skipping events that don't belong to any of the units</h2></a>
+
+<p>By default, if some event belongs to none of the defined units, it's presented in the first unit. Starting from the version 3.0, you have the possibility to skip such events and not display them at all.</p>
+
+<p>To do this, use property <a class="link-pro" href="api__scheduler_createunitsview.html">skip_incorrect</a>:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createUnitsView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;unit&quot;</span><span class="sy0">,</span>
+    ...
+    <span class="me1">skip_incorrect</span><span class="sy0">:</span><span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='relatedguides'><h2>Related guides</h2></a>
+
+<ul>
+<li><a class="link-" href="configuration.html">Common Config Instructions</a></li>
+<li><a class="link-" href="units_view_templates.html">Units View Templates</a></li>
+<li><a class="link-" href="loading_data.html">Loading Data</a></li>
+<li><a class="link-" href="event_object_operations.html">Event Object Operations</a></li>
+<li><a class="link-" href="limits.html">Blocking and Marking Dates</a></li>
+<li><a class="link-" href="skins.html">Skins</a></li>
+</ul>
+
+<!-- Content Area End -->
+			<a href='units_view.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

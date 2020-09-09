@@ -1,0 +1,494 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Export and Import from MS Project  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__export_requirements.html">Export Service - System Requirements for a standalone install</a></li><li class=""><a href="desktop__export.html">Export to PDF and PNG</a></li><li class=""><a href="desktop__excel.html">Export/Import for Excel, Export to iCal</a></li><li class=" current"><a href="desktop__export_msproject.html">Export and Import from MS Project</a></li><ul><li class="inner"><a href="desktop__export_msproject.html#exporttomsproject">Export to MS Project</a></li><li class="inner"><a href="desktop__export_msproject.html#importfrommsproject">Import from MS Project</a></li><li class="inner"><a href="desktop__export_msproject.html#limitsonrequestsizeandimportoflargefiles">Limits on request size and import of large files</a></li><li><a href="desktop__tags.html">Properties for importing from MS Project</a></li></ul><li class=""><a href="desktop__serialization.html">Serializing Data into XML and JSON</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__export_common.html">Exporting and Importing Data</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Export and Import from MS Project</h1>
+
+<a name='exporttomsproject'><h2>Export to MS Project</h2></a>
+
+<p>The Gantt component allows exporting links, tasks and resources into MS Project.</p>
+
+<p>To export data from the Gantt chart to MS Project, do the following:</p>
+
+<ul>
+<li>Include the <strong>"https://export.dhtmlx.com/gantt/api.js"</strong> file on the page to enable the online export service:</li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlxgantt.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="xtra ln-xtra"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;https://export.dhtmlx.com/gantt/api.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>  </span><span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlxgantt.css&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span>&gt;</span></pre></code></pre>
+
+<ul>
+<li>Call the <a class="link-" href="api__gantt_exporttomsproject.html">exportToMSProject</a> method to export data from the Gantt chart.</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">exportToMSProject</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The method will send a request to the remote service, which will either output an XML Project file or return an url to download a generated file.</p>
+
+<p><a href='samples/08_api/08_export_other.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Export data : MS Project, PrimaveraP6, Excel &amp; iCal</a></p>
+
+<h3>Response</h3>
+
+<p>The response will contain a JSON of the following structure:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+   data<span class="sy0">:</span> <span class="br0">&#123;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+   config<span class="sy0">:</span> <span class="br0">&#123;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+   resources<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+   worktime<span class="sy0">:</span> <span class="br0">&#123;</span><span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li><strong>data</strong> - a gantt <a class="link-" href="desktop__supported_data_formats.html#json">data object</a>. Each task has the following properties: <em>id</em>, <em>open</em>, <em>parent</em>, <em>progress</em>, <em>start_date</em>, <em>text</em>, <em>resource</em>. 
+Dates are stringified in the "%Y-%m-%d %H:%i" format.</li>
+<li><strong>config</strong> - a gantt <a class="link-" href="api__refs__gantt_props.html">configuration</a> object with settings retrieved from the project file.</li>
+<li><strong>resources</strong> - an array of objects (each having the following properties: {<em>id: string, name:string, type:string</em>}) that represent the list of resources from the project file.</li>
+<li><strong>worktime</strong> - an object containing the working time settings from the project calendar.</li>
+</ul>
+
+<h3>Export settings</h3>
+
+<p>The <strong>exportToMSProject()</strong> method takes as a parameter an object with a number of properties (all of the properties are optional):</p>
+
+<ul>
+<li><strong>name</strong> - (string) the name of the obtained file ('gantt.xml' by default).</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">exportToMSProject</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">'custom.xml'</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><strong>auto_scheduling</strong> - (boolean) indicates scheduling mode for tasks in the exported project. <strong>true</strong> will mark tasks as auto scheduled, <strong>false</strong> will mark tasks as manually scheduled (the default state).</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">exportToMSProject</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    auto_scheduling<span class="sy0">:</span> <span class="kw2">false</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><strong>skip_circular_links</strong> - (boolean) indicates whether the circular links will be removed or not (true - will be removed (the default mode), false - will not be removed).</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">exportToMSProject</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    skip_circular_links<span class="sy0">:</span> <span class="kw2">false</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><strong>project</strong> - (object) allows setting custom properties to the exported project entity</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">exportToMSProject</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    project<span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="st0">'Author'</span><span class="sy0">:</span> <span class="st0">'I am!'</span><span class="sy0">,</span>
+        <span class="st0">'MinutesPerDay'</span><span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="kw1">return</span> gantt.<span class="me1">config</span>.<span class="me1">hours_per_day</span> <span class="sy0">*</span> <span class="nu0">60</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The properties of this object correspond to the appropriate properties of the <a href="https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx">Project entity</a>. 
+The list of supported properties can be found <a class="link-" href="desktop__tags.html">here</a>. The properties may contain either fixed values or functions that will be executed when export is called.</p>
+
+<ul>
+<li><strong>tasks</strong> - (object) allows setting custom properties to the exported task items</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">exportToMSProject</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+   tasks<span class="sy0">:</span> <span class="br0">&#123;</span>
+       <span class="st0">'StartVariance'</span><span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>task<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+           <span class="kw1">if</span> <span class="br0">&#40;</span>task.<span class="me1">startVariance</span><span class="br0">&#41;</span>
+               <span class="kw1">return</span> task.<span class="me1">startVariance</span><span class="sy0">;</span>
+           <span class="kw1">else</span>
+               <span class="kw1">return</span> <span class="nu0">0</span><span class="sy0">;</span>
+       <span class="br0">&#125;</span><span class="sy0">,</span>
+       <span class="st0">'PercentWorkComplete'</span><span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>task<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+           <span class="kw1">return</span> <span class="br0">&#40;</span>task.<span class="me1">progress</span> <span class="sy0">+</span> <span class="nu0">0.1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+       <span class="br0">&#125;</span><span class="sy0">,</span>
+       <span class="st0">'Custom'</span><span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>task<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+           <span class="kw1">return</span> <span class="st0">'Custom value'</span><span class="sy0">;</span>
+       <span class="br0">&#125;</span><span class="sy0">,</span>
+       <span class="st0">'Custom 2'</span><span class="sy0">:</span> <span class="st0">'My Custom value'</span>
+   <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The properties of this object correspond to the appropriate properties of the <a href="https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx">Task entity</a>, 
+here is a list of supported <a class="link-" href="desktop__tags.html#tagsthatcanberepresentedinthetasksobject">properties</a>.
+The properties may contain either fixed values or functions that will be called for each task in the dataset when export is called.</p>
+
+<ul>
+<li><strong>callback</strong> - (function) If you want to receive an url to download a generated XML, the <em>callback</em> property can be used. It receives a JSON object with the <em>url</em> property:</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">exportToMSProject</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    callback<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>res<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw3">alert</span><span class="br0">&#40;</span>res.<span class="me1">url</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><strong>resources</strong> - (array) allows exporting the list of resources into an MS Project file</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">exportToMSProject</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+  resources<span class="sy0">:</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="st0">&quot;1&quot;</span><span class="sy0">,</span><span class="st0">&quot;name&quot;</span><span class="sy0">:</span><span class="st0">&quot;John&quot;</span><span class="sy0">,</span><span class="st0">&quot;type&quot;</span><span class="sy0">:</span><span class="st0">&quot;work&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="st0">&quot;2&quot;</span><span class="sy0">,</span><span class="st0">&quot;name&quot;</span><span class="sy0">:</span><span class="st0">&quot;Mike&quot;</span><span class="sy0">,</span><span class="st0">&quot;type&quot;</span><span class="sy0">:</span><span class="st0">&quot;work&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="st0">&quot;3&quot;</span><span class="sy0">,</span><span class="st0">&quot;name&quot;</span><span class="sy0">:</span><span class="st0">&quot;Anna&quot;</span><span class="sy0">,</span><span class="st0">&quot;type&quot;</span><span class="sy0">:</span><span class="st0">&quot;work&quot;</span><span class="br0">&#125;</span>
+  <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Possible resource types are "work", "cost", "material". Resource assignments are specified using the <strong>ResourceAssignments</strong> property of the tasks configuration:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> users <span class="sy0">=</span> <span class="br0">&#91;</span><span class="co1">// resources</span>
+  <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">'0'</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;N/A&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+  <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">'1'</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;John&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+  <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">'2'</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Mike&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+  <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">'3'</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Anna&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">exportToMSProject</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+  resources<span class="sy0">:</span> users
+     .<span class="me1">filter</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>u<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">if</span><span class="br0">&#40;</span>u.<span class="me1">key</span> <span class="sy0">===</span> <span class="st0">'0'</span><span class="br0">&#41;</span><span class="co1">//skip the default option </span>
+           <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+        <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+     <span class="br0">&#125;</span><span class="br0">&#41;</span>
+     .<span class="me1">map</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>u<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">return</span> <span class="br0">&#123;</span>
+           id<span class="sy0">:</span> u.<span class="me1">key</span><span class="sy0">,</span>
+           <span class="kw3">name</span><span class="sy0">:</span> u.<span class="me1">label</span><span class="sy0">,</span>
+           type<span class="sy0">:</span> <span class="st0">&quot;work&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">;</span>
+     <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">,</span>
+  tasks<span class="sy0">:</span> <span class="br0">&#123;</span>
+<span class="xtra ln-xtra">     ResourceAssignments<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span>  </span><span class="xtra ln-xtra">        <span class="kw1">return</span> task.<span class="me1">user</span><span class="sy0">;</span>                  </span><span class="xtra ln-xtra">     <span class="br0">&#125;</span>                                     </span>  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The <strong>ResourceAssignments</strong> property is set as a function that takes the task object as a parameter and returns either a string/number value or an array of string/number values:</p>
+
+<pre><code><pre class="js">tasks<span class="sy0">:</span> <span class="br0">&#123;</span>
+    ResourceAssignments<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">return</span> <span class="br0">&#91;</span>task.<span class="me1">user</span><span class="sy0">,</span> task.<span class="me1">office</span><span class="br0">&#93;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li><strong>server</strong> - (string) the API endpoint for the request. Can be used with the local install of the export service. The default value is <strong>https://export.dhtmlx.com/gantt</strong>.</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">exportToMSProject</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+   server<span class="sy0">:</span><span class="st0">&quot;https://myapp.com/myexport/gantt&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='importfrommsproject'><h2>Import from MS Project</h2></a>
+
+<p>In order to convert an XML or MPP MS Project file, you need to send the following request to the export service:</p>
+
+<ul>
+<li>Request URL - <strong>https://export.dhtmlx.com/gantt</strong></li>
+<li>Request Method - <strong>POST</strong></li>
+<li>Content-Type - <strong>multipart/form-data</strong></li>
+</ul>
+
+<p>The request parameters are:</p>
+
+<ul>
+<li><strong>file</strong> - an MPP or XML MS Project file</li>
+<li><strong>type</strong> - "msproject-parse"</li>
+<li><strong>data</strong> - (<em>optional</em>) a JSON string with settings</li>
+</ul>
+
+<p>For example:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">form</span> <span class="kw3">action</span><span class="sy0">=</span><span class="st0">&quot;https://export.dhtmlx.com/gantt&quot;</span> <span class="kw3">method</span><span class="sy0">=</span><span class="st0">&quot;POST&quot;</span> </span>
+<span class="sc2">    <span class="kw3">enctype</span><span class="sy0">=</span><span class="st0">&quot;multipart/form-data&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;file&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;file&quot;</span> <span class="sy0">/</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;hidden&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;type&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;msproject-parse&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">button</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;submit&quot;</span>&gt;</span>Get<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">button</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">form</span>&gt;</span></pre></code></pre>
+
+<p>Alternatively, you can use the <a class="link-" href="api__gantt_importfrommsproject.html">client-side API</a>, like this:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">importFromMSProject</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    data<span class="sy0">:</span> file<span class="sy0">,</span>
+    taskProperties<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;Notes&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Name&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    callback<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>project<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>project<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            gantt.<span class="me1">clearAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="kw1">if</span> <span class="br0">&#40;</span>project.<span class="me1">config</span>.<span class="me1">duration_unit</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+                gantt.<span class="me1">config</span>.<span class="me1">duration_unit</span> <span class="sy0">=</span> project.<span class="me1">config</span>.<span class="me1">duration_unit</span><span class="sy0">;</span>
+            <span class="br0">&#125;</span>                    
+            gantt.<span class="me1">parse</span><span class="br0">&#40;</span>project.<span class="me1">data</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+     <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/08_api/18_load_from_mpp.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Import MS Project file</a></p>
+
+<p>Where <em>file</em> is an instance of <a href="https://developer.mozilla.org/en/docs/Web/API/File">File</a> which should contain either an XML or MPP Project file.</p>
+
+<div class='note'><p><p><strong>gantt.importFromMSProject</strong> requires HTML5 File API support.</p>
+</p></div>
+
+<h3>Response</h3>
+
+<p>The response will contain a JSON of the following structure:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+   data<span class="sy0">:</span> <span class="br0">&#123;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+   config<span class="sy0">:</span> <span class="br0">&#123;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+   resources<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+   worktime<span class="sy0">:</span> <span class="br0">&#123;</span><span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li><strong>data</strong> - a gantt <a class="link-" href="desktop__supported_data_formats.html#json">data object</a>. Each task has the following properties: <em>id</em>, <em>open</em>, <em>parent</em>, <em>progress</em>, <em>start_date</em>, <em>text</em>, <em>resource</em>. 
+Dates are stringified in the "%Y-%m-%d %H:%i" format. </li>
+<li><strong>config</strong> - a gantt <a class="link-" href="api__refs__gantt_props.html">configuration</a> object with settings retrieved from the project file.</li>
+<li><strong>resources</strong> - an array of objects (each having the following properties: {<em>id:string, name:string, type:string</em>} that represent the list of resources from the project file.</li>
+<li><strong>worktime</strong> - an object containing the working time settings from the project calendar.</li>
+</ul>
+
+<h3>Import settings</h3>
+
+<h4>Setting the duration unit</h4>
+
+<p>To set an expected duration unit, the <strong>durationUnit</strong> ("minute", "hour", "day", "week", "month", "year") string can also be sent to the server.</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">form</span> <span class="kw3">action</span><span class="sy0">=</span><span class="st0">&quot;https://export.dhtmlx.com/gantt&quot;</span> <span class="kw3">method</span><span class="sy0">=</span><span class="st0">&quot;POST&quot;</span> </span>
+<span class="sc2">    <span class="kw3">enctype</span><span class="sy0">=</span><span class="st0">&quot;multipart/form-data&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;file&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;file&quot;</span> <span class="sy0">/</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;hidden&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;type&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;msproject-parse&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;hidden&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;data&quot;</span> </span>
+<span class="sc2">        <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;{ \&quot;</span>durationUnit\<span class="st0">&quot;: \&quot;</span>hour\<span class="st0">&quot; }&quot;</span> <span class="sy0">/</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">button</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;submit&quot;</span>&gt;</span>Get<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">button</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">form</span>&gt;</span></pre></code></pre>
+
+<p>or</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">importFromMSProject</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    data<span class="sy0">:</span> file<span class="sy0">,</span>
+    durationUnit<span class="sy0">:</span> <span class="st0">&quot;hour&quot;</span><span class="sy0">,</span>
+    callback<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>project<span class="br0">&#41;</span><span class="br0">&#123;</span><span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h4>Getting properties of the Project</h4>
+
+<p>To get project fields, the <strong>projectProperties</strong> input with an array of necessary fields can be sent to the server.
+It extracts arbitrary properties of <a href="https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx">the Project entity</a> 
+into the <strong>config</strong> property of the output. Here is the list of supported <a class="link-" href="desktop__tags.html#projectproperties">properties</a>.</p>
+
+<ul>
+<li><strong>projectProperties</strong> - specifies an array of project properties that should be put into the response.</li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">form</span> <span class="kw3">action</span><span class="sy0">=</span><span class="st0">&quot;https://export.dhtmlx.com/gantt&quot;</span> <span class="kw3">method</span><span class="sy0">=</span><span class="st0">&quot;POST&quot;</span> </span>
+<span class="sc2">    <span class="kw3">enctype</span><span class="sy0">=</span><span class="st0">&quot;multipart/form-data&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;file&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;file&quot;</span> <span class="sy0">/</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;hidden&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;type&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;msproject-parse&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;hidden&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;data&quot;</span> </span>
+<span class="sc2">        <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;{ \&quot;</span>projectProperties\<span class="st0">&quot;: [\&quot;</span>Author\<span class="st0">&quot;, \&quot;</span><span class="kw3">Title</span>\<span class="st0">&quot;] }&quot;</span> <span class="sy0">/</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">button</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;submit&quot;</span>&gt;</span>Get<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">button</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">form</span>&gt;</span></pre></code></pre>
+
+<p>or</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">importFromMSProject</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    data<span class="sy0">:</span> file<span class="sy0">,</span>
+    durationUnit<span class="sy0">:</span> <span class="st0">&quot;hour&quot;</span><span class="sy0">,</span>
+    projectProperties<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;Author&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Title&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    callback<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>project<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw2">var</span> config <span class="sy0">=</span> project.<span class="me1">config</span><span class="sy0">;</span>
+        <span class="kw3">alert</span><span class="br0">&#40;</span>config.$custom_properties.<span class="me1">Author</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h4>Getting tasks properties</h4>
+
+<p>To get task fields, the <strong>taskProperties</strong> input with an array of necessary fields can be sent to the server.
+It extracts arbitrary properties of the <a href="https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx">Task entities</a>. Here is the list of supported <a class="link-" href="desktop__tags.html#tasksproperties">properties</a>:</p>
+
+<ul>
+<li><strong>taskProperties</strong> - specify an array of additional task properties to be imported.</li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">form</span> <span class="kw3">action</span><span class="sy0">=</span><span class="st0">&quot;https://export.dhtmlx.com/gantt&quot;</span> <span class="kw3">method</span><span class="sy0">=</span><span class="st0">&quot;POST&quot;</span> </span>
+<span class="sc2">    <span class="kw3">enctype</span><span class="sy0">=</span><span class="st0">&quot;multipart/form-data&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;file&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;file&quot;</span> <span class="sy0">/</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;hidden&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;type&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;msproject-parse&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;hidden&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;data&quot;</span> </span>
+<span class="sc2">        <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;{ \&quot;</span>taskProperties\<span class="st0">&quot;: [\&quot;</span>Contact\<span class="st0">&quot;, \&quot;</span>Priority\<span class="st0">&quot;] }&quot;</span> <span class="sy0">/</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">button</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;submit&quot;</span>&gt;</span>Get<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">button</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">form</span>&gt;</span></pre></code></pre>
+
+<p>or</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">importFromMSProject</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    data<span class="sy0">:</span> file<span class="sy0">,</span>
+    durationUnit<span class="sy0">:</span> <span class="st0">&quot;hour&quot;</span><span class="sy0">,</span>
+    taskProperties<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;Contact&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Priority&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    callback<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>project<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw2">var</span> config <span class="sy0">=</span> project.<span class="me1">config</span><span class="sy0">;</span>
+        <span class="kw3">alert</span><span class="br0">&#40;</span>config.$custom_properties.<span class="me1">Author</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        gantt.<span class="me1">parse</span><span class="br0">&#40;</span>project.<span class="me1">data</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onTaskLoading&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>task<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>task.$custom_data<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        task.<span class="me1">contact</span> <span class="sy0">=</span> task.$custom_data<span class="br0">&#91;</span><span class="st0">&quot;Contact&quot;</span><span class="br0">&#93;</span><span class="sy0">;</span>
+        task.<span class="me1">priority</span> <span class="sy0">=</span> task.$custom_data<span class="br0">&#91;</span><span class="st0">&quot;priority&quot;</span><span class="br0">&#93;</span><span class="sy0">;</span>
+        <span class="kw1">delete</span> task.$custom_data<span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='limitsonrequestsizeandimportoflargefiles'><h2>Limits on request size and import of large files</h2></a>
+
+<p>There are two API endpoints for the MSProject export/import services:</p>
+
+<ul>
+<li><b><em>https://export.dhtmlx.com/gantt</em></b> - the default endpoint which serves all export methods (<em>exportToPDF</em>, <em>exportToPNG</em>, <em>exportToMSProject</em>, etc.). <strong>Max request size is 10 MB</strong>.</li>
+<li><b><em>https://export.dhtmlx.com/gantt/project</em></b> - the endpoint dedicated to MS Project services (<em>exportToMSProject</em>/<em>importFromMSProject</em> only). <strong>Max request size: 40 MB</strong>.</li>
+</ul>
+
+<p>The endpoint can be specified by the <strong>server</strong> property of the export configuration object:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">importFromMSProject</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    server<span class="sy0">:</span><span class="st0">&quot;https://export.dhtmlx.com/gantt&quot;</span><span class="sy0">,</span>
+    data<span class="sy0">:</span> file<span class="sy0">,</span>
+    callback<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>project<span class="br0">&#41;</span><span class="br0">&#123;</span>
+       <span class="co1">// some logic</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>If no endpoint is specified, <b><em>https://export.dhtmlx.com/gantt</em></b> is used by default. The following call is equivalent to the one above:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">importFromMSProject</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    data<span class="sy0">:</span> file<span class="sy0">,</span>
+    callback<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>project<span class="br0">&#41;</span><span class="br0">&#123;</span>
+       <span class="co1">// some logic</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In order to export or import large projects that exceed the 4MB limit, the second endpoint can be used:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">importFromMSProject</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    server<span class="sy0">:</span><span class="st0">&quot;https://export.dhtmlx.com/gantt/project&quot;</span><span class="sy0">,</span>
+    data<span class="sy0">:</span> file<span class="sy0">,</span>
+    callback<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>project<span class="br0">&#41;</span><span class="br0">&#123;</span>
+       <span class="co1">// some logic</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>It allows sending requests up to 40MB in size and supports MS Project exports and imports. It can be used for MS Project exports only.</p>
+
+<p>Any other methods, for example, <em>gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})</em> should return a server error.</p>
+
+<!-- Content Area End -->
+			<a href='desktop__export_msproject.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

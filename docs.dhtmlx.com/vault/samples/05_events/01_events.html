@@ -1,0 +1,92 @@
+<html>
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Events</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+
+        <script type="text/javascript" src="../../codebase/vault-v=3.0.0.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../codebase/vault-v=3.0.0.css">
+
+        <script type="text/javascript" src="../common/js/index-v=3.0.0.js"></script>
+        <link rel="stylesheet" type="text/css" href="../common/dhx_samples-v=3.0.0.css">
+   
+
+        <!-- metrics -->
+        <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-11031269-1', 'auto');
+        ga('send', 'pageview');
+        </script>
+
+        <!-- error tracking -->
+        <script src="https://cdn.ravenjs.com/3.19.1/raven.min.js" crossorigin="anonymous"></script>
+        <script>Raven.config('https://a2578da6be394598bfe003e4dbb3a394@sentry.dhtmlx.ru/13').install()</script>
+</head>
+    <body>
+        <div class="top-rect-block">
+            <div class="text-value">Use Vault to see list of events in the right area</div>
+        </div>
+        <div class="wrapper with-header">
+            <div id="vault" class="vault-block"></div>
+            <div id="events-info" class="events-info"></div>
+        </div>
+        <script>
+            var vault = new dhx.Vault("vault", {
+                uploader: {
+                    target: "/vault/backend/upload"
+                }
+            });
+            var info = document.getElementById("events-info");
+            
+            var allEvents = [
+                "beforeAdd",
+                "beforeRemove",
+                "uploadBegin",
+                "beforeUploadFile",
+                "cancel",
+                "uploadFail",
+                "uploadFile",
+                "uploadComplete",
+                "uploadProgress",
+                "afterAdd",
+                "removeAll"
+            ];
+            var counter = 1;
+            allEvents.forEach(event => {
+                vault.events.on(event, function(obj) {
+                    switch(event) {
+                        case "uploadBegin":
+                            var details = "";
+                            obj.forEach(function(fileObj) {
+                                details += getDetails(fileObj);
+                            });
+                            info.insertAdjacentHTML('afterbegin', getEvent(event) + details);
+                            break;
+                        case "uploadProgress":
+                            var progress =  "<div class=\"info\">progress: " + Math.round(obj) + "</div>";
+                            info.insertAdjacentHTML('afterbegin', getEvent(event) + progress);
+                            break;
+                        default:
+                            info.insertAdjacentHTML('afterbegin', getEvent(event) + getDetails(obj));
+                    }
+
+                });
+            });
+            function getEvent(event) {
+                return "<div class=\"event\">#" + counter++ + ": " + event + "</div>";
+            }
+            function getDetails(obj) {
+                if (!obj || !obj.file) {
+                    return "<div class=\"info\"></div>";
+                }
+                return "<div class=\"info\">name: " + obj.file.name + ", <br/> size: " + obj.file.size + "</div>";
+            }
+
+        </script>
+    </body>
+</html>

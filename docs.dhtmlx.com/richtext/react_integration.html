@@ -1,0 +1,338 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1591766949.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1591766949.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="RichText Docs" href="https://docs.dhtmlx.com/richtext/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Integration with React  RichText Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/c/widgets/richtext">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="initialization.html">Initialization</a></li><li class=""><a href="configuration.html">Configuration</a></li><li class=""><a href="localization.html">Localization</a></li><li class=""><a href="loading_data.html">Setting Content</a></li><li class=""><a href="working_with_richtext.html">Working with RichText</a></li><li class=""><a href="customization.html">Customization</a></li><li class=""><a href="event_handling.html">Event Handling</a></li><li class=""><a href="angular_integration.html">Integration with Angular</a></li><li class=" current"><a href="react_integration.html">Integration with React</a></li><ul><li class="inner"><a href="react_integration.html#includingsourcefiles">Including source files</a></li><li class="inner"><a href="react_integration.html#initialization">Initialization</a></li></ul><li class=""><a href="vuejs_integration.html">Integration with Vue.js</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Integration with React</h1>
+
+<p>You can use dhtmlxRichText in an application created with the <a href="https://reactjs.org/">React</a> framework. <a href="https://github.com/DHTMLX/react-widgets">Check the demo on Github</a>.</p>
+
+<div class='note'><p><p>Please note that the implementation provided below is not the only way to use dhtmlxRichText in a React-based application. It gives you initial schema of the integration and implies further 
+extension of the app functionality depending on your goals.</p>
+</p></div>
+
+<a name='includingsourcefiles'><h2>Including source files</h2></a>
+
+<p>To add RichText package into your React-based app you need to <a href="https://dhtmlx.com/docs/products/dhtmlxRichText/download.shtml">download the component package</a> and unpack it into a folder of your project.</p>
+
+<p>Then include <strong>richtext.js</strong> and <strong>richtext.css</strong> files into a page. 
+Make sure that you set correct relative paths to these files:</p>
+
+<p class='snippet'> index.html</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/richtext.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>  
+<span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;codebase/richtext.css&quot;</span>&gt;</span></pre></code></pre>
+
+<a name='initialization'><h2>Initialization</h2></a>
+
+<p>There are two possible scenarios of initializing RichText inside a React application. One consists in isolating RichText structure and data inside of the React component and another one suggests 
+separating view and data parts with the possibility of interaction between them.</p>
+
+<h3>Scenario 1. Isolating RichText in a React component</h3>
+
+<p>In this variant RichText configuration and data are held inside of the React component with no bonds with the external part of the application.</p>
+
+<h4>RichText initialization</h4>
+
+<ul>
+<li>Create a <em>RichText.js</em> file, then create the <em>RichText</em> class and add a container for RichText using the <strong>render()</strong> function. Store the reference to the container in the <strong>el</strong> property:</li>
+</ul>
+
+<p class='snippet'> RichText.js</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> Richtext <span class="kw2">extends</span> Component <span class="br0">&#123;</span>
+  render<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="br0">&#40;</span>
+      <span class="sy0">&lt;</span>div ref<span class="sy0">=</span><span class="br0">&#123;</span>el <span class="sy0">=&gt;</span> <span class="kw1">this</span>.<span class="me1">el</span> <span class="sy0">=</span> el<span class="br0">&#125;</span> className<span class="sy0">=</span><span class="st0">&quot;widget-box&quot;</span> style<span class="sy0">=:</span><span class="nu0">800</span><span class="sy0">,</span>height<span class="sy0">:</span><span class="nu0">400</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+    <span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>After that use the <code>new Richtext</code> constructor to initialize RichText in the container created above: </li>
+</ul>
+
+<p class='snippet'> RichText.js</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> RichText <span class="kw2">extends</span> Component <span class="br0">&#123;</span>
+  componentDidMount<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">this</span>.<span class="me1">richtext</span> <span class="sy0">=</span> <span class="kw2">new</span> Richtext<span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">el</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+      toolbarBlocks<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;default&quot;</span><span class="sy0">,</span> <span class="st0">&quot;clear&quot;</span><span class="sy0">,</span> <span class="st0">&quot;fullscreen&quot;</span><span class="br0">&#93;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h4>Changing config</h4>
+
+<ul>
+<li>Next you can do some actions, e.g. add a new control into the toolbar:</li>
+</ul>
+
+<p class='snippet'> RichText.js</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> RichText <span class="kw2">extends</span> Component <span class="br0">&#123;</span>
+  componentDidMount<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">this</span>.<span class="me1">richtext</span> <span class="sy0">=</span> <span class="kw2">new</span> Richtext<span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">el</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+      toolbarBlocks<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;default&quot;</span><span class="sy0">,</span> <span class="st0">&quot;clear&quot;</span><span class="sy0">,</span> <span class="st0">&quot;fullscreen&quot;</span><span class="br0">&#93;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">this</span>.<span class="me1">richtext</span>.<span class="me1">toolbar</span>.<span class="me1">data</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+        value<span class="sy0">:</span><span class="st0">&quot;MyAction&quot;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Scenario 2. Exposing RichText data and config</h3>
+
+<p>This variant adds flexibility in the control over RichText data and configuration by allowing access to them from other parts of the application.</p>
+
+<h4>RichText initialization</h4>
+
+<ul>
+<li>The first step is the same. Create a file, let it be <em>RichText2.js</em> this time, and add the <em>RichText</em> class and use the <code>new RichText</code> constructor to initialize RichText.</li>
+</ul>
+
+<p class='snippet'> RichText2.js</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> RichTextComponent <span class="kw2">extends</span> Component <span class="br0">&#123;</span>
+  componentDidMount<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">this</span>.<span class="me1">richtext</span> <span class="sy0">=</span> <span class="kw2">new</span> Richtext<span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">el</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+      <span class="co1">// config here</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>Define the configuration properties of RichText in the object passed as a second parameter of the constructor:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">class</span> RichTextComponent <span class="kw2">extends</span> Component <span class="br0">&#123;</span>
+  componentDidMount<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">this</span>.<span class="me1">richtext</span> <span class="sy0">=</span> <span class="kw2">new</span> Richtext<span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">el</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+      mode<span class="sy0">:</span> <span class="kw1">this</span>.<span class="me1">props</span>.<span class="me1">mode</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Thus the <strong>props</strong> configuration option will be applied to the RichText widget configuration.</p>
+
+<ul>
+<li>Then create a container for RichText using the <strong>render()</strong> function:</li>
+</ul>
+
+<p class='snippet'> RichText2.js</p>
+
+<pre><code><pre class="js">render<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="br0">&#40;</span>
+      <span class="sy0">&lt;</span>div ref<span class="sy0">=</span><span class="br0">&#123;</span>el <span class="sy0">=&gt;</span> <span class="kw1">this</span>.<span class="me1">el</span> <span class="sy0">=</span> el<span class="br0">&#125;</span> className<span class="sy0">=</span><span class="st0">&quot;widget-box&quot;</span> style<span class="sy0">=:</span><span class="nu0">800</span><span class="sy0">,</span>height<span class="sy0">:</span><span class="nu0">400</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+    <span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h4>Working with configuration options</h4>
+
+<ul>
+<li>Set the list of used RichText configuration properties and their types in the <strong>props</strong> configuration option:</li>
+</ul>
+
+<p class='snippet'> RichText2.js</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> RichtextComponent <span class="kw2">extends</span> Component <span class="br0">&#123;</span>
+  componentDidMount<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">this</span>.<span class="me1">richtext</span> <span class="sy0">=</span> <span class="kw2">new</span> Richtext<span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">el</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+      mode<span class="sy0">:</span> <span class="kw1">this</span>.<span class="me1">props</span>.<span class="me1">mode</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+RichtextComponent.<span class="me1">propTypes</span> <span class="sy0">=</span> <span class="br0">&#123;</span>
+  mode<span class="sy0">:</span> PropTypes.<span class="me1">string</span><span class="sy0">,</span>
+  value<span class="sy0">:</span> PropTypes.<span class="me1">string</span><span class="sy0">,</span>
+  dataType<span class="sy0">:</span> PropTypes.<span class="me1">string</span><span class="sy0">,</span>
+  onChange<span class="sy0">:</span> PropTypes.<span class="me1">func</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+RichtextComponent.<span class="me1">defaultProps</span> <span class="sy0">=</span> <span class="br0">&#123;</span>
+  mode<span class="sy0">:</span> <span class="st0">&quot;classic&quot;</span><span class="sy0">,</span>
+  dataType<span class="sy0">:</span> <span class="st0">&quot;html&quot;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Since the properties of RichText are exposed they are available to work with outside the component. In the example below the "document" mode is set for the richtext:</p>
+
+<p class='snippet'> BasicSample.js</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>div className<span class="sy0">=</span><span class="st0">'app-box'</span><span class="sy0">&gt;</span>
+     <span class="sy0">&lt;</span>Richtext mode<span class="sy0">=</span><span class="st0">&quot;document&quot;</span><span class="sy0">&gt;&lt;/</span>Richtext<span class="sy0">&gt;</span>
+<span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span></pre></code></pre>
+
+<h4>Working with RichText API</h4>
+
+<p>This variant of using RichText in a React application allows working with its API moving all calls of methods and event handlers into a separate file.</p>
+
+<p>First, you can add a couple of wrappers for convenient work with RichText API. The example below shows how you can wrap actions for
+setting RichText value and handling the <em>change</em> event taking into account the type of data:</p>
+
+<p class='snippet'> RichText2.js</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> RichtextComponent <span class="kw2">extends</span> Component <span class="br0">&#123;</span>
+  componentDidMount<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">this</span>.<span class="me1">richtext</span> <span class="sy0">=</span> <span class="kw2">new</span> Richtext<span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">el</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+      mode<span class="sy0">:</span> <span class="kw1">this</span>.<span class="me1">props</span>.<span class="me1">mode</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">props</span>.<span class="me1">value</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+      <span class="kw1">this</span>.<span class="me1">richtext</span>.<span class="me1">setValue</span><span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">props</span>.<span class="me1">value</span><span class="sy0">,</span> <span class="kw1">this</span>.<span class="me1">props</span>.<span class="me1">dataType</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">props</span>.<span class="me1">onChange</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+      <span class="kw1">this</span>.<span class="me1">richtext</span>.<span class="me1">events</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">&quot;change&quot;</span><span class="sy0">,</span> <span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">=&gt;</span> <span class="br0">&#123;</span>
+        <span class="kw1">this</span>.<span class="me1">props</span>.<span class="me1">onChange</span><span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">richtext</span>.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">props</span>.<span class="me1">dataType</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+      <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>After that you can use the ready wrappers in other parts of application.</p>
+
+<ul>
+<li>Create a <em>DataSample.js</em> file and describe the methods you want to use while working with the richtext. In the example below the <em>updateMarkdown</em> and <em>updateHTML</em> methods are added for updating the 
+the content of the RichText editor:</li>
+</ul>
+
+<p class='snippet'> DataSample.js</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> DataSample <span class="kw2">extends</span> Component <span class="br0">&#123;</span>
+  constructor<span class="br0">&#40;</span>props<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw2">super</span><span class="br0">&#40;</span>props<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">this</span>.<span class="me1">state</span> <span class="sy0">=</span> <span class="br0">&#123;</span>
+      html<span class="sy0">:</span> <span class="st0">''</span><span class="sy0">,</span>
+      markdown<span class="sy0">:</span> ``
+    <span class="br0">&#125;</span>
+  <span class="br0">&#125;</span>
+  updateMarkdown<span class="br0">&#40;</span>value<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">this</span>.<span class="me1">setState</span><span class="br0">&#40;</span><span class="br0">&#123;</span>...<span class="kw1">this</span>.<span class="me1">state</span><span class="sy0">,</span> markdown<span class="sy0">:</span> value<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+  updateHTML<span class="br0">&#40;</span>value<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">this</span>.<span class="me1">setState</span><span class="br0">&#40;</span><span class="br0">&#123;</span>...<span class="kw1">this</span>.<span class="me1">state</span><span class="sy0">,</span> html<span class="sy0">:</span> value<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>Use the above methods to update the Richtext content depending on the type of entered data when some changes are made:</li>
+</ul>
+
+<p class='snippet'> DataSample.js</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> DataSample <span class="kw2">extends</span> Component <span class="br0">&#123;</span>
+   ...   
+   <span class="me1">render</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="br0">&#40;</span>
+      <span class="sy0">&lt;</span>div className<span class="sy0">=</span><span class="st0">'app-box'</span><span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>p<span class="sy0">&gt;</span>HTML serialize<span class="sy0">&lt;/</span>p<span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>RichtextComponent value<span class="sy0">=</span><span class="br0">&#123;</span><span class="kw1">this</span>.<span class="me1">state</span>.<span class="me1">html</span><span class="br0">&#125;</span> 
+            onChange<span class="sy0">=</span><span class="br0">&#123;</span>val <span class="sy0">=&gt;</span> <span class="kw1">this</span>.<span class="me1">updateHTML</span><span class="br0">&#40;</span>val<span class="br0">&#41;</span><span class="br0">&#125;</span><span class="sy0">&gt;&gt;&lt;/</span>RichtextComponent<span class="sy0">&gt;</span>
+&nbsp;
+        <span class="sy0">&lt;</span>hr <span class="sy0">/&gt;</span>
+        <span class="sy0">&lt;</span>p<span class="sy0">&gt;</span>Markdown serialize<span class="sy0">&lt;/</span>p<span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>RichtextComponent value<span class="sy0">=</span><span class="br0">&#123;</span><span class="kw1">this</span>.<span class="me1">state</span>.<span class="me1">markdown</span><span class="br0">&#125;</span> dataType<span class="sy0">=</span><span class="st0">&quot;markdown&quot;</span> 
+            onChange<span class="sy0">=</span><span class="br0">&#123;</span>val <span class="sy0">=&gt;</span> <span class="kw1">this</span>.<span class="me1">updateMarkdown</span><span class="br0">&#40;</span>val<span class="br0">&#41;</span><span class="br0">&#125;</span><span class="sy0">&gt;&lt;/</span>RichtextComponent<span class="sy0">&gt;</span>
+      <span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span>
+    <span class="br0">&#41;</span><span class="sy0">;</span>
+   ...
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='react_integration.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='initialization.html'>Initialization</a></li>	
+	<li><a href='working_with_richtext.html'>Main Operations</a></li>
+	<li><a href='loading_data.html'>Setting Content</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Look and Feel</li>
+	<li><a href='configuration.html'>Configuration</a></li>
+	<li><a href='customization.html'>Customization</a></li>
+	<li><a href='localization.html'>Localization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Integration</li>
+	<li><a href='angular_integration.html'>RichText and Angular</a></li>
+	<li><a href='react_integration.html'>RichText and React</a></li>
+	<li><a href='vuejs_integration.html'>RichText and Vue.js</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__richtext.html#methods'>Methods</a></li>
+	<li><a href='api__refs__richtext.html#config'>Properties</a></li>
+	<li><a href='api__refs__richtext.html#events'>Events</a></li>
+</ul>
+
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

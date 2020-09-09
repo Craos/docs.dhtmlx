@@ -1,0 +1,821 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Common Operations with Grid and its Elements  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=" current"><a href="grid__basic_operations.html">Common Operations with Grid and its Elements</a></li><ul><li class="inner"><a href="grid__basic_operations.html#grid">Grid</a></li><li class="inner"><a href="grid__basic_operations.html#row">Row</a></li><li class="inner"><a href="grid__basic_operations.html#column">Column</a></li><li class="inner"><a href="grid__basic_operations.html#cell">Cell</a></li></ul><li class=""><a href="grid__columns_types.html">Column Types</a></li><li class=""><a href="grid__headers_and_footers.html">Headers and Footers</a></li><li class=""><a href="grid__frozen_columns.html">Freezing Columns (the 'Split' Mode)</a></li><li class=""><a href="grid__navigation.html">Enabling Keyboard Navigation</a></li><li class=""><a href="grid__selection.html">Managing the Selection</a></li><li class=""><a href="grid__drag_and_drop.html">Drag-and-Drop Support</a></li><li class=""><a href="grid__handling_cookies.html">Saving Grid Configuration in Cookies</a></li><li class=""><a href="grid__xml_configuration.html">Configuring Grid from XML</a></li><li class=""><a href="grid__json_configuration.html">Configuring Grid from JSON</a></li><li class=""><a href="grid__grouping_columns.html">Grouping Columns</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__configuring_the_grid.html">Configuring Grid</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Common Operations with Grid and its Elements</h1>
+
+<p>In this article we'll compactly list basic operations that you will often use while developing apps with dhtmlxGrid.</p>
+
+<table class="list" cellspacing="0" cellpadding="5" border="0" style="margin-top:25px;">
+    <tbody>
+        <tr>
+        <td colspan=3 style="text-align:left; height:40px !important;"><b>Learn how to:</b></td>
+    </tr>
+    <tr>
+        <td style="width:120px; color:rgb(65, 65, 65);"><b>Grid</b></td>
+        <td>
+        <div style="float: left; width: 50%;">
+<ol>
+    <li><a href="grid__basic_operations.html#header">Attach the header</a></li>
+    <li><a href="grid__basic_operations.html#footer">Attach the footer</a></li>    
+    <li><a href="grid__basic_operations.html#clearing_grid">Clear the grid</a></li>
+</ol>
+</div>
+<div style="float: right; width: 50%;">
+<ol start=4>
+    <li><a href="grid__basic_operations.html#destructor">Destruct the grid</a></li>
+    <li><a href="grid__basic_operations.html#refreshing_grid">Reload the grid</a></li>
+    <li><a href="grid__basic_operations.html#skinning">Set skin for the grid</a></li>
+</ol>
+</div>
+        </td>
+    </tr>
+    <tr>
+        <td><b style="color:rgb(65, 65, 65);">Row</b></td>
+        <td>
+        <div style="float: left; width: 50%;">
+<ol>
+    <li><a href="grid__basic_operations.html#adding_removing_rows">Add/remove a row</a></li>
+    <li><a href="grid__basic_operations.html#checking_existance">Check row existance</a></li>  
+    <li><a href="grid__basic_operations.html#number_of_rows">Get the number of rows</a></li>
+    <li><a href="grid__basic_operations.html#getting_id">Get the row ID/index</a></li>
+    <li><a href="grid__basic_operations.html#hiding_rows">Hide a row</a></li>
+</ol>
+</div>
+<div style="float: right; width: 50%;">
+<ol start=6>
+    <li><a href="grid__basic_operations.html#multiline_rows">Make the grid rows multi-line</a></li>
+    <li><a href="grid__basic_operations.html#selecting">Select a row</a></li>
+    <li><a href="grid__basic_operations.html#setting_id">Set the row ID</a></li>
+    <li><a href="grid__basic_operations.html#scrolling_rows">Scroll the grid to make the specified row visible</a></li>
+</ol>
+</div>
+        </td>
+    </tr>
+    <tr>
+        <td><b style="color:rgb(65, 65, 65);">Column</b></td>
+        <td>
+        <div style="float: left; width: 50%;">
+<ol>
+    <li><a href="grid__basic_operations.html#adding_removing">Add/remove a column</a></li>
+    <li><a href="grid__basic_operations.html#adjusting_width">Adjust the width of a column to the content</a></li> 
+    <li><a href="grid__basic_operations.html#column_status">Check the column visibility (hidden or visible)</a></li>
+    <li><a href="grid__basic_operations.html#getting_id">Get the column ID/index</a></li>
+    <li><a href="grid__basic_operations.html#number_of_cols">Get the number of cols in the grid</a></li>
+</ol>
+</div>
+<div style="float: right; width: 50%;">
+<ol start=6>
+    <li><a href="grid__basic_operations.html#sorting">Get/set the sorting parameters of a column</a></li>
+    <li><a href="grid__basic_operations.html#content_type">Get/set the type of a column</a></li>
+    <li><a href="grid__basic_operations.html#column_width">Get/set the width of a column</a></li>
+    <li><a href="grid__basic_operations.html#hiding_columns">Hide a column</a></li>
+    <li><a href="grid__basic_operations.html#alignment">Set the column horizontal alignment</a></li>
+</ol>
+</div>
+        </td>
+    </tr>
+    <tr>
+        <td><b style="color:rgb(65, 65, 65);">Cell</b></td>
+        <td>
+        <div style="float: left; width: 50%;">
+<ol>
+    <li><a href="grid__basic_operations.html#cell_object">Get/set the cell object</a></li>
+    <li><a href="grid__basic_operations.html#selecting_cell">Select a cell</a></li>
+    <li><a href="grid__basic_operations.html#merging">Merge cells</a></li>
+      <li><a href="grid__basic_operations.html#text_manipulation">Manipulate text of a cell</a></li>
+</ol>
+        </div>
+        <div style="float: right; width: 50%;">
+<ol start=5>
+   <li><a href="grid__basic_operations.html#editing">Edit cells</a></li>
+   <li><a href="grid__basic_operations.html#marked_cells">Manipulate marked cells</a></li>
+   <li><a href="grid__basic_operations.html#unique_ids">Enable unique ids for cells</a></li> 
+   <li><a href="grid__basic_operations.html#finding_cell">Find a cell</a></li> 
+</ol>
+        </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<p><br></p>
+
+<a name='grid'><h2>Grid</h2></a>
+
+<h3 id="header">Attaching the header to the grid</h3>
+
+<p>To attach a header row to the grid, use the <a class="link-" href="api__dhtmlxgrid_attachheader.html">attachHeader</a> method:</p>
+
+<p class='snippet'>
+Attaching the header to the grid
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Book Title,Author,Sales&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/12_initialization_loading/07_init_grid.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Initialize object on page</a></p>
+
+<p><em>Read more in article  <a class="link-" href="grid__headers_and_footers.html">Headers and Footers</a>.</em></p>
+
+<p><br></p>
+
+<p>To detach the header row, use the <a class="link-" href="api__dhtmlxgrid_detachheader.html">detachHeader</a> method:</p>
+
+<p class='snippet'>
+Detaching a header from the grid
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Book Title,Author,Sales&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>mygrid.<span class="me1">attachHeader</span><span class="br0">&#40;</span><span class="st0">&quot;#text_filter,#text_filter,#numeric_filter&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">mygrid.<span class="me1">detachHeader</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//detaches the 1st header row</span></span></pre></code></pre>
+
+<p><em>Read more in article  <a class="link-" href="grid__headers_and_footers.html">Headers and Footers</a>.</em></p>
+
+<h3 id="footer">Attaching the footer to the grid</h3>
+
+<p>To attach a footer row to the grid, use the <a class="link-pro" href="api__dhtmlxgrid_attachfooter.html">attachFooter</a> method:</p>
+
+<p class='snippet'>
+Attaching the footer to the grid
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Book Title,Author,Sales&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">mygrid.<span class="me1">attachFooter</span><span class="br0">&#40;</span><span class="st0">'Total sales,#cspan,${#stat_total}'</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/08_filtering/03_pro_filter_num.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Numeric filtering and master checkbox</a></p>
+
+<p><em>Read more in article  <a class="link-" href="grid__headers_and_footers.html">Headers and Footers</a>.</em></p>
+
+<p><br>
+To detach a footer row, use the <a class="link-pro" href="api__dhtmlxgrid_detachfooter.html">detachFooter</a> method:</p>
+
+<p class='snippet'>
+Detaching the footer from the grid
+</p>
+
+<pre><code><pre class="js"><span class="xtra ln-xtra">mygrid.<span class="me1">attachFooter</span><span class="br0">&#40;</span><span class="st0">'Total sales,#cspan,${#stat_total}'</span><span class="br0">&#41;</span><span class="sy0">;</span>   </span>mygrid.<span class="me1">attachFooter</span><span class="br0">&#40;</span><span class="st0">'Max sales,#cspan,{#stat_max}'</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+mygrid.<span class="me1">attachFooter</span><span class="br0">&#40;</span><span class="st0">'Min sales,#cspan,{#stat_min}'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">mygrid.<span class="me1">detachFooter</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//detaches the 1st footer row</span></span></pre></code></pre>
+
+<p><em>Read more in article  <a class="link-" href="grid__headers_and_footers.html">Headers and Footers</a>.</em></p>
+
+<h3 id="clearing_grid">Clearing the grid</h3>
+
+<p>To clear the grid from the data,  use the  <a class="link-" href="api__dhtmlxgrid_clearall.html">clearAll</a> method :</p>
+
+<p class='snippet'>
+Reloading the grid's data
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Book Title,Author,Sales&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">'data.xml'</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+<span class="xtra ln-xtra">    mygrid.<span class="me1">clearAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>                      <span class="co1">//removes all rows </span></span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/12_initialization_loading/04_grid_refresh.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Refresh grid from XML</a></p>
+
+<p><br></p>
+
+<p>To delete all rows from the grid and clear the header therewith, use the <a class="link-" href="api__dhtmlxgrid_clearall.html">clearAll</a> method with the <i>true</i> parameter:</p>
+
+<p class='snippet'>
+Reloading both the grid's structure and data
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;../codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;gridH.xml&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+<span class="xtra ln-xtra">    mygrid.<span class="me1">clearAll</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//removes all rows and clears the header  </span></span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/12_initialization_loading/05_grid_reload.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Reload with new structure</a></p>
+
+<h3 id="destructor">Destructing the grid</h3>
+
+<p>To destruct the grid and clear the occupied memory, use the <a class="link-" href="api__dhtmlxgrid_destructor.html">destructor</a> method:</p>
+
+<p class='snippet'>
+Using the grid's destructor
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Book Title,Author,Sales&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">mygrid.<span class="me1">destructor</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/10_grids_manipulations/05_memory_grid.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Decrease memory usage</a></p>
+
+<h3 id="refreshing_grid">Reloading the grid</h3>
+
+<p>To reload the grid (clear all rows and reload data), use the  <a class="link-" href="api__dhtmlxgrid_clearandload.html">clearAndLoad</a> method:</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Book Title,Author,Sales&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">mygrid.<span class="me1">clearAndLoad</span><span class="br0">&#40;</span><span class="st0">&quot;data/grid.xml&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/14_loading_big_datasets/02_50000_paging.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;50,000 records in grid with paging</a></p>
+
+<p><br>
+An alternative way to reload the grid is to use a couple of methods - <a class="link-" href="api__dhtmlxgrid_clearall.html">clearAll</a>  and  <a class="link-" href="api__dhtmlxgrid_load.html">load</a>:</p>
+
+<p class='snippet'>
+Reloading the grid's data
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Book Title,Author,Sales&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">'data.xml'</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+<span class="xtra ln-xtra">    mygrid.<span class="me1">clearAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//removes all rows </span></span><span class="xtra ln-xtra">    mygrid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;data1.xml&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>                               </span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+&nbsp;
+<span class="co1">//or (to reload both grid's data and header)</span>
+<span class="xtra ln-xtra">mygrid.<span class="me1">clearAll</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//removes all rows and clears the header  </span></span><span class="xtra ln-xtra">mygrid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;gridH_new.xml&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/12_initialization_loading/04_grid_refresh.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Refresh grid from XML</a></p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/12_initialization_loading/05_grid_reload.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Reload with new structure</a></p>
+
+<h3 id="skinning">Skinning the grid</h3>
+
+<p>To set one of predefined skins for the grid, use the <a class="link-" href="api__dhtmlxgrid_setskin.html">setSkin</a> method:</p>
+
+<p class='snippet'>
+Setting the skin for  the grid
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Book Title,Author,Sales&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/12_initialization_loading/07_init_grid.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Initialize object on page</a></p>
+
+<a name='row'><h2>Row</h2></a>
+
+<h3 id="adding_removing_rows">Adding/removing a row</h3>
+
+<p>To add a new row to the grid, use the <a class="link-" href="api__dhtmlxgrid_addrow.html">addRow</a> method:</p>
+
+<p class='snippet'>
+Adding a new row to the grid
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Book Title,Author,Sales&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">mygrid.<span class="me1">addRow</span><span class="br0">&#40;</span>mygrid.<span class="me1">uid</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="st0">&quot;The Rainmaker,John Grisham,7.99&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/16_rows_columns_manipulations/01_addrows_grid.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Add/Delete Rows in Grid</a></p>
+
+<p><br></p>
+
+<p>To delete a row in the grid, use the <a class="link-" href="api__dhtmlxgrid_deleterow.html">deleteRow</a> or <a class="link-" href="api__dhtmlxgrid_deleteselectedrows.html">deleteSelectedRows</a> method:</p>
+
+<p class='snippet'>
+Deleting a row from the grid
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Book Title,Author,Sales&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">mygrid.<span class="me1">deleteRow</span><span class="br0">&#40;</span><span class="st0">&quot;row123&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>   <span class="co1">//deletes the row with id=&quot;row123&quot;  </span></span><span class="co1">//or </span>
+<span class="xtra ln-xtra">mygrid.<span class="me1">deleteSelectedRows</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>  <span class="co1">//deletes all selected rows from the grid</span></span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/16_rows_columns_manipulations/01_addrows_grid.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Add/Delete Rows in Grid</a></p>
+
+<h3 id="getting_id">Getting the row id/index</h3>
+
+<p>To get the ID of a row, use the <a class="link-" href="api__dhtmlxgrid_getrowid.html">getRowId</a> method:</p>
+
+<p class='snippet'>
+Getting the id of a row
+</p>
+
+<pre><code><pre class="js"><span class="xtra ln-xtra"><span class="kw2">var</span> rId <span class="sy0">=</span> mygrid.<span class="me1">getRowId</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//returns the id of the 2nd row </span></span>mygrid.<span class="me1">deleteRow</span><span class="br0">&#40;</span>rId<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/16_rows_columns_manipulations/01_addrows_grid.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Add/Delete Rows in Grid</a></p>
+
+<p><br></p>
+
+<p>To get the index of a row, use the <a class="link-" href="api__dhtmlxgrid_getrowindex.html">getRowIndex</a> method:</p>
+
+<p class='snippet'>
+Getting the index of a row
+</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> selectedRow <span class="sy0">=</span> mygrid.<span class="me1">getSelectedId</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra"><span class="kw2">var</span> rIndex <span class="sy0">=</span> mygrid.<span class="me1">getRowIndex</span><span class="br0">&#40;</span>selectedRow<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//gets the index of the selected row</span></span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/10_grids_manipulations/02_grid_auto_height.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Auto height</a></p>
+
+<h3 id="checking_existance">Checking row existance</h3>
+
+<p>To check whether a row with the specified id exists, use the <a class="link-" href="api__dhtmlxgrid_doesrowexist.html">doesRowExist</a> method:</p>
+
+<p class='snippet'>
+Checking whether a specific row exists
+</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> isExist <span class="sy0">=</span> mygrid.<span class="me1">doesRowExist</span><span class="br0">&#40;</span><span class="st0">&quot;row5&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//returns true,if a row with id='row5' exists</span></pre></code></pre>
+
+<h3 id="number_of_rows">Getting the number of rows</h3>
+
+<p>To get the number of rows in the grid, use the <a class="link-" href="api__dhtmlxgrid_getrowsnum.html">getRowsNum</a> method:</p>
+
+<p class='snippet'>
+Getting the number of rows in the grid
+</p>
+
+<pre><code><pre class="js"><span class="xtra ln-xtra"><span class="kw2">var</span> count <span class="sy0">=</span> mygrid.<span class="me1">getRowsNum</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span><span class="kw2">function</span> sumColumn<span class="br0">&#40;</span>ind<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> out <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">    <span class="kw1">for</span><span class="br0">&#40;</span><span class="kw2">var</span> i<span class="sy0">=</span><span class="nu0">0</span><span class="sy0">;</span>i<span class="sy0">&lt;</span>count<span class="sy0">;</span>i<span class="sy0">++</span><span class="br0">&#41;</span><span class="br0">&#123;</span> </span>        out<span class="sy0">+=</span> parseFloat<span class="br0">&#40;</span>mygrid.<span class="me1">cellByIndex</span><span class="br0">&#40;</span>i<span class="sy0">,</span>ind<span class="br0">&#41;</span>.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">return</span> out<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/16_rows_columns_manipulations/02_api_grid.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Using Grid API Methods</a></p>
+
+<h3 id="setting_id">Setting the row ID</h3>
+
+<p>To set a new ID for a row with the specified index, use the <a class="link-" href="api__dhtmlxgrid_setrowid.html">setRowId</a> method:</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Book Title,Author,Sales&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">mygrid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;data.xml&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span> </span><span class="xtra ln-xtra">    mygrid.<span class="me1">setRowId</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="sy0">,</span><span class="st0">&quot;new_id&quot;</span><span class="br0">&#41;</span> </span><span class="xtra ln-xtra"><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/16_rows_columns_manipulations/02_api_grid.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Using Grid API Methods</a></p>
+
+<p>To set a new ID for a row with the specified ID, use the <a class="link-" href="api__dhtmlxgrid_changerowid.html">changeRowId</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">changeRowId</span><span class="br0">&#40;</span><span class="st0">&quot;old_id&quot;</span><span class="sy0">,</span><span class="st0">&quot;new_id&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3 id="selecting">Selecting a row</h3>
+
+<p>To select a row with the specified index, use the  <a class="link-" href="api__dhtmlxgrid_selectrow.html">selectRow</a> method:</p>
+
+<pre><code><pre class="js"><span class="xtra ln-xtra">mygrid.<span class="me1">selectRow</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//selects the 1st row in the grid</span></span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/16_rows_columns_manipulations/02_api_grid.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Using Grid API Methods</a></p>
+
+<p>To select a row with the specified ID, use the <a class="link-" href="api__dhtmlxgrid_selectrowbyid.html">selectRowById</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">selectRowById</span><span class="br0">&#40;</span><span class="st0">&quot;row5&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>            <span class="co1">//selects the row with the id='row5'</span></pre></code></pre>
+
+<p>To select all rows in the grid, call <a class="link-" href="api__dhtmlxgrid_selectall.html">selectAll</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">selectAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3 id="hiding_rows">Hiding a row</h3>
+
+<p>To hide a row with the specified ID, call the <a class="link-" href="api__dhtmlxgrid_setrowhidden.html">setRowHidden</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setRowHidden</span><span class="br0">&#40;</span><span class="st0">&quot;row5&quot;</span><span class="sy0">,</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span>        <span class="co1">//hides the row with the id='row5'</span></pre></code></pre>
+
+<p>To show the row after this, call the same method but with the <i>false</i> parameter:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setRowHidden</span><span class="br0">&#40;</span><span class="st0">&quot;row5&quot;</span><span class="sy0">,</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span>       <span class="co1">//shows the hidden row with the id='row5'</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/11_header_footer/02_grid_complexheader_content.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Complex content in header</a></p>
+
+<h3 id="scrolling_rows">Programmatic scrolling the grid for making the specified row visible</h3>
+
+<p>To programmatically scroll the grid to make a row with the specified ID visible, call the <a class="link-" href="api__dhtmlxgrid_showrow.html">showRow</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">showRow</span><span class="br0">&#40;</span><span class="st0">&quot;row5&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>      <span class="co1">//scrolls the grid to show the row with the id='row5'</span></pre></code></pre>
+
+<h3 id="multiline_rows">Making the grid multi-line</h3>
+
+<p>To enable the possibility to have multi-line rows in the grid, call the  <a class="link-" href="api__dhtmlxgrid_enablemultiline.html">enableMultiline</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">enableMultiline</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span>            <span class="co1">//enables the multi-line mode in the grid</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/16_rows_columns_manipulations/03_grid_multiline_col.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Multiline cells</a></p>
+
+<a name='column'><h2>Column</h2></a>
+
+<h3 id="adding_removing">Adding/removing a column</h3>
+
+<p>To add a new column to the grid, call the <a class="link-pro" href="api__dhtmlxgrid_insertcolumn.html">insertColumn</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">insertColumn</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span>            <span class="co1">//inserts a column in the 1st position</span></pre></code></pre>
+
+<p>To remove a column, call the  <a class="link-pro" href="api__dhtmlxgrid_deletecolumn.html">deleteColumn</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">deleteColumn</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span>            <span class="co1">//deletes the 1st column</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/16_rows_columns_manipulations/11_pro_grid_cols.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Insert/Delete column</a></p>
+
+<h3 id="adjusting_width">Adjusting the width of a column to the content</h3>
+
+<p>To adjust the width of a column to the content, call the <a class="link-" href="api__dhtmlxgrid_adjustcolumnsize.html">adjustColumnSize</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">adjustColumnSize</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span>      <span class="co1">//adjusts the width of the 1st column to the content</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/16_rows_columns_manipulations/06_pro_column_size.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Adjust column size</a></p>
+
+<h3 id="column_status">Checking visibility of a column</h3>
+
+<p>To check whether a column is visible or hidden, call the <a class="link-pro" href="api__dhtmlxgrid_iscolumnhidden.html">isColumnHidden</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">isColumnHidden</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span>        <span class="co1">//returns 'true' if the 1st column is hidden</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/16_rows_columns_manipulations/12_pro_grid_hideColumn.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Hide/Show column </a></p>
+
+<h3 id="getting_id">Getting the column Id/Index</h3>
+
+<p>To get the ID of a column, call the  <a class="link-" href="api__dhtmlxgrid_getcolumnid.html">getColumnId</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> cId <span class="sy0">=</span> mygrid.<span class="me1">getColumnId</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>             <span class="co1">//gets the id of the 2nd column</span></pre></code></pre>
+
+<p>To get the index of a column, call the <a class="link-" href="api__dhtmlxgrid_getcolindexbyid.html">getColIndexById</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> cIndex <span class="sy0">=</span> mygrid.<span class="me1">getColIndexById</span><span class="br0">&#40;</span><span class="st0">&quot;col3&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//gets index of the column with id='col3'</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/16_rows_columns_manipulations/02_api_grid.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Using Grid API Methods</a></p>
+
+<h3 id="number_of_cols">Getting the number of columns</h3>
+
+<p>To get count of columns in the grid, call the <a class="link-" href="api__dhtmlxgrid_getcolumnsnum.html">getColumnsNum</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> count <span class="sy0">=</span> mygrid.<span class="me1">getColumnsNum</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/16_rows_columns_manipulations/02_api_grid.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Using Grid API Methods</a></p>
+
+<h3 id="sorting">Getting/setting the sorting parameters of a column</h3>
+
+<p>To get the index of a column the grid is currently sorted by and the sorting order, call the <a class="link-" href="api__dhtmlxgrid_getsortingstate.html">getSortingState</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> state <span class="sy0">=</span> mygrid.<span class="me1">getSortingState</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="co1">//returns [0,&quot;des&quot;] if the grid is sorted by the first column in descending order</span></pre></code></pre>
+
+<p>To set the sorting type for the grid columns, call the  <a class="link-" href="api__dhtmlxgrid_setcolsorting.html">setColSorting</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setColSorting</span><span class="br0">&#40;</span><span class="st0">&quot;int,str,date,na,sortingFunction&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3 id="content_type">Getting/setting the type of a column</h3>
+
+<p>To get the content type of a column with the specified index, call the <a class="link-" href="api__dhtmlxgrid_getcoltype.html">getColType</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> type <span class="sy0">=</span> mygrid.<span class="me1">getColType</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span>   <span class="co1">//returns the type of the 1st column</span></pre></code></pre>
+
+<p>To get the content type of a column with the specified ID, call the  <a class="link-" href="api__dhtmlxgrid_getcoltypebyid.html">getColTypeById</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> type <span class="sy0">=</span> mygrid.<span class="me1">getColTypeById</span><span class="br0">&#40;</span><span class="st0">&quot;col3&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//returns type of the column with id='col3'</span></pre></code></pre>
+
+<p>To set the content types for the grid columns, call the <a class="link-" href="api__dhtmlxgrid_setcoltypes.html">setColTypes</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setColTypes</span><span class="br0">&#40;</span><span class="st0">&quot;dyn,ed,txt,price,ch,coro,ra,ro&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3 id="column_width">Getting/setting the width of a column</h3>
+
+<p>To get the width of a column, call the <a class="link-" href="api__dhtmlxgrid_getcolwidth.html">getColWidth</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> type <span class="sy0">=</span> mygrid.<span class="me1">getColWidth</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span>   <span class="co1">//returns the width of the 1st column</span></pre></code></pre>
+
+<p>To set the width for a column, call the <a class="link-" href="api__dhtmlxgrid_setcolwidth.html">setColWidth</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setColWidth</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="sy0">,</span><span class="st0">&quot;150&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>   <span class="co1">// sets the width of the 1st column to 150px</span></pre></code></pre>
+
+<p>To set the width for all columns of the grid, call the <a class="link-" href="api__dhtmlxgrid_setinitwidths.html">setInitWidths</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setInitWidths</span><span class="br0">&#40;</span><span class="st0">&quot;150,100,100,100,100&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>You can use the * (asterisk) as the width value to force a specific column to fill up the remaining width. If you use *
+for several columns they will share out the remaining width equally.</p>
+
+<pre><code><pre class="js"><span class="co1">//2 last columns equally divide the remaining width between themselves </span>
+mygrid.<span class="me1">setInitWidths</span><span class="br0">&#40;</span><span class="st0">&quot;150,100,100,*,*&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3 id="hiding_columns">Hiding a column</h3>
+
+<p>To hide a column with the specified ID, call the <a class="link-pro" href="api__dhtmlxgrid_setcolumnhidden.html">setColumnHidden</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setColumnHidden</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="sy0">,</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span>        <span class="co1">//hides the 1st column</span></pre></code></pre>
+
+<p>To show the column after this, call the same method but with the <i>false</i> parameter:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setColumnHidden</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="sy0">,</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span>       <span class="co1">//shows the 1st column hidden before</span></pre></code></pre>
+
+<h3 id="alignment">Set the column horizontal alignment</h3>
+
+<p>To set the horizontal alignment for the grid columns, call the <a class="link-" href="api__dhtmlxgrid_setcolalign.html">setColAlign</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setColAlign</span><span class="br0">&#40;</span><span class="st0">&quot;right,left,center,justify&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='cell'><h2>Cell</h2></a>
+
+<h3 id="cell_object">Getting/setting the cell object</h3>
+
+<p>To get the object of a cell with the specified row id and column index, call the <a class="link-" href="api__dhtmlxgrid_cellbyid.html">cellById</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> cellObj <span class="sy0">=</span> grid.<span class="me1">cellById</span><span class="br0">&#40;</span><span class="st0">&quot;row5&quot;</span><span class="sy0">,</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// gets object of 1st cell in row with id='row5'</span></pre></code></pre>
+
+<p>To get the object of a cell with the specified row and column indices, call the <a class="link-" href="api__dhtmlxgrid_cellbyindex.html">cellByIndex</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> cellObj <span class="sy0">=</span> grid.<span class="me1">cellByIndex</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="sy0">,</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// gets the object of the 1st cell in the 1st row</span></pre></code></pre>
+
+<h3 id="selecting_cell">Selecting a cell</h3>
+
+<p>To select a cell, call the <a class="link-" href="api__dhtmlxgrid_selectcell.html">selectCell</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">selectCell</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>    <span class="co1">//selects the second cell of the first row</span></pre></code></pre>
+
+<h3 id="merging">Merging Cells</h3>
+
+<p>To activate the possibility of merging cells in the grid, the user can display row cells in the same way as he uses colspan or rowspan in an HTML table.
+Cell groups can be managed from XML or Script. In both cases rowspan and colspan must be enabled during the dhtmlxGrid initialization:</p>
+
+<pre><code><pre class="js">grid.<span class="me1">enableRowspan</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+grid.<span class="me1">enableColSpan</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The user should include <strong>dhtmlxgrid_rowspan.js</strong> file into the page to make rowspan work. Colspan doesn't require any additional files.
+There are several methods responsible for grouping and ungrouping cells with colspan and rowspan.</p>
+
+<h4>Managing cell groups from XML</h4>
+
+<p>The number of cell tags in a row should not be changed. The example of a row with 3 cells, 2 of which are grouped, is presented below:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;row <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;r01&quot;</span>&gt;</span> 
+    <span class="sc2">&lt;cell <span class="kw3">colspan</span><span class="sy0">=</span><span class="st0">&quot;2&quot;</span>&gt;</span>value<span class="sc2">&lt;<span class="sy0">/</span>cell&gt;</span> 
+    <span class="sc2">&lt;cell<span class="sy0">/</span>&gt;</span> 
+    <span class="sc2">&lt;cell&gt;</span>value of third cell<span class="sc2">&lt;<span class="sy0">/</span>cell&gt;</span> 
+<span class="sc2">&lt;<span class="sy0">/</span>row&gt;</span></pre></code></pre>
+
+<p>The same for rowspan:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;row <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;r01&quot;</span>&gt;</span> 
+    <span class="sc2">&lt;cell <span class="kw3">rowspan</span><span class="sy0">=</span><span class="st0">&quot;2&quot;</span>&gt;</span>value0<span class="sc2">&lt;<span class="sy0">/</span>cell&gt;</span> 
+    <span class="sc2">&lt;cell&gt;</span>value1<span class="sc2">&lt;<span class="sy0">/</span>cell&gt;</span> 
+<span class="sc2">&lt;<span class="sy0">/</span>row&gt;</span> 
+<span class="sc2">&lt;row <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;r02&quot;</span>&gt;</span> 
+    <span class="sc2">&lt;cell<span class="sy0">/</span>&gt;</span> 
+    <span class="sc2">&lt;cell&gt;</span>value2<span class="sc2">&lt;<span class="sy0">/</span>cell&gt;</span> 
+<span class="sc2">&lt;<span class="sy0">/</span>row&gt;</span></pre></code></pre>
+
+<h4>Managing cell groups from script</h4>
+
+<p>1) Setting colspan in a row starting from the specified column's index:</p>
+
+<pre><code><pre class="js">grid.<span class="me1">setColspan</span><span class="br0">&#40;</span>row_id<span class="sy0">,</span> col_ind<span class="sy0">,</span> colspan<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The parameters of this method are the following:</p>
+
+<ul>
+<li>row_id - id of the row;</li>
+<li>col_ind - index of the column;</li>
+<li>colspan - size of the colspan (the number of cells in a group).</li>
+</ul>
+
+<p>2) Setting rowspan with a specified length starting from the specified cell:</p>
+
+<pre><code><pre class="js">grid.<span class="me1">setRowspan</span><span class="br0">&#40;</span>rowID<span class="sy0">,</span>colInd<span class="sy0">,</span>length<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The parameters of this method are the following:</p>
+
+<ul>
+<li>rowID - id of the row;</li>
+<li>colInd - index of the first cell in the group;</li>
+<li>length - length of the rowspan (number of cells in the roup).</li>
+</ul>
+
+<p>For example:</p>
+
+<pre><code><pre class="js"><span class="co1">// group two cells with colspan</span>
+grid.<span class="me1">setColspan</span><span class="br0">&#40;</span><span class="st0">&quot;r01&quot;</span><span class="sy0">,</span><span class="nu0">0</span><span class="sy0">,</span><span class="nu0">2</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// ungroup cells</span>
+grid.<span class="me1">setColspan</span><span class="br0">&#40;</span><span class="st0">&quot;r01&quot;</span><span class="sy0">,</span><span class="nu0">0</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// group two cells with rowspan</span>
+grid.<span class="me1">setRowspan</span><span class="br0">&#40;</span><span class="st0">&quot;r01&quot;</span><span class="sy0">,</span><span class="nu0">0</span><span class="sy0">,</span><span class="nu0">2</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// ungroup cells</span>
+grid.<span class="me1">setRowspan</span><span class="br0">&#40;</span><span class="st0">&quot;r01&quot;</span><span class="sy0">,</span><span class="nu0">0</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>Simultaneous usage of rowspan and colspan for one cell is impossible. 
+Also note that setColspan() and setRowspan() methods must be called only after proper rows are loaded.</p>
+</p></div>
+
+<h3 id="text_manipulation">Manipulating text of a cell</h3>
+
+<p>The user can set text style for a specified cell in the following way:</p>
+
+<pre><code><pre class="js">grid.<span class="me1">setCellTextStyle</span><span class="br0">&#40;</span>row_id<span class="sy0">,</span> ind<span class="sy0">,</span> styleString<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The parameters are the following:</p>
+
+<ul>
+<li>row_id - id of the row;</li>
+<li>ind - index of the cell;</li>
+<li>styleString - style string in the common format (example: “color:red;border:1px solid gray;”).</li>
+</ul>
+
+<h3 id="editing">Editing cells</h3>
+
+<p>The following method creates the Editor object and switches the currently selected cell to the edit mode if it is allowed:</p>
+
+<pre><code><pre class="js">grid.<span class="me1">editCell</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The following method should be used to return the value from the editor (if it is present) to the cell and close the editor:</p>
+
+<pre><code><pre class="js">grid.<span class="me1">editStop</span><span class="br0">&#40;</span>mode<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3 id="marked_cells">Manipulating Marked Cells</h3>
+
+<p>There is a possibility to set marked cells support for enabled or disabled state in dhtmlxGrid.
+The user should include <strong>dhtmlxgrid_markers.js</strong> file into the page to work with this functionality.</p>
+
+<pre><code><pre class="js">grid.<span class="me1">enableMarkedCells</span><span class="br0">&#40;</span>state<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// true/false</span></pre></code></pre>
+
+<p>A cell can be marked/unmarked (selected or deselected) from script in the following way:</p>
+
+<pre><code><pre class="js">grid.<span class="me1">mark</span><span class="br0">&#40;</span>r<span class="sy0">,</span>cInd<span class="sy0">,</span>state<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The parameters are the following:</p>
+
+<ul>
+<li>r - row object or index of the row;</li>
+<li>cInd - index of the cell;</li>
+<li>state(true/false) - select or deselect the cell in question.</li>
+</ul>
+
+<p>The user can get marked cells in the following way:</p>
+
+<pre><code><pre class="js">grid.<span class="me1">getMarked</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The method returns the array of marked cells (pairs of row id and column index). To unmark all cells in the grid, the user should call the following command:</p>
+
+<pre><code><pre class="js">grid.<span class="me1">unmarkAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3 id="unique_ids">Enabling unique ids for cells</h3>
+
+<p>There is a method that is capable of enabling/disabling unique ids for cells. Ids will be automatically created using the following template: “c_[RowId]_[colIndex]”.</p>
+
+<pre><code><pre class="js">grid.<span class="me1">enableCellIds</span><span class="br0">&#40;</span>mode<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// true to enable, false to disable</span></pre></code></pre>
+
+<h3 id="finding_cell">Finding a cell</h3>
+
+<p>To find a cell in the grid by its value, the user should apply the following method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> cell <span class="sy0">=</span> grid.<span class="me1">findCell</span><span class="br0">&#40;</span>value<span class="sy0">,</span> c_ind<span class="sy0">,</span> first<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The user shouldn't forget to include <strong>dhtmlxgrid_filter.js</strong> file into his project. 
+The parameters of the above-mentioned method are:</p>
+
+<ul>
+<li>value - search string;</li>
+<li>c_ind - index of the column to search in (optional; if it is not specified, search will be held through all grid);</li>
+<li>first - finds only the first occurrence (optional parameter).</li>
+</ul>
+
+<p>The method returns an array, each member of which contains an array with row id and cell index.</p>
+
+<!-- Content Area End -->
+			<a href='grid__basic_operations.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

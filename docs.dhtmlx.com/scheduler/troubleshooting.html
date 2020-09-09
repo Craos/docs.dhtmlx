@@ -1,0 +1,238 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Troubleshooting Backend Integration Issues  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="loading_data.html">Loading Data</a></li><li class=""><a href="server_integration.html">Server-Side Integration</a></li><li class=" current"><a href="troubleshooting.html">Troubleshooting Backend Integration Issues</a></li><ul><li class="inner"><a href="troubleshooting.html#symptoms">Symptoms</a></li><li class="inner"><a href="troubleshooting.html#reasons">Reasons</a></li><li class="inner"><a href="troubleshooting.html#checkfortheerrormessagesonthepage">Check for the error messages on the page</a></li><li class="inner"><a href="troubleshooting.html#checkwhatisrequestedbytheclient">Check what is requested by the client</a></li><li class="inner"><a href="troubleshooting.html#checkwhatisreturnedfromtheserver">Check what is returned from the server</a></li><li class="inner"><a href="troubleshooting.html#checkwhatisloadedintothescheduler">Check what is loaded into the Scheduler</a></li><li class="inner"><a href="troubleshooting.html#lastresort">Last resort</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="loading_and_storing_data.html">Loading and Storing Data</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Troubleshooting Backend Integration Issues</h1>
+
+<a name='symptoms'><h2>Symptoms</h2></a>
+
+<p>1&#46; You try to implement the backend API either manually or following our <a class="link-" href="howtostart_guides.html">tutorials</a>, but Scheduler doesn't show any events when you open the page.</p>
+
+<p>or</p>
+
+<p>2&#46; You have troubles with saving changes to the backend.</p>
+
+<a name='reasons'><h2>Reasons</h2></a>
+
+<p>There may be many reasons and solutions for incorrect behavior on different platforms, which we're not going to touch in this article.</p>
+
+<p>Our goal here is to walk you through the common steps of investigating this kind of issue. Once you locate the issue and understand why the app is not working, the fix is usually trivial.</p>
+
+<a name='checkfortheerrormessagesonthepage'><h2>Check for the error messages on the page</h2></a>
+
+<p>1&#46; Open the browser dev tools and reload the page. Do you see any error messages in the browser console?</p>
+
+<p><img src="media/errors_check.png" alt="Errors check" /></p>
+
+<p>2&#46; If there are any, evaluate the errors and decide whether you are able to deal with them by yourself. Otherwise, proceed to the next step.</p>
+
+<a name='checkwhatisrequestedbytheclient'><h2>Check what is requested by the client</h2></a>
+
+<p>1&#46; Open the <strong>Network</strong> panel, make sure <em>XHR</em> requests are visible.</p>
+
+<p>2&#46; Reload the page and find a request that should load data from the backend. Make sure it goes to the correct URL and check the response status.</p>
+
+<p><img src="media/requests_check.png" alt="Requests check" /></p>
+
+<p>Are there any errors?</p>
+
+<p>404 response status would mean there is either an incorrect URL passed to the <code>scheduler.init</code> method or a problem in the routing settings of your application.</p>
+
+<a name='checkwhatisreturnedfromtheserver'><h2>Check what is returned from the server</h2></a>
+
+<p>Select the request and check the response preview or the raw response content.</p>
+
+<p><img src="media/response_check.png" alt="Response check" /></p>
+
+<p>Does the response look similar to the <a class="link-" href="data_formats.html">expected data format</a>.</p>
+
+<h3>If you see an error message from the web server instead of Scheduler data</h3>
+
+<p>You can be sure that something is wrong with the backend code or database connection settings.</p>
+
+<p>Usually, the error response contains enough info to figure out what causes the issue. If you see a generic <code>500 server error</code> message, you may need to temporary disable custom error pages on your server in order to see
+the actual error. It's done differently on various platforms. If you're not sure where to start, just google "disable custom error page in <%your server or framework%>".</p>
+
+<h3>If the data looks more or less ok</h3>
+
+<p>Take a look at the <code>id</code>, <code>start_date</code> and <code>end_date</code> properties.</p>
+
+<ul>
+<li><p><code>id</code> - items with the same id will be merged. If you have five events with matching id, Scheduler will display only one.</p></li>
+<li><p><code>start_date</code>, <code>end_date</code> - make sure date formats match the format you specify in the <a class="link-" href="api__scheduler_date_format_config.html">date_format</a> config of Scheduler</p></li>
+</ul>
+
+<p><a class="link-" href="loading_data.html#dataproperties">Read details about the data properties</a>.</p>
+
+<p>If the actual date format doesn't match what scheduler expects, events will either have invalid dates and won't be displayed at all, or will be moved to some later dates.</p>
+
+<p>Usually <code>xml_date</code> is set before the <code>scheduler.init</code> call like this:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">xml_date</span><span class="sy0">=</span><span class="st0">&quot;%Y-%m-%d %H:%i&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>If you find something unusual in the property values</h3>
+
+<p>Check what is stored in your database, probably the issue is there. If date formats don't match, either change the <a class="link-" href="api__scheduler_date_format_config.html">date_format</a> config, 
+or modify the code that serialized task dates before outputting them to the client.</p>
+
+<a name='checkwhatisloadedintothescheduler'><h2>Check what is loaded into the Scheduler</h2></a>
+
+<h3>Invalid date format</h3>
+
+<p>1&#46; Open the browser console and run <code>scheduler.getEvents()</code>.</p>
+
+<p>2&#46; Inspect the console output. You'll likely see an array of events.</p>
+
+<p><img src="media/data_check.png" alt="Data check" /></p>
+
+<p>Again, you can check the <code>start_date</code> and <code>end_date</code> properties of some records. You may notice either <code>invalid date</code> values or something obviously unexpected,
+e.g. year 1970 or year 2038. This will obviously indicate a problem with the <a class="link-" href="api__scheduler_date_format_config.html">date_format</a> format.</p>
+
+<div class='note'><p><p>If you use the <a class="link-" href="recurring_events.html">recurring extension</a>, <a class="link-" href="api__scheduler_getevents.html">scheduler.getEvents()</a> won't return any data, unless you limit the output by the <code>from</code>/<code>to</code> date parameters. 
+Try removing the recurring events extension from the page for this check.</p>
+</p></div>
+
+<h3>Missing properties for Units/Timeline</h3>
+
+<p>Or, if you use the <a class="link-pro" href="units_view.html">Units</a> or <a class="link-pro" href="timeline_view.html">Timeline</a> views, events may be not displayed, if they are not mapped to any section of the unit/timeline.</p>
+
+<p>In order to check it, you can use <code>skip_incorrect:false</code> for the <a class="link-pro" href="units_view.html#skippingeventsthatdontbelongtoanyoftheunits">Units view</a>:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createUnitsView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;unit&quot;</span><span class="sy0">,</span>
+    ...
+    <span class="me1">skip_incorrect</span><span class="sy0">:</span><span class="kw2">false</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Or, <code>show_unassigned: true</code> for the <a class="link-pro" href="api__scheduler_createtimelineview.html">Timeline view</a>:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createTimelineView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span>
+    ...
+    <span class="me1">show_unassigned</span><span class="sy0">:</span> <span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>If that is the case, events will appear in the first section of the Units/Timeline view after you change the config and reload.
+Then check the values of the <code>property</code> or <code>y_property</code> options of the Units or Timeline views respectively, and the values of the appropriate properties of the event.</p>
+
+<h3>Filters</h3>
+
+<p>If you don't see any obvious issues there, you may want to check your code, probably events are <a class="link-" href="filtering.html">hidden by filter</a>.</p>
+
+<a name='lastresort'><h2>Last resort</h2></a>
+
+<p>If none of the above helps, or if you don't see neither events, nor console errors, try to <a href="https://forum.dhtmlx.com/c/scheduler-all">post your question at our forum</a> or contact our tech support regarding your issue.</p>
+
+<p>Please be sure to provide all the info you've collected completing the steps above.</p>
+
+<p>Also, our team will need a minimal reproducible demo: either a standalone package with a simplified app (the scheduler page, all required files, a database dump with some test data, or a static JSON file with data you 
+try to load), or an online link where we could check the issue in the browser.</p>
+
+<!-- Content Area End -->
+			<a href='troubleshooting.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

@@ -1,0 +1,716 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Server-Side Integration  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__loading.html">Data Loading</a></li><li class="toc-pro"><a href="desktop__dynamic_loading.html">Dynamic Loading (on demand)</a></li><li class=""><a href="desktop__supported_data_formats.html">tasksExploring Supported Data Formats</a></li><li class=" current"><a href="desktop__server_side.html">Server-Side Integration</a></li><ul><li class="inner"><a href="desktop__server_side.html#technique">Technique</a></li><li class="inner"><a href="desktop__server_side.html#storingtheorderoftasks">Storing the Order of Tasks</a></li><li class="inner"><a href="desktop__server_side.html#customrequestheadersandparameters">Custom Request Headers and Parameters</a></li><li class="inner"><a href="desktop__server_side.html#triggeringdatasavingfromscript">Triggering Data Saving from Script</a></li><li class="inner"><a href="desktop__server_side.html#customrouting">Custom Routing</a></li><li class="inner"><a href="desktop__server_side.html#errorhandling">Error Handling</a></li><li class="inner"><a href="desktop__server_side.html#cascadedeletion">Cascade Deletion</a></li><li class="inner"><a href="desktop__server_side.html#xsscsrfandsqlinjectionattacks">XSS, CSRF and SQL Injection Attacks</a></li></ul><li class=""><a href="desktop__performance.html">Performance: Ways to Increase</a></li><li class=""><a href="desktop__troubleshooting.html">Troubleshooting Backend Integration Issues</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__loading_storing_data.html">Loading and Storing Tasks</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Server-Side Integration</h1>
+
+<p><style>
+.dp_table td{
+    min-width:140px;</p>
+
+<p>}
+</style></p>
+
+<p>The recommended approach to connect dhtmlxGantt to a backend is to implement RESTful API on the server and use dhtmlxDataProcessor on the client.
+<a href="../dataprocessor__index.html">DataProcessor</a> is a client-side library included into dhtmlxGantt.js. It monitors data changes and gets the server requests on the client side.</p>
+
+<p>Gantt uses its own instance of DataProcessor which has some specificity in comparison to the main version of the library. The current article describes the way of using Gantt DataProcessor to provide
+<a class="link-" href="desktop__howtostart_guides.html">integration with server-side platforms</a>.</p>
+
+<p>You can take a look at the video guide that shows how to create a Gantt chart on the page and load the data into it on the example of a Node.js platform.</p>
+
+<iframe width="704" height="400" src="https://www.youtube.com/embed/D8YzyzBfyP8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<a name='technique'><h2>Technique</h2></a>
+
+<p>Generally, to load data from the server side using REST API, you need to:</p>
+
+<h3>Client side</h3>
+
+<p>1) Call the <a class="link-" href="api__gantt_load.html">load</a> method, where as a parameter specify the URL that returns Gantt data in the <a class="link-" href="desktop__supported_data_formats.html#json">JSON</a> format.</p>
+
+<p>2) Create a DataProcessor instance using one of the two ways:</p>
+
+<ul>
+<li>Initialize DataProcessor and attach it to the dhtmlxGantt object:</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;apiUrl&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// keep the order of the lines below</span>
+<span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> gantt.<span class="me1">dataProcessor</span><span class="br0">&#40;</span><span class="st0">&quot;apiUrl&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">init</span><span class="br0">&#40;</span>gantt<span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;REST&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>Call the <a class="link-" href="api__gantt_createdataprocessor.html">createDataProcessor</a> method and pass an object with configuration options as its parameter:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dp <span class="sy0">=</span> gantt.<span class="me1">createDataProcessor</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+      url<span class="sy0">:</span> <span class="st0">&quot;apiUrl&quot;</span><span class="sy0">,</span>
+      mode<span class="sy0">:</span> <span class="st0">&quot;REST&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Check the detailed info in the next section.</p>
+
+<h3 id="createdp"> Creating DataProcessor</h3>
+
+<p>While creating a DataProcessor via the API method <a class="link-" href="api__gantt_createdataprocessor.html">createDataProcessor</a> you have several possible options for passing parameters.</p>
+
+<p>1&#46; Use one of the predefined request modes, as in:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dp <span class="sy0">=</span> gantt.<span class="me1">createDataProcessor</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+   url<span class="sy0">:</span> <span class="st0">&quot;/api&quot;</span><span class="sy0">,</span>
+   mode<span class="sy0">:</span> <span class="st0">&quot;REST&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>where:</p>
+
+<ul>
+<li><strong>url</strong> - the URL to the server side</li>
+<li><strong>mode</strong> - the mode of sending data to the server:  "JSON" | "REST-JSON" | "JSON" | "POST" | "GET"</li>
+</ul>
+
+<p>2&#46; Provide a custom <strong>router</strong> object:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dp <span class="sy0">=</span> gantt.<span class="me1">createDataProcessor</span><span class="br0">&#40;</span>router<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>where <strong>router</strong> is either a function:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">// entity - &quot;task&quot;|&quot;link&quot;</span>
+<span class="co1">// action - &quot;create&quot;|&quot;update&quot;|&quot;delete&quot;</span>
+<span class="co1">// data - an object with task or link data</span>
+<span class="co1">// id – the id of a processed object (task or link)</span>
+<span class="kw2">var</span> dp <span class="sy0">=</span> gantt.<span class="me1">createDataProcessor</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>entity<span class="sy0">,</span> action<span class="sy0">,</span> data<span class="sy0">,</span> id<span class="br0">&#41;</span> <span class="br0">&#123;</span> 
+    <span class="kw1">switch</span><span class="br0">&#40;</span>action<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">case</span> <span class="st0">&quot;create&quot;</span><span class="sy0">:</span>
+           <span class="kw1">return</span> gantt.<span class="me1">ajax</span>.<span class="me1">post</span><span class="br0">&#40;</span>
+                server <span class="sy0">+</span> <span class="st0">&quot;/&quot;</span> <span class="sy0">+</span> entity<span class="sy0">,</span>
+                data
+           <span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">break</span><span class="sy0">;</span>
+        <span class="kw1">case</span> <span class="st0">&quot;update&quot;</span><span class="sy0">:</span>
+           <span class="kw1">return</span> gantt.<span class="me1">ajax</span>.<span class="me1">put</span><span class="br0">&#40;</span>
+                 server <span class="sy0">+</span> <span class="st0">&quot;/&quot;</span> <span class="sy0">+</span> entity <span class="sy0">+</span> <span class="st0">&quot;/&quot;</span> <span class="sy0">+</span> id<span class="sy0">,</span>
+                 data
+            <span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">break</span><span class="sy0">;</span>
+        <span class="kw1">case</span> <span class="st0">&quot;delete&quot;</span><span class="sy0">:</span>
+           <span class="kw1">return</span> gantt.<span class="me1">ajax</span>.<span class="me1">del</span><span class="br0">&#40;</span>
+                 server <span class="sy0">+</span> <span class="st0">&quot;/&quot;</span> <span class="sy0">+</span> entity <span class="sy0">+</span> <span class="st0">&quot;/&quot;</span> <span class="sy0">+</span> id
+           <span class="br0">&#41;</span><span class="sy0">;</span>
+         <span class="kw1">break</span><span class="sy0">;</span>
+   <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>or an object of the following structure:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dp <span class="sy0">=</span> gantt.<span class="me1">createDataProcessor</span><span class="br0">&#40;</span><span class="br0">&#123;</span> 
+   task<span class="sy0">:</span> <span class="br0">&#123;</span>
+      create<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span> <span class="br0">&#123;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+      update<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>data<span class="sy0">,</span> id<span class="br0">&#41;</span> <span class="br0">&#123;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="kw1">delete</span><span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span> <span class="br0">&#123;</span><span class="br0">&#125;</span>
+   <span class="br0">&#125;</span><span class="sy0">,</span>
+   link<span class="sy0">:</span> <span class="br0">&#123;</span>
+      create<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span> <span class="br0">&#123;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+      update<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>data<span class="sy0">,</span> id<span class="br0">&#41;</span> <span class="br0">&#123;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="kw1">delete</span><span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span> <span class="br0">&#123;</span><span class="br0">&#125;</span>
+   <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>All the functions of the <strong>router</strong> object should return either a Promise or a data response object. This is needed for the dataProcessor to apply the database id and to hook <strong>onAfterUpdate</strong> event of the data processor.</p>
+
+<pre><code><pre class="js">router <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>entity<span class="sy0">,</span> action<span class="sy0">,</span> data<span class="sy0">,</span> id<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="kw2">new</span> gantt.<span class="me1">Promise</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>resolve<span class="sy0">,</span> reject<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="co1">// … some logic</span>
+        <span class="kw1">return</span> resolve<span class="br0">&#40;</span><span class="br0">&#123;</span>tid<span class="sy0">:</span> databaseId<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Thus you can use DataProcessor for saving data in localStorage, or any other storage which is not linked to a certain URL, or in case if there are two different servers (URLs) responsible for creation and deletion of
+objects.</p>
+
+<p><a href='samples/08_api/22_data_processor.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom data api - using local storage</a></p>
+
+<h3 id="requestresponsedetails">Request and response details</h3>
+
+<p>The URL is formed by the following rule:</p>
+
+<ul>
+<li>api/link/id</li>
+<li>api/task/id</li>
+</ul>
+
+<p>where "api" is the URL you've specified in the dataProcessor configuration.</p>
+
+<p>The list of possible requests and responses is:</p>
+
+<table class="dp_table">
+    <tr>
+        <th><b>Action</b></th><th><b>HTTP Method</b></th><th><b>URL</b></th><th><b>Response</b></th>
+    </tr>
+    <tr>
+        <td>load data</td>
+        <td>GET</td>
+        <td>/apiUrl</td>
+        <td><a class="link-" href="desktop__supported_data_formats.html#json">JSON format</a></td>
+    </tr>
+    <tr>
+        <td>add a new task</td>
+        <td>POST</td>
+        <td>/apiUrl/task</td>
+        <td>{"action":"inserted","tid":"taskId"}</td>
+    </tr>
+    <tr>
+        <td>update a task</td>
+        <td>PUT</td>
+        <td>/apiUrl/task/taskId</td>
+        <td>{"action":"updated"}</td>
+    </tr>
+    <tr>
+        <td>delete a task</td>
+        <td>DELETE</td>
+        <td>/apiUrl/task/taskId</td>
+        <td>{"action":"deleted"}</td>
+    </tr>
+    <tr>
+        <td>add a new link</td>
+        <td>POST</td>
+        <td>/apiUrl/link</td>
+        <td>{"action":"inserted","tid":"linkId"}</td>
+    </tr>
+    <tr>
+        <td>update a link</td>
+        <td>PUT</td>
+        <td>/apiUrl/link/linkId</td>
+        <td>{"action":"updated"}</td>
+    </tr>
+    <tr>
+        <td>delete a link</td>
+        <td>DELETE</td>
+        <td>/apiUrl/link/linkId</td>
+        <td>{"action":"deleted"}</td>
+    </tr>
+</table>
+
+<h3 id="requestparams">Request parameters</h3>
+
+<p>Create/Update/Delete requests will contain all public properties of a client-side task or link object:</p>
+
+<p>Task:</p>
+
+<ul>
+<li><strong>start_date</strong>:2017-04-08 00:00:00</li>
+<li><strong>duration</strong>:4</li>
+<li><strong>text</strong>:Task #2.2</li>
+<li><strong>parent</strong>:3</li>
+<li><strong>end_date</strong>:2017-04-12 00:00:00</li>
+</ul>
+
+<p>Link:</p>
+
+<ul>
+<li><strong>source</strong>:1</li>
+<li><strong>target</strong>:2</li>
+<li><strong>type</strong>:0</li>
+</ul>
+
+<p>Note:</p>
+
+<ul>
+<li>The format of the <strong>start_date</strong> and <strong>end_date</strong> parameters is defined by the <a class="link-" href="api__gantt_date_format_config.html">date_format</a> config.</li>
+<li>The client side sends all the public properties of a task or link object. Thus, a request may contain any number of additional parameters. </li>
+<li>If you extend the data model by adding new columns/properties to it, no additional actions are needed to make gantt sending them to the backend.</li>
+</ul>
+
+<div class='note'><p><p>By public properties here we mean the properties the names of which don't start with an underscore (<strong>_</strong>) or a dollar sign (<strong>$</strong>) characters, 
+e.g. properties named <strong>task._owner</strong> or <strong>link.$state</strong> won't be sent to the backend.</p>
+</p></div>
+
+<h3 id="restjson">REST-JSON mode</h3>
+
+<p>Besides the "POST","GET","REST" and "JSON" <a href="../dataprocessor__configuration.html#sendingmodes">transaction modes</a>, Gantt DataProcessor can also be used in the "REST-JSON" mode.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;apiUrl&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> dp <span class="sy0">=</span> gantt.<span class="me1">createDataProcessor</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+      url<span class="sy0">:</span> <span class="st0">&quot;/apiUrl&quot;</span><span class="sy0">,</span>
+      mode<span class="sy0">:</span> <span class="st0">&quot;REST-JSON&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>It uses the same <a href="desktop__server_side.html#requestresponsedetails">URLs for requests</a>, but the <a href="desktop__server_side.html#requestparams">request parameters</a> for tasks and links and the form of sending them to the server differ.</p>
+
+<p>In the REST mode data is sent to the server as a form:</p>
+
+<pre><code><pre class="js">Content<span class="sy0">-</span>Type<span class="sy0">:</span> application<span class="sy0">/</span>x<span class="sy0">-</span>www<span class="sy0">-</span>form<span class="sy0">-</span>urlencoded</pre></code></pre>
+
+<p>while in the REST-JSON mode data is sent in the JSON format:</p>
+
+<p class='snippet'> Headers</p>
+
+<pre><code><pre class="js">Content<span class="sy0">-</span>type<span class="sy0">:</span> application<span class="sy0">/</span>json</pre></code></pre>
+
+<p>So parameters are sent as a JSON object:</p>
+
+<p><strong>Request Payload</strong></p>
+
+<ul>
+<li>Task</li>
+</ul>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    <span class="st0">&quot;start_date&quot;</span><span class="sy0">:</span> <span class="st0">&quot;20-09-2018 00:00&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;text&quot;</span><span class="sy0">:</span> <span class="st0">&quot;New task&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;duration&quot;</span><span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span>
+    <span class="st0">&quot;end_date&quot;</span><span class="sy0">:</span> <span class="st0">&quot;21-09-2018 00:00&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;parent&quot;</span><span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">,</span>
+    <span class="st0">&quot;usage&quot;</span><span class="sy0">:</span><span class="br0">&#91;</span><span class="br0">&#123;</span>
+        <span class="br0">&#123;</span><span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="st0">&quot;1&quot;</span><span class="sy0">,</span> <span class="st0">&quot;value&quot;</span><span class="sy0">:</span><span class="st0">&quot;30&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span><span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="st0">&quot;2&quot;</span><span class="sy0">,</span> <span class="st0">&quot;value&quot;</span><span class="sy0">:</span><span class="st0">&quot;20&quot;</span><span class="br0">&#125;</span>
+    <span class="br0">&#125;</span><span class="br0">&#93;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>Link</li>
+</ul>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    <span class="st0">&quot;source&quot;</span><span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span>
+    <span class="st0">&quot;target&quot;</span><span class="sy0">:</span> <span class="nu0">2</span><span class="sy0">,</span>
+    <span class="st0">&quot;type&quot;</span><span class="sy0">:</span> <span class="st0">&quot;0&quot;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>This format makes processing of complex records handier on any server-side platform.</p>
+
+<h3 id="loadserverside">Server side</h3>
+
+<p>On each action performed in the Gantt (adding, updating or deleting tasks or links), dataProcessor reacts by sending an AJAX request to the server.</p>
+
+<p>Each request contains all the data needed to save changes in the database.
+As we initialized dataProcessor in the REST mode, it will use different HTTP verbs for each type of operation.</p>
+
+<p>Since we use REST API, it's possible to implement the server side using different frameworks and programming languages.
+Here's a list of available server-side implementations that you can use for Gantt backend integration:</p>
+
+<ul>
+<li><a class="link-" href="desktop__howtostart_dotnet_core.html">dhtmlxGantt with ASP.NET Core 2</a></li>
+<li><a class="link-" href="desktop__howtostart_php_slim4.html">dhtmlxGantt with PHP: Slim</a></li>
+<li><a class="link-" href="desktop__howtostart_php_laravel.html">dhtmlxGantt with PHP: Laravel</a></li>
+<li><a class="link-" href="desktop__howtostart_nodejs.html">dhtmlxGantt with Node.js</a></li>
+<li><a class="link-" href="desktop__howtostart_dotnet.html">dhtmlxGantt with ASP.NET MVC</a></li>
+<li><a class="link-" href="desktop__howtostart_ruby.html">dhtmlxGantt with Ruby on Rails</a></li>
+</ul>
+
+<a name='storingtheorderoftasks'><h2>Storing the Order of Tasks</h2></a>
+
+<p>Gantt displays tasks in the same order they come from a data source. If you allow users to <a class="link-" href="desktop__reordering_tasks.html#dragndropwithinthewholeganttstructure">reorder tasks manually</a>, 
+you'll also need to store this order in the database and make sure that your data feed returns data sorted appropriately.</p>
+
+<p>Client-side configuration:</p>
+
+<pre><code><pre class="js"><span class="co1">// reordering tasks within the whole gantt</span>
+gantt.<span class="me1">config</span>.<span class="me1">order_branch</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+gantt.<span class="me1">config</span>.<span class="me1">order_branch_free</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/api&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> dp <span class="sy0">=</span> gantt.<span class="me1">createDataProcessor</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+      url<span class="sy0">:</span> <span class="st0">&quot;/api&quot;</span><span class="sy0">,</span>
+      mode<span class="sy0">:</span> <span class="st0">&quot;REST&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The saving order can be implemented in several ways, we'll show one of them.</p>
+
+<ul>
+<li>You add a numeric column to your tasks table, let's call it 'sortorder'.</li>
+<li>When serving the GET action, you sort tasks by this column in the ascending order.</li>
+<li>When a new task is added, it should receive <code>MAX(sortorder) + 1</code> sortorder.</li>
+<li>When the order is changed on the client side, gantt will send PUT (POST if you don't use the REST mode) with
+all the properties of a task and also the values that describe the position of the task within the project tree.</li>
+</ul>
+
+<table class="dp_table">
+    <tr>
+        <th><b>HTTP Method</b></th><th><b>URL</b></th><th><b>Parameters</b></th><th><b>Response</b></th>
+    </tr>
+    <tr>
+        <td>PUT</td>
+        <td>/apiUrl/task/taskId</td>
+        <td>
+            <ul>
+            <li><b>target=</b> adjacentTaskId</li>
+            </ul>
+        </td>
+        <td>{"action":"updated"}</td>
+    </tr>
+</table>
+
+<p>The <b>target</b> parameter will contain the id of the nearest task that goes right before or right after the current task.</p>
+
+<p>Its value may come in one of two formats:</p>
+
+<ul>
+<li><em>target=targetId</em>  - the current task should go right <b>before</b> the targetId task</li>
+<li><em>target=next:targetId</em> - the current task should go right <b>after</b> the targetId task</li>
+</ul>
+
+<p>Applying of the order changes usually involves updating of multiple tasks, here is a pseudo code example of how it can be implemented:</p>
+
+<pre><code><pre class="js"><span class="kw2">const</span> target <span class="sy0">=</span> request<span class="br0">&#91;</span><span class="st0">&quot;target&quot;</span><span class="br0">&#93;</span><span class="sy0">;</span>
+<span class="kw2">const</span> currentTaskId <span class="sy0">=</span> request<span class="br0">&#91;</span><span class="st0">&quot;id&quot;</span><span class="br0">&#93;</span><span class="sy0">;</span>
+let nextTask<span class="sy0">;</span>
+let targetTaskId<span class="sy0">;</span>
+&nbsp;
+<span class="co1">// get id of adjacent task and check whether updated task should go before or after it</span>
+<span class="kw1">if</span><span class="br0">&#40;</span>target.<span class="me1">startsWith</span><span class="br0">&#40;</span><span class="st0">&quot;next:&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    targetTaskId <span class="sy0">=</span> target.<span class="me1">substr</span><span class="br0">&#40;</span><span class="st0">&quot;next:&quot;</span>.<span class="me1">length</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    nextTask <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="kw1">else</span><span class="br0">&#123;</span>
+    targetTaskId <span class="sy0">=</span> target<span class="sy0">;</span>
+    nextTask <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="kw2">const</span> currentTask <span class="sy0">=</span> tasks.<span class="me1">getById</span><span class="br0">&#40;</span>currentTaskId<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">const</span> targetTask <span class="sy0">=</span> tasks.<span class="me1">getById</span><span class="br0">&#40;</span>targetTaskId<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">!</span>targetTaskId<span class="br0">&#41;</span>
+    <span class="kw1">return</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// updated task will receive the sortorder value of the adjacent task</span>
+let targetOrder <span class="sy0">=</span> targetTask.<span class="me1">sortorder</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// if it should go after the adjacent task, it should receive a bigger sortorder</span>
+<span class="kw1">if</span><span class="br0">&#40;</span>nextTask<span class="br0">&#41;</span>
+    targetOrder<span class="sy0">++;</span>
+&nbsp;
+<span class="co1">// increase sort orders of tasks that should go after the updated task</span>
+tasks.<span class="me1">where</span><span class="br0">&#40;</span>task <span class="sy0">=&gt;</span> task.<span class="me1">sortorder</span> <span class="sy0">&gt;=</span> targetOrder<span class="br0">&#41;</span>.
+   <span class="me1">update</span><span class="br0">&#40;</span>task <span class="sy0">=&gt;</span> task.<span class="me1">sortorder</span><span class="sy0">++</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// and update the task with its new sortorder</span>
+currentTask.<span class="me1">sortorder</span> <span class="sy0">=</span> targetOrder<span class="sy0">;</span>
+&nbsp;
+tasks.<span class="me1">save</span><span class="br0">&#40;</span>currentTask<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>You can have a look at the detailed examples on how to implement storing the tasks' order for particular server-side platforms: 
+<a class="link-" href="desktop__howtostart_php.html#storingtheorderoftasks">plain PHP</a>, <a class="link-" href="desktop__howtostart_php_laravel.html#storingtheorderoftasks">Laravel</a>,
+<a class="link-" href="desktop__howtostart_nodejs.html#storingtheorderoftasks">Node.js</a>, <a class="link-" href="desktop__howtostart_dotnet.html#storingtheorderoftasks">ASP.NET Web API</a> and 
+<a class="link-" href="desktop__howtostart_ruby.html#storingtheorderoftasks">Rails</a>.</p>
+
+<a name='customrequestheadersandparameters'><h2>Custom Request Headers and Parameters</h2></a>
+
+<h3>Adding custom request headers</h3>
+
+<p>When you need Gantt to send additional headers to your backend, you can specify them using the <a href="../api__dataprocessor_settransactionmode.html">dataProcessor.setTransactionMode</a> method.</p>
+
+<p>For example, let's suppose that you need to add an authorization token to your requests:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/api&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> dp <span class="sy0">=</span> gantt.<span class="me1">createDataProcessor</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+  url<span class="sy0">:</span> <span class="st0">&quot;/api&quot;</span><span class="sy0">,</span>
+  mode<span class="sy0">:</span><span class="st0">&quot;REST&quot;</span><span class="sy0">,</span>
+  headers<span class="sy0">:</span> <span class="br0">&#123;</span>
+    <span class="st0">&quot;Content-Type&quot;</span><span class="sy0">:</span> <span class="st0">&quot;application/x-www-form-urlencoded&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;Authorization&quot;</span><span class="sy0">:</span> <span class="st0">&quot;Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b&quot;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Currently, <a class="link-" href="api__gantt_load.html">load</a> does not support header/payload parameters, so if you need them for GET request, you'll have to send xhr manually and load data into gantt using <a class="link-" href="api__gantt_parse.html">parse</a>, for example:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">ajax</span>.<span class="me1">get</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    url<span class="sy0">:</span> <span class="st0">&quot;/api&quot;</span><span class="sy0">,</span>
+    headers<span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="st0">&quot;Authorization&quot;</span><span class="sy0">:</span> <span class="st0">&quot;Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b&quot;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span>.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span> <span class="br0">&#40;</span>xhr<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    gantt.<span class="me1">parse</span><span class="br0">&#40;</span>xhr.<span class="me1">responseText</span><span class="br0">&#41;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Adding custom parameters to the request</h3>
+
+<p>There are a couple of ways to send additional parameters to requests.</p>
+
+<p>As you know, gantt sends all properties of the data object back to the backend. Thus, you can add an additional property directly to the data object and it will be sent to the backend:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onTaskCreated&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    task.<span class="me1">userId</span> <span class="sy0">=</span> currentUser<span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Alternatively, you can add custom parameters to all requests sent by data processor, using the <strong>payload</strong> property of the <a href="../api__dataprocessor_settransactionmode.html">setTransactionMode</a> parameter:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/api&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> dp <span class="sy0">=</span> gantt.<span class="me1">createDataProcessor</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+  url<span class="sy0">:</span> <span class="st0">&quot;/api&quot;</span><span class="sy0">,</span>
+  mode<span class="sy0">:</span><span class="st0">&quot;REST&quot;</span><span class="sy0">,</span>
+  payload<span class="sy0">:</span> <span class="br0">&#123;</span>
+    token<span class="sy0">:</span> <span class="st0">&quot;9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b&quot;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>One more way to add custom parameters to a request is to use the <a href="../api__dataprocessor_onbeforeupdate_event.html">onBeforeUpdate</a> event of DataProcessor:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dp <span class="sy0">=</span> gantt.<span class="me1">createDataProcessor</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+  url<span class="sy0">:</span> <span class="st0">&quot;/api&quot;</span><span class="sy0">,</span>
+  mode<span class="sy0">:</span><span class="st0">&quot;REST&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+dp.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onBeforeUpdate&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span> state<span class="sy0">,</span> data<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    data.<span class="me1">projectId</span> <span class="sy0">=</span> <span class="st0">&quot;1&quot;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In order to change the backend URL dynamically, use the <strong>dataProcessor.url</strong> method:</p>
+
+<pre><code><pre class="js">dp.<span class="me1">url</span><span class="br0">&#40;</span><span class="st0">&quot;/url&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='triggeringdatasavingfromscript'><h2>Triggering Data Saving from Script</h2></a>
+
+<p>If you have dataProcessor initialized, any change made by the user or programmatically will be automatically saved in the data source.</p>
+
+<p>Generally, to update a specific task or dependency programmatically, use the <a class="link-" href="api__gantt_updatetask.html">updateTask</a> and <a class="link-" href="api__gantt_updatelink.html">updateLink</a> methods, respectively:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">parse</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+   <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;2019-05-13 6:00&quot;</span><span class="sy0">,</span> end_date<span class="sy0">:</span><span class="st0">&quot;2019-05-13 8:00&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Event 1&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+   <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;2019-06-09 6:00&quot;</span><span class="sy0">,</span> end_date<span class="sy0">:</span><span class="st0">&quot;2019-06-09 8:00&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Event 2&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">,</span><span class="st0">&quot;json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">getTask</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">text</span> <span class="sy0">=</span> <span class="st0">&quot;Task 111&quot;</span><span class="sy0">;</span> <span class="co1">//changes task's data</span>
+gantt.<span class="me1">updateTask</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// renders the updated task</span></pre></code></pre>
+
+<p>Other methods that invoke sending an update to the backend:</p>
+
+<ul>
+<li><a class="link-" href="api__gantt_addtask.html">addTask</a></li>
+<li><a class="link-" href="api__gantt_updatetask.html">updateTask</a></li>
+<li><a class="link-" href="api__gantt_deletetask.html">deleteTask</a></li>
+<li><a class="link-" href="api__gantt_addlink.html">addLink</a></li>
+<li><a class="link-" href="api__gantt_updatelink.html">updateLink</a></li>
+<li><a class="link-" href="api__gantt_deletelink.html">deleteLink</a></li>
+</ul>
+
+<a name='customrouting'><h2>Custom Routing</h2></a>
+
+<p>In case RESTful AJAX API isn't what you need on the backend, or if you want to manually control what is sent to the server, you can make use of custom routing.</p>
+
+<p>For example, if you use Angular, React, or any other framework where a component on a page doesn't send changes directly to the server, but passes them to a different component which is responsible for data saving.</p>
+
+<p>To provide custom routing options for DataProcessor, you should use the <a href="desktop__server_side.html#createdp"><strong>createDataProcessor()</strong></a> method:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">createDataProcessor</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>entity<span class="sy0">,</span> action<span class="sy0">,</span> data<span class="sy0">,</span> id<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">const</span> services <span class="sy0">=</span> <span class="br0">&#123;</span>
+        <span class="st0">&quot;task&quot;</span><span class="sy0">:</span> <span class="kw1">this</span>.<span class="me1">taskService</span><span class="sy0">,</span>
+        <span class="st0">&quot;link&quot;</span><span class="sy0">:</span> <span class="kw1">this</span>.<span class="me1">linkService</span>
+    <span class="br0">&#125;</span><span class="sy0">;</span>
+    <span class="kw2">const</span> service <span class="sy0">=</span> services<span class="br0">&#91;</span>entity<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">switch</span> <span class="br0">&#40;</span>action<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">case</span> <span class="st0">&quot;update&quot;</span><span class="sy0">:</span>
+            <span class="kw1">return</span> service.<span class="me1">update</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">case</span> <span class="st0">&quot;create&quot;</span><span class="sy0">:</span>
+            <span class="kw1">return</span> service.<span class="me1">insert</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">case</span> <span class="st0">&quot;delete&quot;</span><span class="sy0">:</span>
+            <span class="kw1">return</span> service.<span class="me1">remove</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/08_api/22_data_processor.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom data api - using local storage</a></p>
+
+<h3>Using AJAX for setting custom routers</h3>
+
+<p><a class="link-" href="api__gantt_ajax_other.html">Gantt AJAX module</a> can be useful for setting custom routes. Gantt expects a custom router to return a Promise object as a result of an operation, which allows catching the end of an action. 
+The AJAX module supports promises and is suitable for usage inside of custom routers. Gantt will get Promise and process the content of Promise, when it is resolved.</p>
+
+<p>In the example below a new task is created. If the server response includes the id of a newly created task, Gantt will be able to apply it.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">createDataProcessor</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>entity<span class="sy0">,</span> action<span class="sy0">,</span> data<span class="sy0">,</span> id<span class="br0">&#41;</span><span class="br0">&#123;</span>
+...
+&nbsp;
+  <span class="kw1">switch</span> <span class="br0">&#40;</span>action<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">case</span> <span class="st0">&quot;create&quot;</span><span class="sy0">:</span>
+      <span class="kw1">return</span> gantt.<span class="me1">ajax</span>.<span class="me1">post</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+        headers<span class="sy0">:</span> <span class="br0">&#123;</span> 
+          <span class="st0">&quot;Content-Type&quot;</span><span class="sy0">:</span> <span class="st0">&quot;application/json&quot;</span> 
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        url<span class="sy0">:</span> server <span class="sy0">+</span> <span class="st0">&quot;/task&quot;</span><span class="sy0">,</span>
+        data<span class="sy0">:</span> JSON.<span class="me1">stringify</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span>
+      <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">break</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='errorhandling'><h2>Error Handling</h2></a>
+
+<p>A server can inform Gantt that an action has failed by returning the "action":"error" response:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span><span class="st0">&quot;action&quot;</span><span class="sy0">:</span><span class="st0">&quot;error&quot;</span><span class="br0">&#125;</span></pre></code></pre>
+
+<p>Such a response can be captured on the client with the help of gantt.dataProcessor:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dp <span class="sy0">=</span> gantt.<span class="me1">createDataProcessor</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+  url<span class="sy0">:</span> <span class="st0">&quot;/api&quot;</span><span class="sy0">,</span>
+  mode<span class="sy0">:</span><span class="st0">&quot;REST&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onAfterUpdate&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span> action<span class="sy0">,</span> tid<span class="sy0">,</span> response<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>action <span class="sy0">==</span> <span class="st0">&quot;error&quot;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="co1">// do something here</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The response object may contain any number of additional properties, they can be accessed via the <code>response</code> argument of the onAfterUpdate handler.</p>
+
+<div class='note'><p><p>This event will be called only for managed errors that return JSON response as shown above.
+If you need to handle HTTP errors, please check <a class="link-" href="api__gantt_onajaxerror_event.html">onAjaxError</a> API event.</p>
+</p></div>
+
+<p>If the server responded with an error on some of your action but the changes were saved on the client, the best way to synchronize their states is to clear the client's state, and reload the correct data from the server-side:</p>
+
+<pre><code><pre class="js">dp.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onAfterUpdate&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span> action<span class="sy0">,</span> tid<span class="sy0">,</span> response<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>action <span class="sy0">==</span> <span class="st0">&quot;error&quot;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        gantt.<span class="me1">clearAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        gantt.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;url1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>If you want to synchronize client-server sides but don't want to make any server calls, you can use the <a class="link-" href="api__gantt_silent.html">silent()</a> method which makes all code inside it not to trigger internal events or server calls:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">silent</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    gantt.<span class="me1">deleteTask</span><span class="br0">&#40;</span><span class="kw1">item</span>.<span class="me1">id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    gantt.<span class="me1">render</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='cascadedeletion'><h2>Cascade Deletion</h2></a>
+
+<p>By default, deletion of a task invokes a chain deletion of its nested task and related links. Gantt will send a <em>delete</em> request for each removed task and link.
+Thus, you don't have to maintain data integrity on a backend, it can be handled by the Gantt reasonably well.</p>
+
+<p>On the other hand, this strategy can generate a large number of AJAX calls to the backend API, since dhtmlxGantt has no batch-request support for AJAX
+and the number of tasks and links is not limited.</p>
+
+<p>In that case, cascade deletion can be disabled using the <a class="link-" href="api__gantt_cascade_delete_config.html">cascade_delete</a> config. 
+Thus, when a project branch is deleted, the client will send a delete request only for the top item and will expect the backend to delete the related links and subtasks.</p>
+
+<a name='xsscsrfandsqlinjectionattacks'><h2>XSS, CSRF and SQL Injection Attacks</h2></a>
+
+<p>Pay attention that Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. 
+It is important that responsibility for keeping an application safe is on the developers implementing the backend.</p>
+
+<p>Check the <a class="link-hidden" href="desktop__app_security.html">Application Security</a> article to learn the most vulnerable points of the component and the measures you can take to improve the safety of your application.</p>
+
+<!-- Content Area End -->
+			<a href='desktop__server_side.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

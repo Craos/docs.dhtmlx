@@ -1,0 +1,327 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Template  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="ajax__index.html">Ajax</a></li><li class=""><a href="cell__index.html">Cell</a></li><li class=""><a href="event__index.html">Event</a></li><li class=""><a href="message__index.html">Message</a></li><li class=" current"><a href="dhxtemplate.html">Template</a></li><ul><li class="inner"><a href="dhxtemplate.html#templateformat">Template format</a></li><li class="inner"><a href="dhxtemplate.html#usingtemplates">Using templates</a></li><li class="inner"><a href="dhxtemplate.html#builtinfunctions">Built-in functions</a></li><li class="inner"><a href="dhxtemplate.html#functionlowercase">Function 'lowercase'</a></li><li class="inner"><a href="dhxtemplate.html#functionuppercase">Function 'uppercase'</a></li><li class="inner"><a href="dhxtemplate.html#functionmaxlength">Function 'maxlength'</a></li><li class="inner"><a href="dhxtemplate.html#functiondate">Function 'date'</a></li><li class="inner"><a href="dhxtemplate.html#functionnumberformat">Function 'number_format'</a></li><li class="inner"><a href="dhxtemplate.html#userdefinedfunction">User defined function</a></li><li><a href="date_formatting.html">Date Formatting</a></li></ul><li class=""><a href="api__refs__common.html">Common API</a></li><li class=""><a href="api__refs__dataloading.html">DataLoading API</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="helpers__index.html">Helpers</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Template</h1>
+
+<p>dhtmlxTemplate is a component that allows using templates instead of fixed values.
+You may use string, date or number templates or create your own one.<br></p>
+
+<p>dhtmlxTemplate presents a set of rules in some text. Various sets of values can be applied to this text.
+As a result, you get any number of the same texts that will differ by some dynamic parts. These parts will contain values processed according to the predefined rules.</p>
+
+<a name='templateformat'><h2>Template format</h2></a>
+
+<p><span style="color:#B744B6;">#key|function:param:param#</span><br></p>
+
+<table cellspacing="1" cellpadding="1" border="0" width="100%">
+    <tr><td width="150">key</td><td>key from json object, its value will be taken</td></tr>
+    <tr><td>function</td><td>(optional) parse value, using a built-in function or a user-defined one</td></tr>
+    <tr><td>param</td><td>(optional) a param for the function (there can be several params)</td></tr>
+</table>
+
+<p>template examples:</p>
+
+<table cellspacing="1" cellpadding="1" border="0" width="100%">
+    <tr><td>#key#</td></tr>
+    <tr><td>#key|function#</td></tr>
+    <tr><td>#key|function:param#</td></tr>
+    <tr><td>#key|function:param:param#</td></tr>
+</table>
+
+<a name='usingtemplates'><h2>Using templates</h2></a>
+
+<p>Here is a simple sample that describes how you can use templates:</p>
+
+<pre><code><pre class="js"><span class="co1">// firstly, you need a string that contains a template</span>
+<span class="kw2">var</span> str <span class="sy0">=</span> <span class="st0">&quot;Hi! My name is #name# and I'm #age# years old&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// then you should specify values for the template</span>
+<span class="kw2">var</span> values <span class="sy0">=</span> <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;James&quot;</span><span class="sy0">,</span> age<span class="sy0">:</span> <span class="nu0">24</span><span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// add a little bit of dhx magic</span>
+<span class="kw2">var</span> text <span class="sy0">=</span> window.<span class="me1">dhx</span>.<span class="me1">template</span><span class="br0">&#40;</span>str<span class="sy0">,</span> values<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// and check the result</span>
+console.<span class="me1">log</span><span class="br0">&#40;</span>text<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// Hi! My name is James and I'm 24 years old</span></pre></code></pre>
+
+<p><br><br></p>
+
+<p>The picture below illustrates how values are inserted instead of templates and a sentence is formed.</p>
+
+<p style="background-color:#f2f4f5;"><img src="media/template/using_templates.png"/></p>
+
+<a name='builtinfunctions'><h2>Built-in functions</h2></a>
+
+<p>There's also a possibility to use functions that let you apply various formatting to the text:</p>
+
+<table cellspacing="1" cellpadding="1" border="0" width="100%">
+    <tr><td width="150">lowercase</td><td>used to convert characters to lower case</td></tr>
+    <tr><td>uppercase</td><td>used to convert characters to upper case</td></tr>
+    <tr><td>maxlength</td><td>used for limiting the count of characters in a text</td></tr>
+    <tr><td>date</td><td>used for dates formatting</td></tr>
+    <tr><td>number_format</td><td>used for number formatting</td></tr>
+</table>
+
+<a name='functionlowercase'><h2>Function 'lowercase'</h2></a>
+
+<pre><code><pre class="js"><span class="co1">// describe a string with a template</span>
+<span class="kw2">var</span> str <span class="sy0">=</span> <span class="st0">&quot;#text# in lower case: #text|lowercase#&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// get values</span>
+<span class="kw2">var</span> values <span class="sy0">=</span> <span class="br0">&#123;</span>text<span class="sy0">:</span> <span class="st0">&quot;Some Text&quot;</span><span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// apply a template function</span>
+<span class="kw2">var</span> text <span class="sy0">=</span> window.<span class="me1">dhx</span>.<span class="me1">template</span><span class="br0">&#40;</span>str<span class="sy0">,</span> values<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// check the result</span>
+console.<span class="me1">log</span><span class="br0">&#40;</span>text<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// Some Text in the lower case: some text</span></pre></code></pre>
+
+<a name='functionuppercase'><h2>Function 'uppercase'</h2></a>
+
+<pre><code><pre class="js"><span class="co1">// describe a string with a template</span>
+<span class="kw2">var</span> str <span class="sy0">=</span> <span class="st0">&quot;#text# in the upper case: #text|uppercase#&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// get values</span>
+<span class="kw2">var</span> values <span class="sy0">=</span> <span class="br0">&#123;</span>text<span class="sy0">:</span> <span class="st0">&quot;Some Text&quot;</span><span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// apply a template function</span>
+<span class="kw2">var</span> text <span class="sy0">=</span> window.<span class="me1">dhx</span>.<span class="me1">template</span><span class="br0">&#40;</span>str<span class="sy0">,</span> values<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// check the result</span>
+console.<span class="me1">log</span><span class="br0">&#40;</span>text<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// Some Text in the upper case: SOME TEXT</span></pre></code></pre>
+
+<a name='functionmaxlength'><h2>Function 'maxlength'</h2></a>
+
+<p>This function requires a parameter which will specify the count of characters</p>
+
+<pre><code><pre class="js"><span class="co1">// describe a string with a template</span>
+<span class="kw2">var</span> str <span class="sy0">=</span> <span class="st0">&quot;10 characters of '#text#': '#text|maxlength:10#'&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// get values</span>
+<span class="kw2">var</span> values <span class="sy0">=</span> <span class="br0">&#123;</span>text<span class="sy0">:</span> <span class="st0">&quot;Some text is here&quot;</span><span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// apply a template function</span>
+<span class="kw2">var</span> text <span class="sy0">=</span> window.<span class="me1">dhx</span>.<span class="me1">template</span><span class="br0">&#40;</span>str<span class="sy0">,</span> values<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// check the result</span>
+console.<span class="me1">log</span><span class="br0">&#40;</span>text<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// 10 characters of 'Some text is here': 'Some text '</span></pre></code></pre>
+
+<a name='functiondate'><h2>Function 'date'</h2></a>
+
+<p>This function requires a date format parameter, please check available settings <a class="link-" href="date_formatting.html#availabledateformats">here</a></p>
+
+<pre><code><pre class="js"><span class="co1">// describe a string with a template</span>
+<span class="kw2">var</span> str <span class="sy0">=</span> <span class="st0">&quot;Current date/time: #value|date:%Y-%m-%d %H<span class="es0">\\</span>:%i#&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// get values</span>
+<span class="kw2">var</span> values <span class="sy0">=</span> <span class="br0">&#123;</span>value<span class="sy0">:</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#125;</span><span class="sy0">;</span> <span class="co1">// or new Date().getTime()</span>
+&nbsp;
+<span class="co1">// apply a template function</span>
+<span class="kw2">var</span> text <span class="sy0">=</span> window.<span class="me1">dhx</span>.<span class="me1">template</span><span class="br0">&#40;</span>str<span class="sy0">,</span> values<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// check the result</span>
+console.<span class="me1">log</span><span class="br0">&#40;</span>text<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// Current date/time: 2014-11-12 13:55</span></pre></code></pre>
+
+<p>To escape a colon:</p>
+
+<ul>
+<li>in HTML markup use a single backslash <strong>&#92;</strong></li>
+<li>in javascript string use a double backslash <strong>&#92;&#92;</strong></li>
+</ul>
+
+<a name='functionnumberformat'><h2>Function 'number_format'</h2></a>
+
+<p>This function requires a format, as well as the <strong>group_sep(opt)</strong> and <strong>dec_sep(opt)</strong> params</p>
+
+<pre><code><pre class="js"><span class="co1">// describe a string with a template</span>
+<span class="kw2">var</span> str <span class="sy0">=</span> <span class="st0">&quot;Total amount: #value|number_format:$ 0,000.00#&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// get values</span>
+<span class="kw2">var</span> values <span class="sy0">=</span> <span class="br0">&#123;</span>value<span class="sy0">:</span> <span class="nu0">12345.67</span><span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// apply a template function</span>
+<span class="kw2">var</span> text <span class="sy0">=</span> window.<span class="me1">dhx</span>.<span class="me1">template</span><span class="br0">&#40;</span>str<span class="sy0">,</span> values<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// check the result</span>
+console.<span class="me1">log</span><span class="br0">&#40;</span>text<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// Total amount: $ 12,345.67</span></pre></code></pre>
+
+<a name='userdefinedfunction'><h2>User defined function</h2></a>
+
+<pre><code><pre class="js"><span class="co1">// firstly, you need to name your function and add it into dhx.template</span>
+<span class="co1">// assuming that our custom function will be called 'text_color' and will change text color</span>
+window.<span class="me1">dhx</span>.<span class="me1">template</span>.<span class="me1">text_color</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>value<span class="sy0">,</span> color<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// the 1st param is always a value,</span>
+    <span class="co1">// the 2nd and other params - any number of params that will be defined in the template,</span>
+    <span class="co1">// we need only one param for a color</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&lt;span style='color:&quot;</span><span class="sy0">+</span>color<span class="sy0">+</span><span class="st0">&quot;;'&gt;&quot;</span><span class="sy0">+</span>value<span class="sy0">+</span><span class="st0">&quot;&lt;/span&gt;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// then describe a string with a template</span>
+<span class="kw2">var</span> str <span class="sy0">=</span> <span class="st0">&quot;#value|text_color:red#&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// get values</span>
+<span class="kw2">var</span> values <span class="sy0">=</span> <span class="br0">&#123;</span>value<span class="sy0">:</span> <span class="st0">&quot;Important!&quot;</span><span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// apply a template function</span>
+<span class="kw2">var</span> text <span class="sy0">=</span> window.<span class="me1">dhx</span>.<span class="me1">template</span><span class="br0">&#40;</span>str<span class="sy0">,</span> values<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// check the result</span>
+console.<span class="me1">log</span><span class="br0">&#40;</span>text<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// &lt;span style='color:red;'&gt;Important!&lt;/span&gt;</span></pre></code></pre>
+
+<p>extend your function and add one more param:</p>
+
+<pre><code><pre class="js"><span class="co1">// add your custom function into dhx.template</span>
+window.<span class="me1">dhx</span>.<span class="me1">template</span>.<span class="me1">text_color</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>value<span class="sy0">,</span> textColor<span class="sy0">,</span> bgColor<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&lt;span style='color:&quot;</span><span class="sy0">+</span>textColor<span class="sy0">+</span><span class="st0">&quot;; background-color:&quot;</span><span class="sy0">+</span>bgColor<span class="sy0">+</span><span class="st0">&quot;'&gt;&quot;</span>
+      <span class="sy0">+</span>value<span class="sy0">+</span><span class="st0">&quot;&lt;/span&gt;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// describe a string with a template</span>
+<span class="kw2">var</span> str <span class="sy0">=</span> <span class="st0">&quot;#value|text_color:red:black#&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// get values</span>
+<span class="kw2">var</span> values <span class="sy0">=</span> <span class="br0">&#123;</span>value<span class="sy0">:</span> <span class="st0">&quot;WOW!&quot;</span><span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// apply a template function</span>
+<span class="kw2">var</span> text <span class="sy0">=</span> window.<span class="me1">dhx</span>.<span class="me1">template</span><span class="br0">&#40;</span>str<span class="sy0">,</span> values<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// check the result</span>
+console.<span class="me1">log</span><span class="br0">&#40;</span>text<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// &lt;span style='color:red; background-color:black'&gt;WOW!&lt;/span&gt;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='dhxtemplate.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

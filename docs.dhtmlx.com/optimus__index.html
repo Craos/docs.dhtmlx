@@ -1,0 +1,788 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>DHTMLX Optimus Framework  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=" current"><a href="optimus__index.html">DHTMLX Optimus Framework</a></li><ul><li class="inner"><a href="optimus__index.html#generalidea">General Idea</a></li><li class="inner"><a href="optimus__index.html#howtostart">How to Start</a></li><li class="inner"><a href="optimus__index.html#application">Application</a></li><li class="inner"><a href="optimus__index.html#workingwithviews">Working with Views</a></li><li class="inner"><a href="optimus__index.html#specialtypesofviews">Special Types of Views</a></li><li class="inner"><a href="optimus__index.html#loadingsavingdata">Loading/Saving Data</a></li><li class="inner"><a href="optimus__index.html#localization">Localization</a></li><li class="inner"><a href="optimus__index.html#services">Services</a></li><li class="inner"><a href="optimus__index.html#otherhelpers">Other Helpers</a></li><li class="inner"><a href="optimus__index.html#deployinganapplication">Deploying an Application</a></li><li class="inner"><a href="optimus__index.html#relatedmaterials">Related Materials</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a></div>
+<!-- Content Area -->
+
+
+
+<h1>DHTMLX Optimus Framework</h1>
+
+<p>DHTMLX Optimus is a micro framework for building DHTMLX-based apps.</p>
+
+<p>The framework enforces consistent application structure by breaking a monolithic application into a set of reusable classes. 
+As a result, each part of an app can be developed and tested independently and used in various combinations.</p>
+
+<p>DHTMLX Optimus is a fully client-side solution. There aren't any special requirements to the server. You can use any data REST backend (PHP, Nodejs, .Net, Java, etc.)</p>
+
+<a name='generalidea'><h2>General Idea</h2></a>
+
+<p>DHTMLX Optimus is based on the modern approaches of web development:</p>
+
+<ul>
+<li>ES6 classes</li>
+<li>JavaScript modules</li>
+<li>Webpack module bundler</li>
+</ul>
+
+<div class='note'><p><p>The framework uses BabelJS for code processing, so the resulting app will work even in older browsers, supported by DHTMLX (IE8+)</p>
+</p></div>
+
+<p>Each module describes a part of UI (a single view). You can use normal DHTMLX code inside of the module to initialize a single component. 
+Top level modules can combine multiple views into a layout and so on. The app itself can be used as a view in some other application.</p>
+
+<p>The framework provides a common event bus to allow communication between views and some other helpers for common DHTMLX tasks.</p>
+
+<a name='howtostart'><h2>How to Start</h2></a>
+
+<p>Grab the <a href="https://github.com/DHTMLX/optimus-start">starter package from github</a>. After unzipping the package install dependencies and run local dev server by using:</p>
+
+<pre><code><pre class="js">npm install
+npm run server</pre></code></pre>
+
+<p>If everything works fine, you will see a simple app built with Optimus framework:</p>
+
+<p><img src="media/optimus/optimus_starter.png"></p>
+
+<h3>Other useful commands</h3>
+
+<pre><code><pre class="js"><span class="co1">// add watcher which will rebuild JS and CSS files on code changes </span>
+npm run watch
+&nbsp;
+<span class="co1">// rebuild JS file in the &quot;codebase&quot; folder</span>
+npm run codebase
+&nbsp;
+<span class="co1">// lint the sources</span>
+npm run lint
+&nbsp;
+<span class="co1">// build the production package</span>
+npm run <span class="kw2">package</span></pre></code></pre>
+
+<h3>"package.json" file notes</h3>
+
+<p>Pay attention to the "package.json" file in the root of your app's project. 
+The <em>main</em> fields is important, it is the primary entry point to your program. 
+This should be the name of the app's module.</p>
+
+<a name='application'><h2>Application</h2></a>
+
+<h3>Structure of an Application</h3>
+
+<ul>
+<li><strong>index.html</strong> file - the start page of the application</li>
+<li><strong>sources/app.js</strong> file - contains the application's configuration </li>
+<li><strong>sources/views</strong> folder - includes files with interfaces' descriptions</li>
+<li><strong>sources/less</strong> folder - contains the app's styles</li>
+<li><strong>codebase/</strong> folder - includes static files used in the application (images, icons, styles, data files, etc.). The content of this folder is added by the build.</li>
+</ul>
+
+<h3>DHTMLX files</h3>
+
+<p>By default, <em>index.html</em> includes a free version of DHTMLX from our CDN. 
+If you are using DHTMLX PRO, place the DHTMLX files into the "codebase" folder and adjust links in the <em>index.html</em>.</p>
+
+<h4>CDN</h4>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;//cdn.dhtmlx.com/site/dhtmlx.css&quot;</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">link</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;//cdn.dhtmlx.com/site/dhtmlx.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<h4>Local</h4>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlx.css&quot;</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">link</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlx.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<h3>Application Initialization</h3>
+
+<p>The code is straightforward, just call the app constructor and use the <em>render()</em> function to render the app:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span>&gt;</span><pre class="js">    <span class="kw2">var</span> app <span class="sy0">=</span> <span class="kw2">new</span> MyApp<span class="br0">&#40;</span><span class="br0">&#123;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>  <span class="co1">// takes app's config as a parameter</span>
+    app.<span class="me1">render</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>             <span class="co1">// renders the app</span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<h3>App's Configuration</h3>
+
+<p>The app's configuration file is called <em>app.js</em>. It contains the main class of the application:</p>
+
+<p class='snippet'> app.js</p>
+
+<pre><code><pre class="js"><span class="kw2">import</span> <span class="st0">&quot;less/MyApp.less&quot;</span><span class="sy0">;</span>
+<span class="kw2">import</span> <span class="br0">&#123;</span>DHXApp<span class="br0">&#125;</span> from <span class="st0">&quot;dhx-optimus&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">import</span> <span class="br0">&#123;</span>MainLayout<span class="br0">&#125;</span> from <span class="st0">&quot;views/mainlayout.js&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">class</span> MyApp <span class="kw2">extends</span> DHXApp<span class="br0">&#123;</span>
+    render<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">this</span>.<span class="me1">show</span><span class="br0">&#40;</span>MainLayout<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+window.<span class="me1">MyApp</span> <span class="sy0">=</span> MyApp<span class="sy0">;</span> <span class="co1">// here we add our app into the global window object</span></pre></code></pre>
+
+<p>There are 3 mandatory principles here:</p>
+
+<ul>
+<li>class which extends DHXApp must be defined</li>
+<li>class must have the <em>render()</em> method which defines the initial view to show</li>
+<li>class must be registered in the global scope, to be accessible on an HTML page</li>
+</ul>
+
+<p>In the above example we have included the following dependencies:</p>
+
+<ul>
+<li>The file that contains app's styles (<em>MyApp.less</em> in our example)</li>
+<li>The DHXApp class from the "dhx-optimus" library</li>
+<li>The view with the main layout of the application (<em>views/mainlayout.js</em> in our example)</li>
+</ul>
+
+<h3>Application API</h3>
+
+<p>DHXApp class provides the next API for the application class:</p>
+
+<ul>
+<li><strong>show(view, cell)</strong> - shows the specified view in a cell of the app
+
+<ul>
+<li>view - (object) the view to show</li>
+<li>cell - (object) a reference to the cell to render the view inside </li>
+</ul></li>
+<li><strong>imagepath(component)</strong> - sets the path to the folder with images of the particular component
+
+<ul>
+<li>component - (string) the name of the component to set image path to</li>
+</ul></li>
+<li><strong>attachEvent(name, handler)</strong> - registers event handler
+
+<ul>
+<li>name -    (string)     name of the event</li>
+<li>handler - (function) user-defined event handler</li>
+</ul></li>
+<li><strong>callEvent(name, params)</strong> - calls an event 
+
+<ul>
+<li>name - (string)   the event name</li>
+<li>params - (array) an array of the event related data</li>
+</ul></li>
+<li><strong>addService(name, object)</strong> - adds a service for the app (read more in the <a class="link-" href="optimus__index.html#services">Services</a> section)
+
+<ul>
+<li>name - (string) - the service's name</li>
+<li>object - (object) - the service's config</li>
+</ul></li>
+<li><strong>getService(name)</strong> - returns a service added to the app by its name (read more in the <a class="link-" href="optimus__index.html#services">Services</a> section)
+
+<ul>
+<li>name - (string) - the service's name
+
+<ul>
+<li>returns the service's object</li>
+</ul></li>
+</ul></li>
+<li><strong>destroy()</strong> - destroys the application</li>
+</ul>
+
+<a name='workingwithviews'><h2>Working with Views</h2></a>
+
+<h3>Defining Views</h3>
+
+<p>The view's configuration is similar to that of an application. A new view class is inherited from the DHXView class. 
+The <strong>render()</strong> method is used to draw a view.</p>
+
+<pre><code><pre class="js"><span class="kw2">import</span> <span class="br0">&#123;</span> DHXView <span class="br0">&#125;</span> from <span class="st0">&quot;dhx-optimus&quot;</span><span class="sy0">;</span>
+<span class="kw2">export</span> <span class="kw2">class</span> GridView <span class="kw2">extends</span> DHXView <span class="br0">&#123;</span>
+    render<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">this</span>.<span class="me1">ui</span> <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">root</span>.<span class="me1">attachGrid</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">this</span>.<span class="me1">ui</span>.<span class="me1">setInitWidths</span><span class="br0">&#40;</span><span class="st0">&quot;*,200,80,80&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">this</span>.<span class="me1">ui</span>.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li><em>this.ui</em> - a reference to the created DHTMLX component. It's recommended to use in order to ensure the view's destruction after closing</li>
+<li><em>this.root</em> - a reference to the parent cell</li>
+</ul>
+
+<p>In the above example we have set a view with a grid inside and specified some config properties for it.
+You can create any number of views by this means and use all of them in your application.</p>
+
+<div class='note'><p><p>We recommend to have a single view per file and name file the same as the view, e.g. GridView => views/grid.js.</p>
+</p></div>
+
+<h3>Layout View</h3>
+
+<p>You can initialize layouts in the same way:</p>
+
+<pre><code><pre class="js"><span class="kw2">import</span> <span class="br0">&#123;</span> DHXView <span class="br0">&#125;</span> from <span class="st0">&quot;dhx-optimus&quot;</span><span class="sy0">;</span>
+<span class="kw2">import</span> <span class="br0">&#123;</span> TreeView <span class="br0">&#125;</span> from <span class="st0">&quot;./tree.js&quot;</span><span class="sy0">;</span>
+<span class="kw2">import</span> <span class="br0">&#123;</span> GridView <span class="br0">&#125;</span> from <span class="st0">&quot;./grid.js&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">export</span> <span class="kw2">class</span> MyView <span class="kw2">extends</span> DHXView <span class="br0">&#123;</span>
+    render<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">this</span>.<span class="me1">ui</span> <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">root</span>.<span class="me1">attachLayout</span><span class="br0">&#40;</span><span class="br0">&#123;</span> pattern<span class="sy0">:</span><span class="st0">&quot;2U&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">this</span>.<span class="me1">show</span><span class="br0">&#40;</span>TreeView<span class="sy0">,</span> <span class="kw1">this</span>.<span class="me1">ui</span>.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;a&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">this</span>.<span class="me1">show</span><span class="br0">&#40;</span>GridView<span class="sy0">,</span> <span class="kw1">this</span>.<span class="me1">ui</span>.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;b&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>As you can see, we can use the <em>show()</em> API to render some other view inside of a layout's cell.</p>
+
+<p>By combining those types of views, you can create a static UI of any complexity. When necessary, you can add dynamics - change a part of UI with a different one:</p>
+
+<pre><code><pre class="js"><span class="kw2">import</span> <span class="br0">&#123;</span> DHXView <span class="br0">&#125;</span> from <span class="st0">&quot;dhx-optimus&quot;</span><span class="sy0">;</span>
+<span class="kw2">import</span> <span class="br0">&#123;</span> TreeView <span class="br0">&#125;</span> from <span class="st0">&quot;./tree.js&quot;</span><span class="sy0">;</span>
+<span class="kw2">import</span> <span class="br0">&#123;</span> GridView <span class="br0">&#125;</span> from <span class="st0">&quot;./grid.js&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">export</span> <span class="kw2">class</span> MyView <span class="kw2">extends</span> DHXView <span class="br0">&#123;</span>
+    render<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">this</span>.<span class="me1">ui</span> <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">root</span>.<span class="me1">attachLayout</span><span class="br0">&#40;</span><span class="br0">&#123;</span> pattern<span class="sy0">:</span><span class="st0">&quot;2U&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">this</span>.<span class="me1">addSlot</span><span class="br0">&#40;</span><span class="st0">&quot;left&quot;</span><span class="sy0">,</span>  <span class="kw1">this</span>.<span class="me1">ui</span>.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;a&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">this</span>.<span class="me1">addSlot</span><span class="br0">&#40;</span><span class="st0">&quot;right&quot;</span><span class="sy0">,</span> <span class="kw1">this</span>.<span class="me1">ui</span>.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;b&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw2">var</span> grid <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">show</span><span class="br0">&#40;</span>MasterGridView<span class="sy0">,</span> <span class="st0">&quot;left&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        grid.<span class="me1">ui</span>.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onRowSelect&quot;</span><span class="sy0">,</span> <span class="br0">&#40;</span>id<span class="br0">&#41;</span> <span class="sy0">=&gt;</span> <span class="br0">&#123;</span>
+            <span class="kw1">if</span> <span class="br0">&#40;</span>id <span class="sy0">==</span> <span class="sy0">-</span><span class="nu0">1</span><span class="br0">&#41;</span>
+                <span class="kw1">this</span>.<span class="me1">show</span><span class="br0">&#40;</span>DashBoardView<span class="sy0">,</span> <span class="st0">&quot;right&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="kw1">else</span>
+                <span class="kw1">this</span>.<span class="me1">show</span><span class="br0">&#40;</span>DetailsView<span class="sy0">,</span> <span class="st0">&quot;right&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>The above code shows different views in the cell "b", based on the selected row in the grid. 
+You can see that the code uses <em>addSlot()</em> API to set a name for the cell with dynamic content.</p>
+
+<h3>Connecting Views</h3>
+
+<p>In the above snippet we have used <em>grid.ui.attachEvent()</em> to register an event handler for the element in the child view. 
+This is a bad practice, since we get a tightly coupled resulting code which can be easily broken.</p>
+
+<p>There is a better approach - the usage of the global event bus. After attaching an event in one view, you can call it in another one.</p>
+
+<p>Let's consider an example. We have a dataview called "Countries" in the <em>countries.js</em> file and a grid named "Cities" in <em>cities.js</em>. 
+We want the grid to display cities related to the country selected in the dataview.</p>
+
+<p>In such a case we can define a dataview in the following way:</p>
+
+<pre><code><pre class="js"><span class="kw2">import</span> <span class="br0">&#123;</span> DHXView <span class="br0">&#125;</span> from <span class="st0">&quot;dhx-optimus&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">export</span> <span class="kw2">class</span> CountriesView <span class="kw2">extends</span> DHXView <span class="br0">&#123;</span>
+    render<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">this</span>.<span class="me1">ui</span> <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">root</span>.<span class="me1">attachDataView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+            type<span class="sy0">:</span> <span class="br0">&#123;</span>
+                template<span class="sy0">:</span> tpl
+            <span class="br0">&#125;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">this</span>.<span class="me1">ui</span>.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onItemClick&quot;</span><span class="sy0">,</span>  id <span class="sy0">=&gt;</span> <span class="kw1">this</span>._countrySelect<span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    _countrySelect<span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw2">const</span> country <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">ui</span>.<span class="me1">get</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">this</span>.<span class="me1">callEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onCountrySelect&quot;</span><span class="sy0">,</span><span class="br0">&#91;</span><span class="br0">&#123;</span>
+            cities<span class="sy0">:</span>country.<span class="me1">cities</span>
+        <span class="br0">&#125;</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span></pre></code></pre>
+
+<p>Here on selecting some item, the code calls the <em>onCountrySelect</em> event, which can be caught in any other view.</p>
+
+<pre><code><pre class="js"><span class="kw2">import</span> <span class="br0">&#123;</span> DHXView <span class="br0">&#125;</span> from <span class="st0">&quot;dhx-optimus&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">export</span> <span class="kw2">class</span> CitiesView <span class="kw2">extends</span> DHXView <span class="br0">&#123;</span>
+    render<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">this</span>.<span class="me1">ui</span> <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">root</span>.<span class="me1">attachGrid</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">this</span>.<span class="me1">ui</span>.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Name,Population&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">this</span>.<span class="me1">ui</span>.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">this</span>.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onCountrySelect&quot;</span><span class="sy0">,</span> e <span class="sy0">=&gt;</span><span class="kw1">this</span>._setCities<span class="br0">&#40;</span>e.<span class="me1">cities</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    _setCities<span class="br0">&#40;</span>cities<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">this</span>.<span class="me1">ui</span>.<span class="me1">clearAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">this</span>.<span class="me1">ui</span>.<span class="me1">parse</span><span class="br0">&#40;</span>cities<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>When a country is selected in the dataview, the <em>_setCities()</em> method is called and data in the grid is refreshed. So the two views are now connected.</p>
+
+<p>Event handlers will be automatically detached on view destruction.</p>
+
+<h3>Destroying Views</h3>
+
+<h4>Using slots</h4>
+
+<p>DHTMLX Optimus automatically destroys a view, when a different view is shown in the same slot.</p>
+
+<p><em>addSlot()</em> allows adding a slot (named area) into a cell. The content of the slot can be changed/removed without affecting the rest of the cell's area.</p>
+
+<p>For example, we have a layout with 2 cells. We want to dynamically change the content of the cell "a".
+Firstly, we use the addSlot() method to add a slot named "details" into the cell "a".</p>
+
+<pre><code><pre class="js"><span class="co1">// adding a slot called &quot;details&quot; into the cell &quot;a&quot;</span>
+<span class="kw1">this</span>.<span class="me1">addSlot</span><span class="br0">&#40;</span><span class="st0">&quot;details&quot;</span><span class="sy0">,</span> top.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;a&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Then, the <em>show()</em> method is used to render desired views in the added slot. 
+It takes the name of the view that will be displayed in the slot and the name of the slot as parameters.</p>
+
+<pre><code><pre class="js"><span class="co1">// rendering a grid view in the &quot;details&quot; slot</span>
+<span class="kw1">this</span>.<span class="me1">show</span><span class="br0">&#40;</span>GridView<span class="sy0">,</span><span class="st0">&quot;details&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Then you can show a different view in the slot and it will be rendered instead of the previous one:</p>
+
+<pre><code><pre class="js"><span class="co1">// rendering a data grid view in the &quot;details&quot; slot</span>
+<span class="kw1">this</span>.<span class="me1">show</span><span class="br0">&#40;</span>DataGridView<span class="sy0">,</span><span class="st0">&quot;details&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>While the slot content is re-rendered, the GridView view in the "details" slot is destroyed and 
+replaced with DataGridView, while the rest content of the cell "a" will remain the same.</p>
+
+<h4>Destroy() API</h4>
+
+<p>If you will ever need a custom destruction code, just redefine the <em>destroy()</em> method of the view to have a custom on destroy logic:</p>
+
+<pre><code><pre class="js"><span class="kw2">export</span> <span class="kw2">class</span> MyView <span class="kw2">extends</span> DHXView <span class="br0">&#123;</span>
+    render<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">this</span>.<span class="me1">window</span> <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXWindows<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        ...
+    <span class="br0">&#125;</span>
+    destroy<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="coMULTI">/*any custom code here*/</span>
+        <span class="kw1">this</span>.<span class="me1">window</span>.<span class="me1">unload</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw2">super</span>.<span class="me1">destroy</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h4>Main UI Destruction</h4>
+
+<p>The main UI, the reference to which is stored in <em>this.ui</em> will be destroyed automatically, you don't need to use a custom code to clear it.</p>
+
+<h3>View API</h3>
+
+<p>As it was mentioned above, views are created on the base of the <em>DHXView</em> class. This class possesses public API methods listed below:</p>
+
+<ul>
+<li><strong>show(view, cell)</strong> - shows the specified view in a cell 
+
+<ul>
+<li>view - (object) the view to show</li>
+<li>cell - (object) a reference to the cell to render the view inside </li>
+</ul></li>
+<li><strong>addSlot(name, obj)</strong> - adds a slot (named area) into a cell. Useful for creating cells with dynamic content
+
+<ul>
+<li>name (string) - the name of the slot</li>
+<li>object (object) - a reference to the cell to add a slot inside</li>
+</ul></li>
+<li><strong>refresh()</strong> - refreshes the view</li>
+<li><strong>attachEvent(name, handler)</strong> - adds a user-defined handler to an event
+
+<ul>
+<li>name -    (string)     name of the event</li>
+<li>handler - (function) user-defined event handler</li>
+</ul></li>
+<li><strong>callEvent(name, params)</strong> - calls an event 
+
+<ul>
+<li>name - (string)    the event name</li>
+<li>params - (array) an array of the event related data</li>
+</ul></li>
+<li><strong>addService(name, obj)</strong> - add a service for a view (read more in the <a class="link-" href="optimus__index.html#services">Services</a> section)</li>
+<li><strong>getService()</strong> - returns a service added to the view by its name (read more in the <a class="link-" href="optimus__index.html#services">Services</a> section)</li>
+<li><strong>render()</strong> - renders a view on the page</li>
+<li><strong>imagepath(component)</strong> - sets the path to the folder with images of the particular component
+
+<ul>
+<li>component - (string) the name of the component to set image path to</li>
+</ul></li>
+<li><strong>destroy()</strong> - destroys a view </li>
+</ul>
+
+<a name='specialtypesofviews'><h2>Special Types of Views</h2></a>
+
+<h3>Working with Windows</h3>
+
+<p>A Window view should be attached to the layout, in other aspects it is the same as other views:</p>
+
+<pre><code><pre class="js"><span class="kw2">export</span> <span class="kw2">class</span> MyDialog <span class="kw2">extends</span> DHXView<span class="br0">&#123;</span>
+    render<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">this</span>.<span class="me1">ui</span> <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">root</span>.<span class="me1">dhxWins</span>.<span class="me1">createWindow</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+            <span class="co1">// window config</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">this</span>.<span class="me1">ui</span>.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onClose&quot;</span><span class="sy0">,</span> <span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">=&gt;</span> <span class="br0">&#123;</span>
+            <span class="co1">//destroy view on window closing</span>
+            <span class="kw1">this</span>.<span class="me1">destroy</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Such a view can be used inside of another view as follows:</p>
+
+<pre><code><pre class="js"><span class="kw2">export</span> <span class="kw2">class</span> MyView <span class="kw2">extends</span> DHXView<span class="br0">&#123;</span>
+    render<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">this</span>.<span class="me1">ui</span> <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">root</span>.<span class="me1">attachToolbar</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">this</span>.<span class="me1">ui</span>.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onClick&quot;</span><span class="sy0">,</span> <span class="br0">&#40;</span>id<span class="br0">&#41;</span> <span class="sy0">=&gt;</span> <span class="br0">&#123;</span>
+            ...
+            <span class="kw1">if</span><span class="br0">&#40;</span>id <span class="sy0">==</span> <span class="st0">&quot;add_connection&quot;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+                <span class="kw1">this</span>.<span class="me1">show</span><span class="br0">&#40;</span>MyDialog<span class="sy0">,</span> <span class="kw1">this</span>.<span class="me1">root</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="br0">&#125;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Handlebar Templates</h3>
+
+<p>In many cases some complex HTML code should be rendered in a view. It's not convenient to do it with the help of the JavaScript code. 
+In the case of DHTMLX Optimus, you can use <a href="http://handlebarsjs.com/">Handlebar</a> templates for such a task.</p>
+
+<p>For example, let's have a look at the file called <em>templates/about.html</em> that contains the description of a file explorer application:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;intro_text&quot;</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;intro&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;margin: 30px;&quot;</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">h1</span>&gt;</span>dhtmlxFileExplorer Demo Application<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">h1</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">p</span>&gt;</span>The purpose of this demo is to illustrate the possibility of building 
+        Windows File Explorer-like application using DHTMLX library. 
+        The following components were used:<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">p</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">ul</span>&gt;</span>
+            <span class="sc2">&lt;<span class="kw2">li</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">li</span>&gt;</span>
+            <span class="sc2">&lt;<span class="kw2">li</span>&gt;</span>Key<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">li</span>&gt;</span>
+        <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">ul</span>&gt;</span>
+        ...
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+<p>To show this template in an app, we will use the view like this:</p>
+
+<pre><code><pre class="js"><span class="kw2">import</span> <span class="br0">&#123;</span> DHXView <span class="br0">&#125;</span> from <span class="st0">&quot;dhx-optimus&quot;</span><span class="sy0">;</span>
+<span class="kw2">import</span> about from <span class="st0">&quot;templates/about.html&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">export</span> <span class="kw2">class</span> AboutView <span class="kw2">extends</span> DHXView <span class="br0">&#123;</span>
+    render<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">this</span>.<span class="me1">ui</span> <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">root</span>.<span class="me1">attachHTMLString</span><span class="br0">&#40;</span>about<span class="br0">&#40;</span><span class="br0">&#123;</span>
+            key<span class="sy0">:</span><span class="st0">&quot;value&quot;</span><span class="sy0">,</span>
+            anotherKey<span class="sy0">:</span><span class="st0">&quot;anotherValue&quot;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>The above code imports an HTML template and attaches it to the root cell. During rendering the code sends a hash of parameters which will be placed inside of the template.</p>
+
+<a name='loadingsavingdata'><h2>Loading/Saving Data</h2></a>
+
+<p>You can use normal DHTMLX API to load data into any component.</p>
+
+<div class='note'><p><p>We recommend to store Toolbar, Form and Menu configuration as a part of the view file, 
+and load external data only for data components such as Grid, Tree, TreeGrid, DataView and Chart.</p>
+</p></div>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>p <span class="kw2">class</span><span class="sy0">=</span><span class="st0">'snippet'</span><span class="sy0">&gt;</span> <span class="st0">&quot;countries.js&quot;</span><span class="sy0">&lt;/</span>p<span class="sy0">&gt;</span>
+<span class="kw2">import</span> <span class="br0">&#123;</span> DHXView <span class="br0">&#125;</span> from <span class="st0">&quot;dhx-optimus&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">export</span> <span class="kw2">class</span> CountriesView <span class="kw2">extends</span> DHXView <span class="br0">&#123;</span>
+    render<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">this</span>.<span class="me1">ui</span> <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">root</span>.<span class="me1">attachDataView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+            <span class="co1">//data loading</span>
+            url<span class="sy0">:</span><span class="st0">&quot;data.php&quot;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="co1">//data saving</span>
+        <span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;save.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;REST&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        dp.<span class="me1">init</span><span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">ui</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Working with Back-end (PHP, Node, etc.)</h3>
+
+<p>When you are using an app in the Developer mode (npm run server), it will use its own server, 
+so all calls to PHP or any other backend scripts need to be routed. This is controlled by two parameters:</p>
+
+<ul>
+<li>In <em>webpack.config.js</em>:</li>
+</ul>
+
+<pre><code><pre class="js">  devServer<span class="sy0">:</span><span class="br0">&#123;</span>
+    proxy<span class="sy0">:</span> <span class="br0">&#123;</span>
+      <span class="st0">'/server/*'</span><span class="sy0">:</span> pkg.<span class="me1">localURL</span>
+    <span class="br0">&#125;</span>
+  <span class="br0">&#125;</span><span class="sy0">,</span></pre></code></pre>
+
+<p>Instructs all calls to the "server" folder to be routed to some other server.</p>
+
+<ul>
+<li>And in <em>package.json</em>:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="st0">&quot;localURL&quot;</span><span class="sy0">:</span> <span class="st0">&quot;http://127.0.0.1/dhtmlx/demos/optimus-start/&quot;</span><span class="sy0">,</span></pre></code></pre>
+
+<p><em>localURL</em> defines the full web URL of the backend server.</p>
+
+<a name='localization'><h2>Localization</h2></a>
+
+<p>DHTMLX Optimus allows creating multi-language applications. Localization is implemented on the base of the <a href="http://airbnb.io/polyglot.js/"><em>Polyglot.js</em></a> library.</p>
+
+<p>To enable localization for the app's interface, you need to import Polyglot into the main file of your application (<em>sources/app.js</em>). 
+After that create an instance of the Polyglot class which you will use for translation:</p>
+
+<pre><code><pre class="js">npm install <span class="sy0">--</span>save node<span class="sy0">-</span>polyglot</pre></code></pre>
+
+<pre><code><pre class="js"><span class="kw2">import</span> <span class="br0">&#123;</span>DHXApp<span class="sy0">,</span> DHXLocale<span class="br0">&#125;</span> from <span class="st0">&quot;dhx-optimus&quot;</span><span class="sy0">;</span>
+<span class="kw2">import</span> Polyglot from <span class="st0">&quot;node-polyglot&quot;</span><span class="sy0">;</span>
+<span class="kw2">import</span> en from <span class="st0">&quot;locale/en.js&quot;</span><span class="sy0">;</span>
+<span class="kw2">import</span> de from <span class="st0">&quot;locale/de.js&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">class</span> MyApp <span class="kw2">extends</span> DHXApp<span class="br0">&#123;</span>
+    render<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">this</span>.<span class="me1">locale</span> <span class="sy0">=</span> <span class="kw2">new</span> DHXLocale<span class="br0">&#40;</span>Polyglot<span class="sy0">,</span> <span class="br0">&#123;</span> en<span class="sy0">,</span> de <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Later in any view you can use <em>this.app.locale</em> to access text translations.</p>
+
+<h3>Storing Locales</h3>
+
+<p>Locales are stored in separate JS files in the <em>locales</em> folder.</p>
+
+<p>Inside of the locale's file a common JS object stores a collection of the <em>key:value</em> pairs
+corresponding to the text strings and their translations. For example:</p>
+
+<pre><code><pre class="js"><span class="co1">// sources/locales/fr.js</span>
+<span class="kw2">export</span> <span class="kw2">default</span> <span class="kw2">const</span> fr <span class="sy0">=</span> <span class="br0">&#123;</span>
+    <span class="co1">// dataview</span>
+    <span class="st0">&quot;Name&quot;</span> <span class="sy0">:</span> <span class="st0">&quot;Nom&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;User&quot;</span> <span class="sy0">:</span> <span class="st0">&quot;Utilisateur&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;Description&quot;</span> <span class="sy0">:</span> <span class="st0">&quot;Description&quot;</span><span class="sy0">,</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>It will set the necessary language and take translation phrases from <em>helpers/langs.js</em>.</p>
+
+<pre><code><pre class="js"><span class="co1">// views/grid.js</span>
+<span class="kw2">export</span> <span class="kw2">class</span> GridView <span class="kw2">extends</span> DHXView<span class="br0">&#123;</span>
+    render<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw2">const</span> _ <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">app</span>.<span class="me1">locale</span>.<span class="me1">helper</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">this</span>.<span class="me1">ui</span> <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">root</span>.<span class="me1">attachGrid</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">this</span>.<span class="me1">ui</span>.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+            _<span class="br0">&#40;</span><span class="st0">&quot;Flag&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span> _<span class="br0">&#40;</span><span class="st0">&quot;ID&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span> _<span class="br0">&#40;</span><span class="st0">&quot;Status&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span> _<span class="br0">&#40;</span><span class="st0">&quot;Subject&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span> _<span class="br0">&#40;</span><span class="st0">&quot;Manager&quot;</span><span class="br0">&#41;</span>     
+        <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">this</span>.<span class="me1">ui</span>.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>The English locale is set by default, you can change the default language in the main view using the <strong>setLang()</strong> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> TicketApp <span class="kw2">extends</span> DHXApp<span class="br0">&#123;</span>
+    render<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">this</span>.<span class="me1">locale</span> <span class="sy0">=</span> <span class="kw2">new</span> DHXLocale<span class="br0">&#40;</span>Polyglot<span class="sy0">,</span> <span class="br0">&#123;</span> en<span class="sy0">,</span> de <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">this</span>.<span class="me1">ui</span> <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">show</span><span class="br0">&#40;</span>TopView<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">this</span>.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onLangChange&quot;</span><span class="sy0">,</span> lang <span class="sy0">=&gt;</span> <span class="br0">&#123;</span>
+            <span class="kw1">this</span>.<span class="me1">setLang</span><span class="br0">&#40;</span>lang<span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="kw1">this</span>.<span class="me1">ui</span>.<span class="me1">refresh</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='services'><h2>Services</h2></a>
+
+<p>DHTMLX Optimus provides an easy way to use Dependency Injection container. 
+The app and all views have <em>addService()</em> and <em>getService()</em> API which can be used to define some shared module. 
+It can be used to share the state of components without directly exposing them.</p>
+
+<p>For example, you can have a TreeView:</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> TreeView <span class="kw2">extends</span> DHXView <span class="br0">&#123;</span>
+    render<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw2">var</span> sId <span class="sy0">=</span> <span class="kw2">null</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">this</span>.<span class="me1">ui</span> <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">root</span>.<span class="me1">attachTree</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">this</span>.<span class="me1">ui</span>.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onClick&quot;</span><span class="sy0">,</span> <span class="br0">&#40;</span>id<span class="br0">&#41;</span> <span class="sy0">=&gt;</span> sId <span class="sy0">=</span> id <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// store selected item</span>
+&nbsp;
+        <span class="kw1">this</span>.<span class="me1">addService</span><span class="br0">&#40;</span><span class="st0">&quot;DocumentTree&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+            selected<span class="sy0">:</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">=&gt;</span> sId
+        <span class="br0">&#125;</span><span class="br0">&#41;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Now it's possible to get the id of the selected item from any other view like this:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> id <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">getService</span><span class="br0">&#40;</span><span class="st0">&quot;DocumentTree&quot;</span><span class="br0">&#41;</span>.<span class="me1">selected</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>If a view which has registered some module is destroyed, all registered services are deleted as well.</p>
+
+<a name='otherhelpers'><h2>Other Helpers</h2></a>
+
+<h3>Image Path Helper</h3>
+
+<p>For some components it's necessary to specify the path to the folder with images. In order not to set the full path each time, the framework provides a useful helper.</p>
+
+<p>You can apply the helper inside of the regular <em>setImagePath()</em> method of the main UI, like this: <em>this.app.imagepath("componentName")</em>.</p>
+
+<p>For example, to set path to the images' folder of the Tree component, use the code as in:</p>
+
+<pre><code><pre class="js"><span class="kw1">this</span>.<span class="me1">ui</span>.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">imagepath</span><span class="br0">&#40;</span><span class="st0">&quot;tree&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='deployinganapplication'><h2>Deploying an Application</h2></a>
+
+<p>To deploy your app to the live server, use the following NPM command:</p>
+
+<pre><code><pre class="js">npm run build</pre></code></pre>
+
+<p>It will create a "dist" folder with all necessary files. Just push those files on the production server.</p>
+
+<p>After that you can call <code>npm run deploy</code> to synchronize the <em>dist</em> folder to the target server (path to the target server is configured inside of <em>gulpfile.js</em>).</p>
+
+<h3>Using App as a View inside of Other Apps</h3>
+
+<p>With DHTMLX Optimus, you can combine several applications and make them work as modules of one large 
+application. The API is the same as for working with views, just use the <em>this.show</em> command.</p>
+
+<pre><code><pre class="js"><span class="kw2">import</span> <span class="br0">&#123;</span>DHXView<span class="br0">&#125;</span> from <span class="st0">&quot;dhx-optimus&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">import</span> <span class="br0">&#123;</span>App1<span class="br0">&#125;</span> from <span class="st0">&quot;app1.js&quot;</span><span class="sy0">;</span>
+<span class="kw2">import</span> <span class="br0">&#123;</span>App2<span class="br0">&#125;</span> from <span class="st0">&quot;app2.js&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">export</span> <span class="kw2">class</span> TopView <span class="kw2">extends</span> DHXView<span class="br0">&#123;</span>
+    render<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        let top <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">ui</span> <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">root</span>.<span class="me1">attachLayout</span><span class="br0">&#40;</span><span class="st0">&quot;2U&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        let app1 <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">show</span><span class="br0">&#40;</span><span class="kw2">new</span> App1<span class="br0">&#40;</span>config<span class="br0">&#41;</span><span class="sy0">,</span>top.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;a&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        let app2 <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">show</span><span class="br0">&#40;</span><span class="kw2">new</span> App2<span class="br0">&#40;</span>config<span class="br0">&#41;</span><span class="sy0">,</span>top.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;b&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>You can use different applications or create multiple instances of a single app.</p>
+
+<a name='relatedmaterials'><h2>Related Materials</h2></a>
+
+<ul>
+<li><a href="https://github.com/dhtmlx/optimus">DHTMLX Optimus</a> on Github</li>
+<li><a href="https://github.com/dhtmlx/optimus-start">Starter package</a> to begin creating an application</li>
+<li><a href="https://github.com/dhtmlx/optimus-demos">Demo applications</a></li>
+</ul>
+
+<!-- Content Area End -->
+			<a href='optimus__index.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

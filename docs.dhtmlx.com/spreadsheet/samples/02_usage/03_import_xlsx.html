@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Import xlsx</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+		<script type="text/javascript" src="../../codebase/spreadsheet-v=3.1.4.js"></script>
+		<link rel="stylesheet" href="../../codebase/spreadsheet-v=3.1.4.css">
+		<link rel="stylesheet" href="../common/index-v=3.1.4.css">
+		<script type="text/javascript" src="../common/dataset-v=3.1.4.js"></script>
+<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                        'gtm.start':
+                                new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5M5RCSJ');</script>
+<!-- End Google Tag Manager -->
+
+<!-- error tracking -->
+<script src="https://cdn.ravenjs.com/3.19.1/raven.min.js" crossorigin="anonymous"></script>
+<script>Raven.config('https://a2578da6be394598bfe003e4dbb3a394@sentry.dhtmlx.ru/13').install()</script></head>
+	<body>
+		<header class="dhx_sample-header">
+			<div class="dhx_sample-header__main">
+				<nav class="dhx_sample-header__breadcrumbs">
+					<ul class="dhx_sample-header-breadcrumbs">
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="../index.html" class="dhx_sample-header-breadcrumbs__link">Spreadsheet samples</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="index.html" class="dhx_sample-header-breadcrumbs__link">usage</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<span class="dhx_sample-header-breadcrumbs__link">import xlsx</span>
+						</li>
+					</ul>
+				</nav>
+				<h1 class="dhx_sample-header__title">
+					Import xlsx.
+					Check documentation:
+					<a href="../../loading_data.html#importexcel" target="_blank" class="dhx_sample-header-link">Import</a>
+				</h1>
+		<div class="dhx_sample-header__cta" id="dhx_sample-cta">
+			<a title="Free Trial" target="_blank" class="dhx_sample-btn dhx_sample-btn--flat dhx_sample-btn--cta" 
+			href="https://dhtmlx.com/docs/products/dhtmlxSpreadsheet/download.shtml">Free Trial</a>
+		</div>
+	</div>
+</header>
+		<section class="dhx_sample-controls">
+			<a href="../common/data.xlsx" target="_blank" class="dhx_sample-btn dhx_sample-btn--flat" style="margin-right: 8px;text-decoration: none;">Download sample xlsx file</a>
+			<button class="dhx_sample-btn dhx_sample-btn--flat" onclick="importXlsx()">Import xlsx</button>
+		</section>
+		<section class="dhx_sample-container">
+			<div class="dhx_sample-container__widget" id="spreadsheet"></div>
+		</section>
+
+		<script>
+			var spreadsheet = new dhx.Spreadsheet("spreadsheet", {
+				menu: true,
+				toolbarBlocks: ["default", "file"]
+			});
+			spreadsheet.parse(dataset);
+			function importXlsx() {
+				spreadsheet.load("","xlsx");
+			}
+		</script>
+
+	</body>
+</html>

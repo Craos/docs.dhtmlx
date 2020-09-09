@@ -1,0 +1,345 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1589882915.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1589882915.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Spreadsheet Docs" href="https://docs.dhtmlx.com/spreadsheet/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Work with SpreadSheet  Spreadsheet Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/c/widgets/dhtmlxspreadsheet-jsmessage">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="initialization.html">Initialization</a></li><li class=""><a href="configuration.html">Configuration</a></li><li class=""><a href="localization.html">Localization</a></li><li class=""><a href="loading_data.html">Data Loading and Export</a></li><li class=" current"><a href="working_with_ssheet.html">Work with SpreadSheet</a></li><ul><li class="inner"><a href="working_with_ssheet.html#undoredoactions">Undo/redo actions</a></li><li class="inner"><a href="working_with_ssheet.html#addingremovingrowsandcolumns">Adding/removing rows and columns</a></li><li class="inner"><a href="working_with_ssheet.html#stylingcells">Styling cells</a></li><li class="inner"><a href="working_with_ssheet.html#settingcellvalue">Setting cell value</a></li><li class="inner"><a href="working_with_ssheet.html#lockingcells">Locking cells</a></li><li class="inner"><a href="working_with_ssheet.html#editingcell">Editing cell</a></li><li class="inner"><a href="working_with_ssheet.html#selectingcells">Selecting cells</a></li><li class="inner"><a href="working_with_ssheet.html#settingfocusonacell">Setting focus on a cell</a></li></ul><li class=""><a href="number_formatting.html">Number Formatting</a></li><li class=""><a href="handling_events.html">Event Handling</a></li><li class=""><a href="customization.html">Customization</a></li><li class=""><a href="angular_integration.html">Integration with Angular</a></li><li class=""><a href="react_integration.html">Integration with React</a></li><li class=""><a href="vuejs_integration.html">Integration with Vue.js</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Work with SpreadSheet</h1>
+
+<p>While users interact with SpreadSheet via its intuitive interface, you can work with the component using <a class="link-" href="api__refs__spreadsheet.html">simple API</a>.</p>
+
+<a name='undoredoactions'><h2>Undo/redo actions</h2></a>
+
+<p>There is the <a class="link-" href="api__spreadsheet_undo.html">undo</a> API method that allows reverting the latest action:</p>
+
+<pre><code><pre class="js">spreadsheet.<span class="me1">undo</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To reapply a reverted action once again use the <a class="link-" href="api__spreadsheet_redo.html">redo</a> method:</p>
+
+<pre><code><pre class="js">spreadsheet.<span class="me1">redo</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='addingremovingrowsandcolumns'><h2>Adding/removing rows and columns</h2></a>
+
+<h3>Columns</h3>
+
+<p>To add/delete a column, use the related API methods:</p>
+
+<ul>
+<li><a class="link-" href="api__spreadsheet_addcolumn.html">addColumn</a></li>
+<li><a class="link-" href="api__spreadsheet_deletecolumn.html">deleteColumn</a></li>
+</ul>
+
+<p>Pass to the methods the id of the cell that contains the id of a column that should be added.</p>
+
+<pre><code><pre class="js"><span class="co1">// adds an empty &quot;C&quot; column </span>
+spreadsheet.<span class="me1">addColumn</span><span class="br0">&#40;</span><span class="st0">&quot;C1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// removes the &quot;C&quot; column</span>
+spreadsheet.<span class="me1">deleteColumn</span><span class="br0">&#40;</span><span class="st0">&quot;C1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>When a new column is added, neighboring columns are moved to the right.</p>
+
+<h3>Rows</h3>
+
+<p>To add/delete a row, use the API methods below:</p>
+
+<ul>
+<li><a class="link-" href="api__spreadsheet_addrow.html">addRow</a></li>
+<li><a class="link-" href="api__spreadsheet_deleterow.html">deleteRow</a></li>
+</ul>
+
+<p>Pass to the methods the id of the cell that contains the id of a row that should be added.</p>
+
+<pre><code><pre class="js"><span class="co1">// adds an empty second row</span>
+spreadsheet.<span class="me1">addRow</span><span class="br0">&#40;</span><span class="st0">&quot;A2&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// removes the second row</span>
+spreadsheet.<span class="me1">deleteRow</span><span class="br0">&#40;</span><span class="st0">&quot;A2&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>When a new row is added, neighboring rows are moved one cell down.</p>
+
+<a name='stylingcells'><h2>Styling cells</h2></a>
+
+<h3>Set styles</h3>
+
+<p>You can apply certain styling to a cell or a range of cells via the <a class="link-" href="api__spreadsheet_setstyle.html">setStyle</a> method. It takes two parameters:</p>
+
+<ul>
+<li><strong>cells</strong> - (<em>string</em>) the id(s) of a cell(s) or a range of cells</li>
+<li><strong>style</strong> - (<em>object/array</em>) styles that should be applied to cells</li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">// setting style for one cell</span>
+spreadsheet.<span class="me1">setStyle</span><span class="br0">&#40;</span><span class="st0">&quot;A1&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>background<span class="sy0">:</span><span class="st0">&quot;red&quot;</span><span class="sy0">,</span> border<span class="sy0">:</span><span class="st0">&quot;solid 1px yellow&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// setting the same style for a range of cells</span>
+spreadsheet.<span class="me1">setStyle</span><span class="br0">&#40;</span><span class="st0">&quot;A1:D1&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>color<span class="sy0">:</span><span class="st0">&quot;blue&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// setting the same style for different cells</span>
+spreadsheet.<span class="me1">setStyle</span><span class="br0">&#40;</span><span class="st0">&quot;B6,A1:D1&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>color<span class="sy0">:</span><span class="st0">&quot;blue&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// setting styles from an array for cells in a range alternately</span>
+spreadsheet.<span class="me1">setStyle</span><span class="br0">&#40;</span><span class="st0">&quot;A1:D1&quot;</span><span class="sy0">,</span><span class="br0">&#91;</span><span class="br0">&#123;</span>color<span class="sy0">:</span><span class="st0">&quot;blue&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span><span class="br0">&#123;</span>color<span class="sy0">:</span><span class="st0">&quot;red&quot;</span><span class="br0">&#125;</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>The method allows setting the same style for the specified cells. In case you want to apply different cells to spreadsheet cells, you'd better use the <a class="link-" href="api__spreadsheet_parse.html">parse</a> method.</p>
+</p></div>
+
+<h3>Get styles</h3>
+
+<p>To get the styles applied to a cell(s), use the <a class="link-" href="api__spreadsheet_getstyle.html">getStyle</a> method. Pass the <em>id(s) of a cell(s) or a range of cells</em> to it:</p>
+
+<pre><code><pre class="js"><span class="co1">// getting style of one cell</span>
+<span class="kw2">var</span> style <span class="sy0">=</span> spreadsheet.<span class="me1">getStyle</span><span class="br0">&#40;</span><span class="st0">&quot;A1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="co1">// -&gt; {background: &quot;#8DE9E1&quot;, color: &quot;#03A9F4&quot;}</span>
+&nbsp;
+<span class="co1">// getting styles of a range of cells</span>
+<span class="kw2">var</span> rangeStyles <span class="sy0">=</span> spreadsheet.<span class="me1">getStyle</span><span class="br0">&#40;</span><span class="st0">&quot;A1:D1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; see details</span>
+&nbsp;
+<span class="co1">// getting styles of different cells</span>
+<span class="kw2">var</span> values <span class="sy0">=</span> spreadsheet.<span class="me1">getStyle</span><span class="br0">&#40;</span><span class="st0">&quot;A1,B1,C1:C3&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>For multiple cells the method returns an array of objects with styles applied to a cell:</p>
+
+<pre><code><pre class="js"><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>background<span class="sy0">:</span> <span class="st0">&quot;red&quot;</span><span class="sy0">,</span> border<span class="sy0">:</span> <span class="st0">&quot;solid 1px yellow&quot;</span><span class="sy0">,</span> color<span class="sy0">:</span> <span class="st0">&quot;blue&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>background<span class="sy0">:</span> <span class="st0">&quot;red&quot;</span><span class="sy0">,</span> border<span class="sy0">:</span> <span class="st0">&quot;solid 1px yellow&quot;</span><span class="sy0">,</span> color<span class="sy0">:</span> <span class="st0">&quot;blue&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>background<span class="sy0">:</span> <span class="st0">&quot;#C8FAF6&quot;</span><span class="sy0">,</span> border<span class="sy0">:</span> <span class="st0">&quot;solid 1px yellow&quot;</span><span class="sy0">,</span> color<span class="sy0">:</span> <span class="st0">&quot;#81C784&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>background<span class="sy0">:</span> <span class="st0">&quot;#9575CD&quot;</span><span class="sy0">,</span> border<span class="sy0">:</span> <span class="st0">&quot;solid 1px yellow&quot;</span><span class="sy0">,</span> color<span class="sy0">:</span> <span class="st0">&quot;#079D8F&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span></pre></code></pre>
+
+<a name='settingcellvalue'><h2>Setting cell value</h2></a>
+
+<h3>Set values</h3>
+
+<p>To set value for a cell(s) via the API, make use of the <a class="link-" href="api__spreadsheet_setvalue.html">setValue</a> method. Pass the following parameters to it:</p>
+
+<ul>
+<li><strong>cells</strong> - (<em>string</em>) the id(s) of a cell(s) or a range of cells</li>
+<li><strong>value</strong> - (<em>string/number/array</em>)   the value to be set for a cell/cells</li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">// setting value for one cell</span>
+spreadsheet.<span class="me1">setValue</span><span class="br0">&#40;</span><span class="st0">&quot;A1&quot;</span><span class="sy0">,</span><span class="nu0">5</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// setting the same value for a range of cells</span>
+spreadsheet.<span class="me1">setValue</span><span class="br0">&#40;</span><span class="st0">&quot;A1:D1&quot;</span><span class="sy0">,</span><span class="nu0">5</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// setting the same value for different cells</span>
+spreadsheet.<span class="me1">setValue</span><span class="br0">&#40;</span><span class="st0">&quot;B6,A1:D1&quot;</span><span class="sy0">,</span><span class="nu0">5</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// setting values from an array for cells in a range alternately</span>
+spreadsheet.<span class="me1">setValue</span><span class="br0">&#40;</span><span class="st0">&quot;A1:D1&quot;</span><span class="sy0">,</span><span class="br0">&#91;</span><span class="nu0">1</span><span class="sy0">,</span><span class="nu0">2</span><span class="sy0">,</span><span class="nu0">3</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>Please note that the method allows setting the same/repeated value(s) for the specified cells. In case you want to add different values into spreadsheet cells, you'd better use the <a class="link-" href="api__spreadsheet_parse.html">parse</a> method.</p>
+</p></div>
+
+<h3>Get values</h3>
+
+<p>It is also possible to return the value(s) set in a cell(s) by passing the <em>id(s) of the necessary cell(s) or a range of cells</em> to the <a class="link-" href="api__spreadsheet_getvalue.html">getValue</a> method.</p>
+
+<p>The method will return the value(s) as a string,number or array:</p>
+
+<pre><code><pre class="js"><span class="co1">// returning the value of one cell</span>
+<span class="kw2">var</span> cellValue <span class="sy0">=</span> spreadsheet.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="st0">&quot;A2&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// &quot;Ecuador&quot;</span>
+&nbsp;
+<span class="co1">// returning the values of the range of cells</span>
+<span class="kw2">var</span> rangeValues <span class="sy0">=</span> spreadsheet.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="st0">&quot;A1:A3&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; [&quot;Country&quot;,&quot;Ecuador&quot;,&quot;Belarus&quot;]</span>
+&nbsp;
+<span class="co1">// returning the values of different cells</span>
+<span class="kw2">var</span> values <span class="sy0">=</span> spreadsheet.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="st0">&quot;A1,B1,C1:C3&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//-&gt; [&quot;Country&quot;, &quot;Product&quot;, &quot;Price&quot;, 6.68, 3.75]</span></pre></code></pre>
+
+<a name='lockingcells'><h2>Locking cells</h2></a>
+
+<h3>Lock cells</h3>
+
+<p>You can lock a cell or several cells programmatically to make them read-only for users. Use the <a class="link-" href="api__spreadsheet_lock.html">lock</a> method for this purpose. The method takes as a parameter the id of a cell(s) or a range of cells to lock.</p>
+
+<pre><code><pre class="js"><span class="co1">// locks a cell</span>
+spreadsheet.<span class="me1">lock</span><span class="br0">&#40;</span><span class="st0">&quot;A1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// locks a range of cells</span>
+spreadsheet.<span class="me1">lock</span><span class="br0">&#40;</span><span class="st0">&quot;A1:C1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// locks specified cells</span>
+spreadsheet.<span class="me1">lock</span><span class="br0">&#40;</span><span class="st0">&quot;A1,B5,B7,D4:D6&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_usage/01_locked_cells.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Locked cells</a></p>
+
+<h3>Unlock cells</h3>
+
+<p>To unlock the locked cell(s), use the <a class="link-" href="api__spreadsheet_unlock.html">unlock</a> method. Pass the id(s) of the cell(s) or a range that contains locked cells as a parameter:</p>
+
+<pre><code><pre class="js"><span class="co1">// unlocks a cell</span>
+spreadsheet.<span class="me1">unlock</span><span class="br0">&#40;</span><span class="st0">&quot;A1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// unlocks a range of cells</span>
+spreadsheet.<span class="me1">unlock</span><span class="br0">&#40;</span><span class="st0">&quot;A1:C1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// unlocks specified cells</span>
+spreadsheet.<span class="me1">unlock</span><span class="br0">&#40;</span><span class="st0">&quot;A1,B5,B7,D4:D6&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Check whether a cell is locked</h3>
+
+<p>To check whether a cell or several cells are locked, use the <a class="link-" href="api__spreadsheet_islocked.html">isLocked</a> method and pass the <em>id of a cell(s)</em> or a <em>range of cells</em> to it:</p>
+
+<pre><code><pre class="js"><span class="co1">// checks whether a cell is locked</span>
+<span class="kw2">var</span> cellLocked <span class="sy0">=</span> spreadsheet.<span class="me1">isLocked</span><span class="br0">&#40;</span><span class="st0">&quot;A1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+&nbsp;
+<span class="co1">// checks whether several cells are locked</span>
+<span class="kw2">var</span> rangeLocked <span class="sy0">=</span> spreadsheet.<span class="me1">isLocked</span><span class="br0">&#40;</span><span class="st0">&quot;A1:C1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// checks whether scattered cells are locked</span>
+<span class="kw2">var</span> cellsLocked <span class="sy0">=</span> spreadsheet.<span class="me1">isLocked</span><span class="br0">&#40;</span><span class="st0">&quot;A1,B5,B7,D4:D6&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The method will return <em>true</em> or <em>false</em> depending on the state of the cell. If several cells are checked at once, the method will return <em>true</em>, if there is at least one locked cell among the specified cells.</p>
+
+<a name='editingcell'><h2>Editing cell</h2></a>
+
+<h3>Enable cell editor</h3>
+
+<p>You can add an input into a cell by calling the <a class="link-" href="api__spreadsheet_startedit.html">startEdit</a> method:</p>
+
+<pre><code><pre class="js">spreadsheet.<span class="me1">startEdit</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The method may take two optional parameters:</p>
+
+<ul>
+<li><strong>cell</strong>   - (<em>string</em>) optional, the id of a cell</li>
+<li><strong>value</strong> - (<em>string</em>) optional, the cell value</li>
+</ul>
+
+<p>If the id of a cell isn't passed, input will be added into the currently selected cell.</p>
+
+<h3>Disable cell editor</h3>
+
+<p>To finish editing of a cell, use the <a class="link-" href="api__spreadsheet_endedit.html">endEdit</a> method that will close the editor while saving the entered value.</p>
+
+<pre><code><pre class="js">spreadsheet.<span class="me1">endEdit</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='selectingcells'><h2>Selecting cells</h2></a>
+
+<p>SpreadSheet provides a handy way of setting selection for cells via the API of the <em>Selection</em> object.</p>
+
+<p>You can select cell(s) by passing its/their id(s) to the <a class="link-" href="api__selection__setselectedcell.html">setSelectedCell</a> method:</p>
+
+<pre><code><pre class="js"><span class="co1">// selecting a cell</span>
+spreadsheet.<span class="me1">selection</span>.<span class="me1">setSelectedCell</span><span class="br0">&#40;</span><span class="st0">&quot;B5&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// selecting a range of cells</span>
+spreadsheet.<span class="me1">selection</span>.<span class="me1">setSelectedCell</span><span class="br0">&#40;</span><span class="st0">&quot;B1:B5&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// selecting scattered cells</span>
+spreadsheet.<span class="me1">selection</span>.<span class="me1">setSelectedCell</span><span class="br0">&#40;</span><span class="st0">&quot;B7,B3,D4,D6,E4:E8&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>It is also possible to get the id(s) of the selected cell(s) via the <a class="link-" href="api__selection__getselectedcell.html">getSelectedCell</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> selected <span class="sy0">=</span> spreadsheet.<span class="me1">selection</span>.<span class="me1">getSelectedCell</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; &quot;B7,B3,D4,D6,E4:E8&quot;</span></pre></code></pre>
+
+<a name='settingfocusonacell'><h2>Setting focus on a cell</h2></a>
+
+<p>The <em>Selection</em> object allows setting focus on a desired spreadsheet cell, as well as getting the id of the cell in focus. Use the corresponding methods for this purpose:</p>
+
+<ul>
+<li><a class="link-" href="api__selection__setfocusedcell.html">setFocusedCell</a></li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">// pass the id of the cell to set focus on</span>
+spreadsheet.<span class="me1">selection</span>.<span class="me1">setFocusedCell</span><span class="br0">&#40;</span><span class="st0">&quot;D4&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><a class="link-" href="api__selection__getfocusedcell.html">getFocusedCell</a></li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">// getting the focused cell </span>
+<span class="kw2">var</span> focused <span class="sy0">=</span> spreadsheet.<span class="me1">selection</span>.<span class="me1">getFocusedCell</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; &quot;D4&quot;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='working_with_ssheet.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='loading_data.html'>Loading Data</a></li>	
+	<li><a href='working_with_ssheet.html'>Main Operations</a></li>
+	<li><a href='handling_events.html'>Handling Events</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Look and Feel</li>
+	<li><a href='configuration.html'>Configuration</a></li>
+	<li><a href='localization.html'>Localization</a></li>
+	<li><a href='customization.html'>Customization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Integration</li>
+	<li><a href='angular_integration.html'>Angular</a></li>
+	<li><a href='react_integration.html'>React</a></li>
+	<li><a href='vuejs_integration.html'>Vue.js</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__spreadsheet.html#methods'>Methods</a></li>
+	<li><a href='api__refs__spreadsheet.html#config'>Properties</a></li>
+	<li><a href='api__refs__spreadsheet.html#events'>Events</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Scheduler Markup  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="initialization.html">Initializing Scheduler on a Page</a></li><li class=""><a href="install_with_bower.html">Ways to Install Scheduler</a></li><li class=""><a href="configuration.html">Common Config Instructions</a></li><li class=" current"><a href="scheduler_markup.html">Scheduler Markup</a></li><ul><li class="inner"><a href="scheduler_markup.html#tabspositioning">Tabs positioning</a></li><li class="inner"><a href="scheduler_markup.html#addingdeletingviewstabs">Adding/deleting views' tabs</a></li><li class="inner"><a href="scheduler_markup.html#hidingthenavigationbuttons">Hiding the navigation buttons</a></li><li class="inner"><a href="scheduler_markup.html#hidingtheschedulersheader">Hiding the scheduler's header</a></li></ul><li class="toc-pro"><a href="multiple_per_page.html">Creating Multiple Schedulers on a Page</a></li><li class=""><a href="rtl_mode.html">RTL (Right-to-left) Mode</a></li><li class=""><a href="localization.html">Localization</a></li><li class=""><a href="accessibility.html">Accessibility</a></li><li class=""><a href="extensions_list.html">Full List of Extensions</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="configuring_the_scheduler.html">Creating Scheduler on a Page</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Scheduler Markup</h1>
+
+<p>The standard scheduler's markup looks like this:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;scheduler_here&quot;</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_container&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">'width:100%; height:100%;'</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_navline&quot;</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_prev_button&quot;</span>&gt;</span><span class="sc1">&amp;nbsp;</span><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_next_button&quot;</span>&gt;</span><span class="sc1">&amp;nbsp;</span><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_today_button&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_date&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;day_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;right:204px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;week_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;right:140px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;month_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;right:76px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_header&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_data&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>       
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+<p><img src="media/markup.png"/></p>
+
+<a name='tabspositioning'><h2>Tabs positioning</h2></a>
+
+<h3>Default ('terrace') skin</h3>
+
+<p>Initially, the default ('terrace') skin ignores the CSS properties used to set the tab's position (e.g. style="right:204px;") and locates the tab using its specific logic: the default views are presented 
+as a segmented button at the left side but additional views are placed as individual buttons at the right side.</p>
+
+<p>To set the position manually (e.g. in the markup), set the <a class="link-" href="api__scheduler_fix_tab_position_config.html">fix_tab_position</a> parameter to <em>false</em> to disable the default behaviour and set the coordinates with CSS properties:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">fix_tab_position</span> <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span>
+...
+<span class="me1">scheduler</span>.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2013</span><span class="sy0">,</span>05<span class="sy0">,</span><span class="nu0">11</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="st0">&quot;week&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Notice that you can use the following CSS classes to create a segmented button:</p>
+
+<ul>
+<li><strong>dhx_cal_tab_last</strong> - makes the right border rounded</li>
+<li><strong>dhx_cal_tab_first</strong> - makes the left border rounded</li>
+<li><strong>dhx_cal_tab_standalone</strong> - makes the both borders rounded</li>
+</ul>
+
+<p>For example, to set the 'day'-'week'-'month' segmented button in the default skin manually, you can specify the markup as in:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab dhx_cal_tab_first&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;day_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;left:14px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;week_tab&quot;</span>  <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;left: 75px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab dhx_cal_tab_last&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;month_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;left:136px&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+<h3>'Glossy' and 'Classic' skins</h3>
+
+<p>The 'classic', 'glossy' skins apply the coordinates specified in the scheduler's markup initially and don't require disabling of the default behavior.</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_navline&quot;</span>&gt;</span>
+    ...
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;day_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;right:204px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;week_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;right:140px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;agenda_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;right:280px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;month_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;right:76px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+<a name='addingdeletingviewstabs'><h2>Adding/deleting views' tabs</h2></a>
+
+<h3>Adding a tab</h3>
+
+<p>To add a new tab to the header, add a div with the <strong>"dhx_cal_tab"</strong> class as a child node of the <strong>"dhx_cal_navline"</strong> element:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_navline&quot;</span>&gt;</span>
+    ...
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;day_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;right:204px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;week_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;right:140px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;timeline_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;right:280px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;month_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;right:76px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+<p>The view that will be opened on a tab click is defined by the <strong>name</strong> attribute and specified as <strong>{viewName}_tab</strong>.</p>
+
+<div class='note'><p><p>Note, the tab can have several CSS classes applied, but the <strong>"dhx_cal_tab"</strong> class must go first.</p>
+</p></div>
+
+<h3>Deleting a tab</h3>
+
+<p>To remove a tab from the header, remove the related div from the markup:</p>
+
+<p class='snippet'>
+Removing the 'month' tab from the header
+</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_navline&quot;</span>&gt;</span>
+    ...
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;day_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;right:204px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;week_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;right:140px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+<div class='note'><p><p>Even if the tab is removed, the related view is still accessible programmatically with the  <a class="link-" href="api__scheduler_setcurrentview.html">setCurrentView</a> and <a class="link-" href="api__scheduler_updateview.html">updateView</a> methods.</p>
+</p></div>
+
+<a name='hidingthenavigationbuttons'><h2>Hiding the navigation buttons</h2></a>
+
+<p>To hide the navigation buttons in the scheduler's header, set the 'display:none' style for the related divs as in:</p>
+
+<p class='snippet'>
+Hiding the navigation buttons in the header
+</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">style</span>&gt;</span><pre class="css">    <span class="re1">.dhx_cal_prev_button</span><span class="sy0">,</span> .dhx_cal_next_button<span class="br0">&#123;</span>
+        <span class="kw1">display</span><span class="sy0">:</span><span class="kw2">none</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span></pre>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">style</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;scheduler_here&quot;</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_container&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">'width:100%; height:100%;'</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_navline&quot;</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_prev_button&quot;</span>&gt;</span><span class="sc1">&amp;nbsp;</span><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_next_button&quot;</span>&gt;</span><span class="sc1">&amp;nbsp;</span><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_today_button&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        ...
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_header&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_data&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>       
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+<a name='hidingtheschedulersheader'><h2>Hiding the scheduler's header</h2></a>
+
+<p>To hide the entire scheduler's header, set the <a class="link-" href="api__scheduler_xy_other.html">nav_height</a> property to 0:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">xy</span>.<span class="me1">nav_height</span> <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span>
+...
+<span class="me1">scheduler</span>.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2010</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">10</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;month&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='scheduler_markup.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

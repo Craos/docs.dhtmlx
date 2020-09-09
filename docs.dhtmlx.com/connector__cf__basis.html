@@ -1,0 +1,356 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Basic Loading  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="connector__cf__reference.html">ColdFusion Connector API</a></li><li class=""><a href="connector__cf__general_idea.html">General Idea of dhtmlxConnector</a></li><li class=""><a href="connector__cf__init.html">Initializing ColdFusion Connector</a></li><li class=" current"><a href="connector__cf__basis.html">Basic Loading</a></li><ul><li class="inner"><a href="connector__cf__basis.html#loadingfromdatabasetable">Loading from database table</a></li><li class="inner"><a href="connector__cf__basis.html#loadingfromfilesystem">Loading from File System</a></li></ul><li class=""><a href="connector__cf__dyn_loading.html">Dynamic Loading</a></li><li class=""><a href="connector__cf__filtration.html">Filtering</a></li><li class=""><a href="connector__cf__formatting.html">Formatting/Changing Data before Loading</a></li><li class=""><a href="connector__cf__sort.html">Sorting</a></li><li class=""><a href="connector__cf__dp.html">Client-Side Requirement - dataProcessor</a></li><li class=""><a href="connector__cf__complex_queries.html">Making Queries</a></li><li class=""><a href="connector__cf__multi_sync.html">Multi-User Sync</a></li><li class=""><a href="connector__cf__app_security.html">Security</a></li><li class=""><a href="connector__cf__validation.html">Validation</a></li><li class=""><a href="connector__cf__grid_columns.html">Select/Combobox Columns in Grid</a></li><li class=""><a href="connector__cf__grid_structure_server.html">Defining Grid Structure on the Server Side</a></li><li class=""><a href="connector__cf__scheduler_columns.html">Select-Box Columns in Scheduler</a></li><li class=""><a href="connector__cf__db_operations.html">Elementary DB operations with Connector</a></li><li class=""><a href="connector__cf__errors.html">Error Handling and Logging</a></li><li class=""><a href="connector__cf__event_handling.html">Handling Events</a></li><li class=""><a href="connector__cf__extending.html">Extending Functionality</a></li><li class=""><a href="connector__cf__samples.html">Samples</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="connector__index.html">Client-Server Communication</a><a class="n3" href="connector__cf__index.html">ColdFusion Connector</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Basic Loading</h1>
+
+<p>In this chapter you'll find base information concerning static loading of data:</p>
+
+<ul>
+<li><a class="link-" href="connector__cf__basis.html#loadingfromdatabasetable">Loading from a database table </a></li>
+<li><a class="link-" href="connector__cf__basis.html#loadingfromfilesystem">Loading from File System</a></li>
+</ul>
+
+<div class='note'><p><p>In order to load data correctly, your 'id' field in the database must be autoincrement.</p>
+</p></div>
+
+<a name='loadingfromdatabasetable'><h2>Loading from database table</h2></a>
+
+<p><strong>APPLICABLE TO:</strong> Grid, TreeGrid, Tree, Combo, Scheduler, DataView, Chart, Form</p>
+
+<p>Loading characteristics are defined at the stage of component configuration.</p>
+
+<p>There are 2 ways to specify the desired data:</p>
+
+<ul>
+<li><a href="connector__cf__basis.html#one_table">by the render_table() method when you work with one table</a></li>
+<li><a href="connector__cf__basis.html#several_tables">by the render_sql() method when you work with several tables (to implement complex queries)</a></li>
+</ul>
+
+<h3 id="one_table">Work with one table</h3>
+
+<p>When all necessary data is placed in one database table you should  use the <a class="link-" href="connector__cf__connector_object_methods.html#rendertable">render_table()</a> method:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>cfset grid.<span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;grid50000&quot;</span><span class="sy0">,</span><span class="st0">&quot;item_id&quot;</span><span class="sy0">,</span><span class="st0">&quot;item_nm,item_cd&quot;</span><span class="br0">&#41;</span><span class="sy0">&gt;</span></pre></code></pre>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>database table name</strong></li>
+<li><strong>name of the identity field</strong> (optional)</li>
+<li><strong>a list of fields</strong> which should be used as values of the component item (cells of grid, item label in tree, text of option in combo)</li>
+<li><strong>a list of extra fields</strong> (learn more about extra fields <a class="link-" href="connector__cf__basis.html#extradata">here</a>)
+If you want to render all fields from DB (except for the key field), you can use a simplified command: </li>
+</ul>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>cfset grid.<span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;grid50000&quot;</span><span class="br0">&#41;</span><span class="sy0">&gt;</span></pre></code></pre>
+
+<p>That's enough to make connector implement select, insert, update and delete operations.</p>
+
+<h3 id="several_tables">Work with several tables</h3>
+
+<p>If your SQL statement contains more than one table, the connector won't be able to generate insert/update/delete operations correctly and you will need to make one of the following actions:</p>
+
+<ol>
+<li>Define sql for each operation manually</li>
+<li>Use server-side events to define your own processing logic</li>
+<li>Define different configs for select and update operations</li>
+</ol>
+
+<p>The 3rd approach is shown in the code snippet below:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;!---</span> code <span class="kw1">for</span> loading data <span class="sy0">---&gt;</span>
+<span class="sy0">&lt;</span>cfif grid.<span class="me1">is_select_mode</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">&gt;</span> 
+   <span class="sy0">&lt;</span>cfset grid.<span class="me1">render_sql</span><span class="br0">&#40;</span>
+        <span class="st0">&quot;Select * from tableA, 
+        tableB  where  tableA.id=tableB.id&quot;</span><span class="sy0">,</span> 
+        <span class="st0">&quot;a.id&quot;</span><span class="sy0">,</span><span class="st0">&quot;name,price,other&quot;</span>
+   <span class="br0">&#41;</span><span class="sy0">&gt;</span>
+<span class="sy0">&lt;!---</span> code <span class="kw1">for</span> other operations <span class="sy0">-</span> i.<span class="me1">e</span>. <span class="me1">update</span><span class="sy0">/</span>insert<span class="sy0">/</span><span class="kw1">delete</span> <span class="sy0">---&gt;</span>
+<span class="sy0">&lt;</span>cfelse<span class="sy0">&gt;</span> 
+    <span class="sy0">&lt;</span>cfset grid.<span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;tableA&quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span><span class="st0">&quot;name,price&quot;</span><span class="br0">&#41;</span><span class="sy0">&gt;</span>
+<span class="sy0">&lt;/</span>cfif<span class="sy0">&gt;</span></pre></code></pre>
+
+<p>With such init code grid will be loaded with three columns of data from 2 tables, but during saving only data from the first table will be saved.</p>
+
+<h4>Complex queries</h4>
+
+<p>You are allowed to use any SQL statements to populate a dhtmlx component through dhtmlxConnector. In this case you should use 
+the <a class="link-" href="connector__cf__connector_object_methods.html#rendersql">render_sql()</a> method:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>cfset grid.<span class="me1">render_sql</span><span class="br0">&#40;</span>
+    <span class="st0">&quot;SELECT * from tableA INNER JOIN tableB  ON tableA.id=tableB.id&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;name,price&quot;</span>
+<span class="br0">&#41;</span><span class="sy0">&gt;</span></pre></code></pre>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong><em>sql</em> statement</strong></li>
+<li><strong>name of the identity field</strong> (optional)</li>
+<li><strong>a list of fields</strong> which should be used as values of the component item (cells for grid, item label for tree, text of option for combo)</li>
+<li><strong>a list of extra fields</strong> (learn more about extra fields <a class="link-" href="connector__cf__basis.html#extradata">here</a>)</li>
+<li><strong>parent ID field name</strong> for hierarchical structures (required for tree and treegrid)</li>
+</ul>
+
+<p>In case your SQL query was against a single table, it is quite probable that insert/update/delete
+operations do not require any additional code. dhtmlxConnector will parse your SQL and generate 
+insert/update/delete statements based on the used table and fields' names.</p>
+
+<h3>Extra data</h3>
+
+<p>The last parameter of the <em>render_sql</em> and <em>render_table</em> methods allows defining a list of fields which will be extracted from database table but won't be sent to the client side.</p>
+
+<p>These fields can be used as attributes or flags, mapped to different properties of records (userdata, row styles, images, etc.).</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>cfset grid.<span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;tableA&quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span><span class="st0">&quot;name,price&quot;</span><span class="sy0">,</span><span class="st0">&quot;extra1,extra2&quot;</span><span class="br0">&#41;</span><span class="sy0">&gt;</span>   
+<span class="sy0">&lt;!---</span> or <span class="sy0">---&gt;</span>
+<span class="sy0">&lt;</span>cfset grid.<span class="me1">render_sql</span><span class="br0">&#40;</span>
+    <span class="st0">&quot;Select * from tableA, tableB  where  tableA.id=tableB.id&quot;</span><span class="sy0">,</span> 
+    <span class="st0">&quot;table_a_id&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;name,price,other&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;extra1,extra2&quot;</span>
+<span class="br0">&#41;</span><span class="sy0">&gt;</span></pre></code></pre>
+
+<p>extra1 and extra2 fields will be available in all server-side events but won't be sent to the client side, and won't be included in update/insert operations.</p>
+
+<h3>Tree and TreeGrid specificity</h3>
+
+<p>In case of Tree and TreeGrid, both the <em>render_sql</em> and <em>render_table</em> methods accept one more parameter - <strong>relation ID</strong>. For default treegrid hierarchy it's the name of the field which will be used to link parent and child records.</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>cfset tree.<span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;tableA&quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span><span class="st0">&quot;name,price&quot;</span><span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="sy0">,</span><span class="st0">&quot;parent_id&quot;</span><span class="br0">&#41;</span><span class="sy0">&gt;</span> 
+<span class="sy0">&lt;!---</span> or <span class="sy0">---&gt;</span>
+<span class="sy0">&lt;</span>cfset tree.<span class="me1">render_sql</span><span class="br0">&#40;</span>
+    <span class="st0">&quot;Select * from tableA, tableB  where  tableA.id=tableB.id&quot;</span><span class="sy0">,</span> 
+    <span class="st0">&quot;a.id&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;name,price,other&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;parent_id&quot;</span>
+<span class="br0">&#41;</span><span class="sy0">&gt;</span></pre></code></pre>
+
+<h3>Aliases</h3>
+
+<p>To make the use of extracted data handier you can use aliases for DB field names (makes sense only if you use server-side events):</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>cfset grid.<span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;tableA&quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span><span class="st0">&quot;name,price(product_price)&quot;</span><span class="br0">&#41;</span><span class="sy0">&gt;</span>   
+<span class="sy0">&lt;!---</span> or <span class="sy0">---&gt;</span>
+<span class="sy0">&lt;</span>cfset grid.<span class="me1">render_sql</span><span class="br0">&#40;</span>
+    <span class="st0">&quot;Select *,tableA.id as aid from tableA, tableB  where  tableA.id=tableB.id&quot;</span><span class="sy0">,</span> 
+    <span class="st0">&quot;tableA.id(aid)&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;name,price(product_price),other&quot;</span>
+<span class="br0">&#41;</span><span class="sy0">&gt;</span></pre></code></pre>
+
+<p><a class="link-" href="connector__cf__basis.html">Back to top</a></p>
+
+<a name='loadingfromfilesystem'><h2>Loading from File System</h2></a>
+
+<p><strong>APPLICABLE TO:</strong> Grid, TreeGrid, Tree, Combo, Scheduler, DataView, Chart, Form</p>
+
+<p>Starting from version 1.0, dhtmlxConnector allows using FileSystem as datasource. It can be used with any client-side component, but the most common use-cases are grid and tree:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>cfset grid <span class="sy0">=</span> createObject<span class="br0">&#40;</span>
+    <span class="st0">&quot;component&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;dhtmlxConnectors.GridConnector&quot;</span><span class="br0">&#41;</span>.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;&quot;</span><span class="sy0">,</span><span class="st0">&quot;FileSystem&quot;</span><span class="br0">&#41;</span><span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>cfset grid.<span class="me1">render_table</span><span class="br0">&#40;</span>
+    <span class="st0">&quot;../&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;safe_name&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;filename,full_filename,size,name,extention,date,is_folder&quot;</span>
+<span class="br0">&#41;</span><span class="sy0">&gt;</span></pre></code></pre>
+
+<p>In the code snippet above, grid is filled with info about files in the parent folder of script location.</p>
+
+<p><img src="media/connector/cf/file_system1.png" alt="connector/cf/file_system1.png" /></p>
+
+<p><strong>Parameters of the 'render-table' method:</strong></p>
+
+<ul>
+<li><strong>a folder</strong>, for which data listing is required</li>
+<li><strong>the field's id</strong>. Leave it empty or use safe_name as the ID of the file</li>
+<li><strong>a list of fields</strong>, possible values are:
+
+<ul>
+<li><em><strong>filename</strong></em> - name of the file</li>
+<li><em><strong>full_filename</strong></em> - full path to the file</li>
+<li><em><strong>size</strong></em> - size of the file in bytes</li>
+<li><em><strong>name</strong></em> - name part of the file name</li>
+<li><em><strong>extension</strong></em> - extension part of the file name</li>
+<li><em><strong>date</strong></em> - timestamp of the file</li>
+<li><em><strong>is_folder</strong></em> - the file/folder flag</li>
+</ul></li>
+</ul>
+
+<h3>Limiting files in output</h3>
+
+<p>There are 3 ways to limit files in output:</p>
+
+<ol>
+<li>by extension type </li>
+<li>by regexp pattern </li>
+<li>by meta-type </li>
+</ol>
+
+<p><strong>by extension type:</strong></p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>cfinvoke component<span class="sy0">=</span><span class="st0">&quot;dhtmlxConnectors.FileSystemTypes&quot;</span> method<span class="sy0">=</span><span class="st0">&quot;getInstance&quot;</span> returnvariable<span class="sy0">=</span><span class="st0">&quot;fileTypes&quot;</span><span class="sy0">&gt;&lt;/</span>cfinvoke<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>cfset fileTypes.<span class="me1">addExtentionNot</span><span class="br0">&#40;</span><span class="st0">'docx'</span><span class="br0">&#41;</span><span class="sy0">&gt;</span></pre></code></pre>
+
+<p><strong>by regexp pattern:</strong></p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>cfinvoke component<span class="sy0">=</span><span class="st0">&quot;dhtmlxConnectors.FileSystemTypes&quot;</span> method<span class="sy0">=</span><span class="st0">&quot;getInstance&quot;</span> returnvariable<span class="sy0">=</span><span class="st0">&quot;fileTypes&quot;</span><span class="sy0">&gt;&lt;/</span>cfinvoke<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>cfset fileTypes.<span class="me1">addPattern</span><span class="br0">&#40;</span><span class="st0">'com[.]*'</span><span class="br0">&#41;</span><span class="sy0">&gt;</span></pre></code></pre>
+
+<p><strong>by meta-type:</strong></p>
+
+<p>The following meta-types can be used:</p>
+
+<ul>
+<li><strong>image</strong> - image files</li>
+<li><strong>document</strong> - doc, xls, txt, rtf</li>
+<li><strong>web</strong> - php, html, js, css</li>
+<li><strong>audio</strong> - mp3, wav, ogg</li>
+<li><strong>video</strong> - avi, mpg, mpeg, mp4</li>
+<li><strong>only_dir</strong> - folders</li>
+</ul>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>cfinvoke component<span class="sy0">=</span><span class="st0">&quot;dhtmlxConnectors.FileSystemTypes&quot;</span> method<span class="sy0">=</span><span class="st0">&quot;getInstance&quot;</span> returnvariable<span class="sy0">=</span><span class="st0">&quot;fileTypes&quot;</span><span class="sy0">&gt;&lt;/</span>cfinvoke<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>cfset fileTypes.<span class="me1">setType</span><span class="br0">&#40;</span><span class="st0">'web'</span><span class="br0">&#41;</span><span class="sy0">&gt;</span></pre></code></pre>
+
+<p><a class="link-" href="connector__cf__basis.html">Back to top</a></p>
+
+<!-- Content Area End -->
+			<a href='connector__cf__basis.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

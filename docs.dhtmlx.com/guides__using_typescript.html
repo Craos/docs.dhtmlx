@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Using DHTMLX with TypeScript  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="guides__package_structure.html">DHTMLX Package Structure</a></li><li class=""><a href="guides__building_ui.html">DHTMLX Coding Principles</a></li><li class=""><a href="guides__lib_compiler.html">Using libCompiler</a></li><li class=""><a href="guides__demo_for_support.html">Creating a Demo for Support</a></li><li class=" current"><a href="guides__using_typescript.html">Using DHTMLX with TypeScript</a></li><ul><li class="inner"><a href="guides__using_typescript.html#typescriptbenefits">TypeScript Benefits</a></li><li class="inner"><a href="guides__using_typescript.html#creatingastandalonetypescriptapp">Creating a Standalone TypeScript App</a></li><li class="inner"><a href="guides__using_typescript.html#creatingatypescriptappwithdhtmlxoptimus">Creating a TypeScript App with DHTMLX Optimus</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="guides__index.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Using DHTMLX with TypeScript</h1>
+
+<p>With DHTMLX of version 5.1 and higher, you can initialize and work with DHTMLX components from TypeScript.</p>
+
+<p><img src="media/guides/dhx_typescript.png"></p>
+
+<p>The library package includes the <strong>codebase/dhtmlx.d.ts</strong> file which contains TypeScript definitions for all components of DHTMLX Suite. 
+As for dhtmlxGantt and dhtmlxScheduler, they possess their own TypeScript definitions:</p>
+
+<ul>
+<li><a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/dhtmlxgantt">Gantt TypeScript definitions</a></li>
+<li><a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/dhtmlxscheduler">Scheduler TypeScript definitions</a></li>
+</ul>
+
+<a name='typescriptbenefits'><h2>TypeScript Benefits</h2></a>
+
+<p>Why do you need to use DHTMLX with TypeScript?</p>
+
+<p>Firstly, it is quite obvious that by checking the types, you will write a more stable code.</p>
+
+<p>One more important advantage is that all modern IDE will provide suggestions and type checking for your code created with DHTMLX.</p>
+
+<a name='creatingastandalonetypescriptapp'><h2>Creating a Standalone TypeScript App</h2></a>
+
+<p>To use TypeScript, you need to configure a toolchain which will compile <em>ts</em> files into a regular JavaScript. There are a lot of ways to do it, you can choose any of them.</p>
+
+<p>To simplify your work, we provide a simple project starter which contains everything you need to work with TypeScript:
+a Typescript package to compile typescript files into JavaScript and Webpack to bundle all files in the final app.</p>
+
+<p>You need just <a href="https://dhtmlx.com/x/download/typescript/starter.zip">grab the starter</a> - this is a bootstrap for DHTMLX-based apps with TypeScript support.</p>
+
+<p>After unzipping the archive, run the following commands to start the project:</p>
+
+<pre><code><pre class="js">npm install
+npm run server</pre></code></pre>
+
+<a name='creatingatypescriptappwithdhtmlxoptimus'><h2>Creating a TypeScript App with DHTMLX Optimus</h2></a>
+
+<p><a class="link-" href="optimus__index.html">DHTMLX Optimus</a> is a micro framework for organizing DHTMLX-based apps.</p>
+
+<p>By default Optimus uses modern JavaScript (ES6), but it can work equally well with TypeScript.</p>
+
+<p>To estimate the possibilities of this integration, you can grab the latest copy of 
+a <a href="https://github.com/DHTMLX/optimus-start/tree/typescript">starter project for Optimus-Typescript-based apps</a>. Then you can run it by using standard commands:</p>
+
+<pre><code><pre class="js">npm install
+npm run server</pre></code></pre>
+
+<p>Optimus-TypeScript integration doesn't require any changes in the API and usage principles in comparison to the vanilla version of DHTMLX Optimus.</p>
+
+<p>As you can see, in the case of combination with TypeScript, the app uses a bit different toolchain and files extensions in sources are changed to .ts, 
+all the rest is the same. The code of views doesn't differ from that of normal JavaScript, except for added typings.</p>
+
+<!-- Content Area End -->
+			<a href='guides__using_typescript.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

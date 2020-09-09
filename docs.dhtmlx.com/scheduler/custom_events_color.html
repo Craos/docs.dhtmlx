@@ -1,0 +1,301 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Custom Event's Color  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="custom_events_display.html">Custom Event's Box</a></li><li class=" current"><a href="custom_events_color.html">Custom Event's Color</a></li><ul><li class="inner"><a href="custom_events_color.html#specifyingcolorsinpropertiesoftheeventobject">Specifying colors in properties of the event object</a></li><li class="inner"><a href="custom_events_color.html#attachingadditionalcssclassestoanevent">Attaching additional CSS classes to an event</a></li><li class="inner"><a href="custom_events_color.html#loadingcolorswithdata">Loading colors with data</a></li></ul><li class=""><a href="custom_events_content.html">Custom Event's Content</a></li><li class=""><a href="tooltips.html">Tooltips</a></li><li class=""><a href="customizing_edit_select_bars.html">Customizing "Select" and "Edit" Bars</a></li><li class=""><a href="sizing.html">Sizing the Scale and Events Boxes</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="customizing_events.html">Customizing Events</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Custom Event's Color</h1>
+
+<p>There are three ways you can specify a custom color for an event:</p>
+
+<ol>
+<li><a class="link-" href="custom_events_color.html#specifyingcolorsinpropertiesoftheeventobject">To set color values in properties of the event object</a>;</li>
+<li><a class="link-" href="custom_events_color.html#attachingadditionalcssclassestoanevent">To attach additional CSS class(es) to the event</a>.</li>
+<li><a class="link-" href="custom_events_color.html#loadingcolorswithdata">To generate styles from data</a>.</li>
+</ol>
+
+<p><img src="media/custom_event_color.png"/></p>
+
+<a name='specifyingcolorsinpropertiesoftheeventobject'><h2>Specifying colors in properties of the event object</h2></a>
+
+<p>To specify a custom color for an event, it's enough to add 2 extra properties to the data object (or just one of them):</p>
+
+<ul>
+<li><strong>textColor</strong> - specifies the event's font color;</li>
+<li><strong>color</strong> - specifies the event's background color.</li>
+</ul>
+
+<p><img src="media/custom_color_model.png"/></p>
+
+<p class='snippet'>
+Setting the event's color in the data object
+</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">parse</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+   <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;2019-05-21&quot;</span><span class="sy0">,</span>end_date<span class="sy0">:</span><span class="st0">&quot;2019-05-25&quot;</span><span class="sy0">,</span>text<span class="sy0">:</span><span class="st0">&quot;Task1&quot;</span><span class="sy0">,</span> color<span class="sy0">:</span><span class="st0">&quot;red&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+   <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;2019-06-02&quot;</span><span class="sy0">,</span>end_date<span class="sy0">:</span><span class="st0">&quot;2019-06-05&quot;</span><span class="sy0">,</span>text<span class="sy0">:</span><span class="st0">&quot;Task2&quot;</span><span class="sy0">,</span> color<span class="sy0">:</span><span class="st0">&quot;blue&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">,</span><span class="st0">&quot;json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">scheduler</span>.<span class="me1">getEvent</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">color</span> <span class="sy0">=</span> <span class="st0">&quot;yellow&quot;</span><span class="sy0">;</span>
+scheduler.<span class="me1">updateEvent</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Note, these are special properties. By default, the scheduler always checks whether an event has them and if it does, applies the related values to the event's container and text. 
+Otherwise, the scheduler uses predefined colors for the event.</p>
+
+<p>The properties can have any valid CSS color value, e.g. all of the following notations are valid:</p>
+
+<pre><code><pre class="js">ev.<span class="me1">color</span> <span class="sy0">=</span> <span class="st0">&quot;#FF0000&quot;</span><span class="sy0">;</span>
+ev.<span class="me1">color</span> <span class="sy0">=</span> <span class="st0">&quot;red&quot;</span><span class="sy0">;</span>
+ev.<span class="me1">color</span> <span class="sy0">=</span> <span class="st0">&quot;rgb(255,0,0)&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='attachingadditionalcssclassestoanevent'><h2>Attaching additional CSS classes to an event</h2></a>
+
+<p>The second way to color an event is to apply additional CSS class(es) to it.</p>
+
+<h3>Technique</h3>
+
+<p>To apply a CSS class to an event, use the <a class="link-" href="api__scheduler_event_class_template.html">event_class</a> template.<br>
+The default implementation of the template is:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">event_class</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> ev<span class="br0">&#41;</span><span class="br0">&#123;</span>
+     <span class="kw1">return</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p><em>The function returns a string that will be added to the event class. So, you can return different classes depending on the event's state.</em></p>
+
+<p><a href='samples/02_customization/01_events_coloring.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Coloring events</a></p>
+
+<h3>Example</h3>
+
+<p>Let's assume, you want to have the events assigned to managers and employees in different colors: for managers - in green color, for employees - in orange. In this case, you do 2 things:</p>
+
+<ol>
+    <li>Add an additional data property to the model and name it, for example 'type'. The property will store the type of the user : 'manager' or 'employee'. <br> <img src="media/extended_data_model.png"/></li>
+    <li>Specify the related CSS classes for these types, e.g. named as 'manager_event' and 'employee_event'. For such names, CSS definition will look as in:<br> <br>
+<p class='snippet'>
+Redefining the default CSS classes
+</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">style</span>&gt;</span><pre class="css">    <span class="coMULTI">/*event in day or week view*/</span>
+    <span class="re1">.dhx_cal_event</span><span class="re1">.manager_event</span> div<span class="br0">&#123;</span>
+        <span class="kw1">background-color</span><span class="sy0">:</span> <span class="re0">#009966</span> !important<span class="sy0">;</span>
+        <span class="kw1">color</span><span class="sy0">:</span> <span class="kw1">black</span> !important<span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="re1">.dhx_cal_event</span><span class="re1">.employee_event</span> div<span class="br0">&#123;</span>
+        <span class="kw1">background-color</span><span class="sy0">:</span> <span class="re0">#FF9933</span> !important<span class="sy0">;</span>
+        <span class="kw1">color</span><span class="sy0">:</span> <span class="kw1">black</span> !important<span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="coMULTI">/*multi-day event in month view*/</span>
+    <span class="re1">.dhx_cal_event_line</span>.manager_event<span class="br0">&#123;</span>
+        <span class="kw1">background-color</span><span class="sy0">:</span> <span class="re0">#009966</span> !important<span class="sy0">;</span>
+        <span class="kw1">color</span><span class="sy0">:</span> <span class="kw1">black</span> !important<span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="re1">.dhx_cal_event_line</span>.employee_event<span class="br0">&#123;</span>
+        <span class="kw1">background-color</span><span class="sy0">:</span> <span class="re0">#FF9933</span> !important<span class="sy0">;</span>
+        <span class="kw1">color</span><span class="sy0">:</span> <span class="kw1">black</span> !important<span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="coMULTI">/*event with fixed time, in month view*/</span>
+    <span class="re1">.dhx_cal_event_clear</span>.manager_event<span class="br0">&#123;</span>
+        <span class="kw1">color</span><span class="sy0">:</span> <span class="kw1">black</span> !important<span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="re1">.dhx_cal_event_clear</span>.employee_event<span class="br0">&#123;</span>
+        <span class="kw1">color</span><span class="sy0">:</span> <span class="kw1">black</span> !important<span class="sy0">;</span>
+    <span class="br0">&#125;</span></pre>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">style</span>&gt;</span></pre></code></pre>
+
+    </li>
+    <li>And finally, override the <a class="link-" href="api__scheduler_event_class_template.html">event_class</a> template <br> <br>
+<p class='snippet'>
+Applying additional CSS classes to events:
+</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">event_class</span> <span class="sy0">=</span> <span class="kw2">function</span> <span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> event<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>event.<span class="me1">type</span> <span class="sy0">==</span> <span class="st0">'manager'</span><span class="br0">&#41;</span> <span class="kw1">return</span> <span class="st0">&quot;manager_event&quot;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;employee_event&quot;</span><span class="sy0">;</span> 
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+</li>
+</ol>
+
+<p><a href='samples/02_customization/01_events_coloring.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Coloring events</a></p>
+
+<p><a href='samples/02_customization/06_templates.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Styling events with templates</a></p>
+
+<a name='loadingcolorswithdata'><h2>Loading colors with data</h2></a>
+
+<p>If colors are a part of your data which comes from the backend, e.g. when task color is associated with a stage or a resource assigned to a task which can't be hardcoded on the page, it may be a good solution to generate styles from your data manually.</p>
+
+<p>Let's suppose that you have the following collection of users that can be assigned to tasks. Task styles should be defined by the properties of user records:</p>
+
+<pre><code><pre class="js"><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="st0">&quot;key&quot;</span><span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> <span class="st0">&quot;label&quot;</span><span class="sy0">:</span><span class="st0">&quot;John&quot;</span><span class="sy0">,</span> <span class="st0">&quot;backgroundColor&quot;</span><span class="sy0">:</span><span class="st0">&quot;#03A9F4&quot;</span><span class="sy0">,</span> <span class="st0">&quot;textColor&quot;</span><span class="sy0">:</span><span class="st0">&quot;#FFF&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="st0">&quot;key&quot;</span><span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> <span class="st0">&quot;label&quot;</span><span class="sy0">:</span><span class="st0">&quot;Mike&quot;</span><span class="sy0">,</span> <span class="st0">&quot;backgroundColor&quot;</span><span class="sy0">:</span><span class="st0">&quot;#f57730&quot;</span><span class="sy0">,</span> <span class="st0">&quot;textColor&quot;</span><span class="sy0">:</span><span class="st0">&quot;#FFF&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="st0">&quot;key&quot;</span><span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> <span class="st0">&quot;label&quot;</span><span class="sy0">:</span><span class="st0">&quot;Anna&quot;</span><span class="sy0">,</span> <span class="st0">&quot;backgroundColor&quot;</span><span class="sy0">:</span><span class="st0">&quot;#e157de&quot;</span><span class="sy0">,</span> <span class="st0">&quot;textColor&quot;</span><span class="sy0">:</span><span class="st0">&quot;#FFF&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="st0">&quot;key&quot;</span><span class="sy0">:</span><span class="nu0">4</span><span class="sy0">,</span> <span class="st0">&quot;label&quot;</span><span class="sy0">:</span><span class="st0">&quot;Bill&quot;</span><span class="sy0">,</span> <span class="st0">&quot;backgroundColor&quot;</span><span class="sy0">:</span><span class="st0">&quot;#78909C&quot;</span><span class="sy0">,</span> <span class="st0">&quot;textColor&quot;</span><span class="sy0">:</span><span class="st0">&quot;#FFF&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="st0">&quot;key&quot;</span><span class="sy0">:</span><span class="nu0">7</span><span class="sy0">,</span> <span class="st0">&quot;label&quot;</span><span class="sy0">:</span><span class="st0">&quot;Floe&quot;</span><span class="sy0">,</span> <span class="st0">&quot;backgroundColor&quot;</span><span class="sy0">:</span><span class="st0">&quot;#8D6E63&quot;</span><span class="sy0">,</span> <span class="st0">&quot;textColor&quot;</span><span class="sy0">:</span><span class="st0">&quot;#FFF&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span></pre></code></pre>
+
+<p>In this use case, users and their colors are created and managed by different parts of the app and scheduler generally doesn't know user ids and their colors in advance.</p>
+
+<p>This is what you can do in this case:</p>
+
+<ul>
+<li>Define a named serverList for this collection</li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">serverList</span><span class="br0">&#40;</span><span class="st0">&quot;people&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><p>Load options to the page, either by using one of supported <a class="link-" href="data_formats.html#jsonwithcollections">data formats</a> or manually via a custom xhr</p></li>
+<li><p>Once options are loaded, you can generate CSS styles from the data:</p></li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onLoadEnd&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// use an arbitrary id for the style element</span>
+    <span class="kw2">var</span> styleId <span class="sy0">=</span> <span class="st0">&quot;dynamicSchedulerStyles&quot;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="co1">// in case you'll be reloading options with colors - reuse previously</span>
+    <span class="co1">// created style element</span>
+&nbsp;
+    <span class="kw2">var</span> element <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">&#40;</span>styleId<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">!</span>element<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        element <span class="sy0">=</span> document.<span class="me1">createElement</span><span class="br0">&#40;</span><span class="st0">&quot;style&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        element.<span class="me1">id</span> <span class="sy0">=</span> styleId<span class="sy0">;</span>
+        document.<span class="me1">querySelector</span><span class="br0">&#40;</span><span class="st0">&quot;head&quot;</span><span class="br0">&#41;</span>.<span class="me1">appendChild</span><span class="br0">&#40;</span>element<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw2">var</span> html <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">;</span>
+    <span class="kw2">var</span> resources <span class="sy0">=</span> scheduler.<span class="me1">serverList</span><span class="br0">&#40;</span><span class="st0">&quot;people&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="co1">// generate css styles for each option and write css into the style element,</span>
+&nbsp;
+    resources.<span class="me1">forEach</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>r<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        html.<span class="me1">push</span><span class="br0">&#40;</span><span class="st0">&quot;.dhx_cal_event_line.event_resource_&quot;</span> <span class="sy0">+</span> r.<span class="me1">key</span> <span class="sy0">+</span> <span class="st0">&quot;{&quot;</span> <span class="sy0">+</span>
+            <span class="st0">&quot;background-color:&quot;</span><span class="sy0">+</span>r.<span class="me1">backgroundColor</span><span class="sy0">+</span><span class="st0">&quot;; &quot;</span> <span class="sy0">+</span>
+            <span class="st0">&quot;color:&quot;</span><span class="sy0">+</span>r.<span class="me1">textColor</span><span class="sy0">+</span><span class="st0">&quot;;&quot;</span> <span class="sy0">+</span>
+        <span class="st0">&quot;}&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    element.<span class="me1">innerHTML</span> <span class="sy0">=</span> html.<span class="me1">join</span><span class="br0">&#40;</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>After that you'll be able to assign related classes you generated from the class template:</li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">event_class</span> <span class="sy0">=</span> <span class="kw2">function</span> <span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> event<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw2">var</span> css <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">if</span><span class="br0">&#40;</span>task.<span class="me1">owner_id</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        css.<span class="me1">push</span><span class="br0">&#40;</span><span class="st0">&quot;event_resource_&quot;</span> <span class="sy0">+</span> event.<span class="me1">owner_id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="kw1">return</span> css.<span class="me1">join</span><span class="br0">&#40;</span><span class="st0">&quot; &quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='custom_events_color.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

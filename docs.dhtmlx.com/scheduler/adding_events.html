@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Adding/Deleting Events  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="event_object_operations.html">Event Object Operations</a></li><li class=" current"><a href="adding_events.html">Adding/Deleting Events</a></li><ul><li class="inner"><a href="adding_events.html#addingevents">Adding events</a></li><li class="inner"><a href="adding_events.html#updatingevents">Updating events</a></li><li class="inner"><a href="adding_events.html#deletingevents">Deleting events</a></li></ul><li class=""><a href="filtering.html">Filtering Events</a></li><li class=""><a href="dhtmlx_components_integration.html">Drag-and-Drop Operations</a></li><li class=""><a href="recurring_events.html">Recurring Events</a></li><li class=""><a href="readonly.html">Read-only Mode</a></li><li class=""><a href="validation.html">Validation</a></li><li class=""><a href="collisions.html">Preventing Double Events in a Time Slot</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="managing_events.html">Managing Scheduler Events</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Adding/Deleting Events</h1>
+
+<a name='addingevents'><h2>Adding events</h2></a>
+
+<p>To add an event to the scheduler, you may use one of three methods:</p>
+
+<ol>
+<li><a class="link-" href="api__scheduler_addevent.html">addEvent</a> - adds a new event and invokes the <a class="link-" href="api__scheduler_oneventadded_event.html">onEventAdded</a> or <a class="link-" href="api__scheduler_oneventchanged_event.html">onEventChanged</a> event;</li>
+<li><a class="link-" href="api__scheduler_addeventnow.html">addEventNow</a> - adds a new event and opens the lightbox to confirm. Doesn't invoke any events;</li>
+<li><a class="link-" href="api__scheduler_setevent.html">setEvent</a> - adds a new event to the scheduler's data pool. Doesn't invoke any events.</li>
+</ol>
+
+<p>The most recommended way is the <a class="link-" href="api__scheduler_addevent.html">addEvent</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> eventId <span class="sy0">=</span> scheduler.<span class="me1">addEvent</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    start_date<span class="sy0">:</span> <span class="st0">&quot;16-06-2019 09:00&quot;</span><span class="sy0">,</span>
+    end_date<span class="sy0">:</span>   <span class="st0">&quot;16-06-2019 12:00&quot;</span><span class="sy0">,</span>
+    text<span class="sy0">:</span>   <span class="st0">&quot;Meeting&quot;</span><span class="sy0">,</span>
+    holder<span class="sy0">:</span> <span class="st0">&quot;John&quot;</span><span class="sy0">,</span>  <span class="co1">// user data</span>
+    room<span class="sy0">:</span>   <span class="st0">&quot;5&quot;</span>      <span class="co1">// user data</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_customization/08_validation.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Validating lightbox fields</a></p>
+
+<p><a href='samples/02_customization/28_lightbox_default_value.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Default values for lightbox controls</a></p>
+
+<a name='updatingevents'><h2>Updating events</h2></a>
+
+<p>There are two cases of updating events possible in Scheduler:</p>
+
+<ol>
+<li>if you need just to re-render the event without sending changes to the server, use <a class="link-" href="api__scheduler_updateevent.html">updateEvent</a> </li>
+<li>if you need to apply and save changes on the server - it's better to choose the <a class="link-" href="adding_events.html#addingevents">addEvent</a> method </li>
+</ol>
+
+<pre><code><pre class="js"><span class="kw2">var</span> eventId <span class="sy0">=</span> scheduler.<span class="me1">addEvent</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    start_date<span class="sy0">:</span> <span class="st0">&quot;16-06-2019 09:00&quot;</span><span class="sy0">,</span>
+    end_date<span class="sy0">:</span>   <span class="st0">&quot;16-06-2019 12:00&quot;</span><span class="sy0">,</span>
+    text<span class="sy0">:</span>   <span class="st0">&quot;Meeting&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> event <span class="sy0">=</span> scheduler.<span class="me1">getEvent</span><span class="br0">&#40;</span>eventId<span class="br0">&#41;</span><span class="sy0">;</span>
+event.<span class="me1">text</span> <span class="sy0">=</span> <span class="st0">&quot;Conference&quot;</span><span class="sy0">;</span> <span class="co1">//changes event's data</span>
+&nbsp;
+scheduler.<span class="me1">updateEvent</span><span class="br0">&#40;</span>event.<span class="me1">id</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// repaint without sending to the server</span>
+<span class="co1">//or</span>
+scheduler.<span class="me1">addEvent</span><span class="br0">&#40;</span>event.<span class="me1">id</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// repaint and send update to the server</span></pre></code></pre>
+
+<a name='deletingevents'><h2>Deleting events</h2></a>
+
+<p>To delete an existing event from the scheduler, use the <a class="link-" href="api__scheduler_deleteevent.html">deleteEvent</a> method:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">parse</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+   <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;06/30/2009 09:00&quot;</span><span class="sy0">,</span> end_date<span class="sy0">:</span><span class="st0">&quot;06/30/2009 12:00&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task1&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+   <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;06/30/2009 12:00&quot;</span><span class="sy0">,</span> end_date<span class="sy0">:</span><span class="st0">&quot;06/30/2009 20:00&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task2&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">,</span><span class="st0">&quot;json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">scheduler</span>.<span class="me1">deleteEvent</span><span class="br0">&#40;</span><span class="nu0">2</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>If you have dataProcessor initialized, added to/deleted from the scheduler events will be automatically added/deleted in the data source. See the detailed information in the <a class="link-" href="server_integration.html">Server-Side Integration</a> guide.</p>
+
+<p><a href='samples/02_customization/16_custom_form.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Fully custom lightbox</a></p>
+
+<!-- Content Area End -->
+			<a href='adding_events.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

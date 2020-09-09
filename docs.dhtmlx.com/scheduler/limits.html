@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Blocking and Marking Dates  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="custom_scales.html">Hiding Time Units in X-Axis of View</a></li><li class=""><a href="custom_views.html">Custom View</a></li><li class=" current"><a href="limits.html">Blocking and Marking Dates</a></li><ul><li class="inner"><a href="limits.html#configurationoptions">Configuration options</a></li><li class="inner"><a href="limits.html#relatedevents">Related events</a></li><li class="inner"><a href="limits.html#howtoblockcertaindates">How to block certain dates?</a></li><li class="inner"><a href="limits.html#howtomarkcertaindates">How to mark certain dates?</a></li><li class="inner"><a href="limits.html#removingmarkingblocking">Removing marking/blocking</a></li><li class="inner"><a href="limits.html#blockingpriority">Blocking priority</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="config_views.html">Configuring Views</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Blocking and Marking Dates</h1>
+
+<p>The library provides the <strong>ext/dhtmlxscheduler_limit.js</strong> extension that allows you to block and mark (highlight) certain dates or date ranges.</p>
+
+<p>To start using the extension, include the <strong>ext/dhtmlxscheduler_limit.js</strong> file on the page.</p>
+
+<div class='note'><p><p>Note, if you use the <a class="link-pro" href="timeline_view.html">Timeline View</a>, the 'limit' extension file should go before the 'timeline' one:</p>
+</p></div>
+
+<pre><code><pre class="html"><span class="xtra ln-xtra"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/ext/dhtmlxscheduler_limit.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span> </span><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">'codebase/ext/dhtmlxscheduler_timeline.js'</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<a name='configurationoptions'><h2>Configuration options</h2></a>
+
+<p>The extension gives at your disposal the next configuration options:</p>
+
+<ul><li><a class="link-" href="api__scheduler_display_marked_timespans_config.html">display_marked_timespans</a> - defines whether the marked (blocked) time spans should be highlighted in the scheduler</li>
+<li><a class="link-" href="api__scheduler_check_limits_config.html">check_limits</a> - activates/disables checking of limits</li>
+<li><a class="link-" href="api__scheduler_mark_now_config.html">mark_now</a> - enables/disables the marker displaying the current time</li>
+<li><a class="link-" href="api__scheduler_now_date_config.html">now_date</a> - sets the date for the <a class="link-" href="api__scheduler_mark_now_config.html">mark_now</a> option</li>
+<li><a class="link-" href="api__scheduler_limit_end_config.html">limit_end</a> - sets the end limit of the allowable date range</li>
+<li><a class="link-" href="api__scheduler_limit_start_config.html">limit_start</a> - sets the start limit of the allowable date range</li>
+<li><a class="link-" href="api__scheduler_limit_view_config.html">limit_view</a> - limits viewing events</li></ul>
+
+<p><a href='samples/02_customization/23_current_time.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Current time marking</a></p>
+
+<a name='relatedevents'><h2>Related events</h2></a>
+
+<p>If the scheduler detects an attempt to create/modify an event with a non-allowed date, the <a class="link-" href="api__scheduler_onlimitviolation_event.html">onLimitViolation</a> event will be generated.</p>
+
+<a name='howtoblockcertaindates'><h2>How to block certain dates?</h2></a>
+
+<p>There are a couple of methods you can specify a limit in the scheduler with:</p>
+
+<ul><li><a class="link-" href="api__scheduler_addmarkedtimespan.html">addMarkedTimespan</a> - marks dates, but with certain settings makes blocking (allows setting custom styling for the limit)</li>
+<li><a class="link-" href="api__scheduler_marktimespan.html">markTimespan</a> - marks and/or blocks date(s) by applying the default or a custom style to them. marking is canceled right after any internal update occurs in the app. can be used for highlighting</li></ul>
+
+<p><a href='samples/03_extensions/25_advanced_limitation.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Blocking dates</a></p>
+
+<a name='howtomarkcertaindates'><h2>How to mark certain dates?</h2></a>
+
+<p>There are 2 methods that can be used to mark the specified date(s):</p>
+
+<ul><li><a class="link-" href="api__scheduler_addmarkedtimespan.html">addMarkedTimespan</a> - marks dates, but with certain settings makes blocking (allows setting custom styling for the limit)</li>
+<li><a class="link-" href="api__scheduler_marktimespan.html">markTimespan</a> - marks and/or blocks date(s) by applying the default or a custom style to them. marking is canceled right after any internal update occurs in the app. can be used for highlighting</li></ul>
+
+<p><a href='samples/09_api/06_hightlight_and_single_click_create.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Handling the pointer highlighting</a></p>
+
+<a name='removingmarkingblocking'><h2>Removing marking/blocking</h2></a>
+
+<p>There are a couple of methods that can be used to remove the currently marked/blocked time spans:</p>
+
+<ul><li><a class="link-" href="api__scheduler_deletemarkedtimespan.html">deleteMarkedTimespan</a> - removes marking/blocking set by the <a class="link-" href="api__scheduler_addmarkedtimespan.html">addMarkedTimespan</a> method</li>
+<li><a class="link-" href="api__scheduler_unmarktimespan.html">unmarkTimespan</a> - removes marking/blocking, set by the <a class="link-" href="api__scheduler_marktimespan.html">markTimespan</a> method</li></ul>
+
+<p><a href='samples/09_api/06_hightlight_and_single_click_create.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Handling the pointer highlighting</a></p>
+
+<a name='blockingpriority'><h2>Blocking priority</h2></a>
+
+<p>When you call the 'blocking' methods several times and block different ranges, blocking will follow this priority (from highest to lowest):</p>
+
+<ol>
+<li>Dates specified through Date() objects for certain items;</li>
+<li>Dates for certain items (when the <strong>sections</strong> parameter is defined);</li>
+<li>Dates specified through Date() objects;</li>
+<li>Other dates.</li>
+</ol>
+
+<ul>
+<li>A blocking/marking with the higher priority will overwrite ones with the lower priority if they have the same <strong>type</strong>. </li>
+<li>Several blocking/marking methods with the same priority (located in the same time slot) will be applied simultaneously.</li>
+</ul>
+
+<p>For example:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">addMarkedTimespan</span><span class="br0">&#40;</span><span class="br0">&#123;</span> <span class="co1">// blocks 4th July, 2012 (this is Wednesday).</span>
+    days<span class="sy0">:</span>  <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">7</span><span class="sy0">,</span> <span class="nu0">4</span><span class="br0">&#41;</span><span class="sy0">,</span>
+    zones<span class="sy0">:</span> <span class="st0">&quot;fullday&quot;</span><span class="sy0">,</span> 
+    type<span class="sy0">:</span>  <span class="st0">&quot;dhx_time_block&quot;</span><span class="sy0">,</span>
+    css<span class="sy0">:</span>   <span class="st0">&quot;red_section&quot;</span> <span class="co1">// the name of applied CSS class</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">addMarkedTimespan</span><span class="br0">&#40;</span><span class="br0">&#123;</span> <span class="co1">// blocks each Sunday, Monday, Wednesday</span>
+    days<span class="sy0">:</span>  <span class="br0">&#91;</span><span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">3</span><span class="br0">&#93;</span><span class="sy0">,</span> 
+    zones<span class="sy0">:</span> <span class="st0">&quot;fullday&quot;</span><span class="sy0">,</span>
+    type<span class="sy0">:</span>  <span class="st0">&quot;dhx_time_block&quot;</span><span class="sy0">,</span> 
+    css<span class="sy0">:</span>   <span class="st0">&quot;blue_section&quot;</span> <span class="co1">// the name of applied CSS class</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//blocks each Sunday and Wednesday just for an item with id=2 </span>
+scheduler.<span class="me1">addMarkedTimespan</span><span class="br0">&#40;</span><span class="br0">&#123;</span>  
+    days<span class="sy0">:</span>  <span class="br0">&#91;</span><span class="nu0">0</span><span class="sy0">,</span><span class="nu0">3</span><span class="br0">&#93;</span><span class="sy0">,</span> 
+    zones<span class="sy0">:</span> <span class="st0">&quot;fullday&quot;</span><span class="sy0">,</span>
+    type<span class="sy0">:</span>  <span class="st0">&quot;dhx_time_block&quot;</span><span class="sy0">,</span> 
+    css<span class="sy0">:</span>   <span class="st0">&quot;gray_section&quot;</span><span class="sy0">,</span>  <span class="co1">// the name of applied CSS class</span>
+    sections<span class="sy0">:</span> <span class="br0">&#123;</span> timeline<span class="sy0">:</span> <span class="nu0">2</span><span class="br0">&#125;</span> 
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>As a result of calling these methods you will get the following:</p>
+
+<ol>
+<li>First of all, the scheduler will block <strong>each Sunday and Wednesday for the item (id=2) in the Timeline view</strong> and <strong>color them in gray</strong>.</li>
+<li>Then, will block <strong>4th July, 2012</strong> and <strong>color it in red</strong>.</li>
+<li>Finally, will block <strong>each Sunday, Monday, Wednesday</strong> and <strong>color them in blue</strong>.</li>
+</ol>
+
+<p><img src="media/limits_priority.png" alt="limits_priority.png" /></p>
+
+<!-- Content Area End -->
+			<a href='limits.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

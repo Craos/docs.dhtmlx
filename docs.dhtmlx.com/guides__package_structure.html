@@ -1,0 +1,272 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>DHTMLX Package Structure  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=" current"><a href="guides__package_structure.html">DHTMLX Package Structure</a></li><ul><li class="inner"><a href="guides__package_structure.html#package">Package</a></li><li class="inner"><a href="guides__package_structure.html#support">Support</a></li><li class="inner"><a href="guides__package_structure.html#requiredsourcefiles">Required Source Files</a></li><li class="inner"><a href="guides__package_structure.html#minimalinitcode">Minimal init code</a></li></ul><li class=""><a href="guides__building_ui.html">DHTMLX Coding Principles</a></li><li class=""><a href="guides__lib_compiler.html">Using libCompiler</a></li><li class=""><a href="guides__demo_for_support.html">Creating a Demo for Support</a></li><li class=""><a href="guides__using_typescript.html">Using DHTMLX with TypeScript</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="guides__index.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>DHTMLX Package Structure</h1>
+
+<p>DHTMLX is a Javascript library that delivers more than <a href="http://dhtmlx.com/docs/products/dhtmlxSuite/index.shtml">20 different components</a>. Each component can be used standalone or as a part of the common package.</p>
+
+<a name='package'><h2>Package</h2></a>
+
+<p>To start working with the library you need to download the <a href="http://www.dhtmlx.com/x/download/regular/dhtmlxSuite.zip">dhtmlxSuite</a> package  that contains source files of the components.</p>
+
+<p>The package contains the following folders and files:</p>
+
+<ul>
+<li><p><b>codebase</b> - the packed code files of the library. These files have much smaller size and intended for use in production. <b>In your apps you need to use files from this folder:</b></p>
+
+<ul>
+<li><em>ext</em> - a folder which contains extension resources for Upload control of the Form component;</li>
+<li><em>thirdparty</em> - a folder that includes third-party libraries for correct work of the Chart component;</li>
+<li><em>imgs</em> - a folder with source images required for correct rendering of components;</li>
+<li><em>dhtmlx.js</em> - a script file;</li>
+<li><em>dhtmlx.css</em> - a style file;</li>
+<li><em>dhtmlx_deprecated.js</em> - a file which stores the API deprecated from previous versions;</li>
+<li><em>dhtmlx.d.ts</em> - a file with TypeScript definitions for all DHTMLX components.</li>
+</ul></li>
+<li><p><strong>docs</strong> - a folder with documentation files. Run the <em>index.html</em> file resided in the folder to read the documentation of the library's components;</p></li>
+<li><b>samples</b> - the code samples;</li>
+<li><strong>skins</strong> - a folder with available skins;</li>
+<li><strong>sources</strong> - the source code files of the library. The files are not minified and easy-to-read. The package is mostly intended to be used for component's debugging:
+
+<ul>
+<li><strong>libCompiler</strong> - a tool that allows you to compile multiple source files of individual components into single scripts (<a class="link-" href="libcompiler__index.html">more details</a>); </li>
+<li><strong>dhtmlxWindows ... dhtmlxAccordion</strong> - folders with source files of individual components;</li>
+</ul></li>
+<li><strong>License_gpl_2.0</strong> - a txt file which contains the text of General Public License v2.0.</li>
+</ul>
+
+<a name='support'><h2>Support</h2></a>
+
+<p>To help you while working with the library, we provide a number of support resources such as:</p>
+
+<ol>
+<li><strong>Documentation</strong>.<br> You can access the documentation locally or online. 
+
+<ul>
+<li>To read the documentation locally, run the <em>index.html</em> file resided in the root folder of the DHTMLX Suite package.</li>
+<li>To read the documentation online, visit <a href="index.html">this page</a>.<br>
+<em>Note, online documentation is more actual and complete than the one supplied with the package.</em></li>
+</ul></li>
+<li><strong>Demos</strong>. 
+
+<ul>
+<li>See a big number of samples at <a href="http://www.dhtmlx.com/docs/products/docsExplorer/samples.shtml">here</a></li>
+</ul></li>
+<li><strong>Forum</strong>.
+
+<ul>
+<li>Use the DHTMLX forum to find answers to your questions and share your experience. The forum is available at <a href="http://forum.dhtmlx.com/">forum.dhtmlx.com</a>.</li>
+</ul></li>
+<li><strong>Members support for licensed customers</strong>.
+
+<ul>
+<li>If you are a licensed customer with an active support subscription, you can submit a ticket to get assistance from our team. Visit 
+<a href="http://www.dhtmlx.com/docs/products/licenses.shtml">this page</a> to know more abour members support center.</li>
+</ul></li>
+</ol>
+
+<a name='requiredsourcefiles'><h2>Required Source Files</h2></a>
+
+<p>The DHTMLX library includes the following source resources:</p>
+
+<ol>
+<li><strong>dhtmlx.js</strong> file - a script file</li>
+<li><strong>dhtmlx.css</strong> file - a style file</li>
+<li><strong>imgs</strong> folder  - a folder with source images required for correct rendering of components.</li>
+</ol>
+
+<p>So, to start working with the DHTMLX library, you need to:</p>
+
+<ol>
+    <li>Download the "dhtmlxSuite" package (<a href="http://www.dhtmlx.com/x/download/regular/dhtmlxSuite.zip">link to download</a>).</li>
+    <li>Find the "dhtmlx_std_full.zip " archive  in the root of the package and extract 
+its content to a directory on your local web server (<i>you are creating a web application and the availability of a web server is mandatory</i>). </li>
+    <li>Create an HTML file for your future app in the root folder of your directory. <br>So, the final structure of your directory should look something like this: <br> <br>
+
+
+<pre><code><pre class="html">[yourDirectory]
+    [codebase]
+        [imgs]
+        dhtmlx.js
+        dhtmlx.css
+    index.html                  //an HTML file where you need to build your app</pre></code></pre>
+
+    </li> 
+    <i>You may also find the <b>types</b> folder in the "dhtmlx_std_full.zip " archive. It's used for working with the DataView component. But as in general case we don't need this folder, we have removed it from the directory.</i>
+</ol>
+
+<h3>Files Size</h3>
+
+<p>Don't be confused with the size of the script file, which is ~ 1 Mb.</p>
+
+<ol>
+<li>Firstly, it contains the entire functionality for more than 20 components. When it comes to the release, you will be able to recompile the file using the special tool  -
+<a class="link-" href="guides__lib_compiler.html">libCompiler</a> - and to leave just functionality of the necessary components.</li>
+<li>All modern browsers support operating with the packed scripts. For example, in the "gzip" format,
+the maximum bundle weight of the file is less than 200 Kbyts. So, browsers will successfully cache it as well as any external content.</li>
+</ol>
+
+<a name='minimalinitcode'><h2>Minimal init code</h2></a>
+
+<p>Below you can see a sample of a basic  DHTMLX-based app that produces a 3-cell layout of 600px*400px.</p>
+
+<p class='snippet'>
+index.html file
+</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;!</span>DOCTYPE html<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>html<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>head<span class="sy0">&gt;</span>
+    <span class="sy0">&lt;</span>title<span class="sy0">&gt;</span>My First Application<span class="sy0">&lt;/</span>title<span class="sy0">&gt;</span>
+<span class="xtra ln-xtra">    <span class="sy0">&lt;</span>link rel<span class="sy0">=</span><span class="st0">&quot;STYLESHEET&quot;</span> type<span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> href<span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlx.css&quot;</span><span class="sy0">&gt;</span>  </span><span class="xtra ln-xtra">    <span class="sy0">&lt;</span>script src<span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlx.js&quot;</span> type<span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span><span class="sy0">&gt;&lt;/</span>script<span class="sy0">&gt;</span>   </span>    <span class="sy0">&lt;</span>div id<span class="sy0">=</span><span class="st0">&quot;box&quot;</span> style<span class="sy0">=</span><span class="st0">&quot;width: 600px; height: 400px;&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+    <span class="sy0">&lt;</span>script<span class="sy0">&gt;</span>
+        dhxLayout <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXLayoutObject<span class="br0">&#40;</span><span class="st0">&quot;box&quot;</span><span class="sy0">,</span> <span class="st0">&quot;3L&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="sy0">&lt;/</span>script<span class="sy0">&gt;</span>
+<span class="sy0">&lt;/</span>head<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>body<span class="sy0">&gt;</span>
+&nbsp;
+<span class="sy0">&lt;/</span>body<span class="sy0">&gt;</span>
+<span class="sy0">&lt;/</span>html<span class="sy0">&gt;</span></pre></code></pre>
+
+<p><strong>What's next?</strong></p>
+
+<p>Now, we recommend you to read the <a class="link-" href="tutorials__building_web_interfaces__index.html">Building Web Interfaces</a> article to get acquainted with the basics of building web interfaces with the help of the
+DHTMLX library.</p>
+
+<!-- Content Area End -->
+			<a href='guides__package_structure.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Operations with Dates  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__date_format.html">Date Format Specification</a></li><li class=" current"><a href="desktop__date_operations.html">Operations with Dates</a></li><ul><li class="inner"><a href="desktop__date_operations.html#convertingadateobjecttoastring">Converting a Date object to a string</a></li><li class="inner"><a href="desktop__date_operations.html#convertingastringtoadateobject">Converting a string to a Date object</a></li><li class="inner"><a href="desktop__date_operations.html#convertingtoutc">Converting to UTC</a></li><li class="inner"><a href="desktop__date_operations.html#addingsubtractingatimeintervaltofromadate">Adding(subtracting) a time interval to(from) a date</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__work_with_dates.html">Working with Dates</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Operations with Dates</h1>
+
+<p>dhtmlxGantt includes the <a class="link-" href="api__gantt_date_other.html">date</a> object  that provides a set of date formatting methods. You can use these methods while working with the date objects.</p>
+
+<p>In this article we will consider the particularly important and commonly used methods. A full list of methods you can find at the <a class="link-" href="api__gantt_date_other.html">date object page</a>.</p>
+
+<a name='convertingadateobjecttoastring'><h2>Converting a Date object to a string</h2></a>
+
+<p>To convert a Date object to a string, use the <a class="link-" href="api__gantt_date_other.html">date_to_str</a> method: <br> 
+<em>The method returns a function that converts a Date object to a string of the specified format:</em></p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> formatFunc <span class="sy0">=</span> gantt.<span class="me1">date</span>.<span class="me1">date_to_str</span><span class="br0">&#40;</span><span class="st0">&quot;%d/%m/%Y&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> date <span class="sy0">=</span> formatFunc<span class="br0">&#40;</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2013</span><span class="sy0">,</span> 05<span class="sy0">,</span> <span class="nu0">29</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; &quot;29/06/2013&quot;</span></pre></code></pre>
+
+<a name='convertingastringtoadateobject'><h2>Converting a string to a Date object</h2></a>
+
+<p>To convert a string to a Date object, use the <a class="link-" href="api__gantt_date_other.html">str_to_date</a> method: <br> 
+<em>The method returns a function that converts a string of the specified format to a Date object:</em></p>
+
+<p>You can generate a date convert function as follows:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> formatFunc <span class="sy0">=</span> gantt.<span class="me1">date</span>.<span class="me1">str_to_date</span><span class="br0">&#40;</span><span class="st0">&quot;%d/%m/%Y&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> date <span class="sy0">=</span> formatFunc<span class="br0">&#40;</span><span class="st0">&quot;29/06/2013&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; 29 June, 2013 00:00:00</span></pre></code></pre>
+
+<a name='convertingtoutc'><h2>Converting to UTC</h2></a>
+
+<p>To convert local time to UTC, use the <a class="link-" href="api__gantt_date_other.html">convert_to_utc</a> method:</p>
+
+<pre><code><pre class="js"><span class="co1">//29 June, 2013 14:00 (local time) -&gt; 29 June, 2013 12:00 (utc)</span>
+<span class="kw2">var</span> time <span class="sy0">=</span> gantt.<span class="me1">date</span>.<span class="me1">convert_to_utc</span><span class="br0">&#40;</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2013</span><span class="sy0">,</span> 05<span class="sy0">,</span> <span class="nu0">29</span><span class="sy0">,</span> <span class="nu0">14</span><span class="sy0">,</span> 00<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='addingsubtractingatimeintervaltofromadate'><h2>Adding(subtracting) a time interval to(from) a date</h2></a>
+
+<p>To add(subtract) a time interval to(from) the specified date, use the <a class="link-" href="api__gantt_date_other.html">add</a> method:</p>
+
+<pre><code><pre class="js"><span class="co1">//adds 1 year to the specified date: 29 June, 2013 -&gt; 29 June, 2014</span>
+<span class="kw2">var</span> newDate <span class="sy0">=</span> gantt.<span class="me1">date</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2013</span><span class="sy0">,</span> 05<span class="sy0">,</span> <span class="nu0">29</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="st0">'year'</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>A full list of date formatting methods see <a class="link-" href="api__gantt_date_other.html">here</a>.</p>
+</p></div>
+
+<!-- Content Area End -->
+			<a href='desktop__date_operations.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

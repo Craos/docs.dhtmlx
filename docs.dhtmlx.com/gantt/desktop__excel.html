@@ -1,0 +1,329 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Export/Import for Excel, Export to iCal  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__export_requirements.html">Export Service - System Requirements for a standalone install</a></li><li class=""><a href="desktop__export.html">Export to PDF and PNG</a></li><li class=" current"><a href="desktop__excel.html">Export/Import for Excel, Export to iCal</a></li><ul><li class="inner"><a href="desktop__excel.html#limitsonrequestsize">Limits on request size</a></li><li class="inner"><a href="desktop__excel.html#exporttoexcel">Export to Excel</a></li><li class="inner"><a href="desktop__excel.html#importfromexcel">Import from Excel</a></li><li class="inner"><a href="desktop__excel.html#exporttoical">Export to iCal</a></li></ul><li class=""><a href="desktop__export_msproject.html">Export and Import from MS Project</a></li><li class=""><a href="desktop__serialization.html">Serializing Data into XML and JSON</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__export_common.html">Exporting and Importing Data</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Export/Import for Excel, Export to iCal</h1>
+
+<p>The dhtmlxGantt library allows you to export data from the Gantt chart in the Excel and iCal formats. You can also import data into Gantt from an Excel file.</p>
+
+<a name='limitsonrequestsize'><h2>Limits on request size</h2></a>
+
+<p>There is a common API endpoint <a href="https://export.dhtmlx.com/gantt">https://export.dhtmlx.com/gantt</a> which serves for all export methods (<em>exportToPDF</em>, <em>exportToPNG</em>, <em>exportToMSProject</em>, etc.) and for the <em>importFromExcel</em>
+method. <strong>Max request size is 10 MB</strong>.</p>
+
+<p>There is also a separate API endpoint <a href="https://export.dhtmlx.com/gantt/project">https://export.dhtmlx.com/gantt/project</a> specific for the <a class="link-" href="desktop__export_msproject.html">MSProject export/import services</a> 
+(<em>exportToMSProject</em>/<em>importFromMSProject</em> only). <strong>Max request size: 40 MB</strong>.</p>
+
+<a name='exporttoexcel'><h2>Export to Excel</h2></a>
+
+<p>To export data from the Gantt chart to an Excel document, do the following:</p>
+
+<ul>
+<li>Include the <strong>"http://export.dhtmlx.com/gantt/api.js"</strong> file on the page to enable the online export service:</li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlxgantt.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="xtra ln-xtra"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;https://export.dhtmlx.com/gantt/api.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>  </span><span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlxgantt.css&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span>&gt;</span></pre></code></pre>
+
+<ul>
+<li>Call the <a class="link-" href="api__gantt_exporttoexcel.html">exportToExcel</a> method to export data from the Gantt chart: </li>
+</ul>
+
+<pre><code><pre class="html"><span class="xtra ln-xtra"><span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;Export to Excel&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;button&quot;</span> <span class="kw3">onclick</span><span class="sy0">=</span><span class="st0">'gantt.exportToExcel()'</span>&gt;</span></span>&nbsp;
+<span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">    gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    gantt.<span class="me1">parse</span><span class="br0">&#40;</span>demo_tasks<span class="br0">&#41;</span><span class="sy0">;</span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p><a href='samples/08_api/08_export_other.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Export data : MS Project, PrimaveraP6, Excel &amp; iCal</a></p>
+
+<p><a href='samples/08_api/09_export_store.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Export data: store online</a></p>
+
+<h4>Parameters of the export method</h4>
+
+<p>The <strong>exportToExcel()</strong> method takes as a parameter an object with several properties (all the properties are optional):</p>
+
+<ul>
+<li><strong>name</strong> - (<em>string</em>) sets the name of the output file with the extension '.xlsx' </li>
+<li><strong>columns</strong> - (<em>array</em>) allows configuring columns of the output Excel sheet. The properties of the column objects are:
+
+<ul>
+<li><strong>'id'</strong> - (<em>string,number</em>) a property of the event that will be mapped to the column</li>
+<li><strong>'header'</strong> - (<em>string</em>) the column header</li>
+<li><strong>'width'</strong> - (<em>number</em>) the column width in pixels</li>
+<li><strong>'type'</strong> - (<em>string</em>) the column type</li>
+</ul></li>
+<li><strong>server</strong> - (<em>string</em>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is <strong>https://export.dhtmlx.com/gantt</strong></li>
+<li><strong>visual</strong> - (<em>boolean</em>) adds the timeline chart to an exported Excel document. <em>false</em> by default</li>
+<li><strong>cellColors</strong> - (<em>boolean</em>) if set to <em>true</em>, the cells of the exported document will have the colors defined by the <a class="link-" href="api__gantt_timeline_cell_class_template.html">timeline_cell_class</a> template, the <em>color</em> and <em>background-color</em> 
+properties are exported</li>
+<li><strong>data</strong> - (<em>object</em>) sets a custom data source that will be presented in the output Gantt chart</li>
+<li><strong>date_format</strong> - (<em>string</em>) sets the format the date will be displayed in the exported Excel document. You can see the full list of the available format code <a class="link-" href="api__gantt_exporttoexcel.html">here</a>.        </li>
+</ul>
+
+<p class='snippet'>
+Calling the export method with optional properties
+</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">exportToExcel</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;document.xlsx&quot;</span><span class="sy0">,</span> 
+    columns<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span>  header<span class="sy0">:</span><span class="st0">&quot;Title&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="nu0">150</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span>  header<span class="sy0">:</span><span class="st0">&quot;Start date&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="nu0">250</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;date&quot;</span> <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    server<span class="sy0">:</span><span class="st0">&quot;https://myapp.com/myexport/gantt&quot;</span><span class="sy0">,</span>
+    visual<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span>
+    cellColors<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span>
+    data<span class="sy0">:</span><span class="br0">&#123;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    date_format<span class="sy0">:</span> <span class="st0">&quot;dddd d, mmmm yyyy&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Setting a custom data source to export</h3>
+
+<p>To export the Gantt chart with a custom data set (i.e. not with the data presented in the initial Gantt chart), use the <strong>data</strong> property in the parameter of the 
+<a class="link-" href="api__gantt_exporttoexcel.html">exportToExcel</a> method:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">exportToExcel</span><span class="br0">&#40;</span><span class="br0">&#123;</span>   
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;document.xlsx&quot;</span><span class="sy0">,</span> 
+    data<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Project #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;01-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">18</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;02-04-2020&quot;</span><span class="sy0">,</span>duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span> parent<span class="sy0">:</span><span class="nu0">1</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #2&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;11-04-2020&quot;</span><span class="sy0">,</span>duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span> parent<span class="sy0">:</span><span class="nu0">1</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>      
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>Note, you cannot specify some URL as the value of the <strong>data</strong> parameter, just a data object.</p>
+</p></div>
+
+<h3>Adding colors of tasks to export</h3>
+
+<p>You can add the colors of tasks to the exported Excel file of the Gantt chart via setting the value of the <strong>visual</strong> property to <em>"base-colors"</em>:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">exportToExcel</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+<span class="xtra ln-xtra">    visual<span class="sy0">:</span> <span class="st0">&quot;base-colors&quot;</span><span class="sy0">,</span> </span>    cellColors<span class="sy0">:</span> <span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/5/ba21cf5e8' target='blank'><span class='sample'>Related sample: </span>&nbsp;Export colors of tasks</a></p>
+
+<a name='importfromexcel'><h2>Import from Excel</h2></a>
+
+<p>Since there is no way to automatically map arbitrary columns of the Excel document to Gantt data model, the export service converts a document to an array of rows which is returned in JSON. 
+Conversion of the resulting document to the Gantt data is the responsibility of end developers.</p>
+
+<p>In order to convert an Excel file, you need to send the following request to the export service:</p>
+
+<ul>
+<li>Request URL - <strong>https://export.dhtmlx.com/gantt</strong></li>
+<li>Request Method - <strong>POST</strong></li>
+<li>Content-Type - <strong>multipart/form-data</strong></li>
+</ul>
+
+<p>The request parameters are:</p>
+
+<ul>
+<li><strong>file</strong> - an Excel file</li>
+<li><strong>type</strong> - "excel-parse"</li>
+<li><strong>data</strong> - (<em>optional</em>) JSON string with settings</li>
+</ul>
+
+<p>For example:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">form</span> <span class="kw3">action</span><span class="sy0">=</span><span class="st0">&quot;https://export.dhtmlx.com/gantt&quot;</span> <span class="kw3">method</span><span class="sy0">=</span><span class="st0">&quot;POST&quot;</span> </span>
+<span class="sc2">    <span class="kw3">enctype</span><span class="sy0">=</span><span class="st0">&quot;multipart/form-data&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;file&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;file&quot;</span> <span class="sy0">/</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;hidden&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;type&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;excel-parse&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">button</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;submit&quot;</span>&gt;</span>Get<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">button</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">form</span>&gt;</span></pre></code></pre>
+
+<p>Alternatively, you can use the <a class="link-" href="api__gantt_importfromexcel.html">client-side API</a>:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">importFromExcel</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    server<span class="sy0">:</span><span class="st0">&quot;https://export.dhtmlx.com/gantt&quot;</span><span class="sy0">,</span>
+    data<span class="sy0">:</span> file<span class="sy0">,</span>
+    callback<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>project<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        console.<span class="me1">log</span><span class="br0">&#40;</span>project<span class="br0">&#41;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/08_api/21_load_from_excel.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Import Excel file</a></p>
+
+<p>Where <em>file</em> is an instance of <a href="https://developer.mozilla.org/en/docs/Web/API/File">File</a> which should contain an Excel (xlsx) file.</p>
+
+<div class='note'><p><p><strong>gantt.importFromExcel</strong> requires HTML5 File API support.</p>
+</p></div>
+
+<h3>Response</h3>
+
+<p>The response will contain a JSON with an array of objects:</p>
+
+<pre><code><pre class="js"><span class="br0">&#91;</span>
+   <span class="br0">&#123;</span> <span class="st0">&quot;Name&quot;</span><span class="sy0">:</span> <span class="st0">&quot;Task Name&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Start&quot;</span><span class="sy0">:</span> <span class="st0">&quot;2018-08-11 10:00&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Duration&quot;</span><span class="sy0">:</span> <span class="nu0">8</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+   ...
+<span class="br0">&#93;</span></pre></code></pre>
+
+<p>where:</p>
+
+<ul>
+<li>Values of the first row are used as property names of imported objects.</li>
+<li>Each row is serialized as an individual object.</li>
+<li>Date values are serialized in the "%Y-%m-%d %H:%i" format. </li>
+</ul>
+
+<h3>Import settings</h3>
+
+<ul>
+<li>The import service expects the first row of the imported sheet to be a header row containing column names.</li>
+<li>By default, the service returns the first sheet of the document. In order to return a different sheet, use the <strong>sheet</strong> parameter (zero-based)</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">importFromExcel</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    server<span class="sy0">:</span><span class="st0">&quot;https://export.dhtmlx.com/gantt&quot;</span><span class="sy0">,</span>
+    data<span class="sy0">:</span> file<span class="sy0">,</span>
+    sheet<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> <span class="co1">// print third sheet</span>
+    callback<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>rows<span class="br0">&#41;</span> <span class="br0">&#123;</span><span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='exporttoical'><h2>Export to iCal</h2></a>
+
+<p>To export data from the Gantt chart to an iCal string, do the following:</p>
+
+<ul>
+<li>Include the <strong>"http://export.dhtmlx.com/gantt/api.js"</strong> file on the page to enable the online export service:</li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlxgantt.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="xtra ln-xtra"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;https://export.dhtmlx.com/gantt/api.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>  </span><span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlxgantt.css&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span>&gt;</span></pre></code></pre>
+
+<ul>
+<li>Call the <a class="link-" href="api__gantt_exporttoical.html">exportToICal</a> method to export data from the Gantt chart: </li>
+</ul>
+
+<pre><code><pre class="html"><span class="xtra ln-xtra"><span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;Export to iCal&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;button&quot;</span> <span class="kw3">onclick</span><span class="sy0">=</span><span class="st0">'gantt.exportToICal()'</span>&gt;</span></span>&nbsp;
+<span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">    gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    gantt.<span class="me1">parse</span><span class="br0">&#40;</span>demo_tasks<span class="br0">&#41;</span><span class="sy0">;</span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p><a href='samples/08_api/08_export_other.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Export data : MS Project, PrimaveraP6, Excel &amp; iCal</a></p>
+
+<p><a href='samples/08_api/09_export_store.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Export data: store online</a></p>
+
+<h4>Parameters of the export method</h4>
+
+<p>The <strong>exportToICal()</strong> method takes as a parameter an object with the following property (optional):</p>
+
+<ul>
+<li><strong>server</strong> - (<em>string</em>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is <strong>https://export.dhtmlx.com/gantt</strong>.</li>
+</ul>
+
+<p class='snippet'>
+Calling the export method with optional properties
+</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">exportToICal</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    server<span class="sy0">:</span><span class="st0">&quot;https://myapp.com/myexport/gantt&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='desktop__excel.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

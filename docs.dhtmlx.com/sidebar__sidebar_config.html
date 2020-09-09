@@ -1,0 +1,441 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Configuring Sidebar  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxsidebar.html">dhtmlXSideBar API</a></li><li class=""><a href="api__refs__dhtmlxsidebarcell.html">dhtmlXSideBarCell API</a></li><li class=""><a href="sidebar__init.html">Initializing Sidebar</a></li><li class=" current"><a href="sidebar__sidebar_config.html">Configuring Sidebar</a></li><ul><li class="inner"><a href="sidebar__sidebar_config.html#predefinedtemplates">Predefined templates</a></li><li class="inner"><a href="sidebar__sidebar_config.html#customtemplates">Custom templates</a></li><li class="inner"><a href="sidebar__sidebar_config.html#settingskins">Setting skins</a></li><li class="inner"><a href="sidebar__sidebar_config.html#settingoffsets">Setting offsets</a></li><li class="inner"><a href="sidebar__sidebar_config.html#sizingsidebar">Sizing sidebar</a></li><li class="inner"><a href="sidebar__sidebar_config.html#addingbubbles">Adding bubbles</a></li><li class="inner"><a href="sidebar__sidebar_config.html#settingheader">Setting header</a></li><li class="inner"><a href="sidebar__sidebar_config.html#usingautohidemode">Using autohide mode</a></li></ul><li class=""><a href="sidebar__items_config.html">Configuring Items</a></li><li class=""><a href="sidebar__single_cell.html">Single Cell Mode</a></li><li class=""><a href="sidebar__attach_components.html">Attaching Components</a></li><li class=""><a href="sidebar__attach_mtb.html">Attaching Menu/Status Bar</a></li><li class=""><a href="sidebar__attach_html.html">Attaching HTML</a></li><li class=""><a href="sidebar__attach_urls.html">Attaching URL</a></li><li class=""><a href="sidebar__attach_google_map.html">Attaching Google Maps</a></li><li class=""><a href="sidebar__progress.html">Progress Bar</a></li><li class=""><a href="sidebar__views.html">Different Content in the Same Cell</a></li><li class=""><a href="sidebar__coloring_text_selection.html">Coloring Text Selection</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="sidebar__index.html">Sidebar</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Configuring Sidebar</h1>
+
+<a name='predefinedtemplates'><h2>Predefined templates</h2></a>
+
+<p>There are 5 predefined templates for sidebar items which are used for displaying items' elements and can be customized.
+They are "details", "tiles", "icons", "icons_text", "text":<br></p>
+
+<p><img src="media/sidebar/sidebar_templates.png"/></p>
+
+<p>You can apply this or that template during the dhtmlxSidebar initialization:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> mySidebar <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXSideBar<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    template<span class="sy0">:</span> <span class="st0">&quot;details&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Each default template contains either an icon (16x16 or 32x32) or a text, or an icon and a text.
+In any case, in order to add a new item, the following attributes are used:</p>
+
+<ul>
+<li>icon - for icons,</li>
+<li>text - for texts.</li>
+</ul>
+
+<p>It means that no matter what template you've chosen, you should use the following key names:</p>
+
+<pre><code><pre class="js">mySidebar.<span class="me1">addItem</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    text<span class="sy0">:</span> <span class="st0">&quot;items text&quot;</span><span class="sy0">,</span>
+    icon<span class="sy0">:</span> <span class="st0">&quot;item icon&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxSidebar/samples/03_templates/01_template_details.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Template [details]</a></p>
+
+<a name='customtemplates'><h2>Custom templates</h2></a>
+
+<p>You can also create your own template. For this purpose, you should complete several simple steps:</p>
+
+<p>1) First of all, you need to decide what name the template will have. Let it be "myview".
+<br><br>
+2) Next, you should define the template structure. For example, we'll use the one shown in the picture 
+(an icon 32x32 on the left, 2 text lines on the right):
+<br><br>
+<img src="media/sidebar/custom_template_1.png" border="0">
+<br><br></p>
+
+<p>3) Now you can add html markup for one item:
+<br><br></p>
+
+<pre><code><pre class="js">dhtmlXSideBar.<span class="me1">prototype</span>.<span class="me1">templates</span>.<span class="me1">myview</span> <span class="sy0">=</span>
+    <span class="co1">// icon 32x32</span>
+    <span class="st0">&quot;&lt;img class='dhxsidebar_item_icon' src='#icons_path##icon#' border='0'&gt;&quot;</span><span class="sy0">+</span>
+    <span class="co1">// general area for text</span>
+    <span class="st0">&quot;&lt;div class='dhxsidebar_item_text'&gt;&quot;</span><span class="sy0">+</span>
+        <span class="st0">&quot;&lt;div class='line_one'&gt;#text#&lt;/div&gt;&quot;</span><span class="sy0">+</span> <span class="co1">// 1st line of text</span>
+        <span class="st0">&quot;&lt;div class='line_two'&gt;#text2#&lt;/div&gt;&quot;</span><span class="sy0">+</span> <span class="co1">// 2nd line of text</span>
+    <span class="st0">&quot;&lt;/div&gt;&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><br><br>
+In this code we use common sidebar styles for the icon and the text (as usual classes are used).
+But we should correct them a little bit (to define the height, line-height, paddings and so on).
+<br><br></p>
+
+<p>4) Let's also add some CSS code. 
+The names of classes will be placed in the container which has the name of our new view: "dhxsidebar_tpl_myview"
+<br><br>
+You should set the height of the whole item</p>
+
+<pre><code><pre class="css"><span class="re1">.dhxsidebar_tpl_myview</span> div<span class="re1">.dhxsidebar_item</span> <span class="br0">&#123;</span>
+    <span class="kw1">height</span><span class="sy0">:</span> <span class="re3">43px</span><span class="sy0">;</span>
+    <span class="kw1">line-height</span><span class="sy0">:</span> <span class="re3">43px</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p><br>
+and specify coordinates for the icon (by default it has the <strong>position: absolute</strong> parameter specified)</p>
+
+<pre><code><pre class="css"><span class="re1">.dhxsidebar_tpl_myview</span> img<span class="re1">.dhxsidebar_item_icon</span> <span class="br0">&#123;</span>
+    <span class="kw1">left</span><span class="sy0">:</span> <span class="re3">8px</span> !important<span class="sy0">;</span>
+    <span class="kw1">top</span><span class="sy0">:</span> <span class="re3">6px</span>!important<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Here you can either add <strong>!important</strong> or use the full classname to override the sidebar defaults.</p>
+
+<p><br>
+As for the text lines, you should specify the <strong>line-height</strong>, <strong>margin-left</strong> and <strong>margin-top</strong> properties for them:</p>
+
+<pre><code><pre class="css"><span class="re1">.dhxsidebar_tpl_myview</span> div<span class="re1">.line_one</span> <span class="br0">&#123;</span>
+    <span class="kw1">margin-left</span><span class="sy0">:</span> <span class="re3">51px</span><span class="sy0">;</span>
+    <span class="kw1">margin-top</span><span class="sy0">:</span> <span class="re3">4px</span><span class="sy0">;</span>
+    <span class="kw1">line-height</span><span class="sy0">:</span> <span class="re3">16px</span><span class="sy0">;</span>
+    <span class="kw1">font-size</span><span class="sy0">:</span> <span class="re3">11px</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+<span class="re1">.dhxsidebar_tpl_myview</span> div<span class="re1">.line_two</span> <span class="br0">&#123;</span>
+    <span class="kw1">margin-left</span><span class="sy0">:</span> <span class="re3">51px</span><span class="sy0">;</span>
+    <span class="kw1">margin-top</span><span class="sy0">:</span> <span class="re3">1px</span><span class="sy0">;</span>
+    <span class="kw1">line-height</span><span class="sy0">:</span> <span class="re3">16px</span><span class="sy0">;</span>
+    <span class="kw1">font-size</span><span class="sy0">:</span> <span class="re3">10px</span><span class="sy0">;</span>
+    <span class="kw1">color</span><span class="sy0">:</span> <span class="re0">#515151</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p><br></p>
+
+<p>That's all. Now let's try to initialize Sidebar and see the result:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> mySidebar <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXSideBar<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    parent<span class="sy0">:</span> <span class="st0">&quot;sidebarObj&quot;</span><span class="sy0">,</span>
+    icons_path<span class="sy0">:</span> <span class="st0">&quot;icons/win_32x32/&quot;</span><span class="sy0">,</span>
+    template<span class="sy0">:</span> <span class="st0">&quot;myview&quot;</span><span class="sy0">,</span>
+    width<span class="sy0">:</span> <span class="nu0">150</span><span class="sy0">,</span>
+    items<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;a1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Documents&quot;</span><span class="sy0">,</span> text2<span class="sy0">:</span> <span class="st0">&quot;2 objects&quot;</span><span class="sy0">,</span> icon<span class="sy0">:</span> <span class="st0">&quot;documents.png&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;a2&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Music&quot;</span><span class="sy0">,</span> text2<span class="sy0">:</span> <span class="st0">&quot;16 objects&quot;</span><span class="sy0">,</span> icon<span class="sy0">:</span> <span class="st0">&quot;music.png&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;a3&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Pictures&quot;</span><span class="sy0">,</span> text2<span class="sy0">:</span> <span class="st0">&quot;1 object&quot;</span><span class="sy0">,</span> icon<span class="sy0">:</span> <span class="st0">&quot;pictures.png&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;a4&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Video&quot;</span><span class="sy0">,</span> text2<span class="sy0">:</span> <span class="st0">&quot;Empty&quot;</span><span class="sy0">,</span> icon<span class="sy0">:</span> <span class="st0">&quot;video.png&quot;</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><br></p>
+
+<p><img src="media/sidebar/custom_template_2.png"></p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxSidebar/samples/03_templates/06_template_custom.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom template</a></p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxSidebar/samples/03_templates/07_template_custom_2.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom template 2</a></p>
+
+<a name='settingskins'><h2>Setting skins</h2></a>
+
+<p>You can choose one of the 4 available skins for Sidebar:<br></p>
+
+<p><img src="media/sidebar/sidebar_skins.png"></p>
+
+<p>The "material" skin is used by default.</p>
+
+<p>A skin can be set during the dhtmlxSidebar initialization:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> mySidebar <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXSideBar<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    skin<span class="sy0">:</span> <span class="st0">&quot;dhx_web&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxSidebar/samples/02_config/01_skins.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Skins</a></p>
+
+<a name='settingoffsets'><h2>Setting offsets</h2></a>
+
+<p>dhtmlxSidebar supports offsets that can be useful in <a class="link-" href="sidebar__init.html#fullscreeninitialization">full-screen init</a>. For example, to add a logo to the header or company's info to the footer.
+<br><br></p>
+
+<p>1) you can set offset on init:
+<br><br></p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> mySidebar <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXSidebar<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    parent<span class="sy0">:</span> document.<span class="me1">body</span><span class="sy0">,</span>  <span class="co1">// parent container</span>
+    items<span class="sy0">:</span> <span class="br0">&#91;</span>...<span class="br0">&#93;</span><span class="sy0">,</span> 
+    offsets<span class="sy0">:</span> <span class="br0">&#123;</span>
+        top<span class="sy0">:</span> <span class="nu0">10</span><span class="sy0">,</span>
+        right<span class="sy0">:</span> <span class="nu0">20</span><span class="sy0">,</span>
+        bottom<span class="sy0">:</span> <span class="nu0">30</span><span class="sy0">,</span>
+        left<span class="sy0">:</span> <span class="nu0">40</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><br></p>
+
+<p>2) or you can set it from JS code:
+<br><br></p>
+
+<pre><code><pre class="js">mySidebar.<span class="me1">setOffsets</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    top<span class="sy0">:</span> <span class="nu0">10</span><span class="sy0">,</span>
+    right<span class="sy0">:</span> <span class="nu0">20</span><span class="sy0">,</span>
+    bottom<span class="sy0">:</span> <span class="nu0">30</span><span class="sy0">,</span>
+    left<span class="sy0">:</span> <span class="nu0">40</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><br>
+<img src="media/sidebar/sidebar_offsets.png"/></p>
+
+<a name='sizingsidebar'><h2>Sizing sidebar</h2></a>
+
+<p>There's a possibility to adjust sidebar if its parent element's size was changed:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> mySidebar <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXSideBar<span class="br0">&#40;</span><span class="st0">&quot;parentId&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// if you change parent's size</span>
+document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">&quot;parentId&quot;</span><span class="br0">&#41;</span>.<span class="me1">style</span>.<span class="me1">width</span> <span class="sy0">=</span> <span class="st0">&quot;800px&quot;</span><span class="sy0">;</span>
+document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">&quot;parentId&quot;</span><span class="br0">&#41;</span>.<span class="me1">style</span>.<span class="me1">height</span> <span class="sy0">=</span> <span class="st0">&quot;600px&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// sidebar needs to be adjusted</span>
+mySidebar.<span class="me1">setSizes</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>If the sidebar is attached to another DHTMLX component, the method is called automatically.</p>
+
+<a name='addingbubbles'><h2>Adding bubbles</h2></a>
+
+<p>You can add a colored circle marker (bubble) next to each Sidebar item. It can inform about the number of unread notifications, for example.</p>
+
+<p><img src="media/sidebar/sidebar_bubbles.png"></p>
+
+<p>To set a bubble you need to specify the <em>bubble</em> property in the sidebar definition and specify its content:</p>
+
+<pre><code><pre class="js">mySidebar <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXSideBar<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    parent<span class="sy0">:</span> <span class="st0">&quot;sidebarObj&quot;</span><span class="sy0">,</span>
+    items<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;recent&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Recent&quot;</span><span class="sy0">,</span> icon<span class="sy0">:</span> <span class="st0">&quot;recent.png&quot;</span><span class="sy0">,</span> selected<span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;desktop&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Desktop&quot;</span><span class="sy0">,</span> icon<span class="sy0">:</span> <span class="st0">&quot;desktop.png&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;downloads&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Downloads&quot;</span><span class="sy0">,</span> icon<span class="sy0">:</span> <span class="st0">&quot;downloads.png&quot;</span><span class="sy0">,</span> bubble<span class="sy0">:</span> <span class="nu0">6</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        ...
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxSidebar/samples/02_config/07_bubbles.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Bubbles</a></p>
+
+<p>It is also possible to set a bubble by means of the method <a class="link-" href="api__dhtmlxsidebarcell_setbubble.html">setBubble</a>:</p>
+
+<pre><code><pre class="js">mySidebar.<span class="me1">cells</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">setBubble</span><span class="br0">&#40;</span>text<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To get the bubble text is easy with the help of the <a class="link-" href="api__dhtmlxsidebarcell_getbubble.html">getBubble</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> text <span class="sy0">=</span> mySidebar.<span class="me1">cells</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">getBubble</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>If you need to remove a bubble from an item, make use of the <a class="link-" href="api__dhtmlxsidebarcell_clearbubble.html">clearBubble</a> method:</p>
+
+<pre><code><pre class="js">mySidebar.<span class="me1">cells</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">clearBubble</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>For specifying some action on clicking a bubble, use the <a class="link-" href="api__dhtmlxsidebar_onbubbleclick_event.html">onBubbleClick</a> event handler:</p>
+
+<pre><code><pre class="js">mySidebar.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onBubbleClick&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span> text<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="co1">// your code here</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span> <span class="co1">// allow item to be selected</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='settingheader'><h2>Setting header</h2></a>
+
+<p>You can specify the header in the right part of Sidebar to display the text of the chosen Sidebar item.</p>
+
+<p><img src="media/sidebar/sidebar_header.png"></p>
+
+<p>To enable header rendering, you need to specify the <em>header</em> property with the <em>true</em> value in the Sidebar configuration:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> mySidebar <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXSideBar<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    header<span class="sy0">:</span><span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxSidebar/samples/02_config/09_show_header.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Show header</a></p>
+
+<p><br></p>
+
+<h3>Operations with header</h3>
+
+<h4>Getting header text</h4>
+
+<p>To get the header text of a Sidebar item, use the <a class="link-" href="api__dhtmlxsidebarcell_getheadertext.html">getHeaderText</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> header <span class="sy0">=</span> mySidebar.<span class="me1">cells</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">getHeaderText</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h4>Setting header text</h4>
+
+<p>To set a header text for an item, make use of <a class="link-" href="api__dhtmlxsidebarcell_setheadertext.html">setHeaderText</a>:</p>
+
+<pre><code><pre class="js">mySidebar.<span class="me1">cells</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">setHeaderText</span><span class="br0">&#40;</span>headerText<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>where</p>
+
+<ul>
+<li>headerText - (string) a new header text for an item</li>
+</ul>
+
+<h4>Hiding header</h4>
+
+<p>You can also hide the header of a particular cell with the help of the <a class="link-" href="api__dhtmlxsidebarcell_hideheader.html">hideHeader</a> method:</p>
+
+<pre><code><pre class="js">mySidebar.<span class="me1">cells</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">hideHeader</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h4>Showing header</h4>
+
+<p>To show the cell's header if it was hidden, use the <a class="link-" href="api__dhtmlxsidebarcell_showheader.html">showHeader</a> method:</p>
+
+<pre><code><pre class="js">mySidebar.<span class="me1">cells</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">showHeader</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h4>Checking header visibility</h4>
+
+<p>One more possibility is to check, whether the cell's header is visible. Use the <a class="link-" href="api__dhtmlxsidebarcell_isheadervisible.html">isHeaderVisible</a> for this purpose:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> isVisible <span class="sy0">=</span> mySidebar.<span class="me1">cells</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">isHeaderVisible</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The method returns <em>true</em> to indicate that the header is visible or <em>false</em> if the header is invisible.</p>
+
+<a name='usingautohidemode'><h2>Using autohide mode</h2></a>
+
+<p>In the autohide mode the navigation bar is hidden and appears by clicking the header icon.
+Only the icon and the text of the chosen item are shown in the header.</p>
+
+<p><img src="media/sidebar/sidebar_autohide.png"></p>
+
+<p>To use the autohide mode, you need to have the <em>header</em> property enabled and set the <em>autohide</em> property to <em>true</em> in the Sidebar configuration.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> mySidebar <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXSideBar<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    header<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span>
+    autohide<span class="sy0">:</span><span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In order to make the navigation bar hide and show, apply the <a class="link-" href="api__dhtmlxsidebar_hideside.html">hideSide</a> and <a class="link-" href="api__dhtmlxsidebar_showside.html">showSide</a> methods, correspondingly.</p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxSidebar/samples/02_config/10_autohide_mode.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Autohide mode</a></p>
+
+<!-- Content Area End -->
+			<a href='sidebar__sidebar_config.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

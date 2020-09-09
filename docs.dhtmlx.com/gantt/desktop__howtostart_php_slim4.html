@@ -1,0 +1,792 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>dhtmlxGantt with PHP:Slim  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__howtostart_dotnet_core.html">dhtmlxGantt with ASP.NET Core</a></li><li class=""><a href="desktop__howtostart_nodejs.html">dhtmlxGantt with Node.js</a></li><li class=""><a href="desktop__howtostart_dotnet.html">dhtmlxGantt with ASP.NET MVC</a></li><li class=""><a href="desktop__howtostart_php_laravel.html">dhtmlxGantt with PHP: Laravel</a></li><li class=" current"><a href="desktop__howtostart_php_slim4.html">dhtmlxGantt with PHP:Slim</a></li><ul><li class="inner"><a href="desktop__howtostart_php_slim4.html#step1initializingaproject">Step 1. Initializing a project</a></li><li class="inner"><a href="desktop__howtostart_php_slim4.html#step2addinggantttothepage">Step 2. Adding Gantt to the page</a></li><li class="inner"><a href="desktop__howtostart_php_slim4.html#step3configuringadatabase">Step 3. Configuring a database</a></li><li class="inner"><a href="desktop__howtostart_php_slim4.html#step4loadingdata">Step 4. Loading data</a></li><li class="inner"><a href="desktop__howtostart_php_slim4.html#step5savingchanges">Step 5. Saving changes</a></li><li class="inner"><a href="desktop__howtostart_php_slim4.html#storingtheorderoftasks">Storing the order of tasks</a></li><li class="inner"><a href="desktop__howtostart_php_slim4.html#usingdhtmlxconnector">Using dhtmlxConnector</a></li><li class="inner"><a href="desktop__howtostart_php_slim4.html#applicationsecurity">Application security</a></li><li class="inner"><a href="desktop__howtostart_php_slim4.html#troubleshooting">Trouble shooting</a></li><li class="inner"><a href="desktop__howtostart_php_slim4.html#whatsnext">What's next</a></li><li><a href="desktop__howtostart_connector.html">dhtmlxGantt with dhtmlxConnector</a></li></ul><li class=""><a href="desktop__howtostart_ruby.html">dhtmlxGantt with Ruby on Rails</a></li><li class=""><a href="desktop__howtostart_php.html">dhtmlxGantt with PHP:Slim3</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__howtostart_guides.html">How to Start with dhtmlxGantt</a></div>
+<!-- Content Area -->
+
+
+
+<h1>dhtmlxGantt with PHP:Slim</h1>
+
+<p>In this tutorial you will find necessary information on how to create a PHP-based Gantt Chart using Slim 4 Framework and RESTful API on the server.</p>
+
+<div class='note'><p><p>This tutorial uses Slim Framework v4.x. If you need a tutorial for an older version, check the <a class="link-" href="desktop__howtostart_php.html">Slim Framework v3.x</a> guide.</p>
+</p></div>
+
+<p>There are tutorials intended for building server-side integration with the help of other platforms and frameworks:</p>
+
+<ul>
+<li><a class="link-" href="desktop__howtostart_dotnet_core.html">dhtmlxGantt with ASP.NET Core</a></li>
+<li><a class="link-" href="desktop__howtostart_dotnet.html">dhtmlxGantt with ASP.NET MVC</a></li>
+<li><a class="link-" href="desktop__howtostart_nodejs.html">dhtmlxGantt with Node.js</a></li>
+<li><a class="link-" href="desktop__howtostart_php_laravel.html">dhtmlxGantt with PHP: Laravel</a></li>
+<li><a class="link-" href="desktop__howtostart_ruby.html">dhtmlxGantt with Ruby on Rails</a></li>
+</ul>
+
+<p>We will use the <a href="http://www.slimframework.com/">Slim 4</a> framework for routing and MySQL as a data storage. CRUD logic will rely on PDO and will be generic enough to be usable with any other framework.</p>
+
+<div class='note'><p><p>The complete source code is <a href="https://github.com/DHTMLX/gantt-howto-php">available on GitHub</a>.</p>
+</p></div>
+
+<a name='step1initializingaproject'><h2>Step 1. Initializing a project</h2></a>
+
+<h3>Creating a project</h3>
+
+<p>We will make use of a <a href="https://github.com/slimphp/Slim-Skeleton">skeleton application</a> for the Slim 4 framework.</p>
+
+<p>Firstly, we need to import the project and install it. You can easily do it with the help of Composer:</p>
+
+<pre><code><pre class="php">php composer<span class="sy0">.</span>phar create<span class="sy0">-</span>project slim<span class="sy0">/</span>slim<span class="sy0">-</span>skeleton gantt<span class="sy0">-</span>rest<span class="sy0">-</span>php</pre></code></pre>
+
+<p>If you have Composer installed globally, you can apply the following command:</p>
+
+<pre><code><pre class="php">composer create<span class="sy0">-</span>project slim<span class="sy0">/</span>slim<span class="sy0">-</span>skeleton gantt<span class="sy0">-</span>rest<span class="sy0">-</span>php</pre></code></pre>
+
+<p>Then you should check if everything works fine. For this, go to the application folder and run a web server:</p>
+
+<pre><code><pre class="php">cd gantt<span class="sy0">-</span>rest<span class="sy0">-</span>php
+php <span class="sy0">-</span>S 0<span class="sy0">.</span>0<span class="sy0">.</span>0<span class="sy0">.</span>0<span class="sy0">:</span><span class="nu0">8080</span> <span class="sy0">-</span>t <span class="kw2">public</span> <span class="kw2">public</span><span class="sy0">/</span>index<span class="sy0">.</span>php</pre></code></pre>
+
+<p>After that you can open <a href="">http://127.0.0.1:8080</a> in a browser and you will see the default Slim page.</p>
+
+<a name='step2addinggantttothepage'><h2>Step 2. Adding Gantt to the page</h2></a>
+
+<p>The next step is to create a page with our gantt chart. It includes two simple sub-steps, described below.</p>
+
+<h3>Creating a view</h3>
+
+<p>Create a <em>basic.html</em> file in the <code>app</code> <strong>app/templates</strong> folder. We will place the gantt chart there and set up prerequisites to implement data loading.</p>
+
+<p>The full code looks as follows:</p>
+
+<p class='snippet'> app/templates/basic.html</p>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">meta</span> <span class="kw3">http-equiv</span><span class="sy0">=</span><span class="st0">&quot;Content-type&quot;</span> <span class="kw3">content</span><span class="sy0">=</span><span class="st0">&quot;text/html; charset=utf-8&quot;</span>&gt;</span>
+&nbsp;
+  <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css&quot;</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span>&gt;</span>
+&nbsp;
+  <span class="sc2">&lt;<span class="kw2">style</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span>&gt;</span><pre class="css">    html<span class="sy0">,</span> body<span class="br0">&#123;</span>
+      <span class="kw1">height</span><span class="sy0">:</span><span class="re3">100%</span><span class="sy0">;</span>
+      <span class="kw1">padding</span><span class="sy0">:</span><span class="re3">0px</span><span class="sy0">;</span>
+      <span class="kw1">margin</span><span class="sy0">:</span><span class="re3">0px</span><span class="sy0">;</span>
+      <span class="kw1">overflow</span><span class="sy0">:</span> <span class="kw2">hidden</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span></pre>
+  <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">style</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;gantt_here&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">'width:100%; height:100%;'</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span>&gt;</span><pre class="js">    gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre>  <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+<p>This code will add an empty gantt chart to the page. A user will be able to create and modify tasks and links, but no changes will be stored after the page reload.</p>
+
+<h3>Setting up routes</h3>
+
+<p>After a new page is added, you need to make it accessible from a browser. Add a route to <strong>app/routes.php</strong>:</p>
+
+<p class='snippet'> app/routes.php</p>
+
+<pre><code><pre class="php"><span class="re0">$app</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="st_h">'/'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>Request <span class="re0">$request</span><span class="sy0">,</span> Response <span class="re0">$response</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+<span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/file_get_contents"><span class="kw3">file_get_contents</span></a><span class="br0">&#40;</span>__DIR__<span class="sy0">.</span><span class="st_h">'/templates/basic.html'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Launch the app again:</p>
+
+<p class='snippet'> command line</p>
+
+<pre><code><pre class="js">php <span class="sy0">-</span>S 0.0.0.0<span class="sy0">:</span><span class="nu0">8080</span> <span class="sy0">-</span>t <span class="kw2">public</span> <span class="kw2">public</span><span class="sy0">/</span>index.<span class="me1">php</span></pre></code></pre>
+
+<p>Now you can open <a href="http://127.0.0.1:8080/">http://127.0.0.1:8080/</a> in a browser and you will see that a gantt is rendered on the page.</p>
+
+<p><img src="media/desktop/gantt_slim_in.png"></p>
+
+<a name='step3configuringadatabase'><h2>Step 3. Configuring a database</h2></a>
+
+<p>So, you've got an empty gantt. It's time to create a database and connect it to our app.</p>
+
+<h3>Creating database</h3>
+
+<p>You can create a database from your favorite mysql-client (for example, phpMyAdmin), or via the console. Here is SQL to create a simple database with two tables.</p>
+
+<pre><code><pre class="js">CREATE DATABASE  <span class="kw1">IF</span> NOT EXISTS `gantt`<span class="sy0">;</span>
+<span class="kw2">USE</span> `gantt`<span class="sy0">;</span>
+&nbsp;
+CREATE TABLE `gantt_links` <span class="br0">&#40;</span>
+  `id` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span> AUTO_INCREMENT<span class="sy0">,</span>
+  `source` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `target` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `type` varchar<span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  PRIMARY KEY <span class="br0">&#40;</span>`id`<span class="br0">&#41;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span>
+CREATE TABLE `gantt_tasks` <span class="br0">&#40;</span>
+  `id` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span> AUTO_INCREMENT<span class="sy0">,</span>
+  `text` varchar<span class="br0">&#40;</span><span class="nu0">255</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `start_date` datetime NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `duration` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `progress` float NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `parent` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  PRIMARY KEY <span class="br0">&#40;</span>`id`<span class="br0">&#41;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>When a database is ready, we can go further and populate the <em>gantt_tasks</em> table with some test data.
+You can use the following SQL sample for this:</p>
+
+<pre><code><pre class="js">INSERT INTO `gantt_tasks` VALUES <span class="br0">&#40;</span><span class="st0">'1'</span><span class="sy0">,</span> <span class="st0">'Project #1'</span><span class="sy0">,</span> <span class="st0">'2020-03-31 00:00:00'</span><span class="sy0">,</span> 
+  <span class="st0">'4'</span><span class="sy0">,</span> <span class="st0">'0.8'</span><span class="sy0">,</span> <span class="st0">'0'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+INSERT INTO `gantt_tasks` VALUES <span class="br0">&#40;</span><span class="st0">'2'</span><span class="sy0">,</span> <span class="st0">'Task #1'</span><span class="sy0">,</span> <span class="st0">'2020-03-31 00:00:00'</span><span class="sy0">,</span> 
+  <span class="st0">'3'</span><span class="sy0">,</span> <span class="st0">'0.5'</span><span class="sy0">,</span> <span class="st0">'1'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+INSERT INTO `gantt_tasks` VALUES <span class="br0">&#40;</span><span class="st0">'3'</span><span class="sy0">,</span> <span class="st0">'Task #2'</span><span class="sy0">,</span> <span class="st0">'2020-04-01 00:00:00'</span><span class="sy0">,</span> 
+  <span class="st0">'2'</span><span class="sy0">,</span> <span class="st0">'0.7'</span><span class="sy0">,</span> <span class="st0">'1'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+INSERT INTO `gantt_tasks` VALUES <span class="br0">&#40;</span><span class="st0">'4'</span><span class="sy0">,</span> <span class="st0">'Task #3'</span><span class="sy0">,</span> <span class="st0">'2020-04-02 00:00:00'</span><span class="sy0">,</span> 
+  <span class="st0">'2'</span><span class="sy0">,</span> <span class="st0">'0'</span><span class="sy0">,</span> <span class="st0">'1'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+INSERT INTO `gantt_tasks` VALUES <span class="br0">&#40;</span><span class="st0">'5'</span><span class="sy0">,</span> <span class="st0">'Task #1.1'</span><span class="sy0">,</span> <span class="st0">'2020-04-03 00:00:00'</span><span class="sy0">,</span> 
+  <span class="st0">'3'</span><span class="sy0">,</span> <span class="st0">'0.34'</span><span class="sy0">,</span> <span class="st0">'2'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+INSERT INTO `gantt_tasks` VALUES <span class="br0">&#40;</span><span class="st0">'6'</span><span class="sy0">,</span> <span class="st0">'Task #1.2'</span><span class="sy0">,</span> <span class="st0">'2020-04-03 13:22:17'</span><span class="sy0">,</span> 
+  <span class="st0">'2'</span><span class="sy0">,</span> <span class="st0">'0.5'</span><span class="sy0">,</span> <span class="st0">'2'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+INSERT INTO `gantt_tasks` VALUES <span class="br0">&#40;</span><span class="st0">'7'</span><span class="sy0">,</span> <span class="st0">'Task #2.1'</span><span class="sy0">,</span> <span class="st0">'2020-04-04 00:00:00'</span><span class="sy0">,</span>
+  <span class="st0">'3'</span><span class="sy0">,</span> <span class="st0">'0.2'</span><span class="sy0">,</span> <span class="st0">'3'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+INSERT INTO `gantt_tasks` VALUES <span class="br0">&#40;</span><span class="st0">'8'</span><span class="sy0">,</span> <span class="st0">'Task #2.2'</span><span class="sy0">,</span> <span class="st0">'2020-04-05 00:00:00'</span><span class="sy0">,</span> 
+  <span class="st0">'2'</span><span class="sy0">,</span> <span class="st0">'0.9'</span><span class="sy0">,</span> <span class="st0">'3'</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Check a detailed example <a class="link-" href="desktop__loading.html#standarddatabasestructure">here</a>.</p>
+
+<p>So, we've finished preparing our project. Now we can proceed with data loading.</p>
+
+<a name='step4loadingdata'><h2>Step 4. Loading data</h2></a>
+
+<p>Now it's time to implement loading from the database. 
+On the client side we'll request data using the <a class="link-" href="api__gantt_load.html">gantt.load</a> method:</p>
+
+<p class='snippet'> app/templates/basic.html</p>
+
+<pre><code><pre class="js"><span class="xtra ln-xtra">gantt.<span class="me1">config</span>.<span class="me1">date_format</span> <span class="sy0">=</span> <span class="st0">&quot;%Y-%m-%d %H:%i:%s&quot;</span><span class="sy0">;</span></span>&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">gantt.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/data&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p>This command will send an AJAX request to the specified URL, 
+the response is expected to contain Gantt data in the <a class="link-" href="desktop__supported_data_formats.html#json">JSON format</a>.</p>
+
+<p>Also, note that we've specified the <a class="link-" href="api__gantt_date_format_config.html">date_format</a> value. 
+This is how we tell gantt what format of dates the data source will use, so the client side could parse them.</p>
+
+<p>Thus, we should add a necessary handler for such a request on the backend.
+Open the <em>app/routes.php</em> file and add a new <a href="https://www.slimframework.com/docs/v4/objects/routing.html">route</a>:</p>
+
+<p class='snippet'> app/routes.php</p>
+
+<pre><code><pre class="php"><span class="re0">$app</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="st_h">'/data'</span><span class="sy0">,</span>  <span class="st_h">'getGanttData'</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>After that, we need to implement the <em>getGanttData</em> logic. In order not to pollute <em>index.php</em>, we'll declare all gantt-related stuff in a separate file.</p>
+
+<p>Let's create a new file <em>app/gantt.php</em> and add the required code:</p>
+
+<p class='snippet'> app/gantt.php</p>
+
+<pre><code><pre class="php"><span class="kw2">function</span> getConnection<span class="br0">&#40;</span><span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="kw2">new</span> PDO<span class="br0">&#40;</span><span class="st0">&quot;mysql:host=localhost;dbname=gantt&quot;</span><span class="sy0">,</span> <span class="st0">&quot;root&quot;</span><span class="sy0">,</span> <span class="st0">&quot;root&quot;</span><span class="sy0">,</span> <span class="br0">&#91;</span>
+      PDO<span class="sy0">::</span><span class="me2">ATTR_ERRMODE</span> <span class="sy0">=&gt;</span> PDO<span class="sy0">::</span><span class="me2">ERRMODE_EXCEPTION</span><span class="sy0">,</span>
+      PDO<span class="sy0">::</span><span class="me2">ATTR_DEFAULT_FETCH_MODE</span> <span class="sy0">=&gt;</span> PDO<span class="sy0">::</span><span class="me2">FETCH_ASSOC</span>
+    <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="kw2">function</span> getGanttData<span class="br0">&#40;</span><span class="re0">$request</span><span class="sy0">,</span> <span class="re0">$response</span><span class="sy0">,</span> <span class="re0">$args</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="re0">$db</span> <span class="sy0">=</span> getConnection<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$result</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="st0">&quot;data&quot;</span><span class="sy0">=&gt;</span> <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="st0">&quot;links&quot;</span><span class="sy0">=&gt;</span> <span class="br0">&#91;</span><span class="br0">&#93;</span>
+  <span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="kw1">foreach</span><span class="br0">&#40;</span><span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;SELECT * FROM gantt_tasks&quot;</span><span class="br0">&#41;</span> <span class="kw1">as</span> <span class="re0">$row</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="re0">$row</span><span class="br0">&#91;</span><span class="st0">&quot;open&quot;</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="kw4">true</span><span class="sy0">;</span>
+    <a href="http://www.php.net/array_push"><span class="kw3">array_push</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#91;</span><span class="st0">&quot;data&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span> <span class="re0">$row</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+&nbsp;
+  <span class="kw1">foreach</span> <span class="br0">&#40;</span><span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;SELECT * FROM gantt_links&quot;</span><span class="br0">&#41;</span> <span class="kw1">as</span> <span class="re0">$link</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <a href="http://www.php.net/array_push"><span class="kw3">array_push</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#91;</span><span class="st0">&quot;links&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span> <span class="re0">$link</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+&nbsp;
+  <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">withHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Content-Type&quot;</span><span class="sy0">,</span> <span class="st0">&quot;application/json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>And include <em>app/gantt.php</em> into <em>app/routes.php</em>:</p>
+
+<p class='snippet'> app/routes.php</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+<span class="kw2">declare</span><span class="br0">&#40;</span>strict_types<span class="sy0">=</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">use</span> App\Application\Actions\User\ListUsersAction<span class="sy0">;</span>
+<span class="kw2">use</span> App\Application\Actions\User\ViewUserAction<span class="sy0">;</span>
+<span class="kw2">use</span> Psr\Http\Message\ResponseInterface <span class="kw1">as</span> Response<span class="sy0">;</span>
+<span class="kw2">use</span> Psr\Http\Message\ServerRequestInterface <span class="kw1">as</span> Request<span class="sy0">;</span>
+<span class="kw2">use</span> Slim\App<span class="sy0">;</span>
+<span class="kw2">use</span> Slim\Interfaces\RouteCollectorProxyInterface <span class="kw1">as</span> Group<span class="sy0">;</span>
+&nbsp;
+<span class="co1">// Add dhtmlxGantt CRUD</span>
+<span class="kw1">require</span> __DIR__ <span class="sy0">.</span> <span class="st0">&quot;/gantt.php&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">return</span> <span class="kw2">function</span> <span class="br0">&#40;</span>App <span class="re0">$app</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="re0">$app</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="st0">&quot;/&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>Request <span class="re0">$request</span><span class="sy0">,</span> Response <span class="re0">$response</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/file_get_contents"><span class="kw3">file_get_contents</span></a><span class="br0">&#40;</span>__DIR__<span class="sy0">.</span><span class="st0">&quot;/templates/basic.html&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$app</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="st0">&quot;/data&quot;</span><span class="sy0">,</span>  <span class="st0">&quot;getGanttData&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$app</span><span class="sy0">-&gt;</span><span class="me1">group</span><span class="br0">&#40;</span><span class="st0">&quot;/users&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>Group <span class="re0">$group</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="re0">$group</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="st0">&quot;&quot;</span><span class="sy0">,</span> ListUsersAction<span class="sy0">::</span><span class="kw2">class</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="re0">$group</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="st0">&quot;/{id}&quot;</span><span class="sy0">,</span> ViewUserAction<span class="sy0">::</span><span class="kw2">class</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Let's consider the above described code in detail:</p>
+
+<ul>
+<li>we have defined a <a href="https://www.slimframework.com/docs/v4/objects/routing.html">route</a> for our data action in <em>src/routes.php</em></li>
+<li>in the handler for that route we read all tasks and links from the database and send them to the client as <a class="link-" href="desktop__supported_data_formats.html#json">JSON</a></li>
+<li>we have also added the <em>open</em> property to the task objects. It will specify that the tasks tree will be open by default</li>
+</ul>
+
+<p>Thus, we have implemented data loading into Gantt.
+Open <a href="http://127.0.0.1:8080/">http://127.0.0.1:8080/ </a> and you will see that the gantt is now populated with the test data we added on the previous step.</p>
+
+<p><img src="media/desktop/slim_load.png"></p>
+
+<a name='step5savingchanges'><h2>Step 5. Saving changes</h2></a>
+
+<p>Our next step is to implement saving of the changes made on the client side to the server. It is usually done using the <a class="link-" href="desktop__server_side.html#technique">dataProcessor</a> library, which is embedded into the gantt.
+Open <em>index.phtml</em> and add the following lines of code:</p>
+
+<p class='snippet'> app/templates/basic.html</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">date_format</span> <span class="sy0">=</span> <span class="st0">&quot;%Y-%m-%d %H:%i:%s&quot;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/data&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra"><span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> gantt.<span class="me1">dataProcessor</span><span class="br0">&#40;</span><span class="st0">&quot;/data&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span><span class="xtra ln-xtra">dp.<span class="me1">init</span><span class="br0">&#40;</span>gantt<span class="br0">&#41;</span><span class="sy0">;</span></span><span class="xtra ln-xtra">dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;REST&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p>DataProcessor will react to each action on the client (i.e. adding data into the chart, modifying or removing it) by sending an AJAX request to the server.
+The dataProcessor will work in the REST mode, which means it will use different HTTP methods for different actions, here is <a class="link-" href="desktop__server_side.html#requestresponsedetails">a complete list of routes</a>.</p>
+
+<p>So now we need to add these routes to our app and implement the required logic. Firstly, go to <em>app/routes.php</em>:</p>
+
+<p class='snippet'> app/routes.php</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw2">declare</span><span class="br0">&#40;</span>strict_types<span class="sy0">=</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">use</span> App\Application\Actions\User\ListUsersAction<span class="sy0">;</span>
+<span class="kw2">use</span> App\Application\Actions\User\ViewUserAction<span class="sy0">;</span>
+<span class="kw2">use</span> Psr\Http\Message\ResponseInterface <span class="kw1">as</span> Response<span class="sy0">;</span>
+<span class="kw2">use</span> Psr\Http\Message\ServerRequestInterface <span class="kw1">as</span> Request<span class="sy0">;</span>
+<span class="kw2">use</span> Slim\App<span class="sy0">;</span>
+<span class="kw2">use</span> Slim\Interfaces\RouteCollectorProxyInterface <span class="kw1">as</span> Group<span class="sy0">;</span>
+&nbsp;
+<span class="co1">// Add dhtmlxGantt CRUD</span>
+<span class="kw1">require</span> __DIR__ <span class="sy0">.</span> <span class="st0">&quot;/gantt.php&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">return</span> <span class="kw2">function</span> <span class="br0">&#40;</span>App <span class="re0">$app</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="re0">$app</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="st0">&quot;/&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>Request <span class="re0">$request</span><span class="sy0">,</span> Response <span class="re0">$response</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/file_get_contents"><span class="kw3">file_get_contents</span></a><span class="br0">&#40;</span>__DIR__<span class="sy0">.</span><span class="st0">&quot;/templates/basic.html&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$app</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="st0">&quot;/data&quot;</span><span class="sy0">,</span>  <span class="st0">&quot;getGanttData&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$app</span><span class="sy0">-&gt;</span><span class="me1">post</span><span class="br0">&#40;</span><span class="st0">&quot;/data/task&quot;</span><span class="sy0">,</span> <span class="st0">&quot;addTask&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$app</span><span class="sy0">-&gt;</span><span class="me1">put</span><span class="br0">&#40;</span><span class="st0">&quot;/data/task/{id}&quot;</span><span class="sy0">,</span> <span class="st0">&quot;updateTask&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$app</span><span class="sy0">-&gt;</span><span class="me1">delete</span><span class="br0">&#40;</span><span class="st0">&quot;/data/task/{id}&quot;</span><span class="sy0">,</span> <span class="st0">&quot;deleteTask&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$app</span><span class="sy0">-&gt;</span><span class="me1">post</span><span class="br0">&#40;</span><span class="st0">&quot;/data/link&quot;</span><span class="sy0">,</span> <span class="st0">&quot;addLink&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$app</span><span class="sy0">-&gt;</span><span class="me1">put</span><span class="br0">&#40;</span><span class="st0">&quot;/data/link/{id}&quot;</span><span class="sy0">,</span> <span class="st0">&quot;updateLink&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$app</span><span class="sy0">-&gt;</span><span class="me1">delete</span><span class="br0">&#40;</span><span class="st0">&quot;/data/link/{id}&quot;</span><span class="sy0">,</span> <span class="st0">&quot;deleteLink&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Routes are added, now we will implement methods we've linked to them:</p>
+
+<p class='snippet'> app/gantt.php
+</p>
+
+<pre><code><pre class="php"><span class="kw2">function</span> getConnection<span class="br0">&#40;</span><span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="kw2">new</span> PDO<span class="br0">&#40;</span><span class="st0">&quot;mysql:host=db4free.net;dbname=myslimtest&quot;</span><span class="sy0">,</span> <span class="st0">&quot;myslimtest&quot;</span><span class="sy0">,</span> <span class="st0">&quot;01230123&quot;</span><span class="sy0">,</span> <span class="br0">&#91;</span>
+      PDO<span class="sy0">::</span><span class="me2">ATTR_ERRMODE</span> <span class="sy0">=&gt;</span> PDO<span class="sy0">::</span><span class="me2">ERRMODE_EXCEPTION</span><span class="sy0">,</span>
+      PDO<span class="sy0">::</span><span class="me2">ATTR_DEFAULT_FETCH_MODE</span> <span class="sy0">=&gt;</span> PDO<span class="sy0">::</span><span class="me2">FETCH_ASSOC</span>
+    <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="kw2">function</span> getGanttData<span class="br0">&#40;</span><span class="re0">$request</span><span class="sy0">,</span> <span class="re0">$response</span><span class="sy0">,</span> <span class="re0">$args</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="re0">$db</span> <span class="sy0">=</span> getConnection<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$result</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="st0">&quot;data&quot;</span><span class="sy0">=&gt;</span> <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="st0">&quot;links&quot;</span><span class="sy0">=&gt;</span> <span class="br0">&#91;</span><span class="br0">&#93;</span>
+  <span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="kw1">foreach</span><span class="br0">&#40;</span><span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;SELECT * FROM gantt_tasks&quot;</span><span class="br0">&#41;</span> <span class="kw1">as</span> <span class="re0">$row</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="re0">$row</span><span class="br0">&#91;</span><span class="st0">&quot;open&quot;</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="kw4">true</span><span class="sy0">;</span>
+    <a href="http://www.php.net/array_push"><span class="kw3">array_push</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#91;</span><span class="st0">&quot;data&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span> <span class="re0">$row</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+&nbsp;
+  <span class="kw1">foreach</span> <span class="br0">&#40;</span><span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;SELECT * FROM gantt_links&quot;</span><span class="br0">&#41;</span> <span class="kw1">as</span> <span class="re0">$link</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <a href="http://www.php.net/array_push"><span class="kw3">array_push</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#91;</span><span class="st0">&quot;links&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span> <span class="re0">$link</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+  <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">withHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Content-Type&quot;</span><span class="sy0">,</span> <span class="st0">&quot;application/json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// getting a task from the request data</span>
+<span class="kw2">function</span> getTask<span class="br0">&#40;</span><span class="re0">$data</span><span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+  <span class="kw1">return</span> <span class="br0">&#91;</span>
+    <span class="st0">&quot;:text&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$data</span><span class="br0">&#91;</span><span class="st0">&quot;text&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="st0">&quot;:start_date&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$data</span><span class="br0">&#91;</span><span class="st0">&quot;start_date&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="st0">&quot;:duration&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$data</span><span class="br0">&#91;</span><span class="st0">&quot;duration&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="st0">&quot;:progress&quot;</span> <span class="sy0">=&gt;</span> <a href="http://www.php.net/isset"><span class="kw3">isset</span></a><span class="br0">&#40;</span><span class="re0">$data</span><span class="br0">&#91;</span><span class="st0">&quot;progress&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span> ? <span class="re0">$data</span><span class="br0">&#91;</span><span class="st0">&quot;progress&quot;</span><span class="br0">&#93;</span> <span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">,</span>
+    <span class="st0">&quot;:parent&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$data</span><span class="br0">&#91;</span><span class="st0">&quot;parent&quot;</span><span class="br0">&#93;</span>
+  <span class="br0">&#93;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">// getting a link from the request data</span>
+<span class="kw2">function</span> getLink<span class="br0">&#40;</span><span class="re0">$data</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="kw1">return</span> <span class="br0">&#91;</span>
+    <span class="st0">&quot;:source&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$data</span><span class="br0">&#91;</span><span class="st0">&quot;source&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="st0">&quot;:target&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$data</span><span class="br0">&#91;</span><span class="st0">&quot;target&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="st0">&quot;:type&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$data</span><span class="br0">&#91;</span><span class="st0">&quot;type&quot;</span><span class="br0">&#93;</span>
+  <span class="br0">&#93;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">// create a new task</span>
+<span class="kw2">function</span> addTask<span class="br0">&#40;</span><span class="re0">$request</span><span class="sy0">,</span> <span class="re0">$response</span><span class="sy0">,</span> <span class="re0">$args</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="re0">$task</span> <span class="sy0">=</span> getTask<span class="br0">&#40;</span><span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">getParsedBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$db</span> <span class="sy0">=</span> getConnection<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$query</span> <span class="sy0">=</span> <span class="st0">&quot;INSERT INTO gantt_tasks(text, start_date, duration, progress, parent) &quot;</span><span class="sy0">.</span>
+    <span class="st0">&quot;VALUES (:text,:start_date,:duration,:progress,:parent)&quot;</span><span class="sy0">;</span>
+  <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$query</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><span class="re0">$task</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$result</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span><span class="st0">&quot;inserted&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;tid&quot;</span><span class="sy0">=&gt;</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">lastInsertId</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+  <span class="br0">&#93;</span><span class="sy0">;</span>
+  <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">withHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Content-Type&quot;</span><span class="sy0">,</span> <span class="st0">&quot;application/json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">// update a task</span>
+<span class="kw2">function</span> updateTask<span class="br0">&#40;</span><span class="re0">$request</span><span class="sy0">,</span> <span class="re0">$response</span><span class="sy0">,</span> <span class="re0">$args</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="re0">$sid</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">getAttribute</span><span class="br0">&#40;</span><span class="st0">&quot;id&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <a href="http://www.php.net/parse_str"><span class="kw3">parse_str</span></a><span class="br0">&#40;</span><a href="http://www.php.net/file_get_contents"><span class="kw3">file_get_contents</span></a><span class="br0">&#40;</span><span class="st0">&quot;php://input&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="re0">$body</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$task</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+      <span class="st0">&quot;text&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$body</span><span class="br0">&#91;</span><span class="st0">&quot;text&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+      <span class="st0">&quot;start_date&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$body</span><span class="br0">&#91;</span><span class="st0">&quot;start_date&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+      <span class="st0">&quot;duration&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$body</span><span class="br0">&#91;</span><span class="st0">&quot;duration&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+      <span class="st0">&quot;progress&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$body</span><span class="br0">&#91;</span><span class="st0">&quot;progress&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+      <span class="st0">&quot;parent&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$body</span><span class="br0">&#91;</span><span class="st0">&quot;parent&quot;</span><span class="br0">&#93;</span>
+  <span class="br0">&#93;</span><span class="sy0">;</span>
+  <span class="re0">$db</span> <span class="sy0">=</span> getConnection<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$query</span> <span class="sy0">=</span> <span class="st0">&quot;UPDATE gantt_tasks &quot;</span><span class="sy0">.</span>
+    <span class="st0">&quot;SET text = :text, start_date = :start_date, duration = :duration,&quot;</span><span class="sy0">.</span> 
+      <span class="st0">&quot;progress = :progress, parent = :parent &quot;</span><span class="sy0">.</span>
+    <span class="st0">&quot;WHERE id = :sid&quot;</span><span class="sy0">;</span>
+  <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$query</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><a href="http://www.php.net/array_merge"><span class="kw3">array_merge</span></a><span class="br0">&#40;</span><span class="re0">$task</span><span class="sy0">,</span> <span class="br0">&#91;</span><span class="st0">&quot;:sid&quot;</span><span class="sy0">=&gt;</span><span class="re0">$sid</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="kw1">if</span><span class="br0">&#40;</span><a href="http://www.php.net/isset"><span class="kw3">isset</span></a><span class="br0">&#40;</span><span class="re0">$params</span><span class="br0">&#91;</span><span class="st0">&quot;target&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span> <span class="sy0">&amp;&amp;</span> <span class="re0">$params</span><span class="br0">&#91;</span><span class="st0">&quot;target&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span>
+   updateOrder<span class="br0">&#40;</span><span class="re0">$sid</span><span class="sy0">,</span> <span class="re0">$params</span><span class="br0">&#91;</span><span class="st0">&quot;target&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span> <span class="re0">$db</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$result</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span><span class="st0">&quot;updated&quot;</span>
+  <span class="br0">&#93;</span><span class="sy0">;</span>
+  <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">withHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Content-Type&quot;</span><span class="sy0">,</span> <span class="st0">&quot;application/json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">// delete a task</span>
+<span class="kw2">function</span> deleteTask<span class="br0">&#40;</span><span class="re0">$request</span><span class="sy0">,</span> <span class="re0">$response</span><span class="sy0">,</span> <span class="re0">$args</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="re0">$sid</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">getAttribute</span><span class="br0">&#40;</span><span class="st0">&quot;id&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$db</span> <span class="sy0">=</span> getConnection<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$query</span> <span class="sy0">=</span> <span class="st0">&quot;DELETE FROM gantt_tasks WHERE id = :sid&quot;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$query</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><span class="br0">&#91;</span><span class="st0">&quot;:sid&quot;</span><span class="sy0">=&gt;</span><span class="re0">$sid</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$result</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span><span class="st0">&quot;deleted&quot;</span>
+  <span class="br0">&#93;</span><span class="sy0">;</span>
+  <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">withHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Content-Type&quot;</span><span class="sy0">,</span> <span class="st0">&quot;application/json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">// create a new link</span>
+<span class="kw2">function</span> addLink<span class="br0">&#40;</span><span class="re0">$request</span><span class="sy0">,</span> <span class="re0">$response</span><span class="sy0">,</span> <span class="re0">$args</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="re0">$link</span> <span class="sy0">=</span> getLink<span class="br0">&#40;</span><span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">getParsedBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$db</span> <span class="sy0">=</span> getConnection<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$query</span> <span class="sy0">=</span> <span class="st0">&quot;INSERT INTO gantt_links(source, target, type) &quot;</span><span class="sy0">.</span>
+    <span class="st0">&quot;VALUES (:source,:target,:type)&quot;</span><span class="sy0">;</span>
+  <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$query</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><span class="re0">$link</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$result</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span><span class="st0">&quot;inserted&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;tid&quot;</span><span class="sy0">=&gt;</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">lastInsertId</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+  <span class="br0">&#93;</span><span class="sy0">;</span>
+  <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">withHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Content-Type&quot;</span><span class="sy0">,</span> <span class="st0">&quot;application/json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">// update a link</span>
+<span class="kw2">function</span> updateLink<span class="br0">&#40;</span><span class="re0">$request</span><span class="sy0">,</span> <span class="re0">$response</span><span class="sy0">,</span> <span class="re0">$args</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="re0">$sid</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">getAttribute</span><span class="br0">&#40;</span><span class="st0">&quot;id&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <a href="http://www.php.net/parse_str"><span class="kw3">parse_str</span></a><span class="br0">&#40;</span><a href="http://www.php.net/file_get_contents"><span class="kw3">file_get_contents</span></a><span class="br0">&#40;</span><span class="st0">&quot;php://input&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="re0">$body</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$link</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+      <span class="st0">&quot;source&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$body</span><span class="br0">&#91;</span><span class="st0">&quot;source&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+      <span class="st0">&quot;target&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$body</span><span class="br0">&#91;</span><span class="st0">&quot;target&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+      <span class="st0">&quot;type&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$body</span><span class="br0">&#91;</span><span class="st0">&quot;type&quot;</span><span class="br0">&#93;</span>
+  <span class="br0">&#93;</span><span class="sy0">;</span>
+  <span class="re0">$db</span> <span class="sy0">=</span> getConnection<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$query</span> <span class="sy0">=</span> <span class="st0">&quot;UPDATE gantt_links SET &quot;</span><span class="sy0">.</span>
+    <span class="st0">&quot;source = :source, target = :target, type = :type &quot;</span><span class="sy0">.</span>
+    <span class="st0">&quot;WHERE id = :sid&quot;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$query</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><a href="http://www.php.net/array_merge"><span class="kw3">array_merge</span></a><span class="br0">&#40;</span><span class="re0">$link</span><span class="sy0">,</span> <span class="br0">&#91;</span><span class="st0">&quot;:sid&quot;</span><span class="sy0">=&gt;</span><span class="re0">$sid</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$result</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span><span class="st0">&quot;updated&quot;</span>
+  <span class="br0">&#93;</span><span class="sy0">;</span>
+  <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">withHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Content-Type&quot;</span><span class="sy0">,</span> <span class="st0">&quot;application/json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">// delete a link</span>
+<span class="kw2">function</span> deleteLink<span class="br0">&#40;</span><span class="re0">$request</span><span class="sy0">,</span> <span class="re0">$response</span><span class="sy0">,</span> <span class="re0">$args</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="re0">$sid</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">getAttribute</span><span class="br0">&#40;</span><span class="st0">&quot;id&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$db</span> <span class="sy0">=</span> getConnection<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$query</span> <span class="sy0">=</span> <span class="st0">&quot;DELETE FROM gantt_links WHERE id = :sid&quot;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$query</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><span class="br0">&#91;</span><span class="st0">&quot;:sid&quot;</span><span class="sy0">=&gt;</span><span class="re0">$sid</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$result</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span><span class="st0">&quot;deleted&quot;</span>
+  <span class="br0">&#93;</span><span class="sy0">;</span>
+  <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">withHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Content-Type&quot;</span><span class="sy0">,</span> <span class="st0">&quot;application/json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>As you can see, while there is relatively a lot of code, each method is plain simple: we create/update/delete tasks and links. 
+The insert action should return the database id of a new item back to the client.</p>
+
+<p>Note that we don't handle database relations here, i.e. we don't delete nested tasks or related links when tasks are deleted. 
+It is handled by the client side by default. Gantt will send a separate request for each child task and link to be deleted.</p>
+
+<p>If you want to handle it on a backend, you'll need to switch the <a class="link-" href="api__gantt_cascade_delete_config.html">cascade_delete</a> config on.</p>
+
+<p>Now everything is ready. Let's run our application. Open <a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a> and enjoy a nice Gantt chart we've just created.</p>
+
+<p><img src="media/desktop/slim4_ready.png"></p>
+
+<a name='storingtheorderoftasks'><h2>Storing the order of tasks</h2></a>
+
+<p>The client-side gantt allows <a class="link-" href="desktop__reordering_tasks.html">reordering tasks</a> using drag and drop. So if you use this feature, you'll have to store this order in the database. 
+You can <a class="link-" href="desktop__server_side.html#storingtheorderoftasks">check the common description here</a>.</p>
+
+<p>Let's now add this feature to our app.</p>
+
+<h3>Enable tasks reordering on the client</h3>
+
+<p>Firstly, we need to allow users to change task order in the UI. Open the <em>basic.html</em> file and update the configuration of gantt:</p>
+
+<p class='snippet'> app/templates/basic.html</p>
+
+<pre><code><pre class="js"><span class="xtra ln-xtra">gantt.<span class="me1">config</span>.<span class="me1">order_branch</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></span><span class="xtra ln-xtra">gantt.<span class="me1">config</span>.<span class="me1">order_branch_free</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></span>&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Now, let's reflect these changes on the backend. We are going to store the order in the column named "sortorder". The updated <em>gantt_tasks</em> table declaration may look 
+as follows:</p>
+
+<pre><code><pre class="js">CREATE TABLE `gantt_tasks` <span class="br0">&#40;</span>
+  `id` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span>  AUTO_INCREMENT PRIMARY KEY<span class="sy0">,</span>
+  `text` varchar<span class="br0">&#40;</span><span class="nu0">255</span><span class="br0">&#41;</span> COLLATE utf8_unicode_ci NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `start_date` datetime NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `duration` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `progress` float NOT <span class="kw2">NULL</span> <span class="kw2">DEFAULT</span> <span class="nu0">0</span><span class="sy0">,</span>
+  `parent` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">  `sortorder` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span> </span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Or you can add the mentioned column to the table you already have:</p>
+
+<pre><code><pre class="js">ALTER TABLE `gantt_tasks` ADD COLUMN `sortorder` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">;</span></pre></code></pre>
+
+<p>After that we need to update CRUD in <em>app/gantt.php</em>.</p>
+
+<p>1 . <b>GET /data</b> must return tasks ordered by the <code>sortorder</code> column:</p>
+
+<p class='snippet'> app/gantt.php</p>
+
+<pre><code><pre class="php"><span class="kw2">function</span> getGanttData<span class="br0">&#40;</span><span class="re0">$request</span><span class="sy0">,</span> <span class="re0">$response</span><span class="sy0">,</span> <span class="re0">$args</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="re0">$db</span> <span class="sy0">=</span> getConnection<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$result</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="st0">&quot;data&quot;</span><span class="sy0">=&gt;</span> <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="st0">&quot;links&quot;</span><span class="sy0">=&gt;</span> <span class="br0">&#91;</span><span class="br0">&#93;</span>
+  <span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="kw1">foreach</span><span class="br0">&#40;</span><span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;SELECT * FROM gantt_tasks ORDER BY sortorder ASC&quot;</span><span class="br0">&#41;</span> <span class="kw1">as</span> <span class="re0">$row</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="re0">$row</span><span class="br0">&#91;</span><span class="st0">&quot;open&quot;</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="kw4">true</span><span class="sy0">;</span>
+    <a href="http://www.php.net/array_push"><span class="kw3">array_push</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#91;</span><span class="st0">&quot;data&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span> <span class="re0">$row</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+&nbsp;
+  <span class="kw1">foreach</span> <span class="br0">&#40;</span><span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;SELECT * FROM gantt_links&quot;</span><span class="br0">&#41;</span> <span class="kw1">as</span> <span class="re0">$link</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <a href="http://www.php.net/array_push"><span class="kw3">array_push</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#91;</span><span class="st0">&quot;links&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span> <span class="re0">$link</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+  <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">withHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Content-Type&quot;</span><span class="sy0">,</span> <span class="st0">&quot;application/json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>2 . Newly added tasks must receive the initial value <code>sortorder</code>:</p>
+
+<p class='snippet'> app/gantt.php</p>
+
+<pre><code><pre class="php"><span class="kw2">function</span> addTask<span class="br0">&#40;</span><span class="re0">$request</span><span class="sy0">,</span> <span class="re0">$response</span><span class="sy0">,</span> <span class="re0">$args</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="re0">$task</span> <span class="sy0">=</span> getTask<span class="br0">&#40;</span><span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">getParsedBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$db</span> <span class="sy0">=</span> getConnection<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$maxOrderQuery</span> <span class="sy0">=</span> <span class="st0">&quot;SELECT MAX(sortorder) AS maxOrder FROM gantt_tasks&quot;</span><span class="sy0">;</span>
+  <span class="re0">$statement</span> <span class="sy0">=</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$maxOrderQuery</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$statement</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$maxOrder</span> <span class="sy0">=</span> <span class="re0">$statement</span><span class="sy0">-&gt;</span><span class="me1">fetchColumn</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">!</span><span class="re0">$maxOrder</span><span class="br0">&#41;</span>
+    <span class="re0">$maxOrder</span> <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$task</span><span class="br0">&#91;</span><span class="st0">&quot;:sortorder&quot;</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="re0">$maxOrder</span> <span class="sy0">+</span> <span class="nu0">1</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$query</span> <span class="sy0">=</span> <span class="st0">&quot;INSERT INTO gantt_tasks(text, start_date, duration, progress, parent, sortorder) &quot;</span><span class="sy0">.</span>
+    <span class="st0">&quot;VALUES (:text, :start_date, :duration, :progress, :parent, :sortorder)&quot;</span><span class="sy0">;</span>
+  <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$query</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><span class="re0">$task</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$result</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span><span class="st0">&quot;inserted&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;tid&quot;</span><span class="sy0">=&gt;</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">lastInsertId</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+  <span class="br0">&#93;</span><span class="sy0">;</span>
+  <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">withHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Content-Type&quot;</span><span class="sy0">,</span> <span class="st0">&quot;application/json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>3 . Finally, when a user reorders tasks, task orders must be <a class="link-" href="desktop__server_side.html#storingtheorderoftasks">updated</a>:</p>
+
+<p class='snippet'> app/gantt.php</p>
+
+<pre><code><pre class="php"><span class="co1">// update a task</span>
+<span class="kw2">function</span> updateTask<span class="br0">&#40;</span><span class="re0">$request</span><span class="sy0">,</span> <span class="re0">$response</span><span class="sy0">,</span> <span class="re0">$args</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="re0">$sid</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">getAttribute</span><span class="br0">&#40;</span><span class="st0">&quot;id&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <a href="http://www.php.net/parse_str"><span class="kw3">parse_str</span></a><span class="br0">&#40;</span><a href="http://www.php.net/file_get_contents"><span class="kw3">file_get_contents</span></a><span class="br0">&#40;</span><span class="st0">&quot;php://input&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="re0">$body</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$task</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+      <span class="st0">&quot;text&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$body</span><span class="br0">&#91;</span><span class="st0">&quot;text&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+      <span class="st0">&quot;start_date&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$body</span><span class="br0">&#91;</span><span class="st0">&quot;start_date&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+      <span class="st0">&quot;duration&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$body</span><span class="br0">&#91;</span><span class="st0">&quot;duration&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+      <span class="st0">&quot;progress&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$body</span><span class="br0">&#91;</span><span class="st0">&quot;progress&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+      <span class="st0">&quot;parent&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$body</span><span class="br0">&#91;</span><span class="st0">&quot;parent&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+      <span class="st0">&quot;sortorder&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$body</span><span class="br0">&#91;</span><span class="st0">&quot;sortorder&quot;</span><span class="br0">&#93;</span>
+  <span class="br0">&#93;</span><span class="sy0">;</span>
+  <span class="re0">$db</span> <span class="sy0">=</span> getConnection<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$query</span> <span class="sy0">=</span> <span class="st0">&quot;UPDATE gantt_tasks &quot;</span><span class="sy0">.</span>
+    <span class="st0">&quot;SET text = :text, start_date = :start_date, duration = :duration,&quot;</span><span class="sy0">.</span> 
+      <span class="st0">&quot;progress = :progress, parent = :parent, sortorder = :sortorder &quot;</span><span class="sy0">.</span>
+    <span class="st0">&quot;WHERE id = :sid&quot;</span><span class="sy0">;</span>
+  <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$query</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><a href="http://www.php.net/array_merge"><span class="kw3">array_merge</span></a><span class="br0">&#40;</span><span class="re0">$task</span><span class="sy0">,</span> <span class="br0">&#91;</span><span class="st0">&quot;:sid&quot;</span><span class="sy0">=&gt;</span><span class="re0">$sid</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="kw1">if</span><span class="br0">&#40;</span><a href="http://www.php.net/isset"><span class="kw3">isset</span></a><span class="br0">&#40;</span><span class="re0">$params</span><span class="br0">&#91;</span><span class="st0">&quot;target&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span> <span class="sy0">&amp;&amp;</span> <span class="re0">$params</span><span class="br0">&#91;</span><span class="st0">&quot;target&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span>
+   updateOrder<span class="br0">&#40;</span><span class="re0">$sid</span><span class="sy0">,</span> <span class="re0">$params</span><span class="br0">&#91;</span><span class="st0">&quot;target&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span> <span class="re0">$db</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$result</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span><span class="st0">&quot;updated&quot;</span>
+  <span class="br0">&#93;</span><span class="sy0">;</span>
+  <span class="re0">$payload</span> <span class="sy0">=</span> <a href="http://www.php.net/json_encode"><span class="kw3">json_encode</span></a><span class="br0">&#40;</span><span class="re0">$result</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">getBody</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">write</span><span class="br0">&#40;</span><span class="re0">$payload</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="kw1">return</span> <span class="re0">$response</span><span class="sy0">-&gt;</span><span class="me1">withHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Content-Type&quot;</span><span class="sy0">,</span> <span class="st0">&quot;application/json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+&nbsp;
+<span class="kw2">function</span> updateOrder<span class="br0">&#40;</span><span class="re0">$taskId</span><span class="sy0">,</span> <span class="re0">$target</span><span class="sy0">,</span> <span class="re0">$db</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+  <span class="re0">$nextTask</span> <span class="sy0">=</span> <span class="kw4">false</span><span class="sy0">;</span>
+  <span class="re0">$targetId</span> <span class="sy0">=</span> <span class="re0">$target</span><span class="sy0">;</span>
+&nbsp;
+  <span class="kw1">if</span><span class="br0">&#40;</span><a href="http://www.php.net/strpos"><span class="kw3">strpos</span></a><span class="br0">&#40;</span><span class="re0">$target</span><span class="sy0">,</span> <span class="st0">&quot;next:&quot;</span><span class="br0">&#41;</span> <span class="sy0">===</span> <span class="nu0">0</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="re0">$targetId</span> <span class="sy0">=</span> <a href="http://www.php.net/substr"><span class="kw3">substr</span></a><span class="br0">&#40;</span><span class="re0">$target</span><span class="sy0">,</span> <a href="http://www.php.net/strlen"><span class="kw3">strlen</span></a><span class="br0">&#40;</span><span class="st0">&quot;next:&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$nextTask</span> <span class="sy0">=</span> <span class="kw4">true</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+&nbsp;
+  <span class="kw1">if</span><span class="br0">&#40;</span><span class="re0">$targetId</span> <span class="sy0">==</span> <span class="st0">&quot;null&quot;</span><span class="br0">&#41;</span>
+    <span class="kw1">return</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$sql</span> <span class="sy0">=</span> <span class="st0">&quot;SELECT sortorder FROM gantt_tasks WHERE id = :id&quot;</span><span class="sy0">;</span>
+  <span class="re0">$statement</span> <span class="sy0">=</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$sql</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$statement</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><span class="br0">&#91;</span><span class="st0">&quot;:id&quot;</span><span class="sy0">=&gt;</span><span class="re0">$targetId</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$targetOrder</span> <span class="sy0">=</span> <span class="re0">$statement</span><span class="sy0">-&gt;</span><span class="me1">fetchColumn</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="kw1">if</span><span class="br0">&#40;</span><span class="re0">$nextTask</span><span class="br0">&#41;</span>
+    <span class="re0">$targetOrder</span><span class="sy0">++;</span>
+&nbsp;
+  <span class="re0">$sql</span> <span class="sy0">=</span> <span class="st0">&quot;UPDATE gantt_tasks SET sortorder = sortorder + 1 &quot;</span><span class="sy0">.</span>
+    <span class="st0">&quot;WHERE sortorder &gt;= :targetOrder&quot;</span><span class="sy0">;</span>
+  <span class="re0">$statement</span> <span class="sy0">=</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$sql</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$statement</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><span class="br0">&#91;</span><span class="st0">&quot;:targetOrder&quot;</span><span class="sy0">=&gt;</span><span class="re0">$targetOrder</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="re0">$sql</span> <span class="sy0">=</span> <span class="st0">&quot;UPDATE gantt_tasks SET sortorder = :targetOrder WHERE id = :taskId&quot;</span><span class="sy0">;</span>
+  <span class="re0">$statement</span> <span class="sy0">=</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="re0">$sql</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$statement</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+    <span class="st0">&quot;:targetOrder&quot;</span><span class="sy0">=&gt;</span><span class="re0">$targetOrder</span><span class="sy0">,</span>
+    <span class="st0">&quot;:taskId&quot;</span><span class="sy0">=&gt;</span><span class="re0">$taskId</span>
+  <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>You can check <a href="https://github.com/DHTMLX/gantt-howto-php">a ready demo</a> on GitHub.</p>
+
+<a name='usingdhtmlxconnector'><h2>Using dhtmlxConnector</h2></a>
+
+<p>Alternatively, a PHP backend can also be implemented using the <a href="../connector__php__index.html">dhtmlxConnector library</a>. 
+You can find a detailed tutorial <a class="link-" href="desktop__howtostart_connector.html">here</a>.</p>
+
+<a name='applicationsecurity'><h2>Application security</h2></a>
+
+<p>Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details <a class="link-hidden" href="desktop__app_security.html">in the corresponding article</a>.</p>
+
+<a name='troubleshooting'><h2>Trouble shooting</h2></a>
+
+<p>In case you've completed the above steps to implement Gantt integration with PHP but Gantt doesn't render tasks and links on a page, have a look at the <a class="link-" href="desktop__troubleshooting.html">Troubleshooting Backend Integration Issues</a> article. It describes 
+the ways of identifying the roots of the problems.</p>
+
+<a name='whatsnext'><h2>What's next</h2></a>
+
+<p>Now you have a fully functioning gantt. You can view the full code on <a href="https://github.com/DHTMLX/gantt-howto-php">GitHub</a>, clone or download it and use it for your projects.</p>
+
+<p>You can also check <a class="link-" href="desktop__guides.html">guides on the numerous features of gantt</a> or tutorials on <a class="link-" href="desktop__howtostart_guides.html">integrating Gantt with other backend frameworks</a>.</p>
+
+<!-- Content Area End -->
+			<a href='desktop__howtostart_php_slim4.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

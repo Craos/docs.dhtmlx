@@ -1,0 +1,420 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Customization  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="grid__api__refs__grid.html">Grid API</a></li><li class=""><a href="grid__initialization.html">Initialization</a></li><li class=""><a href="grid__configuration.html">Configuration</a></li><li class=""><a href="grid__data_loading.html">Data Loading</a></li><li class=""><a href="grid__usage.html">Work with Grid</a></li><li class=" current"><a href="grid__customization.html">Customization</a></li><ul><li class="inner"><a href="grid__customization.html#stylinggrid">Styling grid</a></li><li class="inner"><a href="grid__customization.html#stylingheadercells">Styling header cells</a></li><li class="inner"><a href="grid__customization.html#stylingfootercells">Styling footer cells</a></li><li class="inner"><a href="grid__customization.html#stylingrows">Styling rows</a></li><li class="inner"><a href="grid__customization.html#stylingcells">Styling cells</a></li><li class="inner"><a href="grid__customization.html#addingcustommarkstocells">Adding custom marks to cells</a></li><li class="inner"><a href="grid__customization.html#addingtemplatetocells">Adding template to cells</a></li></ul><li class=""><a href="grid__events.html">Event Handling</a></li><li class=""><a href="grid__migration.html">Migration to Newer Versions</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="grid__index.html">Grid</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Customization</h1>
+
+<a name='stylinggrid'><h2>Styling grid</h2></a>
+
+<p>There is a possibility to make changes in the look and feel of a grid.</p>
+
+<p><img style="margin: 0px 0px 0px 10px; display: block;" src="media/grid/styling_grid.png" alt=""/></p>
+
+<p><a href='https://snippet.dhtmlx.com/xs7bixmg' target='blank'><span class='sample'>Related sample: </span>&nbsp;Grid. Styling Selection</a></p>
+
+<p>For this you need to take the following steps:</p>
+
+<ul>
+<li>add a new CSS class(es) with desired settings in the &lt;style&gt; section of your HTML page or in your file with styles (don't forget to include your file on the page in this case)</li>
+</ul>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>style<span class="sy0">&gt;</span>
+    .<span class="me1">my</span><span class="sy0">-</span>first<span class="sy0">-</span><span class="kw2">class</span> <span class="br0">&#123;</span>
+        <span class="coMULTI">/*some styles*/</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    .<span class="me1">my</span><span class="sy0">-</span>second<span class="sy0">-</span><span class="kw2">class</span> <span class="br0">&#123;</span>
+        <span class="coMULTI">/*some styles*/</span>
+    <span class="br0">&#125;</span>
+<span class="sy0">&lt;/</span>style<span class="sy0">&gt;</span></pre></code></pre>
+
+<ul>
+<li>specify the name of the created CSS class (or names of classes separated by spaces) as the value of the <a class="link-" href="grid__api__grid_css_config.html">css</a> property in the Grid configuration:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> grid <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Grid</span><span class="br0">&#40;</span><span class="br0">&#123;</span> 
+    css<span class="sy0">:</span><span class="st0">&quot;my-first-class my-second-class&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/c5tr3s5r' target='blank'><span class='sample'>Related sample: </span>&nbsp;Grid. Styling Grid</a></p>
+
+<a name='stylingheadercells'><h2>Styling header cells</h2></a>
+
+<p><img style="margin: 0px 0px 0px 10px; display: block;" src="media/grid/styling_header.png" alt=""/></p>
+
+<p>You can easily set some styling to the text of header cells by applying some inline style or a CSS class to the <strong>text</strong> property of the header of a column:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">style</span>&gt;</span><pre class="css">    <span class="re1">.title</span> <span class="br0">&#123;</span>
+        <span class="kw1">font-size</span><span class="sy0">:</span> <span class="re3">1.2em</span><span class="sy0">;</span>
+        <span class="kw1">color</span><span class="sy0">:</span> tomato<span class="sy0">;</span>
+    <span class="br0">&#125;</span></pre>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">style</span>&gt;</span></pre></code></pre>
+
+<pre><code><pre class="js"><span class="kw2">var</span> grid <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Grid</span><span class="br0">&#40;</span><span class="st0">&quot;grid&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    columns<span class="sy0">:</span> <span class="br0">&#91;</span>
+      <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">200</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;country&quot;</span><span class="sy0">,</span> 
+        header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;&lt;span style='font-size:2em'&gt;Country&lt;/span&gt;&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">150</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;population&quot;</span><span class="sy0">,</span> 
+        header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;&lt;span class='title'&gt;Population&lt;/span&gt;&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">150</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;yearlyChange&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;Yearly Change&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">150</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;netChange&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;Net Change&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">150</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;destiny&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;Density (P/Km²)&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">150</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;area&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;Land Area (Km²)&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    data<span class="sy0">:</span> dataset
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/7o4elf48' target='blank'><span class='sample'>Related sample: </span>&nbsp;Grid. Styling Header Cells</a></p>
+
+<a name='stylingfootercells'><h2>Styling footer cells</h2></a>
+
+<p>You can easily set some styling to the text of footer cells by applying some inline style or a CSS class to the <strong>text</strong> property of the footer of a column:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">style</span>&gt;</span><pre class="css">    .custom_footer<span class="br0">&#123;</span>
+        <span class="kw1">font-size</span><span class="sy0">:</span> <span class="re3">18px</span><span class="sy0">;</span>
+        <span class="kw1">text-decoration</span><span class="sy0">:</span> <span class="kw2">underline</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span></pre>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">style</span>&gt;</span></pre></code></pre>
+
+<pre><code><pre class="js"><span class="kw2">var</span> grid <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Grid</span><span class="br0">&#40;</span><span class="st0">&quot;grid&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    columns<span class="sy0">:</span> <span class="br0">&#91;</span>
+      <span class="br0">&#123;</span>
+        width<span class="sy0">:</span> <span class="nu0">100</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;a&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;#&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">,</span> footer<span class="sy0">:</span> <span class="br0">&#91;</span>
+            <span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">'&lt;div class=&quot;custom_footer&quot;&gt;Total&lt;/div&gt;'</span><span class="sy0">,</span> colspan<span class="sy0">:</span> <span class="nu0">3</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">'&lt;div class=&quot;custom_footer&quot;&gt;Minimal value&lt;/div&gt;'</span><span class="sy0">,</span> colspan<span class="sy0">:</span> <span class="nu0">3</span> <span class="br0">&#125;</span>
+        <span class="br0">&#93;</span>
+      <span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">100</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;b&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;Title&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">200</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;c&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;Order&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">200</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;d&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;Price&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">,</span> footer<span class="sy0">:</span> <span class="br0">&#91;</span>
+            <span class="br0">&#123;</span> content<span class="sy0">:</span> <span class="st0">&quot;sum&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span> <span class="br0">&#123;</span> content<span class="sy0">:</span> <span class="st0">&quot;min&quot;</span> <span class="br0">&#125;</span>        
+        <span class="br0">&#93;</span> 
+      <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    data<span class="sy0">:</span> dataset
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/d254hcvp' target='blank'><span class='sample'>Related sample: </span>&nbsp;Grid. Styling Footer Cells</a></p>
+
+<a name='stylingrows'><h2>Styling rows</h2></a>
+
+<p><img style="margin: 0px 0px 0px 10px; display: block;" src="media/grid/rowcss.png" alt=""/></p>
+
+<p>It is possible to change the appearance of grid rows by applying custom CSS styles to them. There are two ways to do it:</p>
+
+<ul>
+<li>via the <strong>rowCss</strong> property in the configuration of Grid. As a value of property set a function that takes the id of a row as a parameter and returns a string with the name of a CSS class.</li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">style</span>&gt;</span><pre class="css"><span class="re1">.my_custom_row</span> <span class="br0">&#123;</span>
+    <span class="kw1">background</span><span class="sy0">:</span> coral<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">style</span>&gt;</span></pre></code></pre>
+
+<pre><code><pre class="js"><span class="kw2">var</span> grid <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Grid</span><span class="br0">&#40;</span><span class="st0">&quot;grid&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    columns<span class="sy0">:</span> <span class="br0">&#91;</span><span class="co1">// columns config],</span>
+<span class="xtra ln-xtra">    rowCss<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>row<span class="br0">&#41;</span> <span class="br0">&#123;</span> <span class="kw1">return</span> row.<span class="me1">custom</span> <span class="sy0">?</span> <span class="st0">&quot;my_custom_row&quot;</span> <span class="sy0">:</span> <span class="st0">&quot;&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span> </span>    data<span class="sy0">:</span> dataset
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/2dxtwf9n' target='blank'><span class='sample'>Related sample: </span>&nbsp;Grid. Custom Row Style</a></p>
+
+<ul>
+<li>with the help of the <strong>addRowCss()</strong> method:</li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">style</span>&gt;</span><pre class="css">    .myCustomClass<span class="br0">&#123;</span>
+        <span class="kw1">background</span><span class="sy0">:</span>greenyellow<span class="sy0">;</span>
+    <span class="br0">&#125;</span></pre>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">style</span>&gt;</span></pre></code></pre>
+
+<pre><code><pre class="js"><span class="kw2">var</span> rowId <span class="sy0">=</span> grid.<span class="me1">data</span>.<span class="me1">getId</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">grid.<span class="me1">addRowCss</span><span class="br0">&#40;</span>rowId<span class="sy0">,</span> <span class="st0">&quot;myCustomClass&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/idvmge2d' target='blank'><span class='sample'>Related sample: </span>&nbsp;Grid. Add Row Css</a></p>
+
+<p>where:</p>
+
+<ul>
+<li><strong>rowId</strong> - (<em>string,number</em>) the id of a row</li>
+<li><strong>css</strong> - (<em>string</em>) the name of a CSS class</li>
+</ul>
+
+<a name='stylingcells'><h2>Styling cells</h2></a>
+
+<p><img style="margin: 0px 0px 0px 10px; display: block;" src="media/grid/cellcss.png" alt=""/></p>
+
+<p>It is easy to style necessary cells using the <strong>addCellCss()</strong> method. It takes three parameters:</p>
+
+<ul>
+<li><strong>row</strong> - (<em>string,number</em>) the id of a row</li>
+<li><strong>col</strong> - (<em>string,number</em>) the id of a column</li>
+<li><strong>css</strong> - (<em>string</em>) the name of the CSS class</li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">style</span>&gt;</span><pre class="css">.myCustomClass<span class="br0">&#123;</span>
+    <span class="kw1">background</span><span class="sy0">:</span>greenyellow<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">style</span>&gt;</span></pre></code></pre>
+
+<pre><code><pre class="js">grid.<span class="me1">addCellCss</span><span class="br0">&#40;</span>rowId<span class="sy0">,</span> <span class="st0">&quot;netChange&quot;</span><span class="sy0">,</span> <span class="st0">&quot;myCustomClass&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/hskmp8rh' target='blank'><span class='sample'>Related sample: </span>&nbsp;Grid. Add Cell Css</a></p>
+
+<a name='addingcustommarkstocells'><h2>Adding custom marks to cells</h2></a>
+
+<p><img style="margin: 0px 0px 0px 5px; display: block;" src="media/grid/markcells.png" alt=""/></p>
+
+<p>You can mark particular cells in a grid using the <strong>mark</strong> property of a column configuration. You need to set its value as a function that takes the following parameters:</p>
+
+<ul>
+<li><strong>cell</strong> - (<em>string</em>) the value of a cell</li>
+<li><strong>columnCells</strong> - (<em>array</em>) an array of all cell values in the specified column</li>
+<li><strong>row</strong> - (<em>object</em>) an object with all cells in a row</li>
+<li><strong>col</strong> - (<em>object</em>) the config of a column (see the columns config)</li>
+</ul>
+
+<p>The function should return a string with a custom CSS class for your mark.</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">style</span>&gt;</span><pre class="css">    <span class="re1">.my_custom_mark</span> <span class="br0">&#123;</span>
+        <span class="kw1">background</span><span class="sy0">:</span> lightcoral<span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="re1">.total_col</span> <span class="br0">&#123;</span>
+        <span class="kw1">background</span><span class="sy0">:</span> <span class="re0">#f2f2f2</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span></pre>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">style</span>&gt;</span></pre></code></pre>
+
+<pre><code><pre class="js"><span class="kw2">var</span> grid <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Grid</span><span class="br0">&#40;</span><span class="st0">&quot;grid&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    columns<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+            width<span class="sy0">:</span> <span class="nu0">150</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;population&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;Population&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+            <span class="co1">// marks specified cells in a column</span>
+<span class="xtra ln-xtra">            mark<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>cell<span class="sy0">,</span> data<span class="sy0">,</span> row<span class="sy0">,</span> col<span class="br0">&#41;</span> <span class="br0">&#123;</span> </span><span class="xtra ln-xtra">                <span class="kw1">return</span> cell <span class="sy0">&gt;</span> <span class="nu0">100000000</span> <span class="sy0">?</span> <span class="st0">&quot;my_custom_mark&quot;</span> <span class="sy0">:</span> <span class="st0">&quot;&quot;</span> </span>            <span class="br0">&#125;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span> 
+        <span class="br0">&#123;</span>
+            width<span class="sy0">:</span> <span class="nu0">150</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;destiny&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;Density (P/Km²)&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+            <span class="co1">// marks all cells in a column</span>
+<span class="xtra ln-xtra">            mark<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>cell<span class="sy0">,</span> data<span class="br0">&#41;</span> <span class="br0">&#123;</span> <span class="kw1">return</span> <span class="st0">&quot;total_col&quot;</span><span class="sy0">;</span> <span class="br0">&#125;</span> </span>        <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    data<span class="sy0">:</span> dataset
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/grid/02_configuration/05_custom_marks.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom mark cells - DHTMLX Grid</a></p>
+
+<p>It is also possible to highlight cells with minimum and (or) maximum values in a grid using the <strong>mark</strong> property of a column configuration. The property is an object which takes two optional parameters:</p>
+
+<ul>
+<li><strong>min</strong> - (<em>string</em>) a custom CSS class to mark a cell that contains the minimum value</li>
+<li><strong>max</strong> - (<em>string</em>) a custom CSS class to mark a cell that contains the maximum value</li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">style</span>&gt;</span><pre class="css">    <span class="re1">.max_cell</span> <span class="br0">&#123;</span>
+        <span class="kw1">background</span><span class="sy0">:</span> <span class="re0">#f44336</span><span class="sy0">;</span>
+        <span class="kw1">color</span><span class="sy0">:</span> <span class="re0">#FFF</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="re1">.min_cell</span> <span class="br0">&#123;</span>
+        <span class="kw1">background</span><span class="sy0">:</span> <span class="re0">#4CAF50</span><span class="sy0">;</span>
+        <span class="kw1">color</span><span class="sy0">:</span> <span class="re0">#FFF</span>
+    <span class="br0">&#125;</span></pre>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">style</span>&gt;</span></pre></code></pre>
+
+<pre><code><pre class="js"><span class="kw2">var</span> grid <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Grid</span><span class="br0">&#40;</span><span class="st0">&quot;grid&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    columns<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">200</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;country&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;Country&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>
+            width<span class="sy0">:</span> <span class="nu0">150</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;population&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> text<span class="sy0">:</span> <span class="st0">&quot;Population&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+            mark<span class="sy0">:</span> <span class="br0">&#123;</span>
+<span class="xtra ln-xtra">                min<span class="sy0">:</span> <span class="st0">&quot;min_cell&quot;</span><span class="sy0">,</span> </span><span class="xtra ln-xtra">                max<span class="sy0">:</span> <span class="st0">&quot;max_cell&quot;</span> </span>            <span class="br0">&#125;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="co1">// more options</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    data<span class="sy0">:</span> dataset
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img style="margin: 0px 0px 0px 5px; display: block;" src="media/grid/mark_cell.png" alt=""/></p>
+
+<p><a href='https://snippet.dhtmlx.com/buirf16n' target='blank'><span class='sample'>Related sample: </span>&nbsp;Grid. Mark Cells</a></p>
+
+<a name='addingtemplatetocells'><h2>Adding template to cells</h2></a>
+
+<p><img style="margin: 0px 0px 0px 5px; display: block;" src="media/grid/cell_templates.png" alt=""/></p>
+
+<p>It is possible to customize the content of cells of Grid via the <strong>template</strong> property of a <a class="link-" href="grid__configuration.html#columns">column configuration</a>. The template option is a function that takes three parameters:</p>
+
+<ul>
+<li><strong>cellValue</strong> - (<em>any</em>) the value of a cell</li>
+<li><strong>row</strong> - (<em>object</em>) an object with all cells in a row</li>
+<li><strong>col</strong> - (<em>object</em>) the config of a column</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> grid <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Grid</span><span class="br0">&#40;</span><span class="st0">&quot;grid&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    columns<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">200</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;country&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span>text<span class="sy0">:</span> <span class="st0">&quot;Country&quot;</span><span class="br0">&#125;</span><span class="br0">&#93;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">150</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;population&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span>text<span class="sy0">:</span> <span class="st0">&quot;Population&quot;</span><span class="br0">&#125;</span><span class="br0">&#93;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> width<span class="sy0">:</span> <span class="nu0">150</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;netChange&quot;</span><span class="sy0">,</span> header<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span>text<span class="sy0">:</span> <span class="st0">&quot;Net Change&quot;</span><span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+          htmlEnable<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">          template<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>text<span class="sy0">,</span> row<span class="sy0">,</span> col<span class="br0">&#41;</span> <span class="br0">&#123;</span> </span><span class="xtra ln-xtra">            <span class="kw1">return</span> <span class="st0">&quot;&lt;input type=<span class="es0">\&quot;</span>checkbox<span class="es0">\&quot;</span> &quot;</span> <span class="sy0">+</span> <span class="br0">&#40;</span>text <span class="sy0">&gt;</span> <span class="nu0">300000</span> <span class="sy0">?</span> <span class="st0">&quot;checked&quot;</span><span class="sy0">:</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span>  <span class="sy0">+</span> <span class="st0">&quot;&gt;&quot;</span><span class="sy0">;</span> </span>          <span class="br0">&#125;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    data<span class="sy0">:</span> dataset
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/9txizaow' target='blank'><span class='sample'>Related sample: </span>&nbsp;Grid. Cell Templates</a></p>
+
+<!-- Content Area End -->
+			<a href='grid__customization.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

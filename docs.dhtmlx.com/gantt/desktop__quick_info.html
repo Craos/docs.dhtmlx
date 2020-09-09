@@ -1,0 +1,359 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Quick Info (Touch Support)  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__localization.html">Localization</a></li><li class=""><a href="desktop__fullscreen_mode.html">Full Screen Mode</a></li><li class=""><a href="desktop__undo_redo.html">Undo/Redo Functionality</a></li><li class=""><a href="desktop__message_boxes.html">Popup Messages and Modal Boxes</a></li><li class=" current"><a href="desktop__quick_info.html">Quick Info (Touch Support)</a></li><ul><li class="inner"><a href="desktop__quick_info.html#apioverview">API overview</a></li><li class="inner"><a href="desktop__quick_info.html#quickinfoobject">QuickInfo object</a></li></ul><li class=""><a href="desktop__accessibility.html">Accessibility</a></li><li class=""><a href="desktop__keyboard_navigation.html">Keyboard Navigation</a></li><li class="toc-deprecated"><a href="desktop__content_security_policy.html">Content Security Policy Compliance</a></li><li class=""><a href="desktop__jquery_integration.html">Integration with JQuery</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__extra_resources.html">Common Features</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Quick Info (Touch Support)</h1>
+
+<p>The library includes the <strong>quick_info.js</strong> extension that allows displaying a popup with details about the task when a user touches the task on the screen.</p>
+
+<div class='note'><p><p>This functionality requires <a class="link-" href="api__gantt_touch_config.html">Touch Support</a> to be enabled.</p>
+</p></div>
+
+<p><img src="media/desktop/quick_info.png"></p>
+
+<p><a href='samples/02_extensions/01_quickinfo.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;QuickInfo extension</a></p>
+
+<p>To start using the extension, enable the <a class="link-" href="desktop__extensions_list.html#quickinfo">"Quick Info"</a> plugin using the <a class="link-" href="api__gantt_plugins.html">gantt.plugins</a> method.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">plugins</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    quick_info<span class="sy0">:</span> <span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='apioverview'><h2>API overview</h2></a>
+
+<p>The Quick Info extension provides a set of API that allows you to manipulate the settings of Quick Info, to control its behavior or modify the appearance of a popup. <br>
+You may use either <a class="link-" href="desktop__quick_info.html#quickinfoobject">the API of the gantt.ext.quickInfo object</a> or public API of dhtmlxGantt that is listed below:</p>
+
+<p><strong>Methods</strong></p>
+
+<ul>
+<li><a class="link-" href="api__gantt_showquickinfo.html">showQuickInfo</a> - displays the pop-up task form for the specified task</li>
+<li><a class="link-" href="api__gantt_hidequickinfo.html">hideQuickInfo</a> - hides the pop-up task form (if it's currently active)</li>
+</ul>
+
+<p><strong>Events</strong></p>
+
+<ul>
+<li><a class="link-" href="api__gantt_onquickinfo_event.html">onQuickInfo</a> - fires when the pop-up edit form appears</li>
+<li><a class="link-" href="api__gantt_onafterquickinfo_event.html">onAfterQuickInfo</a> - fires after the pop-up edit form is closed</li>
+</ul>
+
+<p><strong>Properties</strong></p>
+
+<ul>
+<li><a class="link-" href="api__gantt_quick_info_detached_config.html">quick_info_detached</a> - defines whether the task form will appear from the left/right side of the screen or near the selected task</li>
+<li><a class="link-" href="api__gantt_quickinfo_buttons_config.html">quickinfo_buttons</a> - stores a collection of buttons resided in the pop-up task's details form</li>
+</ul>
+
+<p><strong>Templates</strong></p>
+
+<ul>
+<li><a class="link-" href="api__gantt_quick_info_class_template.html">quick_info_class</a> - specifies the CSS class that will be applied to the pop-up edit form</li>
+<li><a class="link-" href="api__gantt_quick_info_content_template.html">quick_info_content</a> - specifies the content of the pop-up edit form</li>
+<li><a class="link-" href="api__gantt_quick_info_date_template.html">quick_info_date</a> - specifies the date of the pop-up edit form</li>
+<li><a class="link-" href="api__gantt_quick_info_title_template.html">quick_info_title</a> - specifies the title of the pop-up edit form</li>
+</ul>
+
+<a name='quickinfoobject'><h2>QuickInfo object</h2></a>
+
+<p>The default behavior of the <strong>quick_info.js</strong> extension implies that the popup will appear over a selected task automatically.</p>
+
+<p>Starting from v7.0, the functionality of the Quick Info is extended; the <a class="link-" href="desktop__quickinfo_ext.html">gantt.ext.quickInfo</a> object, that provides methods for control of the popup manually, is added.</p>
+
+<p>The methods available via the <strong>gantt.ext.quickInfo</strong> object are:</p>
+
+<ul>
+<li><strong>show()</strong> - displays the quick info popup for a specified task. It takes one parameter:
+
+<ul>
+<li><strong>id</strong> - (<em>string|number</em>) the id of a task/link/resource</li>
+</ul></li>
+<li><strong>show()</strong>  - displays the quick info popup at specific coordinates. The parameters are:
+
+<ul>
+<li><strong>top</strong> - (<em>number</em>) the X coordinate</li>
+<li><strong>left</strong> - (<em>number</em>) the Y coordinate</li>
+</ul></li>
+<li><strong>hide()</strong> - hides the quick info popup. The method can take one optional parameter:
+
+<ul>
+<li><strong>[ force ]</strong> - (<em>boolean</em>) defines whether the quick info will disappear immediately when <a class="link-" href="api__gantt_quick_info_detached_config.html">gantt.config.quick_info_detached</a> is set to <em>false</em>. Providing <em>true</em> as a parameter of the <strong>hide</strong> method will remove the popup immediately, otherwise - the popup will disappear after a short animation.</li>
+</ul></li>
+<li><strong>setContainer()</strong> - sets a container where the quick info will be displayed. 
+
+<ul>
+<li><strong>container</strong> - (<em>string|HTMLElement</em>) a QuickInfo container. If no custom container specified, QuickInfo will be placed into the first of the found nodes: <strong>gantt.$task, gantt.$grid, gantt.$layout</strong></li>
+</ul></li>
+<li><strong>getNode()</strong> - returns the HTMLElement of the quick info popup. Returns <em>null</em> if the quick info is not initialized</li>
+<li><strong>setContent(config)</strong> - (<em>object</em>) puts the content into the quick info. It takes a configuration object of a quick info as a parameter. <br>
+The <em>configuration object</em> has the following structure:
+
+<ul>
+<li><strong>taskId</strong> - (<em>string|number</em>) optional, the id of the task to which the action buttons of the quick info will be connected</li>
+<li><strong>header</strong> - optional, the header of the pop-up edit form which may include:
+
+<ul>
+<li><strong>title</strong> - (<em>string</em>) optional, the title of the pop-up edit form</li>
+<li><strong>date</strong> - (<em>string</em>) optional, the date of the pop-up edit form</li>
+</ul></li>
+<li><strong>content</strong> - (<em>string</em>) optional, the content of the pop-up edit form</li>
+<li><strong>buttons</strong> - (<em>string[]</em>) optional, buttons to be placed in the pop-up edit form<br>
+If neither header nor buttons are specified, the related areas of the quick info popup will be hidden.</li>
+</ul></li>
+</ul>
+
+<h4><strong>Showing Quick Info</strong></h4>
+
+<p>You can show the popup for a specified task, link, resource panel or define another position on the screen where the popup will be displayed via the <strong>gantt.ext.quickInfo.show()</strong> method:</p>
+
+<pre><code><pre class="js"><span class="co1">// show the popup for the specified task</span>
+<span class="kw2">var</span> task <span class="sy0">=</span> gantt.<span class="me1">getTask</span><span class="br0">&#40;</span><span class="nu0">10</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">ext</span>.<span class="me1">quickInfo</span>.<span class="me1">show</span><span class="br0">&#40;</span>task.<span class="me1">id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// show the popup at specific coordinates</span>
+gantt.<span class="me1">ext</span>.<span class="me1">quickInfo</span>.<span class="me1">show</span><span class="br0">&#40;</span><span class="nu0">100</span><span class="sy0">,</span> <span class="nu0">200</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>An example of how to show the popup for a resource is given below:</p>
+
+<pre><code><pre class="js"><span class="kw2">const</span> quickInfo <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">quickInfo</span><span class="sy0">;</span>
+gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onGanttReady&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    quickInfo.<span class="me1">setContainer</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span>
+&nbsp;
+gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onEmptyClick&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>e<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="kw2">const</span> domHelpers <span class="sy0">=</span> gantt.<span class="me1">utils</span>.<span class="me1">dom</span><span class="sy0">;</span>
+  <span class="kw2">const</span> resourceElement <span class="sy0">=</span> domHelpers.<span class="me1">closest</span><span class="br0">&#40;</span>e.<span class="me1">target</span><span class="sy0">,</span> <span class="st0">&quot;[data-resource-id]&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="kw1">if</span><span class="br0">&#40;</span>resourceElement<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">const</span> resourceId <span class="sy0">=</span> resourceElement.<span class="me1">getAttribute</span><span class="br0">&#40;</span><span class="st0">&quot;data-resource-id&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw2">const</span> resource <span class="sy0">=</span> gantt.$resourcesStore.<span class="me1">getItem</span><span class="br0">&#40;</span>resourceId<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw2">const</span> position <span class="sy0">=</span> resourceElement.<span class="me1">getBoundingClientRect</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    quickInfo.<span class="me1">show</span><span class="br0">&#40;</span>position.<span class="me1">right</span><span class="sy0">,</span> position.<span class="me1">top</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw2">const</span> assignedTasks <span class="sy0">=</span> gantt.<span class="me1">getResourceAssignments</span><span class="br0">&#40;</span>resourceId<span class="br0">&#41;</span>.<span class="me1">map</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>assign<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">return</span> gantt.<span class="me1">getTask</span><span class="br0">&#40;</span>assign.<span class="me1">task_id</span><span class="br0">&#41;</span>.<span class="me1">text</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    quickInfo.<span class="me1">setContent</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+        header<span class="sy0">:</span> <span class="br0">&#123;</span>
+        title<span class="sy0">:</span> resource.<span class="me1">text</span><span class="sy0">,</span>
+        date<span class="sy0">:</span> <span class="st0">&quot;&quot;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+        content<span class="sy0">:</span> <span class="st0">&quot;Assigned tasks: &quot;</span> <span class="sy0">+</span> assignedTasks.<span class="me1">join</span><span class="br0">&#40;</span><span class="st0">&quot;, &quot;</span><span class="br0">&#41;</span><span class="sy0">,</span>
+        buttons<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#93;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>And here is an example of showing the popup for a specified link:</p>
+
+<pre><code><pre class="js"><span class="kw2">const</span> quickInfo <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">quickInfo</span><span class="sy0">;</span>
+gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onLinkClick&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span>e<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">//any custom logic here</span>
+    <span class="kw2">const</span> link <span class="sy0">=</span> gantt.<span class="me1">getLink</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw2">const</span> linksFormatter <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">formatters</span>.<span class="me1">linkFormatter</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw2">const</span> domHelpers <span class="sy0">=</span> gantt.<span class="me1">utils</span>.<span class="me1">dom</span><span class="sy0">;</span>
+    <span class="kw2">const</span> position <span class="sy0">=</span> domHelpers.<span class="me1">getRelativeEventPosition</span><span class="br0">&#40;</span>e<span class="sy0">,</span> gantt.$task_data<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw2">const</span> sourceTask <span class="sy0">=</span> gantt.<span class="me1">getTask</span><span class="br0">&#40;</span>link.<span class="me1">source</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw2">const</span> targetTask <span class="sy0">=</span> gantt.<span class="me1">getTask</span><span class="br0">&#40;</span>link.<span class="me1">target</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    quickInfo.<span class="me1">show</span><span class="br0">&#40;</span>position.<span class="me1">x</span><span class="sy0">,</span> position.<span class="me1">y</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    let linkDescr <span class="sy0">=</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">if</span> <span class="br0">&#40;</span>link.<span class="me1">type</span> <span class="sy0">===</span> gantt.<span class="me1">config</span>.<span class="me1">links</span>.<span class="me1">start_to_start</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        linkDescr <span class="sy0">=</span> <span class="st0">&quot;Start to start&quot;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span> <span class="kw1">else</span> <span class="kw1">if</span> <span class="br0">&#40;</span>link.<span class="me1">type</span> <span class="sy0">===</span> gantt.<span class="me1">config</span>.<span class="me1">links</span>.<span class="me1">start_to_finish</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        linkDescr <span class="sy0">=</span> <span class="st0">&quot;Start to finish&quot;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span> <span class="kw1">else</span> <span class="kw1">if</span> <span class="br0">&#40;</span>link.<span class="me1">type</span> <span class="sy0">===</span> gantt.<span class="me1">config</span>.<span class="me1">links</span>.<span class="me1">finish_to_finish</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        linkDescr <span class="sy0">=</span> <span class="st0">&quot;Finish to Finish&quot;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span> <span class="kw1">else</span> <span class="br0">&#123;</span>
+        linkDescr <span class="sy0">=</span> <span class="st0">&quot;Finish to start&quot;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    quickInfo.<span class="me1">setContent</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+        header<span class="sy0">:</span> <span class="br0">&#123;</span>
+            title<span class="sy0">:</span> `$<span class="br0">&#123;</span>linkDescr<span class="br0">&#125;</span> link`<span class="sy0">,</span>
+            date<span class="sy0">:</span> <span class="st0">&quot;&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        content<span class="sy0">:</span> `Source<span class="sy0">:</span> $<span class="br0">&#123;</span>sourceTask.<span class="me1">text</span><span class="br0">&#125;</span><span class="sy0">&lt;</span>br<span class="sy0">&gt;</span>
+                    Target<span class="sy0">:</span> $<span class="br0">&#123;</span>targetTask.<span class="me1">text</span><span class="br0">&#125;</span>`<span class="sy0">,</span>
+        buttons<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#93;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h4><strong>Hiding Quick Info</strong></h4>
+
+<p>To hide a pop-up edit form, make use of the <strong>gantt.ext.quickInfo.hide()</strong> method. The method depends on the <strong>gantt.config.quick_info_detached</strong> config and presupposes two possible options:</p>
+
+<ul>
+<li>when called without parameters, the pop-up edit form will be hidden from the screen after a short animation </li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">quick_info_detached</span> <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span>
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// hide the popup after a short animation</span>
+gantt.<span class="me1">ext</span>.<span class="me1">quickInfo</span>.<span class="me1">hide</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>if you want to hide the quick info at once, pass <em>true</em> as a parameter to the <strong>hide</strong> method:</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">quick_info_detached</span> <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span>
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// hide the popup immediately</span>
+gantt.<span class="me1">ext</span>.<span class="me1">quickInfo</span>.<span class="me1">hide</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Note, that if the <strong>gantt.config.quick_info_detached</strong> config is set to <em>true</em>, the method will always hide the popup immediately.</p>
+
+<h4><strong>Creating a custom QuickInfo</strong></h4>
+
+<p>By default, a quick info popup contain a title, date, content, buttons and looks like this:</p>
+
+<p><img src="media/desktop/quick_default.png"></p>
+
+<p>In case you want to change the appearance of the pop-up edit form or create a custom one, you may define the desired HTML content via the <strong>gantt.ext.quickInfo.setContent()</strong> method:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">custom_button</span> <span class="sy0">=</span> <span class="st0">&quot;My button&quot;</span>
+gantt.<span class="me1">ext</span>.<span class="me1">quickInfo</span>.<span class="me1">setContent</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    header<span class="sy0">:</span><span class="br0">&#123;</span>
+        title<span class="sy0">:</span> <span class="st0">&quot;My custom header&quot;</span><span class="sy0">,</span>
+        date<span class="sy0">:</span> <span class="st0">&quot;18th of February, 2020&quot;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    content<span class="sy0">:</span> <span class="st0">&quot;some content here&quot;</span><span class="sy0">,</span>
+    buttons<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;custom_button&quot;</span><span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<p>As a result, the following quick info popup will appear on the page:</p>
+
+<p><img src="media/desktop/quick_custom.png"></p>
+
+<h4><strong>Setting a container for QuickInfo</strong></h4>
+
+<p>You can use the <strong>gantt.ext.quickInfo.setContainer()</strong> method to make the quick info popup to be displayed in a custom container:</p>
+
+<pre><code><pre class="js"><span class="kw2">const</span> quickInfo <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">quickInfo</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">quickInfo.<span class="me1">setContainer</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>gantt.<span class="me1">ext</span>.<span class="me1">quickInfo</span>.<span class="me1">show</span><span class="br0">&#40;</span><span class="nu0">1300</span><span class="sy0">,</span><span class="nu0">100</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">custom_button</span> <span class="sy0">=</span> <span class="st0">&quot;My button&quot;</span>
+gantt.<span class="me1">ext</span>.<span class="me1">quickInfo</span>.<span class="me1">setContent</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    header<span class="sy0">:</span><span class="br0">&#123;</span>
+        title<span class="sy0">:</span> <span class="st0">&quot;My custom header&quot;</span><span class="sy0">,</span>
+        date<span class="sy0">:</span> <span class="st0">&quot;18th of February, 2020&quot;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    content<span class="sy0">:</span> <span class="st0">&quot;some content here&quot;</span><span class="sy0">,</span>
+    buttons<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;custom_button&quot;</span><span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Now, the pop-up with custom content will be rendered in <strong>document.body</strong> outside the container of Gantt:</p>
+
+<p><img src="media/desktop/quick_container.png"></p>
+
+<!-- Content Area End -->
+			<a href='desktop__quick_info.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

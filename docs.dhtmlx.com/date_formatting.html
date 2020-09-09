@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Date Formatting  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=" current"><a href="date_formatting.html">Date Formatting</a></li><ul><li class="inner"><a href="date_formatting.html#availabledateformats">Available Date Formats</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="helpers__index.html">Helpers</a><a class="n3" href="dhxtemplate.html">Template</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Date Formatting</h1>
+
+<p>You can configure the date format and language settings used for dates in dhtmlx components. There are just several steps to complete.</p>
+
+<ul>
+<li>set the necessary language to be used for dates in the <strong>dateLang</strong> property:</li>
+</ul>
+
+<pre><code><pre class="js">window.<span class="me1">dhx</span>.<span class="me1">dateLang</span> <span class="sy0">=</span> <span class="st0">&quot;en&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>specify the names of days and months in the chosen language by means of the <strong>dateStrings</strong> property:</li>
+</ul>
+
+<pre><code><pre class="js">window.<span class="me1">dhx</span>.<span class="me1">dateLang</span> <span class="sy0">=</span> <span class="st0">&quot;en&quot;</span><span class="sy0">;</span>
+window.<span class="me1">dhx</span>.<span class="me1">dateStrings</span> <span class="sy0">=</span> <span class="br0">&#123;</span>                                                          
+    en<span class="sy0">:</span> <span class="br0">&#123;</span>
+        monthFullName<span class="sy0">:</span>  <span class="br0">&#91;</span><span class="st0">&quot;January&quot;</span><span class="sy0">,</span><span class="st0">&quot;February&quot;</span><span class="sy0">,</span><span class="st0">&quot;March&quot;</span><span class="sy0">,</span><span class="st0">&quot;April&quot;</span><span class="sy0">,</span><span class="st0">&quot;May&quot;</span><span class="sy0">,</span><span class="st0">&quot;June&quot;</span><span class="sy0">,</span><span class="st0">&quot;July&quot;</span><span class="sy0">,</span>      
+                           <span class="st0">&quot;August&quot;</span><span class="sy0">,</span><span class="st0">&quot;September&quot;</span><span class="sy0">,</span><span class="st0">&quot;October&quot;</span><span class="sy0">,</span><span class="st0">&quot;November&quot;</span><span class="sy0">,</span><span class="st0">&quot;December&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>       
+        monthShortName<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;Jan&quot;</span><span class="sy0">,</span><span class="st0">&quot;Feb&quot;</span><span class="sy0">,</span><span class="st0">&quot;Mar&quot;</span><span class="sy0">,</span><span class="st0">&quot;Apr&quot;</span><span class="sy0">,</span><span class="st0">&quot;May&quot;</span><span class="sy0">,</span><span class="st0">&quot;Jun&quot;</span><span class="sy0">,</span><span class="st0">&quot;Jul&quot;</span><span class="sy0">,</span>                     
+                           <span class="st0">&quot;Aug&quot;</span><span class="sy0">,</span><span class="st0">&quot;Sep&quot;</span><span class="sy0">,</span><span class="st0">&quot;Oct&quot;</span><span class="sy0">,</span><span class="st0">&quot;Nov&quot;</span><span class="sy0">,</span><span class="st0">&quot;Dec&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>                              
+        dayFullName<span class="sy0">:</span>    <span class="br0">&#91;</span><span class="st0">&quot;Sunday&quot;</span><span class="sy0">,</span><span class="st0">&quot;Monday&quot;</span><span class="sy0">,</span><span class="st0">&quot;Tuesday&quot;</span><span class="sy0">,</span><span class="st0">&quot;Wednesday&quot;</span><span class="sy0">,</span><span class="st0">&quot;Thursday&quot;</span><span class="sy0">,</span>            
+                           <span class="st0">&quot;Friday&quot;</span><span class="sy0">,</span><span class="st0">&quot;Saturday&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>                                        
+        dayShortName<span class="sy0">:</span>   <span class="br0">&#91;</span><span class="st0">&quot;Su&quot;</span><span class="sy0">,</span><span class="st0">&quot;Mo&quot;</span><span class="sy0">,</span><span class="st0">&quot;Tu&quot;</span><span class="sy0">,</span><span class="st0">&quot;We&quot;</span><span class="sy0">,</span><span class="st0">&quot;Th&quot;</span><span class="sy0">,</span><span class="st0">&quot;Fr&quot;</span><span class="sy0">,</span><span class="st0">&quot;Sa&quot;</span><span class="br0">&#93;</span>                            
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>define the desired date format in the <strong>dateFormat</strong> property:</li>
+</ul>
+
+<pre><code><pre class="js">window.<span class="me1">dhx</span>.<span class="me1">dateLang</span> <span class="sy0">=</span> <span class="st0">&quot;en&quot;</span><span class="sy0">;</span>
+window.<span class="me1">dhx</span>.<span class="me1">dateStrings</span> <span class="sy0">=</span> <span class="br0">&#123;</span>
+    en<span class="sy0">:</span> <span class="br0">&#123;</span>
+        monthFullName<span class="sy0">:</span>  <span class="br0">&#91;</span><span class="st0">&quot;January&quot;</span><span class="sy0">,</span><span class="st0">&quot;February&quot;</span><span class="sy0">,</span><span class="st0">&quot;March&quot;</span><span class="sy0">,</span><span class="st0">&quot;April&quot;</span><span class="sy0">,</span><span class="st0">&quot;May&quot;</span><span class="sy0">,</span><span class="st0">&quot;June&quot;</span><span class="sy0">,</span><span class="st0">&quot;July&quot;</span><span class="sy0">,</span>
+                           <span class="st0">&quot;August&quot;</span><span class="sy0">,</span><span class="st0">&quot;September&quot;</span><span class="sy0">,</span><span class="st0">&quot;October&quot;</span><span class="sy0">,</span><span class="st0">&quot;November&quot;</span><span class="sy0">,</span><span class="st0">&quot;December&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        monthShortName<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;Jan&quot;</span><span class="sy0">,</span><span class="st0">&quot;Feb&quot;</span><span class="sy0">,</span><span class="st0">&quot;Mar&quot;</span><span class="sy0">,</span><span class="st0">&quot;Apr&quot;</span><span class="sy0">,</span><span class="st0">&quot;May&quot;</span><span class="sy0">,</span><span class="st0">&quot;Jun&quot;</span><span class="sy0">,</span><span class="st0">&quot;Jul&quot;</span><span class="sy0">,</span>
+                           <span class="st0">&quot;Aug&quot;</span><span class="sy0">,</span><span class="st0">&quot;Sep&quot;</span><span class="sy0">,</span><span class="st0">&quot;Oct&quot;</span><span class="sy0">,</span><span class="st0">&quot;Nov&quot;</span><span class="sy0">,</span><span class="st0">&quot;Dec&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        dayFullName<span class="sy0">:</span>    <span class="br0">&#91;</span><span class="st0">&quot;Sunday&quot;</span><span class="sy0">,</span><span class="st0">&quot;Monday&quot;</span><span class="sy0">,</span><span class="st0">&quot;Tuesday&quot;</span><span class="sy0">,</span><span class="st0">&quot;Wednesday&quot;</span><span class="sy0">,</span><span class="st0">&quot;Thursday&quot;</span><span class="sy0">,</span>
+                           <span class="st0">&quot;Friday&quot;</span><span class="sy0">,</span><span class="st0">&quot;Saturday&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        dayShortName<span class="sy0">:</span>   <span class="br0">&#91;</span><span class="st0">&quot;Su&quot;</span><span class="sy0">,</span><span class="st0">&quot;Mo&quot;</span><span class="sy0">,</span><span class="st0">&quot;Tu&quot;</span><span class="sy0">,</span><span class="st0">&quot;We&quot;</span><span class="sy0">,</span><span class="st0">&quot;Th&quot;</span><span class="sy0">,</span><span class="st0">&quot;Fr&quot;</span><span class="sy0">,</span><span class="st0">&quot;Sa&quot;</span><span class="br0">&#93;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">window.<span class="me1">dhx</span>.<span class="me1">dateFormat</span> <span class="sy0">=</span> <span class="br0">&#123;</span>                                                               </span><span class="xtra ln-xtra">    en<span class="sy0">:</span> <span class="st0">&quot;%Y-%m-%d&quot;</span>                                                                      </span><span class="xtra ln-xtra"><span class="br0">&#125;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<ul>
+<li>call the <strong>date2str()</strong> method to apply the settings to the date:</li>
+</ul>
+
+<pre><code><pre class="js">window.<span class="me1">dhx</span>.<span class="me1">date2str</span><span class="br0">&#40;</span>val<span class="sy0">,</span> format<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>where:</p>
+
+<ul>
+<li>val - the date to be formatted;</li>
+<li>format - the date format;</li>
+</ul>
+
+<a name='availabledateformats'><h2>Available Date Formats</h2></a>
+
+<p>While specifying the format for dates you can use any character from the following list:</p>
+
+<table cellspacing="0" cellpadding="1" border="0" style="margin-top:10px;">
+    <tr> <td style="color:green; width:50px;">%d</td> <td>day as a number with leading zero, 01..31</td> </tr>
+    <tr> <td style="color:green;">%j</td> <td>day as a number, 1..31</td> </tr>
+    <tr> <td style="color:green;">%D</td> <td>short name of the day, Su Mo Tu...</td> </tr>
+    <tr> <td style="color:green;">%l</td> <td>full name of the day, Sunday Monday Tuesday...</td> </tr>
+    <tr> <td style="color:green;">%m</td> <td>month as a number with leading zero, 01..12</td> </tr>
+    <tr> <td style="color:green;">%n</td> <td>month as a number, 1..12</td> </tr>
+    <tr> <td style="color:green;">%M</td> <td>short name of the month, Jan Feb Mar...</td> </tr>
+    <tr> <td style="color:green;">%F</td> <td>full name of the month, January February March...</td> </tr>
+    <tr> <td style="color:green;">%y</td> <td>year as a number, 2 digits</td> </tr>
+    <tr> <td style="color:green;">%Y</td> <td>year as a number, 4 digits</td> </tr>
+    <tr> <td style="color:green;">%h</td> <td>hours 12-format with leading zero, 01..12)</td> </tr>
+    <tr> <td style="color:green;">%g</td> <td>hours 12-format, 1..12)</td> </tr>
+    <tr> <td style="color:green;">%H</td> <td>hours 24-format with leading zero, 01..24</td> </tr>
+    <tr> <td style="color:green;">%G</td> <td>hours 24-format, 1..24</td> </tr>
+    <tr> <td style="color:green;">%i</td> <td>minutes with leading zero, 01..59</td> </tr>
+    <tr> <td style="color:green;">%s</td> <td>seconds with leading zero, 01..59</td> </tr>
+    <tr> <td style="color:green;">%a</td> <td>am or pm</td> </tr>
+    <tr> <td style="color:green;">%A</td> <td>AM or PM</td> </tr>
+    <tr> <td style="color:green;">%%</td> <td>escape for %</td> 
+    <tr> <td style="color:green;">%u</td> <td>milliseconds</td>
+    <tr> <td style="color:green;">%P</td> <td>timezone offset</td>
+    </tr>
+    
+</table>
+
+<!-- Content Area End -->
+			<a href='date_formatting.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- meta block -->
+		<title>Set/get Window size - DHTMLX Window</title>
+		<meta name="description" content="Check interactive samples of DHTMLX Window to explore its usage and other details.">
+		<!-- end meta block -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+		<script type="text/javascript" src="../../../codebase/suite-v=6.5.3.js"></script>
+		<link rel="stylesheet" href="../../../codebase/suite-v=6.5.3.css">
+		<link rel="stylesheet" href="../../common/index-v=6.5.3.css">
+		
+		
+		<!-- custom sample head -->
+		<style>
+			.dhx_form-group--inline {
+				width: auto;
+			}
+		
+			.dhx_form-group--inline .dhx_label {
+				width: auto;
+				overflow-x: visible;
+			}
+		</style>
+	<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                        'gtm.start':
+                                new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5M5RCSJ');</script>
+<!-- End Google Tag Manager -->
+
+<!-- error tracking -->
+<script src="https://cdn.ravenjs.com/3.19.1/raven.min.js" crossorigin="anonymous"></script>
+<script>Raven.config('https://a2578da6be394598bfe003e4dbb3a394@sentry.dhtmlx.ru/13').install()</script></head>
+	<body>
+		<header class="dhx_sample-header">
+			<div class="dhx_sample-header__main">
+				<nav class="dhx_sample-header__breadcrumbs">
+					<ul class="dhx_sample-header-breadcrumbs">
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="../../index.html" class="dhx_sample-header-breadcrumbs__link">Suite samples</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="../index.html" class="dhx_sample-header-breadcrumbs__link">Window samples</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="index.html" class="dhx_sample-header-breadcrumbs__link">Usage</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<span class="dhx_sample-header-breadcrumbs__link">Set/get Window size</span>
+						</li>
+					</ul>
+				</nav>
+				<h1 class="dhx_sample-header__title">
+					<div class="dhx_sample-header__content">
+						Set/get Window size.
+					</div>
+				</h1>
+		<div class="dhx_sample-header__cta" id="dhx_sample-cta">
+			<a title="Free Trial" target="_blank" class="dhx_sample-btn dhx_sample-btn--flat dhx_sample-btn--cta" 
+			href="https://dhtmlx.com/docs/products/dhtmlxSuite/download.shtml">Free Trial</a>
+		</div>
+	</div>
+</header>
+		<section class="dhx_sample-controls">
+			<div class="dhx_sample-form-group dhx_form-group dhx_form-group--inline dhx_form-group--required">
+				<label for="width" class="dhx_label">Width</label>
+				<input type="number" min="100" id="width" class="dhx_input dhx_sample-input">
+			</div>
+			<div class="dhx_sample-form-group dhx_form-group dhx_form-group--inline dhx_form-group--required">
+				<label for="height" class="dhx_label">Height</label>
+				<input type="number" min="100" id="height" class="dhx_input dhx_sample-input">
+			</div>
+			<button id="get" class="dhx_sample-btn dhx_sample-btn--flat" onclick="getSize()">Get Size</button>
+			<button id="set" class="dhx_sample-btn dhx_sample-btn--flat" onclick="setSize()">Set Size</button>
+		</section>
+		<section class="dhx_sample-container">
+			<div class="dhx_sample-container__widget" id="window"></div>
+			
+		</section>
+		
+		<script>
+			var windowHTML = "<p>Here is a neat JavaScript window system with flexible configuration options. For example, you can easily set the size of the window by redefining its width and height.</p><img style='display: block; width: 200px; height: 200px; margin-top: 20px; margin-left: auto; margin-right: auto' src='../common/developer.svg'>"
+			var dhxWindow = new dhx.Window({width: 440, height: 450, title: "Window", resizable: true});
+			var heightEl = document.querySelector("#height");
+			var widthEl = document.querySelector("#width");
+			dhxWindow.attachHTML(windowHTML);
+			function getSize() {
+				var size = dhxWindow.getSize();
+				heightEl.value = size.height;
+				widthEl.value = size.width;
+			}
+			function setSize() {
+				dhxWindow.setSize(parseInt(widthEl.value, 10), parseInt(heightEl.value, 10));
+			}
+			dhxWindow.show();
+			getSize();
+		</script>
+
+	</body>
+</html>

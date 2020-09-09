@@ -1,0 +1,407 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Configuration  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="calendar__api__refs__calendar.html">Calendar API</a></li><li class=""><a href="calendar__how_to_start.html">Initialization</a></li><li class=" current"><a href="calendar__configuring.html">Configuration</a></li><ul><li class="inner"><a href="calendar__configuring.html#calendarmodes">Calendar modes</a></li><li class="inner"><a href="calendar__configuring.html#dateformat">Date format</a></li><li class="inner"><a href="calendar__configuring.html#disableddates">Disabled dates</a></li><li class="inner"><a href="calendar__configuring.html#displayingonlycurrentmonth">Displaying only current month</a></li><li class="inner"><a href="calendar__configuring.html#highlighteddates">Highlighted dates</a></li><li class="inner"><a href="calendar__configuring.html#initialcalendardate">Initial calendar date</a></li><li class="inner"><a href="calendar__configuring.html#initiallyselecteddate">Initially selected date</a></li><li class="inner"><a href="calendar__configuring.html#numbersofweeks">Numbers of weeks</a></li><li class="inner"><a href="calendar__configuring.html#rangemode">Range mode</a></li><li class="inner"><a href="calendar__configuring.html#startoftheweek">Start of the week</a></li><li class="inner"><a href="calendar__configuring.html#timepicker">Timepicker</a></li><li class="inner"><a href="calendar__configuring.html#widthofcalendar">Width of calendar</a></li></ul><li class=""><a href="calendar__localizing_calendar.html">Localization</a></li><li class=""><a href="calendar__operating_calendar.html">Work with Calendar</a></li><li class=""><a href="calendar__datepicker.html">DatePicker</a></li><li class=""><a href="calendar__customization.html">Customization</a></li><li class=""><a href="calendar__handling_events.html">Event Handling</a></li><li class=""><a href="calendar__migration.html">Migration to Newer Versions</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="calendar__index.html">Calendar</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Configuration</h1>
+
+<a name='calendarmodes'><h2>Calendar modes</h2></a>
+
+<p>There are several modes of displaying Calendar, which are set via the <a class="link-" href="calendar__api__calendar_mode_config.html">mode</a> property:</p>
+
+<ul>
+<li><strong>"calendar"</strong> - the default mode. The current date (year and month) is shown in the calendar</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> calendar <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Calendar</span><span class="br0">&#40;</span><span class="st0">&quot;calendar_container&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/calendar/calendar_mode.png" alt="calendar_mode"/></p>
+
+<ul>
+<li><strong>"month"</strong> - only months of the current year are shown in the calendar </li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> calendar <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Calendar</span><span class="br0">&#40;</span><span class="st0">&quot;calendar_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    mode<span class="sy0">:</span> <span class="st0">&quot;month&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/calendar/month_mode.png" alt="month_mode"/></p>
+
+<ul>
+<li><strong>"year"</strong> - only years are shown, including the current one</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> calendar <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Calendar</span><span class="br0">&#40;</span><span class="st0">&quot;calendar_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    mode<span class="sy0">:</span> <span class="st0">&quot;year&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/calendar/year_mode.png" alt="year_mode"/></p>
+
+<p><a href='https://snippet.dhtmlx.com/n9q0tc0q' target='blank'><span class='sample'>Related sample: </span>&nbsp;Calendar. Calendar Modes</a></p>
+
+<p>You can also show the calendar in one of the modes using the <a class="link-" href="calendar__api__calendar_showdate_method.html">showDate</a> method.</p>
+
+<a name='dateformat'><h2>Date format</h2></a>
+
+<p>There is a possibility to specify the format of dates in the calendar via the <a class="link-" href="calendar__api__calendar_dateformat_config.html">dateFormat</a> property. The default format is "%d/%m/%y". 
+The full list of available characters used to make formats is provided in the <a class="link-" href="calendar__api__calendar_dateformat_config.html">API reference</a>.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> calendar <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Calendar</span><span class="br0">&#40;</span><span class="st0">&quot;calendar_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+   dateFormat<span class="sy0">:</span><span class="st0">&quot;%d.%m.%Y&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/2co9z3bi' target='blank'><span class='sample'>Related sample: </span>&nbsp;Calendar. Date Format</a></p>
+
+<a name='disableddates'><h2>Disabled dates</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/calendar/blocked_dates.png" alt="blocked_dates"/></p>
+
+<p><a href='https://snippet.dhtmlx.com/27n67r91' target='blank'><span class='sample'>Related sample: </span>&nbsp;Calendar. Disabled Dates</a></p>
+
+<p>To disable certain dates, use the <a class="link-" href="calendar__api__calendar_disableddates_config.html">disabledDates</a> setting. The value of the property must be a function that takes a <em>date</em> as a parameter and returns a <em>boolean</em> value.
+The dates, for which the function returns <em>true</em>, are dimmed in the calendar.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> calendar <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Calendar</span><span class="br0">&#40;</span><span class="st0">&quot;calendar&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    disabledDates<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>date<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw2">var</span> disabled <span class="sy0">=</span> <span class="br0">&#123;</span>
+            <span class="nu0">0</span><span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+            <span class="nu0">1</span><span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+            <span class="nu0">2</span><span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span>
+            <span class="nu0">3</span><span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span>
+            <span class="nu0">4</span><span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span>
+            <span class="nu0">5</span><span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span>
+            <span class="nu0">6</span><span class="sy0">:</span> <span class="kw2">true</span>
+        <span class="br0">&#125;</span>
+        <span class="kw1">return</span> disabled<span class="br0">&#91;</span>date.<span class="me1">getDay</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#93;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    css<span class="sy0">:</span> <span class="st0">&quot;dhx_widget--bordered&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='displayingonlycurrentmonth'><h2>Displaying only current month</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/calendar/this_month_only.png" alt="this_month_only"/></p>
+
+<p><a href='https://snippet.dhtmlx.com/4wi5hbtr' target='blank'><span class='sample'>Related sample: </span>&nbsp;Calendar. The Days Of This Month Only</a></p>
+
+<p>A default calendar shows both the days of the current month and several days of the previous and next months. You can choose the mode of displaying just the current month by setting the value of 
+the <a class="link-" href="calendar__api__calendar_thismonthonly_config.html">thisMonthOnly</a> configuration property to <em>true</em>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> calendar <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Calendar</span><span class="br0">&#40;</span><span class="st0">&quot;calendar_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    thisMonthOnly<span class="sy0">:</span><span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='highlighteddates'><h2>Highlighted dates</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/calendar/marked_dates.png" alt="marked_dates"/></p>
+
+<p><a href='https://snippet.dhtmlx.com/ic5oeiga' target='blank'><span class='sample'>Related sample: </span>&nbsp;Calendar. Marked Dates</a></p>
+
+<p>You can highlight certain dates in the calendar. Set the <a class="link-" href="calendar__api__calendar_mark_config.html">mark</a> property for that. The value of the property must be a function that takes a <em>date</em> as a parameter and 
+returns a <em>string</em> with the name of a CSS class for marked dates or an empty string for other dates.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> calendar <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Calendar</span><span class="br0">&#40;</span><span class="st0">&quot;calendar&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    mark<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>date<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>date.<span class="me1">getDay</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">===</span> <span class="nu0">6</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="kw1">return</span> <span class="st0">&quot;highlight-date&quot;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    css<span class="sy0">:</span> <span class="st0">&quot;dhx_widget--bordered&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Where "highlight-date" is a CSS class like this:</p>
+
+<pre><code><pre class="css">&lt;style<span class="sy0">&gt;</span>
+    <span class="re1">.highlight-date</span> <span class="br0">&#123;</span>
+        <span class="kw1">color</span><span class="sy0">:</span> <span class="re0">#fff</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&lt;/style<span class="sy0">&gt;</span></pre></code></pre>
+
+<a name='initialcalendardate'><h2>Initial calendar date</h2></a>
+
+<p>By default, a calendar shows a month with the current date. If for some reason you want to open some other date, set the <a class="link-" href="calendar__api__calendar_date_config.html">date</a> property. It accepts a Date object as a value. 
+It is either the same as <a class="link-" href="calendar__api__calendar_value_config.html">value</a> (by default), or shows the current date if <strong>value</strong> is not specified.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> calendar <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Calendar</span><span class="br0">&#40;</span><span class="st0">&quot;calendar_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    date<span class="sy0">:</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/fyg6l65t' target='blank'><span class='sample'>Related sample: </span>&nbsp;Calendar. Date Initialization</a></p>
+
+<a name='initiallyselecteddate'><h2>Initially selected date</h2></a>
+
+<p>If you want to create a calendar with an initially selected date, set the <a class="link-" href="calendar__api__calendar_value_config.html">value</a> property in the configuration object. The property can accept a value in several formats:</p>
+
+<ul>
+<li>as a Date object</li>
+<li>as a string</li>
+<li>as an array of Date values for the range mode</li>
+<li>as an array of string values for the range mode</li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">// selects a date</span>
+<span class="kw2">var</span> calendar <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Calendar</span><span class="br0">&#40;</span><span class="st0">&quot;calendar_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    value<span class="sy0">:</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span>01<span class="sy0">,</span><span class="nu0">10</span><span class="br0">&#41;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// selects a date as an array of Date value</span>
+<span class="kw2">var</span> calendar <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Calendar</span><span class="br0">&#40;</span><span class="st0">&quot;calendar_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    value<span class="sy0">:</span> <span class="br0">&#91;</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span>01<span class="sy0">,</span><span class="nu0">10</span><span class="br0">&#41;</span><span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// selects a date as a string</span>
+<span class="kw2">var</span> calendar <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Calendar</span><span class="br0">&#40;</span><span class="st0">&quot;calendar_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    value<span class="sy0">:</span> <span class="br0">&#40;</span><span class="st0">&quot;10/02/19&quot;</span><span class="br0">&#41;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// selects a date as an array of string value</span>
+<span class="kw2">var</span> calendar <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Calendar</span><span class="br0">&#40;</span><span class="st0">&quot;calendar_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    value<span class="sy0">:</span> <span class="br0">&#40;</span><span class="br0">&#91;</span><span class="st0">&quot;10/02/19&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// selects dates as an array of Date values(for the range mode)</span>
+<span class="kw2">var</span> calendar <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Calendar</span><span class="br0">&#40;</span><span class="st0">&quot;calendar_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    value<span class="sy0">:</span> <span class="br0">&#40;</span><span class="br0">&#91;</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span>05<span class="sy0">,</span>03<span class="br0">&#41;</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span>05<span class="sy0">,</span><span class="nu0">19</span><span class="br0">&#41;</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">,</span>
+    range<span class="sy0">:</span> <span class="kw2">true</span>  
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// selects dates as an array of string values(for the range mode)</span>
+<span class="kw2">var</span> calendar <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Calendar</span><span class="br0">&#40;</span><span class="st0">&quot;calendar_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    value<span class="sy0">:</span> <span class="br0">&#40;</span><span class="br0">&#91;</span><span class="st0">&quot;03/06/19&quot;</span><span class="sy0">,</span> <span class="st0">&quot;15/06/19&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">,</span>
+    range<span class="sy0">:</span> <span class="kw2">true</span>  
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/epjjww3l' target='blank'><span class='sample'>Related sample: </span>&nbsp;Calendar. Value Initialization</a></p>
+
+<p>The specified date will be highlighted with a round blue marker in the calendar. By default, no date is selected initially.</p>
+
+<div class='note'><p><p>Please note that the format of date in the Calendar is defined by the dateFormat option. So, check that you've set the format of date you want to use in the calendar both in the <a class="link-" href="calendar__api__calendar_value_config.html">value</a> and in the <a class="link-" href="calendar__api__calendar_dateformat_config.html">dateFormat</a> property. Otherwise, the default format ("%d/%m/%y") will be used.</p>
+</p></div>
+
+<a name='numbersofweeks'><h2>Numbers of weeks</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/calendar/week_numbers.png" alt="week_numbers"/></p>
+
+<p><a href='https://snippet.dhtmlx.com/9692gk6n' target='blank'><span class='sample'>Related sample: </span>&nbsp;Calendar. Numbers Of Weeks</a></p>
+
+<p>If you want to display the numbers of weeks in the calendar, enable the <a class="link-" href="calendar__api__calendar_weeknumbers_config.html">weekNumbers</a> property. By default, the numbers are not shown as the property is set to <em>false</em>.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> calendar <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Calendar</span><span class="br0">&#40;</span><span class="st0">&quot;calendar_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    weekNumbers<span class="sy0">:</span> <span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='rangemode'><h2>Range mode</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/calendar/range_mode.png" alt="range_mode"/></p>
+
+<p><a href='https://snippet.dhtmlx.com/2mrj53h0' target='blank'><span class='sample'>Related sample: </span>&nbsp;Calendar. Range</a></p>
+
+<p>You have a possibility to create a calendar in the range mode that allows you to select a range of dates in the calendar. To do this, you need to use the <a class="link-" href="calendar__api__calendar_range_config.html">range:true</a> option in the calendar configuration object and define an array with the start and end dates of the range.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> calendar <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Calendar</span><span class="br0">&#40;</span><span class="st0">&quot;calendar&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    css<span class="sy0">:</span> <span class="st0">&quot;dhx_widget--bordered&quot;</span><span class="sy0">,</span>
+    range<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+    value<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;25/06/20&quot;</span><span class="sy0">,</span> <span class="st0">&quot;07/07/20&quot;</span><span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>The <strong>value</strong> option should have the array type and contain a pair of values (either Date values or string values) for both dates.</p>
+</p></div>
+
+<a name='startoftheweek'><h2>Start of the week</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/calendar/weekstart_monday.png" alt="weekstart_monday"/></p>
+
+<p><a href='https://snippet.dhtmlx.com/kaxmurh9' target='blank'><span class='sample'>Related sample: </span>&nbsp;Calendar. Week Start</a></p>
+
+<p>By default, the first day of the week is Sunday, as the <strong>weekStart:"sunday"</strong> configuration option is used. It is also possible to set Monday as the start of the week, by applying "monday" as a value of the 
+<a class="link-" href="calendar__api__calendar_weekstart_config.html">weekStart</a> setting:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> calendar <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Calendar</span><span class="br0">&#40;</span><span class="st0">&quot;calendar_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    weekStart<span class="sy0">:</span> <span class="st0">&quot;monday&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='timepicker'><h2>Timepicker</h2></a>
+
+<p>You can add a timepicker into a calendar by enabling the <a class="link-" href="calendar__api__calendar_timepicker_config.html">timePicker</a> property. By default, a timepicker uses the 24-hour format.
+You can change it to the 12-hour format via the <a class="link-" href="calendar__api__calendar_timeformat_config.html">timeFormat</a> property. It accepts either 12 or 24 value to select the desired time format.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> calendar <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Calendar</span><span class="br0">&#40;</span><span class="st0">&quot;calendar&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    timePicker<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+    timeFormat<span class="sy0">:</span> <span class="nu0">12</span> <span class="co1">// the 12-hour format for the timepicker</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><br></p>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/calendar/timepicker_format.png" alt="timepicker_format"/></p>
+
+<p><a href='https://snippet.dhtmlx.com/jkbfb202' target='blank'><span class='sample'>Related sample: </span>&nbsp;Calendar. Timepicker In Calendar</a></p>
+
+<p><a href='https://snippet.dhtmlx.com/9xi24if2' target='blank'><span class='sample'>Related sample: </span>&nbsp;Calendar. Time Format</a></p>
+
+<a name='widthofcalendar'><h2>Width of calendar</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/calendar/calendar_width.png" alt="calendar_width"/></p>
+
+<p><a href='https://snippet.dhtmlx.com/azm0u5ns' target='blank'><span class='sample'>Related sample: </span>&nbsp;Calendar. Calendar Width</a></p>
+
+<p>You can set the desired width of a calendar using the <a class="link-" href="calendar__api__calendar_width_config.html">width</a> configuration property. The default width of Calendar is 250px.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> calendar <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Calendar</span><span class="br0">&#40;</span><span class="st0">&quot;calendar_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    width<span class="sy0">:</span> <span class="st0">&quot;400&quot;</span><span class="sy0">,</span> 
+    css<span class="sy0">:</span> <span class="st0">&quot;dhx_widget--bordered&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='calendar__configuring.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

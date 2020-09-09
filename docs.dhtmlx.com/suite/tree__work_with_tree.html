@@ -1,0 +1,347 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Work with Tree  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="tree__api__refs__tree.html">Tree API</a></li><li class=""><a href="tree__initialization_of_dhtmlxtree.html">Initialization</a></li><li class=""><a href="tree__configuration.html">Configuration</a></li><li class=""><a href="tree__loading_data.html">Data Loading</a></li><li class=""><a href="tree__drag_and_drop_handling.html">Drag-n-Drop</a></li><li class=" current"><a href="tree__work_with_tree.html">Work with Tree</a></li><ul><li class="inner"><a href="tree__work_with_tree.html#workingwithcheckboxes">Working with checkboxes</a></li><li class="inner"><a href="tree__work_with_tree.html#expandingcollapsingitems">Expanding/collapsing items</a></li><li class="inner"><a href="tree__work_with_tree.html#editinganitem">Editing an item</a></li><li class="inner"><a href="tree__work_with_tree.html#settinggettingtreestate">Setting/getting Tree state</a></li><li class="inner"><a href="tree__work_with_tree.html#usingtreecollectionapi">Using Tree Collection API</a></li></ul><li class=""><a href="tree__setting_tree_appearance.html">Customization</a></li><li class=""><a href="tree__events_handling.html">Event Handling</a></li><li class=""><a href="tree__migration.html">Migration to Newer Versions</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="tree__index.html">Tree</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Work with Tree</h1>
+
+<a name='workingwithcheckboxes'><h2>Working with checkboxes</h2></a>
+
+<p>You can <a class="link-" href="tree__configuration.html#checkboxesforitems">enable checkbox for tree items</a> with the <a class="link-" href="tree__api__tree_checkbox_config.html">checkbox</a> configuration option. Then you can manipulate items with checkboxes with the help of Tree API.</p>
+
+<h3>Check/uncheck checkboxes</h3>
+
+<p>To check the checkbox of a particular tree item, apply the <a class="link-" href="tree__api__tree_checkitem_method.html">checkItem</a>. It takes the id of an item as a parameter:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">checkItem</span><span class="br0">&#40;</span><span class="st0">&quot;history&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The <a class="link-" href="tree__api__tree_uncheckitemnew_method.html">uncheckItem</a> method will uncheck a tree item by its id together with its sub-items.</p>
+
+<pre><code><pre class="js">tree.<span class="me1">uncheckItem</span><span class="br0">&#40;</span><span class="st0">&quot;history&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/uzz6uknx' target='blank'><span class='sample'>Related sample: </span>&nbsp;Tree. Check/Uncheck Item</a></p>
+
+<h3>Get checked checkboxes</h3>
+
+<p>There is a possibility to get the list of all checked items in a tree with the <a class="link-" href="tree__api__tree_getchecked_method.html">getChecked</a> method. It returns an array of ids of checked items, e.g.:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">getChecked</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; [&quot;jmf&quot;, &quot;rle&quot;, &quot;sk&quot;, &quot;km&quot;, &quot;af&quot;, &quot;jw&quot;]</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/cz7xypgz' target='blank'><span class='sample'>Related sample: </span>&nbsp;Tree. Get Checked Items</a></p>
+
+<a name='expandingcollapsingitems'><h2>Expanding/collapsing items</h2></a>
+
+<h3>Expand/collapse a certain item</h3>
+
+<p>To expand a particular folder in a tree by its id, use the <a class="link-" href="tree__api__tree_expand_method.html">expand</a> method:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">expand</span><span class="br0">&#40;</span><span class="st0">&quot;history&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To collapse a tree item, make use of the <a class="link-" href="tree__api__tree_collapse_method.html">collapse</a> method:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">collapse</span><span class="br0">&#40;</span><span class="st0">&quot;history&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/esxb15hm' target='blank'><span class='sample'>Related sample: </span>&nbsp;Tree. Expand Item</a></p>
+
+<p>You can also alternately expand/collapse a tree item (folder) via the <a class="link-" href="tree__api__tree_toggle_method.html">toggle</a> method:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">toggle</span><span class="br0">&#40;</span><span class="st0">&quot;history&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/qjk56co2' target='blank'><span class='sample'>Related sample: </span>&nbsp;Tree. Toggle Item</a></p>
+
+<h3>Expand/collapse all items</h3>
+
+<p>It is also possible to expand/collapse all Tree items using the two corresponding methods - <a class="link-" href="tree__api__tree_expandall_method.html">expandAll</a> and <a class="link-" href="tree__api__tree_collapseall_method.html">collapseAll</a>:</p>
+
+<pre><code><pre class="js"><span class="co1">// expand all tree items</span>
+tree.<span class="me1">expandAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// collapse all tree items</span>
+tree.<span class="me1">collapseAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/c0nqyz60' target='blank'><span class='sample'>Related sample: </span>&nbsp;Tree. Expand All Items</a></p>
+
+<a name='editinganitem'><h2>Editing an item</h2></a>
+
+<p>There is the <a class="link-" href="tree__api__tree_edititem_method.html">editItem</a> method that allows editing a certain tree item. Pass the id of an item to the method to initiate editing:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">editItem</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/jaqx0rb4' target='blank'><span class='sample'>Related sample: </span>&nbsp;Tree. Edit Item</a></p>
+
+<p>The method can also take a second parameter to configure the editing process. It may include two properties:</p>
+
+<ul>
+<li><strong>mode</strong> - (<em>string</em>) the type of an editor:
+
+<ul>
+<li>"text" for an input</li>
+<li>"select" for a select</li>
+</ul></li>
+<li><strong>options</strong> - (<em>array</em>) optional, an array of additional options</li>
+</ul>
+
+<a name='settinggettingtreestate'><h2>Setting/getting Tree state</h2></a>
+
+<p>You can get/set the state of a tree using the Tree API - <a class="link-" href="tree__api__tree_setstate_method.html">setState</a> and <a class="link-" href="tree__api__tree_getstate_method.html">getState</a>. <strong>getState()</strong> returns an object with the state of a tree, while <strong>setState()</strong> takes an
+object with tree state as a parameter:</p>
+
+<pre><code><pre class="js"><span class="co1">// getting the state of a tree</span>
+<span class="kw2">var</span> treeState <span class="sy0">=</span> tree.<span class="me1">getState</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// restoring the state of a tree</span>
+tree.<span class="me1">setState</span><span class="br0">&#40;</span>treeState<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/xo6y6xi6' target='blank'><span class='sample'>Related sample: </span>&nbsp;Tree. Getting Tree State</a></p>
+
+<p><a href='https://snippet.dhtmlx.com/g0539az1' target='blank'><span class='sample'>Related sample: </span>&nbsp;Tree. Setting Tree State</a></p>
+
+<p>The <strong>treeState</strong> object contains <em>key:value</em> pairs, where <em>key</em> is the id of a tree item and <em>value</em> is its state. The state object of a tree item includes two properties:</p>
+
+<ul>
+<li><strong>selected</strong> - (<em>number</em>) the status of a checkbox of an item: 
+
+<ul>
+<li>0 - unselected </li>
+<li>1 - selected </li>
+<li>2 - indeterminate (for the parent item, in case its children are partially checked)</li>
+</ul></li>
+<li><strong>open</strong> - (<em>boolean</em>) checks whether a tree item is open (for folders with items)</li>
+</ul>
+
+<p>Here is an example of a treeState object:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    <span class="st0">&quot;books&quot;</span><span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="st0">&quot;open&quot;</span><span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+        <span class="st0">&quot;selected&quot;</span><span class="sy0">:</span> <span class="nu0">2</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+    <span class="st0">&quot;mystery&quot;</span><span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="st0">&quot;open&quot;</span><span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+        <span class="st0">&quot;selected&quot;</span><span class="sy0">:</span> <span class="nu0">2</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+    <span class="st0">&quot;bsthrillers&quot;</span><span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="st0">&quot;selected&quot;</span><span class="sy0">:</span> <span class="nu0">1</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+    <span class="st0">&quot;rc&quot;</span><span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="st0">&quot;selected&quot;</span><span class="sy0">:</span> <span class="nu0">0</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+    <span class="st0">&quot;ir&quot;</span><span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="st0">&quot;selected&quot;</span><span class="sy0">:</span> <span class="nu0">1</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+    <span class="st0">&quot;history&quot;</span><span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="st0">&quot;selected&quot;</span><span class="sy0">:</span> <span class="nu0">0</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+    <span class="st0">&quot;jmf&quot;</span><span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="st0">&quot;selected&quot;</span><span class="sy0">:</span> <span class="nu0">0</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+    <span class="st0">&quot;jd&quot;</span><span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="st0">&quot;selected&quot;</span><span class="sy0">:</span> <span class="nu0">0</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='usingtreecollectionapi'><h2>Using Tree Collection API</h2></a>
+
+<p>You can manipulate Tree items with the help of the <a class="link-" href="tree_collection__api__refs__treecollection.html">Tree collection API</a>.</p>
+
+<h3>Adding items into Tree</h3>
+
+<p>It is possible to add more items into the initialized Tree on the fly. Use the <strong>add()</strong> method of Tree Collection. It takes three parameters:</p>
+
+<ul>
+<li><strong>config</strong> - (<em>object</em>) the configuration object of the added item</li>
+<li><strong>index</strong> - (<em>number</em>) optional, the position to add an item at</li>
+<li><strong>parent</strong> - (<em>string</em>) the ID of the future parent item</li>
+</ul>
+
+<pre><code><pre class="js">tree.<span class="me1">data</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="br0">&#123;</span><span class="st0">&quot;value&quot;</span><span class="sy0">:</span> <span class="st0">&quot;Life&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span> <span class="sy0">-</span><span class="nu0">1</span><span class="sy0">,</span> <span class="st0">&quot;Magazines&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/hugcdfo9' target='blank'><span class='sample'>Related sample: </span>&nbsp;Tree. Adding Data</a></p>
+
+<h3>Updating Tree items</h3>
+
+<p>You can change config options of the item via the <strong>update()</strong> method of Tree Collection. It takes two parameters:</p>
+
+<ul>
+<li><strong>id</strong> - the id of the item</li>
+<li><strong>config</strong> - an object with new configuration of the item</li>
+</ul>
+
+<p>For example, you can change the value of an item:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">data</span>.<span class="me1">update</span><span class="br0">&#40;</span><span class="st0">&quot;item_id&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>value<span class="sy0">:</span> <span class="st0">&quot;New value&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/e0vgry6n' target='blank'><span class='sample'>Related sample: </span>&nbsp;Tree. Data Update</a></p>
+
+<h3>Removing items from Tree</h3>
+
+<p>To remove an item, make use of the <strong>remove()</strong> method of Tree Collection. Pass the id of the item that should be removed to the method:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">data</span>.<span class="me1">remove</span><span class="br0">&#40;</span><span class="st0">&quot;id&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/efy72vz8' target='blank'><span class='sample'>Related sample: </span>&nbsp;Tree. Delete Data</a></p>
+
+<div class='note'><p><p>Check the full list of <a class="link-" href="tree_collection__api__refs__treecollection.html">Tree collection API</a>.</p>
+</p></div>
+
+<!-- Content Area End -->
+			<a href='tree__work_with_tree.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

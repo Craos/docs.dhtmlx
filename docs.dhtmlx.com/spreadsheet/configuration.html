@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1589882915.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1589882915.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Spreadsheet Docs" href="https://docs.dhtmlx.com/spreadsheet/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Configuration  Spreadsheet Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/c/widgets/dhtmlxspreadsheet-jsmessage">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="initialization.html">Initialization</a></li><li class=" current"><a href="configuration.html">Configuration</a></li><ul><li class="inner"><a href="configuration.html#toolbar">Toolbar</a></li><li class="inner"><a href="configuration.html#editingbar">Editing bar</a></li><li class="inner"><a href="configuration.html#numberofrowsandcolumns">Number of rows and columns</a></li><li class="inner"><a href="configuration.html#menu">Menu</a></li><li class="inner"><a href="configuration.html#readonlymode">Read-only mode</a></li><li class="inner"><a href="configuration.html#autodetectionofcellformat">Auto detection of cell format</a></li><li class="inner"><a href="configuration.html#customnumberformatsforcells">Custom number formats for cells</a></li><li class="inner"><a href="configuration.html#pathtoexportimportmodules">Path to export/import modules</a></li></ul><li class=""><a href="localization.html">Localization</a></li><li class=""><a href="loading_data.html">Data Loading and Export</a></li><li class=""><a href="working_with_ssheet.html">Work with SpreadSheet</a></li><li class=""><a href="number_formatting.html">Number Formatting</a></li><li class=""><a href="handling_events.html">Event Handling</a></li><li class=""><a href="customization.html">Customization</a></li><li class=""><a href="angular_integration.html">Integration with Angular</a></li><li class=""><a href="react_integration.html">Integration with React</a></li><li class=""><a href="vuejs_integration.html">Integration with Vue.js</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Configuration</h1>
+
+<p>You can adjust the desired settings of dhtmlxSpreadSheet to meet your needs. The available configuration options allow you to limit the number of rows and columns, change the toolbar appearance and control
+the visibility of the menu and the editing bar. You can also initialize SpreadSheet in the readonly mode, if needed.</p>
+
+<a name='toolbar'><h2>Toolbar</h2></a>
+
+<p>The toolbar of the SpreadSheet consists of several blocks of controls that can be changed according to your needs. By default, there are the following blocks of controls in the toolbar: 
+"undo","colors","decoration","align","format","help":</p>
+
+<p><img src="media/basic_toolbar.png" alt="Basic toolbar" /></p>
+
+<p>You can add more blocks from the list: "lock", "clear", "rows", "columns", "file".</p>
+
+<p><img src="media/toolbar_extra_buttons.png" alt="Extra buttons" /></p>
+
+<p>The structure of toolbar can be adjusted via the <a class="link-" href="api__spreadsheet_toolbarblocks_config.html">toolbarBlocks</a> configuration option of the component, which is an array with strings presenting the names of controls.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> spreadsheet <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Spreadsheet</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    <span class="co1">// full toolbar</span>
+    toolbarBlocks<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="st0">&quot;undo&quot;</span><span class="sy0">,</span> <span class="st0">&quot;colors&quot;</span><span class="sy0">,</span> <span class="st0">&quot;decoration&quot;</span><span class="sy0">,</span> <span class="st0">&quot;align&quot;</span><span class="sy0">,</span> <span class="st0">&quot;lock&quot;</span><span class="sy0">,</span> <span class="st0">&quot;clear&quot;</span><span class="sy0">,</span> 
+        <span class="st0">&quot;rows&quot;</span><span class="sy0">,</span> <span class="st0">&quot;columns&quot;</span><span class="sy0">,</span> <span class="st0">&quot;help&quot;</span><span class="sy0">,</span> <span class="st0">&quot;format&quot;</span><span class="sy0">,</span> <span class="st0">&quot;file&quot;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/03_configuration/01_full_toolbar.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Full toolbar</a></p>
+
+<p>You can also specify your own structure of the toolbar by enumerating necessary elements in the <strong>toolbarBlocks</strong> array in the desired order, for example:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> spreadsheet <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Spreadsheet</span><span class="br0">&#40;</span><span class="st0">&quot;cont&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    toolbarBlocks<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;help&quot;</span><span class="sy0">,</span><span class="st0">&quot;colors&quot;</span><span class="sy0">,</span> <span class="st0">&quot;align&quot;</span><span class="sy0">,</span> <span class="st0">&quot;decoration&quot;</span><span class="sy0">,</span> <span class="st0">&quot;lock&quot;</span><span class="sy0">,</span> <span class="st0">&quot;clear&quot;</span><span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/custom_toolbar.png" alt="Custom toolbar" /></p>
+
+<p>Toolbar is <a class="link-" href="customization.html">highly customizable</a>. You can add new controls, change the icons of controls and apply the desired icon pack.</p>
+
+<a name='editingbar'><h2>Editing bar</h2></a>
+
+<p>Since the structure of SpreadSheet is flexible, you can switch on/off the editing bar to get the desired look and feel of the component. Use the <a class="link-" href="api__spreadsheet_editline_config.html">editLine</a> configuration option to hide/show
+the editing bar:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> spreadsheet <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Spreadsheet</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    editLine<span class="sy0">:</span> <span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/03_configuration/02_disabled_line.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Disabled edit line</a></p>
+
+<a name='numberofrowsandcolumns'><h2>Number of rows and columns</h2></a>
+
+<p>When SpreadSheet is initialized, it has the initial configuration of grid which consists of 1000 columns and 25 rows. However, when this limit runs out, additional rows and columns are rendered automatically, so you
+don't need to add them. Nevertheless, you can specify the exact number of rows and columns in the grid, if you want to limit them. Use the <a class="link-" href="api__spreadsheet_colscount_config.html">colsCount</a> and <a class="link-" href="api__spreadsheet_rowscount_config.html">rowsCount</a>
+options for this purpose:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> spreadsheet <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Spreadsheet</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="br0">&#123;</span>          
+    colsCount<span class="sy0">:</span> <span class="nu0">10</span><span class="sy0">,</span>
+    rowsCount<span class="sy0">:</span> <span class="nu0">10</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/03_configuration/03_custom_cells_count.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom cells count</a></p>
+
+<a name='menu'><h2>Menu</h2></a>
+
+<p>The menu of the SpreadSheet is hidden by default. You can switch it on/off via the corresponding configuration option <a class="link-" href="api__spreadsheet_menu_config.html">menu</a>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> spreadsheet <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Spreadsheet</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    menu<span class="sy0">:</span> <span class="kw2">false</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/03_configuration/04_menu.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Menu</a></p>
+
+<a name='readonlymode'><h2>Read-only mode</h2></a>
+
+<p>It is also possible to enable the read-only mode to prevent editing of SpreadSheet cells via the <a class="link-" href="api__spreadsheet_readonly_config.html">readonly</a> configuration option:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> spreadsheet <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Spreadsheet</span><span class="br0">&#40;</span><span class="st0">&quot;cont&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    readonly<span class="sy0">:</span> <span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/03_configuration/05_readonly.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Readonly mode</a></p>
+
+<p>You can also <a class="link-" href="customization.html#customreadonlymode">customize the readonly behavior of SpreadSheet</a>.</p>
+
+<a name='autodetectionofcellformat'><h2>Auto detection of cell format</h2></a>
+
+<p>By default the format of a cell content is detected automatically. You can disable automatic detection of the cell format via the <a class="link-" href="api__spreadsheet_autoformat_config.html">autoFormat</a> config option:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> spreadsheet <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Spreadsheet</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="br0">&#123;</span>          
+    autoFormat<span class="sy0">:</span><span class="kw2">false</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Read about number formatting in the <a class="link-" href="number_formatting.html">related article</a>.</p>
+
+<a name='customnumberformatsforcells'><h2>Custom number formats for cells</h2></a>
+
+<p>There are 4 default formats that can be applied to the values of cells:</p>
+
+<pre><code><pre class="js">defaultFormats <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;Common&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;common&quot;</span><span class="sy0">,</span> mask<span class="sy0">:</span> <span class="st0">&quot;&quot;</span><span class="sy0">,</span> example<span class="sy0">:</span> <span class="st0">&quot;2702.31&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;Number&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;number&quot;</span><span class="sy0">,</span> mask<span class="sy0">:</span> <span class="st0">&quot;#,##0.00&quot;</span><span class="sy0">,</span> example<span class="sy0">:</span> <span class="st0">&quot;2702.31&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;Percent&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;percent&quot;</span><span class="sy0">,</span> mask<span class="sy0">:</span> <span class="st0">&quot;#,##0.00%&quot;</span><span class="sy0">,</span> example<span class="sy0">:</span> <span class="st0">&quot;27.0231&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;Currency&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;currency&quot;</span><span class="sy0">,</span> mask<span class="sy0">:</span> <span class="st0">&quot;$#,##0.00&quot;</span><span class="sy0">,</span> example<span class="sy0">:</span> <span class="st0">&quot;2702.31&quot;</span> <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>You can redefine configuration of default formats or specify your own number format via the <a class="link-" href="api__spreadsheet_formats_config.html">formats</a> config option:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> spreadsheet <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Spreadsheet</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="br0">&#123;</span>          
+    formats<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;U.S. Dollar&quot;</span><span class="sy0">,</span>
+            id<span class="sy0">:</span> <span class="st0">&quot;currency&quot;</span><span class="sy0">,</span>
+            mask<span class="sy0">:</span> <span class="st0">&quot;$#,##0.00&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>
+            <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;Euro&quot;</span><span class="sy0">,</span>
+            id<span class="sy0">:</span> <span class="st0">&quot;euro&quot;</span><span class="sy0">,</span>
+            mask<span class="sy0">:</span> <span class="st0">&quot;[$€]#.##0,00&quot;</span><span class="sy0">,</span>
+            example<span class="sy0">:</span> <span class="st0">&quot;1000.50&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>
+            <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;Swiss franc&quot;</span><span class="sy0">,</span>
+            id<span class="sy0">:</span> <span class="st0">&quot;franc&quot;</span><span class="sy0">,</span>
+            mask<span class="sy0">:</span> <span class="st0">&quot;[$CHF ]#.##0,00&quot;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/03_configuration/06_custom_formats.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom formats</a></p>
+
+<p>Check the details in the <a class="link-" href="number_formatting.html">Number Formatting</a> article.</p>
+
+<a name='pathtoexportimportmodules'><h2>Path to export/import modules</h2></a>
+
+<p>dhtmlxSpreadSheet provides the possibility to import/export data in the Excel format. The component uses WebAssembly-based libraries: <a href="https://github.com/dhtmlx/excel2json">Excel2Json</a>
+and <a href="https://github.com/dhtmlx/json2excel">JSON2Excel</a> for import/export of data.</p>
+
+<p>After installing the necessary library, you need to set path to the <strong>worker.js</strong> file (either local or at CDN)
+via the corresponding configuration option - <a class="link-" href="api__spreadsheet_importmodulepath_config.html">importModulePath</a> or <a class="link-" href="api__spreadsheet_exportmodulepath_config.html">exportModulePath</a>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> spreadsheet <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Spreadsheet</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="br0">&#123;</span>  
+    importModulePath<span class="sy0">:</span> <span class="st0">&quot;../libs/excel2json/1.0/worker.js&quot;</span>
+    exportModulePath<span class="sy0">:</span> <span class="st0">&quot;../libs/json2excel/1.0/worker.js&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>All the details are given in the <a class="link-" href="loading_data.html">Data Loading and Export</a> article.</p>
+
+<!-- Content Area End -->
+			<a href='configuration.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='loading_data.html'>Loading Data</a></li>	
+	<li><a href='working_with_ssheet.html'>Main Operations</a></li>
+	<li><a href='handling_events.html'>Handling Events</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Look and Feel</li>
+	<li><a href='configuration.html'>Configuration</a></li>
+	<li><a href='localization.html'>Localization</a></li>
+	<li><a href='customization.html'>Customization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Integration</li>
+	<li><a href='angular_integration.html'>Angular</a></li>
+	<li><a href='react_integration.html'>React</a></li>
+	<li><a href='vuejs_integration.html'>Vue.js</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__spreadsheet.html#methods'>Methods</a></li>
+	<li><a href='api__refs__spreadsheet.html#config'>Properties</a></li>
+	<li><a href='api__refs__spreadsheet.html#events'>Events</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

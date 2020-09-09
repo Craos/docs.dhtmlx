@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1591766949.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1591766949.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="RichText Docs" href="https://docs.dhtmlx.com/richtext/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Localization  RichText Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/c/widgets/richtext">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="initialization.html">Initialization</a></li><li class=""><a href="configuration.html">Configuration</a></li><li class=" current"><a href="localization.html">Localization</a></li><ul><li class="inner"><a href="localization.html#defaultlocale">Default locale</a></li><li class="inner"><a href="localization.html#customlocale">Custom locale</a></li></ul><li class=""><a href="loading_data.html">Setting Content</a></li><li class=""><a href="working_with_richtext.html">Working with RichText</a></li><li class=""><a href="customization.html">Customization</a></li><li class=""><a href="event_handling.html">Event Handling</a></li><li class=""><a href="angular_integration.html">Integration with Angular</a></li><li class=""><a href="react_integration.html">Integration with React</a></li><li class=""><a href="vuejs_integration.html">Integration with Vue.js</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Localization</h1>
+
+<p>You have a possibility to present the interface of the RichText editor in any language you wish. You just need to translate the corresponding strings for labels and tooltips and apply a ready locale to the component.</p>
+
+<p><img src="media/richtext_locale.png" alt="Localized RichText" /></p>
+
+<a name='defaultlocale'><h2>Default locale</h2></a>
+
+<p>The default English locale looks like this:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> en <span class="sy0">=</span> <span class="br0">&#123;</span>
+    apply<span class="sy0">:</span> <span class="st0">&quot;Apply&quot;</span><span class="sy0">,</span>
+    undo<span class="sy0">:</span> <span class="st0">&quot;Undo&quot;</span><span class="sy0">,</span>
+    redo<span class="sy0">:</span> <span class="st0">&quot;Redo&quot;</span><span class="sy0">,</span>
+    selectFontFamily<span class="sy0">:</span> <span class="st0">&quot;Font&quot;</span><span class="sy0">,</span>
+    selectFontSize<span class="sy0">:</span> <span class="st0">&quot;Font size&quot;</span><span class="sy0">,</span>
+    selectFormat<span class="sy0">:</span> <span class="st0">&quot;Style&quot;</span><span class="sy0">,</span>
+    selectTextColor<span class="sy0">:</span> <span class="st0">&quot;Text color&quot;</span><span class="sy0">,</span>
+    selectTextBackground<span class="sy0">:</span> <span class="st0">&quot;Background color&quot;</span><span class="sy0">,</span>
+    markBold<span class="sy0">:</span> <span class="st0">&quot;Bold&quot;</span><span class="sy0">,</span>
+    markItalic<span class="sy0">:</span> <span class="st0">&quot;Italic&quot;</span><span class="sy0">,</span>
+    markStrike<span class="sy0">:</span> <span class="st0">&quot;Strike&quot;</span><span class="sy0">,</span>
+    markUnderline<span class="sy0">:</span> <span class="st0">&quot;Underline&quot;</span><span class="sy0">,</span>
+    alignLeft<span class="sy0">:</span> <span class="st0">&quot;Align left&quot;</span><span class="sy0">,</span>
+    alignCenter<span class="sy0">:</span> <span class="st0">&quot;Align center&quot;</span><span class="sy0">,</span>
+    alignRight<span class="sy0">:</span> <span class="st0">&quot;Align right&quot;</span><span class="sy0">,</span>
+    addLink<span class="sy0">:</span> <span class="st0">&quot;Add link&quot;</span><span class="sy0">,</span>
+    clearFormat<span class="sy0">:</span> <span class="st0">&quot;Clear formatting&quot;</span><span class="sy0">,</span>
+    fullscreen<span class="sy0">:</span> <span class="st0">&quot;Fullscreen&quot;</span><span class="sy0">,</span>
+    removeLink<span class="sy0">:</span> <span class="st0">&quot;Remove link&quot;</span><span class="sy0">,</span>
+    edit<span class="sy0">:</span> <span class="st0">&quot;Edit&quot;</span><span class="sy0">,</span>
+    h1<span class="sy0">:</span> <span class="st0">&quot;Heading 1&quot;</span><span class="sy0">,</span>
+    h2<span class="sy0">:</span> <span class="st0">&quot;Heading 2&quot;</span><span class="sy0">,</span>
+    h3<span class="sy0">:</span> <span class="st0">&quot;Heading 3&quot;</span><span class="sy0">,</span>
+    h4<span class="sy0">:</span> <span class="st0">&quot;Heading 4&quot;</span><span class="sy0">,</span>
+    h5<span class="sy0">:</span> <span class="st0">&quot;Heading 5&quot;</span><span class="sy0">,</span>
+    h6<span class="sy0">:</span> <span class="st0">&quot;Heading 6&quot;</span><span class="sy0">,</span>
+    p<span class="sy0">:</span> <span class="st0">&quot;Normal text&quot;</span><span class="sy0">,</span>
+    blockquote<span class="sy0">:</span> <span class="st0">&quot;Block quote&quot;</span><span class="sy0">,</span>
+    stats<span class="sy0">:</span> <span class="st0">&quot;Statistics&quot;</span><span class="sy0">,</span>
+    chars<span class="sy0">:</span> <span class="st0">&quot;chars&quot;</span><span class="sy0">,</span>
+    charsExlSpace<span class="sy0">:</span> <span class="st0">&quot;charsExlSpace&quot;</span><span class="sy0">,</span>
+    words<span class="sy0">:</span> <span class="st0">&quot;words&quot;</span> 
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='customlocale'><h2>Custom locale</h2></a>
+
+<p>To use a different locale, your steps should be:</p>
+
+<ul>
+<li>provide translation for all text labels in RichText, e.g. take a look at the German locale:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> de <span class="sy0">=</span> <span class="br0">&#123;</span>
+    apply<span class="sy0">:</span> <span class="st0">&quot;Anwenden&quot;</span><span class="sy0">,</span>
+    undo<span class="sy0">:</span> <span class="st0">&quot;Rückgängig machen&quot;</span><span class="sy0">,</span>
+    redo<span class="sy0">:</span> <span class="st0">&quot;Wiederholen&quot;</span><span class="sy0">,</span>
+    selectFontFamily<span class="sy0">:</span> <span class="st0">&quot;Schriftfamilie&quot;</span><span class="sy0">,</span>
+    selectFontSize<span class="sy0">:</span> <span class="st0">&quot;Schriftgröße&quot;</span><span class="sy0">,</span>
+    selectFormat<span class="sy0">:</span> <span class="st0">&quot;Textstil&quot;</span><span class="sy0">,</span>
+    selectTextColor<span class="sy0">:</span> <span class="st0">&quot;Textfarbe&quot;</span><span class="sy0">,</span>
+    selectTextBackground<span class="sy0">:</span> <span class="st0">&quot;Texthintergrund&quot;</span><span class="sy0">,</span>
+    markBold<span class="sy0">:</span> <span class="st0">&quot;Fett&quot;</span><span class="sy0">,</span>
+    markItalic<span class="sy0">:</span> <span class="st0">&quot;Kursiv&quot;</span><span class="sy0">,</span>
+    markStrike<span class="sy0">:</span> <span class="st0">&quot;Durchgestrichen&quot;</span><span class="sy0">,</span>
+    markUnderline<span class="sy0">:</span> <span class="st0">&quot;Unterstrichen&quot;</span><span class="sy0">,</span>
+    alignLeft<span class="sy0">:</span> <span class="st0">&quot;Links ausrichten&quot;</span><span class="sy0">,</span>
+    alignCenter<span class="sy0">:</span> <span class="st0">&quot;Mittens ausrichten&quot;</span><span class="sy0">,</span>
+    alignRight<span class="sy0">:</span> <span class="st0">&quot;Rechts ausrichten&quot;</span><span class="sy0">,</span>
+    addLink<span class="sy0">:</span> <span class="st0">&quot;Einen Link hinzufügen&quot;</span><span class="sy0">,</span>
+    clearFormat<span class="sy0">:</span> <span class="st0">&quot;Format entfernen&quot;</span><span class="sy0">,</span>
+    fullscreen<span class="sy0">:</span> <span class="st0">&quot;Vollbildschirm&quot;</span><span class="sy0">,</span>
+    unlink<span class="sy0">:</span> <span class="st0">&quot;Einen Link löschen&quot;</span><span class="sy0">,</span>
+    edit<span class="sy0">:</span> <span class="st0">&quot;Redigieren&quot;</span><span class="sy0">,</span>
+    h1<span class="sy0">:</span> <span class="st0">&quot;Überschrift 1&quot;</span><span class="sy0">,</span>
+    h2<span class="sy0">:</span> <span class="st0">&quot;Überschrift 2&quot;</span><span class="sy0">,</span>
+    h3<span class="sy0">:</span> <span class="st0">&quot;Überschrift 3&quot;</span><span class="sy0">,</span>
+    h4<span class="sy0">:</span> <span class="st0">&quot;Überschrift 4&quot;</span><span class="sy0">,</span>
+    h5<span class="sy0">:</span> <span class="st0">&quot;Überschrift 5&quot;</span><span class="sy0">,</span>
+    h6<span class="sy0">:</span> <span class="st0">&quot;Überschrift 6&quot;</span><span class="sy0">,</span>
+    p<span class="sy0">:</span> <span class="st0">&quot;Normaler Text&quot;</span><span class="sy0">,</span>
+    blockquote<span class="sy0">:</span> <span class="st0">&quot;Blockzitat&quot;</span><span class="sy0">,</span>
+    stats<span class="sy0">:</span> <span class="st0">&quot;Statistiken&quot;</span><span class="sy0">,</span>
+    chars<span class="sy0">:</span> <span class="st0">&quot;Zeichen&quot;</span><span class="sy0">,</span>  
+    charsExlSpace<span class="sy0">:</span> <span class="st0">&quot;Zeichen ohne Leerzeichen&quot;</span><span class="sy0">,</span> 
+    words<span class="sy0">:</span> <span class="st0">&quot;Wörter&quot;</span>    
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>apply the new locale by calling the <strong>dhx.i18n.setLocale()</strong> method before initializing RichText:</li>
+</ul>
+
+<pre><code><pre class="js">dhx.<span class="me1">i18n</span>.<span class="me1">setLocale</span><span class="br0">&#40;</span><span class="st0">&quot;richtext&quot;</span><span class="sy0">,</span> de<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> richtext <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Richtext</span><span class="br0">&#40;</span><span class="st0">&quot;richtext_container&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/01_init/02_locale.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Localization.</a></p>
+
+<!-- Content Area End -->
+			<a href='localization.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='initialization.html'>Initialization</a></li>	
+	<li><a href='working_with_richtext.html'>Main Operations</a></li>
+	<li><a href='loading_data.html'>Setting Content</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Look and Feel</li>
+	<li><a href='configuration.html'>Configuration</a></li>
+	<li><a href='customization.html'>Customization</a></li>
+	<li><a href='localization.html'>Localization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Integration</li>
+	<li><a href='angular_integration.html'>RichText and Angular</a></li>
+	<li><a href='react_integration.html'>RichText and React</a></li>
+	<li><a href='vuejs_integration.html'>RichText and Vue.js</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__richtext.html#methods'>Methods</a></li>
+	<li><a href='api__refs__richtext.html#config'>Properties</a></li>
+	<li><a href='api__refs__richtext.html#events'>Events</a></li>
+</ul>
+
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

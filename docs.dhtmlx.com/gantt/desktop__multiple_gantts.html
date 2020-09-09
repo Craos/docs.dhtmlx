@@ -1,0 +1,319 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Multiple Charts on a Page  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__install_with_bower.html">How to Install dhtmlxGantt</a></li><li class=""><a href="desktop__initializing_gantt_chart.html">Initialization</a></li><li class=""><a href="desktop__common_configuration.html">Configuration</a></li><li class=""><a href="desktop__layout_config.html">Gantt Layout</a></li><li class="toc-pro"><a href="desktop__resource_management.html">Resource Management</a></li><li class=""><a href="desktop__handling_events.html">Event Handling</a></li><li class="toc-pro current"><a href="desktop__multiple_gantts.html">Multiple Charts on a Page</a></li><ul><li class="inner"><a href="desktop__multiple_gantts.html#ganttinstanceconfiguration">Gantt Instance Configuration</a></li><li class="inner"><a href="desktop__multiple_gantts.html#integrationwithdhtmlxlayout">Integration with dhtmlxLayout</a></li><li class="inner"><a href="desktop__multiple_gantts.html#destructorofganttanddataprocessorinstances">Destructor of Gantt and DataProcessor instances</a></li></ul><li class=""><a href="desktop__extensions_list.html">Full List of Extensions</a></li><li class=""><a href="desktop__using_gantt_on_server.html">Using Gantt on the server</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__general_gantt_chart.html">Creating Gantt Chart on the Page</a></div>
+<!-- Content Area -->
+
+
+<p class='promarker'>Available only in <b>PRO Edition</b></p>
+<h1>Multiple Charts on a Page</h1>
+
+<div class='pronote'><p><p>This functionality is available in the Gantt PRO edition (Enterprise and Ultimate licenses) only.</p>
+</p></div>
+
+<p>Basically, dhtmlxGantt is a static object and the default instance of it continually exists on the page. You may access it via the global <strong>gantt</strong> object at any time. But you can also create a new gantt object if needed.</p>
+
+<a name='ganttinstanceconfiguration'><h2>Gantt Instance Configuration</h2></a>
+
+<p>To create a new instance of dhtmlxGantt, use the <strong>Gantt.getGanttInstance()</strong> method:</p>
+
+<pre><code><pre class="js"><span class="co1">// beware, &quot;Gantt&quot; in the command goes with the capital letter</span>
+<span class="kw2">const</span> ganttChart <span class="sy0">=</span> Gantt.<span class="me1">getGanttInstance</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The method can take a configuration object as a parameter:</p>
+
+<pre><code><pre class="js"><span class="kw2">const</span> gantt <span class="sy0">=</span> Gantt.<span class="me1">getGanttInstance</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    plugins<span class="sy0">:</span><span class="br0">&#123;</span>
+        auto_scheduling<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    container<span class="sy0">:</span> <span class="st0">&quot;gantt_here&quot;</span><span class="sy0">,</span>
+    config<span class="sy0">:</span> <span class="br0">&#123;</span>
+        work_time<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+        auto_scheduling_compatibility<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+        auto_scheduling<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+        auto_scheduling_strict<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+        auto_scheduling_initial<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+        start_date<span class="sy0">:</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2020</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">,</span>
+        end_date<span class="sy0">:</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2021</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">,</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    calendars<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+            id<span class="sy0">:</span><span class="st0">&quot;global&quot;</span><span class="sy0">,</span>
+            worktime<span class="sy0">:</span> <span class="br0">&#123;</span>
+                hours<span class="sy0">:</span> <span class="br0">&#91;</span> <span class="st0">&quot;8:00-12:00&quot;</span><span class="sy0">,</span> <span class="st0">&quot;13:00-17:00&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+                days<span class="sy0">:</span> <span class="br0">&#91;</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">0</span> <span class="br0">&#93;</span>
+            <span class="br0">&#125;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    data<span class="sy0">:</span> <span class="br0">&#123;</span>
+        tasks<span class="sy0">:</span> <span class="br0">&#91;</span>
+            <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="nu0">11</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Project #1&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;project&quot;</span><span class="sy0">,</span> <span class="st0">&quot;open&quot;</span><span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> <span class="st0">&quot;parent&quot;</span><span class="sy0">:</span> <span class="nu0">0</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> start_date<span class="sy0">:</span> <span class="st0">&quot;05-04-2020&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;1&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> parent<span class="sy0">:</span> <span class="st0">&quot;11&quot;</span><span class="sy0">,</span> 
+            type<span class="sy0">:</span> <span class="st0">&quot;task&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="nu0">2</span><span class="sy0">,</span> start_date<span class="sy0">:</span> <span class="st0">&quot;05-04-2020&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;2&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span> <span class="nu0">3</span><span class="sy0">,</span> parent<span class="sy0">:</span> <span class="st0">&quot;11&quot;</span><span class="sy0">,</span> 
+            type<span class="sy0">:</span> <span class="st0">&quot;task&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="nu0">3</span><span class="sy0">,</span> start_date<span class="sy0">:</span> <span class="st0">&quot;05-04-2020&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;3&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span> <span class="nu0">3</span><span class="sy0">,</span> parent<span class="sy0">:</span> <span class="st0">&quot;11&quot;</span><span class="sy0">,</span> 
+            type<span class="sy0">:</span> <span class="st0">&quot;task&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="nu0">4</span><span class="sy0">,</span> start_date<span class="sy0">:</span> <span class="st0">&quot;05-04-2020&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;4&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span> <span class="nu0">3</span><span class="sy0">,</span> parent<span class="sy0">:</span> <span class="st0">&quot;11&quot;</span><span class="sy0">,</span> 
+            type<span class="sy0">:</span> <span class="st0">&quot;task&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="nu0">5</span><span class="sy0">,</span> start_date<span class="sy0">:</span> <span class="st0">&quot;05-04-2020&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;5&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> parent<span class="sy0">:</span> <span class="st0">&quot;11&quot;</span><span class="sy0">,</span> 
+            type<span class="sy0">:</span> <span class="st0">&quot;task&quot;</span> <span class="br0">&#125;</span>
+        <span class="br0">&#93;</span><span class="sy0">,</span> 
+        links<span class="sy0">:</span> <span class="br0">&#91;</span>
+            <span class="br0">&#123;</span> source<span class="sy0">:</span> <span class="st0">&quot;1&quot;</span><span class="sy0">,</span> target<span class="sy0">:</span> <span class="st0">&quot;2&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;0&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="nu0">1</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span> source<span class="sy0">:</span> <span class="st0">&quot;1&quot;</span><span class="sy0">,</span> target<span class="sy0">:</span> <span class="st0">&quot;3&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;0&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="nu0">2</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span> source<span class="sy0">:</span> <span class="st0">&quot;1&quot;</span><span class="sy0">,</span> target<span class="sy0">:</span> <span class="st0">&quot;4&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;0&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="nu0">3</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span> source<span class="sy0">:</span> <span class="st0">&quot;2&quot;</span><span class="sy0">,</span> target<span class="sy0">:</span> <span class="st0">&quot;4&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;0&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="nu0">4</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span> source<span class="sy0">:</span> <span class="st0">&quot;3&quot;</span><span class="sy0">,</span> target<span class="sy0">:</span> <span class="st0">&quot;4&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;0&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="nu0">5</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span> source<span class="sy0">:</span> <span class="st0">&quot;4&quot;</span><span class="sy0">,</span> target<span class="sy0">:</span> <span class="st0">&quot;5&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;0&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="nu0">6</span> <span class="br0">&#125;</span>
+        <span class="br0">&#93;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>As a result, you will get an initialized Gantt chart with the specified settings.</p>
+
+<p>The config object can contain the following properties:</p>
+
+<ul>
+<li><strong>container</strong> - (<em>string|HTMLElement</em>) an HTML container (or its id) that the Gantt chart will be displayed in. If not specified, Gantt will be initialized without a container.</li>
+<li><strong>config</strong> - (<em>object</em>) an object with configuration settings of the Gantt chart</li>
+<li><strong>calendars</strong> - (<em>array</em>) an array of worktime calendars to be loaded into the gantt. Calendars must be specified in the format supported by the <a class="link-" href="api__gantt_addcalendar.html">gantt.addCalendar</a> method. </li>
+<li><strong>templates</strong> - (<em>object</em>) an object with templates </li>
+<li><strong>events</strong> - (<em>object</em>) an object with event handlers. <br>
+You need to use the following format while specifying event handlers for a new instance of Gantt:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">const</span> gantt <span class="sy0">=</span> Gantt.<span class="me1">getGanttInstance</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+     events<span class="sy0">:</span> <span class="br0">&#123;</span>
+          onTaskCreated<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+               task.<span class="me1">owner</span> <span class="sy0">=</span> <span class="kw2">null</span><span class="sy0">;</span>
+               <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+          <span class="br0">&#125;</span><span class="sy0">,</span>
+          onTaskClick<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="br0">&#123;</span>
+               <span class="kw3">alert</span><span class="br0">&#40;</span>gantt.<span class="me1">getTask</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">text</span><span class="br0">&#41;</span><span class="sy0">;</span>
+               <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+          <span class="br0">&#125;</span>
+     <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<ul>
+<li><strong>data</strong> - (<em>object|string</em>) an object with data to load or the URL to load data from</li>
+<li><strong>plugins</strong> - (<em>object</em>) extensions that need to be activated</li>
+<li><strong>locale</strong> - (<em>string|object</em>) a two-letter language code or an object of the locale that needs to be activated</li>
+</ul>
+
+<p><strong>Note</strong>, that calling the <strong>Gantt.getGanttInstance()</strong> method without parameters will return the gantt object with default configuration settings.
+Therefore, you will need to configure your new instance, initialize it and populate with data, as usual.</p>
+
+<p>Let's take a simple example: 2 Gantt charts, one under another:</p>
+
+<pre><code><pre class="js">window.<span class="me1">addEventListener</span><span class="br0">&#40;</span><span class="st0">&quot;DOMContentLoaded&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> gantt1 <span class="sy0">=</span> Gantt.<span class="me1">getGanttInstance</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    gantt1.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    gantt1.<span class="me1">parse</span><span class="br0">&#40;</span>tasksA<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw2">var</span> gantt2 <span class="sy0">=</span> Gantt.<span class="me1">getGanttInstance</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    gantt2.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here_2&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    gantt2.<span class="me1">parse</span><span class="br0">&#40;</span>tasksB<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="sy0">&lt;</span>body<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>div id<span class="sy0">=</span><span class="st0">&quot;gantt_here&quot;</span> style<span class="sy0">=</span><span class="st0">&quot;width:100%; height: 50%;&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>div id<span class="sy0">=</span><span class="st0">&quot;gantt_here_2&quot;</span> style<span class="sy0">=</span><span class="st0">&quot;width:100%; height: 50%;&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+<span class="sy0">&lt;/</span>body<span class="sy0">&gt;</span></pre></code></pre>
+
+<a name='integrationwithdhtmlxlayout'><h2>Integration with dhtmlxLayout</h2></a>
+
+<p>A good way to place multiple Gantt charts on the page is using <a href="../layout__index.html">dhtmlxLayout</a>. 
+It not only provides a beautiful frame, but also ensures correct interacting with other elements on the page and acting according to the page size changes.</p>
+
+<div class='note'><p><p>Note that dhtmlxLayout is a separate product, not a part of the dhtmlxGantt library. If you would like to use dhtmlxLayout in your application, you should purchase the license. 
+Please <a href="https://dhtmlx.com/docs/products/dhtmlxLayout/#editions-licenses">check the licensing options</a>.</p>
+</p></div>
+
+<p><strong>To attach a dhtmlxGantt instance to a layout cell</strong>, use the <strong>attachGantt()</strong>  method.</p>
+
+<p><strong>Note</strong>, attaching dhtmlxGantt to a cell automatically initializes it. So, configure dhtmlxGantt instance before placing it into the layout.</p>
+
+<pre><code><pre class="js"><span class="kw2">function</span> init<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw2">var</span> dhxLayout <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXLayoutObject<span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="st0">&quot;2U&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    gantt1 <span class="sy0">=</span> Gantt.<span class="me1">getGanttInstance</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    gantt1.<span class="me1">config</span>.<span class="me1">min_column_width</span> <span class="sy0">=</span> <span class="nu0">50</span><span class="sy0">;</span>
+    gantt1.<span class="me1">config</span>.<span class="me1">scale_height</span> <span class="sy0">=</span> <span class="nu0">90</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">    dhxLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;a&quot;</span><span class="br0">&#41;</span>.<span class="me1">attachGantt</span><span class="br0">&#40;</span><span class="kw2">null</span><span class="sy0">,</span> <span class="kw2">null</span><span class="sy0">,</span> gantt<span class="br0">&#41;</span><span class="sy0">;</span> </span>    gantt1.<span class="me1">parse</span><span class="br0">&#40;</span>tasksA<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    gantt2 <span class="sy0">=</span> Gantt.<span class="me1">getGanttInstance</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    gantt2.<span class="me1">config</span>.<span class="me1">date_grid</span> <span class="sy0">=</span> <span class="st0">&quot;%Y-%m-%d %H:%i&quot;</span><span class="sy0">;</span>
+    gantt2.<span class="me1">config</span>.<span class="me1">xml_date</span> <span class="sy0">=</span> <span class="st0">&quot;%Y-%m-%d %H:%i:%s&quot;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">    dhxLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;b&quot;</span><span class="br0">&#41;</span>.<span class="me1">attachGantt</span><span class="br0">&#40;</span><span class="kw2">null</span><span class="sy0">,</span> <span class="kw2">null</span><span class="sy0">,</span> gantt2<span class="br0">&#41;</span><span class="sy0">;</span></span>    gantt2.<span class="me1">parse</span><span class="br0">&#40;</span>tasksB<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='destructorofganttanddataprocessorinstances'><h2>Destructor of Gantt and DataProcessor instances</h2></a>
+
+<p>Starting from version 5.1, the dhtmlxGantt object has a <a class="link-" href="api__gantt_destructor.html">destructor</a> that can be used to dispose unnecessary instances of the Gantt.</p>
+
+<p>The destructor of the gantt instance can be used as follows:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> gantt <span class="sy0">=</span> Gantt.<span class="me1">getGanttInstance</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">destructor</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The destructor will implement the following tasks:</p>
+
+<ul>
+<li>clear the data loaded into a gantt instance</li>
+<li>destroy the dataProcessor (if it is attached to the gantt) </li>
+<li>detach the gantt from DOM</li>
+<li>detach all DOM events attached via the <a class="link-" href="api__gantt_event.html">gantt.event()</a> method</li>
+</ul>
+
+<p>Note, that the destructor won't destroy the data stores created by the <a class="link-" href="api__gantt_createdatastore.html">gantt.createDatastore()</a> method. 
+You have to destroy them manually, like this:</p>
+
+<pre><code><pre class="js"><span class="co1">// creating a datastore</span>
+<span class="kw2">var</span> resourcesStore <span class="sy0">=</span> gantt.<span class="me1">createDatastore</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;resource&quot;</span><span class="sy0">,</span>
+    initItem<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="kw1">item</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">item</span>.<span class="me1">id</span> <span class="sy0">=</span> <span class="kw1">item</span>.<span class="me1">key</span> <span class="sy0">||</span> gantt.<span class="me1">uid</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">return</span> <span class="kw1">item</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// destroying the datastore later</span>
+resourcesStore.<span class="me1">destructor</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Using destructor with Angular</h3>
+
+<p>Here is an example of using the destructor to dispose a gantt instance while using the Angular framework:</p>
+
+<pre><code><pre class="js"><span class="sy0">@</span>Component<span class="br0">&#40;</span><span class="br0">&#123;</span>selector<span class="sy0">:</span> <span class="st0">'app-gantt'</span><span class="sy0">,</span> template<span class="sy0">:</span> `...`<span class="br0">&#125;</span><span class="br0">&#41;</span>
+<span class="kw2">class</span> MyGanttComponent implements OnDestroy <span class="br0">&#123;</span>
+  ngOnInit<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+     <span class="kw1">this</span>.$gantt <span class="sy0">=</span> Gantt.<span class="me1">getGanttInstance</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+     <span class="co1">// configure and init</span>
+  <span class="br0">&#125;</span>
+&nbsp;
+  ngOnDestroy<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+     <span class="kw1">this</span>.$gantt.<span class="me1">destructor</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+     <span class="kw1">this</span>.$gantt <span class="sy0">=</span> <span class="kw2">null</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Detaching the dataProcessor</h3>
+
+<p>Calling the destructor of data processor will clear the dataprocessor instance and detach it from the gantt. For example:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> gantt <span class="sy0">=</span> Gantt.<span class="me1">getGanttInstance</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> gantt.<span class="me1">dataProcessor</span><span class="br0">&#40;</span><span class="st0">&quot;url&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">init</span><span class="br0">&#40;</span>gantt<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// destroys data processor and detaches it from the gantt</span>
+dp.<span class="me1">destructor</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>If you use a package that does not allow creating multiple instances of the gantt object (GPL or Commercial editions), calling the gantt destructor will make the gantt inaccessible until page reload.</p>
+</p></div>
+
+<!-- Content Area End -->
+			<a href='desktop__multiple_gantts.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

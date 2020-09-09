@@ -1,0 +1,337 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Configuration  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="dataview__api__refs__dataview.html">Dataview API</a></li><li class=""><a href="dataview__initialization.html">Initialization</a></li><li class=" current"><a href="dataview__configuration.html">Configuration</a></li><ul><li class="inner"><a href="dataview__configuration.html#arrowkeysnavigation">Arrow keys navigation</a></li><li class="inner"><a href="dataview__configuration.html#dragndropofitems">Drag-n-drop of items</a></li><li class="inner"><a href="dataview__configuration.html#editingitems">Editing items</a></li><li class="inner"><a href="dataview__configuration.html#heightofanitem">Height of an item</a></li><li class="inner"><a href="dataview__configuration.html#heightofthedataview">Height of the Dataview</a></li><li class="inner"><a href="dataview__configuration.html#marginsarounddataviewitems">Margins around DataView items</a></li><li class="inner"><a href="dataview__configuration.html#multipleselectionofitems">Multiple selection of items</a></li><li class="inner"><a href="dataview__configuration.html#numberofitemsinarow">Number of items in a row</a></li><li class="inner"><a href="dataview__configuration.html#selectionofitems">Selection of items</a></li><li class="inner"><a href="dataview__configuration.html#templatefordataviewitems">Template for DataView items</a></li></ul><li class=""><a href="dataview__data_loading.html">Data Loading</a></li><li class=""><a href="dataview__manipulating_data.html">Work with DataView</a></li><li class=""><a href="dataview__customization.html">Customization</a></li><li class=""><a href="dataview__events.html">Event Handling</a></li><li class=""><a href="dataview__migration.html">Migration to Newer Versions</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="dataview__index.html">DataView</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Configuration</h1>
+
+<a name='arrowkeysnavigation'><h2>Arrow keys navigation</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/dataview/arrow_navigation.png" alt=""/></p>
+
+<p><a href='https://snippet.dhtmlx.com/u7mgoly9' target='blank'><span class='sample'>Related sample: </span>&nbsp;Dataview. Arrow Navigation</a></p>
+
+<p>The DataView component provides the possibility to navigate its items with arrow keys. You can enable this functionality using the <a class="link-" href="dataview__api__dataview_keynavigation_config.html">keyNavigation</a> property:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dataview <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">DataView</span><span class="br0">&#40;</span><span class="st0">&quot;dataview&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    itemsInRow<span class="sy0">:</span> <span class="nu0">4</span><span class="sy0">,</span> keyNavigation<span class="sy0">:</span> <span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>As a value of this option you can use either <em>true/false</em> to switch it on/off, or you can specify a <em>function</em> that will define some custom navigation logic.</p>
+
+<a name='dragndropofitems'><h2>Drag-n-drop of items</h2></a>
+
+<p>dhtmlxDataView supports drag-n-drop of items between dataviews in several modes. To begin with, you should specify the <a class="link-" href="dataview__api__dataview_dragmode_config.html">dragMode</a> property in the configuration object of DataView.
+Then define which mode you need:</p>
+
+<ul>
+<li>"target" - a dataview takes items from other dataviews, while its items can't be dragged out of it</li>
+<li>"source" - a dataview allows dragging its items out and can't take items from other dataviews</li>
+<li>"both" - a dataview both takes items from other dataviews and allows dragging its items out as well</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dataview <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">DataView</span><span class="br0">&#40;</span><span class="st0">&quot;dataview_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> 
+    dragMode<span class="sy0">:</span><span class="st0">&quot;source&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In order to provide the possiblity of dragging several items between dataviews, you should enable the <a class="link-" href="dataview__api__dataview_multiselection_config.html">multiselection</a> property
+in addition to <strong>dragMode</strong>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dataview <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">DataView</span><span class="br0">&#40;</span><span class="st0">&quot;dataview_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> 
+    dragMode<span class="sy0">:</span><span class="st0">&quot;source&quot;</span><span class="sy0">,</span>
+    multiselection<span class="sy0">:</span><span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Read more about multiselection in DataView <a href="dataview__configuration.html#multipleselectionofitems">below</a>.</p>
+
+<p><a href='https://snippet.dhtmlx.com/nia2e5a9' target='blank'><span class='sample'>Related sample: </span>&nbsp;Dataview. Drag'n'drop</a></p>
+
+<h3>Copying dragged item</h3>
+
+<p>Instead of moving a dragged item to a new position in the same or a different dataview, you can copy it. 
+Use the <a class="link-" href="dataview__api__dataview_dragcopy_config.html">dragCopy</a> option in the configuration object of a dataview.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> source <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">DataView</span><span class="br0">&#40;</span><span class="st0">&quot;dataview-source&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>dragMode<span class="sy0">:</span> <span class="st0">&quot;source&quot;</span><span class="sy0">,</span> dragCopy<span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> target <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">DataView</span><span class="br0">&#40;</span><span class="st0">&quot;dataview-target&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>dragMode<span class="sy0">:</span> <span class="st0">&quot;target&quot;</span><span class="sy0">,</span> dragCopy<span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/h89c3gl3' target='blank'><span class='sample'>Related sample: </span>&nbsp;Dataview. Drag'n'drop Сopy</a></p>
+
+<a name='editingitems'><h2>Editing items</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/dataview/editable.png" alt=""/></p>
+
+<p><a href='https://snippet.dhtmlx.com/m8fbqcza' target='blank'><span class='sample'>Related sample: </span>&nbsp;Dataview. Editable Dataview</a></p>
+
+<p>You can enable the possibility to edit DataView items with the help of the <a class="link-" href="dataview__api__dataview_editable_config.html">editable</a> configuration option:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dataview <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">DataView</span><span class="br0">&#40;</span><span class="st0">&quot;dataview_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>editable<span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='heightofanitem'><h2>Height of an item</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/dataview/item_height.png" alt=""/></p>
+
+<p><a href='https://snippet.dhtmlx.com/cth9mwrf' target='blank'><span class='sample'>Related sample: </span>&nbsp;Dataview. Setup Dataview Item Height</a></p>
+
+<p>You can specify the necessary height of a Dataview item and set it before initialization of Dataview via the <a class="link-" href="dataview__api__dataview_itemheight_config.html">itemHeight</a> property either as a number:</p>
+
+<pre><code><pre class="js"><span class="co1">// sets the height of an item as a number</span>
+<span class="kw2">var</span> dataview <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">DataView</span><span class="br0">&#40;</span><span class="st0">&quot;dataview&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> 
+<span class="xtra ln-xtra">    itemHeight<span class="sy0">:</span><span class="nu0">34</span> </span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>or as a string value</p>
+
+<pre><code><pre class="js"><span class="co1">// sets the height of an item as a string value</span>
+<span class="kw2">var</span> dataview <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">DataView</span><span class="br0">&#40;</span><span class="st0">&quot;dataview&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> 
+<span class="xtra ln-xtra">    itemHeight<span class="sy0">:</span><span class="st0">&quot;34px&quot;</span> </span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>The usage of the <em>CSS calc() function</em> within the <a class="link-" href="dataview__api__dataview_itemheight_config.html">itemHeight</a> property is not possible.</p>
+</p></div>
+
+<a name='heightofthedataview'><h2>Height of the Dataview</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/dataview/dataview_height.png" alt=""/></p>
+
+<p><a href='https://snippet.dhtmlx.com/g1k2l4q0' target='blank'><span class='sample'>Related sample: </span>&nbsp;Dataview. Setup Dataview Height</a></p>
+
+<p>You can define the desired height of a dataview via the <a class="link-" href="dataview__api__dataview_height_config.html">height</a> configuration option as easy as that:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dataview <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">DataView</span><span class="br0">&#40;</span><span class="st0">&quot;dataview&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>height<span class="sy0">:</span> <span class="nu0">150</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>You can also use a string value for setting the height of Dataview:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dataview <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">DataView</span><span class="br0">&#40;</span><span class="st0">&quot;dataview&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>height<span class="sy0">:</span> <span class="st0">&quot;400px&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>The usage of the <em>CSS calc() function</em> within the <a class="link-" href="dataview__api__dataview_height_config.html">height</a> property is not possible.</p>
+</p></div>
+
+<a name='marginsarounddataviewitems'><h2>Margins around DataView items</h2></a>
+
+<p><img src="media/dataview/gap.png" alt=""/></p>
+
+<p><a href='https://snippet.dhtmlx.com/ozsuww1q' target='blank'><span class='sample'>Related sample: </span>&nbsp;Dataview. Configure Gap Size</a></p>
+
+<p>It is possible to add margins around DataView items to increase distance between two items as well as between an item and DataView borders. Use the <a class="link-" href="dataview__api__dataview_gap_config.html">gap</a> configuration property 
+to define the desired margin:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dataview <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">DataView</span><span class="br0">&#40;</span><span class="st0">&quot;dataview&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>itemsInRow<span class="sy0">:</span> <span class="nu0">4</span><span class="sy0">,</span> gap<span class="sy0">:</span> <span class="nu0">20</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='multipleselectionofitems'><h2>Multiple selection of items</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/dataview/multiselection.png" alt=""/></p>
+
+<p>By default, you can select only one item in a dataview, since selection of another item resets selection of the previous one. To enable the possbility to select several DataView items, make use of the 
+<a class="link-" href="dataview__api__dataview_multiselection_config.html">multiselection</a> configuration option:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dataview <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">DataView</span><span class="br0">&#40;</span><span class="st0">&quot;dataview&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>multiselection<span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Setting the <strong>multiselection</strong> property to <em>true</em> presupposes selection of multiple items by using Ctrl key.
+It is also possible to use the "Ctrl+click" combination to select several items. For this, you need to set the 
+<a class="link-" href="dataview__api__dataview_multiselection_config.html">multiselection</a> configuration option to <em>"ctrlClick"</em>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dataview <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">DataView</span><span class="br0">&#40;</span><span class="st0">&quot;dataview&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    multiselection<span class="sy0">:</span><span class="st0">&quot;ctrlClick&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/g0xwdx10' target='blank'><span class='sample'>Related sample: </span>&nbsp;Dataview. Multiselection Dataview</a></p>
+
+<a name='numberofitemsinarow'><h2>Number of items in a row</h2></a>
+
+<p><img src="media/dataview/items_in_row.png"></p>
+
+<p><a href='https://snippet.dhtmlx.com/de4r8km3' target='blank'><span class='sample'>Related sample: </span>&nbsp;Dataview. Amount Items In A Row</a></p>
+
+<p>You can define the number of items that should be displayed in a row of DataView with the help of the <a class="link-" href="dataview__api__dataview_itemsinrow_config.html">itemsInRow</a> configuration property:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dataview <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">DataView</span><span class="br0">&#40;</span><span class="st0">&quot;dataview&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>itemsInRow<span class="sy0">:</span> <span class="nu0">5</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='selectionofitems'><h2>Selection of items</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/dataview/disable_selection.png" alt=""/></p>
+
+<p><a href='samples/dataview/02_configuration/10_not_selectable.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Disable selection - DHTMLX Dataview</a></p>
+
+<p>The default configuration of DataView provides you with the selection feature that allows highlighting a DataView item. To disable selection in a DataView you need to set the <a class="link-" href="dataview__api__dataview_selection_config.html">selection</a> configuration property to <em>false</em>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dataview <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">DataView</span><span class="br0">&#40;</span><span class="st0">&quot;dataview&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    selection<span class="sy0">:</span> <span class="kw2">false</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='templatefordataviewitems'><h2>Template for DataView items</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/dataview/template.png" alt=""/></p>
+
+<p><a href='https://snippet.dhtmlx.com/d6l6grr7' target='blank'><span class='sample'>Related sample: </span>&nbsp;Dataview. Render Template</a></p>
+
+<p>You can define a template for rendering items in a dataview with the help of the <a class="link-" href="dataview__api__dataview_template_config.html">template</a> configuration property. You need to set a function as its value and pass one parameter to it:</p>
+
+<ul>
+<li><strong>item</strong> - (<em>object</em>) an object of a data item</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dataview <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">DataView</span><span class="br0">&#40;</span><span class="st0">&quot;dataview&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    itemsInRow<span class="sy0">:</span> <span class="nu0">4</span><span class="sy0">,</span> 
+    template<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="kw1">item</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw2">var</span> template <span class="sy0">=</span> <span class="st0">&quot;&lt;div class='item_wrap'&gt;&quot;</span><span class="sy0">;</span>
+        template <span class="sy0">+=</span> <span class="st0">&quot;&lt;img class='image' src=&quot;</span> <span class="sy0">+</span> <span class="st0">&quot;..images/&quot;</span> <span class="sy0">+</span> <span class="kw1">item</span>.<span class="me1">thumbnailName</span> <span class="sy0">+</span> <span class="st0">&quot; /&gt;&quot;</span><span class="sy0">;</span>
+        template <span class="sy0">+=</span> <span class="st0">&quot;&lt;h2 class='title'&gt;&quot;</span> <span class="sy0">+</span> <span class="kw1">item</span>.<span class="me1">value</span> <span class="sy0">+</span> <span class="st0">&quot;&lt;/h2&gt;&quot;</span><span class="sy0">;</span>
+        template <span class="sy0">+=</span> <span class="st0">&quot;&lt;p class='description'&gt;&quot;</span> <span class="sy0">+</span> <span class="kw1">item</span>.<span class="me1">shortDescription</span> <span class="sy0">+</span> <span class="st0">&quot;&lt;/p&gt;&quot;</span><span class="sy0">;</span>
+        template <span class="sy0">+=</span> <span class="st0">&quot;&lt;/div&gt;&quot;</span><span class="sy0">;</span>
+        <span class="kw1">return</span> template<span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='dataview__configuration.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

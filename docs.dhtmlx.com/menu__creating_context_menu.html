@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Creating a Context Menu  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxmenu.html">dhtmlXMenu API</a></li><li class=""><a href="menu__how_to_start.html">How to Start with Menu?</a></li><li class=""><a href="menu__object_constructor.html">Object Constructor</a></li><li class=""><a href="menu__xml_file.html">Loading from XML</a></li><li class=""><a href="menu__html_object.html">Loading from HTML Object</a></li><li class=""><a href="menu__from_script.html">Loading from Script</a></li><li class=""><a href="menu__dynamic_loading.html">Dynamic Loading (with Ajax)</a></li><li class=""><a href="menu__configuring_menu.html">Configuring Menu</a></li><li class=""><a href="menu__configuring_menu_items.html">Configuring Menu Items</a></li><li class=""><a href="menu__skinning_menu.html">Skinning Menu</a></li><li class=""><a href="menu__fa_icons.html">Font Awesome Icons in Menu</a></li><li class=" current"><a href="menu__creating_context_menu.html">Creating a Context Menu</a></li><ul><li class="inner"><a href="menu__creating_context_menu.html#initialization">Initialization</a></li><li class="inner"><a href="menu__creating_context_menu.html#contextualmenuzones">Contextual Menu Zones</a></li></ul><li class=""><a href="menu__used_terms.html">Used Terms</a></li><li class=""><a href="menu__handling_events.html">Handling Events</a></li><li class=""><a href="menu__using_iterator.html">Using Iterator</a></li><li class=""><a href="menu__migration.html">Migration from 3.6 to 4.0</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="menu__index.html">Menu</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Creating a Context Menu</h1>
+
+<a name='initialization'><h2>Initialization</h2></a>
+
+<p>Contextual menu is attached to the context zone. Context zone is an HTML object.
+In this example the object is a &#60;div&#62; element on page, which is placed in the &#60;body&#62; tag.</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;contextArea&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+<div class='note'><p><p>Note, that for the right menu positioning the &#60;div&#62; used as a context zone should have relative or absolute position.</p>
+</p></div>
+
+<p>For a contextual menu the user should:</p>
+
+<ul>
+<li>Create a new dhtmlxMenuObject attached to "contextArea" (or attach it later);</li>
+<li>Set the name of the necessary skin as the second argument for dhtmlXMenuObject (optional; if the name of the skin is not indicated, the default one will be used); </li>
+<li>Use the <a class="link-" href="api__dhtmlxmenu_renderascontextmenu.html">renderAsContextMenu</a> method.</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myMenu <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXMenuObject<span class="br0">&#40;</span><span class="st0">&quot;contextArea&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+myMenu.<span class="me1">renderAsContextMenu</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>It should be noted that with the way of menu creating described above, the system will first clear the menu container (&#60;div&#62; ) and then create the contextual menu. 
+To prevent container data from clearing, the user should use the method described in Contextual Menu Zones section below.</p>
+
+<a name='contextualmenuzones'><h2>Contextual Menu Zones</h2></a>
+
+<p>A contextual menu zone is the area the user needs to click to make a contextual menu to appear. 
+The previous snippet has shown initialization of a contextual menu with the predefined contextual zone. 
+When the user indicates the contextual zone id, while creating a new menu object, it means that this area is
+set to be a contextual menu zone automatically by script.</p>
+
+<p>In a different way, the user can initialize a contextual menu without indicating a contextual zone initially.
+Then to use the <a class="link-" href="api__dhtmlxmenu_addcontextzone.html">addContextZone</a> method and pass to it the id of the object that will act as a contextual zone:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myMenu <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXMenuObject<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+myMenu.<span class="me1">renderAsContextMenu</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+myMenu.<span class="me1">addContextZone</span><span class="br0">&#40;</span>contextZoneId<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>A contextual zone can be easily removed with the help of the <a class="link-" href="api__dhtmlxmenu_removecontextzone.html">removeContextZone</a> method:</p>
+
+<pre><code><pre class="js">myMenu.<span class="me1">removeContextZone</span><span class="br0">&#40;</span>contextZoneId<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>There is also the possibility to check whether an object is a contextual menu zone, using the <a class="link-" href="api__dhtmlxmenu_iscontextzone.html">isContextZone</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> isZone <span class="sy0">=</span> myMenu.<span class="me1">isContextZone</span><span class="br0">&#40;</span>objectId<span class="br0">&#41;</span><span class="sy0">;</span>  <span class="co1">// returns true/false</span></pre></code></pre>
+
+<div class='note'><p><p>Note, that for the right menu positioning the object used as a context zone should have relative or absolute position.</p>
+</p></div>
+
+<!-- Content Area End -->
+			<a href='menu__creating_context_menu.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

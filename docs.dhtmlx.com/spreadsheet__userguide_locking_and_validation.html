@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1546520180.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1546520180.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Cells Locking and Validation  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');   ga('create', 'UA-11031269-1', 'auto'); ga('send', 'pageview');</script><!-- Yandex.Metrika counter --><script type='text/javascript'>(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter22235746 = new Ya.Metrika({id:22235746, clickmap:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName('script')[0], s = d.createElement('script'), f = function () { n.parentNode.insertBefore(s, n); }; s.type = 'text/javascript'; s.async = true; s.src = (d.location.protocol == 'https:' ? 'https:' : 'http:') + '//mc.yandex.ru/metrika/watch.js'; if (w.opera == '[object Opera]') { d.addEventListener('DOMContentLoaded', f, false); } else { f(); } })(document, window, 'yandex_metrika_callbacks');</script><noscript><div><img src='https://mc.yandex.ru/watch/22235746' style='position:absolute; left:-9999px;' alt='' /></div></noscript>
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='http://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="http://dhtmlx.com/docs/products/docsExplorer/samples.shtml">Samples</a>
+				<a href="http://forum.dhtmlx.com/">Forum</a>
+				<a href="http://support.dhtmlx.com/">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="spreadsheet__configuration.html">Configuration</a></li><li class=""><a href="spreadsheet__init.html">Initialization and Read-Only Mode</a></li><li class=""><a href="spreadsheet__client_server_protocol.html">Client-Server Protocol</a></li><li class=""><a href="spreadsheet__reference.html">API Reference</a></li><li class=""><a href="spreadsheet__userguide_basicdefinitions.html">Fundamental Definitions</a></li><li class=""><a href="spreadsheet__userguide_navigation.html">Hot Keys</a></li><li class=""><a href="spreadsheet__userguide_settings.html">Worksheet Settings</a></li><li class=""><a href="spreadsheet__userguide_controls.html">Main Toolbar</a></li><li class=""><a href="spreadsheet__userguide_text.html">Selecting Cell and Entering Text</a></li><li class=""><a href="spreadsheet__userguide_formatting.html">Formatting</a></li><li class=" current"><a href="spreadsheet__userguide_locking_and_validation.html">Cells Locking and Validation</a></li><ul><li class="inner"><a href="spreadsheet__userguide_locking_and_validation.html#validation">Validation</a></li><li class="inner"><a href="spreadsheet__userguide_locking_and_validation.html#lockingunlockingcells">Locking/unlocking cells</a></li></ul><li class=""><a href="spreadsheet__userguide_copying.html">Copying/Moving Data Between Cells</a></li><li class=""><a href="spreadsheet__userguide_formulas.html">Formulas</a></li><li class=""><a href="spreadsheet__userguide_export.html">Data Export</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="spreadsheet__index.html">SpreadSheet</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Cells Locking and Validation</h1>
+
+<a name='validation'><h2>Validation</h2></a>
+
+<p>You can control the type of data or the values that users enter into a cell by setting the appropriate validation rule.</p>
+
+<p>There are 4 validation rules you can use:</p>
+
+<ul>
+<li><strong>Number</strong> - checks whether the entered value is a number.</li>
+<li><strong>Email</strong> - checks whether the entered value is an email address.</li>
+<li><strong>Positive</strong> - checks whether the entered value is a positive number.</li>
+<li><strong>Not empty</strong> - checks whether the cell contains any value.</li>
+</ul>
+
+<p>When the entered value doesn't conform to the specified rule, the related cell is marked by the red flag: <img src="media/spreadsheet/unvalidated_cell.png" alt="spreadsheet/unvalidated_cell.png" /></p>
+
+<p><strong>To set the desired validation rule, you should do the following:</strong></p>
+
+<ul>
+<li><a class="link-" href="spreadsheet__userguide_text.html#selectingcells">Select a cell or cells</a> which you wish to set a validation rule for;</li>
+<li>Click the right mouse button. When the pop-up menu appears, choose <strong>Validator</strong> and then the appropriate rule.</li>
+</ul>
+
+<p><img src="media/spreadsheet/validation.png" alt="spreadsheet/validation.png" /></p>
+
+<p><strong>To cancel the specified validation rule, you should do the following:</strong></p>
+
+<ul>
+<li><a class="link-" href="spreadsheet__userguide_text.html#selectingcells">Select a cell or cells</a> which you wish to cancel a validation rule for;</li>
+<li>Click the right mouse button. When the pop-up menu appears, choose <strong>Validator</strong> and the rule <strong>None</strong>.</li>
+</ul>
+
+<a name='lockingunlockingcells'><h2>Locking/unlocking cells</h2></a>
+
+<p>You can lock/unlock cells of Spreadsheet.</p>
+
+<p>Locking action can be characterized as follows:</p>
+
+<ul>
+<li>It forbids any entry (values of locked cells can't be changed);</li>
+<li>All cells are unlocked by default;</li>
+<li>If a locked cell contains a formula that refers to unlocked cells, each time values of the referred cells are changed, the value of such a cell will be changed as well.</li>
+<li>When a cell is locked it's marked by a little key in the right upper corner: <img src="media/spreadsheet/locked_cell.png" alt="spreadsheet/locked_cell.png" /></li>
+</ul>
+
+<p><strong>To lock a cell, you should do the following:</strong></p>
+
+<ul>
+<li><a class="link-" href="spreadsheet__userguide_text.html#selectingcells">Select a cell or cells</a> which you wish to lock;</li>
+<li><p>Click the right mouse button. When the pop-up menu appears, choose <strong>Lock</strong>.</p>
+
+<p><img src="media/spreadsheet/locking.png" alt="spreadsheet/locking.png" /></p></li>
+</ul>
+
+<p><strong>To unlock a cell, you should do the following:</strong></p>
+
+<ul>
+<li><a class="link-" href="spreadsheet__userguide_text.html#selectingcells">Select a cell or cells</a> which you wish to unlock;</li>
+<li><p>Click the right mouse button. When the pop-up menu appears, choose <strong>Unlock</strong>.</p>
+
+<p><img src="media/spreadsheet/unlocking.png" alt="spreadsheet/unlocking.png" /></p></li>
+</ul>
+
+<!-- Content Area End -->
+			<a href='spreadsheet__userguide_locking_and_validation.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

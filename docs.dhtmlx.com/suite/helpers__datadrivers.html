@@ -1,0 +1,274 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>DataDrivers  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="ajax__api__refs__ajax.html">AJAX</a></li><li class=""><a href="helpers__await_redraw.html">AwaitRedraw</a></li><li class=""><a href="helpers__base_elements.html">CSS classes of base elements</a></li><li class=""><a href="css_manager__api__refs__css_manager.html">CssManager</a></li><li class=""><a href="data_collection__api__refs__datacollection.html">DataCollection API</a></li><li class=" current"><a href="helpers__datadrivers.html">DataDrivers</a></li><ul><li class="inner"><a href="helpers__datadrivers.html#csvformat">CSV format</a></li><li class="inner"><a href="helpers__datadrivers.html#xmlformat">XML format</a></li></ul><li class=""><a href="data_proxy__api__refs__data_proxy.html">DataProxy</a></li><li class=""><a href="helpers__icon.html">Default Icons</a></li><li class="toc-pro"><a href="helpers__lazydataproxy.html">Dynamic Loading</a></li><li class=""><a href="helpers__resize_handler.html">Resizer</a></li><li class=""><a href="selection__api__refs__selection.html">Selection Object API</a></li><li class=""><a href="tree_collection__api__refs__treecollection.html">TreeCollection API</a></li><li class=""><a href="uploader__api__refs__uploader.html">Uploader Object API</a></li><li class=""><a href="helpers__using_typescript.html">Using DHTMLX with TypeScript</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="helpers.html">Helpers</a></div>
+<!-- Content Area -->
+
+
+
+<h1>DataDrivers</h1>
+
+<p>By default, the components of the DHTMLX Suite library operate data in JSON format. But, if necessary, they can also handle data in CSV or XML formats. Using API of <a class="link-" href="data_collection__api__refs__datacollection.html">Data Collection</a> or <a class="link-" href="tree_collection__api__refs__treecollection.html">Tree Collection</a> provides an opportunity to parse, load or serialize data of a component in any of the mentioned formats.</p>
+
+<p>However, for further work, you may need to get the same data in different formats, and, in that case, you need to convert the data between them. The best way to do this is to use the <strong>DataDrivers</strong> helper.</p>
+
+<p><strong>DataDrivers</strong> is a tool that helps you convert data of a component from JSON format to one of the following formats:</p>
+
+<ul>
+<li><a href="helpers__datadrivers.html#csvformat">CSV format</a></li>
+<li><a href="helpers__datadrivers.html#xmlformat">XML format</a></li>
+</ul>
+
+<a name='csvformat'><h2>CSV format</h2></a>
+
+<p>To create dataDrivers object, use the <em>dhx.dataDrivers.csv</em> constructor:</p>
+
+<pre><code><pre class="js"><span class="kw2">const</span> csvDataDriver <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">dataDrivers</span>.<span class="me1">csv</span><span class="br0">&#40;</span>
+    <span class="br0">&#123;</span>
+        columnDelimiter<span class="sy0">:</span> <span class="st0">&quot; | &quot;</span><span class="sy0">,</span>
+        rowDelimiter<span class="sy0">:</span> <span class="st0">&quot;<span class="es0">\n</span><span class="es0">\n</span>&quot;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The constructor has one parameter:</p>
+
+<ul>
+<li><p>optional, an object with configuration properties. These properties are:</p>
+
+<ul>
+<li><strong>columnDelimiter</strong> - (<em>string</em>) a comma (",") by default. A separator between columns, can be a semicolon - ";", or any other value</li>
+<li><strong>rowDelimiter</strong> - (<em>string</em>) a newline ("\n") by default. A separator between rows, can be a tab - "\t", or any other value.</li>
+</ul></li>
+</ul>
+
+<p>To convert data of a component (for instance, data of a chart) into a CSV string, use the <strong>serialize</strong> method, as in:</p>
+
+<pre><code><pre class="js">csvDataDriver.<span class="me1">serialize</span><span class="br0">&#40;</span>chart.<span class="me1">data</span>.<span class="me1">serialize</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The method takes two parameters:</p>
+
+<ul>
+<li><strong>data</strong> - (<em>array</em>) - the data to be converted</li>
+<li><strong>withoutHeader</strong> - (<em>boolean</em>) optional, defines whether the returned string will contain the header, <em>false</em> by default</li>
+</ul>
+
+<p>As a result, the converted to <strong>CSV format</strong> data of the chart look like this:</p>
+
+<p class='snippet'> CSV format</p>
+
+<pre><code><pre class="js"><span class="st0">&quot;month | company A | company B | company C | company D | id
+&nbsp;
+`02 | 20 | 52 | 72 | 34 | 1 |
+&nbsp;
+`03 | 5 | 33 | 90 | 55 | 2 | 
+&nbsp;
+`04 | 55 | 30 | 81 | 66 | 3 | 
+&nbsp;
+`05 | 30 | 11 | 62 | 22 | 4 | &quot;</span></pre></code></pre>
+
+<a name='xmlformat'><h2>XML format</h2></a>
+
+<div class='pronote'><p><p>This functionality requires PRO version of the DHTMLX suite package.</p>
+</p></div>
+
+<p>To create dataDrivers object, use the <em>dhx.dataDrivers.xml</em> constructor:</p>
+
+<pre><code><pre class="js"><span class="kw2">const</span> xmlDataDriver <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">dataDrivers</span>.<span class="me1">xml</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To convert data of a component (for example, data of a grid) into an XML string, use the <strong>serialize</strong> method, as in:</p>
+
+<pre><code><pre class="js">xmlDataDriver.<span class="me1">serialize</span><span class="br0">&#40;</span>
+    <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+            country<span class="sy0">:</span> <span class="st0">&quot;China&quot;</span><span class="sy0">,</span> population<span class="sy0">:</span> <span class="st0">&quot;1415045928&quot;</span><span class="sy0">,</span> yearlyChange<span class="sy0">:</span> <span class="st0">&quot;0.0039&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>
+            country<span class="sy0">:</span> <span class="st0">&quot;India&quot;</span><span class="sy0">,</span> population<span class="sy0">:</span> <span class="st0">&quot;1354051854&quot;</span><span class="sy0">,</span> yearlyChange<span class="sy0">:</span> <span class="st0">&quot;0.0111&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>
+            country<span class="sy0">:</span> <span class="st0">&quot;U.S.&quot;</span><span class="sy0">,</span> population<span class="sy0">:</span> <span class="st0">&quot;326766748&quot;</span><span class="sy0">,</span> yearlyChange<span class="sy0">:</span> <span class="st0">&quot;0.0071&quot;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The method takes one parameter:</p>
+
+<ul>
+<li><strong>data</strong> - (<em>array</em>) - the data to be converted</li>
+</ul>
+
+<p>As a result, the converted to <strong>XML format</strong> data of the grid look like this:</p>
+
+<p class='snippet'> XML format</p>
+
+<pre><code><pre class="js"><span class="st0">&quot;&lt;?xml version=&quot;</span><span class="nu0">1.0</span><span class="st0">&quot; encoding=&quot;</span>iso<span class="sy0">-</span><span class="nu0">8859</span><span class="sy0">-</span><span class="nu0">1</span><span class="st0">&quot;?&gt;
+&lt;root&gt;
+    &lt;item&gt;
+        &lt;country&gt;China&lt;/country&gt;
+        &lt;population&gt;1415045928&lt;/population&gt;
+        &lt;yearlyChange&gt;0.0039&lt;/yearlyChange&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+        &lt;country&gt;India&lt;/country&gt;
+        &lt;population&gt;1354051854&lt;/population&gt;
+        &lt;yearlyChange&gt;0.0111&lt;/yearlyChange&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+        &lt;country&gt;U.S.&lt;/country&gt;
+        &lt;population&gt;326766748&lt;/population&gt;
+        &lt;yearlyChange&gt;0.0071&lt;/yearlyChange&gt;
+    &lt;/item&gt;
+&lt;/root&gt;&quot;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='helpers__datadrivers.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

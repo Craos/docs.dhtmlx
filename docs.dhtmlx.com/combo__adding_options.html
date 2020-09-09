@@ -1,0 +1,274 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Loading Data  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxcombo.html">dhtmlXCombo API</a></li><li class=""><a href="combo__how_to_start.html">How to Start with Combo</a></li><li class=""><a href="combo__constructor_of_dthmlxcombo.html">Object Constructor</a></li><li class=" current"><a href="combo__adding_options.html">Loading Data</a></li><ul><li class="inner"><a href="combo__adding_options.html#throughtheaddoptioncommand">Through the "addOption" command</a></li><li class="inner"><a href="combo__adding_options.html#fromtheserverside">From the server side</a></li><li class="inner"><a href="combo__adding_options.html#fromautocompletexmlfile">From autocomplete XML file</a></li><li class="inner"><a href="combo__adding_options.html#fromhtml">From HTML</a></li></ul><li class=""><a href="combo__integrating_with_form_tag.html">Integrating with FORM Tag</a></li><li class=""><a href="combo__filtering.html">Autocomplete in Combo</a></li><li class=""><a href="combo__operations_with_combobox.html">Operating Combobox</a></li><li class=""><a href="combo__operations_with_combobox_s_options.html">Operating Combobox's Options</a></li><li class=""><a href="combo__groups_extension.html">Grouping Combos</a></li><li class=""><a href="combo__combobox_with_images_and_checkboxes.html">Creating Combo with Images and Checkboxes</a></li><li class=""><a href="combo__multicolumn_combo.html">Multicolumn Combo</a></li><li class=""><a href="combo__handling_events.html">Handling Events</a></li><li class=""><a href="combo__migration.html">Migration from 3.6 to 4.0</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="combo__index.html">Combo</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Loading Data</h1>
+
+<p>There are several ways of loading Combo options. They are described in this article.</p>
+
+<a name='throughtheaddoptioncommand'><h2>Through the "addOption" command</h2></a>
+
+<p>You can use the <a class="link-" href="api__dhtmlxcombo_addoption.html">addOption</a> method to load data into Combo:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myCombo <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXCombo<span class="br0">&#40;</span><span class="st0">&quot;combo_zone3&quot;</span><span class="sy0">,</span><span class="st0">&quot;alfa3&quot;</span><span class="sy0">,</span><span class="nu0">200</span><span class="br0">&#41;</span><span class="sy0">;</span>
+myCombo.<span class="me1">addOption</span><span class="br0">&#40;</span>value<span class="sy0">,</span>label<span class="sy0">,</span>css<span class="sy0">,</span>img_src<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The parameters are:</p>
+
+<ul>
+<li>value - (string) the option value</li>
+<li>label - (string) the option label</li>
+<li>css - (string) the css string attached to the option, optional</li>
+<li>img_src - (string) the path to the option icon image. Available just for the <a class="link-" href="combo__combobox_with_images_and_checkboxes.html#typeimage">image</a> combo type.</li>
+</ul>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxCombo/samples/04_opts_loading/01_from_script_single_option.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Script - single option</a></p>
+
+<h3>Loading a few options at once</h3>
+
+<ul>
+<li>as an array of arrays (in this case you can't use 4th parameter "img_src")</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myCombo <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXCombo<span class="br0">&#40;</span><span class="st0">&quot;combo_zone3&quot;</span><span class="sy0">,</span><span class="st0">&quot;alfa3&quot;</span><span class="sy0">,</span><span class="nu0">200</span><span class="br0">&#41;</span><span class="sy0">;</span>
+myCombo.<span class="me1">addOption</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+    <span class="br0">&#91;</span><span class="st0">&quot;a&quot;</span><span class="sy0">,</span><span class="st0">&quot;option A&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="br0">&#91;</span><span class="st0">&quot;b&quot;</span><span class="sy0">,</span><span class="st0">&quot;option B&quot;</span><span class="sy0">,</span> <span class="st0">&quot;color:red;&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="br0">&#91;</span><span class="st0">&quot;c&quot;</span><span class="sy0">,</span><span class="st0">&quot;option C&quot;</span><span class="br0">&#93;</span>
+<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxCombo/samples/04_opts_loading/02_from_script_array_of_array.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Script - array of arrays</a></p>
+
+<ul>
+<li>as an array of objects (you can use all 4 parameters) </li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myCombo <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXCombo<span class="br0">&#40;</span><span class="st0">&quot;combo_zone3&quot;</span><span class="sy0">,</span><span class="st0">&quot;alfa3&quot;</span><span class="sy0">,</span><span class="nu0">200</span><span class="br0">&#41;</span><span class="sy0">;</span>
+myCombo.<span class="me1">addOption</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+ <span class="br0">&#123;</span>value<span class="sy0">:</span><span class="st0">&quot;a&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;option A&quot;</span><span class="sy0">,</span> img_src<span class="sy0">:</span><span class="st0">&quot;../images/blue.gif&quot;</span><span class="sy0">,</span> css<span class="sy0">:</span><span class="st0">&quot;color:red;&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span> 
+ <span class="br0">&#123;</span>value<span class="sy0">:</span><span class="st0">&quot;b&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;option B&quot;</span><span class="sy0">,</span> img_src<span class="sy0">:</span><span class="st0">&quot;../images/green.gif&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span> 
+ <span class="br0">&#123;</span>value<span class="sy0">:</span><span class="st0">&quot;c&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;option C&quot;</span><span class="sy0">,</span> img_src<span class="sy0">:</span><span class="st0">&quot;../images/red.gif&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxCombo/samples/04_opts_loading/03_from_script_array_of_objects.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Script - array of objects</a></p>
+
+<a name='fromtheserverside'><h2>From the server side</h2></a>
+
+<h3>External XML file</h3>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myCombo <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXCombo<span class="br0">&#40;</span><span class="st0">&quot;combo_zone3&quot;</span><span class="sy0">,</span><span class="st0">&quot;alfa3&quot;</span><span class="sy0">,</span><span class="nu0">200</span><span class="br0">&#41;</span><span class="sy0">;</span>
+myCombo.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;xml/data.xml&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>where XML has the following format:</p>
+
+<pre><code><pre class="html">  <span class="sc2">&lt;?xml <span class="kw3">version</span><span class="sy0">=</span><span class="st0">&quot;1.0&quot;</span> ?&gt;</span>
+  <span class="sc2">&lt;complete&gt;</span>
+     <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;1&quot;</span>&gt;</span>one<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+     <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;2&quot;</span>&gt;</span>two<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+     <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;3&quot;</span>&gt;</span>three<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+     <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;4&quot;</span>&gt;</span>four<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+     <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;5&quot;</span>&gt;</span>five<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+     <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;6&quot;</span>&gt;</span>six<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+     <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;7&quot;</span>&gt;</span>seven<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+     <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;8&quot;</span>&gt;</span>eight<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+     <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;9&quot;</span>&gt;</span>nine<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+     <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;10&quot;</span>&gt;</span>ten<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+  <span class="sc2">&lt;<span class="sy0">/</span>complete&gt;</span></pre></code></pre>
+
+<p>Possible attributes of the &#60;option&#62; tag are as follows:</p>
+
+<ul>
+<li>value - option value</li>
+<li>selected - if option is selected</li>
+<li>img_src - icon url (also add the 4th parameter to combobox constructor - "image")</li>
+<li>checked - checkbox state (for combo with "checkbox" type, 0 by default)</li>
+</ul>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxCombo/samples/04_opts_loading/04_from_xml_server.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;XML from server</a></p>
+
+<h3>External JSON file</h3>
+
+<pre><code><pre class="js">myCombo <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXCombo<span class="br0">&#40;</span><span class="st0">&quot;combo_zone&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+myCombo.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;json/data.json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>where JSON has the following format:</p>
+
+<pre><code><pre class="js">options<span class="sy0">:</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>value<span class="sy0">:</span> <span class="st0">&quot;the_dead_zone&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;The Dead Zone&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>value<span class="sy0">:</span> <span class="st0">&quot;the_first_men_in_the_moon&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;The First Men in the Moon&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>value<span class="sy0">:</span> <span class="st0">&quot;the_green_mile&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;The Green Mile&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>value<span class="sy0">:</span> <span class="st0">&quot;the_invisible_man&quot;</span><span class="sy0">,</span> selected<span class="sy0">:</span> <span class="st0">&quot;1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;The Invisible Man&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>value<span class="sy0">:</span> <span class="st0">&quot;the_running_man&quot;</span><span class="sy0">,</span> checked<span class="sy0">:</span> <span class="st0">&quot;1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;The Running Man&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>value<span class="sy0">:</span> <span class="st0">&quot;the_talisman&quot;</span><span class="sy0">,</span> checked<span class="sy0">:</span> <span class="st0">&quot;1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;The Talisman&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>value<span class="sy0">:</span> <span class="st0">&quot;the_time_machine&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;The Time Machine&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>value<span class="sy0">:</span> <span class="st0">&quot;the_tommyknockers&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;The Tommyknockers&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+<span class="br0">&#93;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxCombo/samples/04_opts_loading/06_from_json_server.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;JSON from server</a></p>
+
+<a name='fromautocompletexmlfile'><h2>From autocomplete XML file</h2></a>
+
+<p>Please check the chapter <a class="link-" href="combo__filtering.html">Autocomplete in Combo</a> for more details.</p>
+
+<a name='fromhtml'><h2>From HTML</h2></a>
+
+<p>Options can be loaded from HTML in the case of converting from existing select box.</p>
+
+<pre><code><pre class="js">myCombo <span class="sy0">=</span> dhtmlXComboFromSelect<span class="br0">&#40;</span><span class="st0">&quot;mySelect&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>where HTML has the following format:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">select</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;mySelect&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width:230px;&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;the_adventures_of_tom_sawyer&quot;</span>&gt;</span>The Adventures of Tom Sawyer<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;the_dead_zone&quot;</span>&gt;</span>The Dead Zone<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;the_first_men_in_the_moon&quot;</span>&gt;</span>The First Men in the Moon<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;the_girl_who_loved_tom_gordon&quot;</span>&gt;</span>The Girl Who Loved Tom Gordon<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;the_green_mile&quot;</span>&gt;</span>The Green Mile<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;the_invisible_man&quot;</span> <span class="kw3">selected</span><span class="sy0">=</span><span class="st0">&quot;1&quot;</span>&gt;</span>The Invisible Man<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;the_island_of_doctor_moreau&quot;</span>&gt;</span>The Island of Doctor Moreau<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;the_prince_and_the_pauper&quot;</span>&gt;</span>The Prince and the Pauper<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;the_running_man&quot;</span>&gt;</span>The Running Man<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;the_talisman&quot;</span>&gt;</span>The Talisman<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;the_time_machine&quot;</span>&gt;</span>The Time Machine<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;the_tommyknockers&quot;</span>&gt;</span>The Tommyknockers<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;the_war_of_the_worlds&quot;</span>&gt;</span>The War of the Worlds<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">select</span>&gt;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxCombo/samples/01_init/02_init_from_select.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Init from select</a></p>
+
+<!-- Content Area End -->
+			<a href='combo__adding_options.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

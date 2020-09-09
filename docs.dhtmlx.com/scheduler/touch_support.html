@@ -1,0 +1,299 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Mobile Responsive Scheduler  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="minicalendar.html">Mini Calendar (Date Picker)</a></li><li class=" current"><a href="touch_support.html">Mobile Responsive Scheduler</a></li><ul><li class="inner"><a href="touch_support.html#responsivelayout">Responsive layout</a></li><li class="inner"><a href="touch_support.html#touchconfigurationoptions">Touch configuration options</a></li><li class="inner"><a href="touch_support.html#touchgesturesinthescheduler">Touch gestures in the scheduler</a></li><li class="inner"><a href="touch_support.html#quickinfoextension">'Quick info' extension</a></li></ul><li class=""><a href="content_security_policy.html">Content Security Policy Compliance</a></li><li class=""><a href="winjs_compatibility.html">dhtmlxScheduler in Windows Store Apps</a></li><li class=""><a href="live_update.html">Live Update Mode</a></li><li class=""><a href="multiple_users.html">Multiple Users</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="special_extensions.html">Special Extensions and Editions</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Mobile Responsive Scheduler</h1>
+
+<p>dhtmlxScheduler provides support for touch devices, such as:</p>
+
+<ul>
+<li>iOS devices (iPad, iPhone, iPod);</li>
+<li>Windows 10-based tablets and touch screen monitors;</li>
+<li>Android-based devices.</li>
+</ul>
+
+<p><em>The scheduler will work on smartphones as well, but due to the lack of screen space it will require manual configuration.</em></p>
+
+<p><strong>Important tips!</strong></p>
+
+<ul>
+<li>Touch support is enabled by default and provided in all modes of the scheduler.</li>
+<li>If your app is intended to be used on the touch devices, we strongly recommend to use the <a class="link-" href="skins.html#materialskin">'material' skin</a>, as it provides reasonably big and easy-to-touch buttons.</li>
+<li>Usually it is a good idea to use a <a class="link-" href="extensions_list.html#quickinfo">Quick Info</a> if you expect mobile users</li>
+<li>We recommend adding the meta tag below on the page. It will automatically make all elements of the scheduler larger, which will make it so much easier for the end users</li>
+</ul>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>meta <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;viewport&quot;</span> content<span class="sy0">=</span><span class="st0">&quot;width=device-width, initial-scale=1&quot;</span><span class="sy0">&gt;</span></pre></code></pre>
+
+<a name='responsivelayout'><h2>Responsive layout</h2></a>
+
+<p>When you <a class="link-" href="initialization.html#initializingschedulerviaheaderconfig">initialize Scheduler via the header configuration property</a>, you'll be able to choose the header structure that fits the screen size of the client.
+It will also apply certain styles which will make elements and font sizes responsive on small screens.</p>
+
+<h3>Header</h3>
+
+<p>For example, you can rearrange the header into multiple rows:</p>
+
+<p><img src="media/header_responsive.png"/></p>
+
+<p>In the image above Scheduler is displayed on a small screen.</p>
+
+<p>This setting can be changed dynamically, which allows you to define separate header configurations both for large and small screens:</p>
+
+<pre><code><pre class="js"><span class="co1">// define configs</span>
+<span class="kw2">const</span> compactHeader <span class="sy0">=</span> <span class="br0">&#123;</span>
+    rows<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span> 
+            cols<span class="sy0">:</span> <span class="br0">&#91;</span>
+                <span class="st0">&quot;prev&quot;</span><span class="sy0">,</span>
+                <span class="st0">&quot;date&quot;</span><span class="sy0">,</span>
+                <span class="st0">&quot;next&quot;</span><span class="sy0">,</span>
+            <span class="br0">&#93;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> 
+            cols<span class="sy0">:</span> <span class="br0">&#91;</span>
+                <span class="st0">&quot;day&quot;</span><span class="sy0">,</span>
+                <span class="st0">&quot;week&quot;</span><span class="sy0">,</span>
+                <span class="st0">&quot;month&quot;</span><span class="sy0">,</span>
+                <span class="st0">&quot;spacer&quot;</span><span class="sy0">,</span>
+                <span class="st0">&quot;today&quot;</span>
+            <span class="br0">&#93;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">const</span> fullHeader <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="st0">&quot;day&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;week&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;month&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;date&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;prev&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;today&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;next&quot;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// add a switch to select an appropriate config for a current screen size</span>
+&nbsp;
+<span class="kw2">function</span> resetConfig<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    let header<span class="sy0">;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>window.<span class="me1">innerWidth</span> <span class="sy0">&lt;</span> <span class="nu0">1000</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        header <span class="sy0">=</span> compactHeader<span class="sy0">;</span>
+    <span class="br0">&#125;</span> <span class="kw1">else</span> <span class="br0">&#123;</span>
+        header <span class="sy0">=</span> fullHeader<span class="sy0">;</span>
+&nbsp;
+    <span class="br0">&#125;</span>
+    scheduler.<span class="me1">config</span>.<span class="me1">header</span> <span class="sy0">=</span> header<span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">// apply the config initially and each time scheduler repaints or resizes:</span>
+&nbsp;
+resetConfig<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onBeforeViewChange&quot;</span><span class="sy0">,</span> resetConfig<span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onSchedulerResize&quot;</span><span class="sy0">,</span> resetConfig<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+scheduler.<span class="me1">config</span>.<span class="me1">responsive_lightbox</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span> <span class="co1">// responsive lightbox</span>
+&nbsp;
+scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;scheduler_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/01_initialization_loading/13_touch_ui.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Responsive scheduler</a></p>
+
+<h3>Lightbox</h3>
+
+<p>Scheduler API provides the <a class="link-" href="api__scheduler_responsive_lightbox_config.html">responsive_lightbox</a> configuration option that enables responsiveness of the lightbox.</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">responsive_lightbox</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span> <span class="co1">//disabled by default</span>
+<span class="co1">//you need to set this value to true to enable the responsiveness of the lightbox</span></pre></code></pre>
+
+<p>The elements of the lightbox adapt to a small screen in the image below:</p>
+
+<p><img src="media/lightbox_responsive.png"/></p>
+
+<p><a href='samples/01_initialization_loading/13_touch_ui.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Responsive scheduler</a></p>
+
+<p>There is a possibility to customize the lightbox appearance when it is responsive. The lightbox will have an additional CSS class <b>dhx_cal_light_responsive</b> which you can use in your selectors.</p>
+
+<p>By default, this class has some media queries associated with it. 
+These new styles will have effect only on smaller screen/window sizes (&lt; 1024px) and can change look and feel of the lightbox on these screens.</p>
+
+<a name='touchconfigurationoptions'><h2>Touch configuration options</h2></a>
+
+<p>Here is a list of configuration options related to the mobile/responsive support:</p>
+
+<ul><li><a class="link-" href="api__scheduler_header_config.html">header</a> - specifies the header layout</li>
+<li><a class="link-" href="api__scheduler_touch_config.html">touch</a> - enables/disables touch support in the scheduler</li>
+<li><a class="link-" href="api__scheduler_touch_drag_config.html">touch_drag</a> - defines the time period (in milliseconds) that is used to differentiate a long touch gesture from a scroll gesture</li>
+<li><a class="link-" href="api__scheduler_touch_tip_config.html">touch_tip</a> - enables/disables prompting messages in the right top corner of the screen</li>
+<li><a class="link-" href="api__scheduler_touch_swipe_dates_config.html">touch_swipe_dates</a> - enables/disables prompting messages in the right top corner of the screen</li>
+<li><a class="link-" href="api__scheduler_responsive_lightbox_config.html">responsive_lightbox</a> - enables responsive styles for the lightbox (disabled by default)</li></ul>
+
+<a name='touchgesturesinthescheduler'><h2>Touch gestures in the scheduler</h2></a>
+
+<ul>
+<li><strong>Double tap</strong> -  works the same as a double click in the normal scheduler (triggers event edition or creation);</li>
+<li><strong>Long tap and drag</strong>  - moves or creates events;</li>
+<li><strong>Swipe</strong> - switches view to the next|prev time span (<a class="link-" href="api__scheduler_touch_swipe_dates_config.html">disabled by default</a>).</li>
+</ul>
+
+<a name='quickinfoextension'><h2>'Quick info' extension</h2></a>
+
+<p>Specially for providing touch functionality, the library is extended with the <a class="link-" href="extensions_list.html#quickinfo">"Quick Info" extension</a>.</p>
+
+<p>The extension allows you to replace the standard sidebar buttons and the simplified edit form 
+(which are quite small and hard-to-target on touch devices) with new ones, bigger and handier.</p>
+
+<p>To activate the big-buttons scheduler, include the <a class="link-" href="extensions_list.html#quickinfo">"Quick Info"</a> extension file on the page:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>script src<span class="sy0">=</span><span class="st0">&quot;../../codebase/ext/dhtmlxscheduler_quick_info.js&quot;</span><span class="sy0">&gt;&lt;/</span>script<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>script<span class="sy0">&gt;</span>
+      scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span><span class="nu0">5</span><span class="sy0">,</span><span class="nu0">30</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="st0">&quot;day&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+      ...
+<span class="sy0">&lt;</span>script<span class="sy0">&gt;</span></pre></code></pre>
+
+<p><a href='samples/03_extensions/29_quick_info.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Touch-oriented scheduler</a></p>
+
+<p>Once the extension is enabled, the scheduler automatically replaces standard buttons with large-size ones:</p>
+
+<p><img src="media/quick_info_extension.png" alt="quick_info_extension.png" /></p>
+
+<div class='note'><p><p>Note, the quick-info selection side menu and selection menu in  the standard scheduler  use the same configuration that is stored in the <a class="link-" href="api__scheduler_icons_select_config.html">icons_select</a> object.</p>
+</p></div>
+
+<p>The extension provides:</p>
+
+<ul>
+<li><strong>3 templates</strong> </li>
+</ul>
+
+<ul><li><a class="link-" href="api__scheduler_quick_info_content_template.html">quick_info_content</a> - specifies the content of the pop-up edit form</li>
+<li><a class="link-" href="api__scheduler_quick_info_date_template.html">quick_info_date</a> - specifies the date of the pop-up edit form</li>
+<li><a class="link-" href="api__scheduler_quick_info_title_template.html">quick_info_title</a> - specifies the title of the pop-up edit form</li></ul>
+
+<ul>
+<li><strong>1 configuration option</strong></li>
+</ul>
+
+<ul><li><a class="link-" href="api__scheduler_quick_info_detached_config.html">quick_info_detached</a> - defines whether the event form will appear from the left/right side of the screen or near the selected event</li></ul>
+
+<ul>
+<li><strong>2 methods</strong> </li>
+</ul>
+
+<ul><li><a class="link-" href="api__scheduler_hidequickinfo.html">hideQuickInfo</a> - hides the pop-up event form (if it's currently active)</li>
+<li><a class="link-" href="api__scheduler_showquickinfo.html">showQuickInfo</a> - displays the pop-up event form for the specified event</li></ul>
+
+<ul>
+<li><strong>2 events</strong></li>
+</ul>
+
+<ul><li><a class="link-" href="api__scheduler_onquickinfo_event.html">onQuickInfo</a> - fires when the pop-up edit form appears</li>
+<li><a class="link-" href="api__scheduler_onafterquickinfo_event.html">onAfterQuickInfo</a> - fires after the pop-up event form is closed</li></ul>
+
+<!-- Content Area End -->
+			<a href='touch_support.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

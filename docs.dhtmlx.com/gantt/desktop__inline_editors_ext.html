@@ -1,0 +1,299 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Inline Editors Extension  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__click_drag_ext.html">clickDrag Extension</a></li><li class="toc-pro"><a href="desktop__formatters_ext.html">Formatters Extension</a></li><li class=""><a href="desktop__fullscreen_ext.html">Fullscreen Extension</a></li><li class=" current"><a href="desktop__inline_editors_ext.html">Inline Editors Extension</a></li><ul><li class="inner"><a href="desktop__inline_editors_ext.html#methods">Methods</a></li><li class="inner"><a href="desktop__inline_editors_ext.html#events">Events</a></li></ul><li class=""><a href="desktop__keynav_ext.html">Keyboard Navigation Extension</a></li><li class=""><a href="desktop__overlay_ext.html">Overlay Extension</a></li><li class=""><a href="desktop__quickinfo_ext.html">quickInfo Extension</a></li><li class=""><a href="desktop__tooltips_ext.html">Tooltips Extension</a></li><li class=""><a href="desktop__undo_ext.html">Undo Extension</a></li><li class=""><a href="desktop__zoom.html">Zoom Extension</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="api__refs__gantt.html">Gantt API</a><a class="n3" href="api__refs__gantt_others.html">Others</a><a class="n4" href="api__gantt_ext_other.html">ext</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Inline Editors Extension</h1>
+
+<p>Read details about the Inline editors extension in the article <a class="link-" href="desktop__inline_editing.html">Inline Editing in Grid</a>. <br> The <em>inlineEditors</em> object possesses the following API:</p>
+
+<a name='methods'><h2>Methods</h2></a>
+
+<h3>Actions:</h3>
+
+<ul>
+<li><strong>startEdit(taskId,columnName)</strong> - opens an editor in the specified task/cell, sets the mapped value and puts browser focus on the editor</li>
+<li><strong>show(taskId,columnName)</strong> - opens an empty editor in specified task/cell</li>
+<li><strong>setValue()</strong> - populates an opened editor with values from the task</li>
+<li><strong>save()</strong> - saves changes and hides an editor</li>
+<li><strong>hide()</strong> - hides an editor without saving changes</li>
+<li><strong>focus()</strong> - puts browser focus on the editor </li>
+<li><strong>getState()</strong> - gets the state object {id: taskId, columnName: columnName}</li>
+<li><strong>getValue()</strong> - gets the current value of the editor</li>
+</ul>
+
+<h3>State:</h3>
+
+<ul>
+<li><strong>isChanged()</strong> - checks whether the current value of the editor differs from the initial value</li>
+<li><strong>isVisible()</strong> - checks whether the editor is opened</li>
+</ul>
+
+<h3>Events:</h3>
+
+<ul>
+<li><strong>attachEvent(name,handler)</strong> - attaches an event handler to inlineEditors object</li>
+<li><strong>detachEvent(id)</strong> - detaches a handler from an event (which was attached before by the attachEvent() method) </li>
+</ul>
+
+<h3>Navigation:</h3>
+
+<ul>
+<li><strong>editNextCell(canChangeRow)</strong> - saves the current editor and moves editor to the next cell 
+
+<ul>
+<li><code>canChangeRow</code> parameter specifies whether it can move the editor to the first cell of the next row after the last cell of the current one</li>
+</ul></li>
+<li><strong>editNextRow()</strong> - saves the current editor and opens an editor in the same cell of the task below</li>
+<li><strong>editPrevCell(canChangeRow)</strong> - saves the current editor and moves editor to the previous cell 
+
+<ul>
+<li><code>canChangeRow</code> parameter specifies whether it can move editor to the last cell of the row above after reaching the first cell of the current row</li>
+</ul></li>
+<li><strong>editPrevRow()</strong> - saves the current editor and opens an editor in the same cell of the task above</li>
+<li><strong>getFirstCell()</strong> - gets the name of the first editable column in the grid</li>
+<li><strong>getLastCell()</strong> - gets the name of the last editable column in the grid</li>
+<li><strong>getNextCell(direction)</strong> - returns the name of the next editable column</li>
+</ul>
+
+<h3>Helpers:</h3>
+
+<ul>
+<li><strong>locateCell(node)</strong> - checks whether a provided DOM element is a task cell object and returns an editor state object, if it is so: {id: taskId, columnName: columnName}</li>
+</ul>
+
+<h3>Mouse/Keyboard mapping:</h3>
+
+<ul>
+<li><strong>setMapping(mapping)</strong> - sets a mapping object</li>
+<li><strong>getMapping()</strong> - returns a currently applied mapping object</li>
+</ul>
+
+<a name='events'><h2>Events</h2></a>
+
+<h3>onBeforeEditStart <br><br></h3>
+
+<pre><code><pre class="js"><span class="kw2">var</span> inlineEditors <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">inlineEditors</span><span class="sy0">;</span>
+&nbsp;
+inlineEditors.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onBeforeEditStart&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>state<span class="br0">&#41;</span><span class="br0">&#123;</span>
+   console.<span class="me1">log</span><span class="br0">&#40;</span>state<span class="br0">&#41;</span><span class="sy0">;</span>
+   <span class="co1">// -&gt; {id: itemId, columnName: columnName};</span>
+   <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Arguments:</p>
+
+<ul>
+<li>state - the editor state object
+
+<ul>
+<li>id - the id of an edited task</li>
+<li>columnName - the column name</li>
+</ul></li>
+</ul>
+
+<h3>onEditStart <br><br></h3>
+
+<pre><code><pre class="js"><span class="kw2">var</span> inlineEditors <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">inlineEditors</span><span class="sy0">;</span>
+&nbsp;
+inlineEditors.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onEditStart&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>state<span class="br0">&#41;</span><span class="br0">&#123;</span>
+   console.<span class="me1">log</span><span class="br0">&#40;</span>state<span class="br0">&#41;</span><span class="sy0">;</span>
+   <span class="co1">// -&gt; {id: itemId, columnName: columnName};</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Arguments:</p>
+
+<ul>
+<li>state - the editor state object
+
+<ul>
+<li>id - the id of an edited task</li>
+<li>columnName - the column name</li>
+</ul></li>
+</ul>
+
+<h3>onBeforeSave</h3>
+
+<p>fires when an editor is about to close and save changes</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> inlineEditors <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">inlineEditors</span><span class="sy0">;</span>
+&nbsp;
+inlineEditors.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onBeforeSave&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>state<span class="br0">&#41;</span><span class="br0">&#123;</span>
+   console.<span class="me1">log</span><span class="br0">&#40;</span>state<span class="br0">&#41;</span><span class="sy0">;</span>
+   <span class="co1">// -&gt; { id: itemId, </span>
+   <span class="co1">//      columnName: columnName, </span>
+   <span class="co1">//      oldValue: value, </span>
+   <span class="co1">//      newValue: value</span>
+   <span class="co1">//    };</span>
+   <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Arguments:</p>
+
+<ul>
+<li>state - the editor state object
+
+<ul>
+<li>id - the id of an edited task</li>
+<li>columnName - the column name</li>
+<li>oldValue - the initial value of the editor</li>
+<li>newValue - the current value of the editor, can be modified</li>
+</ul></li>
+</ul>
+
+<h3>onSave</h3>
+
+<p>fires after a task has been updated from the editor</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> inlineEditors <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">inlineEditors</span><span class="sy0">;</span>
+&nbsp;
+inlineEditors.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onSave&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>state<span class="br0">&#41;</span><span class="br0">&#123;</span>
+   console.<span class="me1">log</span><span class="br0">&#40;</span>state<span class="br0">&#41;</span><span class="sy0">;</span>
+   <span class="co1">// -&gt; { id: itemId, </span>
+   <span class="co1">//      columnName: columnName, </span>
+   <span class="co1">//      oldValue: value, </span>
+   <span class="co1">//      newValue: value</span>
+   <span class="co1">//    };</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Arguments:</p>
+
+<ul>
+<li>state - the editor state object
+
+<ul>
+<li>id - the id of an edited task</li>
+<li>columnName - the column name</li>
+<li>oldValue - the initial value of the editor</li>
+<li>newValue - the current value of the editor</li>
+</ul></li>
+</ul>
+
+<h3>onEditEnd</h3>
+
+<p>fires after an inline editor has been hidden</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> inlineEditors <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">inlineEditors</span><span class="sy0">;</span>
+&nbsp;
+inlineEditors.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onEditEnd&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>state<span class="br0">&#41;</span><span class="br0">&#123;</span>
+   console.<span class="me1">log</span><span class="br0">&#40;</span>state<span class="br0">&#41;</span><span class="sy0">;</span>
+   <span class="co1">// -&gt; {id: itemId, columnName: columnName};</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Arguments:</p>
+
+<ul>
+<li>state - the editor state object
+
+<ul>
+<li>id - the id of an edited task</li>
+<li>columnName - the column name</li>
+</ul></li>
+</ul>
+
+<!-- Content Area End -->
+			<a href='desktop__inline_editors_ext.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

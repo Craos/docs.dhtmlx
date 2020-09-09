@@ -1,0 +1,372 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Extending Functionality  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="connector__cf__reference.html">ColdFusion Connector API</a></li><li class=""><a href="connector__cf__general_idea.html">General Idea of dhtmlxConnector</a></li><li class=""><a href="connector__cf__init.html">Initializing ColdFusion Connector</a></li><li class=""><a href="connector__cf__basis.html">Basic Loading</a></li><li class=""><a href="connector__cf__dyn_loading.html">Dynamic Loading</a></li><li class=""><a href="connector__cf__filtration.html">Filtering</a></li><li class=""><a href="connector__cf__formatting.html">Formatting/Changing Data before Loading</a></li><li class=""><a href="connector__cf__sort.html">Sorting</a></li><li class=""><a href="connector__cf__dp.html">Client-Side Requirement - dataProcessor</a></li><li class=""><a href="connector__cf__complex_queries.html">Making Queries</a></li><li class=""><a href="connector__cf__multi_sync.html">Multi-User Sync</a></li><li class=""><a href="connector__cf__app_security.html">Security</a></li><li class=""><a href="connector__cf__validation.html">Validation</a></li><li class=""><a href="connector__cf__grid_columns.html">Select/Combobox Columns in Grid</a></li><li class=""><a href="connector__cf__grid_structure_server.html">Defining Grid Structure on the Server Side</a></li><li class=""><a href="connector__cf__scheduler_columns.html">Select-Box Columns in Scheduler</a></li><li class=""><a href="connector__cf__db_operations.html">Elementary DB operations with Connector</a></li><li class=""><a href="connector__cf__errors.html">Error Handling and Logging</a></li><li class=""><a href="connector__cf__event_handling.html">Handling Events</a></li><li class=" current"><a href="connector__cf__extending.html">Extending Functionality</a></li><ul><li class="inner"><a href="connector__cf__extending.html#protocoldetails">Protocol details</a></li><li class="inner"><a href="connector__cf__extending.html#portingconnectorstoanotherplatforms">Porting connectors to another platforms</a></li><li><a href="connector__cf__xml_format_used_by_connector.html">XML format used by connector</a></li></ul><li class=""><a href="connector__cf__samples.html">Samples</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="connector__index.html">Client-Server Communication</a><a class="n3" href="connector__cf__index.html">ColdFusion Connector</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Extending Functionality</h1>
+
+<a name='protocoldetails'><h2>Protocol details</h2></a>
+
+<h3>data fetching</h3>
+
+<p><strong>POST</strong></p>
+
+<p>Command parameters:</p>
+
+<ul>
+<li>none</li>
+</ul>
+
+<p><strong>GET</strong></p>
+
+<p>Command parameters:</p>
+
+<ul>
+<li><p><strong><em>connector=true</em></strong> - flag of connector based request</p></li>
+<li><p><strong><em>dhx_colls=field1,field2...fieldN</em></strong> - optional, can contain a list of fields for which collections will be requested. dhtmlxGrid uses such parameters to request data for combo columns and select filter (such requests are executed just once, for initial data loading)</p></li>
+</ul>
+
+<pre><code><pre class="js">some.<span class="me1">cfm</span><span class="sy0">?</span>connector<span class="sy0">=</span>true<span class="sy0">&amp;</span>dhx_colls<span class="sy0">=</span><span class="nu0">2</span><span class="sy0">,</span><span class="nu0">3</span></pre></code></pre>
+
+<ul>
+<li><strong><em>dhx_sort[field]=directon</em></strong> - instruct the server-side connector to sort dataset by the defined field</li>
+</ul>
+
+<pre><code><pre class="js">some.<span class="me1">cfm</span><span class="sy0">?</span>connector<span class="sy0">=</span>true<span class="sy0">&amp;</span>dhx_sort<span class="br0">&#91;</span><span class="nu0">2</span><span class="br0">&#93;</span><span class="sy0">=</span>asc</pre></code></pre>
+
+<ul>
+<li><strong><em>dhx_filter[field]=mask</em></strong> - instruct the server-side connector to filter dataset by the defined field</li>
+</ul>
+
+<pre><code><pre class="js"><span class="sy0">&lt;!---</span><span class="co1">//filter by %test%---&gt;</span>
+some.<span class="me1">cfm</span><span class="sy0">?</span>connector<span class="sy0">=</span>true<span class="sy0">&amp;</span>dhx_filter<span class="br0">&#91;</span><span class="nu0">2</span><span class="br0">&#93;</span><span class="sy0">=</span>test</pre></code></pre>
+
+<h4>Grid specific</h4>
+
+<p><em>Requesting part of data (Dynamic Smart Rendering or Dynamic Paging)</em></p>
+
+<p><strong>GET</strong></p>
+
+<ul>
+<li><em><strong>posStart</strong></em> - the position from which data is requested</li>
+<li><em><strong>count</strong></em> - the count of requested rows</li>
+</ul>
+
+<h4>Combo specific</h4>
+
+<p><em>Requesting part of data</em></p>
+
+<p><strong>GET</strong></p>
+
+<ul>
+<li><em><strong>pos</strong></em> - the position from which data is requested</li>
+</ul>
+
+<p><em>Filter by label field</em></p>
+
+<p><strong>GET</strong></p>
+
+<ul>
+<li><em><strong>mask</strong></em> - the filtering mask for the label field</li>
+</ul>
+
+<h4>Tree/TreeGrid specific</h4>
+
+<p><em>Requesting a branch of tree</em></p>
+
+<p><strong>GET</strong></p>
+
+<ul>
+<li><em><strong>id</strong></em> - the parent id for the requested branch</li>
+</ul>
+
+<h3>Data updating (using dataProcessor)</h3>
+
+<p><strong>GET</strong></p>
+
+<ul>
+<li><em><strong>editing=true</strong></em> - the mark of dataprocessor-based call</li>
+</ul>
+
+<p><strong>POST</strong></p>
+
+<ul>
+<li><em><strong>ids</strong></em> - the list of updated records</li>
+<li><em><strong>[id]_[property]</strong></em> - for each field inside of the updated record the related field in POST is generated</li>
+<li><em><strong>[id]_!nativeeditor_status</strong></em> - the action type</li>
+</ul>
+
+<p><a class="link-" href="connector__cf__extending.html">Back to top</a></p>
+
+<a name='portingconnectorstoanotherplatforms'><h2>Porting connectors to another platforms</h2></a>
+
+<p><strong>When should you use it?</strong></p>
+
+<p>The existing version of connectors supports a limited set of server platforms. In case database/framework/scripting language you'd like to use is not supported, you can port existing solution on your platform.</p>
+
+<p><strong>When shouldn't you use it?</strong></p>
+
+<p>Connectors are just wrappers for existing grid functionality, that's why if you need to use this solution once, you'd better use the grid API directly, instead of creating your own server connector.</p>
+
+<h3>Implementation levels</h3>
+
+<p>The connector supports many operations implementing data processing. There is an opportunity to provide supporting basic operations and ignore higher-level ones, in case they are not used in your project.</p>
+
+<h4>Basic support</h4>
+
+<p>Data assignment is a basic connector operation which proceeds in the following way: connector connects to database, selects data and outputs it in <em>stdout</em> using XML format of the current component.</p>
+
+<p><strong>Key points:</strong></p>
+
+<ol>
+<li>XML-data input must occur only after sending the appropriate http-header</li>
+<li>XML must start with XML declaration containing the appropriate data coding</li>
+<li>No other content must be sent to <em>stdout</em> (neither before, nor after sending data by connector)</li>
+</ol>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>cfcontent type<span class="sy0">=</span><span class="st0">&quot;text/xml;charset=UTF-8&quot;</span> reset<span class="sy0">=</span><span class="st0">&quot;yes&quot;</span><span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>cfoutput<span class="sy0">&gt;&lt;?</span>xml version<span class="sy0">=</span><span class="st0">'1.0'</span> encoding<span class="sy0">=</span><span class="st0">'utf-8'</span> <span class="sy0">?&gt;</span>#xml_formatted_data#<span class="sy0">&lt;/</span>cfoutput<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>cfabort<span class="sy0">&gt;</span></pre></code></pre>
+
+<ul>
+<li>incoming parameters - there aren't any;</li>
+<li>restriction for output data - there are no restrictions.</li>
+</ul>
+
+<p><a class="link-" href="connector__cf__xml_format_used_by_connector.html">XML Format used by connector</a></p>
+
+<p>Basic implementation allows using the resulting script as the input parameter for the load() method.</p>
+
+<div class='note'><p><p>Technically, there is an opportunity to use JSON or any other format supported by the component, but you should bear in mind that complex scenarios are XML-oriented and you'd better use XML</p>
+</p></div>
+
+<h4>Filtering and sorting</h4>
+
+<p>At this stage, the number of supported operations is considerably extended: you are 
+allowed to use #connector_text_filter, sorting type 'connector' and filter/sort data through URL manipulations.</p>
+
+<p><strong>Key points:</strong></p>
+
+<ul>
+<li>An obvious advantage of this functionality can be estimated only in terms of operating with grid, for other components such functionality doesn't seem to be necessary (it can be used only to filter/sort data through URL manipulations).</li>
+<li>The level 'uses' code from the previous one. Beware, that now before using XML data is sorted/filtered according to the incoming data. </li>
+</ul>
+
+<p><strong>GET</strong></p>
+
+<p>Command parameters:</p>
+
+<ul>
+<li><p><em><strong>dhx_filter</strong></em> - a hash of filtering rules</p>
+
+<ul>
+<li>filtering pattern - any entry( like %x% )</li>
+<li>in case you have a few parameters, you should link them by AND logic</li>
+<li>parameter is available only for fields with active filter</li>
+<li>empty filter value means that filter wasn't set and it must be ignored</li>
+</ul>
+
+<pre><code><pre class="php"><span class="co1">// where field1 like %some% AND field2 like %other%</span>
+dhx_filter<span class="br0">&#91;</span><span class="nu0">1</span><span class="br0">&#93;</span><span class="sy0">=</span>some<span class="sy0">&amp;</span>dhx_filter<span class="br0">&#91;</span><span class="nu0">2</span><span class="br0">&#93;</span><span class="sy0">=</span>other</pre></code></pre></li>
+<li><p><em><strong>dhx_sort</strong></em> - a hash of sorting rules</p>
+
+<ul>
+<li>possible values for <em>asc</em> and <em>dsc</em> parameters</li>
+<li>in case you have a few parameters, you should link them by AND logic</li>
+<li>order of filtering implementation - not defined, at the moment none of the components is able to create multi-field sorting</li>
+</ul>
+
+<pre><code><pre class="php"><span class="co1">// order by field1 ASC, field2 DESC</span>
+dhx_sort<span class="br0">&#91;</span><span class="nu0">1</span><span class="br0">&#93;</span><span class="sy0">=</span>asc<span class="sy0">&amp;</span>dhx_filter<span class="br0">&#91;</span><span class="nu0">2</span><span class="br0">&#93;</span><span class="sy0">=</span>dsc</pre></code></pre>
+
+<p>Hashes of rules in question use the name of fields (where filtering is enabled) or columns' indices (in case of grid).</p></li>
+</ul>
+
+<p>Restriction for output data: order and structure are defined through filtering/sorting parameters.</p>
+
+<p><strong>Combo specific:</strong></p>
+
+<p>dhtmlxCombo has an additional filtering GET parameter:</p>
+
+<ul>
+<li><em><strong>mask</strong></em> - sets filtering in text label columns using “like x%” rule.</li>
+</ul>
+
+<pre><code><pre class="php">some<span class="sy0">.</span><span class="kw1">do</span>?mask<span class="sy0">=</span>abc</pre></code></pre>
+
+<h4>Dynamic loading</h4>
+
+<p>After data output implementation goes dynamic loading. Dynamic loading has some particular features while working with hierarchical (tree/treegrid) and simple (grid/combo) components.</p>
+
+<p>For hierarchical components, loading of data branch occurs at once.</p>
+
+<pre><code><pre class="js">some.<span class="me1">cfm</span><span class="sy0">?</span>id<span class="sy0">=</span><span class="nu0">123</span></pre></code></pre>
+
+<p>Command parameters:</p>
+
+<ul>
+<li><em><strong>id</strong></em> - 'parent id' which defines the appropriate branch (beware, all filtering/sorting rules set during the previous stage are applied to the component). </li>
+</ul>
+
+<p>For other components data will be output according to incoming parameters.</p>
+
+<pre><code><pre class="js"><span class="co1">//grid</span>
+some.<span class="me1">cfm</span><span class="sy0">?</span>posStart<span class="sy0">=</span><span class="nu0">20</span><span class="sy0">&amp;</span>count<span class="sy0">=</span><span class="nu0">50</span>
+<span class="co1">//combo</span>
+some.<span class="me1">cfm</span><span class="sy0">?</span>pos<span class="sy0">=</span><span class="nu0">50</span></pre></code></pre>
+
+<p>Command parameters:</p>
+
+<p>Grid:</p>
+
+<ul>
+<li><em><strong>posStart</strong></em> - index of the initial string</li>
+<li><em><strong>count</strong></em> - number of strings to output </li>
+</ul>
+
+<p>Combo:</p>
+
+<ul>
+<li><em><strong>pos</strong></em> - index of the initial string</li>
+<li>number of strings is defined by the server settings</li>
+</ul>
+
+<p>While working with grid, the initial request (grid doesn't know yet how many strings are expected) doesn't contain any additional parameters ( 'posStart' and 'count' are not defined)</p>
+
+<p><a class="link-" href="connector__cf__extending.html">Back to top</a></p>
+
+<!-- Content Area End -->
+			<a href='connector__cf__extending.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

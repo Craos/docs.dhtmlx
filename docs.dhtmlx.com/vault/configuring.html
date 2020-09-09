@@ -1,0 +1,313 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1589296882.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1589296882.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Vault Docs" href="https://docs.dhtmlx.com/vault/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Configuration  Vault Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/c/widgets/vault">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="installation.html">How to Install dhtmlxVault</a></li><li class=""><a href="initialize.html">Initialization</a></li><li class=" current"><a href="configuring.html">Configuration</a></li><ul><li class="inner"><a href="configuring.html#pathtotheuploadscript">Path to the upload script</a></li><li class="inner"><a href="configuring.html#downloadurl">Download URL</a></li><li class="inner"><a href="configuring.html#gridmode">Grid mode</a></li><li class="inner"><a href="configuring.html#hidingtoolbar">Hiding toolbar</a></li><li class="inner"><a href="configuring.html#manualfileupload">Manual file upload</a></li><li class="inner"><a href="configuring.html#sendingallfilesinonerequest">Sending all files in one request</a></li><li class="inner"><a href="configuring.html#extraparamsforxhrequest">Extra params for XHRequest</a></li><li class="inner"><a href="configuring.html#customjsscrollbar">Custom JS scroll bar</a></li><li class="inner"><a href="configuring.html#progressbar">Progress bar</a></li><li class="inner"><a href="configuring.html#changingnameofformfield">Changing name of form field</a></li><li class="inner"><a href="configuring.html#updatingfileattributesfromserverresponse">Updating file attributes from server response</a></li></ul><li class=""><a href="localization.html">Localization</a></li><li class=""><a href="work_with_vault.html">Working with Vault</a></li><li class=""><a href="loading_files.html">Loading List of Files</a></li><li class=""><a href="uploading_files.html">Uploading Files</a></li><li class=""><a href="managing_files.html">Managing Files</a></li><li class=""><a href="events.html">Handling Events</a></li><li class=""><a href="customization.html">Customizing Vault</a></li><li class=""><a href="angular_integration.html">Integrating Vault with Angular</a></li><li class=""><a href="react_integration.html">Integrating Vault with React</a></li><li class=""><a href="vuejs_integration.html">Integrating Vault with Vue.js</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Configuration</h1>
+
+<p>You can use configuration settings of dhtmlxVault to adapt the component to your needs. <a class="link-" href="initialize.html#configurationproperties">Check the list of possible config properties</a>.</p>
+
+<a name='pathtotheuploadscript'><h2>Path to the upload script</h2></a>
+
+<p>The URL to the server-side script that will process file upload is set in the <a class="link-" href="api__vault_uploader_config.html">uploader</a> configuration object with the <a class="link-" href="api__uploader__target_config.html">target</a> property. It is an obligatory property for 
+<a class="link-" href="initialize.html#initializingdhtmlxvault">Vault initialization</a>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> vault <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Vault</span><span class="br0">&#40;</span><span class="st0">&quot;vault&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    uploader<span class="sy0">:</span><span class="br0">&#123;</span>
+        target<span class="sy0">:</span><span class="st0">&quot;/upload&quot;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/01_init/01_init.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Initialization</a></p>
+
+<a name='downloadurl'><h2>Download URL</h2></a>
+
+<p>It is possible to specify the full path for file download via the <a class="link-" href="api__uploader__downloadurl_config.html">downloadURL</a> property of the <a class="link-" href="api__vault_uploader_config.html">uploader</a> configuration object.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> vault <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Vault</span><span class="br0">&#40;</span><span class="st0">&quot;vault&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>                
+    uploader<span class="sy0">:</span> <span class="br0">&#123;</span>
+        target<span class="sy0">:</span> <span class="st0">&quot;/backend/safeUpload&quot;</span><span class="sy0">,</span>
+        downloadURL<span class="sy0">:</span> <span class="st0">&quot;/backend/upload/files/&quot;</span>       
+    <span class="br0">&#125;</span>   
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The property is used to make the full path to a file on a server, in case the <a class="link-" href="loading_files.html#downloadingfiles">link</a> attribute of the file object doesn't contain the full path.
+Then the link to the file on a server is built as <strong>downloadURL</strong>+<strong>link</strong> attribute of the file object.</p>
+
+<p><a href='samples/03_configuration/05_upload_and_rename.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Upload and rename</a></p>
+
+<a name='gridmode'><h2>Grid mode</h2></a>
+
+<p>Added files are displayed in a list by default. dhtmlxVault has another mode that displays files in a grid, which is especially useful for uploading images.</p>
+
+<p>In the grid mode images previews are displayed in Vault. You can view the file size by moving the mouse pointer over the file preview.</p>
+
+<p><img src="media/vault_grid_mode.png" alt="dhtmlxVault in the grid mode" /></p>
+
+<p>To enter the <strong>grid</strong> mode, set the <a class="link-" href="api__vault_mode_config.html">mode</a> of dhtmlxVault to the "grid" value:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> vault <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Vault</span><span class="br0">&#40;</span><span class="st0">&quot;vault&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    uploader<span class="sy0">:</span><span class="br0">&#123;</span>
+        target<span class="sy0">:</span><span class="st0">&quot;/photos&quot;</span>
+    <span class="br0">&#125;</span>
+    mode<span class="sy0">:</span><span class="st0">&quot;grid&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>By default, the value of the <strong>mode</strong> property is "list".</p>
+
+<p><a href='samples/03_configuration/01_grid.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Grid mode</a></p>
+
+<h3>File preview</h3>
+
+<p>A preview for a file is generated as an HTML canvas image. You can manage the quality of the preview image via the <a class="link-" href="api__vault_scalefactor_config.html">scaleFactor</a> config option.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> vault <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Vault</span><span class="br0">&#40;</span><span class="st0">&quot;vault_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> 
+    scaleFactor<span class="sy0">:</span> <span class="nu0">2</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><code>scaleFactor:1</code> means that a canvas-based image has the width and height equal to 98x98 px. By default the scaleFactor is set to 4, so the size of the canvas image is 98x4=392 => 392x392 px.</p>
+
+<p>You can also specify your own preview image for a file with the "uploaded" status in the <a class="link-" href="loading_files.html#preparingdata"><em>preview</em> attribute of the file object</a>.</p>
+
+<a name='hidingtoolbar'><h2>Hiding toolbar</h2></a>
+
+<p>By default, dhtmlxVault has a toolbar. You can hide it by disabling the <a class="link-" href="api__vault_toolbar_config.html">toolbar</a> property of the dhtmlxVault configuration:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> vault <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Vault</span><span class="br0">&#40;</span><span class="st0">&quot;vault_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> 
+    toolbar<span class="sy0">:</span><span class="kw2">false</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/vault_no_toolbar.png" alt="Vault without a toolbar" /></p>
+
+<div class='note'><p><p>Note that if there is no toolbar, added files will be uploaded automatically.</p>
+</p></div>
+
+<p><a href='samples/03_configuration/02_notoolbar.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Without toolbar</a></p>
+
+<a name='manualfileupload'><h2>Manual file upload</h2></a>
+
+<p>By default, files are uploaded to server automatically, as soon as you add them into Vault. If needed, you can disable automatic upload via the <a class="link-" href="api__uploader__autosend_config.html">autosend</a> property
+of the Uploader config object. In this case, users will add files into Vault first and then upload them by clicking the <strong>Upload</strong> button that will appear in the toolbar.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> vault <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Vault</span><span class="br0">&#40;</span><span class="st0">&quot;vault&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    uploader<span class="sy0">:</span><span class="br0">&#123;</span>
+        target<span class="sy0">:</span><span class="st0">&quot;/upload&quot;</span><span class="sy0">,</span>
+        autosend<span class="sy0">:</span><span class="kw2">false</span>
+    <span class="br0">&#125;</span>    
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/03_configuration/03_disable_autosend.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Disable autosend</a></p>
+
+<a name='sendingallfilesinonerequest'><h2>Sending all files in one request</h2></a>
+
+<p>By default, if a user adds several files for upload, they are sent to server one by one. If you want to send all files at once, you can enable sending them in one request as an array. 
+Use the <a class="link-" href="api__uploader__singlerequest_config.html">singleRequest</a> property of the Uploader config object for this:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> vault <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Vault</span><span class="br0">&#40;</span><span class="st0">'vault'</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    uploader<span class="sy0">:</span><span class="br0">&#123;</span>
+        target<span class="sy0">:</span><span class="st0">&quot;/upload&quot;</span><span class="sy0">,</span>
+        singleRequest<span class="sy0">:</span><span class="kw2">true</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/03_configuration/04_send_all.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Single request</a></p>
+
+<a name='extraparamsforxhrequest'><h2>Extra params for XHRequest</h2></a>
+
+<p>You can include additional parameters from the configuration into a request with the <a class="link-" href="api__uploader__params_config.html">params</a> property. 
+For instance, if a user sends several images, files can be collected into FormData and then configuration parameters can be added into FormData.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> vault <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Vault</span><span class="br0">&#40;</span><span class="st0">'vault'</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    uploader<span class="sy0">:</span><span class="br0">&#123;</span>
+        target<span class="sy0">:</span><span class="st0">&quot;/upload&quot;</span><span class="sy0">,</span>
+        params<span class="sy0">:</span><span class="br0">&#123;</span>
+            param1<span class="sy0">:</span>value1<span class="sy0">,</span>
+            param2<span class="sy0">:</span>value2
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='customjsscrollbar'><h2>Custom JS scroll bar</h2></a>
+
+<p>By default, dhtmlxVault uses a scroll compatible with Webkit browsers only. If needed, you can apply a custom JS scroll that doesn't depend on the used browser. It will look as in:</p>
+
+<p><img src="media/vault_custom_scroll.png" alt="Custom scroll bar" /></p>
+
+<p>To enable the custom JS scroll, set the <a class="link-" href="api__vault_customscroll_config.html">customScroll</a> of dhtmlxVault configuration to <em>true</em>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> vault <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Vault</span><span class="br0">&#40;</span><span class="st0">&quot;vault_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> 
+    customScroll<span class="sy0">:</span><span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/03_configuration/06_custom_js_scroll.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom js scroll</a></p>
+
+<a name='progressbar'><h2>Progress bar</h2></a>
+
+<p>It is possible to adjust the look and feel of the progress bar by setting a template function describing the desired logic of progress rendering inside of the <a class="link-" href="api__vault_progressbar_config.html">progressBar</a> 
+configuration object. The template function takes two parameters:</p>
+
+<ul>
+<li><strong>percent</strong> - (<em>number</em>) the current percent of files uploading, a number from 0 to 100</li>
+<li><strong>extra</strong> - (<em>object</em>) an object with additional properties. It can have two optional properties:
+
+<ul>
+<li><strong>current</strong> - (<em>number</em>) the size of currently uploaded files in bytes</li>
+<li><strong>total</strong> - (<em>number</em>) the total size of all files in the list in bytes</li>
+</ul></li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> vault <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Vault</span><span class="br0">&#40;</span><span class="st0">&quot;vault&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    uploader<span class="sy0">:</span><span class="br0">&#123;</span>
+        <span class="co1">// obligatory, the path for upload</span>
+        target<span class="sy0">:</span><span class="st0">&quot;/upload&quot;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    progressBar<span class="sy0">:</span> <span class="br0">&#123;</span>
+        template<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>percent<span class="sy0">,</span> extra<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="kw1">return</span> getBasis<span class="br0">&#40;</span>extra.<span class="me1">current</span><span class="br0">&#41;</span> <span class="sy0">+</span> <span class="st0">&quot;/&quot;</span> <span class="sy0">+</span> getBasis<span class="br0">&#40;</span>extra.<span class="me1">total</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/custom_progress_bar.png" alt="Custom progress bar" /></p>
+
+<p><a href='samples/04_customization/03_custom_progress_bar.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom progress bar</a></p>
+
+<a name='changingnameofformfield'><h2>Changing name of form field</h2></a>
+
+<p>If Vault is used together with a form, the name of the <strong>file</strong> field in the form data sent to server is "file". To change the default name, set the <a class="link-" href="api__uploader__fieldname_config.html">fieldName</a> property:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> vault <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Vault</span><span class="br0">&#40;</span><span class="st0">'vault'</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    uploader<span class="sy0">:</span><span class="br0">&#123;</span>
+        target<span class="sy0">:</span><span class="st0">&quot;/upload&quot;</span><span class="sy0">,</span>
+        fieldName<span class="sy0">:</span><span class="st0">&quot;userpic&quot;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='updatingfileattributesfromserverresponse'><h2>Updating file attributes from server response</h2></a>
+
+<p>Each file loaded into the Vault presents a JSON object with file attributes:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> files <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>
+        <span class="st0">&quot;name&quot;</span><span class="sy0">:</span><span class="st0">&quot;one.jpg&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;size&quot;</span><span class="sy0">:</span><span class="nu0">36484</span><span class="sy0">,</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>
+        <span class="st0">&quot;name&quot;</span><span class="sy0">:</span><span class="st0">&quot;another.svg&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;size&quot;</span><span class="sy0">:</span><span class="nu0">35523213</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The full list of a file object properties is given in the article <a class="link-" href="loading_files.html#preparingdata">Loading List of Files</a>.</p>
+
+<p>By default the values of file attributes are updated from server response. You can disable this option in the <a class="link-" href="api__uploader__updatefromresponse.html">updateFromResponse</a> property of the Uploader object:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> vault <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Vault</span><span class="br0">&#40;</span><span class="st0">&quot;vault_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> 
+    uploader<span class="sy0">:</span><span class="br0">&#123;</span>
+        <span class="co1">// obligatory, the path for upload</span>
+        target<span class="sy0">:</span><span class="st0">&quot;/upload&quot;</span>
+        updateFromResponse<span class="sy0">:</span><span class="kw2">false</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='configuring.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			
+<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='loading_files.html'>Loading List of Files</a></li>	
+	<li><a href='managing_files.html'>Managing Files</a></li>
+	<li><a href='work_with_vault.html'>Working with Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Look and Feel</li>
+	<li><a href='configuring.html'>Configuration</a></li>
+	<li><a href='customization.html'>Customization</a></li>
+	<li><a href='localization.html'>Localization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Integration</li>
+	<li><a href='angular_integration.html'>Vault and Angular</a></li>
+	<li><a href='react_integration.html'>Vault and React</a></li>
+	<li><a href='vuejs_integration.html'>Vault and Vue.js</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__vault.html#methods'>Methods</a></li>
+	<li><a href='api__refs__vault_props.html'>Properties</a></li>
+	<li><a href='api__refs__vault_events.html'>Events</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

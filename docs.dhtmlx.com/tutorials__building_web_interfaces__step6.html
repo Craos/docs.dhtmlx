@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Step 6. Bind Grid to Tree  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="tutorials__building_web_interfaces__step1.html">Step 1. Create the App's File</a></li><li class=""><a href="tutorials__building_web_interfaces__step2.html">Step 2. Set up the Layout</a></li><li class=""><a href="tutorials__building_web_interfaces__step3.html">Step 3. Add Toolbar to the Page</a></li><li class=""><a href="tutorials__building_web_interfaces__step4.html">Step 4. Add Navigation Tree</a></li><li class=""><a href="tutorials__building_web_interfaces__step5.html">Step 5. Add Grid to Display Files</a></li><li class=" current"><a href="tutorials__building_web_interfaces__step6.html">Step 6. Bind Grid to Tree</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="tutorials__index.html">Tutorials</a><a class="n3" href="tutorials__building_web_interfaces__index.html">Building Web Interfaces</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Step 6. Bind Grid to Tree</h1>
+
+<p>And the final point of our tutorial is binding the grid and the tree together, so that when the user clicks on the tree's folder  -  the grid starts to display the content of this folder.</p>
+
+<p>To bind the elements we'll attach a handler function to the <a class="link-" href="api__dhtmlxtree_onselect_event.html">onSelect</a> event of the <a class="link-" href="tree__index.html">dhtmlxTree</a> that
+fires when the user clicks on a tree's item.</p>
+
+<div style="font-weight:bold; color: rgb(65, 65, 65); padding-top: 10px; font-size: 15px;">To bind the grid with the tree:</div>
+
+<ol>
+    <li>Call the <a class="link-" href="api__link__dhtmlxtree_attachevent.html">attachEvent</a> method to add a handler function to 
+    the <a class="link-" href="api__dhtmlxtree_onselect_event.html">onSelect</a> event and specify the following code in the handler function to filter the grid on selecting a tree's item:<br><br> 
+<p class='snippet'>
+'index.html' file
+</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myTree <span class="sy0">=</span> myLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;a&quot;</span><span class="br0">&#41;</span>.<span class="me1">attachTree</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>            
+myTree.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>                     
+myTree.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;data/treeStruct.xml&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra">myTree.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onSelect&quot;</span><span class="sy0">,</span>  <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="br0">&#123;</span> <span class="co1">//id -the id of the selected item </span></span><span class="xtra ln-xtra">    myGrid.<span class="me1">filterBy</span><span class="br0">&#40;</span><span class="nu0">4</span><span class="sy0">,</span>id<span class="br0">&#41;</span><span class="sy0">;</span></span><span class="xtra ln-xtra">    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span></span><span class="xtra ln-xtra"><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<i> As parameters, the <a class="link-pro" href="api__dhtmlxgrid_filterby.html"> filterBy</a> method takes the index of a column (zero-based numbering)
+and the filtering mask. We filter grid's data by the 5th property (the parent item of the file) and compare it with the item selected in the tree.
+</i>
+<br>
+<br>
+    </li>
+    <li>Redefine the load() method of the <a class="link-" href="api__link__dhtmlxtree_load.html">tree</a> and <a class="link-" href="api__dhtmlxgrid_load.html">grid</a>, to initially select an item in the tree: <br><br> 
+<p class='snippet'>
+'index.html' file
+</p>
+
+<pre><code><pre class="js"><span class="co1">//myTree.load(&quot;data/treeStruct.xml&quot;);</span>
+<span class="co1">//myGrid.load(&quot;data/gridData.xml&quot;);</span>
+&nbsp;
+myTree.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;data/treeStruct.xml&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>            <span class="co1">//callback function</span>
+    myGrid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;data/gridData.xml&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>            <span class="co1">//callback function</span>
+        myTree.<span class="me1">selectItem</span><span class="br0">&#40;</span><span class="st0">&quot;books&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>   <span class="co1">//makes 'books' folder selected initially</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<i> The second parameter of the load() method is a callback function that is called just after the data has been completely loaded. 
+We use these callback functions to ensure that data will be completely loaded both into the tree and into the grid before we start to select an item.<br>
+The <a class="link-" href="api__dhtmlxtree_selectitem.html">selectItem</a> method selects a tree's item with the specified id and fires the 
+<a class="link-" href="api__dhtmlxtree_onselect_event.html">onSelect</a> event.
+</i>
+    </li>
+</ol>
+
+<p><img style="display:block; margin:55px auto auto auto;" src="media/tutorials/file_manager/step_7.png"/></p>
+
+<p><br>
+<br></p>
+
+<div style="font-weight:bold; color: rgb(65, 65, 65); padding-top: 10px;" >That's all. We believe you have enjoyed the journey and learned the main principles of 
+building web interfaces with the DHMLX library. 
+<br><br>
+Follow our other tutorials to be a true DHTMLX expert. </div>
+
+<div id="tutorial_step">
+    <a id="next_step" class="link-" href="tutorials__index.html"></a>
+</div>
+
+<!-- Content Area End -->
+			<a href='tutorials__building_web_interfaces__step6.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

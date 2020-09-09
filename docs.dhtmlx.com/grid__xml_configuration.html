@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Configuring Grid from XML  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="grid__basic_operations.html">Common Operations with Grid and its Elements</a></li><li class=""><a href="grid__columns_types.html">Column Types</a></li><li class=""><a href="grid__headers_and_footers.html">Headers and Footers</a></li><li class=""><a href="grid__frozen_columns.html">Freezing Columns (the 'Split' Mode)</a></li><li class=""><a href="grid__navigation.html">Enabling Keyboard Navigation</a></li><li class=""><a href="grid__selection.html">Managing the Selection</a></li><li class=""><a href="grid__drag_and_drop.html">Drag-and-Drop Support</a></li><li class=""><a href="grid__handling_cookies.html">Saving Grid Configuration in Cookies</a></li><li class=" current"><a href="grid__xml_configuration.html">Configuring Grid from XML</a></li><ul><li class="inner"><a href="grid__xml_configuration.html#runninggridsmethodsfromxml">Running grid's methods from XML</a></li></ul><li class=""><a href="grid__json_configuration.html">Configuring Grid from JSON</a></li><li class=""><a href="grid__grouping_columns.html">Grouping Columns</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__configuring_the_grid.html">Configuring Grid</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Configuring Grid from XML</h1>
+
+<p>Grid can be configured directly in the XML file that the data is loaded from. In this case, you  will need only 2-3 script commands to get the grid up and running. 
+Moreover, you can also run grid's methods from an XML file.<br>
+All the necessary settings, e.g. columns types,  are specified inside <strong>&lt;head&gt;&lt;/head&gt;</strong> tag.</p>
+
+<div class='note'><p><p>Do not call the <a class="link-" href="api__dhtmlxgrid_init.html">init</a> method when configuring the grid from XML.</p>
+</p></div>
+
+<p><br></p>
+
+<p class='snippet'>
+Initializing the grid configured through XML
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;../codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;grid.xml&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// XML containing configuration block together with data</span></pre></code></pre>
+
+<p><br></p>
+
+<p class='snippet'>
+"grid.xml" file
+</p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;rows<span class="re2">&gt;</span></span></span> 
+ <span class="sc3"><span class="re1">&lt;head<span class="re2">&gt;</span></span></span>      
+   <span class="sc3"><span class="re1">&lt;column</span> <span class="re0">width</span>=<span class="st0">&quot;50&quot;</span> <span class="re0">type</span>=<span class="st0">&quot;ed&quot;</span> <span class="re0">align</span>=<span class="st0">&quot;right&quot;</span> <span class="re0">color</span>=<span class="st0">&quot;white&quot;</span> <span class="re0">sort</span>=<span class="st0">&quot;str&quot;</span><span class="re2">&gt;</span></span>Sales<span class="sc3"><span class="re1">&lt;/column<span class="re2">&gt;</span></span></span>  
+   <span class="sc3"><span class="re1">&lt;column</span> <span class="re0">width</span>=<span class="st0">&quot;80&quot;</span> <span class="re0">type</span>=<span class="st0">&quot;co&quot;</span> <span class="re0">align</span>=<span class="st0">&quot;left&quot;</span> <span class="re0">sort</span>=<span class="st0">&quot;str&quot;</span><span class="re2">&gt;</span></span>
+        <span class="sc3"><span class="re1">&lt;option</span> <span class="re0">value</span>=<span class="st0">&quot;1&quot;</span><span class="re2">&gt;</span></span>1 Day<span class="sc3"><span class="re1">&lt;/option<span class="re2">&gt;</span></span></span> 
+        <span class="sc3"><span class="re1">&lt;option</span> <span class="re0">value</span>=<span class="st0">&quot;7&quot;</span><span class="re2">&gt;</span></span>1 Week<span class="sc3"><span class="re1">&lt;/option<span class="re2">&gt;</span></span></span> 
+        ...
+   <span class="sc3"><span class="re1">&lt;/column<span class="re2">&gt;</span></span></span> 
+&nbsp;
+   <span class="sc3"><span class="re1">&lt;beforeInit<span class="re2">&gt;</span></span></span> 
+        <span class="sc3"><span class="re1">&lt;call</span> <span class="re0">command</span>=<span class="st0">&quot;methodName&quot;</span><span class="re2">&gt;</span></span>
+            <span class="sc3"><span class="re1">&lt;param<span class="re2">&gt;</span></span></span>string value<span class="sc3"><span class="re1">&lt;/param<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;/call<span class="re2">&gt;</span></span></span> 
+   <span class="sc3"><span class="re1">&lt;/beforeInit<span class="re2">&gt;</span></span></span> 
+   <span class="sc3"><span class="re1">&lt;afterInit<span class="re2">&gt;</span></span></span>  
+        <span class="sc3"><span class="re1">&lt;call</span> <span class="re0">command</span>=<span class="st0">&quot;methodName&quot;</span><span class="re2">&gt;</span></span>
+            <span class="sc3"><span class="re1">&lt;param<span class="re2">&gt;</span></span></span>string value<span class="sc3"><span class="re1">&lt;/param<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;/call<span class="re2">&gt;</span></span></span> 
+   <span class="sc3"><span class="re1">&lt;/afterInit<span class="re2">&gt;</span></span></span> 
+&nbsp;
+    <span class="sc3"><span class="re1">&lt;settings<span class="re2">&gt;</span></span></span> 
+        <span class="sc3"><span class="re1">&lt;colwidth<span class="re2">&gt;</span></span></span>%<span class="sc3"><span class="re1">&lt;/colwidth<span class="re2">&gt;</span></span></span> //'says' to use width in percents instead of pixels
+    <span class="sc3"><span class="re1">&lt;/settings<span class="re2">&gt;</span></span></span> 
+ <span class="sc3"><span class="re1">&lt;/head<span class="re2">&gt;</span></span></span> 
+ <span class="sc3"><span class="re1">&lt;row<span class="re2">&gt;</span></span></span> 
+     <span class="sc3"><span class="re1">&lt;cell<span class="re2">&gt;</span></span></span>value1<span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span>
+     <span class="sc3"><span class="re1">&lt;cell<span class="re2">&gt;</span></span></span>value2<span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span>
+ <span class="sc3"><span class="re1">&lt;/row<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/rows<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/12_initialization_loading/11_pro_config_ext.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;<span class='doc_error'>Sample without title: dhtmlxGrid/samples/12_initialization_loading/11_pro_config_ext.html</span></a></p>
+
+<p><br></p>
+
+<p>Possible attributes for the <strong>&lt;column&gt;&lt;/column&gt;</strong> tag:</p>
+
+<ul>
+<li>width - the column's width in pixels</li>
+<li>type - the column's type</li>
+<li>align - the text alignment in the column</li>
+<li>color - the background color of  the column</li>
+<li>sort - the sorting type of the column</li>
+<li>id - the column's id</li>
+<li>hidden - if the attribute is set, the column will be hidden.</li>
+</ul>
+
+<a name='runninggridsmethodsfromxml'><h2>Running grid's methods from XML</h2></a>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;rows<span class="re2">&gt;</span></span></span> 
+    <span class="sc3"><span class="re1">&lt;head<span class="re2">&gt;</span></span></span> 
+        <span class="sc3"><span class="re1">&lt;beforeInit<span class="re2">&gt;</span></span></span> 
+            <span class="sc3"><span class="re1">&lt;call</span> <span class="re0">command</span>=<span class="st0">&quot;setSkin&quot;</span><span class="re2">&gt;</span><span class="re1">&lt;param<span class="re2">&gt;</span></span></span>xp<span class="sc3"><span class="re1">&lt;/param<span class="re2">&gt;</span></span><span class="re1">&lt;/call<span class="re2">&gt;</span></span></span> 
+        <span class="sc3"><span class="re1">&lt;/beforeInit<span class="re2">&gt;</span></span></span> 
+        <span class="sc3"><span class="re1">&lt;afterInit<span class="re2">&gt;</span></span></span> 
+            <span class="sc3"><span class="re1">&lt;call</span> <span class="re0">command</span>=<span class="st0">&quot;setColumnHidden&quot;</span><span class="re2">&gt;</span><span class="re1">&lt;param<span class="re2">&gt;</span></span></span>1<span class="sc3"><span class="re1">&lt;/param<span class="re2">&gt;</span></span><span class="re1">&lt;param<span class="re2">&gt;</span></span></span>true<span class="sc3"><span class="re1">&lt;/param<span class="re2">&gt;</span></span><span class="re1">&lt;/call<span class="re2">&gt;</span></span></span> 
+        <span class="sc3"><span class="re1">&lt;/afterInit<span class="re2">&gt;</span></span></span> 
+    <span class="sc3"><span class="re1">&lt;/head<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/rows<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/12_initialization_loading/11_pro_config_ext.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;<span class='doc_error'>Sample without title: dhtmlxGrid/samples/12_initialization_loading/11_pro_config_ext.html</span></a></p>
+
+<p><br></p>
+
+<p>The same but called with script:</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span>
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Book name,Terms and Conditions,#cspan,#cspan&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setColumnHidden</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="sy0">,</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='grid__xml_configuration.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

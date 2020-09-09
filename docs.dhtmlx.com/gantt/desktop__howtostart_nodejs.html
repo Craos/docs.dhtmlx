@@ -1,0 +1,704 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>dhtmlxGantt with Node.js  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__howtostart_dotnet_core.html">dhtmlxGantt with ASP.NET Core</a></li><li class=" current"><a href="desktop__howtostart_nodejs.html">dhtmlxGantt with Node.js</a></li><ul><li class="inner"><a href="desktop__howtostart_nodejs.html#step1creatingaproject">Step 1. Creating a project</a></li><li class="inner"><a href="desktop__howtostart_nodejs.html#step2addinggantttothepage">Step 2. Adding Gantt to the page</a></li><li class="inner"><a href="desktop__howtostart_nodejs.html#step3preparingadatabase">Step 3. Preparing a database</a></li><li class="inner"><a href="desktop__howtostart_nodejs.html#step4loadingdata">Step 4. Loading data</a></li><li class="inner"><a href="desktop__howtostart_nodejs.html#step5savingchanges">Step 5. Saving changes</a></li><li class="inner"><a href="desktop__howtostart_nodejs.html#storingtheorderoftasks">Storing the order of tasks</a></li><li class="inner"><a href="desktop__howtostart_nodejs.html#applicationsecurity">Application security</a></li><li class="inner"><a href="desktop__howtostart_nodejs.html#troubleshooting">Trouble shooting</a></li><li class="inner"><a href="desktop__howtostart_nodejs.html#whatsnext">What's next</a></li></ul><li class=""><a href="desktop__howtostart_dotnet.html">dhtmlxGantt with ASP.NET MVC</a></li><li class=""><a href="desktop__howtostart_php_laravel.html">dhtmlxGantt with PHP: Laravel</a></li><li class=""><a href="desktop__howtostart_php_slim4.html">dhtmlxGantt with PHP:Slim</a></li><li class=""><a href="desktop__howtostart_ruby.html">dhtmlxGantt with Ruby on Rails</a></li><li class=""><a href="desktop__howtostart_php.html">dhtmlxGantt with PHP:Slim3</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__howtostart_guides.html">How to Start with dhtmlxGantt</a></div>
+<!-- Content Area -->
+
+
+
+<h1>dhtmlxGantt with Node.js</h1>
+
+<p>The current tutorial is intended for creating Gantt with Node.js and REST API on the server side. 
+If you use some other technology, check the list of available integration variants below:</p>
+
+<ul>
+<li><a class="link-" href="desktop__howtostart_dotnet_core.html">dhtmlxGantt with ASP.NET Core</a></li>
+<li><a class="link-" href="desktop__howtostart_dotnet.html">dhtmlxGantt with ASP.NET MVC</a></li>
+<li><a class="link-" href="desktop__howtostart_php_laravel.html">dhtmlxGantt with PHP: Laravel</a></li>
+<li><a class="link-" href="desktop__howtostart_php_slim4.html">dhtmlxGantt with PHP:Slim</a></li>
+<li><a class="link-" href="desktop__howtostart_ruby.html">dhtmlxGantt with Ruby on Rails</a></li>
+</ul>
+
+<p>Our implementation of Gantt with Node.js will be based on REST API that will be used for communication with a server. 
+Node.js has a set of ready-made solutions, so we won't have to code everything from the very beginning. We will also use MySQL as a data storage.</p>
+
+<div class='note'><p><p>The complete source code is <a href="https://github.com/DHTMLX/gantt-howto-node">available on GitHub</a>.</p>
+</p></div>
+
+<p>You can have a look at the video guide that shows how to create a Gantt chart using Node.js.</p>
+
+<iframe width="704" height="400" src="https://www.youtube.com/embed/D8YzyzBfyP8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<a name='step1creatingaproject'><h2>Step 1. Creating a project</h2></a>
+
+<p>To begin with, we'll create a project folder and then add the required dependencies. We'll make use of the following modules:</p>
+
+<ul>
+<li><a href="http://expressjs.com/">Express</a> - a tiny framework for Node.js</li>
+<li><a href="https://www.npmjs.com/package/body-parser">body-parser</a> - a Node.js parsing tool</li>
+</ul>
+
+<p>So, let's create a project folder and name it "dhx-gantt-app":</p>
+
+<pre><code><pre class="js">mkdir dhx<span class="sy0">-</span>gantt<span class="sy0">-</span>app
+cd dhx<span class="sy0">-</span>gantt<span class="sy0">-</span>app</pre></code></pre>
+
+<h3>Adding the dependencies</h3>
+
+<p>Now we will create the <em>package.json</em> file. We'll specify the dependencies in it with the following command:</p>
+
+<pre><code><pre class="js">npm init <span class="sy0">-</span>y</pre></code></pre>
+
+<p>When the file is ready, open it and put the above listed dependencies into it. The result will look similar to this one:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+  <span class="st0">&quot;name&quot;</span><span class="sy0">:</span> <span class="st0">&quot;dhx-gantt-app&quot;</span><span class="sy0">,</span>
+  <span class="st0">&quot;version&quot;</span><span class="sy0">:</span> <span class="st0">&quot;1.0.0&quot;</span><span class="sy0">,</span>
+  <span class="st0">&quot;description&quot;</span><span class="sy0">:</span> <span class="st0">&quot;&quot;</span><span class="sy0">,</span>
+  <span class="st0">&quot;main&quot;</span><span class="sy0">:</span> <span class="st0">&quot;server.js&quot;</span><span class="sy0">,</span>
+  <span class="st0">&quot;dependencies&quot;</span><span class="sy0">:</span> <span class="br0">&#123;</span>
+    <span class="st0">&quot;body-parser&quot;</span><span class="sy0">:</span> <span class="st0">&quot;^1.15.0&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;express&quot;</span><span class="sy0">:</span> <span class="st0">&quot;^4.13.4&quot;</span>   
+  <span class="br0">&#125;</span><span class="sy0">,</span>
+  <span class="st0">&quot;devDependencies&quot;</span><span class="sy0">:</span> <span class="br0">&#123;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+  <span class="st0">&quot;scripts&quot;</span><span class="sy0">:</span> <span class="br0">&#123;</span>
+    <span class="st0">&quot;test&quot;</span><span class="sy0">:</span> <span class="st0">&quot;echo <span class="es0">\&quot;</span>Error: no test specified<span class="es0">\&quot;</span> &amp;&amp; exit 1&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;start&quot;</span><span class="sy0">:</span> <span class="st0">&quot;node server.js&quot;</span>
+  <span class="br0">&#125;</span><span class="sy0">,</span>
+  <span class="st0">&quot;keywords&quot;</span><span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+  <span class="st0">&quot;author&quot;</span><span class="sy0">:</span> <span class="st0">&quot;&quot;</span><span class="sy0">,</span>
+  <span class="st0">&quot;license&quot;</span><span class="sy0">:</span> <span class="st0">&quot;MIT&quot;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Finally, we need to install the added dependencies using the command below:</p>
+
+<pre><code><pre class="js">npm install</pre></code></pre>
+
+<h3>Preparing the backend</h3>
+
+<p>We'll follow a basic <a href="https://expressjs.com/">express</a> setup: we'll have a single js file for our app backend (let's call it "server.js"),
+a folder for static files (named "public") and a single html page.</p>
+
+<p>The whole project structure will be as follows:</p>
+
+<pre><code><pre class="html">dhx-gantt-app
+├── node_modules
+├── server.js 
+├── package.json 
+└── public 
+    └── index.html</pre></code></pre>
+
+<p>Create a new file named <b>server.js</b> and add the following code into it:</p>
+
+<p class='snippet'> server.js</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> express <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'express'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> bodyParser <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'body-parser'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> path <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'path'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> port <span class="sy0">=</span> <span class="nu0">1337</span><span class="sy0">;</span>
+<span class="kw2">var</span> app <span class="sy0">=</span> express<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+app.<span class="kw2">use</span><span class="br0">&#40;</span>express.<span class="me1">static</span><span class="br0">&#40;</span>path.<span class="me1">join</span><span class="br0">&#40;</span>__dirname<span class="sy0">,</span> <span class="st0">&quot;public&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+app.<span class="kw2">use</span><span class="br0">&#40;</span>bodyParser.<span class="me1">urlencoded</span><span class="br0">&#40;</span><span class="br0">&#123;</span> extended<span class="sy0">:</span> <span class="kw2">true</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+app.<span class="me1">listen</span><span class="br0">&#40;</span>port<span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    console.<span class="me1">log</span><span class="br0">&#40;</span><span class="st0">&quot;Server is running on port &quot;</span><span class="sy0">+</span>port<span class="sy0">+</span><span class="st0">&quot;...&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>What we have done in this code:</p>
+
+<ul>
+<li>defined that static files will be served from the 'public' folder </li>
+<li>attached the application to 1337 port of the localhost</li>
+</ul>
+
+<p>On the next step we will create the "public" folder. This folder will contain the main page of our application - <em>index.html</em>.</p>
+
+<div class='note'><p><p>This folder is also the right place to put js/css files of dhtmlxGantt. However, in this tutorial we're going to load gantt from CDN, so we'll only have an html page there.</p>
+</p></div>
+
+<a name='step2addinggantttothepage'><h2>Step 2. Adding Gantt to the page</h2></a>
+
+<p>Let's create the <em>public</em> folder and add an <em>index.html</em> file into it. Then open the <em>index.html</em> file and fill it with the following content:</p>
+
+<p class='snippet'> index.html</p>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">meta</span> <span class="kw3">http-equiv</span><span class="sy0">=</span><span class="st0">&quot;Content-type&quot;</span> <span class="kw3">content</span><span class="sy0">=</span><span class="st0">&quot;text/html; charset=utf-8&quot;</span>&gt;</span>
+&nbsp;
+  <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css&quot;</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span>&gt;</span>
+&nbsp;
+  <span class="sc2">&lt;<span class="kw2">style</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span>&gt;</span><pre class="css">    html<span class="sy0">,</span> body<span class="br0">&#123;</span>
+      <span class="kw1">height</span><span class="sy0">:</span><span class="re3">100%</span><span class="sy0">;</span>
+      <span class="kw1">padding</span><span class="sy0">:</span><span class="re3">0px</span><span class="sy0">;</span>
+      <span class="kw1">margin</span><span class="sy0">:</span><span class="re3">0px</span><span class="sy0">;</span>
+      <span class="kw1">overflow</span><span class="sy0">:</span> <span class="kw2">hidden</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span></pre>
+  <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">style</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;gantt_here&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">'width:100%; height:100%;'</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span>&gt;</span><pre class="js">    gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre>  <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span></pre></code></pre>
+
+<p>Let's check what we have got at the moment. Go to the project folder and run the following command from the command line:</p>
+
+<pre><code><pre class="js">node server.<span class="me1">js</span></pre></code></pre>
+
+<p>Then open http://127.0.0.1:1337 in a browser. You should see a page with an empty gantt like the one shown here:</p>
+
+<p><img src="media/desktop/gantt_init.png"></p>
+
+<a name='step3preparingadatabase'><h2>Step 3. Preparing a database</h2></a>
+
+<p>The next step is to create a database. We'll make a simple database with two tables for tasks and links:</p>
+
+<pre><code><pre class="js">CREATE TABLE `gantt_links` <span class="br0">&#40;</span>
+  `id` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span> AUTO_INCREMENT<span class="sy0">,</span>
+  `source` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `target` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `type` varchar<span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  PRIMARY KEY <span class="br0">&#40;</span>`id`<span class="br0">&#41;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span>
+CREATE TABLE `gantt_tasks` <span class="br0">&#40;</span>
+  `id` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span> AUTO_INCREMENT<span class="sy0">,</span>
+  `text` varchar<span class="br0">&#40;</span><span class="nu0">255</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `start_date` datetime NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `duration` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `progress` float NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `parent` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  PRIMARY KEY <span class="br0">&#40;</span>`id`<span class="br0">&#41;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>and add some test data:</p>
+
+<pre><code><pre class="js">INSERT INTO `gantt_tasks` VALUES <span class="br0">&#40;</span><span class="st0">'1'</span><span class="sy0">,</span> <span class="st0">'Project #1'</span><span class="sy0">,</span> <span class="st0">'2017-04-01 00:00:00'</span><span class="sy0">,</span> 
+  <span class="st0">'5'</span><span class="sy0">,</span> <span class="st0">'0.8'</span><span class="sy0">,</span> <span class="st0">'0'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+INSERT INTO `gantt_tasks` VALUES <span class="br0">&#40;</span><span class="st0">'2'</span><span class="sy0">,</span> <span class="st0">'Task #1'</span><span class="sy0">,</span> <span class="st0">'2017-04-06 00:00:00'</span><span class="sy0">,</span> 
+  <span class="st0">'4'</span><span class="sy0">,</span> <span class="st0">'0.5'</span><span class="sy0">,</span> <span class="st0">'1'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+INSERT INTO `gantt_tasks` VALUES <span class="br0">&#40;</span><span class="st0">'3'</span><span class="sy0">,</span> <span class="st0">'Task #2'</span><span class="sy0">,</span> <span class="st0">'2017-04-05 00:00:00'</span><span class="sy0">,</span> 
+  <span class="st0">'6'</span><span class="sy0">,</span> <span class="st0">'0.7'</span><span class="sy0">,</span> <span class="st0">'1'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+INSERT INTO `gantt_tasks` VALUES <span class="br0">&#40;</span><span class="st0">'4'</span><span class="sy0">,</span> <span class="st0">'Task #3'</span><span class="sy0">,</span> <span class="st0">'2017-04-07 00:00:00'</span><span class="sy0">,</span> 
+  <span class="st0">'2'</span><span class="sy0">,</span> <span class="st0">'0'</span><span class="sy0">,</span> <span class="st0">'1'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+INSERT INTO `gantt_tasks` VALUES <span class="br0">&#40;</span><span class="st0">'5'</span><span class="sy0">,</span> <span class="st0">'Task #1.1'</span><span class="sy0">,</span> <span class="st0">'2017-04-05 00:00:00'</span><span class="sy0">,</span> 
+  <span class="st0">'5'</span><span class="sy0">,</span> <span class="st0">'0.34'</span><span class="sy0">,</span> <span class="st0">'2'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+INSERT INTO `gantt_tasks` VALUES <span class="br0">&#40;</span><span class="st0">'6'</span><span class="sy0">,</span> <span class="st0">'Task #1.2'</span><span class="sy0">,</span> <span class="st0">'2017-04-11 13:22:17'</span><span class="sy0">,</span> 
+  <span class="st0">'4'</span><span class="sy0">,</span> <span class="st0">'0.5'</span><span class="sy0">,</span> <span class="st0">'2'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+INSERT INTO `gantt_tasks` VALUES <span class="br0">&#40;</span><span class="st0">'7'</span><span class="sy0">,</span> <span class="st0">'Task #2.1'</span><span class="sy0">,</span> <span class="st0">'2017-04-07 00:00:00'</span><span class="sy0">,</span>
+  <span class="st0">'5'</span><span class="sy0">,</span> <span class="st0">'0.2'</span><span class="sy0">,</span> <span class="st0">'3'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+INSERT INTO `gantt_tasks` VALUES <span class="br0">&#40;</span><span class="st0">'8'</span><span class="sy0">,</span> <span class="st0">'Task #2.2'</span><span class="sy0">,</span> <span class="st0">'2017-04-06 00:00:00'</span><span class="sy0">,</span> 
+  <span class="st0">'4'</span><span class="sy0">,</span> <span class="st0">'0.9'</span><span class="sy0">,</span> <span class="st0">'3'</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Check a detailed example <a class="link-" href="desktop__loading.html#standarddatabasestructure">here</a>.</p>
+
+<a name='step4loadingdata'><h2>Step 4. Loading data</h2></a>
+
+<p>Now we need to implement data loading.</p>
+
+<p>Since we use MySQL, we need to install necessary modules that we could use to access it. In this tutorial CRUD operations will be implented based on the promises approach.
+So, we will use <a href="https://www.npmjs.com/package/promise-mysql">promise-mysql</a> - a Node.js package for working with MySQL using promises and 
+the <a href="https://www.npmjs.com/package/bluebird">bluebird</a> promise library.</p>
+
+<p>You can install them from the console:</p>
+
+<pre><code><pre class="js">npm install bluebird <span class="sy0">--</span>save
+npm install promise<span class="sy0">-</span>mysql <span class="sy0">--</span>save</pre></code></pre>
+
+<p>You can choose any other appropriate modules. The code is fairly simple and you can implement the same logic using a different set of tools.</p>
+
+<p>The client side expects data in the <a class="link-" href="desktop__supported_data_formats.html#json">JSON format</a>. So, we'll create a route which will return this kind of data.</p>
+
+<p>As you've probably mentioned, there is the "start_date" property in the data, which is kept as a date object. Therefore, it should be passed to the client in the 
+proper format. For this purpose, we will use another module - <a href="https://github.com/litejs/date-format-lite">date-format-lite</a>.</p>
+
+<pre><code><pre class="js">npm install date<span class="sy0">-</span>format<span class="sy0">-</span>lite <span class="sy0">--</span>save</pre></code></pre>
+
+<p>Now you should open the <em>server.js</em> file and add a code similar to this one:</p>
+
+<p class='snippet'> server.js</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> Promise <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'bluebird'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+require<span class="br0">&#40;</span><span class="st0">&quot;date-format-lite&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> mysql <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'promise-mysql'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> db <span class="sy0">=</span> mysql.<span class="me1">createPool</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+  host<span class="sy0">:</span> <span class="st0">'localhost'</span><span class="sy0">,</span>
+  user<span class="sy0">:</span> <span class="st0">'root'</span><span class="sy0">,</span>
+  password<span class="sy0">:</span> <span class="st0">''</span><span class="sy0">,</span>
+  database<span class="sy0">:</span> <span class="st0">'gantt'</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+app.<span class="me1">get</span><span class="br0">&#40;</span><span class="st0">&quot;/data&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>req<span class="sy0">,</span> res<span class="br0">&#41;</span> <span class="br0">&#123;</span> 
+  Promise.<span class="me1">all</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+    db.<span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;SELECT * FROM gantt_tasks&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span>
+    db.<span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;SELECT * FROM gantt_links&quot;</span><span class="br0">&#41;</span>
+  <span class="br0">&#93;</span><span class="br0">&#41;</span>.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>results<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> tasks <span class="sy0">=</span> results<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    links <span class="sy0">=</span> results<span class="br0">&#91;</span><span class="nu0">1</span><span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw2">var</span> i <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span> i <span class="sy0">&lt;</span> tasks.<span class="me1">length</span><span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+      tasks<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="me1">start_date</span> <span class="sy0">=</span> tasks<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="me1">start_date</span>.<span class="me1">format</span><span class="br0">&#40;</span><span class="st0">&quot;YYYY-MM-DD hh:mm:ss&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+      tasks<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="kw3">open</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    res.<span class="me1">send</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+      data<span class="sy0">:</span> tasks<span class="sy0">,</span>
+      collections<span class="sy0">:</span> <span class="br0">&#123;</span> links<span class="sy0">:</span> links <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="br0">&#125;</span><span class="br0">&#41;</span>.<span class="kw1">catch</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    sendResponse<span class="br0">&#40;</span>res<span class="sy0">,</span> <span class="st0">&quot;error&quot;</span><span class="sy0">,</span> <span class="kw2">null</span><span class="sy0">,</span> error<span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>What we have done in this code:</p>
+
+<ul>
+<li>opened MySql connection to our database </li>
+<li>defined that on the <b>GET /data</b> request we'll read data from tasks and links tables and format them so they could be parsed on the client</li>
+</ul>
+
+<p>Note that we've also added the <em>open</em> property to ensure that the tasks tree will be initially expanded.</p>
+
+<p>Now, we can call this route from the client:</p>
+
+<p class='snippet'> public/index.html</p>
+
+<pre><code><pre class="js"><span class="xtra ln-xtra">gantt.<span class="me1">config</span>.<span class="me1">date_format</span> <span class="sy0">=</span> <span class="st0">&quot;%Y-%m-%d %H:%i:%s&quot;</span><span class="sy0">;</span></span>&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra">gantt.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/data&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p>Note that <a class="link-" href="api__gantt_date_format_config.html">date_format</a> config specifies the format of dates (<b>start_date</b> of the task) that comes from the server.</p>
+
+<p>Let's run the application now by opening http://127.0.0.1:1337. The gantt will be loaded with the test data that we have previously added into the database.</p>
+
+<p><img src="media/desktop/load_data.png"></p>
+
+<a name='step5savingchanges'><h2>Step 5. Saving changes</h2></a>
+
+<p>The last thing that we should implement is data saving. 
+For this we need a code that will send updates happening on the client side back to the server.
+Go to <em>public/index.html</em> and add <a class="link-" href="desktop__server_side.html#technique">gantt.dataProcessor</a> to the page:</p>
+
+<p class='snippet'> public/index.html</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">date_format</span> <span class="sy0">=</span> <span class="st0">&quot;%Y-%m-%d %H:%i:%s&quot;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/data&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra"><span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> gantt.<span class="me1">dataProcessor</span><span class="br0">&#40;</span><span class="st0">&quot;/data&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span><span class="xtra ln-xtra">dp.<span class="me1">init</span><span class="br0">&#40;</span>gantt<span class="br0">&#41;</span><span class="sy0">;</span></span><span class="xtra ln-xtra">dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;REST&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p>Let's go deeper and see what role it plays.</p>
+
+<h3>Requests and responses</h3>
+
+<p>On each user action: adding, changing or removing a new task or link, DataProcessor will react by sending an AJAX request to
+the corresponding URL. The request will contain all the parameters necessary for saving changes in the database.</p>
+
+<p>Since DataProcessor is initialized in the REST mode, it will use different HTTP verbs for each type of operation. 
+The list of HTTP verbs together with request and response details is given in the <a class="link-" href="desktop__server_side.html#technique">Server-Side Integration</a> article.</p>
+
+<p>Well, what we need to do now is to add the required routes and handlers, that will put changes made on the client to the database, into the <em>server.js</em> file.
+The resulting code will be rather spacious:</p>
+
+<p class='snippet'> server.js</p>
+
+<pre><code><pre class="js"><span class="co1">// add a new task</span>
+app.<span class="me1">post</span><span class="br0">&#40;</span><span class="st0">&quot;/data/task&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>req<span class="sy0">,</span> res<span class="br0">&#41;</span> <span class="br0">&#123;</span> 
+  <span class="kw2">var</span> task <span class="sy0">=</span> getTask<span class="br0">&#40;</span>req.<span class="me1">body</span><span class="br0">&#41;</span><span class="sy0">;</span>  
+&nbsp;
+  db.<span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;INSERT INTO gantt_tasks(text, start_date, duration, progress, parent)&quot;</span>
+    <span class="sy0">+</span> <span class="st0">&quot; VALUES (?,?,?,?,?)&quot;</span><span class="sy0">,</span> 
+    <span class="br0">&#91;</span>task.<span class="me1">text</span><span class="sy0">,</span> task.<span class="me1">start_date</span><span class="sy0">,</span> task.<span class="me1">duration</span><span class="sy0">,</span> task.<span class="me1">progress</span><span class="sy0">,</span> task.<span class="me1">parent</span><span class="br0">&#93;</span><span class="br0">&#41;</span>
+  .<span class="me1">then</span> <span class="br0">&#40;</span><span class="kw2">function</span> <span class="br0">&#40;</span>result<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    sendResponse<span class="br0">&#40;</span>res<span class="sy0">,</span> <span class="st0">&quot;inserted&quot;</span><span class="sy0">,</span> result.<span class="me1">insertId</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span><span class="br0">&#41;</span>
+  .<span class="kw1">catch</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    sendResponse<span class="br0">&#40;</span>res<span class="sy0">,</span> <span class="st0">&quot;error&quot;</span><span class="sy0">,</span> <span class="kw2">null</span><span class="sy0">,</span> error<span class="br0">&#41;</span><span class="sy0">;</span> 
+  <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// update a task</span>
+app.<span class="me1">put</span><span class="br0">&#40;</span><span class="st0">&quot;/data/task/:id&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>req<span class="sy0">,</span> res<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="kw2">var</span> sid <span class="sy0">=</span> req.<span class="me1">params</span>.<span class="me1">id</span><span class="sy0">,</span>
+    task <span class="sy0">=</span> getTask<span class="br0">&#40;</span>req.<span class="me1">body</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  db.<span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;UPDATE gantt_tasks SET text = ?, start_date = ?, &quot;</span>
+    <span class="sy0">+</span> <span class="st0">&quot;duration = ?, progress = ?, parent = ? WHERE id = ?&quot;</span><span class="sy0">,</span>
+    <span class="br0">&#91;</span>task.<span class="me1">text</span><span class="sy0">,</span> task.<span class="me1">start_date</span><span class="sy0">,</span> task.<span class="me1">duration</span><span class="sy0">,</span> task.<span class="me1">progress</span><span class="sy0">,</span> task.<span class="me1">parent</span><span class="sy0">,</span> sid<span class="br0">&#93;</span><span class="br0">&#41;</span>
+  .<span class="me1">then</span> <span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>result<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    sendResponse<span class="br0">&#40;</span>res<span class="sy0">,</span> <span class="st0">&quot;updated&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span><span class="br0">&#41;</span>
+  .<span class="kw1">catch</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    sendResponse<span class="br0">&#40;</span>res<span class="sy0">,</span> <span class="st0">&quot;error&quot;</span><span class="sy0">,</span> <span class="kw2">null</span><span class="sy0">,</span> error<span class="br0">&#41;</span><span class="sy0">;</span> 
+  <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// delete a task</span>
+app.<span class="kw1">delete</span><span class="br0">&#40;</span><span class="st0">&quot;/data/task/:id&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>req<span class="sy0">,</span> res<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="kw2">var</span> sid <span class="sy0">=</span> req.<span class="me1">params</span>.<span class="me1">id</span><span class="sy0">;</span>
+  db.<span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;DELETE FROM gantt_tasks WHERE id = ?&quot;</span><span class="sy0">,</span> <span class="br0">&#91;</span>sid<span class="br0">&#93;</span><span class="br0">&#41;</span>
+  .<span class="me1">then</span> <span class="br0">&#40;</span><span class="kw2">function</span> <span class="br0">&#40;</span>result<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    sendResponse<span class="br0">&#40;</span>res<span class="sy0">,</span> <span class="st0">&quot;deleted&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span><span class="br0">&#41;</span>
+  .<span class="kw1">catch</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    sendResponse<span class="br0">&#40;</span>res<span class="sy0">,</span> <span class="st0">&quot;error&quot;</span><span class="sy0">,</span> <span class="kw2">null</span><span class="sy0">,</span> error<span class="br0">&#41;</span><span class="sy0">;</span> 
+  <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// add a link</span>
+app.<span class="me1">post</span><span class="br0">&#40;</span><span class="st0">&quot;/data/link&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>req<span class="sy0">,</span> res<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="kw2">var</span> link <span class="sy0">=</span> getLink<span class="br0">&#40;</span>req.<span class="me1">body</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  db.<span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;INSERT INTO gantt_links(source, target, type) VALUES (?,?,?)&quot;</span><span class="sy0">,</span> 
+    <span class="br0">&#91;</span>link.<span class="me1">source</span><span class="sy0">,</span> link.<span class="me1">target</span><span class="sy0">,</span> link.<span class="me1">type</span><span class="br0">&#93;</span><span class="br0">&#41;</span>
+  .<span class="me1">then</span> <span class="br0">&#40;</span><span class="kw2">function</span> <span class="br0">&#40;</span>result<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    sendResponse<span class="br0">&#40;</span>res<span class="sy0">,</span> <span class="st0">&quot;inserted&quot;</span><span class="sy0">,</span> result.<span class="me1">insertId</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span><span class="br0">&#41;</span>
+  .<span class="kw1">catch</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    sendResponse<span class="br0">&#40;</span>res<span class="sy0">,</span> <span class="st0">&quot;error&quot;</span><span class="sy0">,</span> <span class="kw2">null</span><span class="sy0">,</span> error<span class="br0">&#41;</span><span class="sy0">;</span> 
+  <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// update a link</span>
+app.<span class="me1">put</span><span class="br0">&#40;</span><span class="st0">&quot;/data/link/:id&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>req<span class="sy0">,</span> res<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="kw2">var</span> sid <span class="sy0">=</span> req.<span class="me1">params</span>.<span class="me1">id</span><span class="sy0">,</span>
+    link <span class="sy0">=</span> getLink<span class="br0">&#40;</span>req.<span class="me1">body</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  db.<span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;UPDATE gantt_links SET source = ?, target = ?, type = ? WHERE id = ?&quot;</span><span class="sy0">,</span> 
+    <span class="br0">&#91;</span>link.<span class="me1">source</span><span class="sy0">,</span> link.<span class="me1">target</span><span class="sy0">,</span> link.<span class="me1">type</span><span class="sy0">,</span> sid<span class="br0">&#93;</span><span class="br0">&#41;</span>
+  .<span class="me1">then</span> <span class="br0">&#40;</span><span class="kw2">function</span> <span class="br0">&#40;</span>result<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    sendResponse<span class="br0">&#40;</span>res<span class="sy0">,</span> <span class="st0">&quot;updated&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span><span class="br0">&#41;</span>
+  .<span class="kw1">catch</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    sendResponse<span class="br0">&#40;</span>res<span class="sy0">,</span> <span class="st0">&quot;error&quot;</span><span class="sy0">,</span> <span class="kw2">null</span><span class="sy0">,</span> error<span class="br0">&#41;</span><span class="sy0">;</span> 
+  <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// delete a link</span>
+app.<span class="kw1">delete</span><span class="br0">&#40;</span><span class="st0">&quot;/data/link/:id&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>req<span class="sy0">,</span> res<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="kw2">var</span> sid <span class="sy0">=</span> req.<span class="me1">params</span>.<span class="me1">id</span><span class="sy0">;</span>
+  db.<span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;DELETE FROM gantt_links WHERE id = ?&quot;</span><span class="sy0">,</span> 
+    <span class="br0">&#91;</span>sid<span class="br0">&#93;</span><span class="br0">&#41;</span>
+  .<span class="me1">then</span> <span class="br0">&#40;</span><span class="kw2">function</span> <span class="br0">&#40;</span>result<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    sendResponse<span class="br0">&#40;</span>res<span class="sy0">,</span> <span class="st0">&quot;deleted&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span><span class="br0">&#41;</span>
+  .<span class="kw1">catch</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+      sendResponse<span class="br0">&#40;</span>res<span class="sy0">,</span> <span class="st0">&quot;error&quot;</span><span class="sy0">,</span> <span class="kw2">null</span><span class="sy0">,</span> error<span class="br0">&#41;</span><span class="sy0">;</span> 
+  <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+&nbsp;
+<span class="kw2">function</span> getTask<span class="br0">&#40;</span>data<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="kw1">return</span> <span class="br0">&#123;</span>
+    text<span class="sy0">:</span> data.<span class="me1">text</span><span class="sy0">,</span>
+    start_date<span class="sy0">:</span> data.<span class="me1">start_date</span>.<span class="me1">date</span><span class="br0">&#40;</span><span class="st0">&quot;YYYY-MM-DD&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span>
+    duration<span class="sy0">:</span> data.<span class="me1">duration</span><span class="sy0">,</span>
+    progress<span class="sy0">:</span> data.<span class="me1">progress</span> <span class="sy0">||</span> <span class="nu0">0</span><span class="sy0">,</span>
+    parent<span class="sy0">:</span> data.<span class="me1">parent</span>
+  <span class="br0">&#125;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="kw2">function</span> getLink<span class="br0">&#40;</span>data<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="kw1">return</span> <span class="br0">&#123;</span>
+    source<span class="sy0">:</span> data.<span class="me1">source</span><span class="sy0">,</span>
+    target<span class="sy0">:</span> data.<span class="me1">target</span><span class="sy0">,</span>
+    type<span class="sy0">:</span> data.<span class="me1">type</span>
+  <span class="br0">&#125;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="kw2">function</span> sendResponse<span class="br0">&#40;</span>res<span class="sy0">,</span> action<span class="sy0">,</span> tid<span class="sy0">,</span> error<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+&nbsp;
+  <span class="kw1">if</span> <span class="br0">&#40;</span>action <span class="sy0">==</span> <span class="st0">&quot;error&quot;</span><span class="br0">&#41;</span>
+    console.<span class="me1">log</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="kw2">var</span> result <span class="sy0">=</span> <span class="br0">&#123;</span>
+    action<span class="sy0">:</span> action
+  <span class="br0">&#125;</span><span class="sy0">;</span>
+  <span class="kw1">if</span> <span class="br0">&#40;</span>tid <span class="sy0">!==</span> undefined <span class="sy0">&amp;&amp;</span> tid <span class="sy0">!==</span> <span class="kw2">null</span><span class="br0">&#41;</span>
+    result.<span class="me1">tid</span> <span class="sy0">=</span> tid<span class="sy0">;</span>
+&nbsp;
+  res.<span class="me1">send</span><span class="br0">&#40;</span>result<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>We have created two sets of routes: one for the <em>tasks</em> entity and another one for the <em>links</em> one. 
+Correspondingly, the <em>"/data/task"</em> URL will serve for requests related 
+to the operations with tasks and the <em>"/data/link"</em> URL will be used to handle requests containing data for operations with links.</p>
+
+<p>The requests types are pretty simple:</p>
+
+<ul>
+<li>POST - to insert a new item into the database</li>
+<li>PUT - to update an existing record</li>
+<li>DELETE - to remove an item</li>
+</ul>
+
+<p>The response will be a JSON object with the type of performed operation or "error" in case the code fails.</p>
+
+<p>The response for the POST request will also contain the database id of the new record.
+It will be applied on the client side, so it will be possible to map a new item to the database entity.</p>
+
+<p>That's all. Open http://127.0.0.1:1337 and you will see a fully operational gantt chart.</p>
+
+<p><img src="media/desktop/ready_gantt.png"></p>
+
+<a name='storingtheorderoftasks'><h2>Storing the order of tasks</h2></a>
+
+<p>The client-side gantt allows <a class="link-" href="desktop__reordering_tasks.html">reordering tasks</a> using drag and drop. So if you use this feature, you'll have to store this order in the database. 
+You can <a class="link-" href="desktop__server_side.html#storingtheorderoftasks">check the common description here</a>.</p>
+
+<p>Let's now add this feature to our app.</p>
+
+<h3>Enable tasks reordering on the client</h3>
+
+<p>Firstly, we need to allow users to change the tasks order in the UI. Open the "Index" view and update the configuration of gantt:</p>
+
+<p class='snippet'> public/index.html</p>
+
+<pre><code><pre class="js"><span class="xtra ln-xtra">gantt.<span class="me1">config</span>.<span class="me1">order_branch</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></span><span class="xtra ln-xtra">gantt.<span class="me1">config</span>.<span class="me1">order_branch_free</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></span>&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Now, let's reflect these changes on the backend. We are going to store the order in the column named "sortorder", 
+the updated <em>gantt_tasks</em> table declaration may look as follows:</p>
+
+<pre><code><pre class="js">CREATE TABLE `gantt_tasks` <span class="br0">&#40;</span>
+  `id` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span>  AUTO_INCREMENT PRIMARY KEY<span class="sy0">,</span>
+  `text` varchar<span class="br0">&#40;</span><span class="nu0">255</span><span class="br0">&#41;</span> COLLATE utf8_unicode_ci NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `start_date` datetime NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `duration` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `progress` float NOT <span class="kw2">NULL</span> <span class="kw2">DEFAULT</span> <span class="nu0">0</span><span class="sy0">,</span>
+  `parent` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">  `sortorder` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span> </span><span class="br0">&#41;</span> ENGINE<span class="sy0">=</span>InnoDB <span class="kw2">DEFAULT</span> CHARSET<span class="sy0">=</span>utf8 COLLATE<span class="sy0">=</span>utf8_unicode_ci<span class="sy0">;</span></pre></code></pre>
+
+<p>Or add the column to the table you already have:</p>
+
+<pre><code><pre class="js">ALTER TABLE `gantt_tasks` ADD COLUMN `sortorder` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">;</span></pre></code></pre>
+
+<p>After that we need to update the <em>server.js</em> file:</p>
+
+<p>1 . <b>GET /data</b> must return tasks ordered by the <code>sortorder</code> column:</p>
+
+<p class='snippet'> server.js</p>
+
+<pre><code><pre class="js">app.<span class="me1">get</span><span class="br0">&#40;</span><span class="st0">&quot;/data&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>req<span class="sy0">,</span> res<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  Promise.<span class="me1">all</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+<span class="xtra ln-xtra">    db.<span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;SELECT * FROM gantt_tasks ORDER BY sortorder ASC&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span></span>    db.<span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;SELECT * FROM gantt_links&quot;</span><span class="br0">&#41;</span>
+  <span class="br0">&#93;</span><span class="br0">&#41;</span>.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>results<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> tasks <span class="sy0">=</span> results<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">,</span>
+      links <span class="sy0">=</span> results<span class="br0">&#91;</span><span class="nu0">1</span><span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw2">var</span> i <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span> i <span class="sy0">&lt;</span> tasks.<span class="me1">length</span><span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+      tasks<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="me1">start_date</span> <span class="sy0">=</span> tasks<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="me1">start_date</span>.<span class="me1">format</span><span class="br0">&#40;</span><span class="st0">&quot;YYYY-MM-DD hh:mm:ss&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+      tasks<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="kw3">open</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    res.<span class="me1">send</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+      data<span class="sy0">:</span> tasks<span class="sy0">,</span>
+      collections<span class="sy0">:</span> <span class="br0">&#123;</span> links<span class="sy0">:</span> links <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="br0">&#125;</span><span class="br0">&#41;</span>.<span class="kw1">catch</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    sendResponse<span class="br0">&#40;</span>res<span class="sy0">,</span> <span class="st0">&quot;error&quot;</span><span class="sy0">,</span> <span class="kw2">null</span><span class="sy0">,</span> error<span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>2 . Newly added tasks must receive the initial value <code>sortorder</code>:</p>
+
+<p class='snippet'> server.js</p>
+
+<pre><code><pre class="js">app.<span class="me1">post</span><span class="br0">&#40;</span><span class="st0">&quot;/data/task&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>req<span class="sy0">,</span> res<span class="br0">&#41;</span> <span class="br0">&#123;</span> <span class="co1">// adds new task to database</span>
+  <span class="kw2">var</span> task <span class="sy0">=</span> getTask<span class="br0">&#40;</span>req.<span class="me1">body</span><span class="br0">&#41;</span><span class="sy0">;</span>  
+&nbsp;
+  db.<span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;SELECT MAX(sortorder) AS maxOrder FROM gantt_tasks&quot;</span><span class="br0">&#41;</span>
+  .<span class="me1">then</span> <span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>result<span class="br0">&#41;</span> <span class="br0">&#123;</span>  
+    <span class="co1">// assign max sort order to the new task</span>
+<span class="xtra ln-xtra">    <span class="kw2">var</span> orderIndex <span class="sy0">=</span> <span class="br0">&#40;</span>result<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span>.<span class="me1">maxOrder</span> <span class="sy0">||</span> <span class="nu0">0</span><span class="br0">&#41;</span> <span class="sy0">+</span> <span class="nu0">1</span><span class="sy0">;</span></span>&nbsp;
+    <span class="kw1">return</span> db.<span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;INSERT INTO gantt_tasks(text, start_date, duration, progress, &quot;</span>
+      <span class="sy0">+</span><span class="st0">&quot;parent, sortorder) VALUES (?,?,?,?,?,?)&quot;</span><span class="sy0">,</span>
+      <span class="br0">&#91;</span>task.<span class="me1">text</span><span class="sy0">,</span> task.<span class="me1">start_date</span><span class="sy0">,</span> task.<span class="me1">duration</span><span class="sy0">,</span> task.<span class="me1">progress</span><span class="sy0">,</span> task.<span class="me1">parent</span><span class="sy0">,</span> 
+<span class="xtra ln-xtra">        orderIndex<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></span>  <span class="br0">&#125;</span><span class="br0">&#41;</span>
+  .<span class="me1">then</span> <span class="br0">&#40;</span><span class="kw2">function</span> <span class="br0">&#40;</span>result<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    sendResponse<span class="br0">&#40;</span>res<span class="sy0">,</span> <span class="st0">&quot;inserted&quot;</span><span class="sy0">,</span> result.<span class="me1">insertId</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span><span class="br0">&#41;</span>
+  .<span class="kw1">catch</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    sendResponse<span class="br0">&#40;</span>res<span class="sy0">,</span> <span class="st0">&quot;error&quot;</span><span class="sy0">,</span> <span class="kw2">null</span><span class="sy0">,</span> error<span class="br0">&#41;</span><span class="sy0">;</span> 
+  <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>3 . Finally, when a user reorders tasks, task orders must be <a class="link-" href="desktop__server_side.html#storingtheorderoftasks">updated</a>:</p>
+
+<p class='snippet'> server.js</p>
+
+<pre><code><pre class="js"><span class="co1">// update task</span>
+app.<span class="me1">put</span><span class="br0">&#40;</span><span class="st0">&quot;/data/task/:id&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>req<span class="sy0">,</span> res<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="kw2">var</span> sid <span class="sy0">=</span> req.<span class="me1">params</span>.<span class="me1">id</span><span class="sy0">,</span>
+    target <span class="sy0">=</span> req.<span class="me1">body</span>.<span class="me1">target</span><span class="sy0">,</span>
+    task <span class="sy0">=</span> getTask<span class="br0">&#40;</span>req.<span class="me1">body</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  Promise.<span class="me1">all</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+    db.<span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;UPDATE gantt_tasks SET text = ?, start_date = ?, duration = ?, progress = ?, parent = ? WHERE id = ?&quot;</span><span class="sy0">,</span>
+      <span class="br0">&#91;</span>task.<span class="me1">text</span><span class="sy0">,</span> task.<span class="me1">start_date</span><span class="sy0">,</span> task.<span class="me1">duration</span><span class="sy0">,</span> task.<span class="me1">progress</span><span class="sy0">,</span> task.<span class="me1">parent</span><span class="sy0">,</span> sid<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    updateOrder<span class="br0">&#40;</span>sid<span class="sy0">,</span> target<span class="br0">&#41;</span></span>  <span class="br0">&#93;</span><span class="br0">&#41;</span>
+    .<span class="me1">then</span> <span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>result<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+      sendResponse<span class="br0">&#40;</span>res<span class="sy0">,</span> <span class="st0">&quot;updated&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span>
+    .<span class="kw1">catch</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+      sendResponse<span class="br0">&#40;</span>res<span class="sy0">,</span> <span class="st0">&quot;error&quot;</span><span class="sy0">,</span> <span class="kw2">null</span><span class="sy0">,</span> error<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">function</span> updateOrder<span class="br0">&#40;</span>taskId<span class="sy0">,</span> target<span class="br0">&#41;</span><span class="br0">&#123;</span>
+  <span class="kw2">var</span> nextTask <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span>
+  <span class="kw2">var</span> targetOrder<span class="sy0">;</span>
+&nbsp;
+  target <span class="sy0">=</span> target <span class="sy0">||</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="kw1">if</span><span class="br0">&#40;</span>target.<span class="me1">startsWith</span><span class="br0">&#40;</span><span class="st0">&quot;next:&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    target <span class="sy0">=</span> target.<span class="me1">substr</span><span class="br0">&#40;</span><span class="st0">&quot;next:&quot;</span>.<span class="me1">length</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    nextTask <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+&nbsp;
+  <span class="kw1">return</span> db.<span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;SELECT * FROM gantt_tasks WHERE id = ?&quot;</span><span class="sy0">,</span> <span class="br0">&#91;</span>target<span class="br0">&#93;</span><span class="br0">&#41;</span>
+    .<span class="me1">then</span> <span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>result<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+      <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span>result<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="br0">&#41;</span>
+        <span class="kw1">return</span> Promise.<span class="me1">resolve</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+      targetOrder <span class="sy0">=</span> result<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span>.<span class="me1">sortorder</span><span class="sy0">;</span>
+      <span class="kw1">if</span><span class="br0">&#40;</span>nextTask<span class="br0">&#41;</span>
+        targetOrder<span class="sy0">++;</span>
+&nbsp;
+      <span class="kw1">return</span> db.<span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;UPDATE gantt_tasks SET sortorder = sortorder + 1 &quot;</span>
+        <span class="sy0">+</span><span class="st0">&quot; WHERE sortorder &gt;= ?&quot;</span><span class="sy0">,</span> <span class="br0">&#91;</span>targetOrder<span class="br0">&#93;</span><span class="br0">&#41;</span>
+      .<span class="me1">then</span> <span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>result<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">return</span> db.<span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;UPDATE gantt_tasks SET sortorder = ? WHERE id = ?&quot;</span><span class="sy0">,</span>
+          <span class="br0">&#91;</span>targetOrder<span class="sy0">,</span> taskId<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+      <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>You can check <a href="https://github.com/DHTMLX/gantt-howto-node">a ready demo</a> on GitHub.</p>
+
+<a name='applicationsecurity'><h2>Application security</h2></a>
+
+<p>Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details <a class="link-hidden" href="desktop__app_security.html">in the corresponding article</a>.</p>
+
+<a name='troubleshooting'><h2>Trouble shooting</h2></a>
+
+<p>In case you've completed the above steps to implement Gantt integration with Node.js, but Gantt doesn't render tasks and links on a page, have a look at the <a class="link-" href="desktop__troubleshooting.html">Troubleshooting Backend Integration Issues</a> article. It describes 
+the ways of identifying the roots of the problems.</p>
+
+<a name='whatsnext'><h2>What's next</h2></a>
+
+<p>Now you have a fully functioning gantt. You can view the full code on <a href="https://github.com/DHTMLX/gantt-howto-node">GitHub</a>, clone or download it and use it for your projects.</p>
+
+<p>You can also check <a class="link-" href="desktop__guides.html">guides on the numerous features of gantt</a> or tutorials on <a class="link-" href="desktop__howtostart_guides.html">integrating Gantt with other backend frameworks</a>.</p>
+
+<!-- Content Area End -->
+			<a href='desktop__howtostart_nodejs.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

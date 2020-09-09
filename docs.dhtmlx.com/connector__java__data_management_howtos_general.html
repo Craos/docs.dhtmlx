@@ -1,0 +1,279 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>General HowTos  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=" current"><a href="connector__java__data_management_howtos_general.html">General HowTos</a></li><ul><li class="inner"><a href="connector__java__data_management_howtos_general.html#howcaniassignaliasestodbcolumns">How can I assign aliases to DB columns?</a></li><li class="inner"><a href="connector__java__data_management_howtos_general.html#howcaniattachevent">How can I attach event?</a></li><li class="inner"><a href="connector__java__data_management_howtos_general.html#howcanicheckthevalueofanitem">How can I check the value of an item?</a></li><li class="inner"><a href="connector__java__data_management_howtos_general.html#howcanidenyaccesstoacertainoperation">How can I deny access to a certain operation?</a></li><li class="inner"><a href="connector__java__data_management_howtos_general.html#howcanicustomizethecontentofacell">How can I customize the content of a cell?</a></li><li class="inner"><a href="connector__java__data_management_howtos_general.html#howcanifilterdataontheserverside">How can I filter data on the server side?</a></li><li class="inner"><a href="connector__java__data_management_howtos_general.html#howcanihandleerrorsandlogthem">How can I handle errors and log them?</a></li><li class="inner"><a href="connector__java__data_management_howtos_general.html#howcanisetavaluetoanitem">How can I set a value to an item?</a></li><li class="inner"><a href="connector__java__data_management_howtos_general.html#howcanisortdataontheserverside">How can I sort data on the server side?</a></li><li class="inner"><a href="connector__java__data_management_howtos_general.html#howcanivalidatedataontheclientside">How can I validate data on the client side?</a></li><li class="inner"><a href="connector__java__data_management_howtos_general.html#howcanivalidatedataontheserverside">How can I validate data on the server side?</a></li></ul><li class=""><a href="connector__java__data_management_howtos_loading.html">Data Loading HowTos</a></li><li class=""><a href="connector__java__data_management_howtos_updating.html">Data Updating HowTos</a></li><li class=""><a href="connector__java__component-specific_howtos_combo.html">Combo Specific HowTos</a></li><li class=""><a href="connector__java__component-specific_howtos_form.html">Form Specific HowTos</a></li><li class=""><a href="connector__java__component-specific_howtos_grid.html">Grid Specific HowTos</a></li><li class=""><a href="connector__java__component-specific_howtos_tree_treegrid.html">Tree(TreeGrid) Specific HowTos</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="connector__index.html">Client-Server Communication</a><a class="n3" href="connector__java__index.html">Java Connector</a><a class="n4" href="connector__java__coding_howtos.html">HowTos</a></div>
+<!-- Content Area -->
+
+
+
+<h1>General HowTos</h1>
+
+<a name='howcaniassignaliasestodbcolumns'><h2>How can I assign aliases to DB columns?</h2></a>
+
+<p>By using the <strong>render_sql()</strong> or <strong>render_table()</strong> methods
+you can assign aliases to the required tables or columns. For this purpose, in sql statement you should use word 'as' (as in any usual sql statement), in other parameters - parentheses.</p>
+
+<pre><code><pre class="js">grid.<span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;tableA&quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span><span class="st0">&quot;name,price(product_price)&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//or</span>
+grid.<span class="me1">render_sql</span><span class="br0">&#40;</span>
+    <span class="st0">&quot;Select *,tableA.id as aid from tableA, tableB  where  tableA.id=tableB.id&quot;</span><span class="sy0">,</span> 
+    <span class="st0">&quot;tableA.id(aid)&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;name,price(product_price),other&quot;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='howcaniattachevent'><h2>How can I attach event?</h2></a>
+
+<p>To attach event you should use <strong>component.event.attach()</strong>. For more details on this topic, see the '<a class="link-" href="connector__java__event_handling.html">Handling Events</a>' guide.</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> CustomBehavior <span class="kw2">extends</span> ConnectorBehavior<span class="br0">&#123;</span>
+        <span class="sy0">@</span>Override 
+    <span class="kw2">public</span> <span class="kw1">void</span> beforeUpdate<span class="br0">&#40;</span>DataAction data<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="co1">//any custom code</span>
+    <span class="br0">&#125;</span> 
+<span class="br0">&#125;</span>
+component.<span class="me1">event</span>.<span class="me1">attach</span><span class="br0">&#40;</span><span class="kw2">new</span> CustomBehavior<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='howcanicheckthevalueofanitem'><h2>How can I check the value of an item?</h2></a>
+
+<p>With the help of the <strong>get_value()</strong> method you can check the value of any item.</p>
+
+<pre><code><pre class="js">grid.<span class="me1">get_value</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='howcanidenyaccesstoacertainoperation'><h2>How can I deny access to a certain operation?</h2></a>
+
+<p>By default, the connector allows all operations. To deny some operation use the <strong><em>deny(name_of_operation)</em></strong> method that can get one of the following params:<em>read/update/insert/delete</em>. 
+For more details see the '<a class="link-" href="connector__java__app_security.html">Security</a>' guide.</p>
+
+<pre><code><pre class="js">grid.<span class="me1">access</span>.<span class="me1">deny</span><span class="br0">&#40;</span>OperationType.<span class="me1">Read</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='howcanicustomizethecontentofacell'><h2>How can I customize the content of a cell?</h2></a>
+
+<p>You can use the <a class="link-" href="connector__java__event_beforerender.html">beforeRender</a> event to define how the content of a cell must be formatted.</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> RenderBehavior <span class="kw2">extends</span> ConnectorBehavior<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw1">void</span> beforeRender<span class="br0">&#40;</span>DataItem data<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        String field <span class="sy0">=</span> data.<span class="me1">get_value</span><span class="br0">&#40;</span><span class="st0">&quot;some&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        data.<span class="me1">set_value</span><span class="br0">&#40;</span><span class="st0">&quot;some&quot;</span><span class="sy0">,</span><span class="st0">&quot;&lt;a href='details.php?id=&quot;</span><span class="sy0">+</span>field<span class="sy0">+</span><span class="st0">&quot;'&gt;&quot;</span><span class="sy0">+</span>Details<span class="sy0">+</span><span class="st0">&quot;&lt;/a&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span> 
+<span class="br0">&#125;</span>
+&nbsp;
+grid <span class="sy0">=</span> <span class="kw2">new</span> GridConnector<span class="br0">&#40;</span>res<span class="br0">&#41;</span><span class="sy0">;</span>
+grid.<span class="me1">event</span>.<span class="me1">attach</span><span class="br0">&#40;</span><span class="kw2">new</span> RenderBehavior<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In the sample above, the grid will have a custom content.</p>
+
+<a name='howcanifilterdataontheserverside'><h2>How can I filter data on the server side?</h2></a>
+
+<p>You have 2 ways to filter data on the server backend:</p>
+
+<ul>
+<li>by using in-header filter types during the component configuration (on the client side)</li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Column A, Column B&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">attachHeader</span><span class="br0">&#40;</span><span class="st0">&quot;#connector_text_filter,#connector_select_filter&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>by means of the <a class="link-" href="connector__java__event_beforerender.html">beforeRender</a> event (on the server side)</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">class</span> FilterBehavior <span class="kw2">extends</span> ConnectorBehavior<span class="br0">&#123;</span>
+    <span class="sy0">@</span>Overrride
+    <span class="kw2">public</span> <span class="kw1">void</span> beforeRender<span class="br0">&#40;</span>DataItem data<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>data.<span class="me1">get_value</span><span class="br0">&#40;</span><span class="st0">&quot;some&quot;</span><span class="br0">&#41;</span> <span class="sy0">&lt;</span> <span class="nu0">0</span> <span class="br0">&#41;</span>
+        data.<span class="me1">skip</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span>
+conn.<span class="me1">attach</span>.<span class="me1">event</span><span class="br0">&#40;</span><span class="kw2">new</span> FilterBehavior<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>See the guide '<a class="link-" href="connector__java__filtration.html">Filtration</a>' for more information.</p>
+
+<a name='howcanihandleerrorsandlogthem'><h2>How can I handle errors and log them?</h2></a>
+
+<p>You can enable logging using the <strong>enable_log()</strong> method. For more details see the '<a class="link-" href="connector__java__errors.html">Error handling and logging</a>' guide.</p>
+
+<pre><code><pre class="js">gridConn.<span class="me1">enable_log</span><span class="br0">&#40;</span><span class="st0">&quot;path&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//to show short info on the client side</span>
+<span class="co1">//or</span>
+gridConn.<span class="me1">enable_log</span><span class="br0">&#40;</span><span class="st0">&quot;path&quot;</span><span class="sy0">,</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">// to show full info on the client side</span></pre></code></pre>
+
+<a name='howcanisetavaluetoanitem'><h2>How can I set a value to an item?</h2></a>
+
+<p>By means of using the <strong>set_value()</strong> method, you can set a value to any item of component.</p>
+
+<pre><code><pre class="js">dataItem.<span class="me1">set_value</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="sy0">,</span>value<span class="br0">&#41;</span></pre></code></pre>
+
+<a name='howcanisortdataontheserverside'><h2>How can I sort data on the server side?</h2></a>
+
+<p>You have 2 ways to sort data on the server backend:</p>
+
+<ul>
+<li>by specifying additional parameters in URL (on the client side)</li>
+</ul>
+
+<pre><code><pre class="js">grid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;some.php?connector=true&amp;dhx_sort[2]=asc&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>by using the sorting type 'connector' during the component configuration (on the client side)</li>
+</ul>
+
+<pre><code><pre class="js">grid.<span class="me1">setColSorting</span><span class="br0">&#40;</span><span class="st0">&quot;connector,str,na);</span></pre></code></pre>
+
+<p>See the guide '<a class="link-" href="connector__java__sort.html">Sorting</a>' for more information.</p>
+
+<a name='howcanivalidatedataontheclientside'><h2>How can I validate data on the client side?</h2></a>
+
+<p>dataProcessor lets you validate data on the client side. Use the <em>setVerificator(index,method)</em> method to define the appropriate columns and validators. See details in the <a class="link-" href="dataprocessor__configuration.html#validation">related chapter of dataProcessor' documentation</a>.</p>
+
+<pre><code><pre class="js">dp.<span class="me1">setVerificator</span><span class="br0">&#40;</span>column_index<span class="sy0">,</span>verification_func<span class="br0">&#41;</span></pre></code></pre>
+
+<a name='howcanivalidatedataontheserverside'><h2>How can I validate data on the server side?</h2></a>
+
+<p>To perform server-side validation you should use one of the dhtmlxConnector events stated below and specify the needed validation rules in the appropriate events' handlers functions:</p>
+
+<ul>
+<li><a class="link-" href="connector__java__event_beforeupdate.html">beforeUpdate</a></li>
+<li><a class="link-" href="connector__java__event_beforeinsert.html">beforeInsert</a></li>
+<li><a class="link-" href="connector__java__event_beforedelete.html">beforeDelete</a></li>
+<li><a class="link-" href="connector__java__event_beforeprocessing.html">beforeProcessing</a></li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">class</span> validateBehavior <span class="kw2">extends</span> ConnectorBehavior<span class="br0">&#123;</span>
+    ...
+<span class="br0">&#125;</span>
+&nbsp;
+conn.<span class="me1">event</span>.<span class="me1">attach</span><span class="br0">&#40;</span><span class="kw2">new</span> validateBehavior<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>For more details on the server-side validation, see the '<a class="link-" href="connector__java__validation.html">Validation</a>' guide.</p>
+
+<!-- Content Area End -->
+			<a href='connector__java__data_management_howtos_general.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

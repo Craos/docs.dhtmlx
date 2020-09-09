@@ -1,0 +1,407 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Cell-Level API  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxgrid.html">dhtmlXGrid API</a></li><li class=" current"><a href="grid__cell_level_api.html">Cell-Level API</a></li><ul><li class="inner"><a href="grid__cell_level_api.html#ischecked">isChecked</a></li><li class="inner"><a href="grid__cell_level_api.html#isdisabled">isDisabled</a></li><li class="inner"><a href="grid__cell_level_api.html#getattribute">getAttribute</a></li><li class="inner"><a href="grid__cell_level_api.html#getbgcolor">getBgColor</a></li><li class="inner"><a href="grid__cell_level_api.html#getcellcombo">getCellCombo</a></li><li class="inner"><a href="grid__cell_level_api.html#gethoralign">getHorAlign</a></li><li class="inner"><a href="grid__cell_level_api.html#getmathvalue">getMathValue</a></li><li class="inner"><a href="grid__cell_level_api.html#gettextcolor">getTextColor</a></li><li class="inner"><a href="grid__cell_level_api.html#gettitle">getTitle</a></li><li class="inner"><a href="grid__cell_level_api.html#getvalue">getValue</a></li><li class="inner"><a href="grid__cell_level_api.html#getwidth">getWidth</a></li><li class="inner"><a href="grid__cell_level_api.html#setattribute">setAttribute</a></li><li class="inner"><a href="grid__cell_level_api.html#setbgcolor">setBgColor</a></li><li class="inner"><a href="grid__cell_level_api.html#setdisabled">setDisabled</a></li><li class="inner"><a href="grid__cell_level_api.html#sethoralign">setHorAlign</a></li><li class="inner"><a href="grid__cell_level_api.html#settextcolor">setTextColor</a></li><li class="inner"><a href="grid__cell_level_api.html#setvalue">setValue</a></li></ul><li class=""><a href="grid__creating_a_grid.html">Creating Grid on a Page</a></li><li class=""><a href="grid__loading_data.html">Loading and Storing Data</a></li><li class=""><a href="grid__configuring_the_grid.html">Configuring Grid</a></li><li class=""><a href="grid__managing_data.html">Managing Data in Grid</a></li><li class=""><a href="grid__styling_the_grid.html">Styling Grid</a></li><li class=""><a href="grid__integration.html">Integrating with Other Components</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Cell-Level API</h1>
+
+<a name='ischecked'><h2>isChecked</h2></a>
+
+<p>indicates whether a checkbox or a radio button is checked</p>
+
+<p><strong>Returns</strong>:</p>
+
+<ul>
+<li>state - (boolean) returns <strong>true</strong>, if the first child of the cell is checked. Otherwise, <strong>false</strong></li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">isChecked</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='isdisabled'><h2>isDisabled</h2></a>
+
+<p>indicates whether the specified cell is disabled by the method setDisabled().
+If the setDisabled() method wasn't called for the cell, the method returns 'undefined'.</p>
+
+<p><strong>Returns</strong>:</p>
+
+<ul>
+<li>mode - (boolean) <strong>true</strong>, if the cell is disabled, otherwise - <strong>false</strong></li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">4</span><span class="br0">&#41;</span>.<span class="me1">setDisabled</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">mygrid</span>.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">4</span><span class="br0">&#41;</span>.<span class="me1">isDisabled</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt;true</span></pre></code></pre>
+
+<a name='getattribute'><h2>getAttribute</h2></a>
+
+<p>checks whether the specified cell has a certain attribute</p>
+
+<p><strong>Parameters</strong>:</p>
+
+<ul>
+<li>name - (string) the attribute's name</li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">setAttribute</span><span class="br0">&#40;</span><span class="st0">'invalid'</span><span class="sy0">,</span> <span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+...
+<span class="me1">mygrid</span>.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">getAttribute</span><span class="br0">&#40;</span><span class="st0">'invalid'</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; true</span></pre></code></pre>
+
+<a name='getbgcolor'><h2>getBgColor</h2></a>
+
+<p>gets the background color of the cell set by the method setBgColor.
+If setBgColor() wasn't called for the cell, the method returns ”#FFFFFF”.</p>
+
+<p><strong>Returns</strong>:</p>
+
+<ul>
+<li>bgcolor - (string) the background color of the cell</li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">//colors the cell in red in 2 different ways</span>
+mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">setBgColor</span><span class="br0">&#40;</span><span class="st0">'red'</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">3</span><span class="br0">&#41;</span>.<span class="me1">setBgColor</span><span class="br0">&#40;</span><span class="st0">'#ff0000'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">mygrid</span>.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">getBgColor</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; &quot;red&quot;</span>
+mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">3</span><span class="br0">&#41;</span>.<span class="me1">getBgColor</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; &quot;#ff0000&quot;</span></pre></code></pre>
+
+<a name='getcellcombo'><h2>getCellCombo</h2></a>
+
+<p>returns dhtmlXCombo cell object that can be used to work with dhtmlxCombo API</p>
+
+<p><strong>Returns</strong>:</p>
+
+<ul>
+<li>cell_combo - (object) dhtmlXCombo cell object</li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">//getting  dhtmlXCombo cell object</span>
+myCombo <span class="sy0">=</span> grid.<span class="me1">cells</span><span class="br0">&#40;</span>id<span class="sy0">,</span>index<span class="br0">&#41;</span>.<span class="me1">getCellCombo</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">//using it later with dhtmlxCombo API</span>
+myCombo.<span class="me1">addOption</span><span class="br0">&#40;</span>key<span class="sy0">,</span>text<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='gethoralign'><h2>getHorAlign</h2></a>
+
+<p>retrieves the horizontal alignment set in the cell by the method setHorAlign.
+If setHorAlign() wasn't called for the cell, the method returns “left”.</p>
+
+<p><strong>Returns</strong>:</p>
+
+<ul>
+<li>hor_align - (string) the horizontal alignment set in the cell</li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">setHorAlign</span><span class="br0">&#40;</span><span class="st0">'right'</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+...
+<span class="me1">mygrid</span>.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">getHorAlign</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; &quot;right&quot;</span></pre></code></pre>
+
+<a name='getmathvalue'><h2>getMathValue</h2></a>
+
+<p>gets the math formula specified for the cell.
+If no formulas are specified for the cell, the method returns the plain cell value.</p>
+
+<p><strong>Returns</strong>:</p>
+
+<ul>
+<li>math_value - (string) the math formula specified for the cell</li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">2</span><span class="br0">&#41;</span>.<span class="me1">getMathValue</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// returns the value like &quot;=c2*c3&quot;</span></pre></code></pre>
+
+<a name='gettextcolor'><h2>getTextColor</h2></a>
+
+<p>gets the text color of the cell set by the method setTextColor.
+If setTextColor wasn't called for the cell, the method returns ”#000000”.</p>
+
+<p><strong>Returns</strong>:</p>
+
+<ul>
+<li>text_color - (string) the text color of the cell </li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">//colors the cell in red in 3 different ways</span>
+mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">setTextColor</span><span class="br0">&#40;</span><span class="st0">'red'</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">2</span><span class="br0">&#41;</span>.<span class="me1">setTextColor</span><span class="br0">&#40;</span><span class="st0">'rgb(255,0,0)'</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">3</span><span class="br0">&#41;</span>.<span class="me1">setTextColor</span><span class="br0">&#40;</span><span class="st0">'#ff0000'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">mygrid</span>.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">getTextColor</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; &quot;red&quot;</span>
+mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">2</span><span class="br0">&#41;</span>.<span class="me1">getTextColor</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; &quot;rgb(255,0,0)&quot;</span>
+mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">3</span><span class="br0">&#41;</span>.<span class="me1">getTextColor</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; &quot;rgb(255,0,0)&quot;</span></pre></code></pre>
+
+<a name='gettitle'><h2>getTitle</h2></a>
+
+<p>gets the value of the specified cell as it's displayed in the grid</p>
+
+<p><strong>Returns</strong>:</p>
+
+<ul>
+<li>value - (string) the value of the cell as it's displayed in the grid</li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">3</span><span class="br0">&#41;</span>.<span class="me1">getTitle</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt;&quot;$12.99&quot;</span>
+mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">3</span><span class="br0">&#41;</span>.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt;&quot;12.99&quot;</span></pre></code></pre>
+
+<p><img src="media/grid/getvalue_method.png"/></p>
+
+<a name='getvalue'><h2>getValue</h2></a>
+
+<p>gets the value of the specified cell</p>
+
+<p><strong>Returns</strong>:</p>
+
+<ul>
+<li>value (string) - the value of the cell</li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">3</span><span class="br0">&#41;</span>.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt;&quot;12.99&quot;</span></pre></code></pre>
+
+<p><img src="media/grid/getvalue_method.png"/></p>
+
+<a name='getwidth'><h2>getWidth</h2></a>
+
+<p>gets the width of the cell in pixels</p>
+
+<p><strong>Returns</strong>:</p>
+
+<ul>
+<li>width - (number) the width of the cell in pixels</li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">3</span><span class="br0">&#41;</span>.<span class="me1">getWidth</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='setattribute'><h2>setAttribute</h2></a>
+
+<p>sets a custom attribute (flag) for the specified cell</p>
+
+<p><strong>Parameters</strong>:</p>
+
+<ul>
+<li>name - (string) the attribute's name</li>
+<li>value - (mixed) the attribute's value</li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">setAttribute</span><span class="br0">&#40;</span><span class="st0">'invalid'</span><span class="sy0">,</span> <span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+...
+<span class="me1">mygrid</span>.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">getAttribute</span><span class="br0">&#40;</span><span class="st0">'invalid'</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; true</span></pre></code></pre>
+
+<a name='setbgcolor'><h2>setBgColor</h2></a>
+
+<p>sets the background color for the cell</p>
+
+<p><strong>Parameters</strong>:</p>
+
+<ul>
+<li><p>value - (string) the color's value</p>
+
+<p>Can be specified as:</p>
+
+<ul>
+<li>Predefined/Cross-browser color name</li>
+<li>Hexadecimal color</li>
+</ul></li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">setBgColor</span><span class="br0">&#40;</span><span class="st0">'red'</span><span class="br0">&#41;</span><span class="sy0">;</span>      <span class="co1">// Predefined/Cross-browser color name</span>
+mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">3</span><span class="br0">&#41;</span>.<span class="me1">setBgColor</span><span class="br0">&#40;</span><span class="st0">'#ff0000'</span><span class="br0">&#41;</span><span class="sy0">;</span>  <span class="co1">//Hexadecimal color</span></pre></code></pre>
+
+<a name='setdisabled'><h2>setDisabled</h2></a>
+
+<p>disables/enables the cell</p>
+
+<p><strong>Parameters</strong>:</p>
+
+<ul>
+<li>value - (boolean) the <strong>true</strong> value disables the cell, the <strong>false</strong> one - enables</li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">2</span><span class="br0">&#41;</span>.<span class="me1">setDisabled</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='sethoralign'><h2>setHorAlign</h2></a>
+
+<p>sets the horizontal alignment in the cell</p>
+
+<p><strong>Parameters</strong>:</p>
+
+<ul>
+<li><p>value - (string) the horizontal alignment</p>
+
+<p>Possible values are:</p>
+
+<ul>
+<li>'r' or 'right' - the right alignment</li>
+<li>'l' or 'left' - the left alignment</li>
+<li>'c' or 'center' - the center alignment</li>
+</ul></li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">setHorAlign</span><span class="br0">&#40;</span><span class="st0">'r'</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='settextcolor'><h2>setTextColor</h2></a>
+
+<p>sets the text color for the cell</p>
+
+<p><strong>Parameters</strong>:</p>
+
+<ul>
+<li><p>value - (string) the color value</p>
+
+<p>Can be specified as:</p>
+
+<ul>
+<li>Predefined/Cross-browser color name</li>
+<li>Hexadecimal color</li>
+<li>RGB color</li>
+</ul></li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">setTextColor</span><span class="br0">&#40;</span><span class="st0">'red'</span><span class="br0">&#41;</span><span class="sy0">;</span>      <span class="co1">// Predefined/Cross-browser color name</span>
+mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">3</span><span class="br0">&#41;</span>.<span class="me1">setTextColor</span><span class="br0">&#40;</span><span class="st0">'#ff0000'</span><span class="br0">&#41;</span><span class="sy0">;</span>      <span class="co1">// Hexadecimal color</span>
+mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">2</span><span class="br0">&#41;</span>.<span class="me1">setTextColor</span><span class="br0">&#40;</span><span class="st0">'rgb(255,0,0)'</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// RGB color</span></pre></code></pre>
+
+<a name='setvalue'><h2>setValue</h2></a>
+
+<p>sets the value for the specified cell</p>
+
+<p><strong>Parameters</strong>:</p>
+
+<ul>
+<li>value - (string) the value to set</li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">0</span><span class="br0">&#41;</span>.<span class="me1">setValue</span><span class="br0">&#40;</span><span class="st0">&quot;newValue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='grid__cell_level_api.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

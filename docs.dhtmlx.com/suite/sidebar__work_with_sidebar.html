@@ -1,0 +1,336 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Work with Sidebar  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="sidebar__api__refs__sidebar.html">Sidebar API</a></li><li class=""><a href="sidebar__init.html">Initialization</a></li><li class=""><a href="sidebar__controls.html">List of Sidebar Controls</a></li><li class=""><a href="sidebar__data_loading.html">Data Loading</a></li><li class=""><a href="sidebar__sidebar_config.html">Configuration</a></li><li class=" current"><a href="sidebar__work_with_sidebar.html">Work with Sidebar</a></li><ul><li class="inner"><a href="sidebar__work_with_sidebar.html#addingatooltiptoacontrol">Adding a tooltip to a control</a></li><li class="inner"><a href="sidebar__work_with_sidebar.html#hidingandshowingcontrols">Hiding and showing controls</a></li><li class="inner"><a href="sidebar__work_with_sidebar.html#expandingandcollapsingsidebar">Expanding and collapsing Sidebar</a></li><li class="inner"><a href="sidebar__work_with_sidebar.html#checkingifsidebariscollapsed">Checking if Sidebar is collapsed</a></li><li class="inner"><a href="sidebar__work_with_sidebar.html#disablingandenablingcontrols">Disabling and enabling controls</a></li><li class="inner"><a href="sidebar__work_with_sidebar.html#checkingifasidebaritemisdisabled">Checking if a sidebar item is disabled</a></li><li class="inner"><a href="sidebar__work_with_sidebar.html#selectingunselectinganitem">Selecting/Unselecting an item</a></li><li class="inner"><a href="sidebar__work_with_sidebar.html#checkingifasidebaritemisselected">Checking if a sidebar item is selected</a></li><li class="inner"><a href="sidebar__work_with_sidebar.html#gettingselecteditems">Getting selected items</a></li><li class="inner"><a href="sidebar__work_with_sidebar.html#togglingsidebar">Toggling Sidebar</a></li><li class="inner"><a href="sidebar__work_with_sidebar.html#usingtreecollectionapi">Using Tree collection API</a></li></ul><li class=""><a href="sidebar__customization.html">Customization</a></li><li class=""><a href="sidebar__events.html">Event Handling</a></li><li class=""><a href="sidebar__migration.html">Migration to Newer Versions</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="sidebar__index.html">Sidebar</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Work with Sidebar</h1>
+
+<a name='addingatooltiptoacontrol'><h2>Adding a tooltip to a control</h2></a>
+
+<p>You can attach a tooltip to a control. For this you need to provide the <strong>tooltip</strong> property with the tooltip text in the control object before the sidebar initialization:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;button&quot;</span><span class="sy0">,</span>
+    value<span class="sy0">:</span> <span class="st0">&quot;test1&quot;</span><span class="sy0">,</span>
+    tooltip<span class="sy0">:</span> <span class="st0">&quot;tooltip for test1&quot;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='hidingandshowingcontrols'><h2>Hiding and showing controls</h2></a>
+
+<p>You can show or hide controls by their IDs. Pass them to the corresponding methods - <a class="link-" href="sidebar__api__sidebar_show_method.html">show()</a> and <a class="link-" href="sidebar__api__sidebar_hide_method.html">hide()</a>:</p>
+
+<pre><code><pre class="js">sidebar.<span class="me1">hide</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// hides a control</span>
+sidebar.<span class="me1">show</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// shows a control</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/5hsowdoy' target='blank'><span class='sample'>Related sample: </span>&nbsp;Sidebar. Show/Hide</a></p>
+
+<a name='expandingandcollapsingsidebar'><h2>Expanding and collapsing Sidebar</h2></a>
+
+<p>It is possible to expand/collapse a sidebar using two corresponding methods - <a class="link-" href="sidebar__api__sidebar_expand_method.html">expand()</a> and <a class="link-" href="sidebar__api__sidebar_collapse_method.html">collapse()</a>:</p>
+
+<pre><code><pre class="js">sidebar.<span class="me1">expand</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// expands a sidebar</span>
+sidebar.<span class="me1">collapse</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// collapses a sidebar</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/ydlltdq6' target='blank'><span class='sample'>Related sample: </span>&nbsp;Sidebar. Collapse/Expand</a></p>
+
+<a name='checkingifsidebariscollapsed'><h2>Checking if Sidebar is collapsed</h2></a>
+
+<p>To check whether Sidebar is collapsed, make use of the <a class="link-" href="sidebar__api__sidebar_iscollapsed_method.html">isCollapsed()</a> method of the Sidebar API. The method returns <em>true</em>, if a sidebar is collapsed, and <em>false</em> if it's expanded.</p>
+
+<pre><code><pre class="js">sidebar.<span class="me1">isCollapsed</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; true/false</span></pre></code></pre>
+
+<a name='disablingandenablingcontrols'><h2>Disabling and enabling controls</h2></a>
+
+<p>You can disable or enable controls. The related methods - <a class="link-" href="sidebar__api__sidebar_enable_method.html">enable()</a> and <a class="link-" href="sidebar__api__sidebar_disable_method.html">disable()</a> - take the IDs of controls as parameters:</p>
+
+<pre><code><pre class="js">sidebar.<span class="me1">disable</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// disables a control</span>
+sidebar.<span class="me1">enable</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>  <span class="co1">// enables a control</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/ea9fywne' target='blank'><span class='sample'>Related sample: </span>&nbsp;Sidebar. Enable/Disable</a></p>
+
+<a name='checkingifasidebaritemisdisabled'><h2>Checking if a sidebar item is disabled</h2></a>
+
+<p>To check if an item of Sidebar is disabled, call the <a class="link-" href="sidebar__api__sidebar_isdisabled_method.html">isDisabled()</a> method. The method takes one parameter:</p>
+
+<ul>
+<li><strong>id</strong> - (<em>string</em>) an id of a sidebar item</li>
+</ul>
+
+<pre><code><pre class="js">sidebar.<span class="me1">isDisabled</span><span class="br0">&#40;</span><span class="st0">&quot;1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; true/false</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/ea9fywne' target='blank'><span class='sample'>Related sample: </span>&nbsp;Sidebar. Enable/Disable</a></p>
+
+<a name='selectingunselectinganitem'><h2>Selecting/Unselecting an item</h2></a>
+
+<h3>Selecting a sidebar item</h3>
+
+<p>To select a particular Sidebar item, make use of the <a class="link-" href="sidebar__api__sidebar_select_method.html">select()</a> method of Sidebar. The method takes two parameters:</p>
+
+<ul>
+<li><strong>id</strong> - (<em>string</em>) the id of an item</li>
+<li><strong>unselect</strong> - (<em>boolean</em>) optional, <em>true</em> - to unselect previously selected items, otherwise - <em>false</em>; <em>true</em> by default</li>
+</ul>
+
+<pre><code><pre class="js">sidebar.<span class="me1">select</span><span class="br0">&#40;</span><span class="st0">&quot;categoryPost&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/sidebar/03_usage/06_select_unselect.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Select/unselect - DHTMLX Sidebar</a></p>
+
+<h3>Unselecting a sidebar item</h3>
+
+<p>To remove selection from a selected item, apply the <a class="link-" href="sidebar__api__sidebar_unselect_method.html">unselect()</a> method of Sidebar. The method may take the id of an item as a parameter:</p>
+
+<pre><code><pre class="js"><span class="co1">// unselects a specified selected item</span>
+sidebar.<span class="me1">unselect</span><span class="br0">&#40;</span><span class="st0">&quot;categoryPost&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>It is also possible to remove selection from all previously selected items of Sidebar via the <a class="link-" href="sidebar__api__sidebar_unselect_method.html">unselect()</a> method:</p>
+
+<pre><code><pre class="js"><span class="co1">// unselects all previously selected items</span>
+sidebar.<span class="me1">unselect</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/sidebar/03_usage/06_select_unselect.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Select/unselect - DHTMLX Sidebar</a></p>
+
+<a name='checkingifasidebaritemisselected'><h2>Checking if a sidebar item is selected</h2></a>
+
+<p>To check if an item of Sidebar is selected, call the <a class="link-" href="sidebar__api__sidebar_isselected_method.html">isSelected()</a> method. The method takes one parameter:</p>
+
+<ul>
+<li><strong>id</strong> - (<em>string</em>) an id of a sidebar item</li>
+</ul>
+
+<pre><code><pre class="js">sidebar.<span class="me1">isSelected</span><span class="br0">&#40;</span><span class="st0">&quot;categoryPost&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; returns true/false</span></pre></code></pre>
+
+<p><a href='samples/sidebar/03_usage/06_select_unselect.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Select/unselect - DHTMLX Sidebar</a></p>
+
+<a name='gettingselecteditems'><h2>Getting selected items</h2></a>
+
+<p>To get the selected items, call the <a class="link-" href="sidebar__api__sidebar_getselected_method.html">getSelected()</a> method. The method returns an array of IDs of selected items:</p>
+
+<pre><code><pre class="js">sidebar.<span class="me1">getSelected</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; [&quot;selected_1&quot;, &quot;selected_1.1&quot;]</span></pre></code></pre>
+
+<a name='togglingsidebar'><h2>Toggling Sidebar</h2></a>
+
+<p>You can collapse and expand a sidebar with the help of the <a class="link-" href="sidebar__api__sidebar_toggle_method.html">toggle()</a> method as easy as that:</p>
+
+<pre><code><pre class="js">sidebar.<span class="me1">toggle</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/wll2h9nd' target='blank'><span class='sample'>Related sample: </span>&nbsp;Sidebar. Toggle</a></p>
+
+<a name='usingtreecollectionapi'><h2>Using Tree collection API</h2></a>
+
+<p>You can manipulate the controls of Sidebar with the help of the <a class="link-" href="tree_collection__api__refs__treecollection.html">Tree collection API</a>.</p>
+
+<h3>Adding new controls into Sidebar</h3>
+
+<p>It is possible to add more controls into the initialized Sidebar on the fly. Use the <strong>add()</strong> method of Tree Collection. It takes three parameters:</p>
+
+<ul>
+<li><strong>config</strong> - (<em>object</em>) the configuration object of the added control</li>
+<li><strong>index</strong> - (<em>number</em>) optional, the position to add a control at</li>
+<li><strong>parent</strong> - (<em>string</em>) optional, the id of a parent control (for the <em>menuItem</em> control type)</li>
+</ul>
+
+<pre><code><pre class="js">sidebar.<span class="me1">data</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    type<span class="sy0">:</span><span class="st0">&quot;button&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span><span class="st0">&quot;Add&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+sidebar.<span class="me1">data</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    type<span class="sy0">:</span><span class="st0">&quot;separator&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+sidebar.<span class="me1">data</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    type<span class="sy0">:</span><span class="st0">&quot;button&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span><span class="st0">&quot;Remove&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/jcnw95ac' target='blank'><span class='sample'>Related sample: </span>&nbsp;Sidebar. Data Add</a></p>
+
+<p>Templates for Sidebar controls in the JSON format are given <a class="link-" href="sidebar__data_loading.html#jsonformattemplates">here</a>.</p>
+
+<h3>Updating config of controls</h3>
+
+<p>You can change config options of the control via the <strong>update()</strong> method of Tree Collection. It takes two parameters:</p>
+
+<ul>
+<li><strong>id</strong> - the id of the control</li>
+<li><strong>config</strong> - an object with new configuration of the control</li>
+</ul>
+
+<p>For example, you can change the icon of a control:</p>
+
+<pre><code><pre class="js">sidebar.<span class="me1">data</span>.<span class="me1">update</span><span class="br0">&#40;</span><span class="st0">&quot;add&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> 
+    icon<span class="sy0">:</span> <span class="st0">&quot;icon_name&quot;</span> 
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/p1zu63le' target='blank'><span class='sample'>Related sample: </span>&nbsp;Sidebar. Data Update</a></p>
+
+<h3>Removing controls from Sidebar</h3>
+
+<p>To remove a control, make use of the <strong>remove()</strong> method of Tree Collection. Pass the id of the control that should be removed to the method:</p>
+
+<pre><code><pre class="js">sidebar.<span class="me1">data</span>.<span class="me1">remove</span><span class="br0">&#40;</span><span class="st0">&quot;control-id&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/ecp3etuf' target='blank'><span class='sample'>Related sample: </span>&nbsp;Sidebar. Data Remove</a></p>
+
+<h3>Rearranging controls</h3>
+
+<p>You can move menu controls to different positions with the <strong>move()</strong> method of Tree Collection. For example, this is how you can move an item with ID "2" to the left edge of the sidebar:</p>
+
+<pre><code><pre class="js">sidebar.<span class="me1">data</span>.<span class="me1">move</span><span class="br0">&#40;</span><span class="st0">&quot;2&quot;</span><span class="sy0">,</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><br></p>
+
+<div class='note'><p><p>Check the full list of <a class="link-" href="tree_collection__api__refs__treecollection.html">Tree collection API</a>.</p>
+</p></div>
+
+<!-- Content Area End -->
+			<a href='sidebar__work_with_sidebar.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- meta block -->
+		<title>Html in data - DHTMLX TreeGrid</title>
+		<meta name="description" content="Check interactive samples of DHTMLX TreeGrid to explore its configuration and other details.">
+		<!-- end meta block -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+		<script type="text/javascript" src="../../../codebase/suite-v=6.5.3.js"></script>
+		<link rel="stylesheet" href="../../../codebase/suite-v=6.5.3.css">
+		<link rel="stylesheet" href="../../common/index-v=6.5.3.css">
+		<link rel="stylesheet" href="../common/treegrid-v=6.5.3.css">
+		
+		<!-- custom sample head -->
+	<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                        'gtm.start':
+                                new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5M5RCSJ');</script>
+<!-- End Google Tag Manager -->
+
+<!-- error tracking -->
+<script src="https://cdn.ravenjs.com/3.19.1/raven.min.js" crossorigin="anonymous"></script>
+<script>Raven.config('https://a2578da6be394598bfe003e4dbb3a394@sentry.dhtmlx.ru/13').install()</script></head>
+	<body>
+		<header class="dhx_sample-header">
+			<div class="dhx_sample-header__main">
+				<nav class="dhx_sample-header__breadcrumbs">
+					<ul class="dhx_sample-header-breadcrumbs">
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="../../index.html" class="dhx_sample-header-breadcrumbs__link">Suite samples</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="../index.html" class="dhx_sample-header-breadcrumbs__link">TreeGrid samples</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="index.html" class="dhx_sample-header-breadcrumbs__link">Configuration</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<span class="dhx_sample-header-breadcrumbs__link">Html in data</span>
+						</li>
+					</ul>
+				</nav>
+				<h1 class="dhx_sample-header__title">
+					<div class="dhx_sample-header__content">
+						You can allow cells of the column to contain html.
+					</div>
+				</h1>
+		<div class="dhx_sample-header__cta" id="dhx_sample-cta">
+			<a title="Free Trial" target="_blank" class="dhx_sample-btn dhx_sample-btn--flat dhx_sample-btn--cta" 
+			href="https://dhtmlx.com/docs/products/dhtmlxSuite/download.shtml">Free Trial</a>
+		</div>
+	</div>
+</header>
+		<section class="dhx_sample-container">
+			<div class="dhx_sample-container__widget" id="treegrid"></div>
+			
+		</section>
+
+		<script>
+			var dataset = [
+				{
+					"name": "Bestsellers",
+					"id": "b.1"
+				},
+				{
+					"name": "John Grisham",
+					"id": "c.1",
+					"parent": "b.1"
+				},
+				{
+					"name": "A Time to Kill",
+					"price": "12.25",
+					"cover": "Hardcover",
+					"ships": "12 hours",
+					"inStock": "80 <input type='checkbox' checked />",
+					"parent": "c.1"
+				},
+				{
+					"name": "The Firm",
+					"price": "6.00",
+					"cover": "Paperback",
+					"ships": "24 hours",
+					"inStock": "0  <input type='checkbox' />",
+					"parent": "c.1"
+				},
+				{
+					"name": "Classics",
+					"id": "b.2"
+				},
+				{
+					"name": "Pushkin",
+					"id": "c.3",
+					"parent": "b.2"
+				},
+				{
+					"name": "Eugene Onegin : A Novel in Verse",
+					"price": "14.40",
+					"cover": "Hardcover",
+					"ships": "24 hours",
+					"inStock": "55 <input type='checkbox' checked />",
+					"parent": "c.3"
+				},
+				{
+					"name": "Boris Godunov",
+					"price": "8.10",
+					"cover": "Paperback",
+					"ships": "24 hours",
+					"inStock": "1 <input type='checkbox' checked />",
+					"parent": "c.3"
+				},
+				{
+					"name": "For Children",
+					"id": "b.3"
+				},
+				{
+					"name": "Rudyard Kipling",
+					"parent": "b.3",
+					"id": "c.5"
+				},
+				{
+					"price": "4.80",
+					"cover": "Paperback",
+					"ships": "1 hour",
+					"inStock": "0  <input type='checkbox' />",
+					"name": "Jungle Book",
+					"parent": "c.5"
+				},
+				{
+					"name": "Lewis Carroll",
+					"parent": "b.3",
+					"id": "c.6"
+				},
+				{
+					"price": "4.75",
+					"cover": "Paperback",
+					"ships": "24 hours",
+					"inStock": "50 <input type='checkbox' checked />",
+					"name": "Alice in Wonderland",
+					"parent": "c.6",
+					"id": "d.3"
+				}
+			];
+					
+			var treeGrid = new dhx.TreeGrid("treegrid", {
+					columns: [
+						{ width: 280, id: "name", header: [{ text: "Book Name" }] },
+						{
+							width: 160, id: "price", type: "string", header: [{ text: "Terms and conditions", colspan: 2 }, { text: "Price" }],
+							template: function (text, row, col) {
+								return text ? "$ " + text : "";
+							}
+						},
+						{ width: 160, id: "cover", type: "string", header: [{}, { text: "Cover" }] },
+						{ width: 160, id: "ships", type: "string", header: [{ text: "Ships in" }] },
+						{ width: 160, id: "inStock", type: "string", header: [{ text: "In stock" }], htmlEnable: true }
+					],
+					data: dataset
+				});
+		</script>
+
+	</body>
+</html>

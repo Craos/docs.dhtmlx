@@ -1,0 +1,352 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>SimpleVault  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="form__button.html">Button</a></li><li class=""><a href="form__calendar.html">DatePicker</a></li><li class=""><a href="form__checkbox.html">Checkbox</a></li><li class=""><a href="form__colorpicker.html">ColorPicker</a></li><li class=""><a href="form__combo.html">Combo</a></li><li class=""><a href="form__input.html">Input</a></li><li class=""><a href="form__radiogroup.html">RadioGroup</a></li><li class=""><a href="form__select.html">Select</a></li><li class=" current"><a href="form__simplevault.html">SimpleVault</a></li><ul><li class="inner"><a href="form__simplevault.html#addingsimplevault">Adding SimpleVault</a></li><li class="inner"><a href="form__simplevault.html#workingwithsimplevault">Working with SimpleVault</a></li><li class="inner"><a href="form__simplevault.html#usingdatacollectionapi">Using DataCollection API</a></li><li class="inner"><a href="form__simplevault.html#uploadingfiles">Uploading files</a></li></ul><li class=""><a href="form__slider.html">Slider</a></li><li class=""><a href="form__text.html">Text</a></li><li class=""><a href="form__textarea.html">Textarea</a></li><li class=""><a href="form__timepicker.html">TimePicker</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="form__index.html">Form</a><a class="n3" href="form__controls_list.html">List of Form Controls</a></div>
+<!-- Content Area -->
+
+
+
+<h1>SimpleVault</h1>
+
+<p>A handy control for quick and easy uploading of a file or a set of files.</p>
+
+<p><img src="media/form/form_simplevault.png" alt="SimpleVault control" /></p>
+
+<p><a href='https://snippet.dhtmlx.com/ikyyekxq' target='blank'><span class='sample'>Related sample: </span>&nbsp;Form. All DhxForm Inputs</a></p>
+
+<p><a href='https://snippet.dhtmlx.com/ofy4k51o' target='blank'><span class='sample'>Related sample: </span>&nbsp;Form. Simple Vault</a></p>
+
+<a name='addingsimplevault'><h2>Adding SimpleVault</h2></a>
+
+<p>You can easily add a SimpleVault control during initialization of a form:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> form <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Form</span><span class="br0">&#40;</span><span class="st0">&quot;form_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    rows<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+            type<span class="sy0">:</span> <span class="st0">&quot;simpleVault&quot;</span><span class="sy0">,</span>
+            label<span class="sy0">:</span> <span class="st0">&quot;files&quot;</span><span class="sy0">,</span>
+            labelInline<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+            labelWidth<span class="sy0">:</span> <span class="st0">&quot;50px&quot;</span><span class="sy0">,</span>
+            width<span class="sy0">:</span><span class="st0">&quot;450px&quot;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Attributes</h3>
+
+<p>You can provide the following attributes in the configuration object of a SimpleVault:</p>
+
+<ul>
+<li><strong>type</strong> - (<em>string</em>) the type of a control, set it to "simpleVault"</li>
+<li><strong>name</strong> - (<em>string</em>) the name of a control</li>
+<li><strong>id</strong> - (<em>string</em>) the id of a control, auto-generated if not set</li>
+<li><strong>value</strong> - (<em>array</em>) sets the default list of loaded files. Each file object can contain the following properties:
+
+<ul>
+<li><strong>id</strong> - (<em>string</em>) mandatory, the id of the file</li>
+<li><strong>status</strong> - (<em>string</em>) optional, the status of the file ("queue", "inprogress", "uploaded", or "failed") </li>
+<li><strong>progress</strong> - (<em>number</em>) optional, the progress of the file upload</li>
+<li><strong>link</strong> - (<em>string</em>) optional, the path to the uploaded file on a server. In order to download files from SimpleVault to the computer, file objects must have the link attribute specified with the path to their location on the server.</li>
+<li><strong>request</strong> - (<em>object</em>) optional, an XMLHttpRequest object sent to server when an upload begins </li>
+<li><strong>path</strong> - (<em>string</em>) optional, the path to the file on the computer starting from the name of the folder (in case a folder with files is added)</li>
+<li><strong>name</strong> - (<em>string</em>) optional, the name of the file including the extension (for adding files from a server)</li>
+<li><strong>size</strong> - (<em>number</em>) optional, the size of the file in bytes (for adding files from a server)</li>
+</ul></li>
+<li><strong>width</strong> - (<em>string</em>) the width of a control</li>
+<li><strong>height</strong> - (<em>string</em>) the height of a control</li>
+<li><strong>css</strong> - (<em>string</em>) adds style classes to a control</li>
+<li><strong>disabled</strong> - (<em>boolean</em>) defines whether a control is enabled (<em>false</em>) or disabled (<em>true</em>)</li>
+<li><strong>required</strong> - (<em>boolean</em>) defines whether a control is required</li>
+<li><strong>hidden</strong> - (<em>boolean</em>) defines whether a control is hidden</li>
+<li><strong>label</strong> - (<em>string</em>) specifies a label for a control</li>
+<li><strong>labelWidth</strong> - (<em>string|number</em>) sets the width of the label of a control</li>
+<li><strong>hiddenLabel</strong> - (<em>boolean</em>) invisible label that will be used to identify the input on the server side</li>
+<li><strong>labelPosition</strong> - (<em>string</em>) defines the position of a label: "left"|"top" </li>
+<li><strong>helpMessage</strong> - (<em>string</em>) adds a help message to a control</li>
+<li><strong>preMessage</strong> - (<em>string</em>) a message that contains instructions for interacting with the control</li>
+<li><strong>successMessage</strong> - (<em>string</em>) a message that appears in case of successful validation of the control value</li>
+<li><strong>errorMessage</strong> - (<em>string</em>) a message that appears in case of error during validation of the control value</li>
+<li><strong>gravity</strong> - (<em>boolean</em>) arranges form controls evenly throughout the container, depending on the direction of layout ("cols" or "rows"), <em>true</em> by default</li>
+<li><strong>fieldName</strong> - (<em>string</em>) optional, sets the name of the file field in the form data that is sent to the server. By default takes its value from the value of the <strong>name</strong> property, or, if not specified, from the <strong>id</strong> attribute.  </li>
+<li><strong>params</strong> - (<em>object</em>) optional, adds extra parameters for sending an XMLHttpRequest</li>
+<li><strong>singleRequest</strong> - (<em>boolean</em>) defines whether files are sent in one request, <em>false</em> by default</li>
+<li><strong>target</strong> - (<em>string</em>) mandatory, sets an URL to the server-side script that will process file upload</li>
+</ul>
+
+<a name='workingwithsimplevault'><h2>Working with SimpleVault</h2></a>
+
+<p>You can manipulate a SimpleVault control by using methods (<a href="form__simplevault.html#eventhandling">events</a>) of the object returned by the <a class="link-" href="form__api__form_getitem_method.html">getItem()</a> method.</p>
+
+<p>For example, you can get the value of the control:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> value <span class="sy0">=</span> form.<span class="me1">getItem</span><span class="br0">&#40;</span><span class="st0">&quot;simpleVault_id&quot;</span><span class="br0">&#41;</span>.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>List of the control methods:</h3>
+
+<ul>
+<li><strong>clear()</strong> - clears a value of a SimpleVault control</li>
+<li><strong>clearValidate()</strong> - clears validation of a SimpleVault control</li>
+<li><strong>disable()</strong> - disables a SimpleVault control on a page</li>
+<li><strong>enable()</strong> - enables a disabled SimpleVault control</li>
+<li><strong>getValue(): any[]</strong> - gets the current value of a SimpleVault control</li>
+<li><strong>hide()</strong> - hides a SimpleVault control</li>
+<li><strong>isDisabled(): boolean</strong> - checks whether a SimpleVault control is disabled</li>
+<li><strong>selectFile()</strong> - opens the dialog for selecting a new file (files) for adding to Vault</li>
+<li><strong>send()</strong> - sends a POST request for file upload to a server-side URL (the request URL is specified by the <a class="link-" href="form__simplevault.html#addingsimplevault">target</a> property). The method can take one optional parameter:
+
+<ul>
+<li><strong>params</strong> - (<em>object</em>) an object with additional parameters for a request</li>
+</ul></li>
+<li><strong>setValue(value: array)</strong> - sets <a class="link-" href="form__simplevault.html#addingsimplevault">value</a> for a SimpleVault control</li>
+</ul>
+
+<pre><code><pre class="js">form.<span class="me1">getItem</span><span class="br0">&#40;</span><span class="st0">&quot;simpleVault_id&quot;</span><span class="br0">&#41;</span>.<span class="me1">setValue</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>
+        <span class="st0">&quot;id&quot;</span><span class="sy0">:</span> <span class="st0">&quot;image&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;name&quot;</span><span class="sy0">:</span> <span class="st0">&quot;image.png&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;link&quot;</span><span class="sy0">:</span> <span class="st0">&quot;/backend/upload/files/image.png&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;status&quot;</span><span class="sy0">:</span> <span class="st0">&quot;uploaded&quot;</span><span class="sy0">,</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><strong>show()</strong> - shows a SimpleVault control on the page</li>
+<li><strong>validate(): boolean</strong> - validates a SimpleVault control. Returns the result of validation: true, if a control is valid, otherwise - false</li>
+</ul>
+
+<h3 id="eventhandling">List of the control events:</h3>
+
+<ul>
+<li><strong>BeforeUploadFile</strong> - fires before file upload begins. The event takes one parameter:
+
+<ul>
+<li><strong>file</strong> - (<em>object</em>) the file object</li>
+</ul></li>
+</ul>
+
+<pre><code><pre class="js">form.<span class="me1">getItem</span><span class="br0">&#40;</span><span class="st0">&quot;simpleVault_id&quot;</span><span class="br0">&#41;</span>.<span class="me1">events</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">&quot;BeforeUploadFile&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>file<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    console.<span class="me1">log</span><span class="br0">&#40;</span><span class="st0">&quot;BeforeUploadFile&quot;</span><span class="sy0">,</span> file<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Returning <em>false</em> from the event handler will prevent file uploading.</p>
+
+<ul>
+<li><strong>UploadBegin</strong> - fires when file upload begins. The event takes one parameter:
+
+<ul>
+<li><strong>files</strong> - (<em>array</em>) the array of files to be uploaded</li>
+</ul></li>
+</ul>
+
+<pre><code><pre class="js">form.<span class="me1">getItem</span><span class="br0">&#40;</span><span class="st0">&quot;simpleVault_id&quot;</span><span class="br0">&#41;</span>.<span class="me1">events</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">&quot;UploadBegin&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>files<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    console.<span class="me1">log</span><span class="br0">&#40;</span><span class="st0">&quot;UploadBegin&quot;</span><span class="sy0">,</span> files<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><strong>UploadComplete</strong> - fires when upload is completed. The event takes one parameter:
+
+<ul>
+<li><strong>files</strong> - (<em>array</em>) file objects that were uploaded</li>
+</ul></li>
+</ul>
+
+<pre><code><pre class="js">form.<span class="me1">getItem</span><span class="br0">&#40;</span><span class="st0">&quot;simpleVault_id&quot;</span><span class="br0">&#41;</span>.<span class="me1">events</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">&quot;UploadComplete&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>files<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    console.<span class="me1">log</span><span class="br0">&#40;</span><span class="st0">&quot;UploadComplete&quot;</span><span class="sy0">,</span> files<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The event fires independent of the upload result (fail or success).</p>
+
+<ul>
+<li><strong>UploadFail</strong> - fires if the file upload failed. The event takes one parameter:
+
+<ul>
+<li><strong>file</strong> - (<em>object</em>) the file object</li>
+</ul></li>
+</ul>
+
+<pre><code><pre class="js">form.<span class="me1">getItem</span><span class="br0">&#40;</span><span class="st0">&quot;simpleVault_id&quot;</span><span class="br0">&#41;</span>.<span class="me1">events</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">&quot;UploadFail&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>file<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    console.<span class="me1">log</span><span class="br0">&#40;</span><span class="st0">&quot;UploadFail&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><strong>UploadProgress</strong> - fires on each percent of files uploading. The event takes one parameter:
+
+<ul>
+<li><strong>progress</strong> - (<em>number</em>) the current percent of files uploading, a number from 0 to 100</li>
+</ul></li>
+</ul>
+
+<pre><code><pre class="js">form.<span class="me1">getItem</span><span class="br0">&#40;</span><span class="st0">&quot;simpleVault_id&quot;</span><span class="br0">&#41;</span>.<span class="me1">events</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">&quot;UploadProgress&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>progress<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    console.<span class="me1">log</span><span class="br0">&#40;</span><span class="st0">&quot;UploadProgress&quot;</span><span class="sy0">,</span> progress<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='usingdatacollectionapi'><h2>Using DataCollection API</h2></a>
+
+<p>You can manipulate a SimpleVault control with the help of the <a href="../vault/api__refs__data_methods.html">DataCollection API</a>.</p>
+
+<p>For example, you can remove one or all files from the list. To do that, you need to apply the <a href="../vault/api__data__remove.html">remove</a>, or <a href="../vault/api__data__removeall.html">removeAll</a> method of DataCollection to the object returned by the <a class="link-" href="form__api__form_getitem_method.html">getItem()</a> method as follows:</p>
+
+<pre><code><pre class="js">form.<span class="me1">getItem</span><span class="br0">&#40;</span><span class="st0">&quot;simplevault_id&quot;</span><span class="br0">&#41;</span>.<span class="me1">data</span>.<span class="me1">remove</span><span class="br0">&#40;</span><span class="st0">&quot;file_id&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+form.<span class="me1">getItem</span><span class="br0">&#40;</span><span class="st0">&quot;simplevault_id&quot;</span><span class="br0">&#41;</span>.<span class="me1">data</span>.<span class="me1">removeAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>Check the full list of <a href="../vault/api__refs__data_methods.html">Data Collection API</a>.</p>
+</p></div>
+
+<a name='uploadingfiles'><h2>Uploading files</h2></a>
+
+<p>You can read about uploading files into a SimpleVault control in the <a href="../vault/uploading_files.html">related article</a>.</p>
+
+<!-- Content Area End -->
+			<a href='form__simplevault.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

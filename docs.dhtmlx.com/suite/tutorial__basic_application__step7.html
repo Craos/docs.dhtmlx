@@ -1,0 +1,240 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Step 7. Display data in the Chart  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="tutorial__basic_application__step1.html">Step 1. Include DHTMLX files</a></li><li class=""><a href="tutorial__basic_application__step2.html">Step 2. Specify the Layout</a></li><li class=""><a href="tutorial__basic_application__step3.html">Step 3. Add a Toolbar</a></li><li class=""><a href="tutorial__basic_application__step4.html">Step 4. Add a Grid</a></li><li class=""><a href="tutorial__basic_application__step5.html">Step 5. Bind Toolbar to Grid</a></li><li class=""><a href="tutorial__basic_application__step6.html">Step 6. Add a Chart</a></li><li class=" current"><a href="tutorial__basic_application__step7.html">Step 7. Display data in the Chart</a></li><ul><li class="inner"><a href="tutorial__basic_application__step7.html#processgriddata">Process grid data</a></li><li class="inner"><a href="tutorial__basic_application__step7.html#displaydatainthechart">Display data in the chart</a></li><li class="inner"><a href="tutorial__basic_application__step7.html#gettheresult">Get the result</a></li></ul></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="tutorial__index.html">How To Start</a><a class="n3" href="tutorial__basic_application__index.html">Basic Application</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Step 7. Display data in the Chart</h1>
+
+<p>Before displaying data in the chart we need to process grid data.</p>
+
+<a name='processgriddata'><h2>Process grid data</h2></a>
+
+<p>To do that, we'll create a  <b>getCountUsers()</b> function given below:</p>
+
+<pre><code><pre class="js"><span class="kw2">function</span> getCountUsers<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>     
+    vipUser <span class="sy0">=</span> grid.<span class="me1">data</span>.<span class="me1">reduce</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>acc<span class="sy0">,</span> <span class="kw1">item</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>    
+        <span class="kw1">return</span> <span class="kw1">item</span>.<span class="me1">vip</span> <span class="sy0">?</span> acc <span class="sy0">+</span> <span class="nu0">1</span> <span class="sy0">:</span> acc<span class="sy0">;</span>           
+    <span class="br0">&#125;</span><span class="sy0">,</span> <span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    defUser <span class="sy0">=</span> grid.<span class="me1">data</span>.<span class="me1">getLength</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">-</span> vipUser<span class="sy0">;</span> 
+&nbsp;
+    <span class="kw2">var</span> pieData <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">;</span> 
+&nbsp;
+    <span class="kw1">if</span> <span class="br0">&#40;</span>vipUser <span class="sy0">&gt;</span> <span class="nu0">0</span><span class="br0">&#41;</span> <span class="br0">&#123;</span> 
+        pieData.<span class="me1">push</span><span class="br0">&#40;</span> <span class="br0">&#123;</span> value<span class="sy0">:</span> vipUser<span class="sy0">,</span> color<span class="sy0">:</span> <span class="st0">&quot;#394E79&quot;</span><span class="sy0">,</span> 
+            text<span class="sy0">:</span> <span class="st0">&quot;Premium Users&quot;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span>
+        <span class="br0">&#125;</span>
+    <span class="kw1">if</span>  <span class="br0">&#40;</span>defUser <span class="sy0">&gt;</span> <span class="nu0">0</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        pieData.<span class="me1">push</span><span class="br0">&#40;</span> <span class="br0">&#123;</span> value<span class="sy0">:</span> defUser<span class="sy0">,</span> color<span class="sy0">:</span> <span class="st0">&quot;#5E83BA&quot;</span><span class="sy0">,</span> 
+            text<span class="sy0">:</span> <span class="st0">&quot;Default Users&quot;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span>
+        <span class="br0">&#125;</span>            
+    <span class="kw1">return</span> pieData<span class="sy0">;</span> <span class="co1">//return the processed data for the chart</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Let's look at its logic in detail.</p>
+
+<p>First, we count the number of VIP users through the <b>reduce()</b> method of Data Collection:</p>
+
+<pre><code><pre class="js">vipUser <span class="sy0">=</span> grid.<span class="me1">data</span>.<span class="me1">reduce</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>acc<span class="sy0">,</span> <span class="kw1">item</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>    
+    <span class="kw1">return</span> <span class="kw1">item</span>.<span class="me1">vip</span> <span class="sy0">?</span> acc <span class="sy0">+</span> <span class="nu0">1</span> <span class="sy0">:</span> acc<span class="sy0">;</span>           
+<span class="br0">&#125;</span><span class="sy0">,</span> <span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>After that we determine the total number of users by using the <b>getLength()</b> method of Tree Collection and then calculate the number of default users.</p>
+
+<pre><code><pre class="js">defUser <span class="sy0">=</span> grid.<span class="me1">data</span>.<span class="me1">getLength</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">-</span> vipUser<span class="sy0">;</span></pre></code></pre>
+
+<p>Finally, we create an array to add data about the number of default and vip users with the help of the <strong>push()</strong> operation.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> pieData <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">;</span> <span class="co1">// create an array</span>
+&nbsp;
+<span class="kw1">if</span> <span class="br0">&#40;</span>vipUser <span class="sy0">&gt;</span> <span class="nu0">0</span><span class="br0">&#41;</span> <span class="br0">&#123;</span> 
+    pieData.<span class="me1">push</span><span class="br0">&#40;</span> <span class="br0">&#123;</span> value<span class="sy0">:</span> vipUser<span class="sy0">,</span> color<span class="sy0">:</span> <span class="st0">&quot;#394E79&quot;</span><span class="sy0">,</span> 
+        text<span class="sy0">:</span> <span class="st0">&quot;Premium Users&quot;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span>
+    <span class="br0">&#125;</span>
+<span class="kw1">if</span>  <span class="br0">&#40;</span>defUser <span class="sy0">&gt;</span> <span class="nu0">0</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    pieData.<span class="me1">push</span><span class="br0">&#40;</span> <span class="br0">&#123;</span> value<span class="sy0">:</span> defUser<span class="sy0">,</span> color<span class="sy0">:</span> <span class="st0">&quot;#5E83BA&quot;</span><span class="sy0">,</span> 
+        text<span class="sy0">:</span> <span class="st0">&quot;Default Users&quot;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>As a result of the <b>getCountUsers()</b> function call we get a dataset for the chart.</p>
+
+<a name='displaydatainthechart'><h2>Display data in the chart</h2></a>
+
+<p>After processing grid data, we need to show it in the chart.</p>
+
+<p>To display the data loaded in the chart, we will use the <b>Load</b> event of <a class="link-" href="data_collection__api__refs__datacollection.html">DataCollection API</a>. Inside the event handler we'll call the <b>parse()</b> method to parse data in the chart.</p>
+
+<pre><code><pre class="js">grid.<span class="me1">data</span>.<span class="me1">events</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">&quot;Load&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    chart.<span class="me1">data</span>.<span class="me1">parse</span><span class="br0">&#40;</span>getCountUsers<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>When data is changed in the grid, we should update the chart data as well. For this purpose we'll use the <b>Change</b> event of <a class="link-" href="data_collection__api__refs__datacollection.html">DataCollection API</a>.</p>
+
+<pre><code><pre class="js">grid.<span class="me1">data</span>.<span class="me1">events</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">&quot;Change&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span><span class="kw3">status</span><span class="sy0">,</span>updatedItem<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    chart.<span class="me1">data</span>.<span class="me1">parse</span><span class="br0">&#40;</span>getCountUsers<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='gettheresult'><h2>Get the result</h2></a>
+
+<p>After finishing all the steps described in the tutorial, you get a mini app that looks like this:</p>
+
+<p><img style="margin: 16px" src="media/tutorial/basic_application/chart.png"/></p>
+
+<div id="tutorial_step">
+    <a id="next_step" class="link-" href="tutorial__index.html"></a>
+</div>
+
+<!-- Content Area End -->
+			<a href='tutorial__basic_application__step7.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

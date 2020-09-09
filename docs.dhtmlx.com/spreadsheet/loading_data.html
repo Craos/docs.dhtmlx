@@ -1,0 +1,365 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1589882915.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1589882915.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Spreadsheet Docs" href="https://docs.dhtmlx.com/spreadsheet/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Data Loading and Export  Spreadsheet Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/c/widgets/dhtmlxspreadsheet-jsmessage">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="initialization.html">Initialization</a></li><li class=""><a href="configuration.html">Configuration</a></li><li class=""><a href="localization.html">Localization</a></li><li class=" current"><a href="loading_data.html">Data Loading and Export</a></li><ul><li class="inner"><a href="loading_data.html#preparingdata">Preparing data</a></li><li class="inner"><a href="loading_data.html#externaldataloading">External data loading</a></li><li class="inner"><a href="loading_data.html#loadingfromlocalsource">Loading from local source</a></li><li class="inner"><a href="loading_data.html#savingandrestoringstate">Saving and restoring state</a></li><li class="inner"><a href="loading_data.html#exportingdata">Exporting data</a></li></ul><li class=""><a href="working_with_ssheet.html">Work with SpreadSheet</a></li><li class=""><a href="number_formatting.html">Number Formatting</a></li><li class=""><a href="handling_events.html">Event Handling</a></li><li class=""><a href="customization.html">Customization</a></li><li class=""><a href="angular_integration.html">Integration with Angular</a></li><li class=""><a href="react_integration.html">Integration with React</a></li><li class=""><a href="vuejs_integration.html">Integration with Vue.js</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Data Loading and Export</h1>
+
+<p>You can populate dhtmlxSpreadSheet with a ready dataset that may include the data itself and styling for cells. The component supports two ways of data loading:</p>
+
+<ul>
+<li>load from an external file</li>
+<li>load from a local source</li>
+</ul>
+
+<p>The component also supports <a href="loading_data.html#exportingdata">export of data into an Excel file</a>.</p>
+
+<a name='preparingdata'><h2>Preparing data</h2></a>
+
+<p>dhtmlxSpreadSheet expects data in the JSON format. It is an array with data objects each of which has two properties:</p>
+
+<ul>
+<li><strong>cell</strong> - (<em>string</em>) the id of a cell that is formed as "id of the column + id of the row", e.g. A1</li>
+<li><strong>value</strong> - (<em>string,number</em>) the value of a cell</li>
+</ul>
+
+<p>The example below demonstrates a simple data set for SpreadSheet:</p>
+
+<pre><code><pre class="js"> <span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;a1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Country&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;b1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Product&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;c1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Price&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;d1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Amount&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;e1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Total Price&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;a2&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Ecuador&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;b2&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Banana&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;c2&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">6.68</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;d2&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">430</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;e2&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">2872.4</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;a3&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Belarus&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;b3&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Apple&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;c3&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">3.75</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;d3&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">600</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;e3&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">2250</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+    <span class="co1">// more data</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Setting styles for cells</h3>
+
+<p>You can also define the cells styling in the data set. In this case the data should be an object with <em>separate properties</em> that describe data objects and CSS classes applied to particular cells.</p>
+
+<p>A CSS class is set for a cell via the <strong>css</strong> property.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> styledData <span class="sy0">=</span> <span class="br0">&#123;</span>
+    data<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;a1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Country&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;b1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Product&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;c1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Price&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;d1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Amount&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;e1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Total Price&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+        <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;a2&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Ecuador&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;b2&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Banana&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;c2&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">6.68</span><span class="sy0">,</span> css<span class="sy0">:</span> <span class="st0">&quot;someclass&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;d2&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">430</span><span class="sy0">,</span> css<span class="sy0">:</span> <span class="st0">&quot;someclass&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;e2&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">2872.4</span> <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span><span class="sy0">;</span>
+    styles<span class="sy0">:</span> <span class="br0">&#123;</span>
+        someclass<span class="sy0">:</span> <span class="br0">&#123;</span>
+            background<span class="sy0">:</span> <span class="st0">&quot;#F2F2F2&quot;</span><span class="sy0">,</span>
+            color<span class="sy0">:</span> <span class="st0">&quot;#F57C00&quot;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Setting number formats for cells</h3>
+
+<p>You can specify particular number format for values of cells within a data set. A format is set for a cell via the <strong>format</strong> property. As the value of this property you should set the id of any of the 
+<a class="link-" href="number_formatting.html#defaultnumberformats">default formats</a> or of a <a class="link-" href="number_formatting.html#formatscustomization">custom format</a> that you've added.</p>
+
+<pre><code><pre class="js"> <span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;a1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Country&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;b1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Product&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;c1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Price&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;d1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Amount&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;e1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Total Price&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;a2&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Ecuador&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;b2&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Banana&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;c2&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">6.68</span><span class="sy0">,</span> format<span class="sy0">:</span><span class="st0">&quot;currency&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;d2&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">430</span><span class="sy0">,</span> format<span class="sy0">:</span><span class="st0">&quot;percent&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="co1">// &quot;myFormat&quot; is the id of a custom format</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;e2&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">2872.4</span><span class="sy0">,</span> format<span class="sy0">:</span><span class="st0">&quot;myFormat&quot;</span> <span class="br0">&#125;</span>
+&nbsp;
+    <span class="co1">// more data</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='externaldataloading'><h2>External data loading</h2></a>
+
+<h3>Loading JSON data</h3>
+
+<p>By default, SpreadSheet expects data in JSON format. To load data from an external source, use the <a class="link-" href="api__spreadsheet_load.html">load</a> method. It takes the URL of the file with data as a parameter:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> spreadsheet <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Spreadsheet</span><span class="br0">&#40;</span><span class="st0">&quot;container&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+spreadsheet.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;../common/data.json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/01_init/03_load_data.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Load data from json</a></p>
+
+<h3>Loading CSV data</h3>
+
+<p>You can also load data in the CSV format. For this, you need to call the <a class="link-" href="api__spreadsheet_load.html">load</a> method and pass the name of the format ("csv") as the second parameter:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> spreadsheet <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Spreadsheet</span><span class="br0">&#40;</span><span class="st0">&quot;container&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+spreadsheet.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;../common/data.csv&quot;</span><span class="sy0">,</span> <span class="st0">&quot;csv&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/01_init/05_csv_load.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Load data from csv</a></p>
+
+<h3 id="importexcel"> Loading Excel file (.xlsx)</h3>
+
+<p>It is possible to load a file in the Excel format with the <strong>.xlsx</strong> extension into a spreadsheet. There are corresponding controls in the Toolbar and Menu in the user interface:</p>
+
+<ul>
+<li>Menu: File -> Import as..-> Microsoft Excel(.xlsx)</li>
+</ul>
+
+<p><img src="media/import_xlsx_menu.png" alt="Import from Excel menu" /></p>
+
+<ul>
+<li>Toolbar: Import -> Microsoft Excel(.xlsx)</li>
+</ul>
+
+<p><img src="media/import_xlsx_toolbar.png" alt="Import from Excel toolbar" /></p>
+
+<h4>How to import data</h4>
+
+<div class='note'><p><p>Please note that the import feature won't work in the Internet Explorer browser.</p>
+</p></div>
+
+<p>dhtmlxSpreadSheet uses the WebAssembly-based library <a href="https://github.com/dhtmlx/excel2json">Excel2Json</a> for import of data from Excel. So, to enable the possibility to load data from Excel into SpreadSheet, you need to:</p>
+
+<ul>
+<li>install the <strong>Excel2Json</strong> library</li>
+<li>specify the <a class="link-" href="api__spreadsheet_importmodulepath_config.html">importModulePath</a> option in the SpreadSheet configuration and set the path to the <strong>worker.js</strong> file in one of the two ways:
+
+<ul>
+<li>by providing a local path to the file on your computer, like: <strong>"../libs/excel2json/1.0/worker.js"</strong></li>
+<li>by providing a link to the file from CDN: <strong>"https://cdn.dhtmlx.com/libs/excel2json/1.0/worker.js"</strong></li>
+</ul></li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> spreadsheet <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Spreadsheet</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="br0">&#123;</span>          
+    importModulePath<span class="sy0">:</span> <span class="st0">&quot;../libs/excel2json/1.0/worker.js&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/03_configuration/08_custom_import_export_path.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom path to import export modules</a></p>
+
+<p>To load data from an Excel file, pass a string with the type of the extension ("xlsx") as the second parameter of the <a class="link-" href="api__spreadsheet_load.html">load</a> method :</p>
+
+<pre><code><pre class="js"><span class="co1">// .xlsx only</span>
+spreadsheet.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;../common/data.xlsx&quot;</span><span class="sy0">,</span> <span class="st0">&quot;xlsx&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>Please note that the component supports import from Excel files with the <strong>.xlsx</strong> extension only.</p>
+</p></div>
+
+<p><a href='samples/02_usage/03_import_xlsx.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Import xlsx</a></p>
+
+<p>You can also <a href="loading_data.html#exportingdata">export data from a spreadsheet into an Excel file</a>, if needed.</p>
+
+<h3>Processing after-loading code</h3>
+
+<p>The component will make an AJAX call and expect the remote URL to provide valid data. Data loading is asynchronous, so you need to wrap any after-loading code into a promise:</p>
+
+<pre><code><pre class="js">spreadsheet.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/some/data&quot;</span><span class="br0">&#41;</span>.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+   <span class="co1">// do something</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='loadingfromlocalsource'><h2>Loading from local source</h2></a>
+
+<p>To load data from a local source, make use of the <a class="link-" href="api__spreadsheet_parse.html">parse</a> method. The method takes an array with data objects as a parameter:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;a1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Country&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;b1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Product&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;c1&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Price&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;a2&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Ecuador&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;b2&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Banana&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;c2&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">6.68</span><span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;a3&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Belarus&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;b3&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;Apple&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> cell<span class="sy0">:</span> <span class="st0">&quot;c3&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">3.75</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> spreadsheet <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Spreadsheet</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="br0">&#41;</span><span class="sy0">;</span>
+spreadsheet.<span class="me1">parse</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/01_init/01_basic.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Basic spreadsheet</a></p>
+
+<a name='savingandrestoringstate'><h2>Saving and restoring state</h2></a>
+
+<p>To save the current state of a spreadsheet, use the <a class="link-" href="api__spreadsheet_serialize.html">serialize</a> method. It converts data into an array of JSON objects. Each JSON object contains the configuration of a cell.</p>
+
+<pre><code><pre class="js"><span class="co1">// saving state of the spreadsheet1</span>
+<span class="kw2">var</span> state <span class="sy0">=</span> spreadsheet1.<span class="me1">serialize</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Then you can parse the data stored in the saved state array to a different spreadsheet. For example:</p>
+
+<pre><code><pre class="js"><span class="co1">// creating a new spreadsheet</span>
+<span class="kw2">var</span> spreadsheet2 <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Spreadsheet</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// parsing the state of the spreadsheet1 into spreadsheet2</span>
+spreadsheet2.<span class="me1">parse</span><span class="br0">&#40;</span>state<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='exportingdata'><h2>Exporting data</h2></a>
+
+<p>dhtmlxSpreadSheet provides the ability to export data from a spreadsheet into an Excel file. There are corresponding controls in the Toolbar and Menu in the user interface:</p>
+
+<ul>
+<li>Menu: File -> Download as..-> Microsoft Excel(.xlsx)</li>
+</ul>
+
+<p><img src="media/export_xlsx_menu.png" alt="Export to Excel menu" /></p>
+
+<ul>
+<li>Toolbar: Export -> Microsoft Excel(.xlsx)</li>
+</ul>
+
+<p><img src="media/export_xlsx_toolbar.png" alt="Export from Excel toolbar" /></p>
+
+<h3>How to export data</h3>
+
+<div class='note'><p><p>Please note that the export feature won't work in the Internet Explorer browser.</p>
+</p></div>
+
+<p>The library uses the WebAssembly-based library <a href="https://github.com/dhtmlx/json2excel">Json2Excel</a> to enable the functionality of export to Excel. Thus, to have the possibility of exporting files you need to:</p>
+
+<ul>
+<li>install the <strong>JSON2Excel</strong> library</li>
+<li>specify the <a class="link-" href="api__spreadsheet_exportmodulepath_config.html">exportModulePath</a> option in the SpreadSheet configuration and set the path to the <strong>worker.js</strong> file in one of the two ways:
+
+<ul>
+<li>by providing a local path to the file on your computer, like: <strong>"../libs/json2excel/1.0/worker.js"</strong></li>
+<li>by providing a link to the file from CDN: <strong>"https://cdn.dhtmlx.com/libs/json2excel/1.0/worker.js"</strong></li>
+</ul></li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> spreadsheet <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Spreadsheet</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="br0">&#123;</span>          
+    exportModulePath<span class="sy0">:</span> <span class="st0">&quot;../libs/json2excel/1.0/worker.js&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/03_configuration/08_custom_import_export_path.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom path to import export modules</a></p>
+
+<p>Once you've adjusted the required sources, you can use the related API method <a class="link-" href="api__export__xlsx.html">xlsx</a> of the <a class="link-hidden" href="api__refs__export_methods.html">Export</a> object to export data of the component, as in:</p>
+
+<pre><code><pre class="js">spreadsheet.<span class="kw2">export</span>.<span class="me1">xlsx</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>Please note that the component supports export to Excel files with the <strong>.xlsx</strong> extension only.</p>
+</p></div>
+
+<p><a href='samples/02_usage/04_export_xlsx.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Export xlsx</a></p>
+
+<p>Check the steps of <a href="loading_data.html#importexcel">importing data from an Excel file into SpreadSheet</a>.</p>
+
+<!-- Content Area End -->
+			<a href='loading_data.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='loading_data.html'>Loading Data</a></li>	
+	<li><a href='working_with_ssheet.html'>Main Operations</a></li>
+	<li><a href='handling_events.html'>Handling Events</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Look and Feel</li>
+	<li><a href='configuration.html'>Configuration</a></li>
+	<li><a href='localization.html'>Localization</a></li>
+	<li><a href='customization.html'>Customization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Integration</li>
+	<li><a href='angular_integration.html'>Angular</a></li>
+	<li><a href='react_integration.html'>React</a></li>
+	<li><a href='vuejs_integration.html'>Vue.js</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__spreadsheet.html#methods'>Methods</a></li>
+	<li><a href='api__refs__spreadsheet.html#config'>Properties</a></li>
+	<li><a href='api__refs__spreadsheet.html#events'>Events</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

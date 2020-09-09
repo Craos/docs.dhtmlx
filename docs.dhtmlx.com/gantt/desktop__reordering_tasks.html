@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Reordering Tasks  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__specifying_columns.html">Specifying Columns</a></li><li class=""><a href="desktop__tree_column.html">Configuring the Tree Column</a></li><li class=" current"><a href="desktop__reordering_tasks.html">Reordering Tasks</a></li><ul><li class="inner"><a href="desktop__reordering_tasks.html#dragndropwithinthewholeganttstructure">Drag-n-drop within the whole Gantt structure</a></li><li class="inner"><a href="desktop__reordering_tasks.html#denyingdroppingtospecificpositions">Denying dropping to specific positions</a></li><li class="inner"><a href="desktop__reordering_tasks.html#improvingperformanceforlargedatasets">Improving performance for large datasets</a></li><li class="inner"><a href="desktop__reordering_tasks.html#highlightingavailabledropplaceswhiledragampdrop">Highlighting available drop places while drag-&amp;-drop</a></li></ul><li class=""><a href="desktop__sorting.html">Sorting Columns</a></li><li class="toc-pro"><a href="desktop__grouping.html">Grouping Tasks</a></li><li class=""><a href="desktop__filtering.html">Filtering Tasks</a></li><li class=""><a href="desktop__inline_editing.html">Inline Editing in Grid</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__table.html">Configuring Grid Area</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Reordering Tasks</h1>
+
+<p>dhtmlxGantt provides 2 ways to reorder tasks in the grid:</p>
+
+<ol>
+<li>Drag-and-drop.</li>
+<li>Sorting (see <a class="link-" href="desktop__sorting.html">details</a>).</li>
+</ol>
+
+<p>The ways are alternative. By default, both modes are disabled.</p>
+
+<p>To enable drag-n-drop reordering, use the <a class="link-" href="api__gantt_order_branch_config.html">order_branch</a> option:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">order_branch</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/07_grid/02_branch_ordering.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Branch ordering</a></p>
+
+<p>You can take a look at the video guide that shows how to sort and reorder tasks in the grid.</p>
+
+<iframe width="676" height="400" src="https://www.youtube.com/embed/srtb3nYOb-E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<a name='dragndropwithinthewholeganttstructure'><h2>Drag-n-drop within the whole Gantt structure</h2></a>
+
+<p>The <a class="link-" href="api__gantt_order_branch_config.html">order_branch</a> option allows dragging tasks within the same Tree level.</p>
+
+<p>It's also possible to enable the mode in which tasks can be reordered within the whole Gantt. It means that a task can replace another task of any Tree level.
+To use this type of tasks reordering, use the <a class="link-" href="api__gantt_order_branch_free_config.html">order_branch_free</a> option:</p>
+
+<pre><code><pre class="js"><span class="co1">// reordering tasks within the whole gantt</span>
+gantt.<span class="me1">config</span>.<span class="me1">order_branch</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+gantt.<span class="me1">config</span>.<span class="me1">order_branch_free</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/07_grid/08_drag_between_levels.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Drag and drop rows in Grid</a></p>
+
+<a name='denyingdroppingtospecificpositions'><h2>Denying dropping to specific positions</h2></a>
+
+<p>To deny dropping tasks to specific positions, use the <a class="link-" href="api__gantt_onbeforetaskmove_event.html">onBeforeTaskMove</a> or <a class="link-" href="api__gantt_onbeforerowdragend_event.html">onBeforeRowDragEnd</a> event:</p>
+
+<pre><code><pre class="js"><span class="co1">//prevent moving to another sub-branch:</span>
+gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onBeforeTaskMove&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span> parent<span class="sy0">,</span> tindex<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> task <span class="sy0">=</span> gantt.<span class="me1">getTask</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>task.<span class="me1">parent</span> <span class="sy0">!=</span> parent<span class="br0">&#41;</span>
+        <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">//or</span>
+gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onBeforeRowDragEnd&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span> parent<span class="sy0">,</span> tindex<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> task <span class="sy0">=</span> gantt.<span class="me1">getTask</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>task.<span class="me1">parent</span> <span class="sy0">!=</span> parent<span class="br0">&#41;</span>
+        <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='improvingperformanceforlargedatasets'><h2>Improving performance for large datasets</h2></a>
+
+<p>If your Gantt contains lots of tasks, the default mode of branch reordering may slow down the performance.
+To speed it up, you can make use of the "marker" mode.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">order_branch</span> <span class="sy0">=</span> <span class="st0">&quot;marker&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/07_grid/14_branch_ordering_highlight.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Branch ordering - highlighting mode</a></p>
+
+<p>In this mode only the name of the task is reordered (on holding the left mouse key) and Gantt is re-rendered only when a task is dropped in the target position (on releasing the key).
+Unlike the default mode, changing of the task position doesn't involve firing of the onBeforeTaskMove/onAfterTaskMove events.</p>
+
+<p>To prevent dropping of a task in a particular position, use the <a class="link-" href="api__gantt_onbeforerowdragmove_event.html">onBeforeRowDragMove</a> event instead (works only in the "marker" mode).</p>
+
+<a name='highlightingavailabledropplaceswhiledragampdrop'><h2>Highlighting available drop places while drag-&amp;-drop</h2></a>
+
+<p>To highlight available target places during dragging (for example, it's not possible to drag the root node under another root and you want visually inform the user about this), 
+use the <a class="link-" href="api__gantt_onrowdragstart_event.html">onRowDragStart</a> and <a class="link-" href="api__gantt_onrowdragend_event.html">onRowDragEnd</a> events:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">order_branch</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span><span class="co1">// order tasks only inside a branch</span>
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">parse</span><span class="br0">&#40;</span>demo_tasks<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> drag_id <span class="sy0">=</span> <span class="kw2">null</span><span class="sy0">;</span>
+gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onRowDragStart&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span> target<span class="sy0">,</span> e<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    drag_id <span class="sy0">=</span> id<span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onRowDragEnd&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span> target<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    drag_id <span class="sy0">=</span> <span class="kw2">null</span><span class="sy0">;</span>
+    gantt.<span class="me1">render</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">templates</span>.<span class="me1">grid_row_class</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>drag_id <span class="sy0">&amp;&amp;</span> task.<span class="me1">id</span> <span class="sy0">!=</span> drag_id<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">if</span><span class="br0">&#40;</span>task.$level <span class="sy0">!=</span> gantt.<span class="me1">getTask</span><span class="br0">&#40;</span>drag_id<span class="br0">&#41;</span>.$level<span class="br0">&#41;</span>
+            <span class="kw1">return</span> <span class="st0">&quot;cant-drop&quot;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='desktop__reordering_tasks.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Step 3. Add Toolbar to the Page  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="tutorials__building_web_interfaces__step1.html">Step 1. Create the App's File</a></li><li class=""><a href="tutorials__building_web_interfaces__step2.html">Step 2. Set up the Layout</a></li><li class=" current"><a href="tutorials__building_web_interfaces__step3.html">Step 3. Add Toolbar to the Page</a></li><li class=""><a href="tutorials__building_web_interfaces__step4.html">Step 4. Add Navigation Tree</a></li><li class=""><a href="tutorials__building_web_interfaces__step5.html">Step 5. Add Grid to Display Files</a></li><li class=""><a href="tutorials__building_web_interfaces__step6.html">Step 6. Bind Grid to Tree</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="tutorials__index.html">Tutorials</a><a class="n3" href="tutorials__building_web_interfaces__index.html">Building Web Interfaces</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Step 3. Add Toolbar to the Page</h1>
+
+<p>The next stop in our journey is a toolbar. We will add a panel with some items to the top of the layout.<br>
+We won't provide any handlers for the added items - just will place a toolbar on the page as a part of the overall interface.</p>
+
+<p>To present toolbars on the page, the DHTMLX library provides the <a class="link-" href="toolbar__index.html">dhtmlxToolbar</a> component. The component
+allows adding various items (buttons, labels, inputs etc.).</p>
+
+<p>We will specify toolbar's items as an object in the XML format that is rather similar to the format used for a standard  HTML form.</p>
+
+<div style="font-weight:bold; color: rgb(65, 65, 65); padding-top: 10px; font-size: 15px;">To attach a toolbar to the layout:</div>
+
+<ol>
+    <li>Call the <a class="link-" href="api__link__dhtmlxlayoutcell_attachtoolbar.html">attachToolbar()</a> method to attach a toolbar to the layout:<br><br> 
+<p class='snippet'>
+'index.html' file
+</p>
+
+<pre><code><pre class="js">dhtmlxEvent<span class="br0">&#40;</span>window<span class="sy0">,</span><span class="st0">&quot;load&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> myLayout <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXLayoutObject<span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span><span class="st0">&quot;2U&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+    myLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;a&quot;</span><span class="br0">&#41;</span>.<span class="me1">setWidth</span><span class="br0">&#40;</span><span class="nu0">250</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    myLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;a&quot;</span><span class="br0">&#41;</span>.<span class="me1">setText</span><span class="br0">&#40;</span><span class="st0">&quot;Files&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+    myLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;b&quot;</span><span class="br0">&#41;</span>.<span class="me1">hideHeader</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">    <span class="kw2">var</span> myToolbar <span class="sy0">=</span> myLayout.<span class="me1">attachToolbar</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+    </li>
+    <li>Copy the "<i>icons</i> " folder from the <a href="https://dhtmlx.com/x/download/legacy/tutorials/file_manager.zip">demo app</a> to the "<i>file_manager</i> " folder.
+        <img style="border-radius:8px; margin: 30px;  display: block; box-shadow: -5px -4px 7px 2px #D8D8D8;" src="media/tutorials/file_manager/icons_folder_files.png"/>
+    </li> 
+    <li>Call the <a class="link-" href="api__dhtmlxtoolbar_seticonspath.html">setIconsPath()</a> method to set 
+    the path to custom images specified for the toolbar's items in the <i>"toolbarStruct.xml"</i> file:<br><br>
+<p class='snippet'>
+'index.html' file
+</p>
+
+<pre><code><pre class="js">dhtmlxEvent<span class="br0">&#40;</span>window<span class="sy0">,</span><span class="st0">&quot;load&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> myLayout <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXLayoutObject<span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span><span class="st0">&quot;2U&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+    myLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;a&quot;</span><span class="br0">&#41;</span>.<span class="me1">setWidth</span><span class="br0">&#40;</span><span class="nu0">250</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    myLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;a&quot;</span><span class="br0">&#41;</span>.<span class="me1">setText</span><span class="br0">&#40;</span><span class="st0">&quot;Files&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+    myLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;b&quot;</span><span class="br0">&#41;</span>.<span class="me1">hideHeader</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw2">var</span> myToolbar <span class="sy0">=</span> myLayout.<span class="me1">attachToolbar</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="xtra ln-xtra">    myToolbar.<span class="me1">setIconsPath</span><span class="br0">&#40;</span><span class="st0">&quot;icons/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<br>
+
+</li>
+    <li>Create a subfolder with the name "<i>data</i> " in the "<i>file_manager</i> " folder.
+    <img style="border-radius:8px; margin: 30px;  display: block; box-shadow: -5px -4px 7px 2px #D8D8D8;" src="media/tutorials/file_manager/file_manager_files_02.png"/>
+    </li> 
+    <li>Create a new XML file in the "<i>data</i> " folder and name it "<i>toolbarStruct.xml</i> ". </li>
+    <li>Open the "<i>toolbarStruct.xml</i> " file and specify the toolbar's items there:<br><br>
+<p class='snippet'>
+'toolbarStruct.xml' file
+</p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;UTF-8&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;toolbar<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;back&quot;</span>   <span class="re0">type</span>=<span class="st0">&quot;button&quot;</span> <span class="re0">img</span>=<span class="st0">&quot;left_arrow.png&quot;</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;fwd&quot;</span>    <span class="re0">type</span>=<span class="st0">&quot;button&quot;</span> <span class="re0">img</span>=<span class="st0">&quot;right_arrow.png&quot;</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;reload&quot;</span> <span class="re0">type</span>=<span class="st0">&quot;button&quot;</span> <span class="re0">img</span>=<span class="st0">&quot;reload.png&quot;</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;home&quot;</span>   <span class="re0">type</span>=<span class="st0">&quot;button&quot;</span> <span class="re0">img</span>=<span class="st0">&quot;home.png&quot;</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;add&quot;</span>    <span class="re0">type</span>=<span class="st0">&quot;button&quot;</span> <span class="re0">img</span>=<span class="st0">&quot;add.png&quot;</span>    <span class="re0">text</span>=<span class="st0">&quot;Add&quot;</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;edit&quot;</span>   <span class="re0">type</span>=<span class="st0">&quot;button&quot;</span> <span class="re0">img</span>=<span class="st0">&quot;edit.png&quot;</span>   <span class="re0">text</span>=<span class="st0">&quot;Edit&quot;</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;delete&quot;</span> <span class="re0">type</span>=<span class="st0">&quot;button&quot;</span> <span class="re0">img</span>=<span class="st0">&quot;delete.png&quot;</span> <span class="re0">text</span>=<span class="st0">&quot;Delete&quot;</span><span class="re2">/&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;/toolbar<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+    </li>
+        <li>Call the <a class="link-" href="api__link__dhtmlxtoolbar_loadstruct.html">loadStruct()</a> method to load the specified items to the toolbar: <br><br>
+<p class='snippet'>
+'index.html' file
+</p>
+
+<pre><code><pre class="js">dhtmlxEvent<span class="br0">&#40;</span>window<span class="sy0">,</span><span class="st0">&quot;load&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> myLayout <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXLayoutObject<span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span><span class="st0">&quot;2U&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+    myLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;a&quot;</span><span class="br0">&#41;</span>.<span class="me1">setWidth</span><span class="br0">&#40;</span><span class="nu0">250</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    myLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;a&quot;</span><span class="br0">&#41;</span>.<span class="me1">setText</span><span class="br0">&#40;</span><span class="st0">&quot;Files&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+    myLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;b&quot;</span><span class="br0">&#41;</span>.<span class="me1">hideHeader</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw2">var</span> myToolbar <span class="sy0">=</span> myLayout.<span class="me1">attachToolbar</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+    myToolbar.<span class="me1">setIconsPath</span><span class="br0">&#40;</span><span class="st0">&quot;icons/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">    myToolbar.<span class="me1">loadStruct</span><span class="br0">&#40;</span><span class="st0">&quot;data/toolbarStruct.xml&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+    </li>
+</ol>
+
+<p><img style="display:block; margin:55px auto auto auto;" src="media/tutorials/file_manager/step_4.png"/></p>
+
+<div id="tutorial_step">
+    <a id="next_step" class="link-" href="tutorials__building_web_interfaces__step4.html"></a>
+</div>
+
+<!-- Content Area End -->
+			<a href='tutorials__building_web_interfaces__step3.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

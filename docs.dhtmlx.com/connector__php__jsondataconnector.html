@@ -1,0 +1,280 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>JSONDataConnector/DataConnector  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=" current"><a href="connector__php__jsondataconnector.html">JSONDataConnector/DataConnector</a></li><ul><li class="inner"><a href="connector__php__jsondataconnector.html#common">Common</a></li><li class="inner"><a href="connector__php__jsondataconnector.html#addingtagssectionstodata">Adding tags/sections to data</a></li><li class="inner"><a href="connector__php__jsondataconnector.html#simpledatatransfer">Simple Data Transfer</a></li></ul><li class=""><a href="connector__php__keygridconnector.html">KeyGridConnector</a></li><li class=""><a href="connector__php__mixedconnector.html">MixedConnector</a></li><li class=""><a href="connector__php__optionsconnector.html">OptionsConnector</a></li><li class=""><a href="connector__php__selectoptionsconnector.html">SelectOptionsConnector</a></li><li class=""><a href="connector__php__treegroupconnector.html">Tree(TreeGrid)GroupConnector</a></li><li class=""><a href="connector__php__treemultitableconnector.html">Tree(TreeGrid)MultitableConnector</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="connector__index.html">Client-Server Communication</a><a class="n3" href="connector__php__index.html">PHP Connector</a><a class="n4" href="connector__php__general_idea.html">General Idea of dhtmlxConnector</a></div>
+<!-- Content Area -->
+
+
+
+<h1>JSONDataConnector/DataConnector</h1>
+
+<a name='common'><h2>Common</h2></a>
+
+<p>There are 2 connectors you can use for touch-oriented DHTMLX libraries (such as DataTable, DataStore):</p>
+
+<ul>
+<li><strong>DataConnector</strong></li>
+<li><strong>JSONDataConnector</strong></li>
+</ul>
+
+<p>They both work the same way, but differ in type of returned data.</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span> 
+<span class="kw1">require_once</span><span class="br0">&#40;</span><span class="st0">&quot;../../connector/data_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">require_once</span><span class="br0">&#40;</span><span class="st0">&quot;../../connector/db_sqlite.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span><span class="re0">$db</span> <span class="sy0">=</span> <a href="http://www.php.net/sqlite_open"><span class="kw3">sqlite_open</span></a><span class="br0">&#40;</span><span class="st_h">'db'</span><span class="sy0">,</span> <span class="nu8">0777</span><span class="sy0">,</span> <span class="re0">$sqliteerror</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <a href="http://www.php.net/die"><span class="kw3">die</span></a><span class="br0">&#40;</span><span class="re0">$sqliteerror</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+<span class="re0">$data</span> <span class="sy0">=</span> <span class="kw2">new</span> JSONDataConnector<span class="br0">&#40;</span><span class="re0">$db</span><span class="sy0">,</span><span class="st0">&quot;SQLite&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$data</span><span class="sy0">-&gt;</span><span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;users&quot;</span><span class="sy0">,</span> <span class="st0">&quot;id&quot;</span><span class="sy0">,</span> <span class="st0">&quot;name,age,city&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="sy1">?&gt;</span></pre></code></pre>
+
+<h3>DataConnector</h3>
+
+<p>DataConnector generates 'XML' data feed as in:</p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;data<span class="re2">&gt;</span></span></span>
+   <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;1&quot;</span> <span class="re0">title</span>=<span class="st0">&quot;War and Peace&quot;</span>  <span class="re0">author</span>=<span class="st0">&quot;Leo Tolstoy&quot;</span><span class="re2">/&gt;</span></span>
+   <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;2&quot;</span> <span class="re0">title</span>=<span class="st0">&quot;Hamlet&quot;</span>         <span class="re0">author</span>=<span class="st0">&quot;William Shakespeare&quot;</span><span class="re2">/&gt;</span></span>
+   <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;3&quot;</span> <span class="re0">title</span>=<span class="st0">&quot;Madame Bovary&quot;</span>  <span class="re0">author</span>=<span class="st0">&quot;Gustave Flaubert&quot;</span><span class="re2">/&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;/data<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<h3>JSONDataConnector</h3>
+
+<p>JSONDataConnector generates 'JSON' data feed as in:</p>
+
+<pre><code><pre class="js"><span class="br0">&#91;</span>
+   <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="st0">&quot;1&quot;</span><span class="sy0">,</span> title<span class="sy0">:</span><span class="st0">&quot;War and Peace&quot;</span><span class="sy0">,</span>    author<span class="sy0">:</span><span class="st0">&quot;Leo Tolstoy&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+   <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="st0">&quot;2&quot;</span><span class="sy0">,</span> title<span class="sy0">:</span><span class="st0">&quot;Hamlet&quot;</span><span class="sy0">,</span>           author<span class="sy0">:</span><span class="st0">&quot;Shakespeare&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+   <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="st0">&quot;3&quot;</span><span class="sy0">,</span> title<span class="sy0">:</span><span class="st0">&quot;Madame Bovary&quot;</span><span class="sy0">,</span>    author<span class="sy0">:</span><span class="st0">&quot;Gustave Flaubert&quot;</span> <span class="br0">&#125;</span>
+<span class="br0">&#93;</span></pre></code></pre>
+
+<a name='addingtagssectionstodata'><h2>Adding tags/sections to data</h2></a>
+
+<p>Starting from version 1.5, there is a possibility to add the first child tags, sections to data returned by the connector. To add a tag(section), use method <a class="link-" href="connector__php__connector_object_methods.html#addsection">add_section</a>.</p>
+
+<h3>DataConnector</h3>
+
+<p><em>For example, if you call <a class="link-" href="connector__php__connector_object_methods.html#addsection">add_section</a> as follows</em>:</p>
+
+<pre><code><pre class="php"><span class="re0">$data</span> <span class="sy0">=</span> <span class="kw2">new</span> JSONDataConnector<span class="br0">&#40;</span><span class="re0">$db</span><span class="sy0">,</span><span class="st0">&quot;SQLite&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$data</span><span class="sy0">-&gt;</span><span class="me1">add_section</span><span class="br0">&#40;</span><span class="st0">&quot;config&quot;</span><span class="sy0">,</span> <span class="st0">&quot;some_data&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$data</span><span class="sy0">-&gt;</span><span class="me1">add_section</span><span class="br0">&#40;</span><span class="st0">&quot;config2&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&lt;column&gt;data1&lt;/column&gt;&lt;column&gt;data2&lt;/column&gt;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><em>DataConnector produces the next data</em>:</p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;data<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;config<span class="re2">&gt;</span></span></span>some_data<span class="sc3"><span class="re1">&lt;/config<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;config2<span class="re2">&gt;</span></span><span class="re1">&lt;column<span class="re2">&gt;</span></span></span>data1<span class="sc3"><span class="re1">&lt;/column<span class="re2">&gt;</span></span><span class="re1">&lt;column<span class="re2">&gt;</span></span></span>data2<span class="sc3"><span class="re1">&lt;/column<span class="re2">&gt;</span></span><span class="re1">&lt;/config2<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;1&quot;</span> <span class="re0">attr1</span>=<span class="st0">&quot;qwe&quot;</span> <span class="re0">attr2</span>=<span class="st0">&quot;asd&quot;</span> <span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;2&quot;</span> <span class="re0">attr1</span>=<span class="st0">&quot;qwe&quot;</span> <span class="re0">attr2</span>=<span class="st0">&quot;asd&quot;</span> <span class="re2">/&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;/data<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<h3>JSONDataConnector</h3>
+
+<p><em>If you call <a class="link-" href="connector__php__connector_object_methods.html#addsection">add_section</a> as follows</em>:</p>
+
+<pre><code><pre class="php"><span class="re0">$data</span> <span class="sy0">=</span> <span class="kw2">new</span> JSONDataConnector<span class="br0">&#40;</span><span class="re0">$db</span><span class="sy0">,</span><span class="st0">&quot;SQLite&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$data</span><span class="sy0">-&gt;</span><span class="me1">add_section</span><span class="br0">&#40;</span><span class="st0">&quot;config&quot;</span><span class="sy0">,</span> <span class="st0">&quot;'some_data'&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$data</span><span class="sy0">-&gt;</span><span class="me1">add_section</span><span class="br0">&#40;</span><span class="st0">&quot;config2&quot;</span><span class="sy0">,</span> <span class="st0">&quot;{ column1: 'data1'}&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><em>JSONDataConnector produces the next data</em>:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    data<span class="sy0">:</span> <span class="br0">&#91;</span>
+      <span class="br0">&#123;</span> <span class="st0">'id'</span><span class="sy0">:</span> <span class="st0">'1'</span><span class="sy0">,</span> <span class="st0">'attr1'</span><span class="sy0">:</span><span class="st0">'qwe'</span><span class="sy0">,</span> <span class="st0">'attr2'</span><span class="sy0">:</span><span class="st0">'asd'</span><span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="br0">&#123;</span> <span class="st0">'id'</span><span class="sy0">:</span> <span class="st0">'2'</span><span class="sy0">,</span> <span class="st0">'attr1'</span><span class="sy0">:</span><span class="st0">'qwe'</span><span class="sy0">,</span> <span class="st0">'attr2'</span><span class="sy0">:</span><span class="st0">'asd'</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    config<span class="sy0">:</span> <span class="st0">'some_data'</span><span class="sy0">,</span>
+    config2<span class="sy0">:</span> <span class="br0">&#123;</span> <span class="st0">'column1'</span><span class="sy0">:</span><span class="st0">'data1'</span> <span class="br0">&#125;</span><span class="sy0">,</span>  
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='simpledatatransfer'><h2>Simple Data Transfer</h2></a>
+
+<p>JSONDataConnector/DataConnector supports simplified protocol for CRUD requests.</p>
+
+<ul>
+<li>get all data</li>
+</ul>
+
+<pre><code><pre class="php"> GET  data<span class="sy0">.</span>php?action<span class="sy0">=</span>get</pre></code></pre>
+
+<p>server response - collection of json (xml) objects</p>
+
+<ul>
+<li>get info for some specific record</li>
+</ul>
+
+<pre><code><pre class="php"> GET   data<span class="sy0">.</span>php?action<span class="sy0">=</span>get<span class="sy0">&amp;</span>id<span class="sy0">=</span><span class="nu0">123</span></pre></code></pre>
+
+<p>response - json(xml) object</p>
+
+<ul>
+<li>delete</li>
+</ul>
+
+<pre><code><pre class="php"> GET  data<span class="sy0">.</span>php?action<span class="sy0">=</span>delete
+ POST id<span class="sy0">=</span><span class="nu0">123</span></pre></code></pre>
+
+<p>server response - 'true'/'false'</p>
+
+<ul>
+<li>insert</li>
+</ul>
+
+<pre><code><pre class="js"> GET  data.<span class="me1">php</span><span class="sy0">?</span>action<span class="sy0">=</span>insert
+ POST id<span class="sy0">=</span><span class="nu0">123</span><span class="sy0">&amp;</span>some<span class="sy0">=</span>value<span class="sy0">&amp;</span>other<span class="sy0">=</span>value</pre></code></pre>
+
+<p>response on success</p>
+
+<pre><code><pre class="php"><span class="kw4">true</span>
+<span class="sy0">&lt;</span>new_id<span class="sy0">&gt;</span></pre></code></pre>
+
+<p>or</p>
+
+<pre><code><pre class="js"> <span class="kw2">false</span></pre></code></pre>
+
+<p>on failed insert operation</p>
+
+<ul>
+<li>update</li>
+</ul>
+
+<pre><code><pre class="php"> GET  data<span class="sy0">.</span>php?action<span class="sy0">=</span>delete
+ POST id<span class="sy0">=</span><span class="nu0">123</span><span class="sy0">&amp;</span>some<span class="sy0">=</span>value<span class="sy0">&amp;</span>other<span class="sy0">=</span>value</pre></code></pre>
+
+<p>response - 'true'/'false'</p>
+
+<!-- Content Area End -->
+			<a href='connector__php__jsondataconnector.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

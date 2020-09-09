@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Validation  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="connector__php__reference.html">PHP Connector API</a></li><li class=""><a href="connector__php__general_idea.html">General Idea of dhtmlxConnector</a></li><li class=""><a href="connector__php__init.html">Initializing PHP Connector</a></li><li class=""><a href="connector__php__summarized_functionality.html">Components Functionality</a></li><li class=""><a href="connector__php__basis.html">Basic Loading</a></li><li class=""><a href="connector__php__dyn_loading.html">Dynamic Loading</a></li><li class=""><a href="connector__php__filtration.html">Filtering</a></li><li class=""><a href="connector__php__formatting.html">Formatting/Changing Data Before Loading</a></li><li class=""><a href="connector__php__sort.html">Sorting</a></li><li class=""><a href="connector__php__dp.html">Client-Side Requirement - DataProcessor</a></li><li class=""><a href="connector__php__complex_queries.html">Making Queries</a></li><li class=""><a href="connector__php__form_changes.html">Saving Data Changes Made in Form</a></li><li class=""><a href="connector__php__app_security.html">Security</a></li><li class=" current"><a href="connector__php__validation.html">Validation</a></li><ul><li class="inner"><a href="connector__php__validation.html#common">Common</a></li><li class="inner"><a href="connector__php__validation.html#valuechecking">Value checking</a></li><li class="inner"><a href="connector__php__validation.html#processingincaseofvalidationerror">Processing in case of validation error</a></li></ul><li class=""><a href="connector__php__grid_data_export.html">Data Export</a></li><li class=""><a href="connector__php__db_operations.html">Elementary DB Operations with Connector</a></li><li class=""><a href="connector__php__errors.html">Error Handling and Logging</a></li><li class=""><a href="connector__php__event_handling.html">Handling Events</a></li><li class=""><a href="connector__php__extending.html">Extending Functionality</a></li><li class=""><a href="connector__php__frameworks.html">Using Connector with Popular Frameworks</a></li><li class=""><a href="connector__php__samples.html">Samples</a></li><li class=""><a href="connector__php__release_notes.html">Migration and New Functions</a></li><li class=""><a href="connector__php__coding_howtos.html">HowTos</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="connector__index.html">Client-Server Communication</a><a class="n3" href="connector__php__index.html">PHP Connector</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Validation</h1>
+
+<p>Before saving data on the server you can validate it and assign a handler function for any gotten response.</p>
+
+<p>Shortly, validation contains 2 key points:</p>
+
+<ol>
+<li>value checking</li>
+<li>processing in case of validation error</li>
+</ol>
+
+<a name='common'><h2>Common</h2></a>
+
+<p>To implement the server-side validation of incoming data you can use the following events:</p>
+
+<ul>
+<li><a class="link-" href="connector__php__beforeupdate_event.html">beforeUpdate</a></li>
+<li><a class="link-" href="connector__php__beforeinsert_event.html">beforeInsert</a></li>
+<li><a class="link-" href="connector__php__beforedelete_event.html">beforeDelete</a></li>
+<li><a class="link-" href="connector__php__beforeprocessing_event.html">beforeProcessing</a></li>
+</ul>
+
+<p>The beforeProcessing event fires for all types of operations while other events fire only for the related operations, 
+ i.e. you can set different validation rules for different operations or the same rule for all of them at once.</p>
+
+<p>The event will receive DataAction object as the parameter. This object can be used to retrieve the related data and allow/deny operation (please note, 
+it contains only the data which has been received from the client side, not all the data related to the record).</p>
+
+<a name='valuechecking'><h2>Value checking</h2></a>
+
+<p>To check the value of a field you should use the method <a class="link-" href="connector__php__dataaction_object_methods.html#getvalue">get_value()</a></p>
+
+<pre><code><pre class="php"><span class="kw2">function</span> validate<span class="br0">&#40;</span><span class="re0">$data</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="re0">$data</span><span class="sy0">-&gt;</span><span class="me1">get_value</span><span class="br0">&#40;</span><span class="st0">&quot;some_field&quot;</span><span class="br0">&#41;</span><span class="sy0">==</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span>
+    <span class="sy0">...</span>
+<span class="br0">&#125;</span>
+<span class="re0">$conn</span><span class="sy0">-&gt;</span><span class="me1">event</span><span class="sy0">-&gt;</span><span class="me1">attach</span><span class="br0">&#40;</span><span class="st0">&quot;beforeProcessing&quot;</span><span class="sy0">,</span><span class="st0">&quot;validate&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='processingincaseofvalidationerror'><h2>Processing in case of validation error</h2></a>
+
+<p>In case of error you can choose one of two ways:</p>
+
+<p>1) Use the predefined methods for error processing on the client side, i.e. set:</p>
+
+<ul>
+<li><strong>$data->invalid()</strong> (invalid record will be highlighted by the bold font)</li>
+<li><strong>$data->error()</strong> (invalid record will be highlighted by the red bold font)</li>
+</ul>
+
+<p><em>The difference between the methods in question consists just in the way of highlighting</em>.</p>
+
+<pre><code><pre class="php"><span class="kw2">function</span> validate<span class="br0">&#40;</span><span class="re0">$data</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="re0">$data</span><span class="sy0">-&gt;</span><span class="me1">get_value</span><span class="br0">&#40;</span><span class="st0">&quot;some&quot;</span><span class="br0">&#41;</span><span class="sy0">==</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span>
+        <span class="re0">$data</span><span class="sy0">-&gt;</span><span class="me1">invalid</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+<span class="re0">$conn</span><span class="sy0">-&gt;</span><span class="me1">event</span><span class="sy0">-&gt;</span><span class="me1">attach</span><span class="br0">&#40;</span><span class="st0">&quot;beforeProcessing&quot;</span><span class="sy0">,</span><span class="st0">&quot;validate&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>2)  Assign your own processing on the client side through the dataProcessor's method <a class="link-" href="api__dataprocessor_defineaction.html">defineAction()</a> (see the details 
+<a class="link-" href="connector__php__dp.html#changingdefaultdataprocessingonclient-side">here</a>)</p>
+
+<pre><code><pre class="js">dp.<span class="me1">defineAction</span><span class="br0">&#40;</span><span class="st0">&quot;invalid&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>sid<span class="sy0">,</span>response<span class="br0">&#41;</span><span class="br0">&#123;</span>
+<span class="kw2">var</span> message <span class="sy0">=</span> response.<span class="me1">getAttribute</span><span class="br0">&#40;</span><span class="st0">&quot;message&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw3">alert</span><span class="br0">&#40;</span>message<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span><span class="co1">// return false to cancel default data processing at all</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<h3>Custom status</h3>
+
+<p>You can change the returned status and set your own one by means of the method <a class="link-" href="connector__php__dataaction_object_methods.html#setstatus">set_status()</a>.
+In this case any default processing (no matter, if the <a class="link-" href="api__dataprocessor_defineaction.html">defineAction()</a> 
+method will return true or false) will be cancelled and you will specify data processing fully on the client side.</p>
+
+<p>Server side:</p>
+
+<pre><code><pre class="php"><span class="kw2">function</span> validate<span class="br0">&#40;</span><span class="re0">$data</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="re0">$data</span><span class="sy0">-&gt;</span><span class="me1">get_value</span><span class="br0">&#40;</span><span class="st0">&quot;some&quot;</span><span class="br0">&#41;</span><span class="sy0">==</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span>
+        <span class="re0">$data</span><span class="sy0">-&gt;</span><span class="me1">set_status</span><span class="br0">&#40;</span><span class="st0">&quot;my_status&quot;</span><span class="br0">&#41;</span>
+<span class="br0">&#125;</span>
+<span class="re0">$conn</span><span class="sy0">-&gt;</span><span class="me1">event</span><span class="sy0">-&gt;</span><span class="me1">attach</span><span class="br0">&#40;</span><span class="st0">&quot;beforeProcessing&quot;</span><span class="sy0">,</span><span class="st0">&quot;validate&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Client side:</p>
+
+<pre><code><pre class="js">dp.<span class="me1">defineAction</span><span class="br0">&#40;</span><span class="st0">&quot;my_status&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>sid<span class="sy0">,</span>response<span class="br0">&#41;</span><span class="br0">&#123;</span>
+...
+<span class="br0">&#125;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<h3>Adding custom information to response</h3>
+
+<p>You can send some custom information to the client side through the following methods:</p>
+
+<ul>
+<li><a class="link-" href="connector__php__dataaction_object_methods.html#setresponsetext">set_response_text</a></li>
+<li><a class="link-" href="connector__php__dataaction_object_methods.html#setresponsexml">set_response_xml</a></li>
+<li><a class="link-" href="connector__php__dataaction_object_methods.html#setresponseattribute">set_response_attribute</a></li>
+</ul>
+
+<!-- Content Area End -->
+			<a href='connector__php__validation.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

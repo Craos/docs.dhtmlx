@@ -1,0 +1,385 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Sorting Data  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="grid__iterators.html">Iterating Over Data</a></li><li class=" current"><a href="grid__sorting.html">Sorting Data</a></li><ul><li class="inner"><a href="grid__sorting.html#sortingbyasingleclickontheheader">Sorting by a single click on the header</a></li><li class="inner"><a href="grid__sorting.html#programmaticsorting">Programmatic sorting</a></li><li class="inner"><a href="grid__sorting.html#customsortingfunction">Custom sorting function</a></li><li class="inner"><a href="grid__sorting.html#stablesorting">Stable sorting</a></li><li class="inner"><a href="grid__sorting.html#sortingbymultiplecolumns">Sorting by multiple columns</a></li><li class="inner"><a href="grid__sorting.html#sortingevents">Sorting events</a></li><li class="inner"><a href="grid__sorting.html#sortingcomboslabels">Sorting combo's labels</a></li><li class="inner"><a href="grid__sorting.html#partialsorting">Partial sorting</a></li></ul><li class=""><a href="grid__filtering.html">Filtering Data</a></li><li class=""><a href="grid__searching.html">Searching in Grid</a></li><li class=""><a href="grid__grouping_rows.html">Grouping Data by Rows</a></li><li class=""><a href="grid__formatting.html">Formatting Number and Date Values</a></li><li class=""><a href="grid__statistics_counter.html">Statistics Counters</a></li><li class=""><a href="grid__validation.html">Validating Data Items</a></li><li class=""><a href="grid__math.html">Using Math Formulas for Data</a></li><li class=""><a href="grid__clipboard.html">Clipboard Operations</a></li><li class=""><a href="grid__undo_redo.html">Providing Undo/Redo Operations</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__managing_data.html">Managing Data in Grid</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Sorting Data</h1>
+
+<p>The grid allows you to sort data rows on the client side (for server-side sorting, use the <a class="link-" href="connector__php__index.html">dhtmlxConnector</a> library).</p>
+
+<p>There are 2 ways to invoke sorting in the table:</p>
+
+<ol>
+<li>By a single click on the header of a column;</li>
+<li>By API call (can be called from some event or action, i.e. button click or page load).</li>
+</ol>
+
+<a name='sortingbyasingleclickontheheader'><h2>Sorting by a single click on the header</h2></a>
+
+<p>When you click on the header, the grid starts displaying a special control indicating which column the grid is currently 
+sorted by and the direction of this sorting (ascending or descending). Each next click on the same header will reverse the sorting direction.</p>
+
+<p>Columns can have different type of content (numbers, strings, dates) and each type of content requires its own specific way of sorting.</p>
+
+<p>There are 4 predefined sorting types:</p>
+
+<ol>
+<li><em>int</em></li>
+<li><em>date</em></li>
+<li><em>str</em> (case-sensitive string)</li>
+<li><em>na</em> - an unsorted column (the column won't react on the header click and the <a class="link-" href="api__dhtmlxgrid_sortrows.html">sortRows</a> method)</li>
+</ol>
+
+<p>To assign the desired types to columns and enable sorting for them, call the <a class="link-" href="api__dhtmlxgrid_setcolsorting.html">setColSorting</a> method for the grid.</p>
+
+<p class='snippet'>
+Sorting configuration
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>                
+mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;./codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>       
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Name, Email, Age&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="xtra ln-xtra">mygrid.<span class="me1">setColSorting</span><span class="br0">&#40;</span><span class="st0">&quot;int,str,na,str&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/12_initialization_loading/09_init_grid_json.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Loading from JSON</a></p>
+
+<a name='programmaticsorting'><h2>Programmatic sorting</h2></a>
+
+<p>To invoke sorting on some event or action, i.e. on the button click or page load, use the <a class="link-" href="api__dhtmlxgrid_sortrows.html">sortRows</a> method:</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>                
+mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;./codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>       
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Name, Email, Age&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+mygrid.<span class="me1">sortRows</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="sy0">,</span><span class="st0">&quot;str&quot;</span><span class="sy0">,</span><span class="st0">&quot;asc&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//ascending sorting of the second column</span></pre></code></pre>
+
+<a name='customsortingfunction'><h2>Custom sorting function</h2></a>
+
+<p>If you need, you can specify your custom sorting type and apply it to a column. You should specify the related logic in a function and set this function for the required column in the 
+<a class="link-" href="api__dhtmlxgrid_setcolsorting.html">setColSorting</a> method:</p>
+
+<p>The custom sorting function will be called for each pair of adjacent values, and it will return 1,-1 or 0:</p>
+
+<ul>
+<li><strong>1</strong> - an object with the first value in pair must go before the second one.</li>
+<li><strong>-1</strong> - the second object goes before the first.</li>
+<li><strong>0</strong> - the order of both objects doesn't change.</li>
+</ul>
+
+<div class='note'><p><p>Note, the length of the function name must be more than 5 symbols.</p>
+</p></div>
+
+<p>For example, if you want to sort some column by the number of symbols in the value, use the code as in:</p>
+
+<p class='snippet'>
+Creating custom sorting type
+</p>
+
+<pre><code><pre class="js"><span class="kw2">function</span> sort_custom<span class="br0">&#40;</span>a<span class="sy0">,</span>b<span class="sy0">,</span>order<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> n<span class="sy0">=</span>a.<span class="me1">length</span><span class="sy0">;</span>
+    <span class="kw2">var</span> m<span class="sy0">=</span>b.<span class="me1">length</span><span class="sy0">;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>order<span class="sy0">==</span><span class="st0">&quot;asc&quot;</span><span class="br0">&#41;</span>
+        <span class="kw1">return</span> n<span class="sy0">&gt;</span>m<span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="sy0">;</span>
+    <span class="kw1">else</span>
+        <span class="kw1">return</span> n<span class="sy0">&lt;</span>m<span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>                
+mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;./codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>       
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Name, Email, Age&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="xtra ln-xtra">mygrid.<span class="me1">setColSorting</span><span class="br0">&#40;</span><span class="st0">&quot;sort_custom,str,int&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span>mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/16_rows_columns_manipulations/22_pro_sort.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom sorting routine</a></p>
+
+<p>Also, you can call the <a class="link-pro" href="api__dhtmlxgrid_setcustomsorting.html">setCustomSorting</a> method to assign a custom sorting function to a column:</p>
+
+<pre><code><pre class="js"><span class="kw2">function</span> sort_custom<span class="br0">&#40;</span>a<span class="sy0">,</span>b<span class="sy0">,</span>order<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> n<span class="sy0">=</span>a.<span class="me1">length</span><span class="sy0">;</span>
+    <span class="kw2">var</span> m<span class="sy0">=</span>b.<span class="me1">length</span><span class="sy0">;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>order<span class="sy0">==</span><span class="st0">&quot;asc&quot;</span><span class="br0">&#41;</span>
+        <span class="kw1">return</span> n<span class="sy0">&gt;</span>m<span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="sy0">;</span>
+    <span class="kw1">else</span>
+        <span class="kw1">return</span> n<span class="sy0">&lt;</span>m<span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setCustomSorting</span><span class="br0">&#40;</span>sort_custom<span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/16_rows_columns_manipulations/22_pro_sort.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom sorting routine</a></p>
+
+<h3>Samples of custom sorting functions</h3>
+
+<h4>Case-insensitive string sorting</h4>
+
+<p>dhtmlxGrid sorts strings in case-sensitive order by default, i.e. takes into consideration the letters' case. To make the sorting case-insensitive use the code as in:</p>
+
+<pre><code><pre class="js"><span class="kw2">function</span> str_custom<span class="br0">&#40;</span>a<span class="sy0">,</span>b<span class="sy0">,</span>order<span class="br0">&#41;</span><span class="br0">&#123;</span> 
+    <span class="kw1">return</span> <span class="br0">&#40;</span>a.<span class="me1">toLowerCase</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">&gt;</span>b.<span class="me1">toLowerCase</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">*</span><span class="br0">&#40;</span>order<span class="sy0">==</span><span class="st0">&quot;asc&quot;</span><span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+mygrid.<span class="me1">setCustomSorting</span><span class="br0">&#40;</span>str_custom<span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h4>Date sorting</h4>
+
+<p>This sorting function can be applied to data of the format 'dd/mm/yyyy':</p>
+
+<pre><code><pre class="js"><span class="kw2">function</span> date_custom<span class="br0">&#40;</span>a<span class="sy0">,</span>b<span class="sy0">,</span>order<span class="br0">&#41;</span><span class="br0">&#123;</span> 
+    a<span class="sy0">=</span>a.<span class="me1">split</span><span class="br0">&#40;</span><span class="st0">&quot;/&quot;</span><span class="br0">&#41;</span>
+    b<span class="sy0">=</span>b.<span class="me1">split</span><span class="br0">&#40;</span><span class="st0">&quot;/&quot;</span><span class="br0">&#41;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>a<span class="br0">&#91;</span><span class="nu0">2</span><span class="br0">&#93;</span><span class="sy0">==</span>b<span class="br0">&#91;</span><span class="nu0">2</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>a<span class="br0">&#91;</span><span class="nu0">1</span><span class="br0">&#93;</span><span class="sy0">==</span>b<span class="br0">&#91;</span><span class="nu0">1</span><span class="br0">&#93;</span><span class="br0">&#41;</span>
+            <span class="kw1">return</span> <span class="br0">&#40;</span>a<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">&gt;</span>b<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">*</span><span class="br0">&#40;</span>order<span class="sy0">==</span><span class="st0">&quot;asc&quot;</span><span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">else</span>
+            <span class="kw1">return</span> <span class="br0">&#40;</span>a<span class="br0">&#91;</span><span class="nu0">1</span><span class="br0">&#93;</span><span class="sy0">&gt;</span>b<span class="br0">&#91;</span><span class="nu0">1</span><span class="br0">&#93;</span><span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">*</span><span class="br0">&#40;</span>order<span class="sy0">==</span><span class="st0">&quot;asc&quot;</span><span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span> <span class="kw1">else</span>
+        <span class="kw1">return</span> <span class="br0">&#40;</span>a<span class="br0">&#91;</span><span class="nu0">2</span><span class="br0">&#93;</span><span class="sy0">&gt;</span>b<span class="br0">&#91;</span><span class="nu0">2</span><span class="br0">&#93;</span><span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">*</span><span class="br0">&#40;</span>order<span class="sy0">==</span><span class="st0">&quot;asc&quot;</span><span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+mygrid.<span class="me1">setCustomSorting</span><span class="br0">&#40;</span>date_custom<span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h4>Time sorting</h4>
+
+<p>This sorting function can be applied to data of the format '14:56':</p>
+
+<pre><code><pre class="js"><span class="kw2">function</span> time_custom<span class="br0">&#40;</span>a<span class="sy0">,</span>b<span class="sy0">,</span>order<span class="br0">&#41;</span><span class="br0">&#123;</span> 
+    a<span class="sy0">=</span>a.<span class="me1">split</span><span class="br0">&#40;</span><span class="st0">&quot;:&quot;</span><span class="br0">&#41;</span>
+    b<span class="sy0">=</span>a.<span class="me1">split</span><span class="br0">&#40;</span><span class="st0">&quot;:&quot;</span><span class="br0">&#41;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>a<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">==</span>b<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="br0">&#41;</span>
+        <span class="kw1">return</span> <span class="br0">&#40;</span>a<span class="br0">&#91;</span><span class="nu0">1</span><span class="br0">&#93;</span><span class="sy0">&gt;</span>b<span class="br0">&#91;</span><span class="nu0">1</span><span class="br0">&#93;</span><span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">*</span><span class="br0">&#40;</span>order<span class="sy0">==</span><span class="st0">&quot;asc&quot;</span><span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">else</span>
+        <span class="kw1">return</span> <span class="br0">&#40;</span>a<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">&gt;</span>b<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">*</span><span class="br0">&#40;</span>order<span class="sy0">==</span><span class="st0">&quot;asc&quot;</span><span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+mygrid.<span class="me1">setCustomSorting</span><span class="br0">&#40;</span>time_custom<span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='stablesorting'><h2>Stable sorting</h2></a>
+
+<p>The default sorting routine used by Grid is a quick sorting algorithm which is unstable (it means that rows with the same value may change their position after sorting).
+To enable the stable sorting algorithm in the grid use the  <a class="link-" href="api__dhtmlxgrid_enablestablesorting.html">enableStableSorting</a> method:</p>
+
+<pre><code><pre class="js">grid.<span class="me1">enableStableSorting</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>Basically, the stable sorting is a bit slower than the default one, so enable this mode only if it's really necessary.</p>
+</p></div>
+
+<a name='sortingbymultiplecolumns'><h2>Sorting by multiple columns</h2></a>
+
+<p>The sorting routine is designed to sort the grid by values of a single column by default. <br>
+But there are situations when you may need to sort the grid by multiple columns, for example, to sort books by the author at first, and then by the book's rating.</p>
+
+<p>To sort the grid by multiple columns use one of the following techniques:</p>
+
+<ol>
+    <li><b>The stable sorting</b>. In this case the rows with the same values will not change their positions, and it will help to organize sorting by multiple columns:
+
+<pre><code><pre class="js">grid.<span class="me1">enableStableSorting</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span>
+grid.<span class="me1">sortRows</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="sy0">,</span><span class="st0">&quot;str&quot;</span><span class="sy0">,</span><span class="st0">&quot;asc&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>    <span class="co1">// sort by the sibling column</span>
+grid.<span class="me1">sortRows</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="sy0">,</span><span class="st0">&quot;str&quot;</span><span class="sy0">,</span><span class="st0">&quot;des&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>    <span class="co1">// sort by the main column</span></pre></code></pre>
+
+As a result, the grid will be sorted by a column of less importance and after that - by a column of higher importance. 
+In combination with stable sorting it will give the same result as sorting by two columns.
+    </li>
+    <li><b>An extended version of the custom sorting function</b>:
+
+<pre><code><pre class="js"><span class="kw2">function</span> sort_by_two<span class="br0">&#40;</span>a<span class="sy0">,</span>b<span class="sy0">,</span>order<span class="sy0">,</span>aid<span class="sy0">,</span>bid<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>a<span class="sy0">==</span>b<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw2">var</span> a2<span class="sy0">=</span>grid.<span class="me1">cells</span><span class="br0">&#40;</span>aid<span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw2">var</span> b2<span class="sy0">=</span>grid.<span class="me1">cells</span><span class="br0">&#40;</span>bid<span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">if</span><span class="br0">&#40;</span>order<span class="sy0">==</span><span class="st0">&quot;asc&quot;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span> <span class="kw1">return</span> a2<span class="sy0">&gt;</span>b2<span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw1">else</span> <span class="br0">&#123;</span> <span class="kw1">return</span> a2<span class="sy0">&lt;</span>b2<span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="sy0">;</span> <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>order<span class="sy0">==</span><span class="st0">&quot;asc&quot;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span> <span class="kw1">return</span> a<span class="sy0">&gt;</span>b<span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="sy0">;</span> <span class="br0">&#125;</span>
+    <span class="kw1">else</span> <span class="br0">&#123;</span> <span class="kw1">return</span> a<span class="sy0">&lt;</span>b<span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="sy0">;</span> <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+where 
+ <ul>
+    <li>a - 1st comparable value</li>
+    <li>b - 2nd comparable value</li>
+    <li>order - the sorting direction: "asc" or "des"</li>
+    <li>aid - the id of the row that contains the 1st comparable value</li>
+    <li>bid - the id of the row that contains the 2nd comparable value</li>
+</ul>
+    </li>
+</ol>
+
+<a name='sortingevents'><h2>Sorting events</h2></a>
+
+<p>dhtmlxGrid provides the <a class="link-pro" href="api__dhtmlxgrid_onbeforesorting_event.html">onBeforeSorting</a> event to add custom behaviour to default sorting.</p>
+
+<p><br></p>
+
+<p>For example, to implement server-side sorting without dhtmlxConnector or some other means you can use the <a class="link-pro" href="api__dhtmlxgrid_onbeforesorting_event.html">onBeforeSorting</a> event as in:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onBeforeSorting&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>ind<span class="sy0">,</span>type<span class="sy0">,</span>direction<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">this</span>.<span class="me1">clearAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//clears grid</span>
+    <span class="kw1">this</span>.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;some.url?dir=&quot;</span><span class="sy0">+</span>dir<span class="sy0">+</span><span class="st0">&quot;&amp;amp;ind=&quot;</span><span class="sy0">+</span>ind<span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//loads new data from the server </span>
+                                                      <span class="co1">//in the required order</span>
+    <span class="kw1">this</span>.<span class="me1">setSortImgState</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="sy0">,</span>ind<span class="sy0">,</span>direction<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//sets a correct sorting image</span>
+    <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>   
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='sortingcomboslabels'><h2>Sorting combo's labels</h2></a>
+
+<p>dhtmlxGrid uses cells' values for sorting by default. To sort combo items by labels (which may differ from cell values), use a custom sorting function:</p>
+
+<pre><code><pre class="js"><span class="kw2">function</span> custom_1<span class="br0">&#40;</span>a<span class="sy0">,</span>b<span class="sy0">,</span>ord<span class="sy0">,</span>a_id<span class="sy0">,</span>b_id<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    a<span class="sy0">=</span>mygrid2.<span class="me1">cells</span><span class="br0">&#40;</span>a_id<span class="sy0">,</span><span class="nu0">5</span><span class="br0">&#41;</span>.<span class="me1">getText</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    b<span class="sy0">=</span>mygrid2.<span class="me1">cells</span><span class="br0">&#40;</span>b_id<span class="sy0">,</span><span class="nu0">5</span><span class="br0">&#41;</span>.<span class="me1">getText</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> ord<span class="sy0">==</span><span class="st0">&quot;asc&quot;</span><span class="sy0">?</span><span class="br0">&#40;</span>a<span class="sy0">&gt;</span>b<span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">:</span><span class="br0">&#40;</span>a<span class="sy0">&gt;</span>b<span class="sy0">?-</span><span class="nu0">1</span><span class="sy0">:</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+mygrid.<span class="me1">setCustomSorting</span><span class="br0">&#40;</span>custom_1<span class="sy0">,</span><span class="nu0">5</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//5 - the index of the column that will be sorted</span></pre></code></pre>
+
+<a name='partialsorting'><h2>Partial sorting</h2></a>
+
+<p>To sort just a part of grid's rows and leave the remaming part fixed, use the following technique:</p>
+
+<pre><code><pre class="js"><span class="kw2">function</span> custom_sort<span class="br0">&#40;</span>a<span class="sy0">,</span>b<span class="sy0">,</span>ord<span class="sy0">,</span>aid<span class="sy0">,</span>bid<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw2">var</span> aid<span class="sy0">=</span>aid.<span class="me1">split</span><span class="br0">&#40;</span><span class="st0">&quot;_&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw2">var</span> bid<span class="sy0">=</span>bid.<span class="me1">split</span><span class="br0">&#40;</span><span class="st0">&quot;_&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>aid<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">==</span><span class="st0">&quot;top&quot;</span><span class="br0">&#41;</span> <span class="kw1">return</span> <span class="nu0">1</span><span class="sy0">;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>bid<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">==</span><span class="st0">&quot;top&quot;</span><span class="br0">&#41;</span> <span class="kw1">return</span> <span class="sy0">-</span><span class="nu0">1</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">return</span> <span class="br0">&#40;</span><span class="br0">&#40;</span>a<span class="sy0">&gt;</span>b<span class="br0">&#41;</span><span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">*</span><span class="br0">&#40;</span>ord<span class="sy0">==</span><span class="st0">&quot;asc&quot;</span><span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>The above code moves rows with ID=“top_*” to the top of the grid and sorts other rows in the required order.</p>
+
+<!-- Content Area End -->
+			<a href='grid__sorting.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

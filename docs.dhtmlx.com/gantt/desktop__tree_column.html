@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Configuring the Tree Column  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__specifying_columns.html">Specifying Columns</a></li><li class=" current"><a href="desktop__tree_column.html">Configuring the Tree Column</a></li><ul><li class="inner"><a href="desktop__tree_column.html#expandingcollapsingataskbranch">Expanding/collapsing a task branch</a></li><li class="inner"><a href="desktop__tree_column.html#expandingcollapsingseveralbranches">Expanding/collapsing several branches</a></li><li class="inner"><a href="desktop__tree_column.html#gettingthechildrenofatask">Getting the children of a task</a></li><li class="inner"><a href="desktop__tree_column.html#changingthetreesicons">Changing the tree's icons</a></li><li class="inner"><a href="desktop__tree_column.html#settingtheindentofchildreninabranch">Setting the indent of children in a branch</a></li><li class="inner"><a href="desktop__tree_column.html#addingcheckboxestotreenodes">Adding checkboxes to tree nodes</a></li><li class="inner"><a href="desktop__tree_column.html#settingthetemplateoftreenodes">Setting the template of tree nodes</a></li></ul><li class=""><a href="desktop__reordering_tasks.html">Reordering Tasks</a></li><li class=""><a href="desktop__sorting.html">Sorting Columns</a></li><li class="toc-pro"><a href="desktop__grouping.html">Grouping Tasks</a></li><li class=""><a href="desktop__filtering.html">Filtering Tasks</a></li><li class=""><a href="desktop__inline_editing.html">Inline Editing in Grid</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__table.html">Configuring Grid Area</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Configuring the Tree Column</h1>
+
+<p>To know about available tree-related methods, please, refer to the <a class="link-" href="desktop__task_tree_operations.html">Task Parent/Child</a> article.</p>
+
+<a name='expandingcollapsingataskbranch'><h2>Expanding/collapsing a task branch</h2></a>
+
+<ul>
+<li>To open a task branch, use the <a class="link-" href="api__gantt_open.html">open</a> method:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#123;</span>
+  tasks<span class="sy0">:</span><span class="br0">&#91;</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Project #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;01-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">18</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;t_1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span>    start_date<span class="sy0">:</span><span class="st0">&quot;02-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span>
+     parent<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">gantt.<span class="kw3">open</span><span class="br0">&#40;</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<ul>
+<li>To close a task branch, use the <a class="link-" href="api__gantt_close.html">close</a> method:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#123;</span>
+  tasks<span class="sy0">:</span><span class="br0">&#91;</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Project #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;01-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">18</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;t_1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span>    start_date<span class="sy0">:</span><span class="st0">&quot;02-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span>
+     parent<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">gantt.<span class="kw3">close</span><span class="br0">&#40;</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<a name='expandingcollapsingseveralbranches'><h2>Expanding/collapsing several branches</h2></a>
+
+<p>If you need to open/close several task branches, the fastest way is to programatically set the corresponding boolean value (true - to open, false - to close)
+to the <em>.$open</em> property of the needed tasks and then redraw the gantt.</p>
+
+<ul>
+<li>expanding all tasks:</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">eachTask</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    task.$open <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">render</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>collapsing all tasks:</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">eachTask</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    task.$open <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">render</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='gettingthechildrenofatask'><h2>Getting the children of a task</h2></a>
+
+<p>To get the children of a branch task, use the <a class="link-" href="api__gantt_getchildren.html">getChildren</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#123;</span>
+  tasks<span class="sy0">:</span><span class="br0">&#91;</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Project #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;01-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">18</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;t_1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span>    start_date<span class="sy0">:</span><span class="st0">&quot;02-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span>
+     parent<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">gantt.<span class="me1">getChildren</span><span class="br0">&#40;</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//-&gt;[&quot;t_1&quot;]</span></span></pre></code></pre>
+
+<p><em>To see more tree-related methods, please, read the <a class="link-" href="desktop__task_tree_operations.html">Task Parent/Child</a> article.</em></p>
+
+<a name='changingthetreesicons'><h2>Changing the tree's icons</h2></a>
+
+<h3>Parent items</h3>
+
+<p>To set the icon for the parent items, use the <a class="link-" href="api__gantt_grid_folder_template.html">grid_folder</a> template:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">grid_folder</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="kw1">item</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&lt;div class='gantt_tree_icon gantt_folder_&quot;</span> <span class="sy0">+</span>
+    <span class="br0">&#40;</span><span class="kw1">item</span>.$open <span class="sy0">?</span> <span class="st0">&quot;open&quot;</span> <span class="sy0">:</span> <span class="st0">&quot;closed&quot;</span><span class="br0">&#41;</span> <span class="sy0">+</span> <span class="st0">&quot;'&gt;&lt;/div&gt;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Child items</h3>
+
+<p>To set the icon for the child items, use the <a class="link-" href="api__gantt_grid_file_template.html">grid_file</a> template:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">grid_file</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="kw1">item</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&lt;div class='gantt_tree_icon gantt_file'&gt;&lt;/div&gt;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Open/close sign</h3>
+
+<p>To set the icon for the open/close sign, use the <a class="link-" href="api__gantt_grid_open_template.html">grid_open</a> template:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">grid_open</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="kw1">item</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&lt;div class='gantt_tree_icon gantt_&quot;</span> <span class="sy0">+</span> 
+    <span class="br0">&#40;</span><span class="kw1">item</span>.$open <span class="sy0">?</span> <span class="st0">&quot;close&quot;</span> <span class="sy0">:</span> <span class="st0">&quot;open&quot;</span><span class="br0">&#41;</span> <span class="sy0">+</span> <span class="st0">&quot;'&gt;&lt;/div&gt;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='settingtheindentofchildreninabranch'><h2>Setting the indent of children in a branch</h2></a>
+
+<p>To set the indent of child tasks in a branch, use the <a class="link-" href="api__gantt_grid_indent_template.html">grid_indent</a> template (change the <strong>width</strong> CSS property):</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">grid_indent</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&lt;div style='width:20px; float:left; height:100%'&gt;&lt;/div&gt;&quot;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='addingcheckboxestotreenodes'><h2>Adding checkboxes to tree nodes</h2></a>
+
+<p>To add the checkboxes (or any other HTML content) to tree nodes, use the <a class="link-" href="api__gantt_grid_blank_template.html">grid_blank</a> template:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">grid_blank</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&lt;input id='ch1' type='checkbox' onClick='someFunc()'&gt;&lt;/input&gt;&quot;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='settingthetemplateoftreenodes'><h2>Setting the template of tree nodes</h2></a>
+
+<p>To set the template for tree nodes, use the <strong>template</strong> attribute in the <a class="link-" href="api__gantt_columns_config.html">columns</a> property. <br> The return value of the <strong>template'</strong>s function will be added as an inner HTML. That's why, you can use any HTML structures in the attribute.</p>
+
+<div class='note'><p><p>Note, if you don't use <a href="../connector__php__index.html">dhtmlxConnector</a> to <a class="link-" href="desktop__server_side.html">integrate with the server side</a>, you have to sanitize the data 
+you load into the Gantt chart in order to prevent possible XSS attacks (<a href="../connector__php__index.html">dhtmlxConnector</a> does it automatically)</p>
+</p></div>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">columns</span><span class="sy0">=</span><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span>       label<span class="sy0">:</span><span class="st0">&quot;Task name&quot;</span><span class="sy0">,</span>  tree<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="nu0">230</span><span class="sy0">,</span> template<span class="sy0">:</span>myFunc <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Start time&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;duration&quot;</span><span class="sy0">,</span>   label<span class="sy0">:</span><span class="st0">&quot;Duration&quot;</span><span class="sy0">,</span>   align<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span> <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">function</span> myFunc<span class="br0">&#40;</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>task.<span class="me1">priority</span> <span class="sy0">==</span><span class="nu0">1</span><span class="br0">&#41;</span>
+        <span class="kw1">return</span> <span class="st0">&quot;&lt;div class='important'&gt;&quot;</span><span class="sy0">+</span>task.<span class="me1">text</span><span class="sy0">+</span><span class="st0">&quot; (&quot;</span><span class="sy0">+</span>task.<span class="me1">users</span><span class="sy0">+</span><span class="st0">&quot;) &lt;/div&gt;&quot;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> task.<span class="me1">text</span><span class="sy0">+</span><span class="st0">&quot; (&quot;</span><span class="sy0">+</span>task.<span class="me1">users</span><span class="sy0">+</span><span class="st0">&quot;)&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/04_customization/05_tree_template.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Template for tree nodes</a></p>
+
+<!-- Content Area End -->
+			<a href='desktop__tree_column.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

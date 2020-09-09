@@ -1,0 +1,453 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Auto Scheduling  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__link_object_operations.html">Getting the Link Object/Id</a></li><li class=""><a href="desktop__crud_dependency.html">Adding/Updating/Deleting Links</a></li><li class="toc-pro current"><a href="desktop__auto_scheduling.html">Auto Scheduling</a></li><ul><li class="inner"><a href="desktop__auto_scheduling.html#howtouse">How to use</a></li><li class="inner"><a href="desktop__auto_scheduling.html#disablingautoschedulingforspecifictasks">Disabling auto scheduling for specific tasks</a></li><li class="inner"><a href="desktop__auto_scheduling.html#apioverview">API overview</a></li><li class="inner"><a href="desktop__auto_scheduling.html#thelistofevents">The list of events</a></li><li class="inner"><a href="desktop__auto_scheduling.html#settinglagandleadtimesbetweentasks">Setting lag and lead times between tasks</a></li><li class="inner"><a href="desktop__auto_scheduling.html#timeconstraintsfortasks">Time constraints for tasks</a></li><li class="inner"><a href="desktop__auto_scheduling.html#backwardscheduling">Backward scheduling</a></li><li class="inner"><a href="desktop__auto_scheduling.html#versioncompatibility">Version compatibility</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__dependencies.html">Configuring Dependency Links</a></div>
+<!-- Content Area -->
+
+
+<p class='promarker'>Available only in <b>PRO Edition</b></p>
+<h1>Auto Scheduling</h1>
+
+<div class='pronote'><p><p>This functionality is available only in the PRO edition.</p>
+</p></div>
+
+<p>The library provides the <strong>auto_scheduling.js</strong> extension that gives Gantt the ability to schedule tasks automatically depending on relations between them.</p>
+
+<p><img src="media/desktop/auto_scheduling.png"></p>
+
+<p>For example, imagine that you have two tasks connected by a dependency link and the second task starts when the first one ends, and
+you need to change the schedule of the first task by moving it to a new date.</p>
+
+<p>Auto scheduling makes the start date of the second task update according to the end date of the first task each time when it changes.
+This feature allows you to generate and maintain project schedule by specifying relations between tasks with no need to set dates of each task manually.</p>
+
+<a name='howtouse'><h2>How to use</h2></a>
+
+<p>To use the auto scheduling functionality, you should enable the <a class="link-" href="desktop__extensions_list.html#autoscheduling">auto_scheduling</a> plugin using the <a class="link-" href="api__gantt_plugins.html">gantt.plugins</a> method:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">plugins</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    auto_scheduling<span class="sy0">:</span> <span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>And set the <strong>auto_scheduling</strong> property to <em>true</em>:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">auto_scheduling</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_extensions/12_auto_scheduling.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Auto Scheduling extension</a></p>
+
+<p>When auto scheduling is enabled, individual tasks still can be scheduled manually.</p>
+
+<a name='disablingautoschedulingforspecifictasks'><h2>Disabling auto scheduling for specific tasks</h2></a>
+
+<p>To disable auto scheduling for a particular task and make it manually scheduled, set the <strong>auto_scheduling</strong> property of the task object to <em>false</em>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> task <span class="sy0">=</span> gantt.<span class="me1">getTask</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+task.<span class="me1">auto_scheduling</span> <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span></pre></code></pre>
+
+<p>You can also prevent auto scheduling of a specific task using the <a class="link-pro" href="api__gantt_onbeforetaskautoschedule_event.html">onBeforeTaskAutoSchedule</a> handler:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onBeforeTaskAutoSchedule&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>task<span class="sy0">,</span> start<span class="sy0">,</span> link<span class="sy0">,</span> predecessor<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>task.<span class="me1">completed</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='apioverview'><h2>API overview</h2></a>
+
+<p>The list of available methods and properties:</p>
+
+<ul>
+<li><a class="link-pro" href="api__gantt_auto_scheduling_config.html">auto_scheduling</a></li>
+<li><a class="link-pro" href="api__gantt_auto_scheduling_strict_config.html">auto_scheduling_strict</a></li>
+<li><a class="link-pro" href="api__gantt_auto_scheduling_initial_config.html">auto_scheduling_initial</a></li>
+<li><a class="link-pro" href="api__gantt_autoschedule.html">autoSchedule</a></li>
+<li><a class="link-" href="api__gantt_isunscheduledtask.html">isUnscheduledTask</a></li>
+<li><a class="link-pro" href="api__gantt_findcycles.html">findCycles</a></li>
+<li><a class="link-pro" href="api__gantt_iscircularlink.html">isCircularLink</a></li>
+<li><a class="link-" href="api__gantt_getconnectedgroup.html">getConnectedGroup</a></li>
+</ul>
+
+<h3>Activation</h3>
+
+<p>To enable auto scheduling in the Gantt chart, set the <a class="link-pro" href="api__gantt_auto_scheduling_config.html">auto_scheduling</a> property to true:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">auto_scheduling</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Strict mode</h3>
+
+<p>By default, tasks are rescheduled only when a new date violates the constraint.
+In order to always reschedule tasks to the earliest possible date, use the property <a class="link-pro" href="api__gantt_auto_scheduling_strict_config.html">auto_scheduling_strict</a>:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">auto_scheduling_strict</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>Note that starting from v6.1 the config works only when the <a class="link-pro" href="api__gantt_auto_scheduling_compatibility_config.html">auto_scheduling_compatibility</a> option is enabled.</p>
+</p></div>
+
+<h3>Initial auto-scheduling</h3>
+
+<p>The <a class="link-pro" href="api__gantt_auto_scheduling_initial_config.html">auto_scheduling_initial</a> property specifies whether gantt will do auto scheduling on data loading. It's set to true by default:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">auto_scheduling_initial</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Recalculating the project</h3>
+
+<p>To recalculate the schedule of the whole project, use the <a class="link-pro" href="api__gantt_autoschedule.html">autoSchedule</a> method:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">autoSchedule</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>If you need to recalculate the schedule starting from a particular task, pass the id of the task as an argument to the <a class="link-pro" href="api__gantt_autoschedule.html">autoSchedule</a> method:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">autoSchedule</span><span class="br0">&#40;</span>taskId<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Checking whether a task is unscheduled</h3>
+
+<p>In case you need to check whether the task is unscheduled, use the <a class="link-" href="api__gantt_isunscheduledtask.html">isUnscheduledTask</a> method with the task object as an argument:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> isUnscheduled <span class="sy0">=</span> gantt.<span class="me1">isUnscheduledTask</span><span class="br0">&#40;</span>task<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Search for circular references</h3>
+
+<p>To find all circular references in the chart, make use of the <a class="link-pro" href="api__gantt_findcycles.html">findCycles</a> method:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">findCycles</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Checking whether a link is circular</h3>
+
+<p>If you need to check whether the link is circular, you can apply the <a class="link-pro" href="api__gantt_iscircularlink.html">isCircularLink</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> isCircular <span class="sy0">=</span> gantt.<span class="me1">isCircularLink</span><span class="br0">&#40;</span>link<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Getting connected tasks and links</h3>
+
+<p>To get the list of tasks and links a task is connected with, use the <a class="link-" href="api__gantt_getconnectedgroup.html">getConnectedGroup</a> method:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">getConnectedGroup</span><span class="br0">&#40;</span><span class="nu0">18</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// =&gt; {links:[&quot;16&quot;, &quot;17&quot;, &quot;18&quot;], tasks:[18, 17, 19, 20]}</span></pre></code></pre>
+
+<a name='thelistofevents'><h2>The list of events</h2></a>
+
+<p>The list of available events is given below:</p>
+
+<ul>
+<li><a class="link-pro" href="api__gantt_onbeforeautoschedule_event.html">onBeforeAutoSchedule</a></li>
+<li><a class="link-pro" href="api__gantt_onafterautoschedule_event.html">onAfterAutoSchedule</a></li>
+<li><a class="link-pro" href="api__gantt_onbeforetaskautoschedule_event.html">onBeforeTaskAutoSchedule</a></li>
+<li><a class="link-pro" href="api__gantt_onaftertaskautoschedule_event.html">onAfterTaskAutoSchedule</a></li>
+<li><a class="link-pro" href="api__gantt_oncircularlinkerror_event.html">onCircularLinkError</a></li>
+<li><a class="link-pro" href="api__gantt_onautoschedulecircularlink_event.html">onAutoScheduleCircularLink</a></li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">// before auto scheduling starts</span>
+gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onBeforeAutoSchedule&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>taskId<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// any custom logic here</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// after auto scheduling finishes</span>
+gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onAfterAutoSchedule&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>taskId<span class="sy0">,</span> updatedTasks<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// any custom logic here</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// before a particular task is rescheduled</span>
+gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onBeforeTaskAutoSchedule&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>task<span class="sy0">,</span>start<span class="sy0">,</span>link<span class="sy0">,</span>predecessor<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// any custom logic here</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// after a particular task is rescheduled</span>
+gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onAfterTaskAutoSchedule&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>task<span class="sy0">,</span>start<span class="sy0">,</span>link<span class="sy0">,</span>predecessor<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// any custom logic here</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// if the circular reference has been detected and auto scheduling is not possible</span>
+gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onCircularLinkError&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>link<span class="sy0">,</span> group<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// any custom logic here</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// if circular links were found during auto scheduling</span>
+gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onAutoScheduleCircularLink&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>groups<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// any custom logic here</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='settinglagandleadtimesbetweentasks'><h2>Setting lag and lead times between tasks</h2></a>
+
+<p>Lag and lead times are special values that are used to create complex relations between tasks.</p>
+
+<p>Lag is a delay between tasks which are linked by a dependency. Lead is an overlap between tasks which are linked by a dependency.</p>
+
+<p>There can be two types of successor tasks:</p>
+
+<ul>
+<li>a task that can start before its predecessor task's end (task B starts before task A is finished)</li>
+</ul>
+
+<p>E.g.: If we set a lead equal to 1 day for the dependency link, task B will start one day before task A ends;</p>
+
+<ul>
+<li>a task that can't start until after some delay that follows the finish of its predecessor task (task B starts in some time after task A is finished)</li>
+</ul>
+
+<p>E.g.: If we set a lag equal to 1 day for the dependency link, task B will start in one day after task A ends.</p>
+
+<p>Lag and lead values are set in the additional property of the link object - <strong>link.lag</strong>:</p>
+
+<ul>
+<li>lag - any whole positive value,</li>
+<li>lead - a negative value of the lag.</li>
+</ul>
+
+<p>By default, it's implied that the lag value of each dependency link is set as 0.</p>
+
+<h3>Editing link values from UI</h3>
+
+<p>Gantt doesn't provide a built-in UI for editing lag or any other properties of the link. However, you can implement it manually by following the recommendations given in the
+<a class="link-" href="desktop__crud_dependency.html#editinglinkvaluesfromui">related chapter</a>.</p>
+
+<p><a href='http://snippet.dhtmlx.com/7c812e5bd' target='blank'><span class='sample'>Related sample: </span>&nbsp; Edit-lag Popup</a></p>
+
+<a name='timeconstraintsfortasks'><h2>Time constraints for tasks</h2></a>
+
+<p>dhtmlxGantt provides the possibility to set additional time constraints for tasks.</p>
+
+<div class='note'><p><p>Time constraints are applicable only to tasks and <a class="link-pro" href="desktop__milestones.html">milestones</a>. Projects are not affected by them.</p>
+</p></div>
+
+<h3>Setting constraints via lightbox</h3>
+
+<p>You can specify constraints for a task via the <a class="link-pro" href="desktop__constraint.html"><strong>Constraint</strong> control</a> in the lightbox of a task.</p>
+
+<p><img src="media/desktop/inbuilt_constraint_datepicker.png" alt="Inbuilt datepicker for constraints" /></p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">38</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span> <span class="kw3">focus</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;constraint&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;constraint&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span> </span>    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;auto&quot;</span> <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Setting constraints via inline editors</h3>
+
+<p>It is also possible to <a class="link-" href="desktop__specifying_columns.html#timeconstraintsfortasks">specify separate columns for the type of constraint and its date in the grid</a> and use inline editors to define constraints for tasks.</p>
+
+<p><img src="media/desktop/constraints_columns.png" alt="Constraints columns" /></p>
+
+<p>Use the <strong>constraint_type</strong> and <strong>constraint_date</strong> columns' names, correspondingly.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> constraintTypeEditor <span class="sy0">=</span> <span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;select&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;constraint_type&quot;</span><span class="sy0">,</span> options<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span> key<span class="sy0">:</span> <span class="st0">&quot;asap&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> gantt.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">asap</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> key<span class="sy0">:</span> <span class="st0">&quot;alap&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> gantt.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">alap</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> key<span class="sy0">:</span> <span class="st0">&quot;snet&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> gantt.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">snet</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="co1">// more options</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> constraintDateEditor <span class="sy0">=</span> <span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;date&quot;</span><span class="sy0">,</span>
+    map_to<span class="sy0">:</span> <span class="st0">&quot;constraint_date&quot;</span><span class="sy0">,</span>
+    min<span class="sy0">:</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">,</span>
+    max<span class="sy0">:</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2020</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">config</span>.<span class="me1">columns</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> <span class="co1">// previous column},</span>
+    <span class="br0">&#123;</span>
+        <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;constraint_type&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span><span class="st0">&quot;center&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="nu0">100</span><span class="sy0">,</span> template<span class="sy0">:</span><span class="kw2">function</span> <span class="br0">&#40;</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+            <span class="kw1">return</span> gantt.<span class="me1">locale</span>.<span class="me1">labels</span><span class="br0">&#91;</span>gantt.<span class="me1">getConstraintType</span><span class="br0">&#40;</span>task<span class="br0">&#41;</span><span class="br0">&#93;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span> resize<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> editor<span class="sy0">:</span> constraintTypeEditor
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>
+        <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;constraint_date&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span><span class="st0">&quot;center&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="nu0">120</span><span class="sy0">,</span> template<span class="sy0">:</span><span class="kw2">function</span> <span class="br0">&#40;</span>task<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="co1">//template logic</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        resize<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> editor<span class="sy0">:</span> constraintDateEditor
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;add&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">44</span> <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_extensions/19_constraints_scheduling.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Schedule From Project Start &amp; Constraints</a></p>
+
+<h3>Types of constraints</h3>
+
+<p>There are several types of time constraints:</p>
+
+<p>1&#46; <strong>As soon as possible</strong> - If this constraint is set to an independent task, the task starts at the same time that the project does. If this constraint is set to a dependent task, the task starts as soon as its predecessor tasks end.</p>
+
+<p>2&#46; <strong>As late as possible</strong> - If this constraint is set to an independent task, the task ends at the same time that the project does. If this constraint is set to a dependent task, the end of the task coincides with
+the start of its immediate successor task.</p>
+
+<p>The other types of constraints affect tasks regardless of the their types (dependent or independent):</p>
+
+<p>3&#46; <strong>Start no earlier than</strong> – the task should start on the specified date or after it.</p>
+
+<p>4&#46; <strong>Start no later than</strong> – the task should start on the specified date or before it.</p>
+
+<p>5&#46; <strong>Finish no earlier than</strong> – the task should end on the specified date or after it.</p>
+
+<p>6&#46; <strong>Finish no later than</strong> – the task should end on the specified date or before it.</p>
+
+<p>7&#46; <strong>Must start on</strong> – the task should start exactly on the specified date.</p>
+
+<p>8&#46; <strong>Must finish on</strong> – the task should end exactly on the specified date.</p>
+
+<div class='note'><p><p>By independent tasks here we mean tasks that don't have any successors or predecessors. In other words, these are tasks that don't have any links/relations that connect them or any of their parents to other tasks.</p>
+</p></div>
+
+<a name='backwardscheduling'><h2>Backward scheduling</h2></a>
+
+<h3>Strategies of projects planning</h3>
+
+<p>There are two strategies of planning tasks within a project: forward and backward planning. They are defined by combinations of configuration settings:</p>
+
+<ul>
+<li><a class="link-pro" href="api__gantt_schedule_from_end_config.html">schedule_from_end</a> - (<em>boolean</em>) defines the type of the planning strategy</li>
+<li><a class="link-pro" href="api__gantt_project_start_config.html">project_start</a> - (<em>Date</em>) the start date of a project; used as a start date of tasks by default, if forward planning is applied, <em>null</em> by default</li>
+<li><a class="link-" href="api__gantt_project_end_config.html">project_end</a> - (<em>Date</em>) the end date of a project; used for the default time of tasks, if backward planning is used, <em>null</em> by default</li>
+</ul>
+
+<h4>Forward planning</h4>
+
+<p>The forward planning of tasks is used by default, i.e. <strong>gantt.config.schedule_from_end</strong> is set to <em>false</em>.</p>
+
+<pre><code><pre class="js"><span class="co1">// forward planning of tasks is used</span>
+gantt.<span class="me1">config</span>.<span class="me1">schedule_from_end</span> <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In this case planning of tasks is implemented from the start date or from the date of the earliest task. Tasks are planned <em>as soon as possible</em>, if there are no other constraints applied to them.</p>
+
+<p>The start date of the project can be optionally set by the <strong>gantt.config.project_start</strong> config:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">project_start</span> <span class="sy0">=</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">2</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_extensions/19_constraints_scheduling.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Schedule From Project Start &amp; Constraints</a></p>
+
+<h4>Backward planning</h4>
+
+<p>Is also possible to plan tasks from the end of the project, i.e. to apply backward planning. For this you need to set the <strong>gantt.config.schedule_from_end</strong> property to <em>true</em> and specify the end date of the project
+via the <strong>gantt.config.project_end</strong> configuration option:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">schedule_from_end</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+gantt.<span class="me1">config</span>.<span class="me1">project_end</span> <span class="sy0">=</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">4</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In this case tasks are planned as late as possible. The last task should end on the end date of the project.</p>
+
+<p><a href='samples/02_extensions/20_backwards_scheduling.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Schedule From Project End</a></p>
+
+<a name='versioncompatibility'><h2>Version compatibility</h2></a>
+
+<p>When a user changes the date of a task by moving it with the mouse pointer or via the lightbox, the task automatically receives one of the two constraint types: either <strong>start no earlier than+%start date%</strong> or
+<strong>finish no later than+%end date%</strong>, depending on the chosen planning strategy.</p>
+
+<p>Thus a task won't be scheduled to the earliest date if the later date is set from the UI. This may be confusing to a not prepared user especially since constraints are not displayed in the chart by default.</p>
+
+<p>You can enable displaying of constraints using the <a class="link-pro" href="api__gantt_addtasklayer.html">addTaskLayer</a> method.</p>
+
+<p><a href='samples/02_extensions/19_constraints_scheduling.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Schedule From Project Start &amp; Constraints</a></p>
+
+<p>This behavior differs from the auto scheduling logic of gantt prior to <strong>v6.1</strong> and is considered to be correct, since it's the same way auto planning works in MS Project.</p>
+
+<p>If that is not what you want, you can switch back to pre-6.1 auto scheduling by disabling constraints:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">auto_scheduling_compatibility</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='desktop__auto_scheduling.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

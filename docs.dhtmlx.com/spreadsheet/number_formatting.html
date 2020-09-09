@@ -1,0 +1,244 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1589882915.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1589882915.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Spreadsheet Docs" href="https://docs.dhtmlx.com/spreadsheet/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Number Formatting  Spreadsheet Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/c/widgets/dhtmlxspreadsheet-jsmessage">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="initialization.html">Initialization</a></li><li class=""><a href="configuration.html">Configuration</a></li><li class=""><a href="localization.html">Localization</a></li><li class=""><a href="loading_data.html">Data Loading and Export</a></li><li class=""><a href="working_with_ssheet.html">Work with SpreadSheet</a></li><li class=" current"><a href="number_formatting.html">Number Formatting</a></li><ul><li class="inner"><a href="number_formatting.html#defaultnumberformats">Default number formats</a></li><li class="inner"><a href="number_formatting.html#formatscustomization">Formats customization</a></li><li class="inner"><a href="number_formatting.html#autodetectingcellformat">Auto detecting cell format</a></li><li class="inner"><a href="number_formatting.html#settingformat">Setting format</a></li><li class="inner"><a href="number_formatting.html#gettingformat">Getting format</a></li><li class="inner"><a href="number_formatting.html#events">Events</a></li></ul><li class=""><a href="handling_events.html">Event Handling</a></li><li class=""><a href="customization.html">Customization</a></li><li class=""><a href="angular_integration.html">Integration with Angular</a></li><li class=""><a href="react_integration.html">Integration with React</a></li><li class=""><a href="vuejs_integration.html">Integration with Vue.js</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Number Formatting</h1>
+
+<p>DHTMLX SpreadSheet supports number formatting that you can apply for numeric values in cells.</p>
+
+<p><img style="margin: 20px auto 20px auto; display: block;" src="media/number_format_options.png"></p>
+
+<div class='note'><p><p>There is a <a href="https://dhtmlx-docs.gitbook.io/spreadsheet-user-guide/number-formatting">User Guide</a> provided to make work with SpreadSheet easy for your end users.</p>
+</p></div>
+
+<a name='defaultnumberformats'><h2>Default number formats</h2></a>
+
+<p>A number format is an object that includes a set of properties:</p>
+
+<ul>
+<li><strong>id</strong> - the id of a format that is used to set format to a cell via the <a class="link-" href="api__spreadsheet_setformat.html">setFormat</a> method</li>
+<li><strong>mask</strong> - a mask for a number format. Check the list of characters available in a mask <a href="number_formatting.html#structure">below</a></li>
+<li><strong>name</strong> - the name of a format displayed in the toolbar and menu drop-down lists</li>
+<li><strong>example</strong> - an example that shows how a formatted number looks like. The number 2702.31 is used as a default value for format examples</li>
+</ul>
+
+<p>The default number formats are the following:</p>
+
+<pre><code><pre class="js">defaultFormats <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;Common&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;common&quot;</span><span class="sy0">,</span> mask<span class="sy0">:</span> <span class="st0">&quot;&quot;</span><span class="sy0">,</span> example<span class="sy0">:</span> <span class="st0">&quot;2702.31&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;Number&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;number&quot;</span><span class="sy0">,</span> mask<span class="sy0">:</span> <span class="st0">&quot;#,##0.00&quot;</span><span class="sy0">,</span> example<span class="sy0">:</span> <span class="st0">&quot;2702.31&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;Percent&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;percent&quot;</span><span class="sy0">,</span> mask<span class="sy0">:</span> <span class="st0">&quot;#,##0.00%&quot;</span><span class="sy0">,</span> example<span class="sy0">:</span> <span class="st0">&quot;27.0231&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;Currency&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;currency&quot;</span><span class="sy0">,</span> mask<span class="sy0">:</span> <span class="st0">&quot;$#,##0.00&quot;</span><span class="sy0">,</span> example<span class="sy0">:</span> <span class="st0">&quot;2702.31&quot;</span> <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>This is how a spreadsheet with data in various number formats looks like:</p>
+
+<p><img src="media/number_format.png" alt="Number format" /></p>
+
+<p><a href='samples/01_init/01_basic.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Basic spreadsheet</a></p>
+
+<a name='formatscustomization'><h2>Formats customization</h2></a>
+
+<p>You are not limited by <a href="number_formatting.html#defaultnumberformats">default number formats</a> only. There are two options of formats customization available:</p>
+
+<ul>
+<li>changing the settings of default number formats</li>
+<li>adding custom number formats into spreadsheet</li>
+</ul>
+
+<p><img src="media/custom_number_formats.png" alt="Custom number formats" /></p>
+
+<p>All such modifications can be implemented via the <a class="link-" href="api__spreadsheet_formats_config.html">formats</a> configuration option. It represents an array of format objects each of which contains a set of properties:</p>
+
+<ul>
+<li><strong>id</strong> - (<em>string</em>) mandatory, the id of a format that is used to set format to a cell via the <a class="link-" href="api__spreadsheet_setformat.html">setFormat</a> method</li>
+<li><strong>mask</strong> - (<em>string</em>) mandatory, a mask for a number format. Check the list of characters available in a mask <a href="number_formatting.html#structure">below</a></li>
+<li><strong>name</strong> - (<em>string</em>) optional, the name of a format that will be displayed in the toolbar and menu drop-down lists</li>
+<li><strong>example</strong> - (<em>string</em>) optional, an example that shows how a formatted number will look like</li>
+</ul>
+
+<p>For example:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> spreadsheet <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Spreadsheet</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="br0">&#123;</span>          
+    formats<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;U.S. Dollar&quot;</span><span class="sy0">,</span>
+            id<span class="sy0">:</span> <span class="st0">&quot;currency&quot;</span><span class="sy0">,</span>
+            mask<span class="sy0">:</span> <span class="st0">&quot;$#,##0.00&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>
+            <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;Euro&quot;</span><span class="sy0">,</span>
+            id<span class="sy0">:</span> <span class="st0">&quot;euro&quot;</span><span class="sy0">,</span>
+            mask<span class="sy0">:</span> <span class="st0">&quot;[$€]#.##0,00&quot;</span><span class="sy0">,</span>
+            example<span class="sy0">:</span> <span class="st0">&quot;1000.50&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>
+            <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;Swiss franc&quot;</span><span class="sy0">,</span>
+            id<span class="sy0">:</span> <span class="st0">&quot;franc&quot;</span><span class="sy0">,</span>
+            mask<span class="sy0">:</span> <span class="st0">&quot;[$CHF ]#.##0,00&quot;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/03_configuration/06_custom_formats.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom formats</a></p>
+
+<h3 id="structure">The structure of a mask</h3>
+
+<p>A mask may contain a set of common syntax characters that include digit placeholders, separators, percent and currency signs:</p>
+
+<ul>
+<li><strong>0</strong> - a digit in the number. Used to display insignificant zeros, if a number has fewer digits than there are zeros in the format. For example, to display 2 as 2.0, use the format 0.0.</li>
+<li><strong>#</strong> - a digit in the number. Used to display only significant numbers (insignificant zeros will be ommitted, if a number has fewer digits than there are # symbols in the format).</li>
+<li><strong>$</strong> - formats numbers as a dollar value. To use a different currency sign, you need to define it in a mask as <strong>[$ your_currency_sign]</strong>#,##0.00 ,e.g. [$ €]#,##0.00.</li>
+</ul>
+
+<div class='note'><p><p>Note that all characters between [$ and ] will be interpreted as a currency sign.</p>
+</p></div>
+
+<ul>
+<li><strong>.(period)</strong> - applies a decimal point to numbers.</li>
+<li><strong>,(comma)</strong> - applies a thousands separator to numbers.</li>
+</ul>
+
+<a name='autodetectingcellformat'><h2>Auto detecting cell format</h2></a>
+
+<p>dhtmlxSpreadSheet can automatically identify the format of the content entered in a cell. This feature is controlled by the <a class="link-" href="api__spreadsheet_autoformat_config.html">autoFormat</a> configuration option. By default the format of cells 
+is detected, you can disable this functionality like this:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> spreadsheet <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Spreadsheet</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="br0">&#123;</span>          
+    autoFormat<span class="sy0">:</span><span class="kw2">false</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/03_configuration/07_autoformat.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Disabled auto format</a></p>
+
+<a name='settingformat'><h2>Setting format</h2></a>
+
+<p>In order to apply the necessary format to a numeric value, make use of the <a class="link-" href="api__spreadsheet_setformat.html">setFormat</a> method. It takes two parameters:</p>
+
+<ul>
+<li><strong>cell</strong> - (<em>string</em>) the id of a cell the value of which should be formatted</li>
+<li><strong>format</strong> - (<em>string</em>) the name of the <a href="number_formatting.html#defaultnumberformats">default number format</a> to apply to the cell value</li>
+</ul>
+
+<p>For example:</p>
+
+<pre><code><pre class="js"><span class="co1">// applies the currency format to the cell A1</span>
+spreadsheet.<span class="me1">setFormat</span><span class="br0">&#40;</span><span class="st0">&quot;A1&quot;</span><span class="sy0">,</span><span class="st0">&quot;percent&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='gettingformat'><h2>Getting format</h2></a>
+
+<p>You can get the number format applied to the value of a cell with the help of the <a class="link-" href="api__spreadsheet_getformat.html">getFormat</a> method. The method takes the id of a cell as a parameter.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> format <span class="sy0">=</span> spreadsheet.<span class="me1">getFormat</span><span class="br0">&#40;</span><span class="st0">&quot;A1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="co1">// -&gt;&quot;percent&quot;</span></pre></code></pre>
+
+<a name='events'><h2>Events</h2></a>
+
+<p>There is a pair of events you can use to control the process of cell's format changing. They are:</p>
+
+<ul>
+<li><a class="link-" href="api__spreadsheet_beforeformatchange_event.html">BeforeFormatChange</a> - fires before the format of a cell is changed</li>
+<li><a class="link-" href="api__spreadsheet_afterformatchange_event.html">AfterFormatChange</a> - fires after the format of a cell is changed</li>
+</ul>
+
+<!-- Content Area End -->
+			<a href='number_formatting.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='loading_data.html'>Loading Data</a></li>	
+	<li><a href='working_with_ssheet.html'>Main Operations</a></li>
+	<li><a href='handling_events.html'>Handling Events</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Look and Feel</li>
+	<li><a href='configuration.html'>Configuration</a></li>
+	<li><a href='localization.html'>Localization</a></li>
+	<li><a href='customization.html'>Customization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Integration</li>
+	<li><a href='angular_integration.html'>Angular</a></li>
+	<li><a href='react_integration.html'>React</a></li>
+	<li><a href='vuejs_integration.html'>Vue.js</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__spreadsheet.html#methods'>Methods</a></li>
+	<li><a href='api__refs__spreadsheet.html#config'>Properties</a></li>
+	<li><a href='api__refs__spreadsheet.html#events'>Events</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

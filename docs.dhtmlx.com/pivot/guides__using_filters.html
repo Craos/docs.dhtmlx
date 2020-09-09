@@ -1,0 +1,322 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599137912.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599137912.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Pivot Docs" href="https://docs.dhtmlx.com/pivot/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Manipulating with Filters  Pivot Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=27">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="guides__initialization.html">Creating Pivot on a Page</a></li><li class=""><a href="guides__loading_data.html">Loading Data into Pivot</a></li><li class=""><a href="guides__working_with_pivot.html">Working with Pivot</a></li><li class=""><a href="guides__export.html">Exporting Pivot</a></li><li class=""><a href="guides__configuration.html">Configuring Pivot</a></li><li class=""><a href="guides__customization.html">Customizing Pivot</a></li><li class=" current"><a href="guides__using_filters.html">Manipulating with Filters</a></li><ul><li class="inner"><a href="guides__using_filters.html#uifilters">UI Filters</a></li><li class="inner"><a href="guides__using_filters.html#typesoffilters">Types of Filters</a></li><li class="inner"><a href="guides__using_filters.html#settingglobalfilter">Setting Global Filter</a></li><li class="inner"><a href="guides__using_filters.html#settingfiltersforfields">Setting Filters for Fields</a></li><li class="inner"><a href="guides__using_filters.html#gettingfilters">Getting Filters</a></li><li class="inner"><a href="guides__using_filters.html#removingfilters">Removing Filters</a></li></ul><li class=""><a href="guides__localization.html">Localizing Pivot</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Manipulating with Filters</h1>
+
+<p>dhtmlxPivot allows you to set various filters for fields depending on the type of data. You can specify filters both via the Pivot interface 
+after initialization or through the corresponding API.</p>
+
+<p>There is a set of methods that make your work with filters as easy as ABC. They allow you to apply global filtering rules to Pivot, set/get filters for 
+separate fields, specify filters for several fields at a time and get all the filters defined in Pivot. 
+One more useful feature is the possibility to remove all the applied filters at once.</p>
+
+<a name='uifilters'><h2>UI Filters</h2></a>
+
+<p>There are user interface elements of filtering that let an end-user to interact with filters in an application. 
+Filters are enabled by default and rendered on the initialization of the component.</p>
+
+<p><img src="media/filtering_ui.png"></p>
+
+<p><a href='samples/01_init/01_init.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Basic initialization - DHTMLX Pivot</a></p>
+
+<p>You can switch the filters on and off via the <strong>showFilters</strong> attribute of the
+<a class="link-" href="guides__configuration.html#definingpivotlookandfeel">layout</a> configuration option:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> pivot <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Pivot</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    data<span class="sy0">:</span> dataset<span class="sy0">,</span>
+    fields<span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="co1">// the fields structure     </span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    fieldList<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="co1">// the fields list          </span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="co1">// disabling rendering of filters </span>
+    layout<span class="sy0">:</span> <span class="br0">&#123;</span>
+        showFilters<span class="sy0">:</span> <span class="kw2">false</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/03_usage/03_global_filter.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Global filter - DHTMLX Pivot</a></p>
+
+<a name='typesoffilters'><h2>Types of Filters</h2></a>
+
+<p>There are three types of filters that depend on the type of data used in a field: string, number and date.</p>
+
+<ul>
+<li>string filter</li>
+</ul>
+
+<p>The string filter contains the following rules: "Contains", "Not contains", "Equal", "Not equal":</p>
+
+<p><img src="media/string_filter.png"></p>
+
+<ul>
+<li>number filter</li>
+</ul>
+
+<p>The number filter contains the following rules: "&lt;" ("less than"), ">" ("greater than"),"&lt;=" ("less than or equal"),">=" ("greater than or equal"),"=" ("equal"),"&lt;>" ("not equal").</p>
+
+<p><img src="media/number_filter.png"></p>
+
+<ul>
+<li>dates filter</li>
+</ul>
+
+<p>The dates filter allows setting a period of time (dates "from" and "to") for which data should be rendered.</p>
+
+<p><img src="media/dates_filter.png"></p>
+
+<a name='settingglobalfilter'><h2>Setting Global Filter</h2></a>
+
+<p>A global filter allows applying several filtering rules for the data set of pivot at once.
+You can filter the data set globally and then <a class="link-" href="guides__using_filters.html#settingfiltersforfields">define any additional filters to the fields</a>.</p>
+
+<p>To specify the global filter, use the <a class="link-" href="api__pivot_setglobalfilter.html">setGlobalFilter</a> method. It takes one parameter - a filtering function that implements the filtering logic:</p>
+
+<pre><code><pre class="js">pivot.<span class="me1">setGlobalFilter</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>row<span class="br0">&#41;</span><span class="br0">&#123;</span> 
+    <span class="kw1">return</span> row.<span class="me1">form</span> <span class="sy0">===</span> <span class="st0">&quot;Republic&quot;</span> <span class="sy0">&amp;&amp;</span> row.<span class="me1">year</span> <span class="sy0">&gt;</span> <span class="nu0">2007</span> 
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/03_usage/03_global_filter.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Global filter - DHTMLX Pivot</a></p>
+
+<a name='settingfiltersforfields'><h2>Setting Filters for Fields</h2></a>
+
+<h3>Specifying a filter for a separate field</h3>
+
+<p>To set a filter for a certain field, you need to make use of the <a class="link-" href="api__pivot_setfiltervalue.html">setFilterValue</a> method. The method takes two parameters:</p>
+
+<ul>
+<li><strong>id</strong> - (<em>id</em>) the id of the field in question</li>
+<li><strong>config</strong> - (<em>object</em>) the configuration object of the filter. The object may contain the following values:
+
+<ul>
+<li><strong>operation</strong> - (<em>string</em>) the type of the filtering operation. See the list of possible operations below.</li>
+<li><strong>filter</strong> - (<em>string</em>) the input value to compare with possible values of the field</li>
+<li><strong>values</strong> - (<em>array</em>) an array of data values matching to the input value (the second parameter)</li>
+</ul></li>
+</ul>
+
+<pre><code><pre class="js">pivot.<span class="me1">setFilterValue</span><span class="br0">&#40;</span><span class="st0">&quot;name&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    operation<span class="sy0">:</span><span class="st0">&quot;ct&quot;</span><span class="sy0">,</span>
+    filter<span class="sy0">:</span><span class="st0">&quot;a&quot;</span><span class="sy0">,</span>
+    values<span class="sy0">:</span><span class="br0">&#91;</span><span class="st0">&quot;Argentina&quot;</span><span class="sy0">,</span><span class="st0">&quot;Australia&quot;</span><span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3 id="date_filter">Setting a date filter</h3>
+
+<p>Note that there are some important points in setting filters for fields that work with date values:</p>
+
+<ul>
+<li>the type of operation is not set for the filters of this type</li>
+<li>the filter value is set and get as an object with <strong>from</strong> and <strong>to</strong> dates as properties</li>
+<li>the filtering value/values must be specified in milliseconds</li>
+</ul>
+
+<pre><code><pre class="js">pivot.<span class="me1">setFilterValue</span><span class="br0">&#40;</span><span class="st0">&quot;when&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    filter<span class="sy0">:</span><span class="br0">&#123;</span>from<span class="sy0">:</span><span class="st0">&quot;01.03.2012&quot;</span><span class="sy0">,</span>to<span class="sy0">:</span><span class="st0">&quot;01.05.2012&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    values<span class="sy0">:</span><span class="br0">&#91;</span><span class="nu0">1336078800000</span><span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>you can set a custom format for entering dates via the <strong>inputFormat</strong> property of the corresponding date field:</li>
+</ul>
+
+<pre><code><pre class="js">fieldList<span class="sy0">:</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="st0">&quot;name&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Name&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="st0">&quot;year&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Year&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;number&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="st0">&quot;when&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;When&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;date&quot;</span><span class="sy0">,</span> 
+        format<span class="sy0">:</span> <span class="st0">&quot;%d/%m/%Y&quot;</span><span class="sy0">,</span> inputFormat<span class="sy0">:</span> <span class="st0">&quot;%d.%m.%Y&quot;</span> <span class="br0">&#125;</span>
+    <span class="co1">// more fields</span>
+<span class="br0">&#93;</span></pre></code></pre>
+
+<p><a href='samples/02_configuration/05_filter_date_format.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Filter date format - DHTMLX Pivot</a></p>
+
+<h3>Specifying filters for several fields</h3>
+
+<p>You can set filters for several fields at a time with the help of the <a class="link-" href="api__pivot_setfiltersvalues.html">setFiltersValues</a> method. You should pass one parameter to it - 
+a hash that contains a set of <em>key:value</em> pairs, where the key is the id of the field and the value is the configuration of the filter:</p>
+
+<pre><code><pre class="js">pivot.<span class="me1">setFiltersValues</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="st0">&quot;form&quot;</span><span class="sy0">:</span><span class="br0">&#123;</span>filter<span class="sy0">:</span> <span class="st0">&quot;republic&quot;</span><span class="sy0">,</span> operation<span class="sy0">:</span> <span class="st0">&quot;ct&quot;</span><span class="sy0">,</span>values<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;Republic&quot;</span><span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="st0">&quot;name&quot;</span><span class="sy0">:</span><span class="br0">&#123;</span>filter<span class="sy0">:</span> <span class="st0">&quot;a&quot;</span><span class="sy0">,</span> operation<span class="sy0">:</span> <span class="st0">&quot;ct&quot;</span><span class="sy0">,</span>values<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;Argentina&quot;</span><span class="sy0">,</span><span class="st0">&quot;Austria&quot;</span><span class="br0">&#93;</span><span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Each filter configuration object includes the same attributes as those described above for the second parameter of the <strong>setFilter()</strong> method.</p>
+
+<h3 id="opearations">List of Operations</h3>
+
+<p><strong>Operations for string or number filters</strong></p>
+
+<p>There is a set of predefined filtering rules that can be applied either to string or number data values. For details on setting filters for fields with the date type,
+see the <a class="link-" href="guides__using_filters.html#date_filter">related section</a>.</p>
+
+<p>All types of operations are set as strings. They are:</p>
+
+<ul>
+<li>for filters working with string values:
+
+<ul>
+<li>"ct" - "contains"</li>
+<li>"nct" - "not contains"</li>
+<li>"eq" - "equal"</li>
+<li>"neq" - "not equal"</li>
+</ul></li>
+<li>for filters working with number values:
+
+<ul>
+<li>"lt" - "less than"</li>
+<li>"gt" - "greater than"</li>
+<li>"leq" - "less than or equal"</li>
+<li>"geq" - "greater than or equal"</li>
+<li>"eq" - "equal"</li>
+<li>"neq" - "not equal"</li>
+</ul></li>
+<li>for filters working with date values the type of operation isn't set. <a class="link-" href="guides__using_filters.html#date_filter">Read the details on setting date filters</a>.</li>
+</ul>
+
+<a name='gettingfilters'><h2>Getting Filters</h2></a>
+
+<h3>Getting a separate filter</h3>
+
+<p>To get the filter of a certain field, make use of the <a class="link-" href="api__pivot_getfiltervalue.html">getFilterValue</a> method. As a parameter, you need to pass the id of a related field:</p>
+
+<pre><code><pre class="js">pivot.<span class="me1">getFilterValue</span><span class="br0">&#40;</span><span class="st0">&quot;name&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The method returns an object with the configuration of the filter that includes the attributes below:</p>
+
+<ul>
+<li><strong>operation</strong> - (<em>string</em>) the type of the filtering operation</li>
+<li><strong>filter</strong> - (<em>string</em>) the input value to compare with possible values of the field</li>
+<li><strong>values</strong> - (<em>array</em>) an array of data values matching to the input value</li>
+</ul>
+
+<h3>Getting several filters</h3>
+
+<p>You can also get all the filters applied to Pivot fields via the <a class="link-" href="api__pivot_getfiltersvalues.html">getFiltersValues</a> method.</p>
+
+<pre><code><pre class="js">pivot.<span class="me1">getFiltersValues</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The method returns a hash of objects, each of which contains the name of the field and the configuration object of the filter. 
+Each filter configuration object includes the same attributes as those described for the return object of the <strong>getFilterValue()</strong> method.</p>
+
+<a name='removingfilters'><h2>Removing Filters</h2></a>
+
+<p>There are two ways of removing filters set for Pivot fields.</p>
+
+<ul>
+<li>You can remove a filter from a particular field using the <a class="link-" href="api__pivot_setfiltervalue.html">setFilterValue</a> method. In this case you should pass the id of a field as
+the first parameter and an empty object as the second parameter:</li>
+</ul>
+
+<pre><code><pre class="js">pivot.<span class="me1">setFilterValue</span><span class="br0">&#40;</span><span class="st0">&quot;name&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>It is also possible to remove all the applied filters at once using the <a class="link-" href="api__pivot_clearfiltersvalues.html">clearFiltersValues</a> method:</li>
+</ul>
+
+<pre><code><pre class="js">pivot.<span class="me1">clearFilterValues</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='guides__using_filters.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Overview</li>
+	<li><a href='overview.html'>Pivot Overview</a></li>
+	<li><a href='how_to_start.html'>How to Start</a></li>
+	<li><a href='migrating.html'>Migration</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='guides__initialization.html'>Initialization</a></li>
+	<li><a href='guides__loading_data.html'>Data Loading</a></li>
+	<li><a href='guides__working_with_pivot.html#definingdataoperations'>Data Operations</a></li>	
+	
+</ul>
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='guides__configuration.html#definingpivotlookandfeel'>Pivot Layout</a></li>	
+	<li><a href='guides__configuration.html'>Fields and Operations</a></li>
+	<li><a href='guides__localization.html'>Localization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__pivot.html#constructor'>Constructor</a></li>
+	<li><a href='api__refs__pivot_methods.html'>Methods</a></li>
+	<li><a href='api__refs__pivot_props.html'>Properties</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

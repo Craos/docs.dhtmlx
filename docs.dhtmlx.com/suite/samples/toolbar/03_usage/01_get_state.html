@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- meta block -->
+		<title>Get state - DHTMLX Toolbar</title>
+		<meta name="description" content="Check interactive samples of DHTMLX Toolbar to explore its usage and other details.">
+		<!-- end meta block -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+		<script type="text/javascript" src="../../../codebase/suite-v=6.5.3.js"></script>
+		<link rel="stylesheet" href="../../../codebase/suite-v=6.5.3.css">
+		<link rel="stylesheet" href="../../common/index-v=6.5.3.css">
+		
+		
+		<!-- custom sample head -->
+	<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                        'gtm.start':
+                                new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5M5RCSJ');</script>
+<!-- End Google Tag Manager -->
+
+<!-- error tracking -->
+<script src="https://cdn.ravenjs.com/3.19.1/raven.min.js" crossorigin="anonymous"></script>
+<script>Raven.config('https://a2578da6be394598bfe003e4dbb3a394@sentry.dhtmlx.ru/13').install()</script></head>
+	<body>
+		<header class="dhx_sample-header">
+			<div class="dhx_sample-header__main">
+				<nav class="dhx_sample-header__breadcrumbs">
+					<ul class="dhx_sample-header-breadcrumbs">
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="../../index.html" class="dhx_sample-header-breadcrumbs__link">Suite samples</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="../index.html" class="dhx_sample-header-breadcrumbs__link">Toolbar samples</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="index.html" class="dhx_sample-header-breadcrumbs__link">Usage</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<span class="dhx_sample-header-breadcrumbs__link">Get state</span>
+						</li>
+					</ul>
+				</nav>
+				<h1 class="dhx_sample-header__title">
+					<div class="dhx_sample-header__content">
+							Get state.
+					</div>
+				</h1>
+		<div class="dhx_sample-header__cta" id="dhx_sample-cta">
+			<a title="Free Trial" target="_blank" class="dhx_sample-btn dhx_sample-btn--flat dhx_sample-btn--cta" 
+			href="https://dhtmlx.com/docs/products/dhtmlxSuite/download.shtml">Free Trial</a>
+		</div>
+	</div>
+		</header>
+		<section class="dhx_sample-controls">
+			<button id="get" class="dhx_sample-btn dhx_sample-btn--flat" onclick="getState()">Get state</button>
+		</section>
+		<section class="dhx_sample-container">
+			<div class="dhx_sample-container__widget" id="toolbar"></div>
+			<div class="dhx_sample-container__sidebar" id="dhx_result"></div>
+		</section>
+		<script>
+			var data = [
+				{
+					id: "left",
+					icon: "dxi dxi-format-align-left",
+					group: "align"
+				},
+				{
+					id: "center",
+					active: true,
+					icon: "dxi dxi-format-align-center",
+					group: "align"
+				},
+				{
+					id: "right",
+					icon: "dxi dxi-format-align-right",
+					group: "align"
+				},
+				{
+					id: "search",
+					type: "input",
+					icon: "dxi dxi-magnify",
+					value: "toolbar"
+				},
+				{
+					id: "edit",
+					value: "edit",
+					icon: "dxi dxi-pencil",
+					twoState: true,
+					active: true,
+				},
+				{
+					id: "currentButton",
+					type: "selectButton",
+					value: "1",
+					items: [
+						{
+							value: "1",
+							hotkey: "alt+1"
+						},
+						{
+							value: "2",
+							hotkey: "alt+2"
+						},
+						{
+							value: "3",
+							hotkey: "alt+3"
+						},
+						{
+							value: "4",
+							hotkey: "alt+4"
+						}
+					]
+				},
+			];
+     		var toolbar = new dhx.Toolbar("toolbar", {
+				css: "dhx_widget--bordered"
+			});
+			toolbar.data.parse(data);
+
+			function getState() {
+				var value = toolbar.getState();
+				var result = "";
+				for (var key in value) {
+					result += key + " : " + value[key] + "<br/>"
+				}
+				document.querySelector("#dhx_result").innerHTML = result
+			}
+		</script>
+	</body>
+</html>

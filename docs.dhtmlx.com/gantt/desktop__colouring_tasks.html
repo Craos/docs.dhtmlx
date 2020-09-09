@@ -1,0 +1,278 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Tasks Coloring  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__skins.html">Available Skins</a></li><li class=""><a href="desktop__templates.html">Templates of the Gantt Chart</a></li><li class=" current"><a href="desktop__colouring_tasks.html">Tasks Coloring</a></li><ul><li class="inner"><a href="desktop__colouring_tasks.html#redefiningthetaskstemplate">Redefining the task's template</a></li><li class="inner"><a href="desktop__colouring_tasks.html#specifyingstyleinthepropertiesofataskobject">Specifying style in the properties of a task object</a></li><li class="inner"><a href="desktop__colouring_tasks.html#loadingcolorswithdata">Loading colors with data</a></li></ul><li class=""><a href="desktop__colouring_lines.html">Links Coloring and Styling</a></li><li class=""><a href="desktop__styling_guide.html">Work with Gantt Styles</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__styling.html">Styling</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Tasks Coloring</h1>
+
+<p>Coloring tasks allows you to highlight specific tasks in order to pay user's attention to them.</p>
+
+<p><img style="padding-top:15px; padding-bottom:15px;" src="media/desktop/coloring_tasks.png"/></p>
+
+<p>To set a custom style for tasks, you can use one of the following approaches:</p>
+
+<ol>
+<li><a class="link-" href="desktop__colouring_tasks.html#redefiningthetaskstemplate">To redefine the default tasks' template</a></li>
+<li><a class="link-" href="desktop__colouring_tasks.html#specifyingstyleinthepropertiesofthetaskobject">To set style values in the properties of the task object</a></li>
+<li><a class="link-" href="desktop__colouring_tasks.html#loadingcolorswithdata">To generate styles from data</a></li>
+</ol>
+
+<a name='redefiningthetaskstemplate'><h2>Redefining the task's template</h2></a>
+
+<p>To set a custom style for the task through a template, use the <a class="link-" href="api__gantt_task_class_template.html">task_class</a> template. For example, to color tasks depending on their priority, use the code as in:</p>
+
+<p class='snippet'>
+Coloring tasks depending on their priority
+</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">task_class</span>  <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">switch</span> <span class="br0">&#40;</span>task.<span class="me1">priority</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">case</span> <span class="st0">&quot;1&quot;</span><span class="sy0">:</span>
+            <span class="kw1">return</span> <span class="st0">&quot;high&quot;</span><span class="sy0">;</span>
+            <span class="kw1">break</span><span class="sy0">;</span>
+        <span class="kw1">case</span> <span class="st0">&quot;2&quot;</span><span class="sy0">:</span>
+            <span class="kw1">return</span> <span class="st0">&quot;medium&quot;</span><span class="sy0">;</span>
+            <span class="kw1">break</span><span class="sy0">;</span>
+        <span class="kw1">case</span> <span class="st0">&quot;3&quot;</span><span class="sy0">:</span>
+            <span class="kw1">return</span> <span class="st0">&quot;low&quot;</span><span class="sy0">;</span>
+            <span class="kw1">break</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/04_customization/04_task_styles.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Task styles</a></p>
+
+<div class='note'><p><p>To style other aspects of tasks, use the templates listed in the <a class="link-" href="desktop__timeline_templates.html">Templates of the Timeline Area</a> article.</p>
+</p></div>
+
+<p>A similar approach can be applied to links. Read more about it <a class="link-" href="desktop__colouring_lines.html#redefiningthelinkstemplate">here</a>.</p>
+
+<a name='specifyingstyleinthepropertiesofataskobject'><h2>Specifying style in the properties of a task object</h2></a>
+
+<p>To specify a custom style for a task, you can add 3 extra properties to the data object (or just some of them):</p>
+
+<ul>
+<li><strong>color</strong> - the background color of the task bar</li>
+<li><strong>textColor</strong> - the color of the text inside the task bar (don't affect tasks with the "milestone" type)</li>
+<li><strong>progressColor</strong> - the color of the progress bar (by default, just makes it a bit darker than the task's color using the following style 'background-color: rgb(54, 54, 54); opacity: 0.2')</li>
+</ul>
+
+<p><img src="media/desktop/task_color_properties.png"/></p>
+
+<div class='note'><p><p>Note, these are special properties. 
+By default, Gantt checks whether a task has them and if it does, applies the related values to the task's bar and text. Otherwise, the predefined colors are applied.</p>
+</p></div>
+
+<p class='snippet'>
+Setting the task's color in the data object
+</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> tasks <span class="sy0">=</span> <span class="br0">&#123;</span>
+  data<span class="sy0">:</span><span class="br0">&#91;</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Project #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;01-04-2013&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">18</span><span class="sy0">,</span> color<span class="sy0">:</span><span class="st0">&quot;red&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;02-04-2013&quot;</span><span class="sy0">,</span> 
+        duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span> color<span class="sy0">:</span><span class="st0">&quot;blue&quot;</span><span class="sy0">,</span> parent<span class="sy0">:</span><span class="nu0">1</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #2&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;11-04-2013&quot;</span><span class="sy0">,</span> 
+        duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span> color<span class="sy0">:</span><span class="st0">&quot;blue&quot;</span><span class="sy0">,</span> parent<span class="sy0">:</span><span class="nu0">1</span><span class="br0">&#125;</span>
+   <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">parse</span><span class="br0">&#40;</span>tasks<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">getTask</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">color</span> <span class="sy0">=</span> <span class="st0">&quot;red&quot;</span></pre></code></pre>
+
+<p><a href='samples/04_customization/16_inline_task_colors.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Specify inline colors for Tasks and Links</a></p>
+
+<p>If, at least one of the properties is assigned, the task receives additional class - <strong>"gantt_task_inline_color"</strong>. <br>
+You can use this class to override some other style for the task (use the "<em>.gantt_task_line.gantt_task_inline_color</em>" selector for the class):</p>
+
+<pre><code><pre class="js">.<span class="me1">gantt_task_line</span>.<span class="me1">gantt_task_inline_color</span> .<span class="me1">gantt_task_progress</span> <span class="br0">&#123;</span>
+    background<span class="sy0">-</span>color<span class="sy0">:</span> rgb<span class="br0">&#40;</span><span class="nu0">54</span><span class="sy0">,</span> <span class="nu0">54</span><span class="sy0">,</span> <span class="nu0">54</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    opacity<span class="sy0">:</span> <span class="nu0">0.2</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>The properties can have any valid CSS color value, e.g. all of the following notations are valid:</p>
+
+<pre><code><pre class="js">task.<span class="me1">color</span> <span class="sy0">=</span> <span class="st0">&quot;#FF0000&quot;</span><span class="sy0">;</span>
+task.<span class="me1">color</span> <span class="sy0">=</span> <span class="st0">&quot;red&quot;</span><span class="sy0">;</span>
+task.<span class="me1">color</span> <span class="sy0">=</span> <span class="st0">&quot;rgb(255,0,0)&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>A similar approach can be applied to links. Read more about it <a class="link-" href="desktop__colouring_lines.html#specifyingcolorinthepropertiesofthelinkobject">here</a>.</p>
+
+<a name='loadingcolorswithdata'><h2>Loading colors with data</h2></a>
+
+<p>If colors are a part of your data which comes from the backend, e.g. when task color is associated with a stage or a resource assigned to a task which can't be hardcoded on the page, it may be a good solution to generate styles from your data manually.</p>
+
+<p>Let's suppose that you have the following collection of users that can be assigned to tasks. Task styles should be defined by the properties of user records:</p>
+
+<pre><code><pre class="js"><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="st0">&quot;key&quot;</span><span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> <span class="st0">&quot;label&quot;</span><span class="sy0">:</span><span class="st0">&quot;John&quot;</span><span class="sy0">,</span> <span class="st0">&quot;backgroundColor&quot;</span><span class="sy0">:</span><span class="st0">&quot;#03A9F4&quot;</span><span class="sy0">,</span> <span class="st0">&quot;textColor&quot;</span><span class="sy0">:</span><span class="st0">&quot;#FFF&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="st0">&quot;key&quot;</span><span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> <span class="st0">&quot;label&quot;</span><span class="sy0">:</span><span class="st0">&quot;Mike&quot;</span><span class="sy0">,</span> <span class="st0">&quot;backgroundColor&quot;</span><span class="sy0">:</span><span class="st0">&quot;#f57730&quot;</span><span class="sy0">,</span> <span class="st0">&quot;textColor&quot;</span><span class="sy0">:</span><span class="st0">&quot;#FFF&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="st0">&quot;key&quot;</span><span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> <span class="st0">&quot;label&quot;</span><span class="sy0">:</span><span class="st0">&quot;Anna&quot;</span><span class="sy0">,</span> <span class="st0">&quot;backgroundColor&quot;</span><span class="sy0">:</span><span class="st0">&quot;#e157de&quot;</span><span class="sy0">,</span> <span class="st0">&quot;textColor&quot;</span><span class="sy0">:</span><span class="st0">&quot;#FFF&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="st0">&quot;key&quot;</span><span class="sy0">:</span><span class="nu0">4</span><span class="sy0">,</span> <span class="st0">&quot;label&quot;</span><span class="sy0">:</span><span class="st0">&quot;Bill&quot;</span><span class="sy0">,</span> <span class="st0">&quot;backgroundColor&quot;</span><span class="sy0">:</span><span class="st0">&quot;#78909C&quot;</span><span class="sy0">,</span> <span class="st0">&quot;textColor&quot;</span><span class="sy0">:</span><span class="st0">&quot;#FFF&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="st0">&quot;key&quot;</span><span class="sy0">:</span><span class="nu0">7</span><span class="sy0">,</span> <span class="st0">&quot;label&quot;</span><span class="sy0">:</span><span class="st0">&quot;Floe&quot;</span><span class="sy0">,</span> <span class="st0">&quot;backgroundColor&quot;</span><span class="sy0">:</span><span class="st0">&quot;#8D6E63&quot;</span><span class="sy0">,</span> <span class="st0">&quot;textColor&quot;</span><span class="sy0">:</span><span class="st0">&quot;#FFF&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span></pre></code></pre>
+
+<p>In this use case, users and their colors are created and managed by different parts of the app and gantt generally doesn't know user ids and their colors in advance.</p>
+
+<p>This is what you can do in this case:</p>
+
+<ul>
+<li>Define a named serverList for this collection</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">serverList</span><span class="br0">&#40;</span><span class="st0">&quot;people&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><p>Load options to the page, either by <a class="link-" href="desktop__supported_data_formats.html#jsonwithcollections">using the gantt data format</a> or manually via a custom xhr</p></li>
+<li><p>Once options are loaded, you can generate CSS styles from the data:</p></li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onLoadEnd&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// use an arbitrary id for the style element</span>
+    <span class="kw2">var</span> styleId <span class="sy0">=</span> <span class="st0">&quot;dynamicGanttStyles&quot;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="co1">// in case you'll be reloading options with colors - reuse previously</span>
+    <span class="co1">// created style element</span>
+&nbsp;
+    <span class="kw2">var</span> element <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">&#40;</span>styleId<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">!</span>element<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        element <span class="sy0">=</span> document.<span class="me1">createElement</span><span class="br0">&#40;</span><span class="st0">&quot;style&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        element.<span class="me1">id</span> <span class="sy0">=</span> styleId<span class="sy0">;</span>
+        document.<span class="me1">querySelector</span><span class="br0">&#40;</span><span class="st0">&quot;head&quot;</span><span class="br0">&#41;</span>.<span class="me1">appendChild</span><span class="br0">&#40;</span>element<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw2">var</span> html <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">;</span>
+    <span class="kw2">var</span> resources <span class="sy0">=</span> gantt.<span class="me1">serverList</span><span class="br0">&#40;</span><span class="st0">&quot;people&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="co1">// generate css styles for each option and write css into the style element,</span>
+&nbsp;
+    resources.<span class="me1">forEach</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>r<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        html.<span class="me1">push</span><span class="br0">&#40;</span><span class="st0">&quot;.gantt_task_line.gantt_resource_&quot;</span> <span class="sy0">+</span> r.<span class="me1">key</span> <span class="sy0">+</span> <span class="st0">&quot;{&quot;</span> <span class="sy0">+</span>
+            <span class="st0">&quot;background-color:&quot;</span><span class="sy0">+</span>r.<span class="me1">backgroundColor</span><span class="sy0">+</span><span class="st0">&quot;; &quot;</span> <span class="sy0">+</span>
+            <span class="st0">&quot;color:&quot;</span><span class="sy0">+</span>r.<span class="me1">textColor</span><span class="sy0">+</span><span class="st0">&quot;;&quot;</span> <span class="sy0">+</span>
+        <span class="st0">&quot;}&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    element.<span class="me1">innerHTML</span> <span class="sy0">=</span> html.<span class="me1">join</span><span class="br0">&#40;</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>After that you'll be able to assign related classes you generated from the task templates:</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">task_class</span> <span class="sy0">=</span> <span class="kw2">function</span> <span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> task<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw2">var</span> css <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">if</span><span class="br0">&#40;</span>task.<span class="me1">owner_id</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        css.<span class="me1">push</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_resource_&quot;</span> <span class="sy0">+</span> task.<span class="me1">owner_id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="kw1">return</span> css.<span class="me1">join</span><span class="br0">&#40;</span><span class="st0">&quot; &quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/11_resources/01_assigning_resources.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Assigning owners to tasks</a></p>
+
+<!-- Content Area End -->
+			<a href='desktop__colouring_tasks.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

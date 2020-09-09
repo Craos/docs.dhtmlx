@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Different Content in the Same Cell  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxwindows.html">dhtmlXWindows API</a></li><li class=""><a href="api__refs__dhtmlxwindowscell.html">dhtmlXWindowsCell API</a></li><li class=""><a href="api__refs__dhtmlxwindowsbutton.html">dhtmlXWindowsButton API</a></li><li class=""><a href="windows__how_to_start.html">How to Start with Windows</a></li><li class=""><a href="windows__object_constructor.html">Object Constructor</a></li><li class=""><a href="windows__configuring_windows.html">Configuring Windows</a></li><li class=""><a href="windows__operating_windows.html">Operating Windows</a></li><li class=""><a href="windows__operating_buttons.html">Operating Buttons</a></li><li class=""><a href="windows__creating_custom_buttons.html">Creating Custom Buttons</a></li><li class=""><a href="windows__attaching_url.html">Adding External Resource to Window</a></li><li class=""><a href="windows__attaching_dhtmlx.html">Adding DHTMLX Components to Window</a></li><li class=""><a href="windows__handling_events.html">Handling Events</a></li><li class=""><a href="windows__using_iterator.html">Using Iterator</a></li><li class=""><a href="windows__attach_components.html">Attaching Components</a></li><li class=""><a href="windows__attach_mtb.html">Attaching Menu/Status Bar</a></li><li class=""><a href="windows__attach_html.html">Attaching HTML</a></li><li class=""><a href="windows__attach_urls.html">Attaching URL</a></li><li class=""><a href="windows__attach_google_map.html">Attaching Google Maps</a></li><li class=""><a href="windows__progress.html">Progress Bar</a></li><li class=" current"><a href="windows__views.html">Different Content in the Same Cell</a></li><li class=""><a href="windows__coloring_text_selection.html">Coloring Text Selection</a></li><li class=""><a href="windows__migration.html">Migration from 3.6 to 4.0</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="windows__index.html">Windows</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Different Content in the Same Cell</h1>
+
+<p>Cells have a possibility to show different content in the same cell. This feature is called "views". Each cell shows the view "def" by default.
+You can easily switch to the other view and init different content.</p>
+
+<p>Let's see how it works. We will create a "3L" layout and attach some components to the cell "b".</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myLayout <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXLayoutObject<span class="br0">&#40;</span><span class="st0">&quot;layoutObj&quot;</span><span class="sy0">,</span> <span class="st0">&quot;3L&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/cell/views_01.png"></p>
+
+<p><br></p>
+
+<p>Currently, the view "def" is selected. There's no need to call any extra commands to make it active, just attach the content you need:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myMenu <span class="sy0">=</span> myLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;b&quot;</span><span class="br0">&#41;</span>.<span class="me1">attachMenu</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> myGrid <span class="sy0">=</span> myLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;b&quot;</span><span class="br0">&#41;</span>.<span class="me1">attachGrid</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/cell/views_02.png"></p>
+
+<p><br></p>
+
+<p>Now let's show another view and attach some other content to it:</p>
+
+<pre><code><pre class="js">myLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;b&quot;</span><span class="br0">&#41;</span>.<span class="me1">showView</span><span class="br0">&#40;</span><span class="st0">&quot;tree&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>At this moment the cell hides the currently active views ("def" in our case) and shows the requested one.
+You can name the view as you wish, it's necessary just to determine which view to show. As we haven't
+attached any components, the "tree" view looks like an empty cell.</p>
+
+<p><img src="media/cell/views_03.png"></p>
+
+<p>Now let's attach some content to the view "tree":</p>
+
+<pre><code><pre class="js">myTree <span class="sy0">=</span> myLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;b&quot;</span><span class="br0">&#41;</span>.<span class="me1">attachTree</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+myToolbar <span class="sy0">=</span> myLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;b&quot;</span><span class="br0">&#41;</span>.<span class="me1">attachToolbar</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/cell/views_04.png"></p>
+
+<p>Now let's go back to the view "def" and see what happens:</p>
+
+<pre><code><pre class="js">myLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;b&quot;</span><span class="br0">&#41;</span>.<span class="me1">showView</span><span class="br0">&#40;</span><span class="st0">&quot;def&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/cell/views_05.png"></p>
+
+<p>As you can see, now the view "tree" becomes hidden and the view "def" is restored and active.
+<br></p>
+
+<p>In the above example we're using layout just to show you how the described functionality works. Views are the feature of a cell, so they are enabled in all the
+components that use cells: accordion, layout, <a class="link-" href="tabbar__views.html">tabbar</a> and windows.</p>
+
+<p><br>
+<a href='http://dhtmlx.com/docs/products/dhtmlxLayout/samples/01_init/09_views.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Views</a></p>
+
+<!-- Content Area End -->
+			<a href='windows__views.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

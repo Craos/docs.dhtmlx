@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Custom View  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="custom_scales.html">Hiding Time Units in X-Axis of View</a></li><li class=" current"><a href="custom_views.html">Custom View</a></li><ul><li class="inner"><a href="custom_views.html#theviewtab">The view tab</a></li><li class="inner"><a href="custom_views.html#methodsforhandlingtheview">Methods for handling the view</a></li><li class="inner"><a href="custom_views.html#configuringtheviewtemplates">Configuring the view templates</a></li><li class="inner"><a href="custom_views.html#stepbystepexample">Step-by-step example</a></li><li class="inner"><a href="custom_views.html#settingcustomviewasthedefaultone">Setting custom view as the default one</a></li></ul><li class=""><a href="limits.html">Blocking and Marking Dates</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="config_views.html">Configuring Views</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Custom View</h1>
+
+<p>If the available views don't meet your needs, you can create your custom view.</p>
+
+<a name='theviewtab'><h2>The view tab</h2></a>
+
+<p>Creating a custom view starts from adding a new tab to the scheduler - the tab of your future view. Mostly it looks like in:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;workweek_tab&quot;</span> style<span class="sy0">=</span><span class="st0">&quot;right:280px;&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span></pre></code></pre>
+
+<p>Remember:</p>
+
+<ul>
+<li>The tab's name must have the following form: {viewName}_tab</li>
+<li>The tab must have at least one class defined  - "dhx_cal_tab"- and it must go first.</li>
+</ul>
+
+<p>The label for the view is set as in:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="br0">&#123;</span>viewName<span class="br0">&#125;</span>_tab <span class="sy0">=</span> <span class="st0">&quot;someName&quot;</span></pre></code></pre>
+
+<a name='methodsforhandlingtheview'><h2>Methods for handling the view</h2></a>
+
+<p>There are 3 mandatory methods that define common behavior of a view - the view interval (e.g. a week for the Week view, a month for the Month view etc.) and the active date in the view, when the user clicks 
+on the 'Next', 'Prev' navigation buttons in the view header.</p>
+
+<ol>
+<li><strong>scheduler.date.{viewName}_start (active_date)</strong>  - takes the active date of the scheduler and returns the start date of the view interval 
+(e.g. the first day of the active week in the Week view, the first day of the active month in the Month view etc.)  </li>
+<li><strong>scheduler.date.get_{viewName}_end (start_date)</strong> - takes the start date (returned by the method above) and returns the end date of the view interval (e.g. the last day of the active week in the Week view, the last day of the active month in the Month view etc.)</li>
+<li><strong>scheduler.date.add_{viewName}(date, inc)</strong> - specifies  what date should be added(subtracted) to(from) the currently active date, when the user clicks on the 'Next', 'Prev' navigation buttons in the header. </li>
+</ol>
+
+<a name='configuringtheviewtemplates'><h2>Configuring the view templates</h2></a>
+
+<p>The last thing you need is to provide the templates for the header date and X-Axis scale:</p>
+
+<ul>
+<li><strong>View header</strong> - scheduler.templates.{viewName}_date = function(start_date, end_date){...}</li>
+<li><strong>X-Axis</strong> - scheduler.templates.{viewName}_scale_date = function(date){...}</li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">workweek_date</span> <span class="sy0">=</span> scheduler.<span class="me1">templates</span>.<span class="me1">week_date</span><span class="sy0">;</span>
+scheduler.<span class="me1">templates</span>.<span class="me1">workweek_scale_date</span> <span class="sy0">=</span> scheduler.<span class="me1">templates</span>.<span class="me1">week_scale_date</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='stepbystepexample'><h2>Step-by-step example</h2></a>
+
+<p>Let's consider creating a custom view  named 'workweek' that is similar to the Week view, but displays only working days of the week.</p>
+
+<p><img src="media/custom_view.png"/></p>
+
+<p>Our steps are:</p>
+
+<ol>
+    <li>To add the view tab:
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>div id<span class="sy0">=</span><span class="st0">&quot;scheduler_here&quot;</span> <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_container&quot;</span> ...<span class="sy0">&gt;</span>
+   <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_navline&quot;</span><span class="sy0">&gt;</span>
+       ...
+       <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;workweek_tab&quot;</span> style<span class="sy0">=</span><span class="st0">&quot;right:280px;&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+   <span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span>
+<span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span></pre></code></pre>
+
+    </li>
+    <li> To set the label for the tab:
+
+<pre><code><pre class="js">scheduler.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">workweek_tab</span> <span class="sy0">=</span> <span class="st0">&quot;Work week&quot;</span></pre></code></pre>
+
+    </li>
+    <li> To define the method that will return the start date of the view interval, i.e. Monday of the active week:
+
+<pre><code><pre class="js">scheduler.<span class="me1">date</span>.<span class="me1">workweek_start</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>date<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> scheduler.<span class="me1">date</span>.<span class="me1">week_start</span><span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<i> we use the week_start() method that is specified for the Week view, as the views have the same start date.</i>
+    </li>
+    <li> To define the method that will return the end date of the view interval, i.e. Friday of the active week:
+
+<pre><code><pre class="js">scheduler.<span class="me1">date</span>.<span class="me1">get_workweek_end</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>start_date<span class="br0">&#41;</span><span class="br0">&#123;</span> 
+    <span class="kw1">return</span> scheduler.<span class="me1">date</span>.<span class="me1">add</span><span class="br0">&#40;</span>start_date<span class="sy0">,</span><span class="nu0">5</span><span class="sy0">,</span><span class="st0">&quot;day&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="br0">&#125;</span></pre></code></pre>
+
+<i> The add() method adds/subtracts the specified time interval to/from the date. See details <a class="link-" href="api__scheduler_date_other.html">here</a></i>
+    </li>
+    <li> To define the method that will specify, what date should be added(subtracted) to(from) the currently active date, when the user clicks on the 'Next', 'Prev' navigation buttons in the view header:
+
+<pre><code><pre class="js">scheduler.<span class="me1">date</span>.<span class="me1">add_workweek</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>date<span class="sy0">,</span>inc<span class="br0">&#41;</span><span class="br0">&#123;</span> 
+    <span class="kw1">return</span> scheduler.<span class="me1">date</span>.<span class="me1">add</span><span class="br0">&#40;</span>date<span class="sy0">,</span>inc<span class="sy0">*</span><span class="nu0">7</span><span class="sy0">,</span><span class="st0">&quot;day&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<i> The add() method adds/subtracts the specified time interval to/from the date. See details <a class="link-" href="api__scheduler_date_other.html">here</a></i>
+    </li>
+    <li> To define the template for the date in the header of the view:
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">workweek_date</span> <span class="sy0">=</span> scheduler.<span class="me1">templates</span>.<span class="me1">week_date</span><span class="sy0">;</span></pre></code></pre>
+
+<i> The template is similar to the one, used in the Week view, so we'll just re-use the default Week view template - <a class="link-" href="api__scheduler_week_date_template.html">week_date</a></i>
+    </li>
+    <li> To define the template for the X-Axis of the view:
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">workweek_scale_date</span> <span class="sy0">=</span> scheduler.<span class="me1">templates</span>.<span class="me1">week_scale_date</span><span class="sy0">;</span></pre></code></pre>
+
+<i> The template is similar to the one used in the Week view, so we'll just re-use the default Week view template - <a class="link-" href="api__scheduler_week_scale_date_template.html">week_scale_date</a></i>
+    </li>
+</ol>
+
+<p><a href='samples/02_customization/07_custom_view.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom view</a></p>
+
+<a name='settingcustomviewasthedefaultone'><h2>Setting custom view as the default one</h2></a>
+
+<p>A view that will be shown in the scheduler initially is specified in the <a class="link-" href="api__scheduler_init.html">init</a> method, i.e during the scheduler initialization. 
+But the templates, used by a custom view, can be not fully processed at this moment. Therefore,  the initialization will fail.<br>
+To prevent such a situation and be sure that the templates of your custom view are fully ready, before the scheduler is initialized, 
+create custom views in a handler function of the  <a class="link-" href="api__scheduler_ontemplatesready_event.html">onTemplatesReady</a> event. This event fires only when all the templates are fully processed:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onTemplatesReady&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">//here you can place your code that creates a custom view</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+scheduler.<span class="me1">init</span><span class="br0">&#40;</span>container<span class="sy0">,</span> date<span class="sy0">,</span> <span class="st0">&quot;custom view name&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='custom_views.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

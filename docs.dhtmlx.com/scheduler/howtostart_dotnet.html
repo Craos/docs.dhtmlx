@@ -1,0 +1,909 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>dhtmlxScheduler with ASP.NET MVC  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="howtostart_dotnet_core.html">dhtmlxScheduler with ASP.NET Core</a></li><li class=""><a href="howtostart_nodejs.html">dhtmlxScheduler with Node.js</a></li><li class=" current"><a href="howtostart_dotnet.html">dhtmlxScheduler with ASP.NET MVC</a></li><ul><li class="inner"><a href="howtostart_dotnet.html#step1creatingaproject">Step 1. Creating a project</a></li><li class="inner"><a href="howtostart_dotnet.html#step2addingschedulertothepage">Step 2. Adding Scheduler to the page</a></li><li class="inner"><a href="howtostart_dotnet.html#step3creatingmodelsanddatabase">Step 3. Creating models and database</a></li><li class="inner"><a href="howtostart_dotnet.html#step4implementingwebapi">Step 4. Implementing Web API</a></li><li class="inner"><a href="howtostart_dotnet.html#dynamicloading">Dynamic loading</a></li><li class="inner"><a href="howtostart_dotnet.html#recurringevents">Recurring events</a></li><li class="inner"><a href="howtostart_dotnet.html#errorhandling">Error handling</a></li><li class="inner"><a href="howtostart_dotnet.html#applicationsecurity">Application Security</a></li><li class="inner"><a href="howtostart_dotnet.html#troubleshooting">Troubleshooting</a></li><li class="inner"><a href="howtostart_dotnet.html#whatsnext">What's next</a></li></ul><li class=""><a href="howtostart_plain_php.html">dhtmlxScheduler with PHP</a></li><li class=""><a href="howtostart_php_laravel.html">dhtmlxScheduler with PHP:Laravel</a></li><li class=""><a href="howtostart_php_slim4.html">dhtmlxScheduler with PHP:Slim</a></li><li class=""><a href="howtostart_ruby.html">dhtmlxScheduler with Ruby on Rails</a></li><li class=""><a href="howtostart_connector.html">dhtmlxScheduler with dhtmlxConnector</a></li><li class=""><a href="howtostart_php.html">dhtmlxScheduler with PHP:Slim 3</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="howtostart_guides.html">How to Start with dhtmlxScheduler</a></div>
+<!-- Content Area -->
+
+
+
+<h1>dhtmlxScheduler with ASP.NET MVC</h1>
+
+<p>This tutorial will give you step-by-step instructions on creating Scheduler with <a href="https://www.asp.net/">ASP.NET</a> and REST API on the server side.</p>
+
+<p>You can also explore other server-side integration possibilities of Scheduler by choosing one of the following tutorials:</p>
+
+<ul>
+<li><a class="link-" href="howtostart_dotnet_core.html">dhtmlxScheduler with ASP.NET Core</a></li>
+<li><a class="link-" href="howtostart_nodejs.html">dhtmlxScheduler with Node.js</a></li>
+<li><a class="link-" href="howtostart_plain_php.html">dhtmlxScheduler with PHP</a></li>
+<li><a class="link-" href="howtostart_php_slim4.html">dhtmlxScheduler with PHP:Slim</a></li>
+<li><a class="link-" href="howtostart_php_laravel.html">dhtmlxScheduler with PHP:Laravel</a></li>
+<li><a class="link-" href="howtostart_ruby.html">dhtmlxScheduler with Ruby on Rails</a></li>
+<li><a class="link-" href="howtostart_connector.html">dhtmlxScheduler with dhtmlxConnector</a></li>
+</ul>
+
+<p>We will make use of the ASP.NET MVC 5 web platform and the Web API controller for REST API to create a Scheduler application. To organize communication with a database we will use 
+the <a href="http://www.asp.net/entity-framework">Entity Framework</a>. We will build our application with the help of the Visual Studio IDE.</p>
+
+<div class='note'><p><p>The complete source code is <a href="https://github.com/DHTMLX/scheduler-howto-dotnet">available on GitHub</a>.</p>
+</p></div>
+
+<a name='step1creatingaproject'><h2>Step 1. Creating a project</h2></a>
+
+<h3>Creating a new Visual Studio Project</h3>
+
+<p>Let's start by running Visual Studio and creating a new project. For this, open the File menu tab and choose:<br> New -> Project. Then Select ASP.NET Web Application and press Next.</p>
+
+<p><img src="media/how_to_start_net_create_project.png" alt="New project" /></p>
+
+<p>Enter the project name <em>DHX.Scheduler.Web</em> and choose the location (if needed):</p>
+
+<p><img src="media/how_to_start_net_project_config.png" alt="Project config" /></p>
+
+<p>Select an Empty project among available templates and check MVC and Web API checkboxes to the right of the list of templates:</p>
+
+<p><img src="media/how_to_start_net_empty_project.png" alt="Empty project" /></p>
+
+<a name='step2addingschedulertothepage'><h2>Step 2. Adding Scheduler to the page</h2></a>
+
+<h3>Creating a Controller</h3>
+
+<p>Now we have an empty project and everything is ready for implementing our scheduler.</p>
+
+<p>Firstly, we will add an MVC controller which will show a page with a  scheduler.</p>
+
+<p>To create it, call the context menu for the Controllers folder and choose Add -> Controller. In the opened window select MVC 5 Controller -> Empty and press Add. Enter the name of the new controller, let it be
+"HomeController".</p>
+
+<p><img src="media/how_to_start_net_controller.png" alt="Home controller" /></p>
+
+<p>HomeController has the <em>Index()</em> method of the <em>ActionResult</em> class by default, so it doesn't require any additional logic. We will just add a view for it.</p>
+
+<p class='snippet'> Controllers/HomeController.cs</p>
+
+<pre><code><pre class="js">using System<span class="sy0">;</span>
+using System.<span class="me1">Collections</span>.<span class="me1">Generic</span><span class="sy0">;</span>
+using System.<span class="me1">Linq</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span>.<span class="me1">Mvc</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">namespace</span> DHX.<span class="me1">Scheduler</span>.<span class="me1">Web</span>.<span class="me1">Controllers</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> HomeController <span class="sy0">:</span> Controller
+    <span class="br0">&#123;</span>
+        <span class="co1">// GET: Home</span>
+        <span class="kw2">public</span> ActionResult Index<span class="br0">&#40;</span><span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw1">return</span> View<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Creating a View</h3>
+
+<p>Now it's time to create our index page. Go to View/Home and add an empty view named Index:</p>
+
+<p><img src="media/how_to_start_net_index_view.png" alt="Index view" /></p>
+
+<p>Open the newly created view and put the following code into it:</p>
+
+<p class='snippet'> Views/Home/Index.html</p>
+
+<pre><code><pre class="js"><span class="sy0">@</span><span class="br0">&#123;</span>
+    Layout <span class="sy0">=</span> <span class="kw2">null</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="sy0">&lt;!</span>DOCTYPE html<span class="sy0">&gt;</span>
+&nbsp;
+<span class="sy0">&lt;</span>html<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>head<span class="sy0">&gt;</span>
+    <span class="sy0">&lt;</span>meta <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;viewport&quot;</span> content<span class="sy0">=</span><span class="st0">&quot;width=device-width&quot;</span> <span class="sy0">/&gt;</span>
+    <span class="sy0">&lt;</span>title<span class="sy0">&gt;</span>Index<span class="sy0">&lt;/</span>title<span class="sy0">&gt;</span>
+    <span class="sy0">&lt;</span>link href<span class="sy0">=</span><span class="st0">&quot;https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler_material.css&quot;</span>
+          rel<span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> type<span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="sy0">/&gt;</span>
+    <span class="sy0">&lt;</span>script src<span class="sy0">=</span><span class="st0">&quot;https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js&quot;</span><span class="sy0">&gt;&lt;/</span>script<span class="sy0">&gt;</span>
+    <span class="sy0">&lt;</span>script<span class="sy0">&gt;</span>
+        document.<span class="me1">addEventListener</span><span class="br0">&#40;</span><span class="st0">&quot;DOMContentLoaded&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>event<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="co1">// initializing scheduler</span>
+            scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;scheduler_here&quot;</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span><span class="nu0">0</span><span class="sy0">,</span><span class="nu0">15</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+            <span class="co1">// initiating data loading</span>
+            scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/api/scheduler&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="co1">// initializing dataProcessor</span>
+            <span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;/api/scheduler&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="co1">// and attaching it to scheduler</span>
+            dp.<span class="me1">init</span><span class="br0">&#40;</span>scheduler<span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="co1">// setting the REST mode for dataProcessor</span>
+            dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;REST&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="sy0">&lt;/</span>script<span class="sy0">&gt;</span>
+<span class="sy0">&lt;/</span>head<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>body<span class="sy0">&gt;</span>
+  <span class="sy0">&lt;</span>div id<span class="sy0">=</span><span class="st0">&quot;scheduler_here&quot;</span> <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_container&quot;</span> style<span class="sy0">=</span><span class="st0">'width:100%; height:100vh;'</span><span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_navline&quot;</span><span class="sy0">&gt;</span>
+            <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_prev_button&quot;</span><span class="sy0">&gt;&amp;</span>nbsp<span class="sy0">;&lt;/</span>div<span class="sy0">&gt;</span>
+            <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_next_button&quot;</span><span class="sy0">&gt;&amp;</span>nbsp<span class="sy0">;&lt;/</span>div<span class="sy0">&gt;</span>
+            <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_today_button&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+            <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_date&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+            <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;day_tab&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+            <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;week_tab&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+            <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;month_tab&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+        <span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_header&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_data&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+  <span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span>
+<span class="sy0">&lt;/</span>body<span class="sy0">&gt;</span>
+<span class="sy0">&lt;/</span>html<span class="sy0">&gt;</span></pre></code></pre>
+
+<p>What we have done here:</p>
+
+<ul>
+<li>defined a simple page markup for our scheduler application</li>
+<li>added dhtmlx scheduler js/css sources using <a class="link-" href="install_with_bower.html#cdn">CDN links</a></li>
+<li>created scheduler on the page</li>
+</ul>
+
+<p>And also we told the scheduler that it's going to work with the RESTful API on a backend and use <a href="server_integration.html#technique">"/api/scheduler/"</a> to get all data during loading and as a default route:</p>
+
+<p class='snippet'> Views/Home/Index.cshtml</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/api/scheduler&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// initializing dataProcessor</span>
+<span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;/api/scheduler&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// and attaching it to scheduler</span>
+dp.<span class="me1">init</span><span class="br0">&#40;</span>scheduler<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// setting the REST mode for dataProcessor</span>
+dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;REST&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The server side itself will be implemented a bit later. For now, you can run the application and see that a scheduler is rendered on the page.</p>
+
+<p><img src="media/how_to_start_net_scheduler_init.png" alt="Scheduler initialization" /></p>
+
+<a name='step3creatingmodelsanddatabase'><h2>Step 3. Creating models and database</h2></a>
+
+<h3>Creating Models</h3>
+
+<p>Now we should define model classes for scheduler. You'll need a class for scheduler events. As you can see, dhtmlxScheduler uses a certain naming convention for data model that is different from 
+the one traditionally used in C#. The client-side model can also contain some properties that you don't need to store in a database, but which will be used either in the client logic or in the backend one.</p>
+
+<p>Because of this, we'll go with the <a href="https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5">Data Transfer Object</a> pattern here: 
+we'll define domain model classes that will be used with EF and inside the app, and DTO classes that will be used to communicate with Web API. Then mapping between the two models will be implemented.</p>
+
+<h4>Scheduler Event Model</h4>
+
+<p>First we will create a class for Event. This is how the model can look like:</p>
+
+<p class='snippet'> Models/SchedulerEvent.cs</p>
+
+<pre><code><pre class="js">using System<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">namespace</span> DHX.<span class="me1">Scheduler</span>.<span class="me1">Web</span>.<span class="me1">Models</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> SchedulerEvent
+    <span class="br0">&#123;</span>
+        <span class="kw2">public</span> int Id <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> string Text <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> DateTime StartDate <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> DateTime EndDate <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+&nbsp;
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Note that scheduler events can have all kinds of additional properties, which can be utilized in the calendar. We're showing you the basic stuff here.</p>
+
+<h3>Configuring Database Connection</h3>
+
+<h4>Installing Entity Framework</h4>
+
+<p>You can either install the framework via the NuGet package manager:</p>
+
+<p><img src="media/how_to_start_net_entity_nuget.png" alt="Entity Framework via NuGet" /></p>
+
+<p>or you can run the following command in the Package Manager Console:</p>
+
+<pre><code><pre class="js">PM<span class="sy0">&gt;</span> Install<span class="sy0">-</span><span class="kw2">Package</span> EntityFramework</pre></code></pre>
+
+<h4>Creating Database Context</h4>
+
+<p>The next step is to create Context. Context represents a session with the Database. It allows getting and saving data.</p>
+
+<p>Call the context menu for the <em>Models</em> folder and select Add -> Class. The new class will be called "SchedulerContext" and will have the following content:</p>
+
+<p class='snippet'> Models/SchedulerContext.cs</p>
+
+<pre><code><pre class="js">using System.<span class="me1">Data</span>.<span class="me1">Entity</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">namespace</span> DHX.<span class="me1">Scheduler</span>.<span class="me1">Web</span>.<span class="me1">Models</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> SchedulerContext <span class="sy0">:</span> DbContext
+    <span class="br0">&#123;</span>
+        <span class="kw2">public</span> DbSet<span class="sy0">&lt;</span>SchedulerEvent<span class="sy0">&gt;</span> SchedulerEvents <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h4>Adding initial records to database</h4>
+
+<p>Now we can add some records into the database.</p>
+
+<p>The Entity Framework can automatically create a database when an application runs. We should specify that a database should be dropped and re-created whenever the model changes.</p>
+
+<p>First, we should create a database initializer. For this, we need to add a new class in the <em>App_Start</em> folder that will be inherited from the <em>DropCreateDatabaseIfModelChanges</em> class. Let's call it "SchedulerInitializer":</p>
+
+<p>In this class we are going to redefine the <em>Seed()</em> method to populate it with test data. Then we will add the entities collection into the context with the <em>Add()</em> method.</p>
+
+<p>The full code of the <em>SchedulerInitializer</em> class is given below:</p>
+
+<p class='snippet'> App_Start/SchedulerInitializer.cs</p>
+
+<pre><code><pre class="js">using System<span class="sy0">;</span>
+using System.<span class="me1">Collections</span>.<span class="me1">Generic</span><span class="sy0">;</span>
+using System.<span class="me1">Data</span>.<span class="me1">Entity</span><span class="sy0">;</span>
+using System.<span class="me1">Linq</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span><span class="sy0">;</span>
+&nbsp;
+using DHX.<span class="me1">Scheduler</span>.<span class="me1">Web</span>.<span class="me1">Models</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">namespace</span> DHX.<span class="me1">Scheduler</span>.<span class="me1">Web</span>.<span class="me1">App_Start</span>
+<span class="br0">&#123;</span>
+  <span class="kw2">public</span> <span class="kw2">class</span> SchedulerInitializer<span class="sy0">:</span>DropCreateDatabaseIfModelChanges<span class="sy0">&lt;</span>SchedulerContext<span class="sy0">&gt;</span>
+    <span class="br0">&#123;</span>
+        <span class="kw2">protected</span> override <span class="kw1">void</span> Seed<span class="br0">&#40;</span>SchedulerContext context<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            List<span class="sy0">&lt;</span>SchedulerEvent<span class="sy0">&gt;</span> events <span class="sy0">=</span> <span class="kw2">new</span> List<span class="sy0">&lt;</span>SchedulerEvent<span class="sy0">&gt;</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+            <span class="br0">&#123;</span>
+                <span class="kw2">new</span> SchedulerEvent<span class="br0">&#40;</span><span class="br0">&#41;</span>
+                <span class="br0">&#123;</span>
+                    Id <span class="sy0">=</span> <span class="nu0">1</span><span class="sy0">,</span>
+                    Text <span class="sy0">=</span> <span class="st0">&quot;Event 1&quot;</span><span class="sy0">,</span>
+                    StartDate <span class="sy0">=</span> <span class="kw2">new</span> DateTime<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">15</span><span class="sy0">,</span> <span class="nu0">2</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">,</span>
+                    EndDate <span class="sy0">=</span> <span class="kw2">new</span> DateTime<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">15</span><span class="sy0">,</span> <span class="nu0">4</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">0</span><span class="br0">&#41;</span>
+                <span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="kw2">new</span> SchedulerEvent<span class="br0">&#40;</span><span class="br0">&#41;</span>
+                <span class="br0">&#123;</span>
+                    Id <span class="sy0">=</span> <span class="nu0">2</span><span class="sy0">,</span>
+                    Text <span class="sy0">=</span> <span class="st0">&quot;Event 2&quot;</span><span class="sy0">,</span>
+                    StartDate <span class="sy0">=</span> <span class="kw2">new</span> DateTime<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">17</span><span class="sy0">,</span> <span class="nu0">3</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">,</span>
+                    EndDate <span class="sy0">=</span> <span class="kw2">new</span> DateTime<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">17</span><span class="sy0">,</span> <span class="nu0">6</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">0</span><span class="br0">&#41;</span>
+                <span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="kw2">new</span> SchedulerEvent<span class="br0">&#40;</span><span class="br0">&#41;</span>
+                <span class="br0">&#123;</span>
+                    Id <span class="sy0">=</span> <span class="nu0">3</span><span class="sy0">,</span>
+                    Text <span class="sy0">=</span> <span class="st0">&quot;Multiday event&quot;</span><span class="sy0">,</span>
+                    StartDate <span class="sy0">=</span> <span class="kw2">new</span> DateTime<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">15</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">,</span>
+                    EndDate <span class="sy0">=</span> <span class="kw2">new</span> DateTime<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">20</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">0</span><span class="br0">&#41;</span>
+                <span class="br0">&#125;</span>
+            <span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+            events.<span class="me1">ForEach</span><span class="br0">&#40;</span>s <span class="sy0">=&gt;</span> context.<span class="me1">SchedulerEvents</span>.<span class="me1">Add</span><span class="br0">&#40;</span>s<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            context.<span class="me1">SaveChanges</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="br0">&#125;</span>
+&nbsp;
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Open the <em>Global.asax</em> file. It contains the code that runs on the application start. Add the necessary namespace and the code line that will set Initializer for our context into the <em>Application_Start()</em> method:</p>
+
+<p class='snippet'> Global.asax.cs</p>
+
+<pre><code><pre class="js">using System<span class="sy0">;</span>
+using System.<span class="me1">Web</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span>.<span class="me1">Mvc</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span>.<span class="me1">Routing</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span>.<span class="me1">Http</span><span class="sy0">;</span>
+&nbsp;
+using System.<span class="me1">Data</span>.<span class="me1">Entity</span><span class="sy0">;</span>
+using DHX.<span class="me1">Scheduler</span>.<span class="me1">Web</span>.<span class="me1">App_Start</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">namespace</span> DHX.<span class="me1">Scheduler</span>.<span class="me1">Web</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> Global <span class="sy0">:</span> HttpApplication
+    <span class="br0">&#123;</span>
+        <span class="kw1">void</span> Application_Start<span class="br0">&#40;</span>object sender<span class="sy0">,</span> EventArgs e<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="co1">// Code that runs on application startup</span>
+            AreaRegistration.<span class="me1">RegisterAllAreas</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            GlobalConfiguration.<span class="me1">Configure</span><span class="br0">&#40;</span>WebApiConfig.<span class="me1">Register</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            RouteConfig.<span class="me1">RegisterRoutes</span><span class="br0">&#40;</span>RouteTable.<span class="me1">Routes</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra">            Database.<span class="me1">SetInitializer</span><span class="br0">&#40;</span><span class="kw2">new</span> SchedulerInitializer<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Defining DTOs and Mapping</h3>
+
+<p>It's time to declare DTO classes that will be used for Web API. As for mapping between Model and DTO, we'll define an explicit conversion operator for our classes.</p>
+
+<p>The WebAPIEvent class will look like this:</p>
+
+<p class='snippet'> WebAPIEvent.cs</p>
+
+<pre><code><pre class="js">using System<span class="sy0">;</span>
+using System.<span class="me1">Collections</span>.<span class="me1">Generic</span><span class="sy0">;</span>
+using System.<span class="me1">Linq</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">namespace</span> DHX.<span class="me1">Scheduler</span>.<span class="me1">Web</span>.<span class="me1">Models</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> WebAPIEvent
+    <span class="br0">&#123;</span>
+        <span class="kw2">public</span> int id <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> string text <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> string start_date <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> string end_date <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+&nbsp;
+        <span class="kw2">public</span> static explicit operator WebAPIEvent<span class="br0">&#40;</span>SchedulerEvent schedulerEvent<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw1">return</span> <span class="kw2">new</span> WebAPIEvent
+            <span class="br0">&#123;</span>
+                id <span class="sy0">=</span> schedulerEvent.<span class="me1">Id</span><span class="sy0">,</span>
+                text <span class="sy0">=</span> schedulerEvent.<span class="me1">Text</span><span class="sy0">,</span>
+                start_date <span class="sy0">=</span> schedulerEvent.<span class="me1">StartDate</span>.<span class="me1">ToString</span><span class="br0">&#40;</span><span class="st0">&quot;yyyy-MM-dd HH:mm&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span>
+                end_date <span class="sy0">=</span> schedulerEvent.<span class="me1">EndDate</span>.<span class="me1">ToString</span><span class="br0">&#40;</span><span class="st0">&quot;yyyy-MM-dd HH:mm&quot;</span><span class="br0">&#41;</span>
+            <span class="br0">&#125;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="kw2">public</span> static explicit operator SchedulerEvent<span class="br0">&#40;</span>WebAPIEvent schedulerEvent<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw1">return</span> <span class="kw2">new</span> SchedulerEvent
+            <span class="br0">&#123;</span>
+                Id <span class="sy0">=</span> schedulerEvent.<span class="me1">id</span><span class="sy0">,</span>
+                Text <span class="sy0">=</span> schedulerEvent.<span class="me1">text</span><span class="sy0">,</span>
+                StartDate <span class="sy0">=</span> DateTime.<span class="me1">Parse</span><span class="br0">&#40;</span>
+                    schedulerEvent.<span class="me1">start_date</span><span class="sy0">,</span> 
+                    System.<span class="me1">Globalization</span>.<span class="me1">CultureInfo</span>.<span class="me1">InvariantCulture</span><span class="br0">&#41;</span><span class="sy0">,</span>
+                EndDate <span class="sy0">=</span> DateTime.<span class="me1">Parse</span><span class="br0">&#40;</span>
+                    schedulerEvent.<span class="me1">end_date</span><span class="sy0">,</span>
+                    System.<span class="me1">Globalization</span>.<span class="me1">CultureInfo</span>.<span class="me1">InvariantCulture</span><span class="br0">&#41;</span>
+            <span class="br0">&#125;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='step4implementingwebapi'><h2>Step 4. Implementing Web API</h2></a>
+
+<h3>Scheduler Controller</h3>
+
+<p>To create a new controller:</p>
+
+<ul>
+<li>Call the context menu for the Controllers folder and select Add -> Controller. </li>
+<li>Choose the Web API 2 Controller -> Empty. Type the name of a new controller - "SchedulerController".</li>
+</ul>
+
+<p>Now we should implement basic CRUD actions for the scheduler events entry:</p>
+
+<p class='snippet'> Controllers/SchedulerController.cs</p>
+
+<pre><code><pre class="js">using System<span class="sy0">;</span>
+using System.<span class="me1">Collections</span>.<span class="me1">Generic</span><span class="sy0">;</span>
+using System.<span class="me1">Data</span>.<span class="me1">Entity</span><span class="sy0">;</span>
+using System.<span class="me1">Linq</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span>.<span class="me1">Http</span><span class="sy0">;</span>
+&nbsp;
+using DHX.<span class="me1">Scheduler</span>.<span class="me1">Web</span>.<span class="me1">App_Start</span><span class="sy0">;</span>
+using DHX.<span class="me1">Scheduler</span>.<span class="me1">Web</span>.<span class="me1">Models</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">namespace</span> DHX.<span class="me1">Scheduler</span>.<span class="me1">Web</span>.<span class="me1">Controllers</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> SchedulerController <span class="sy0">:</span> ApiController
+    <span class="br0">&#123;</span>
+        <span class="kw2">private</span> SchedulerContext db <span class="sy0">=</span> <span class="kw2">new</span> SchedulerContext<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="co1">// GET: api/scheduler</span>
+        <span class="kw2">public</span> IEnumerable<span class="sy0">&lt;</span>WebAPIEvent<span class="sy0">&gt;</span> Get<span class="br0">&#40;</span><span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw1">return</span> db.<span class="me1">SchedulerEvents</span>
+                .<span class="me1">ToList</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+                .<span class="me1">Select</span><span class="br0">&#40;</span>e <span class="sy0">=&gt;</span> <span class="br0">&#40;</span>WebAPIEvent<span class="br0">&#41;</span>e<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="co1">// GET: api/scheduler/5</span>
+        <span class="kw2">public</span> WebAPIEvent Get<span class="br0">&#40;</span>int id<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw1">return</span> <span class="br0">&#40;</span>WebAPIEvent<span class="br0">&#41;</span>db.<span class="me1">SchedulerEvents</span>.<span class="me1">Find</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="co1">// PUT: api/scheduler/5</span>
+        <span class="br0">&#91;</span>HttpPut<span class="br0">&#93;</span>
+        <span class="kw2">public</span> IHttpActionResult EditSchedulerEvent<span class="br0">&#40;</span>int id<span class="sy0">,</span> WebAPIEvent webAPIEvent<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw2">var</span> updatedSchedulerEvent <span class="sy0">=</span> <span class="br0">&#40;</span>SchedulerEvent<span class="br0">&#41;</span>WebAPIEvent<span class="sy0">;</span>
+            updatedSchedulerEvent.<span class="me1">Id</span> <span class="sy0">=</span> id<span class="sy0">;</span>
+            db.<span class="me1">Entry</span><span class="br0">&#40;</span>updatedSchedulerEvent<span class="br0">&#41;</span>.<span class="me1">State</span> <span class="sy0">=</span> EntityState.<span class="me1">Modified</span><span class="sy0">;</span>
+            db.<span class="me1">SaveChanges</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+            <span class="kw1">return</span> Ok<span class="br0">&#40;</span><span class="kw2">new</span>
+            <span class="br0">&#123;</span>
+                action <span class="sy0">=</span> <span class="st0">&quot;updated&quot;</span>
+            <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="co1">// POST: api/scheduler/5</span>
+        <span class="br0">&#91;</span>HttpPost<span class="br0">&#93;</span>
+        <span class="kw2">public</span> IHttpActionResult CreateSchedulerEvent<span class="br0">&#40;</span>WebAPIEvent webAPIEvent<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw2">var</span> newSchedulerEvent <span class="sy0">=</span> <span class="br0">&#40;</span>SchedulerEvent<span class="br0">&#41;</span>WebAPIEvent<span class="sy0">;</span>
+            db.<span class="me1">SchedulerEvents</span>.<span class="me1">Add</span><span class="br0">&#40;</span>newSchedulerEvent<span class="br0">&#41;</span><span class="sy0">;</span>
+            db.<span class="me1">SaveChanges</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+            <span class="kw1">return</span> Ok<span class="br0">&#40;</span><span class="kw2">new</span>
+            <span class="br0">&#123;</span>
+                tid <span class="sy0">=</span> newSchedulerEvent.<span class="me1">Id</span><span class="sy0">,</span>
+                action <span class="sy0">=</span> <span class="st0">&quot;inserted&quot;</span>
+            <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="co1">// DELETE: api/scheduler/5</span>
+        <span class="br0">&#91;</span>HttpDelete<span class="br0">&#93;</span>
+        <span class="kw2">public</span> IHttpActionResult DeleteSchedulerEvent<span class="br0">&#40;</span>int id<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw2">var</span> schedulerEvent <span class="sy0">=</span> db.<span class="me1">SchedulerEvents</span>.<span class="me1">Find</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="kw1">if</span> <span class="br0">&#40;</span>schedulerEvent <span class="sy0">!=</span> <span class="kw2">null</span><span class="br0">&#41;</span>
+            <span class="br0">&#123;</span>
+                db.<span class="me1">SchedulerEvents</span>.<span class="me1">Remove</span><span class="br0">&#40;</span>schedulerEvent<span class="br0">&#41;</span><span class="sy0">;</span>
+                db.<span class="me1">SaveChanges</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="br0">&#125;</span>
+&nbsp;
+            <span class="kw1">return</span> Ok<span class="br0">&#40;</span><span class="kw2">new</span>
+            <span class="br0">&#123;</span>
+                action <span class="sy0">=</span> <span class="st0">&quot;deleted&quot;</span>
+            <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="kw2">protected</span> override <span class="kw1">void</span> Dispose<span class="br0">&#40;</span>bool disposing<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw1">if</span> <span class="br0">&#40;</span>disposing<span class="br0">&#41;</span>
+            <span class="br0">&#123;</span>
+                db.<span class="me1">Dispose</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="br0">&#125;</span>
+            base.<span class="me1">Dispose</span><span class="br0">&#40;</span>disposing<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>In the above code we:</p>
+
+<ul>
+<li>load scheduler events from database and output their data transfer objects in the GET actions  </li>
+<li>get DTOs as an input, converting it to a SchedulerEvent model and saving changes to the DB Context in the PUT/POST actions</li>
+</ul>
+
+<p>Everything is ready. You can run the application and see the fully-fledged Scheduler.</p>
+
+<p><img src="media/how_to_start_net_ready_scheduler.png" alt="Ready Scheduler" /></p>
+
+<p><a href="https://github.com/DHTMLX/scheduler-howto-dotnet">You can find a ready demo at github</a>.</p>
+
+<a name='dynamicloading'><h2>Dynamic loading</h2></a>
+
+<p>Each time scheduler calls our GET action, it loads the whole events table. It may be ok for a start, but after the app is used for a several months the amount of transferred data will significantly grow. 
+So it may be useful to implement dynamic loading, which allows scheduler to load only a required range of events.</p>
+
+<p>On the client side it is enabled by the <a class="link-" href="api__scheduler_setloadmode.html">scheduler.setLoadMode</a> method:</p>
+
+<p class='snippet'> Views/Home/Index.cshtml</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">setLoadMode</span><span class="br0">&#40;</span><span class="st0">&quot;day&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// load data from the backend</span>
+scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/api/scheduler&quot;</span><span class="sy0">,</span> <span class="st0">&quot;json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>After that scheduler will start adding <em>from</em> and <em>to</em> date parameters to GET requests, so that the backend could return only events between these dates.</p>
+
+<p>All we need to do is to get these parameters in our GET action and to filter events appropriately. This is how we can do it:</p>
+
+<p class='snippet'> Controllers/SchedulerController.cs</p>
+
+<pre><code><pre class="js"><span class="co1">// GET: api/scheduler</span>
+<span class="kw2">public</span> IEnumerable<span class="sy0">&lt;</span>WebAPIEvent<span class="sy0">&gt;</span> Get<span class="br0">&#40;</span>DateTime from<span class="sy0">,</span> DateTime to<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    <span class="kw1">return</span> db.<span class="me1">SchedulerEvents</span>
+       .<span class="me1">Where</span><span class="br0">&#40;</span>e <span class="sy0">=&gt;</span> e.<span class="me1">StartDate</span> <span class="sy0">&lt;</span> to <span class="sy0">&amp;&amp;</span> e.<span class="me1">EndDate</span> <span class="sy0">&gt;=</span> from<span class="br0">&#41;</span>
+       .<span class="me1">ToList</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+       .<span class="me1">Select</span><span class="br0">&#40;</span>e <span class="sy0">=&gt;</span> <span class="br0">&#40;</span>WebAPIEvent<span class="br0">&#41;</span>e<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='recurringevents'><h2>Recurring events</h2></a>
+
+<p>In order to enable recurrence (e.g. "repeat event daily"), you'll need to add an appropriate extension to the scheduler page:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>script src<span class="sy0">=</span><span class="st0">&quot;https://cdn.dhtmlx.com/scheduler/edge/ext/dhtmlxscheduler_recurring.js&quot;</span><span class="sy0">&gt;</span>
+    <span class="sy0">&lt;/</span>script<span class="sy0">&gt;</span></pre></code></pre>
+
+<h3>Updating the Models</h3>
+
+<p>We also need to update our model in order for it to store the recurrence info:</p>
+
+<p class='snippet'> Models/SchedulerEvent.cs</p>
+
+<pre><code><pre class="js">using System<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">namespace</span> DHX.<span class="me1">Scheduler</span>.<span class="me1">Web</span>.<span class="me1">Models</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> SchedulerEvent
+    <span class="br0">&#123;</span>
+        <span class="kw2">public</span> int Id <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> string Text <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> DateTime StartDate <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> DateTime EndDate <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+&nbsp;
+        <span class="kw2">public</span> int EventPID <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> string RecType <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> long EventLength <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+&nbsp;
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>as well as the DTO:</p>
+
+<p class='snippet'> Models/WebAPIEvent.cs</p>
+
+<pre><code><pre class="js">using System<span class="sy0">;</span>
+using System.<span class="me1">Collections</span>.<span class="me1">Generic</span><span class="sy0">;</span>
+using System.<span class="me1">Linq</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">namespace</span> DHX.<span class="me1">Scheduler</span>.<span class="me1">Web</span>.<span class="me1">Models</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> WebAPIEvent
+    <span class="br0">&#123;</span>
+        <span class="kw2">public</span> int id <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> string text <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> string start_date <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> string end_date <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+&nbsp;
+        <span class="kw2">public</span> int<span class="sy0">?</span> event_pid <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> string rec_type <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+        <span class="kw2">public</span> long<span class="sy0">?</span> event_length <span class="br0">&#123;</span> get<span class="sy0">;</span> set<span class="sy0">;</span> <span class="br0">&#125;</span>
+&nbsp;
+        <span class="kw2">public</span> static explicit operator WebAPIEvent<span class="br0">&#40;</span>SchedulerEvent schedulerEvent<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw1">return</span> <span class="kw2">new</span> WebAPIEvent
+            <span class="br0">&#123;</span>
+                id <span class="sy0">=</span> schedulerEvent.<span class="me1">Id</span><span class="sy0">,</span>
+                text <span class="sy0">=</span> schedulerEvent.<span class="me1">Text</span><span class="sy0">,</span>
+                start_date <span class="sy0">=</span> schedulerEvent.<span class="me1">StartDate</span>.<span class="me1">ToString</span><span class="br0">&#40;</span><span class="st0">&quot;yyyy-MM-dd HH:mm&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span>
+                end_date <span class="sy0">=</span> schedulerEvent.<span class="me1">EndDate</span>.<span class="me1">ToString</span><span class="br0">&#40;</span><span class="st0">&quot;yyyy-MM-dd HH:mm&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span>
+&nbsp;
+                event_pid <span class="sy0">=</span> schedulerEvent.<span class="me1">EventPID</span><span class="sy0">,</span>
+                rec_type <span class="sy0">=</span> schedulerEvent.<span class="me1">RecType</span><span class="sy0">,</span>
+                event_length <span class="sy0">=</span> schedulerEvent.<span class="me1">EventLength</span>
+            <span class="br0">&#125;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="kw2">public</span> static explicit operator SchedulerEvent<span class="br0">&#40;</span>WebAPIEvent schedulerEvent<span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw1">return</span> <span class="kw2">new</span> SchedulerEvent
+            <span class="br0">&#123;</span>
+                Id <span class="sy0">=</span> schedulerEvent.<span class="me1">id</span><span class="sy0">,</span>
+                Text <span class="sy0">=</span> schedulerEvent.<span class="me1">text</span><span class="sy0">,</span>
+                StartDate <span class="sy0">=</span> DateTime.<span class="me1">Parse</span><span class="br0">&#40;</span>
+                    schedulerEvent.<span class="me1">start_date</span><span class="sy0">,</span> 
+                    System.<span class="me1">Globalization</span>.<span class="me1">CultureInfo</span>.<span class="me1">InvariantCulture</span><span class="br0">&#41;</span><span class="sy0">,</span>
+                EndDate <span class="sy0">=</span> DateTime.<span class="me1">Parse</span><span class="br0">&#40;</span>
+                    schedulerEvent.<span class="me1">end_date</span><span class="sy0">,</span> 
+                    System.<span class="me1">Globalization</span>.<span class="me1">CultureInfo</span>.<span class="me1">InvariantCulture</span><span class="br0">&#41;</span><span class="sy0">,</span>
+                EventPID <span class="sy0">=</span> schedulerEvent.<span class="me1">event_pid</span> <span class="sy0">!=</span> <span class="kw2">null</span> <span class="sy0">?</span> 
+                    schedulerEvent.<span class="me1">event_pid</span>.<span class="me1">Value</span> <span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">,</span>
+                EventLength <span class="sy0">=</span> schedulerEvent.<span class="me1">event_length</span> <span class="sy0">!=</span> <span class="kw2">null</span> <span class="sy0">?</span> 
+                    schedulerEvent.<span class="me1">event_length</span>.<span class="me1">Value</span> <span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">,</span>
+                RecType <span class="sy0">=</span> schedulerEvent.<span class="me1">rec_type</span>
+            <span class="br0">&#125;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Updating API Controller</h3>
+
+<p>Lastly, we need to modify our PUT/POST/DELETE actions in order to handle <a class="link-" href="recurring_events.html#editingdeletingacertainoccurrenceintheseries">special rules of recurring events</a>.</p>
+
+<p>First, let's take a look at the POST action. We need to process a special case for recurring events: deletion of a specific occurrence of the recurring series 
+requires creating a new database record and the client will call the insert action for it:</p>
+
+<p class='snippet'> Controllers/SchedulerEvent.cs</p>
+
+<pre><code><pre class="js"><span class="co1">// POST: api/scheduler/5</span>
+<span class="br0">&#91;</span>HttpPost<span class="br0">&#93;</span>
+<span class="kw2">public</span> IHttpActionResult CreateSchedulerEvent<span class="br0">&#40;</span>WebAPIEvent webAPIEvent<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+  <span class="kw2">var</span> newSchedulerEvent <span class="sy0">=</span> <span class="br0">&#40;</span>SchedulerEvent<span class="br0">&#41;</span>WebAPIEvent<span class="sy0">;</span>
+  db.<span class="me1">SchedulerEvents</span>.<span class="me1">Add</span><span class="br0">&#40;</span>newSchedulerEvent<span class="br0">&#41;</span><span class="sy0">;</span>
+  db.<span class="me1">SaveChanges</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="co1">// delete a single occurrence from a recurring series</span>
+  <span class="kw2">var</span> resultAction <span class="sy0">=</span> <span class="st0">&quot;inserted&quot;</span><span class="sy0">;</span>
+  <span class="kw1">if</span><span class="br0">&#40;</span>newSchedulerEvent.<span class="me1">RecType</span> <span class="sy0">==</span> <span class="st0">&quot;none&quot;</span><span class="br0">&#41;</span>
+  <span class="br0">&#123;</span>
+     resultAction <span class="sy0">=</span> <span class="st0">&quot;deleted&quot;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+&nbsp;
+  <span class="kw1">return</span> Ok<span class="br0">&#40;</span><span class="kw2">new</span>
+  <span class="br0">&#123;</span>
+    tid <span class="sy0">=</span> newSchedulerEvent.<span class="me1">Id</span><span class="sy0">,</span>
+    action <span class="sy0">=</span> resultAction
+  <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>In the PUT action we need to make sure to update all properties of the model. Additionally, we need to handle a different special case there: when a recurring series 
+is modified, we need to delete all modified occurrences of that series:</p>
+
+<p class='snippet'> Controllers/SchedulerController.cs</p>
+
+<pre><code><pre class="js"><span class="co1">// PUT: api/scheduler/5</span>
+<span class="br0">&#91;</span>HttpPut<span class="br0">&#93;</span>
+<span class="kw2">public</span> IHttpActionResult EditSchedulerEvent<span class="br0">&#40;</span>int id<span class="sy0">,</span> WebAPIEvent webAPIEvent<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">var</span> updatedSchedulerEvent <span class="sy0">=</span> <span class="br0">&#40;</span>SchedulerEvent<span class="br0">&#41;</span>WebAPIEvent<span class="sy0">;</span>
+    updatedSchedulerEvent.<span class="me1">Id</span> <span class="sy0">=</span> id<span class="sy0">;</span>
+    db.<span class="me1">Entry</span><span class="br0">&#40;</span>updatedSchedulerEvent<span class="br0">&#41;</span>.<span class="me1">State</span> <span class="sy0">=</span> EntityState.<span class="me1">Modified</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span>string.<span class="me1">IsNullOrEmpty</span><span class="br0">&#40;</span>updatedSchedulerEvent.<span class="me1">RecType</span><span class="br0">&#41;</span> <span class="sy0">&amp;&amp;</span> 
+        updatedSchedulerEvent.<span class="me1">RecType</span> <span class="sy0">!=</span> <span class="st0">&quot;none&quot;</span><span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+      <span class="co1">//all modified occurrences must be deleted when we update a recurring series</span>
+      <span class="co1">//https://docs.dhtmlx.com/scheduler/server_integration.html#recurringevents</span>
+&nbsp;
+      db.<span class="me1">SchedulerEvents</span>.<span class="me1">RemoveRange</span><span class="br0">&#40;</span>
+         db.<span class="me1">SchedulerEvents</span>.<span class="me1">Where</span><span class="br0">&#40;</span>e <span class="sy0">=&gt;</span> e.<span class="me1">EventPID</span> <span class="sy0">==</span> id<span class="br0">&#41;</span>
+      <span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    db.<span class="me1">SaveChanges</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">return</span> Ok<span class="br0">&#40;</span><span class="kw2">new</span>
+    <span class="br0">&#123;</span>
+       action <span class="sy0">=</span> <span class="st0">&quot;updated&quot;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>And finally, the DELETE action. Here we have to check two special cases:</p>
+
+<ul>
+<li>if the event you are going to delete has a non-empty event_pid, it means a user deletes a modified instance of the recurring series. Instead of deleting such a record from the database, you need to give it rec_type='none', 
+in order for scheduler to skip this occurrence.</li>
+<li>if a user deletes a whole recurring series, you also need to delete all the modified instances of that series.</li>
+</ul>
+
+<p class='snippet'> Controllers/SchedulerController.cs</p>
+
+<pre><code><pre class="js"><span class="co1">// DELETE: api/scheduler/5</span>
+<span class="br0">&#91;</span>HttpDelete<span class="br0">&#93;</span>
+<span class="kw2">public</span> IHttpActionResult DeleteSchedulerEvent<span class="br0">&#40;</span>int id<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">var</span> schedulerEvent <span class="sy0">=</span> db.<span class="me1">SchedulerEvents</span>.<span class="me1">Find</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>schedulerEvent <span class="sy0">!=</span> <span class="kw2">null</span><span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+     <span class="co1">//some logic specific to recurring events support</span>
+     <span class="co1">//https://docs.dhtmlx.com/scheduler/server_integration.html#recurringevents</span>
+&nbsp;
+     <span class="kw1">if</span><span class="br0">&#40;</span>schedulerEvent.<span class="me1">EventPID</span> <span class="sy0">!=</span> <span class="kw2">default</span><span class="br0">&#40;</span>int<span class="br0">&#41;</span><span class="br0">&#41;</span>
+     <span class="br0">&#123;</span>
+       <span class="co1">// deleting a modified occurrence from a recurring series</span>
+       <span class="co1">// If an event with the event_pid value was deleted, it should be updated </span>
+       <span class="co1">// with rec_type==none instead of deleting.</span>
+&nbsp;
+       schedulerEvent.<span class="me1">RecType</span> <span class="sy0">=</span> <span class="st0">&quot;none&quot;</span><span class="sy0">;</span>
+     <span class="br0">&#125;</span>
+     <span class="kw1">else</span>
+     <span class="br0">&#123;</span>
+       <span class="co1">// if a recurring series deleted, delete all modified occurrences of the series</span>
+&nbsp;
+       <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span>string.<span class="me1">IsNullOrEmpty</span><span class="br0">&#40;</span>schedulerEvent.<span class="me1">RecType</span><span class="br0">&#41;</span> <span class="sy0">&amp;&amp;</span> 
+         schedulerEvent.<span class="me1">RecType</span> <span class="sy0">!=</span> <span class="st0">&quot;none&quot;</span><span class="br0">&#41;</span>
+       <span class="br0">&#123;</span>
+       <span class="co1">//all modified occurrences must be deleted when we update recurring series</span>
+      <span class="co1">//https://docs.dhtmlx.com/scheduler/server_integration.html#recurringevents</span>
+&nbsp;
+         db.<span class="me1">SchedulerEvents</span>.<span class="me1">RemoveRange</span><span class="br0">&#40;</span>
+             db.<span class="me1">SchedulerEvents</span>.<span class="me1">Where</span><span class="br0">&#40;</span>ev <span class="sy0">=&gt;</span> ev.<span class="me1">EventPID</span> <span class="sy0">==</span> id<span class="br0">&#41;</span>
+         <span class="br0">&#41;</span><span class="sy0">;</span>
+       <span class="br0">&#125;</span>
+&nbsp;
+       db.<span class="me1">SchedulerEvents</span>.<span class="me1">Remove</span><span class="br0">&#40;</span>schedulerEvent<span class="br0">&#41;</span><span class="sy0">;</span>
+     <span class="br0">&#125;</span>
+     db.<span class="me1">SaveChanges</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="kw1">return</span> Ok<span class="br0">&#40;</span><span class="kw2">new</span>
+    <span class="br0">&#123;</span>
+      action <span class="sy0">=</span> <span class="st0">&quot;deleted&quot;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Parsing recurring series</h3>
+
+<p>A recurring event is stored in the database as a single record that can be splitted up by Scheduler on the client side.
+If you need to get dates of separate events on the server side, use a helper library for parsing recurring events of dhtmlxScheduler on ASP.NET. <br>
+You will find <a href="https://github.com/DHTMLX/scheduler-recurring-events-dotnet">the ready library on GitHub</a>.</p>
+
+<a name='errorhandling'><h2>Error handling</h2></a>
+
+<p><a href="https://msdn.microsoft.com/en-us/library/gg416513(v=vs.98).aspx">Exception filters</a> can be used for capturing exceptions in CRUD handlers and returning a client response that can be
+<a class="link-" href="server_integration.html#errorhandling">recognized</a> by the client-side scheduler.</p>
+
+<p>To provide error handling for the scheduler, follow the steps below:</p>
+
+<p>Go to <em>App_Start</em> and add a new class called <em>SchedulerAPIExceptionFilterAttribute</em>:</p>
+
+<p class='snippet'> App_Start/SchedulerAPIExceptionFilterAttribute.cs</p>
+
+<pre><code><pre class="js">using System<span class="sy0">;</span>
+using System.<span class="me1">Net</span><span class="sy0">;</span>
+using System.<span class="me1">Net</span>.<span class="me1">Http</span><span class="sy0">;</span>
+using System.<span class="me1">Web</span>.<span class="me1">Http</span>.<span class="me1">Filters</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">namespace</span> DHX.<span class="me1">Scheduler</span>.<span class="me1">Web</span>.<span class="me1">App_Start</span>
+<span class="br0">&#123;</span>
+ <span class="kw2">public</span> <span class="kw2">class</span> SchedulerAPIExceptionFilterAttribute <span class="sy0">:</span> ExceptionFilterAttribute
+  <span class="br0">&#123;</span>
+   <span class="kw2">public</span> override <span class="kw1">void</span> OnException<span class="br0">&#40;</span>HttpActionExecutedContext context<span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+      context.<span class="me1">Response</span> <span class="sy0">=</span> context.<span class="me1">Request</span>.<span class="me1">CreateResponse</span><span class="br0">&#40;</span>
+        HttpStatusCode.<span class="me1">InternalServerError</span><span class="sy0">,</span> <span class="kw2">new</span>
+        <span class="br0">&#123;</span>
+          action <span class="sy0">=</span> <span class="st0">&quot;error&quot;</span><span class="sy0">,</span>
+          message <span class="sy0">=</span> context.<span class="me1">Exception</span>.<span class="me1">Message</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Then we will add this class to our WebAPI controller (SchedulerController) as in:</p>
+
+<p class='snippet'> Controllers/SchedulerController.cs</p>
+
+<pre><code><pre class="js"><span class="kw2">namespace</span> DHX.<span class="me1">Scheduler</span>.<span class="me1">Web</span>.<span class="me1">Controllers</span>
+<span class="br0">&#123;</span>
+    <span class="br0">&#91;</span>SchedulerAPIExceptionFilter<span class="br0">&#93;</span>
+    <span class="kw2">public</span> <span class="kw2">class</span> SchedulerController <span class="sy0">:</span> ApiController
+    <span class="br0">&#123;</span></pre></code></pre>
+
+<p>Now if any Web API controller fires an exception while processing the request, the client side will receive an error status and an error message that can be either somehow processed or shown to the user.</p>
+
+<p>Note that returning an exception message to the client might not be the best idea for a production environment.</p>
+
+<a name='applicationsecurity'><h2>Application Security</h2></a>
+
+<p>Scheduler doesn't provide any means of preventing an application from various threats, such as SQL injections, XSS and CSRF attacks. The responsibility for keeping an application safe is on the developers who implement the backend. Read the details in the <a class="link-hidden" href="app_security.html">corresponding article</a>.</p>
+
+<h3>XSS protection</h3>
+
+<p>A simple solution would be to encode the text properties of data items when we send them to the client side.</p>
+
+<p>For example, in the below code a built-in HtmlEncoder is used to escape HTML values in the text of events. That way our database will contain unmodified data, but the client side will receive safe values of <code>event.text</code>.</p>
+
+<p class='snippet'> Model.WebAPIEvent.cs</p>
+
+<pre><code><pre class="js">using System.<span class="me1">Text</span>.<span class="me1">Encodings</span>.<span class="me1">Web</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">public</span> static explicit operator WebAPIEvent<span class="br0">&#40;</span>SchedulerEvent schedulerEvent<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+  <span class="kw1">return</span> <span class="kw2">new</span> WebAPIEvent
+    <span class="br0">&#123;</span>
+      id <span class="sy0">=</span> schedulerEvent.<span class="me1">Id</span><span class="sy0">,</span>
+      text <span class="sy0">=</span> HtmlEncoder.<span class="kw2">Default</span>.<span class="me1">Encode</span><span class="br0">&#40;</span>schedulerEvent.<span class="me1">Text</span><span class="br0">&#41;</span><span class="sy0">,</span>
+      start_date <span class="sy0">=</span> schedulerEvent.<span class="me1">StartDate</span>.<span class="me1">ToString</span><span class="br0">&#40;</span><span class="st0">&quot;yyyy-MM-dd HH:mm&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span>
+      end_date <span class="sy0">=</span> schedulerEvent.<span class="me1">EndDate</span>.<span class="me1">ToString</span><span class="br0">&#40;</span><span class="st0">&quot;yyyy-MM-dd HH:mm&quot;</span><span class="br0">&#41;</span>
+    <span class="br0">&#125;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Another approach would be to use a specialized library, e.g. <a href="https://html-agility-pack.net/">HtmlAgilityPack</a> and completely strip any HTML event when we save/load data.</p>
+
+<a name='troubleshooting'><h2>Troubleshooting</h2></a>
+
+<p>In case you've completed the above steps to implement Scheduler integration with ASP.NET MVC, but Scheduler doesn't render events on a page, have a look at the <a class="link-" href="troubleshooting.html">Troubleshooting Backend Integration Issues</a> article. 
+It describes the ways of identifying the roots of the problems.</p>
+
+<a name='whatsnext'><h2>What's next</h2></a>
+
+<p>Now you have a fully functioning Scheduler. You can view the full code on <a href="https://github.com/DHTMLX/scheduler-howto-dotnet">GitHub</a>, clone or download it and use it for your projects.</p>
+
+<p>You can also check <a class="link-" href="guides.html">guides on the numerous features of Scheduler</a> or <a class="link-" href="howtostart_guides.html">tutorials on integration of Scheduler with other backend frameworks</a>.</p>
+
+<!-- Content Area End -->
+			<a href='howtostart_dotnet.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

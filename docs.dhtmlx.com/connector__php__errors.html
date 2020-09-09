@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Error Handling and Logging  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="connector__php__reference.html">PHP Connector API</a></li><li class=""><a href="connector__php__general_idea.html">General Idea of dhtmlxConnector</a></li><li class=""><a href="connector__php__init.html">Initializing PHP Connector</a></li><li class=""><a href="connector__php__summarized_functionality.html">Components Functionality</a></li><li class=""><a href="connector__php__basis.html">Basic Loading</a></li><li class=""><a href="connector__php__dyn_loading.html">Dynamic Loading</a></li><li class=""><a href="connector__php__filtration.html">Filtering</a></li><li class=""><a href="connector__php__formatting.html">Formatting/Changing Data Before Loading</a></li><li class=""><a href="connector__php__sort.html">Sorting</a></li><li class=""><a href="connector__php__dp.html">Client-Side Requirement - DataProcessor</a></li><li class=""><a href="connector__php__complex_queries.html">Making Queries</a></li><li class=""><a href="connector__php__form_changes.html">Saving Data Changes Made in Form</a></li><li class=""><a href="connector__php__app_security.html">Security</a></li><li class=""><a href="connector__php__validation.html">Validation</a></li><li class=""><a href="connector__php__grid_data_export.html">Data Export</a></li><li class=""><a href="connector__php__db_operations.html">Elementary DB Operations with Connector</a></li><li class=" current"><a href="connector__php__errors.html">Error Handling and Logging</a></li><ul><li class="inner"><a href="connector__php__errors.html#serversidelogging">Server-side logging</a></li></ul><li class=""><a href="connector__php__event_handling.html">Handling Events</a></li><li class=""><a href="connector__php__extending.html">Extending Functionality</a></li><li class=""><a href="connector__php__frameworks.html">Using Connector with Popular Frameworks</a></li><li class=""><a href="connector__php__samples.html">Samples</a></li><li class=""><a href="connector__php__release_notes.html">Migration and New Functions</a></li><li class=""><a href="connector__php__coding_howtos.html">HowTos</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="connector__index.html">Client-Server Communication</a><a class="n3" href="connector__php__index.html">PHP Connector</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Error Handling and Logging</h1>
+
+<p>While developing we strongly recommend using logs for errors detection.</p>
+
+<a name='serversidelogging'><h2>Server-side logging</h2></a>
+
+<p>DHTMLX permits to control logging in two ways:</p>
+
+<ul>
+<li>Basic</li>
+<li>Detailed</li>
+</ul>
+
+<h3>Basic</h3>
+
+<p>If any error occurs during the data processing, the client-side data processor object 
+will receive the "error"  action containing short info about the problem 
+(full info will be written to the log).</p>
+
+<pre><code><pre class="php"><span class="re0">$conn</span><span class="sy0">-&gt;</span><span class="me1">enable_log</span><span class="br0">&#40;</span><span class="st0">&quot;path&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><em>path</em> - an absolute or relative path to the text file where a log will be written.</li>
+</ul>
+
+<h3>Detailed</h3>
+
+<p>When a critical error occurs all log records for the current session (full error info) will be sent to the client and shown in the browser (useful for debugging, not recommended for production):</p>
+
+<pre><code><pre class="php"><span class="re0">$conn</span><span class="sy0">-&gt;</span><span class="me1">enable_log</span><span class="br0">&#40;</span><span class="st0">&quot;path&quot;</span><span class="sy0">,</span><span class="kw4">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><em>path</em> - an absolute or relative path to the text file where a log will be written.</li>
+<li>The second parameter enables the detailed mode. </li>
+</ul>
+
+<h3>Adding custom records to the log</h3>
+
+<p>During the development process you may need to write some custom data to the log (can be useful for custom server-side events).</p>
+
+<p>To add a custom text or data to the log file:</p>
+
+<ul>
+<li>Activate logging (basic or detailed).</li>
+<li>Call the <em>log()</em> function with your data inside.</li>
+</ul>
+
+<pre><code><pre class="php"><span class="re0">$conn</span><span class="sy0">-&gt;</span><span class="me1">enable_log</span><span class="br0">&#40;</span><span class="st0">&quot;temp.log&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+LogMaster<span class="sy0">::</span><a href="http://www.php.net/log"><span class="kw3">log</span></a><span class="br0">&#40;</span><span class="st0">&quot;any text here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='connector__php__errors.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

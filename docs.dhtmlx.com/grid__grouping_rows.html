@@ -1,0 +1,316 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Grouping Data by Rows  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="grid__iterators.html">Iterating Over Data</a></li><li class=""><a href="grid__sorting.html">Sorting Data</a></li><li class=""><a href="grid__filtering.html">Filtering Data</a></li><li class=""><a href="grid__searching.html">Searching in Grid</a></li><li class=" current"><a href="grid__grouping_rows.html">Grouping Data by Rows</a></li><ul><li class="inner"><a href="grid__grouping_rows.html#commontechnique">Common technique</a></li><li class="inner"><a href="grid__grouping_rows.html#expandingcollapsingagroup">Expanding/collapsing a group</a></li><li class="inner"><a href="grid__grouping_rows.html#customizinggroupsummaryrowsbuiltinmath">Customizing group summary rows (built-in math)</a></li><li class="inner"><a href="grid__grouping_rows.html#groupiterator">Group iterator</a></li></ul><li class=""><a href="grid__formatting.html">Formatting Number and Date Values</a></li><li class=""><a href="grid__statistics_counter.html">Statistics Counters</a></li><li class=""><a href="grid__validation.html">Validating Data Items</a></li><li class=""><a href="grid__math.html">Using Math Formulas for Data</a></li><li class=""><a href="grid__clipboard.html">Clipboard Operations</a></li><li class=""><a href="grid__undo_redo.html">Providing Undo/Redo Operations</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__managing_data.html">Managing Data in Grid</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Grouping Data by Rows</h1>
+
+<p>In general, dhtmlxGrid displays data on the page without any grouping. <br>
+To change dhmlxGrid layout, you can group data by rows or by columns 
+(read the article <a class="link-" href="grid__grouping_columns.html">Grouping columns</a>).</p>
+
+<div class='note'><p><p>Grouping can't be used with the Paging and Smart Rendering data loading modes.</p>
+</p></div>
+
+<p>Grouping rows will produce the view where rows are filtered by the values of the specified column.</p>
+
+<p><img src='media/grid/grouping_rows_by_column.png'/></p>
+
+<ul>
+<li>The group summary rows shows the group key and the count of items in the group by default;</li>
+<li>Grouping doesn't require specific XML formatting;</li>
+<li>You can group/ungroup your grid and change the grouping parameters dynamically;</li>
+<li>If data in the column (the grid was grouped by) is changed, the rows automatically rearrange to fit the group;</li>
+<li>Groups can be expanded/collapsed programatically.</li>
+</ul>
+
+<a name='commontechnique'><h2>Common technique</h2></a>
+
+<p>Grouping is invoked by a simple command <a class="link-pro" href="api__dhtmlxgrid_groupby.html"><strong>groupBy(<em>col</em>)</strong></a>.</p>
+
+<ul>
+<li><strong><i>col</i></strong> is the index of a column (zero-based numbering) the grid will be grouped by;</li>
+<li>The method must be invoked only when all data is loaded;</li>
+<li>If the method is called several times with different parameters, data is grouped according to the last one called.</li>
+</ul>
+
+<p class='snippet'>
+Activating grouping rows in the grid
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">mygrid</span>.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;../common/grid.xml&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    mygrid.<span class="me1">groupBy</span><span class="br0">&#40;</span><span class="nu0">2</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">// the grid is grouped by the second column</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To ungroup a grid and bring the standard view back you should call the method <a class="link-pro" href="api__dhtmlxgrid_ungroup.html"><strong>unGroup()</strong></a>.</p>
+
+<p class='snippet'>
+Ungrouping the grid
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">mygrid</span>.<span class="me1">unGroup</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/07_extended_modes/01_pro_group.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Grouping rows by column</a></p>
+
+<a name='expandingcollapsingagroup'><h2>Expanding/collapsing a group</h2></a>
+
+<p>There are 4 methods that can be used in the mentioned context:</p>
+
+<ol>
+<li><strong>expandGroup()</strong> - expands a group with the specified key;</li>
+<li><strong>collapseGroup()</strong> - collapses a group with the specified key;</li>
+<li><strong>expandAllGroups()</strong> - expands all groups;</li>
+<li><strong>collapseAllGroups()</strong> - collapses all groups.</li>
+</ol>
+
+<pre><code><pre class="js">mygrid.<span class="me1">expandGroup</span><span class="br0">&#40;</span><span class="st0">'John Grisham'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">collapseGroup</span><span class="br0">&#40;</span><span class="st0">'Stephen King'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">expandAllGroups</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">collapseAllGroups</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='customizinggroupsummaryrowsbuiltinmath'><h2>Customizing group summary rows (built-in math)</h2></a>
+
+<p>You can customize the presentation of the group summary rows to meet your needs.</p>
+
+<p>There are 2 ways for this:</p>
+
+<ol>
+<li>To specify the mask of a row. In this case, each cell of the related column can show some aggregate value calculated over all the column values.</li>
+<li>To define a handler function. </li>
+</ol>
+
+<h3>Row mask</h3>
+
+<p><img src='media/grid/group_mask.png'/></p>
+
+<p>The mask for the summary rows is set through the second (optional) parameter of the <a class="link-pro" href="api__dhtmlxgrid_groupby.html"><strong>groupBy()</strong></a> method.
+It's an array, each item of which is mapped to the related column.</p>
+
+<p class='snippet'>
+Customizing the group summary rows through the row mask
+</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">groupBy</span><span class="br0">&#40;</span><span class="nu0">2</span><span class="sy0">,</span><span class="br0">&#91;</span><span class="st0">&quot;#stat_max&quot;</span><span class="sy0">,</span><span class="st0">&quot;#title&quot;</span><span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="sy0">,</span><span class="st0">&quot;#stat_total&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The possible aggregate shortcuts:</p>
+
+<ul>
+<li><strong>title</strong> - displayes the group key;</li>
+<li><strong>stat_total</strong> - calculates the total of values in a group;</li>
+<li><strong>stat_max</strong> - calculates the maximum value in a group;</li>
+<li><strong>stat_min</strong> - calculates the minimum value in a group;</li>
+<li><strong>stat_average</strong> - calculates the average value in a group;</li>
+<li><strong>stat_count</strong> - calculates the count of records in a group; </li>
+<li><strong>#cspan</strong> (or empty quotes '') - used to not present anything in a cell (both variants lead to one and the same effect). </li>
+</ul>
+
+<p>Note, the <strong>stat</strong>-based values are rendered using the same data type that is used in the related column.
+It allows using the <a class="link-pro" href="api__dhtmlxgrid_setnumberformat.html"><strong>setNumberFormat()</strong></a> method against them (when the source column is of the <strong>ron/edn</strong> type).</p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/07_extended_modes/02_pro_group_custom_format.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom group format</a></p>
+
+<h3>Handler function</h3>
+
+<p>To customize the group summary rows appearance you can define some handler function and apply it through the <strong>customGroupFormat</strong> property.</p>
+
+<p>The function takes 2 parameters:</p>
+
+<ul>
+<li><strong>name</strong> - (<em>string</em>) the group key;</li>
+<li><strong>count</strong> - (<em>number</em>) the number of rows in the group.</li>
+</ul>
+
+<p><img src='media/grid/custom_summary_row.png'/></p>
+
+<p class='snippet'>
+Customizing the group summary rows through a handler function
+</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">customGroupFormat</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="sy0">,</span>count<span class="br0">&#41;</span><span class="br0">&#123;</span>
+      <span class="kw1">return</span> <span class="kw3">name</span><span class="sy0">+</span><span class="st0">&quot; :: found &quot;</span> <span class="sy0">+</span>count<span class="sy0">+</span> <span class="st0">&quot; records&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+mygrid.<span class="me1">groupBy</span><span class="br0">&#40;</span><span class="nu0">2</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/07_extended_modes/02_pro_group_custom_format.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom group format</a></p>
+
+<h3>Using aggregate shortcuts in the handler function</h3>
+
+<p>Note, you can use the aggregation shortcuts in your handler function as well (see the list of such shortcuts in the chapter above). To use the shortcuts in the function,
+you should call the <a class="link-" href="api__dhtmlxgrid_groupstat.html">groupStat</a> method that returns the result of aggregation for a column and accepts the following parameters:</p>
+
+<ul>
+<li><strong>key</strong> -  the group key;</li>
+<li><strong>ind</strong> -  the column index (zero-based numbering);</li>
+<li><strong>item</strong> - the aggregation shortcut.</li>
+</ul>
+
+<p><img src='media/grid/custom_summary_row(2).png'/></p>
+
+<p class='snippet'>
+Using aggregate shortcuts in the handler function
+</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">customGroupFormat</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="sy0">,</span>count<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="kw3">name</span>
+    <span class="sy0">+</span><span class="st0">&quot;, Max sales=&quot;</span>
+    <span class="sy0">+</span>grid.<span class="me1">groupStat</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="sy0">,</span><span class="nu0">3</span><span class="sy0">,</span><span class="st0">&quot;stat_max&quot;</span><span class="br0">&#41;</span>
+    <span class="sy0">+</span><span class="st0">&quot;, total=&quot;</span>
+    <span class="sy0">+</span>grid.<span class="me1">groupStat</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="sy0">,</span><span class="nu0">3</span><span class="sy0">,</span><span class="st0">&quot;stat_total&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+mygrid.<span class="me1">groupBy</span><span class="br0">&#40;</span><span class="nu0">2</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/07_extended_modes/02_pro_group_custom_format.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom group format</a></p>
+
+<a name='groupiterator'><h2>Group iterator</h2></a>
+
+<p>The library provides a built-in iterator that can be used to iterate through all rows in some group and calculate a custom math.</p>
+
+<p class='snippet'>
+Using iterator for a group
+</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">forEachRowInGroup</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="br0">&#123;</span>
+       do_something_with_row<span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>where <strong>name</strong> is the group key (e.g. 'John Grisham').</p>
+
+<!-- Content Area End -->
+			<a href='grid__grouping_rows.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

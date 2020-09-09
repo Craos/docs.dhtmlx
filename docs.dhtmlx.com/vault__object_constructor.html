@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1546520180.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1546520180.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Initializing Vault  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');   ga('create', 'UA-11031269-1', 'auto'); ga('send', 'pageview');</script><!-- Yandex.Metrika counter --><script type='text/javascript'>(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter22235746 = new Ya.Metrika({id:22235746, clickmap:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName('script')[0], s = d.createElement('script'), f = function () { n.parentNode.insertBefore(s, n); }; s.type = 'text/javascript'; s.async = true; s.src = (d.location.protocol == 'https:' ? 'https:' : 'http:') + '//mc.yandex.ru/metrika/watch.js'; if (w.opera == '[object Opera]') { d.addEventListener('DOMContentLoaded', f, false); } else { f(); } })(document, window, 'yandex_metrika_callbacks');</script><noscript><div><img src='https://mc.yandex.ru/watch/22235746' style='position:absolute; left:-9999px;' alt='' /></div></noscript>
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='http://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="http://dhtmlx.com/docs/products/docsExplorer/samples.shtml">Samples</a>
+				<a href="http://forum.dhtmlx.com/">Forum</a>
+				<a href="http://support.dhtmlx.com/">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxvault.html">dhtmlXVault API</a></li><li class=" current"><a href="vault__object_constructor.html">Initializing Vault</a></li><li class=""><a href="vault__server_side_integration.html">Server-Side PHP Example</a></li><li class=""><a href="vault__loading_files.html">Loading List of Files</a></li><li class=""><a href="vault__managing_files.html">Managing the Files to Upload</a></li><li class=""><a href="vault__integration.html">Integrating with DHTMLX</a></li><li class=""><a href="vault__skin.html">Skinning dhtmlxVault</a></li><li class=""><a href="vault__localization.html">Localizing dhtmlxVault</a></li><li class=""><a href="vault__icons.html">Customizing Icons</a></li><li class=""><a href="vault__whatsnew.html">dhtmlxVault What's New</a></li><li class=""><a href="vault__migrating.html">Migrating from 1.7 to 2.0</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="vault__index.html">Vault</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Initializing Vault</h1>
+
+<div class='note'><p><p>This documentation is for Vault v2.5. Please go to <a href="vault/index.html">docs.dhtmlx.com/vault/</a> to see documentation for the current version of dhtmlxVault.</p>
+</p></div>
+
+<p>Firstly, you need to include dhtmlxVault source files on the page:</p>
+
+<ul>
+<li>dhtmlxvault.js</li>
+<li>dhtmlxvault.css</li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;dhtmlxvault.css&quot;</span><span class="sy0">/</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;dhtmlxvault.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+    ...
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+<p>Then define a container to place the file uploader into:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;vaultObj&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width:400px; height:250px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+<p>Finally, create a dhtmlxVaultObject instance:</p>
+
+<pre><code><pre class="js"><span class="co1">// init on object on page</span>
+<span class="kw2">var</span> myVault <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXVaultObject<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    container<span class="sy0">:</span>  <span class="st0">&quot;vaultObj&quot;</span><span class="sy0">,</span>             <span class="co1">// html container for vault</span>
+    uploadUrl<span class="sy0">:</span>  <span class="st0">&quot;server.php&quot;</span><span class="sy0">,</span>           <span class="co1">// html4/html5 upload url</span>
+    swfPath<span class="sy0">:</span>    <span class="st0">&quot;dhxvault.swf&quot;</span><span class="sy0">,</span>         <span class="co1">// path to flash uploader</span>
+    swfUrl<span class="sy0">:</span>     <span class="st0">&quot;server.php&quot;</span><span class="sy0">,</span>           <span class="co1">// flash upload url</span>
+    slXap<span class="sy0">:</span>      <span class="st0">&quot;dhxvault.xap&quot;</span><span class="sy0">,</span>         <span class="co1">// path to silverlight uploader</span>
+    slUrl<span class="sy0">:</span>      <span class="st0">&quot;http://.../server.php&quot;</span> <span class="co1">// silverlight upload url, FULL path required</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>You can also attach vault to any container component (like window, layout)</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myLayout <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXLayoutObject<span class="br0">&#40;</span><span class="st0">&quot;parentId&quot;</span><span class="sy0">,</span> <span class="st0">&quot;2E&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> myVault <span class="sy0">=</span> myLayout.<span class="me1">cells</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">attachVault</span><span class="br0">&#40;</span>conf<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>param <strong>conf</strong> - object with the following keys:</p>
+
+<table cellspacing='0' class='apitable t3col'><tr class=''><td class='pname'> uploadUrl</div><td class='ptype'>string</td><td>path to server script for html5/html4 modes</td></tr><tr class=''><td class='pname'> swfPath</div><td class='ptype'>string</td><td>path to uploader.swf file<sup class="remarks">1)</sup></td></tr><tr class=''><td class='pname'> swfUrl</div><td class='ptype'>string</td><td>path to the server script for flash mode (relative to dhxvault.swf)</td></tr><tr class=''><td class='pname'> slXap</div><td class='ptype'>string</td><td>path to dhxvault.xap file (full path is required, i.e. including http://host.. )</td></tr><tr class=''><td class='pname'> slUrl</div><td class='ptype'>string</td><td>path to server script for sl mode (full path is required, i.e. http://.../server.php)</td></tr></table>
+
+<p>there are also several optional keys:</p>
+
+<table cellspacing='0' class='apitable t3col'><tr class=''><td class='pname'> skin</div><td class='ptype'>string</td><td>sets the skin, dhx_skyblue (default), dhx_web or dhx_terrace</td></tr><tr class=''><td class='pname'> autoStart</div><td class='ptype'>boolean</td><td>enables automatic uploading right after a file has been added</td></tr><tr class=''><td class='pname'> autoRemove</div><td class='ptype'>boolean</td><td>enables automatic removing of files right after uploading has been completed</td></tr><tr class=''><td class='pname'> buttonUpload</div><td class='ptype'>boolean</td><td>shows/hides the "Upload"/"Stop" button</td></tr><tr class=''><td class='pname'> buttonClear</div><td class='ptype'>boolean</td><td>shows/hides the "Clear all" button</td></tr><tr class=''><td class='pname'> filesLimit</div><td class='ptype'>number</td><td>sets the maximum number of files allowed to be added</td></tr><tr class=''><td class='pname'> paramName</div><td class='ptype'>string</td><td>optional, changes file's param name in request, 'file' is default</td></tr><tr class=''><td class='pname'> multiple</div><td class='ptype'>boolean</td><td>optional, set to false to disable multiple file selection</td></tr><tr class=''><td class='pname'> maxFileSize</div><td class='ptype'>number</td><td>optional, sets max file size allowed on the server <sup class="remarks">2)</sup></td></tr></table>
+
+<p>1) Path to swfUrl should be relative to swfPath. But in IE browsers
+depending on Flash Player version installed,  swfUrl is set relatively
+to the 'index.html' file. <br> 
+So, we recommend to keep swf-file in the same folder that the 'index.html' file
+is located, to make path relative both to 'index.html' and swfUrl.
+By 'index.html' file we mean an HTML file where vault init code called.</p>
+
+<p>2) Vault also makes a try to load maxFileSize from server with request to uploadUrl and mode=conf params.<br>
+Server may return {maxFileSize: 1234567} response or may not.<br>
+If maxFileSize was not set via config on init stage and server returned valid numeric maxFileSize greater than zero
+in conf-response, vault will use maxFileSize returned by conf-response.</p>
+
+<!-- Content Area End -->
+			<a href='vault__object_constructor.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

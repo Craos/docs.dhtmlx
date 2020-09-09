@@ -1,0 +1,294 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Common Templates  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="day_view_templates.html">Day View Templates</a></li><li class=""><a href="month_view_templates.html">Month View Templates</a></li><li class=""><a href="week_view_templates.html">Week View Templates</a></li><li class=""><a href="agenda_view_templates.html">Agenda View Templates</a></li><li class=""><a href="grid_view_templates.html">Grid View Templates</a></li><li class=""><a href="map_view_templates.html">Map View Templates</a></li><li class=""><a href="timeline_view_templates.html">Timeline View Templates</a></li><li class=""><a href="weekagenda_view_templates.html">WeekAgenda View Templates</a></li><li class=""><a href="units_view_templates.html">Units View Templates</a></li><li class=""><a href="year_view_templates.html">Year View Templates</a></li><li class=""><a href="mini_calendar_templates.html">Mini Calendar Templates</a></li><li class=" current"><a href="common_templates.html">Common Templates</a></li><ul><li class="inner"><a href="common_templates.html#events">Events</a></li><li class="inner"><a href="common_templates.html#lightbox">Lightbox</a></li><li class="inner"><a href="common_templates.html#touchsupport">Touch support</a></li><li class="inner"><a href="common_templates.html#tooltips">Tooltips</a></li><li class="inner"><a href="common_templates.html#apitemplates">API templates</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="appearance_and_styling.html">Appearance and Styling</a><a class="n4" href="templates.html">Formatting Labels, Dates, Styles</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Common Templates</h1>
+
+<p>In this article you will find descriptions of templates which are common for all views.
+To get full information about a template, follow the corresponding link.</p>
+
+<a name='events'><h2>Events</h2></a>
+
+<p>You can customize the event's text and color with the help of templates. The details are given in the articles:</p>
+
+<ul>
+<li><a class="link-" href="custom_events_content.html">Custom Event's Content</a></li>
+<li><a class="link-" href="custom_events_color.html#attachingadditionalcssclassestoanevent">Custom Event's Color</a></li>
+</ul>
+
+<a name='lightbox'><h2>Lightbox</h2></a>
+
+<p><img src="media/api/lightbox_templates.png"/></p>
+
+<ul>
+<li><p><a class="link-" href="api__scheduler_time_picker_template.html">time_picker</a> - the drop-down time selector in the lightbox</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">time_picker</span> <span class="sy0">=</span> 
+scheduler.<span class="me1">date</span>.<span class="me1">date_to_str</span><span class="br0">&#40;</span>scheduler.<span class="me1">config</span>.<span class="me1">hour_date</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre></li>
+<li><p><a class="link-" href="api__scheduler_lightbox_header_template.html">lightbox_header</a> - the lightbox header</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">lightbox_header</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span>end<span class="sy0">,</span>ev<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> scheduler.<span class="me1">templates</span>.<span class="me1">event_header</span><span class="br0">&#40;</span>ev.<span class="me1">start_date</span><span class="sy0">,</span>ev.<span class="me1">end_date</span><span class="sy0">,</span>ev<span class="br0">&#41;</span> 
+    <span class="sy0">+</span> scheduler.<span class="me1">templates</span>.<span class="me1">event_bar_text</span><span class="br0">&#40;</span>ev.<span class="me1">start_date</span><span class="sy0">,</span>ev.<span class="me1">end_date</span><span class="sy0">,</span>ev<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>where:</p>
+
+<p><strong>start</strong>   - (Date) the date when an event is scheduled to begin<br>
+<strong>end</strong> - (Date) the date when an event is scheduled to be completed<br>
+<strong>event</strong> - (object) the event object</p></li>
+<li><p><a class="link-" href="api__scheduler_event_date_template.html">event_date</a> - specifies the time part of the start and end dates of the event. Mostly used by other templates for presenting time periods</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">event_date</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> formatFunc <span class="sy0">=</span> scheduler.<span class="me1">date</span>.<span class="me1">date_to_str</span><span class="br0">&#40;</span>scheduler.<span class="me1">config</span>.<span class="me1">hour_date</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> formatFunc<span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>where:</p>
+
+<p><strong>date</strong> -  (Date) the date which needs formatting</p></li>
+</ul>
+
+<a name='touchsupport'><h2>Touch support</h2></a>
+
+<p>The library has a 'quick info' extension to provide <a class="link-" href="touch_support.html">the touch support in the scheduler</a>.<br> The extension supplies 3 templates:</p>
+
+<p><img src="media/api/touch_templates.png"/></p>
+
+<ul>
+<li><p><a class="link-" href="api__scheduler_quick_info_content_template.html">quick_info_content</a> - the content of the pop-up edit form</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">quick_info_content</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> ev<span class="br0">&#41;</span><span class="br0">&#123;</span> 
+    <span class="kw1">return</span> ev.<span class="me1">details</span> <span class="sy0">||</span> ev.<span class="me1">text</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre></li>
+<li><p><a class="link-" href="api__scheduler_quick_info_date_template.html">quick_info_date</a> - the date of the pop-up edit form</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">quick_info_date</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> ev<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>scheduler.<span class="me1">isOneDayEvent</span><span class="br0">&#40;</span>ev<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">return</span> scheduler.<span class="me1">templates</span>.<span class="me1">day_date</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> ev<span class="br0">&#41;</span> <span class="sy0">+</span> <span class="st0">&quot; &quot;</span> <span class="sy0">+</span>
+            scheduler.<span class="me1">templates</span>.<span class="me1">event_header</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> ev<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="kw1">else</span><span class="br0">&#123;</span>
+        <span class="kw1">return</span> scheduler.<span class="me1">templates</span>.<span class="me1">week_date</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> ev<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre></li>
+<li><p><a class="link-" href="api__scheduler_quick_info_title_template.html">quick_info_title</a> - the title of the pop-up edit form</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">quick_info_title</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> ev<span class="br0">&#41;</span><span class="br0">&#123;</span> 
+    <span class="kw1">return</span> ev.<span class="me1">text</span>.<span class="me1">substr</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="sy0">,</span><span class="nu0">50</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Parameters for touch support templates:</p>
+
+<p><strong>start</strong> - (Date) the date when an event is scheduled to begin <br>
+<strong>end</strong> - (Date) the date when an event is scheduled to be completed <br>
+<strong>event</strong> - (object) the event object</p></li>
+</ul>
+
+<a name='tooltips'><h2>Tooltips</h2></a>
+
+<p>You have the possibility to create tooltips over events, regardless of the type of a view. 
+This can be used to display additional event information, without the need of 'opening' the event.</p>
+
+<p>To take the possibility, include the tooltip extension file (<strong>ext/dhtmlxScheduler_tooltip.js</strong>) on the page.</p>
+
+<p><img src="media/api/tooltip_templates.png"/></p>
+
+<ul>
+<li><p><a class="link-" href="api__scheduler_tooltip_date_format_template.html">tooltip_date_format</a> - the format of start and end dates used by the <a class="link-" href="api__scheduler_tooltip_text_template.html">tooltip_text</a> template</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">tooltip_date_format</span><span class="sy0">=</span><span class="kw2">function</span> <span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> formatFunc <span class="sy0">=</span> scheduler.<span class="me1">date</span>.<span class="me1">date_to_str</span><span class="br0">&#40;</span><span class="st0">&quot;%Y-%m-%d %H:%i&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> formatFunc<span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>where:</p>
+
+<p><strong>date</strong> -  (Date) the date which needs formatting</p></li>
+<li><p><a class="link-" href="api__scheduler_tooltip_text_template.html">tooltip_text</a> - the text of tooltips</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">tooltip_text</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span>end<span class="sy0">,</span>ev<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&lt;b&gt;Event:&lt;/b&gt; &quot;</span><span class="sy0">+</span>ev.<span class="me1">text</span><span class="sy0">+</span><span class="st0">&quot;&lt;br/&gt;&lt;b&gt;Start date:&lt;/b&gt; &quot;</span> <span class="sy0">+</span> 
+    scheduler.<span class="me1">templates</span>.<span class="me1">tooltip_date_format</span><span class="br0">&#40;</span>start<span class="br0">&#41;</span><span class="sy0">+</span> 
+    <span class="st0">&quot;&lt;br/&gt;&lt;b&gt;End date:&lt;/b&gt; &quot;</span><span class="sy0">+</span>scheduler.<span class="me1">templates</span>.<span class="me1">tooltip_date_format</span><span class="br0">&#40;</span>end<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>where:</p>
+
+<p><strong>start</strong> - (Date) the date when an event is scheduled to begin <br>
+<strong>end</strong> - (Date) the date when an event is scheduled to be completed <br>
+<strong>event</strong> - (object) the event object</p></li>
+</ul>
+
+<a name='apitemplates'><h2>API templates</h2></a>
+
+<ul>
+<li><p><a class="link-" href="api__scheduler_api_date_template.html">api_date</a> - the format for dates that are set by means of API methods. Used to parse incoming dates</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">api_date</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> scheduler.<span class="me1">date</span>.<span class="me1">str_to_date</span><span class="br0">&#40;</span>scheduler.<span class="me1">config</span>.<span class="me1">api_date</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre></li>
+<li><p><a class="link-" href="api__scheduler_load_format_template.html">load_format</a> - the format of requests in the dynamic loading mode</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">load_format</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> dateToStr_func <span class="sy0">=</span> scheduler.<span class="me1">date</span>.<span class="me1">date_to_str</span><span class="br0">&#40;</span>scheduler.<span class="me1">config</span>.<span class="me1">load_date</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span>  dateToStr_func<span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre></li>
+<li><p><a class="link-" href="api__scheduler_parse_date_template.html">parse_date</a> - a string from an XML file is converted into a date object in conformity with this template</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> cfg <span class="sy0">=</span> scheduler.<span class="me1">config</span><span class="sy0">;</span>
+<span class="kw2">var</span> strToDate <span class="sy0">=</span> scheduler.<span class="me1">date</span>.<span class="me1">str_to_date</span><span class="br0">&#40;</span>cfg.<span class="me1">date_format</span><span class="sy0">,</span> cfg.<span class="me1">server_utc</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+scheduler.<span class="me1">templates</span>.<span class="me1">parse_date</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> strToDate <span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre></li>
+<li><p><a class="link-" href="api__scheduler_format_date_template.html">format_date</a> - a date object is converted into a string, in conformity with this template. Used to send data back to the server</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dateToStr <span class="sy0">=</span> scheduler.<span class="me1">date</span>.<span class="me1">date_to_str</span><span class="br0">&#40;</span><span class="st0">&quot;%Y-%m-%d %H:%i&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">templates</span>.<span class="me1">format_date</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> dateToStr <span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Parameter for the listed API templates:</p>
+
+<p><strong>date</strong> -  (Date) the date which needs formatting</p></li>
+<li><p><strong>scheduler.templates.{viewName}_date</strong> - specifies the date in the header of the view<br>
+Depending on the view type, the template function takes as parameters either: <br></p>
+
+<p><strong>date</strong> - (Date) the date which needs formatting (for Day, Month, Year, Units views and Mini Calendar):</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">day_date</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> formatFunc <span class="sy0">=</span> scheduler.<span class="me1">date</span>.<span class="me1">date_to_str</span><span class="br0">&#40;</span>scheduler.<span class="me1">config</span>.<span class="me1">default_date</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> formatFunc<span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>or:</p>
+
+<p><strong>start</strong> - (Date) the start date of the view<br><strong>end</strong> - (Date) the end date of the view<br>
+(for Week, Agenda, Grid, Map and Timeline views):</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">week_date</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> scheduler.<span class="me1">templates</span>.<span class="me1">day_date</span><span class="br0">&#40;</span>start<span class="br0">&#41;</span><span class="sy0">+</span><span class="st0">&quot; &amp;ndash; &quot;</span><span class="sy0">+</span>
+    scheduler.<span class="me1">templates</span>.<span class="me1">day_date</span><span class="br0">&#40;</span>scheduler.<span class="me1">date</span>.<span class="me1">add</span><span class="br0">&#40;</span>end<span class="sy0">,-</span><span class="nu0">1</span><span class="sy0">,</span><span class="st0">&quot;day&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre></li>
+<li><p><strong>scheduler.templates.{viewName}_scale_date</strong> - specifies the date of a day cell of the view 
+(the items of the X-Axis for Timeline view, the day name in the week sub-header of the Mini Calendar)</p>
+
+<p>Used in Day, Week, Year, Timeline views and Mini Calendar</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">day_scale_date</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> scheduler.<span class="me1">date</span>.<span class="me1">date_to_str</span><span class="br0">&#40;</span>scheduler.<span class="me1">config</span>.<span class="me1">default_date</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>where:</p>
+
+<p><strong>date</strong> - (Date) the date which needs formatting</p></li>
+</ul>
+
+<!-- Content Area End -->
+			<a href='common_templates.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

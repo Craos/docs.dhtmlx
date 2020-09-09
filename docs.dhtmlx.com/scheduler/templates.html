@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Formatting Labels, Dates, Styles  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="skins.html">Skins</a></li><li class=" current"><a href="templates.html">Formatting Labels, Dates, Styles</a></li><ul><li class="inner"><a href="templates.html#specifyingtemplates">Specifying Templates</a></li><li><a href="day_view_templates.html">Day View Templates</a></li><li><a href="month_view_templates.html">Month View Templates</a></li><li><a href="week_view_templates.html">Week View Templates</a></li><li><a href="agenda_view_templates.html">Agenda View Templates</a></li><li><a href="grid_view_templates.html">Grid View Templates</a></li><li><a href="map_view_templates.html">Map View Templates</a></li><li><a href="timeline_view_templates.html">Timeline View Templates</a></li><li><a href="weekagenda_view_templates.html">WeekAgenda View Templates</a></li><li><a href="units_view_templates.html">Units View Templates</a></li><li><a href="year_view_templates.html">Year View Templates</a></li><li><a href="mini_calendar_templates.html">Mini Calendar Templates</a></li><li><a href="common_templates.html">Common Templates</a></li></ul><li class=""><a href="custom_skins.html">Skins Customization</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="appearance_and_styling.html">Appearance and Styling</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Formatting Labels, Dates, Styles</h1>
+
+<p>Follow the link of a view to see templates supported by it.</p>
+
+<h3>Default views</h3>
+
+<ul>
+<li><a class="link-" href="day_view_templates.html">Day View Templates</a></li>
+<li><a class="link-" href="month_view_templates.html">Month View Templates</a></li>
+<li><a class="link-" href="week_view_templates.html">Week View Templates</a></li>
+</ul>
+
+<h3>Extension views</h3>
+
+<ul>
+<li><a class="link-" href="agenda_view_templates.html">Agenda View Templates</a></li>
+<li><a class="link-" href="grid_view_templates.html">Grid View Templates</a></li>
+<li><a class="link-" href="map_view_templates.html">Map View Templates</a></li>
+<li><a class="link-" href="timeline_view_templates.html">Timeline View Templates</a></li>
+<li><a class="link-" href="weekagenda_view_templates.html">WeekAgenda View Templates</a></li>
+<li><a class="link-" href="units_view_templates.html">Units View Templates</a></li>
+<li><a class="link-" href="year_view_templates.html">Year View Templates</a></li>
+</ul>
+
+<h3>Common for all views</h3>
+
+<ul>
+<li><a class="link-" href="mini_calendar_templates.html">Mini Calendar Templates</a></li>
+<li><a class="link-" href="common_templates.html#lightbox">Lightbox</a></li>
+<li><a class="link-" href="common_templates.html#tooltips">Tooltips</a></li>
+<li><a class="link-" href="common_templates.html#touch_support">Touch support</a></li>
+<li><a class="link-" href="common_templates.html#api_templates">API templates</a></li>
+</ul>
+
+<a name='specifyingtemplates'><h2>Specifying Templates</h2></a>
+
+<p>You can set templates in 2 ways: either from the code or from the HTML markup.</p>
+
+<h3>Specifying templates with code</h3>
+
+<p>By default, templates can be defined as JS functions which take the event object or date arguments and must return an HTML string that will be inserted in the layout:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">event_text</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> event<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&lt;a href='http://some.com/details.php?for=&quot;</span><span class="sy0">+</span>event.<span class="me1">id</span><span class="sy0">+</span><span class="st0">&quot;'&gt;&quot;</span>
+    <span class="sy0">+</span>event.<span class="me1">text</span><span class="sy0">+</span><span class="st0">&quot;&lt;/a&gt;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Specifying templates via markup</h3>
+
+<p>Alternatively, templates can be defined in the declarative way from HTML. This approach requires adding the <em>ext/dhtmlxscheduler_html_templates.js</em> extension to the page.
+Once you've included the extension file on the page, you may specify templates as in:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;template:event_text&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">a</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">'http://some.com/details.php?for={event.id}'</span>&gt;</span>{event.text}<span class="sc2">&lt;<span class="kw2">a</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+<p>The complete list of templates can be found <a class="link-" href="api__refs__scheduler_templates.html">in the API</a>.</p>
+
+<!-- Content Area End -->
+			<a href='templates.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

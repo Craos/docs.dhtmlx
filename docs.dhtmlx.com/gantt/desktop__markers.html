@@ -1,0 +1,238 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Adding Vertical Markers  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__configuring_time_scale.html">Setting up Scale</a></li><li class=""><a href="desktop__zooming.html">Zooming</a></li><li class=""><a href="desktop__highlighting_time_slots.html">Highlighting  Time Slots</a></li><li class="toc-deprecated"><a href="desktop__second_scale.html">Adding Second Scale(s)</a></li><li class=""><a href="desktop__dynamic_scale.html">Dynamic Change of Scale Settings</a></li><li class="toc-pro"><a href="desktop__custom_scale.html">Hiding Time Units in the Scale</a></li><li class=" current"><a href="desktop__markers.html">Adding Vertical Markers</a></li><ul><li class="inner"><a href="desktop__markers.html#addingamarker">Adding a marker</a></li><li class="inner"><a href="desktop__markers.html#removingamarker">Removing a marker</a></li><li class="inner"><a href="desktop__markers.html#hidingmarkers">Hiding markers</a></li><li class="inner"><a href="desktop__markers.html#updatingamarker">Updating a marker</a></li><li class="inner"><a href="desktop__markers.html#stylingmarkers">Styling markers</a></li><li class="inner"><a href="desktop__markers.html#todaysmarker">Today's marker</a></li></ul><li class=""><a href="desktop__rtl_mode.html">RTL (Right-to-left) Mode</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__time_scale.html">Configuring Scales</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Adding Vertical Markers</h1>
+
+<p>The library provides the <strong>marker.js</strong> extension that allows you to mark (highlight) certain dates or date ranges.</p>
+
+<div style="text-align:center;"><img src="media/desktop/today_marker.png"/></div>
+
+<div class='note'><p><p>To start using the extension, enable the <strong>marker</strong> plugin using the <a class="link-" href="api__gantt_plugins.html">gantt.plugins</a> method.</p>
+</p></div>
+
+<pre><code><pre class="js"><span class="sy0">&lt;!</span>DOCTYPE html<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>html<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>head<span class="sy0">&gt;</span>
+   <span class="sy0">&lt;</span>script src<span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlxgantt.js&quot;</span><span class="sy0">&gt;&lt;/</span>script<span class="sy0">&gt;</span>   
+   <span class="sy0">&lt;</span>link href<span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlxgantt.css&quot;</span> rel<span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span><span class="sy0">&gt;</span>   
+<span class="sy0">&lt;/</span>head<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>body<span class="sy0">&gt;</span>
+<span class="xtra ln-xtra">    gantt.<span class="me1">plugins</span><span class="br0">&#40;</span><span class="br0">&#123;</span> </span><span class="xtra ln-xtra">        marker<span class="sy0">:</span> <span class="kw2">true</span> </span><span class="xtra ln-xtra">    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>    <span class="co1">//your code will be here</span>
+<span class="sy0">&lt;/</span>body<span class="sy0">&gt;</span>
+<span class="sy0">&lt;/</span>html<span class="sy0">&gt;</span></pre></code></pre>
+
+<p><a href='samples/02_extensions/05_today_line.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Today and Status lines in Gantt</a></p>
+
+<a name='addingamarker'><h2>Adding a marker</h2></a>
+
+<p>To add a marker to the timeline area, e.g. the today's marker, call the <a class="link-" href="api__gantt_addmarker.html">addMarker</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dateToStr <span class="sy0">=</span> gantt.<span class="me1">date</span>.<span class="me1">date_to_str</span><span class="br0">&#40;</span>gantt.<span class="me1">config</span>.<span class="me1">task_date</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> markerId <span class="sy0">=</span> gantt.<span class="me1">addMarker</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    start_date<span class="sy0">:</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="co1">//a Date object that sets the marker's date</span>
+    css<span class="sy0">:</span> <span class="st0">&quot;today&quot;</span><span class="sy0">,</span> <span class="co1">//a CSS class applied to the marker</span>
+    text<span class="sy0">:</span> <span class="st0">&quot;Now&quot;</span><span class="sy0">,</span> <span class="co1">//the marker title</span>
+    title<span class="sy0">:</span> dateToStr<span class="br0">&#40;</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="co1">// the marker's tooltip</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_extensions/05_today_line.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Today and Status lines in Gantt</a></p>
+
+<div class='note'><p><p>Note, as the value of the 'text' property, the method can take any HTML</p>
+</p></div>
+
+<p>To get an object of the added marker, use the <a class="link-" href="api__gantt_getmarker.html">getMarker</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dateToStr <span class="sy0">=</span> gantt.<span class="me1">date</span>.<span class="me1">date_to_str</span><span class="br0">&#40;</span>gantt.<span class="me1">config</span>.<span class="me1">task_date</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra"><span class="kw2">var</span> markerId <span class="sy0">=</span> gantt.<span class="me1">addMarker</span><span class="br0">&#40;</span><span class="br0">&#123;</span>  </span>    start_date<span class="sy0">:</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span> 
+    css<span class="sy0">:</span> <span class="st0">&quot;today&quot;</span><span class="sy0">,</span> 
+    text<span class="sy0">:</span> <span class="st0">&quot;Now&quot;</span><span class="sy0">,</span> 
+    title<span class="sy0">:</span> dateToStr<span class="br0">&#40;</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span> 
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">getMarker</span><span class="br0">&#40;</span>markerId<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//-&gt;{css:&quot;today&quot;, text:&quot;Now&quot;, id:...}</span></pre></code></pre>
+
+<p><a href='samples/02_extensions/05_today_line.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Today and Status lines in Gantt</a></p>
+
+<a name='removingamarker'><h2>Removing a marker</h2></a>
+
+<p>To remove once added marker, use the <a class="link-" href="api__gantt_deletemarker.html">deleteMarker</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dateToStr <span class="sy0">=</span> gantt.<span class="me1">date</span>.<span class="me1">date_to_str</span><span class="br0">&#40;</span>gantt.<span class="me1">config</span>.<span class="me1">task_date</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra"><span class="kw2">var</span> markerId <span class="sy0">=</span> gantt.<span class="me1">addMarker</span><span class="br0">&#40;</span><span class="br0">&#123;</span>  </span>    start_date<span class="sy0">:</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span> 
+    css<span class="sy0">:</span> <span class="st0">&quot;today&quot;</span><span class="sy0">,</span> 
+    text<span class="sy0">:</span> <span class="st0">&quot;Now&quot;</span><span class="sy0">,</span> 
+    title<span class="sy0">:</span> dateToStr<span class="br0">&#40;</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span> 
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra">gantt.<span class="me1">deleteMarker</span><span class="br0">&#40;</span>markerId<span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<a name='hidingmarkers'><h2>Hiding markers</h2></a>
+
+<p>To hide all added markers, set the <a class="link-pro" href="api__gantt_show_markers_config.html">show_markers</a> configuration option to 'false':</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> marker1 <span class="sy0">=</span> gantt.<span class="me1">addMarker</span><span class="br0">&#40;</span><span class="br0">&#123;</span> ...<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="kw2">var</span> marker2 <span class="sy0">=</span> gantt.<span class="me1">addMarker</span><span class="br0">&#40;</span><span class="br0">&#123;</span> ...<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="kw2">var</span> marker3 <span class="sy0">=</span> gantt.<span class="me1">addMarker</span><span class="br0">&#40;</span><span class="br0">&#123;</span> ...<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+&nbsp;
+gantt.<span class="me1">config</span>.<span class="me1">show_markers</span> <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span><span class="co1">// hides all 3 markers</span></pre></code></pre>
+
+<a name='updatingamarker'><h2>Updating a marker</h2></a>
+
+<p>To update a marker, use the  <a class="link-" href="api__gantt_updatemarker.html">updateMarker</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dateToStr <span class="sy0">=</span> gantt.<span class="me1">date</span>.<span class="me1">date_to_str</span><span class="br0">&#40;</span>gantt.<span class="me1">config</span>.<span class="me1">task_date</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra"><span class="kw2">var</span> markerId <span class="sy0">=</span> gantt.<span class="me1">addMarker</span><span class="br0">&#40;</span><span class="br0">&#123;</span>  </span>    start_date<span class="sy0">:</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span> 
+    css<span class="sy0">:</span> <span class="st0">&quot;today&quot;</span><span class="sy0">,</span> 
+    text<span class="sy0">:</span> <span class="st0">&quot;Now&quot;</span><span class="sy0">,</span> 
+    title<span class="sy0">:</span> dateToStr<span class="br0">&#40;</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span> 
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">getMarker</span><span class="br0">&#40;</span>markerId<span class="br0">&#41;</span>.<span class="me1">css</span> <span class="sy0">=</span> <span class="st0">&quot;today_new&quot;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">gantt.<span class="me1">updateMarker</span><span class="br0">&#40;</span>markerId<span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p>To update all added markers, use the    <a class="link-" href="api__gantt_rendermarkers.html">renderMarkers</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> marker1 <span class="sy0">=</span> gantt.<span class="me1">addMarker</span><span class="br0">&#40;</span><span class="br0">&#123;</span> ...<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="kw2">var</span> marker2 <span class="sy0">=</span> gantt.<span class="me1">addMarker</span><span class="br0">&#40;</span><span class="br0">&#123;</span> ...<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="kw2">var</span> marker3 <span class="sy0">=</span> gantt.<span class="me1">addMarker</span><span class="br0">&#40;</span><span class="br0">&#123;</span> ...<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+&nbsp;
+<span class="xtra ln-xtra">gantt.<span class="me1">renderMarkers</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<a name='stylingmarkers'><h2>Styling markers</h2></a>
+
+<p>To style markers, use the <strong>gantt.templates.marker_class</strong> template:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> showAdvancedMarkers<span class="sy0">;</span>
+gantt.<span class="me1">templates</span>.<span class="me1">marker_class</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>marker<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>showAdvancedMarkers<span class="br0">&#41;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;advanced_marker&quot;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;hidden&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='todaysmarker'><h2>Today's marker</h2></a>
+
+<p>Let's assume that you want to have the today's marker in your Gantt chart. In this case you need both: to add a marker on the page and to provide a function that will move the marker as the time changes. You can do this with the following code:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dateToStr <span class="sy0">=</span> gantt.<span class="me1">date</span>.<span class="me1">date_to_str</span><span class="br0">&#40;</span>gantt.<span class="me1">config</span>.<span class="me1">task_date</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> id <span class="sy0">=</span> gantt.<span class="me1">addMarker</span><span class="br0">&#40;</span><span class="br0">&#123;</span> 
+    start_date<span class="sy0">:</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span> 
+    css<span class="sy0">:</span> <span class="st0">&quot;today&quot;</span><span class="sy0">,</span> 
+    title<span class="sy0">:</span>dateToStr<span class="br0">&#40;</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+setInterval<span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> today <span class="sy0">=</span> gantt.<span class="me1">getMarker</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+    today.<span class="me1">start_date</span> <span class="sy0">=</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    today.<span class="me1">title</span> <span class="sy0">=</span> date_to_str<span class="br0">&#40;</span>today.<span class="me1">start_date</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    gantt.<span class="me1">updateMarker</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">,</span> <span class="nu0">1000</span><span class="sy0">*</span><span class="nu0">60</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_extensions/05_today_line.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Today and Status lines in Gantt</a></p>
+
+<!-- Content Area End -->
+			<a href='desktop__markers.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

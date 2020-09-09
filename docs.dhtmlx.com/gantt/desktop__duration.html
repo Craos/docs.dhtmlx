@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Duration Control  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__textarea.html">Textarea Control</a></li><li class=" current"><a href="desktop__duration.html">Duration Control</a></li><ul><li class="inner"><a href="desktop__duration.html#initialization">Initialization</a></li><li class="inner"><a href="desktop__duration.html#properties">Properties</a></li><li class="inner"><a href="desktop__duration.html#configuringdatetimeselectors">Configuring date-time selectors</a></li><li class="inner"><a href="desktop__duration.html#mappingtocustomstartenddatetimeproperties">Mapping to custom start/end date-time properties</a></li></ul><li class=""><a href="desktop__time.html">Time Control</a></li><li class=""><a href="desktop__select.html">Select Control</a></li><li class="toc-pro"><a href="desktop__typeselect.html">Typeselect Control</a></li><li class=""><a href="desktop__parent.html">Parent Control</a></li><li class=""><a href="desktop__template.html">Template Control</a></li><li class=""><a href="desktop__checkbox.html">Checkbox Control</a></li><li class=""><a href="desktop__radio.html">Radio Button Control</a></li><li class="toc-pro"><a href="desktop__resources.html">Resources Control</a></li><li class="toc-pro"><a href="desktop__constraint.html">Constraint Control</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__edit_form.html">Configuring Edit Form</a><a class="n4" href="desktop__default_edit_form.html">Configuring Lightbox Elements</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Duration Control</h1>
+
+<p>A set of selectors for setting the task duration by specifying the start date of a task and the number of days.</p>
+
+<p><img src="media/desktop/duration_control.png"/></p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span><span class="sy0">=</span><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">70</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span> <span class="kw3">focus</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span>        height<span class="sy0">:</span><span class="nu0">72</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;auto&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;duration&quot;</span><span class="br0">&#125;</span> </span><span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/01_initialization/01_basic_init.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Basic initialization</a></p>
+
+<a name='initialization'><h2>Initialization</h2></a>
+
+<p>One <strong>duration</strong> control is added to the lightbox by default. To add another one, follow the steps below:</p>
+
+<p>1) Add a section to the lightbox configuration:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span><span class="sy0">=</span><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">70</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span><span class="kw3">focus</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;time2&quot;</span><span class="sy0">,</span>       height<span class="sy0">:</span><span class="nu0">72</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;auto&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;duration&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span> </span>    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span>        height<span class="sy0">:</span><span class="nu0">72</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;auto&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;duration&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>2) Set a label for the section:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">section_time2</span> <span class="sy0">=</span> <span class="st0">&quot;Actual duration&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='properties'><h2>Properties</h2></a>
+
+<p>The following properties are mostly important and commonly set for the <strong>time</strong> control (see the full list <a class="link-" href="api__gantt_lightbox_config.html">here</a>):</p>
+
+<ul>
+<li><strong>name</strong> - (<em>string</em>) the section name </li>
+<li><strong>height</strong> - (<em>number</em>) the section height</li>
+<li><strong>map_to</strong> - (<em>string,object</em>) "auto" or object, defines the data property(-ies) that will be mapped to the section</li>
+<li><strong>formatter</strong> - (object) an instance of the <a class="link-" href="desktop__working_time.html#taskdurationindecimalformat">durationFormatter</a> object</li>
+<li><strong>type</strong> - (<em>string</em>) the type of the <a class="link-" href="desktop__default_edit_form.html#lightboxcontrols">section control</a></li>
+<li><strong>focus</strong> - (<em>boolean</em>) if set to <em>true</em>, the section will take focus on opening the lightbox</li>
+<li><strong>readonly</strong> - (<em>boolean</em>) if you set the "true" value, the section will be read-only</li>
+<li><strong>year_range</strong> - (<em>array,number</em>) sets a range for the year selector. The range can be set in 2 ways: 
+
+<ul>
+<li><em>year_range: [2005, 2025]</em> - a period from 2005 till 2025 year</li>
+<li><em>year_range: 10</em>  - a period [current year - 10 years; current year + 10 years]</li>
+</ul></li>
+<li><strong>single_date</strong> - (<em>boolean</em>) if you set the "true" value, just the <em>start Date</em> selector will be presented in the section. 
+Edited tasks will be specified only by the start date and have a zero duration. Makes sense only for <a class="link-" href="desktop__task_types.html#milestones">milestones</a></li>
+<li><strong>time_format</strong> - (<em>string</em>) sets the order of date-time selectors</li>
+</ul>
+
+<a name='configuringdatetimeselectors'><h2>Configuring date-time selectors</h2></a>
+
+<p>To configure the selectors in the "Time period" section, use the <a class="link-" href="api__gantt_lightbox_config.html">time_format</a> property (see <a class="link-" href="desktop__date_format.html">Date Format Specification</a>):</p>
+
+<p class='snippet'>
+Adding the time selector to the 'Time period' section
+</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">38</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span> <span class="kw3">focus</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span>type<span class="sy0">:</span><span class="st0">&quot;duration&quot;</span><span class="sy0">,</span>map_to<span class="sy0">:</span><span class="st0">&quot;auto&quot;</span><span class="sy0">,</span>time_format<span class="sy0">:</span><span class="br0">&#91;</span><span class="st0">&quot;%d&quot;</span><span class="sy0">,</span><span class="st0">&quot;%m&quot;</span><span class="sy0">,</span><span class="st0">&quot;%Y&quot;</span><span class="sy0">,</span><span class="st0">&quot;%H:%i&quot;</span><span class="br0">&#93;</span><span class="br0">&#125;</span></span><span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Note, the allowable members of the <a class="link-" href="api__gantt_lightbox_config.html">time_format</a> array are:</p>
+
+<ul>
+<li><em>"%d"</em> - the day selector </li>
+<li><em>"%m"</em> - the month selector</li>
+<li><em>"%Y"</em> - the year selector</li>
+<li><em>"%H:%i"</em> - the time selector (the format is set with the <a class="link-" href="api__gantt_time_picker_template.html">time_picker</a> template) </li>
+</ul>
+
+<p>You can change just the order and the number of these members in the array but not the data presentation format.<br> For example, you can change the format as in:</p>
+
+<pre><code><pre class="js"><span class="co1">// time goes first</span>
+time_format<span class="sy0">:</span><span class="br0">&#91;</span><span class="st0">&quot;%H:%i&quot;</span><span class="sy0">,</span> <span class="st0">&quot;%m&quot;</span><span class="sy0">,</span> <span class="st0">&quot;%d&quot;</span><span class="sy0">,</span> <span class="st0">&quot;%Y&quot;</span><span class="br0">&#93;</span> 
+<span class="co1">// month goes first</span>
+time_format<span class="sy0">:</span><span class="br0">&#91;</span><span class="st0">&quot;%m&quot;</span><span class="sy0">,</span><span class="st0">&quot;%d&quot;</span><span class="sy0">,</span> <span class="st0">&quot;%Y&quot;</span><span class="sy0">,</span> <span class="st0">&quot;%H:%i&quot;</span><span class="br0">&#93;</span>
+<span class="co1">// the year selector is removed</span>
+time_format<span class="sy0">:</span><span class="br0">&#91;</span><span class="st0">&quot;%H:%i&quot;</span><span class="sy0">,</span> <span class="st0">&quot;%m&quot;</span><span class="sy0">,</span> <span class="st0">&quot;%d&quot;</span><span class="br0">&#93;</span>
+<span class="co1">// incorrect</span>
+time_format<span class="sy0">:</span><span class="br0">&#91;</span><span class="st0">&quot;%H:%i&quot;</span><span class="sy0">,</span> <span class="st0">&quot;%M&quot;</span><span class="sy0">,</span> <span class="st0">&quot;%d&quot;</span><span class="sy0">,</span> <span class="st0">&quot;%Y&quot;</span><span class="br0">&#93;</span> <span class="co1">//&quot;%m&quot; was changed to &quot;%M&quot;</span></pre></code></pre>
+
+<a name='mappingtocustomstartenddatetimeproperties'><h2>Mapping to custom start/end date-time properties</h2></a>
+
+<h3>Default mapping</h3>
+
+<p>Generally, the time and duration controls are mapped to the mandatory 'start_date', 'end_date' data properties by setting the <strong>map_to</strong> property to the "auto" value (<strong>map_to:"auto"</strong>).</p>
+
+<h3>Custom mapping</h3>
+
+<p>To map controls to some custom date properties (instead of 'start_date', 'end_date'), use the object notation of the <strong>map_to</strong> property:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span> <span class="nu0">72</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> <span class="kw3">focus</span><span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;time&quot;</span><span class="sy0">,</span>        height<span class="sy0">:</span> <span class="nu0">72</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;auto&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;baseline&quot;</span><span class="sy0">,</span>    height<span class="sy0">:</span> <span class="nu0">72</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> </span><span class="xtra ln-xtra">     map_to<span class="sy0">:</span><span class="br0">&#123;</span>start_date<span class="sy0">:</span><span class="st0">&quot;planned_start&quot;</span><span class="sy0">,</span>end_date<span class="sy0">:</span><span class="st0">&quot;planned_end&quot;</span><span class="br0">&#125;</span><span class="br0">&#125;</span> </span><span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/04_customization/15_baselines.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Display project baseline</a></p>
+
+<p>As an object, <strong>map_to</strong> has 3 properties:</p>
+
+<ol>
+<li><strong>start_date</strong>- the name of a data property that will store the start date set in the input</li>
+<li><strong>end_date</strong> - optional, the name of a data property that will store the end date set in the input </li>
+<li><strong>duration</strong> - optional, the name of a data property that will store the duration defined by the input </li>
+</ol>
+
+<div class='note'><p><p>If some property is not specified, the control takes the value of the related mandatory date property.</p>
+</p></div>
+
+<!-- Content Area End -->
+			<a href='desktop__duration.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

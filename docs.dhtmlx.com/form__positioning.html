@@ -1,0 +1,342 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Positioning Controls  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxform.html">dhtmlXForm API</a></li><li class=""><a href="form__how_to_start.html">How to Start with dhtmlxForm</a></li><li class=""><a href="form__constructor_of_dhtmlx_form.html">Object Constructor</a></li><li class=""><a href="form__controls_list.html">List of Controls</a></li><li class=""><a href="form__xml_structure.html">XML Format</a></li><li class=""><a href="form__json_structure.html">JSON Format</a></li><li class=""><a href="form__html_structure.html">HTML Format</a></li><li class=""><a href="form__working_with_userdata.html">Working with Userdata</a></li><li class=""><a href="form__other_configuration.html">Config and Operations</a></li><li class=" current"><a href="form__positioning.html">Positioning Controls</a></li><ul><li class="inner"><a href="form__positioning.html#commonpositioning">Common positioning</a></li><li class="inner"><a href="form__positioning.html#splittingitemsintocolumns">Splitting items into columns</a></li><li class="inner"><a href="form__positioning.html#nesting">Nesting</a></li><li class="inner"><a href="form__positioning.html#unitingitemsandattributes">Uniting items and attributes</a></li></ul><li class=""><a href="form__validation.html">Validation</a></li><li class=""><a href="form__custom_item.html">Creating a Custom Control</a></li><li class=""><a href="form__server_side.html">Server-side Integration</a></li><li class=""><a href="form__dhtmlx_components.html">Integration with DHTMLX</a></li><li class=""><a href="form__data_binding.html">Binding Data</a></li><li class=""><a href="form__handling_events.html">Handling Events</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="form__index.html">Form</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Positioning Controls</h1>
+
+<p>In this chapter we'd like to show how you can position items inside of the form.</p>
+
+<a name='commonpositioning'><h2>Common positioning</h2></a>
+
+<p>Items' attribute <strong>position</strong> is the central character in positioning (can be defined for any item).
+It offers 3 relative positions and absolute positioning.</p>
+
+<ul>
+<li><strong>label-left</strong> (relative)</li>
+<li><strong>label-right</strong> (relative)</li>
+<li><strong>label-top</strong> (relative)</li>
+<li><strong>absolute</strong> (absolute)</li>
+</ul>
+
+<h3>Relative positioning</h3>
+
+<table cellspacing="0" cellpadding="0" border="0">
+<tr><td><p align="center">position:"label-left"</p></td><td><p align="center">position:"label-right"</p></td><td><p align="center">position:"label-top"</p></td></tr>
+<tr><td><img src="media/form/label-left.png"/></td><td><img src="media/form/label-right3.png"/></td><td><img src="media/form/label-top.png"/></td></tr>
+</table>
+
+<h3 id="split">Absolute positioning</h3>
+
+<p>To specify absolute item position you must set the attribute to <strong>absolute</strong> value.<br>
+In that case you'll have the possibility to operate on item with 4 more attributes (please note, the attributes're available just if <strong>position:"absolute"</strong>). They are:</p>
+
+<ul>
+<li><strong>labelLeft</strong> - (number) the left offset of label</li>
+<li><strong>labelTop</strong> - (number) the top offset of label</li>
+<li><strong>inputLeft</strong> - (number) the left offset of input</li>
+<li><strong>inputTop</strong> - (number) the top offset of input</li>
+</ul>
+
+<p>This way allows placing input and label of item whereever you like within the limits of the container. For example, it will be to the point when you need to change the default spacing between items.<br></p>
+
+<table>
+<tr><td><p align="center">By default</p></td><td><img src="media/form/first_part.png"/></td><td>
+
+<pre><code><pre class="js">formData <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;button&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">'Add'</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;button&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">'Edit'</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span></pre></code></pre>
+
+</td></tr>
+<tr><td><p align="center">With <b>position:"absolute"</b></p></td><td><img src="media/form/second_part.png"/></td><td>
+
+<pre><code><pre class="js">formData <span class="sy0">=</span> <span class="br0">&#91;</span>
+  <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;button&quot;</span><span class="sy0">,</span>value<span class="sy0">:</span><span class="st0">'Add'</span><span class="sy0">,</span>
+   position<span class="sy0">:</span><span class="st0">&quot;absolute&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+  <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;button&quot;</span><span class="sy0">,</span>value<span class="sy0">:</span><span class="st0">'Edit'</span><span class="sy0">,</span>
+   position<span class="sy0">:</span><span class="st0">&quot;absolute&quot;</span><span class="sy0">,</span> inputTop<span class="sy0">:</span><span class="nu0">25</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span></pre></code></pre>
+
+</td></tr>
+</table>
+
+<a name='splittingitemsintocolumns'><h2>Splitting items into columns</h2></a>
+
+<p>To split items into columns you will need the item <a class="link-" href="form__controls_list.html#newcolumn">newcolumn</a>. Just put it between the items you want to split, and they will be splitted.</p>
+
+<pre><code><pre class="js">formData <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;label&quot;</span><span class="sy0">,</span> ...<span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;checkbox&quot;</span><span class="sy0">,</span> ...<span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;checkbox&quot;</span><span class="sy0">,</span> ...<span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;newcolumn&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;label&quot;</span><span class="sy0">,</span> ...<span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;checkbox&quot;</span><span class="sy0">,</span> ...<span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;checkbox&quot;</span><span class="sy0">,</span> ...<span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<table cellspacing="0" cellpadding="0" border="0">
+<tr><td><p align="center">Before</p></td><td><p align="center">After</p></td></tr>   
+<tr><td><img src="media/form/before.png"/></td><td><img src="media/form/after.png"/></td></tr>
+</table>
+
+<p>See all the item's details in the <a class="link-" href="form__controls_list.html#newcolumn">appropriate chapter</a>.</p>
+
+<p>You can also split columns through the <a href="form__positioning.html#split">absolute positioning</a>.</p>
+
+<a name='nesting'><h2>Nesting</h2></a>
+
+<p>You can <strong>put items inside 'checkbox' and 'radio' elements</strong>. In this case, dhtmlxForm will define the active state of nested elements depending on the checked state of the parent item. 
+In other words, if an item is not checked, its nested elements will be not active and vice versa.</p>
+
+<p><img src="media/form/nesting_radio.png"/></p>
+
+<div class='note'><p><p>Nesting is implemented through the attribute 'list' where you should define nested items.</p>
+</p></div>
+
+<pre><code><pre class="js">formData <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;settings&quot;</span><span class="sy0">,</span> position<span class="sy0">:</span><span class="st0">&quot;label-right&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;label&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Settings&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;radio&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Update automatically&quot;</span><span class="sy0">,</span> list<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;checkbox&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Application&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;checkbox&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Search engines&quot;</span><span class="sy0">,</span> list<span class="sy0">:</span><span class="br0">&#91;</span>
+            <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;radio&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Google&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span> 
+            <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;radio&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Yahoo&quot;</span><span class="br0">&#125;</span>
+        <span class="br0">&#93;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>You can <strong>associate some elements with 'select' item options</strong>. In this case dhtmlxForm shows elements associated with selected option and hides others.</p>
+
+<table>
+<tr><td><img src="media/form/nested_to_select_1_2_.png"/></td><td><img src="media/form/nested_to_select_3_2_.png"/></td><td><img src="media/form/nested_to_select_4_2_.png"/></td></tr>
+</table>
+
+<pre><code><pre class="js">formData <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;select&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Select Media Type&quot;</span><span class="sy0">,</span> position<span class="sy0">:</span><span class="st0">&quot;label-top&quot;</span><span class="sy0">,</span> options<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>text<span class="sy0">:</span> <span class="st0">&quot;CD 700Mb&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span><span class="st0">&quot;CD&quot;</span><span class="sy0">,</span> list<span class="sy0">:</span><span class="br0">&#91;</span>
+            <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;checkbox&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Overburn&quot;</span><span class="sy0">,</span> checked<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span> position<span class="sy0">:</span><span class="st0">&quot;label-right&quot;</span><span class="br0">&#125;</span><span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>text<span class="sy0">:</span> <span class="st0">&quot;DVD9 8.6Gb&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span><span class="st0">&quot;DVD&quot;</span><span class="sy0">,</span> list<span class="sy0">:</span><span class="br0">&#91;</span>
+            <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;radio&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Double Layer&quot;</span><span class="sy0">,</span> position<span class="sy0">:</span><span class="st0">&quot;label-right&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;radio&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Two-sided&quot;</span><span class="sy0">,</span> position<span class="sy0">:</span><span class="st0">&quot;label-right&quot;</span><span class="br0">&#125;</span><span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>text<span class="sy0">:</span> <span class="st0">&quot;Blue-Ray 24Gb&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span><span class="st0">&quot;Blue-Ray&quot;</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='unitingitemsandattributes'><h2>Uniting items and attributes</h2></a>
+
+<h3>The 'fieldset' item</h3>
+
+<p>The item <a class="link-" href="form__controls_list.html#fieldset">fieldset</a> will allow you to unite some items on a page.</p>
+
+<p><img src="media/form/field.png"/></p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> formData <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;fieldset&quot;</span><span class="sy0">,</span>  <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;mydata&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Appearance&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="nu0">210</span><span class="sy0">,</span> list<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;settings&quot;</span><span class="sy0">,</span> position<span class="sy0">:</span><span class="st0">&quot;label-right&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;checkbox&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Default&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;checkbox&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Custom&quot;</span><span class="sy0">,</span> checked<span class="sy0">:</span> <span class="st0">&quot;0&quot;</span><span class="sy0">,</span> list<span class="sy0">:</span><span class="br0">&#91;</span>
+            <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;radio&quot;</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;cursor_value&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Dot&quot;</span><span class="sy0">,</span> checked<span class="sy0">:</span> <span class="st0">&quot;1&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;radio&quot;</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;cursor_value&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Cross&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;newcolumn&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;radio&quot;</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;cursor_value&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Circle&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;radio&quot;</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;cursor_value&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Triangle&quot;</span><span class="br0">&#125;</span>
+        <span class="br0">&#93;</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>The 'block' item</h3>
+
+<p>The item <a class="link-" href="form__controls_list.html#block">block</a> also allows to unite some items on a page. It's identical to <strong>fieldset</strong> but doesn't have label and frame. Most appropriate in situations when you deal with multiple columns and rows.</p>
+
+<p><img src="media/form/block_01.png"/></p>
+
+<div class='note'><p><p>When you put one block element inside another, absolute position is gotten relative to the top left corner of the parent block container (not the initial form's container)</p>
+</p></div>
+
+<h3>The 'settings' item</h3>
+
+<p>The item <a class="link-" href="form__controls_list.html#settings">settings</a> will save your time and efforts thanks to the possibility of setting the same attributes to several items at once.
+See the detailed information in the <a class="link-" href="form__controls_list.html#settings">appropriate chapter</a>.</p>
+
+<p class='snippet'> By default</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> formData <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;label&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Browsers&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;radio&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Internet Explorer&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;radio&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Opera&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;radio&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Mozilla Firefox&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;radio&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Google Chrome&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span></pre></code></pre>
+
+<p><br></p>
+
+<p><img src="media/form/init_v.png"/></p>
+
+<p><br></p>
+
+<p class='snippet'> Common way</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> formData <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;label&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Browsers&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;radio&quot;</span><span class="sy0">,</span>label<span class="sy0">:</span><span class="st0">&quot;Internet Explorer&quot;</span><span class="sy0">,</span>position<span class="sy0">:</span><span class="st0">&quot;label-right&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;radio&quot;</span><span class="sy0">,</span>label<span class="sy0">:</span><span class="st0">&quot;Opera&quot;</span><span class="sy0">,</span>position<span class="sy0">:</span><span class="st0">&quot;label-right&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;radio&quot;</span><span class="sy0">,</span>label<span class="sy0">:</span><span class="st0">&quot;Mozilla Firefox&quot;</span><span class="sy0">,</span>position<span class="sy0">:</span><span class="st0">&quot;label-right&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;radio&quot;</span><span class="sy0">,</span>label<span class="sy0">:</span><span class="st0">&quot;Google Chrome&quot;</span><span class="sy0">,</span>position<span class="sy0">:</span><span class="st0">&quot;label-right&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span></pre></code></pre>
+
+<p><br></p>
+
+<p><img src="media/form/first_v.png"/></p>
+
+<p><br></p>
+
+<p class='snippet'> Alternative way ('settings')</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> formData <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;settings&quot;</span><span class="sy0">,</span> position<span class="sy0">:</span><span class="st0">&quot;label-right&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;label&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Browsers&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;radio&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Internet Explorer&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;radio&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Opera&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;radio&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Mozilla Firefox&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;radio&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Google Chrome&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span></pre></code></pre>
+
+<p><br></p>
+
+<p><img src="media/form/first_v.png"/></p>
+
+<!-- Content Area End -->
+			<a href='form__positioning.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

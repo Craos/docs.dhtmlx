@@ -1,0 +1,322 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1530112847.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1530112847.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="http://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>How to Start  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');   ga('create', 'UA-11031269-1', 'auto'); ga('send', 'pageview');</script><!-- Yandex.Metrika counter --><script type='text/javascript'>(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter22235746 = new Ya.Metrika({id:22235746, clickmap:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName('script')[0], s = d.createElement('script'), f = function () { n.parentNode.insertBefore(s, n); }; s.type = 'text/javascript'; s.async = true; s.src = (d.location.protocol == 'https:' ? 'https:' : 'http:') + '//mc.yandex.ru/metrika/watch.js'; if (w.opera == '[object Opera]') { d.addEventListener('DOMContentLoaded', f, false); } else { f(); } })(document, window, 'yandex_metrika_callbacks');</script><noscript><div><img src='http://mc.yandex.ru/watch/22235746' style='position:absolute; left:-9999px;' alt='' /></div></noscript>
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='http://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="http://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="http://support.dhtmlx.com">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__scheduler.html">Scheduler API</a></li><li class=""><a href="what_s_new.html">What's New</a></li><li class=""><a href="migration_from_older_version.html">Migration From Older Versions</a></li><li class=" current"><a href="how_to_start.html">How to Start</a></li><ul><li class="inner"><a href="how_to_start.html#step1anewhtmlfileandrequiredcodefiles">Step 1. A new HTML file and required code files</a></li><li class="inner"><a href="how_to_start.html#step2relateddivelements">Step 2. Related DIV elements</a></li><li class="inner"><a href="how_to_start.html#step3style">Step 3. Style</a></li><li class="inner"><a href="how_to_start.html#step4initialization">Step 4. Initialization</a></li><li class="inner"><a href="how_to_start.html#step5loadingdata">Step 5. Loading data</a></li><li class="inner"><a href="how_to_start.html#step6databasestructure">Step 6. Database structure</a></li><li class="inner"><a href="how_to_start.html#step7loadingdatafromtheserver">Step 7. Loading data from the server</a></li><li class="inner"><a href="how_to_start.html#step8serversidescript">Step 8. Server-side script</a></li><li class="inner"><a href="how_to_start.html#step9savingdata">Step 9. Saving data</a></li></ul><li class=""><a href="views.html">Views</a></li><li class=""><a href="guides.html">Guides</a></li><li class=""><a href="faq.html">FAQ</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a></div>
+<!-- Content Area -->
+
+
+<h1>How to Start</h1>
+
+<p>In this tutorial we want to consider the creation of a standard scheduler that loads data from a database and saves it back. 
+The final code of the tutorial can be used as the start point while creating applications with dhtmlxScheduler.</p>
+
+<p><img src="media/init_scheduler_front.png" alt="init_scheduler_front.png" /></p>
+
+<p><a href='samples/01_initialization_loading/05_loading_database.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Loading data from a database</a></p>
+
+<a name='step1anewhtmlfileandrequiredcodefiles'><h2>Step 1. A new HTML file and required code files</h2></a>
+
+<p>Let's start our application with creating a new HTML file and including the required scheduler code files to it.</p>
+
+<p>The required code files are:</p>
+
+<ul>
+<li><em>dhtmlxscheduler.js</em></li>
+<li><em>dhtmlxscheduler_material.css</em> (for Material skin; you can also <a href="skins.html">explore the available skins</a>)</li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+   <span class="sc2">&lt;<span class="kw2">title</span>&gt;</span>How to start<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">title</span>&gt;</span>
+   <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../scheduler/dhtmlxscheduler.js&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+   <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../scheduler/dhtmlxscheduler_material.css&quot;</span> </span>
+<span class="sc2">        <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+    //your code will be here
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+<p>Let's quickly explore the structure of the dhtmlxScheduler package to find out where to look for the files.</p>
+
+<ul>
+<li><b>sources</b> - the source code files of the library. The files are not minified and easy-to-read. The package is mostly intended to be used for component's debugging.</li>
+<li><b>samples</b> - the code samples.</li>
+<li><b>docs</b> - the full documentation of the component.</li>
+<li><b>codebase</b> - the packed code files of the library. These files have much smaller size and intended for use in production. <b>In your apps you need to use files from this folder.</b></li>
+</ul>
+
+<a name='step2relateddivelements'><h2>Step 2. Related DIV elements</h2></a>
+
+<p>Before initialization of the scheduler, you should define the related DIV containers for its elements.</p>
+
+<p>The standard set of 'divs' (needed for the scheduler) looks like this:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>div id<span class="sy0">=</span><span class="st0">&quot;scheduler_here&quot;</span> <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_container&quot;</span> style<span class="sy0">=</span><span class="st0">'width:100%; height:100%;'</span><span class="sy0">&gt;</span>
+    <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_navline&quot;</span><span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_prev_button&quot;</span><span class="sy0">&gt;&amp;</span>nbsp<span class="sy0">;&lt;/</span>div<span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_next_button&quot;</span><span class="sy0">&gt;&amp;</span>nbsp<span class="sy0">;&lt;/</span>div<span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_today_button&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_date&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;day_tab&quot;</span> style<span class="sy0">=</span><span class="st0">&quot;right:204px;&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;week_tab&quot;</span> style<span class="sy0">=</span><span class="st0">&quot;right:140px;&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;month_tab&quot;</span> style<span class="sy0">=</span><span class="st0">&quot;right:76px;&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+    <span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span>
+    <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_header&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+    <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_data&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>       
+<span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span></pre></code></pre>
+
+<a name='step3style'><h2>Step 3. Style</h2></a>
+
+<p>To work correctly in the full-screen mode in different browsers, define the following style for the scheduler:</p>
+
+<pre><code><pre class="css">&lt;style type<span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> media<span class="sy0">=</span><span class="st0">&quot;screen&quot;</span><span class="sy0">&gt;</span>
+    html<span class="sy0">,</span> body<span class="br0">&#123;</span>
+        <span class="kw1">margin</span><span class="sy0">:</span><span class="re3">0px</span><span class="sy0">;</span>
+        <span class="kw1">padding</span><span class="sy0">:</span><span class="re3">0px</span><span class="sy0">;</span>
+        <span class="kw1">height</span><span class="sy0">:</span><span class="re3">100%</span><span class="sy0">;</span>
+        <span class="kw1">overflow</span><span class="sy0">:</span><span class="kw2">hidden</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>   
+&lt;/style<span class="sy0">&gt;</span></pre></code></pre>
+
+<p>If you don't use the full-screen mode, you don't need to specify that style. Specify the desired css properties directly in the main <strong>div</strong>:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;scheduler_here&quot;</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_container&quot;</span> </span>
+<span class="sc2"><span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width:200px; height:300px; padding:10px;&quot;</span><span class="sy0">/</span>&gt;</span>
+...</pre></code></pre>
+
+<a name='step4initialization'><h2>Step 4. Initialization</h2></a>
+
+<p>After you have finished the preparations, you can move to initialization. Beware, the scheduler is a static object and can be instantiated on the page once. 
+To refer to the scheduler's instance, use <strong>dhtmlxScheduler</strong> or simply <strong>scheduler</strong>.</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="st0">&quot;month&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='step5loadingdata'><h2>Step 5. Loading data</h2></a>
+
+<p>If you run the app now, you can already see a scheduler on the page. But it won't contain any data.</p>
+
+<p>To populate the scheduler, we will take the data from a sample data source. We will use the easiest of the ways and specify the data source as an inline object. <br>
+To load data from an inline object, use the <a href="api__scheduler_parse.html">parse</a> method.</p>
+
+<p>The properties of a data object are:</p>
+
+<ul>
+<li><strong>id</strong> - (<em>string, number</em>) the event id.</li>
+<li><strong>start_date</strong> - (<em>string</em>) the date when an event is scheduled to begin. The default format - "%m/%d/%Y %H:%i".</li>
+<li><strong>end_date</strong> - (<em>string</em>) the date when an event is scheduled to be completed. The default format - "%m/%d/%Y %H:%i".</li>
+<li><strong>text</strong> - (<em>string</em>) the event's description.</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> events <span class="sy0">=</span> <span class="br0">&#91;</span>
+   <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Meeting&quot;</span><span class="sy0">,</span>   start_date<span class="sy0">:</span><span class="st0">&quot;04/11/2018 14:00&quot;</span><span class="sy0">,</span>end_date<span class="sy0">:</span><span class="st0">&quot;04/11/2018 17:00&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+   <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Conference&quot;</span><span class="sy0">,</span>start_date<span class="sy0">:</span><span class="st0">&quot;04/15/2018 12:00&quot;</span><span class="sy0">,</span>end_date<span class="sy0">:</span><span class="st0">&quot;04/18/2018 19:00&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+   <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Interview&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;04/24/2018 09:00&quot;</span><span class="sy0">,</span>end_date<span class="sy0">:</span><span class="st0">&quot;04/24/2018 10:00&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+scheduler.<span class="me1">parse</span><span class="br0">&#40;</span>events<span class="sy0">,</span> <span class="st0">&quot;json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// takes the name and format of the data source</span></pre></code></pre>
+
+<p>You can also <a href="how_to_start.html#step7loadingdatafromtheserver">load data from the server</a>.</p>
+
+<div class='note'><p><p>See details on integration with the server side in the <a href="server_integration.html">Server-Side Integration</a> article.</p>
+</p></div>
+
+<a name='step6databasestructure'><h2>Step 6. Database structure</h2></a>
+
+<div class='note'><p><p>Read this and further steps if you want to load data from a database instead of an inline object.</p>
+</p></div>
+
+<p>Now, if you have decided to load data from the server, you need to create a table in your database as in:</p>
+
+<p><img style="padding-top:15px;" src='media/db_table.png'/></p>
+
+<p>You can execute the following code to create the table:</p>
+
+<pre><code><pre class="js">CREATE TABLE `events` <span class="br0">&#40;</span>
+  `id` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span> AUTO_INCREMENT<span class="sy0">,</span>
+  `start_date` datetime NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `end_date` datetime NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `text` varchar<span class="br0">&#40;</span><span class="nu0">255</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  PRIMARY KEY <span class="br0">&#40;</span>`id`<span class="br0">&#41;</span>
+<span class="br0">&#41;</span></pre></code></pre>
+
+<p>Besides the aforementioned fields, you can create any number of extra ones, which then can be passed to the client side and <a href="custom_details_form.html#mapping_db_fields_to_the_form">mapped to the lightbox</a>.</p>
+
+<p>Beware, the format of the DataTime data type is '%Y-%m-%d %H:%i' that differs from the date format expected by the scheduler ('%m/%d/%Y %H:%i'). 
+So, to provide correct data conversion, you should change the default scheduler format. It can be achieved by specifying the <a href="api__scheduler_xml_date_config.html">xml_date</a> configuration option.</p>
+
+<p>Note, any configuration options go BEFORE the initialization string, i.e.:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">xml_date</span><span class="sy0">=</span><span class="st0">&quot;%Y-%m-%d %H:%i&quot;</span><span class="sy0">;</span>
+...
+<span class="me1">scheduler</span>.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="st0">&quot;month&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='step7loadingdatafromtheserver'><h2>Step 7. Loading data from the server</h2></a>
+
+<p>To load data from a database, use the <a href="api__scheduler_load.html">load</a> method where specify a file realizing server-side 'communication' as a parameter.</p>
+
+<div class='note'><p><p>You can use <a href="../connector__php__index.html">dhtmlxConnector</a> library for a quick start, as shown in this tutorial, but for a new project
+we recommend implementing the backend API manually, for greater flexibility. See details in the <a href="server_integration.html">Server-Side Integration</a> article.</p>
+</p></div>
+
+<p>So, for our task you need to call the method as shown below:</p>
+
+<pre><code><pre class="js"><span class="co1">//method takes the url to the file that will process CRUD operations on the server</span>
+scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;data/connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='step8serversidescript'><h2>Step 8. Server-side script</h2></a>
+
+<p>The server-side script for dhtmlxScheduler is the following:</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span> 
+<span class="kw1">require_once</span><span class="br0">&#40;</span><span class="st0">&quot;../codebase/connector/scheduler_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$res</span><span class="sy0">=</span><a href="http://www.php.net/mysql_connect"><span class="kw3">mysql_connect</span></a><span class="br0">&#40;</span><span class="st0">&quot;localhost&quot;</span><span class="sy0">,</span><span class="st0">&quot;root&quot;</span><span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<a href="http://www.php.net/mysql_select_db"><span class="kw3">mysql_select_db</span></a><span class="br0">&#40;</span><span class="st0">&quot;schedulerDB&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$conn</span> <span class="sy0">=</span> <span class="kw2">new</span> SchedulerConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$conn</span><span class="sy0">-&gt;</span><span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;events&quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span><span class="st0">&quot;start_date,end_date,text&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Mapping database columns</h3>
+
+<p>Please note that the order of columns in <strong>$connector->render_table</strong> is important. The first three columns in the columns list are mapped to <em>start_date/end_date/text</em> properties of the
+client-side task object respectively, no matter what column names you specify:</p>
+
+<pre><code><pre class="js">$conn<span class="sy0">-&gt;</span>render_table<span class="br0">&#40;</span><span class="st0">&quot;events&quot;</span><span class="sy0">,</span><span class="st0">&quot;EventId&quot;</span><span class="sy0">,</span><span class="st0">&quot;Start,End,Name,details&quot;</span><span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//JS: event.id, event.start_date, event.end_date, event.text, event.text, event.details</span></pre></code></pre>
+
+<h4>Mapping other columns</h4>
+
+<p>All other columns will be mapped by their names without changes:</p>
+
+<pre><code><pre class="js">$conn<span class="sy0">-&gt;</span>render_table<span class="br0">&#40;</span><span class="st0">&quot;events&quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span><span class="st0">&quot;start_date,end_date,text,custom,details&quot;</span><span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// JS: event.start_date, event.end_date, event.text, event.custom, event.details</span></pre></code></pre>
+
+<p>You can also use aliases, as follows:</p>
+
+<pre><code><pre class="js">$conn<span class="sy0">-&gt;</span>render_table<span class="br0">&#40;</span><span class="st0">&quot;events&quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;start_date,end_date,text,custom_column(customProperty),details&quot;</span><span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//JS:event.start_date, event.end_date, event.text, event.customProperty, event.details</span></pre></code></pre>
+
+<a name='step9savingdata'><h2>Step 9. Saving data</h2></a>
+
+<p>If you run the app now, you will see that the scheduler is able to load data from the database, but unable to save it back. 
+To 'force' the scheduler save data in the database, use <a href="../dataprocessor__index.html">dataProcessor</a>.</p>
+
+<p>It's very easy to use dataProcessor. All you need is to initialize it and attach to the scheduler.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;data/connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">init</span><span class="br0">&#40;</span>scheduler<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>That's all. A standard scheduler that can load data from the database and save it back is ready.</p>
+
+<p>Now you may configure, change and customize it to meet all your needs.</p>
+
+<p><a href='samples/01_initialization_loading/05_loading_database.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Loading data from a database</a></p>
+
+<!-- Content Area End -->
+			<a href='how_to_start.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Similar Components</li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

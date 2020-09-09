@@ -1,0 +1,288 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>How to Start with Calendar  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxcalendar.html">dhtmlXCalendar API</a></li><li class=""><a href="api__refs__dhtmlxdoublecalendar.html">dhtmlXDoubleCalendar API</a></li><li class=" current"><a href="calendar__how_to_start.html">How to Start with Calendar</a></li><ul><li class="inner"><a href="calendar__how_to_start.html#includingnecessaryfiles">Including necessary files</a></li><li class="inner"><a href="calendar__how_to_start.html#initializingcalendar">Initializing Calendar</a></li></ul><li class=""><a href="calendar__object_constructor.html">Object Constructor</a></li><li class=""><a href="calendar__setting_skins.html">Setting Skins</a></li><li class=""><a href="calendar__date_formatting.html">Date Formatting</a></li><li class=""><a href="calendar__localizing_calendar.html">Localizing Calendar</a></li><li class=""><a href="calendar__operating_calendar.html">Operating Calendar</a></li><li class=""><a href="calendar__handling_events.html">Handling Events</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="calendar__index.html">Calendar</a></div>
+<!-- Content Area -->
+
+
+
+<h1>How to Start with Calendar</h1>
+
+<p>To use dhtmlxCalendar in your application you should make 3 steps:</p>
+
+<ol>
+<li>Download the 'dhtmlxCalendar' or 'dhtmlxSuite' package and unpack it into a folder.</li>
+<li>Include the related CSS and JS files into your HTML file .</li>
+<li>Call an object constructor.</li>
+</ol>
+
+<a name='includingnecessaryfiles'><h2>Including necessary files</h2></a>
+
+<p>Each DHTMLX component can be used standalone or as a part of the general library.</p>
+
+<p><strong>If you use dhtmlxCalendar standalone</strong> you need to include 2 files:</p>
+
+<ul>
+<li>dhtmlxcalendar.js</li>
+<li>dhtmlxcalendar.css</li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlxcalendar.css&quot;</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlxcalendar.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+    ...
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+<p><strong>If you use dhtmlxCalendar as a part of 'dhtmlxSuite' package</strong> you need to include 2 files:</p>
+
+<ul>
+<li>dhtmlx.js</li>
+<li>dhtmlx.css</li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlx.css&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlx.js&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<h3>Including source files from CDN</h3>
+
+<p>To include JS/CSS files of "dhtmlxSuite" package from CDN, you should set direct links to <em>dhtmlx.js</em> and <em>dhtmlx.css</em> files:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;http://cdn.dhtmlx.com/edge/dhtmlx.css&quot;</span> </span>
+<span class="sc2">    <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span>&gt;</span> 
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;http://cdn.dhtmlx.com/edge/dhtmlx.js&quot;</span> </span>
+<span class="sc2">    <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p>By setting links in this way you will get the latest version of dhtmlxSuite. 
+To get some particular version, just specify the number of the required version in the link, like this:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;http://cdn.dhtmlx.com/5.0/dhtmlx.css&quot;</span> </span>
+<span class="sc2">    <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span>&gt;</span> 
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;http://cdn.dhtmlx.com/5.0/dhtmlx.js&quot;</span> </span>
+<span class="sc2">    <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<a name='initializingcalendar'><h2>Initializing Calendar</h2></a>
+
+<p>There are 6 ways to initialize dhtmlxCalendar on the page:</p>
+
+<p><strong>Initialization in a div</strong></p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;box&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;position:relative;height:250px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js"><span class="kw2">var</span> myCalendar <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXCalendarObject<span class="br0">&#40;</span><span class="st0">&quot;box&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+myCalendar.<span class="me1">show</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p><img src="media/calendar/calendar_in_div.png"/></p>
+
+<p><br></p>
+
+<p><strong>Attaching to an input</strong></p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text&quot;</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;calendar&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text&quot;</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;calendar2&quot;</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js"><span class="kw2">var</span> myCalendar <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXCalendarObject<span class="br0">&#40;</span><span class="br0">&#91;</span><span class="st0">&quot;calendar&quot;</span><span class="sy0">,</span><span class="st0">&quot;calendar2&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p><img src="media/calendar/calendar_to_input.png"/></p>
+
+<p><br></p>
+
+<p><strong>Attaching to an input with an icon</strong></p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text&quot;</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;calendar_input&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">span</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">img</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;calendar_icon&quot;</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../common/calendar.gif&quot;</span> <span class="kw3">border</span><span class="sy0">=</span><span class="st0">&quot;0&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">span</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js"><span class="kw2">var</span> myCalendar <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXCalendarObject<span class="br0">&#40;</span>
+    <span class="br0">&#123;</span>input<span class="sy0">:</span><span class="st0">&quot;calendar_input&quot;</span><span class="sy0">,</span>button<span class="sy0">:</span><span class="st0">&quot;calendar_icon&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p><img src="media/calendar/calendar_in_input_icon.png"/></p>
+
+<p><br></p>
+
+<p><strong>Attaching to a custom icon</strong></p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">span</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">img</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;calendar_icon&quot;</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../common/calendar.gif&quot;</span> <span class="kw3">border</span><span class="sy0">=</span><span class="st0">&quot;0&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">span</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">span</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;date_here&quot;</span>&gt;</span><span class="sc1">&amp;nbsp;</span><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">span</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js"><span class="kw2">var</span> myCalendar <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXCalendarObject<span class="br0">&#40;</span><span class="br0">&#123;</span>button<span class="sy0">:</span> <span class="st0">&quot;calendar_icon&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p><img src="media/calendar/calendar_to_icon.png"/></p>
+
+<p><br></p>
+
+<p><strong>Using inside dhtmlxForm</strong></p>
+
+<pre><code><pre class="js">formData <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;calendar&quot;</span><span class="sy0">,</span>label<span class="sy0">:</span><span class="st0">&quot;Start Date&quot;</span><span class="sy0">,</span>skin<span class="sy0">:</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="sy0">,</span> enableTime<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span>
+      dateFormat<span class="sy0">:</span><span class="st0">&quot;%Y-%m-%d %H:%i&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;calendar&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;End Date&quot;</span><span class="sy0">,</span> skin<span class="sy0">:</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="sy0">,</span> dateFormat<span class="sy0">:</span><span class="st0">&quot;%Y-%m-%d&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+myForm <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXForm<span class="br0">&#40;</span><span class="st0">&quot;myForm&quot;</span><span class="sy0">,</span> formData<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/calendar/calendar_in_dhtmlxform.png"/></p>
+
+<p><br></p>
+
+<p><strong>Using inside dhtmlxToolbar</strong></p>
+
+<pre><code><pre class="js">myToolbar <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXToolbarObject<span class="br0">&#40;</span><span class="st0">&quot;toolbarObj&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+myToolbar.<span class="me1">loadStruct</span><span class="br0">&#40;</span><span class="st0">&quot;../common/dhxtoolbar_data.xml&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+  myToolbar.<span class="me1">addInput</span><span class="br0">&#40;</span><span class="st0">&quot;calendar&quot;</span><span class="sy0">,</span> <span class="kw2">null</span><span class="sy0">,</span> <span class="st0">&quot;12.06.2013&quot;</span><span class="sy0">,</span> <span class="nu0">90</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  myCalendar <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXCalendarObject<span class="br0">&#40;</span>myToolbar.<span class="me1">getInput</span><span class="br0">&#40;</span><span class="st0">&quot;calendar&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  myCalendar.<span class="me1">setDateFormat</span><span class="br0">&#40;</span><span class="st0">&quot;%d.%m.%Y&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/calendar/calendar_in_dhtmlxtoolbar.png"/></p>
+
+<p><br></p>
+
+<p><strong>Double calendar</strong></p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;box&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;position:relative;height:250px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js"><span class="kw2">var</span> myCalendar <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXDoubleCalendar<span class="br0">&#40;</span><span class="st0">&quot;box&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> myCalendar.<span class="me1">show</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p><img src="media/calendar/double_calendar.png"/></p>
+
+<!-- Content Area End -->
+			<a href='calendar__how_to_start.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

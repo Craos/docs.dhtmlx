@@ -1,0 +1,962 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Timeline View  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="day_view.html">Day View</a></li><li class=""><a href="week_view.html">Week View</a></li><li class=""><a href="month_view.html">Month View</a></li><li class=""><a href="agenda_view.html">Agenda View</a></li><li class=""><a href="map_view.html">Map View</a></li><li class="toc-pro current"><a href="timeline_view.html">Timeline View</a></li><ul><li class="inner"><a href="timeline_view.html#initialization">Initialization</a></li><li class="inner"><a href="timeline_view.html#timelineviewconfiguration">Timeline view configuration</a></li><li class="inner"><a href="timeline_view.html#timelineobjectapi">Timeline object API</a></li><li class="inner"><a href="timeline_view.html#dynamicshangeofproperties">Dynamic сhange of properties</a></li><li class="inner"><a href="timeline_view.html#dataloading">Data loading</a></li><li class="inner"><a href="timeline_view.html#assignmentofeventstoseveralsections">Assignment of events to several sections</a></li><li class="inner"><a href="timeline_view.html#viewmodes">View modes</a></li><li class="inner"><a href="timeline_view.html#daysmodedetails">'Days' mode details</a></li><li class="inner"><a href="timeline_view.html#timeintervalforviewcells">Time interval for view cells</a></li><li class="inner"><a href="timeline_view.html#dataforyaxissectionsinthebarandcellmodes">Data for Y-Axis sections in the 'Bar' and 'Cell' modes</a></li><li class="inner"><a href="timeline_view.html#dataforyaxissectionsinthetreemode">Data for Y-Axis sections in the 'Tree' mode</a></li><li class="inner"><a href="timeline_view.html#dataforyaxissectionsinthedaysmode">Data for Y-Axis sections in the 'Days' mode</a></li><li class="inner"><a href="timeline_view.html#dataforyaxissectionsfromtheserver">Data for Y-Axis sections from the server</a></li><li class="inner"><a href="timeline_view.html#dynamicadditionremovalofitems">Dynamic addition/removal of items</a></li><li class="inner"><a href="timeline_view.html#secondxaxis">Second X-Axis</a></li><li class="inner"><a href="timeline_view.html#stretchingeventsoverthecell">Stretching events over the cell</a></li><li class="inner"><a href="timeline_view.html#sortingofevents">Sorting of events</a></li><li class="inner"><a href="timeline_view.html#horizontalscroll">Horizontal scroll</a></li><li class="inner"><a href="timeline_view.html#autoscrollconfiguration">Autoscroll configuration</a></li><li class="inner"><a href="timeline_view.html#headerofthesectionscolumn">Header of the sections column</a></li><li class="inner"><a href="timeline_view.html#customcontentincells">Custom content in cells</a></li><li class="inner"><a href="timeline_view.html#relatedguides">Related guides</a></li></ul><li class="toc-pro"><a href="weekagenda_view.html">Week Agenda View</a></li><li class="toc-pro"><a href="units_view.html">Units View</a></li><li class=""><a href="year_view.html">Year View</a></li><li class="toc-pro"><a href="grid_view.html">Grid View</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="views.html">Views</a></div>
+<!-- Content Area -->
+
+
+<p class='promarker'>Available only in <b>PRO Edition</b></p>
+<h1>Timeline View</h1>
+
+<div class='pronote'><p><p>This view is available in the Scheduler PRO version only.</p>
+</p></div>
+
+<p>The Timeline view allows you to visualize events horizontally with separate timelines arranged from left to right.</p>
+
+<p><img src="media/timeline_view.png"/></p>
+
+<a name='initialization'><h2>Initialization</h2></a>
+
+<p>To add the Timeline view to the scheduler, follow these steps:</p>
+
+<ol>
+    <li><b>Include the Timeline code file on the page:</b>
+        <ul>
+            <li> <i>ext/dhtmlxscheduler_timeline.js</i> - for the 'Bar' and 'Cell' modes </li>
+            <li> <i>ext/dhtmlxscheduler_timeline.js, ext/dhtmlxscheduler_treetimeline.js</i> - for the 'Tree' mode</li>
+            <li> <i>ext/dhtmlxscheduler_timeline.js, ext/dhtmlxscheduler_daytimeline.js</i> - for the 'Days' mode</li>
+        </ul>
+    </li>
+    <li> <b>Add the view's tab to the scheduler's markup:</b>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;scheduler_here&quot;</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_container&quot;</span> ...&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_navline&quot;</span>&gt;</span>
+       ...
+       <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;timeline_tab&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;right:280px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    ... 
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+    </li>
+    <li><b>Set the label for the tab:</b>
+
+<pre><code><pre class="js"><span class="co1">//'timeline_tab' is the name of our div</span>
+scheduler.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">timeline_tab</span> <span class="sy0">=</span><span class="st0">&quot;Timeline&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+    </li>
+    <li> <b>Call the <a class="link-pro" href="api__scheduler_createtimelineview.html">createTimelineView</a> method:</b>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createTimelineView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+     <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span>
+     x_unit<span class="sy0">:</span><span class="st0">&quot;minute&quot;</span><span class="sy0">,</span> <span class="co1">// measuring unit of the X-Axis.</span>
+     x_date<span class="sy0">:</span><span class="st0">&quot;%H:%i&quot;</span><span class="sy0">,</span>  <span class="co1">// date format of the X-Axis</span>
+     x_step<span class="sy0">:</span><span class="nu0">30</span><span class="sy0">,</span>       <span class="co1">// X-Axis step in 'x_unit's</span>
+     x_size<span class="sy0">:</span><span class="nu0">24</span><span class="sy0">,</span>       <span class="co1">// X-Axis length specified as the total number of 'x_step's</span>
+     x_start<span class="sy0">:</span><span class="nu0">16</span><span class="sy0">,</span>      <span class="co1">// X-Axis offset in 'x_unit's</span>
+     x_length<span class="sy0">:</span><span class="nu0">48</span><span class="sy0">,</span>     <span class="co1">// number of 'x_step's that will be scrolled at a time</span>
+     y_unit<span class="sy0">:</span>          <span class="co1">// sections of the view (titles of Y-Axis)</span>
+        <span class="br0">&#91;</span><span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Section A&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+         <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Section B&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+         <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Section C&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+         <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">4</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Section D&quot;</span><span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+     y_property<span class="sy0">:</span><span class="st0">&quot;section_id&quot;</span><span class="sy0">,</span> <span class="co1">// mapped data property</span>
+     render<span class="sy0">:</span><span class="st0">&quot;bar&quot;</span>             <span class="co1">// view mode</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+    </li>
+</ol>
+
+<p><a href='samples/06_timeline/02_lines.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Bar mode</a></p>
+
+<div class='note'><p><p>In the 'Days' mode, time scale must cover 1 day exactly. If your configuration specifies a shorter or longer period - timeline will be rendered incorrectly.</p>
+</p></div>
+
+<h3>Scale configuration example</h3>
+
+<p>In spite of a big number of parameters used in the <a class="link-pro" href="api__scheduler_createtimelineview.html">createTimelineView</a> method, it's quite simple.</p>
+
+<p>Let's consider an example: the time scale from 09:00 to 15:00 with 30 minutes step that is scrolled by days.</p>
+
+<p><img src="media/timeline_scale_01.png"/></p>
+
+<p><br></p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    x_unit<span class="sy0">:</span><span class="st0">&quot;minute&quot;</span><span class="sy0">,</span><span class="co1">// the scale parameters will be calculated in minutes</span>
+    x_step<span class="sy0">:</span><span class="nu0">30</span><span class="sy0">,</span>  <span class="co1">//sets the '30 minute' step, e.g. 09:00 - 09:30</span>
+    x_size<span class="sy0">:</span><span class="nu0">12</span><span class="sy0">,</span>  <span class="co1">// the number of '30 minute's in the interval 09:00 - 15:00</span>
+                <span class="co1">// 15 - 9 = 6 hours = 360 minutes = 360/30 = 12</span>
+    x_start<span class="sy0">:</span><span class="nu0">18</span><span class="sy0">,</span> <span class="co1">//scale starts from 09:00,i.e. 9 hours from the default start- 00:00.</span>
+                <span class="co1">// 9 hours = 540 minutes = 540/30 = 18 'x_step's </span>
+    x_length<span class="sy0">:</span><span class="nu0">48</span><span class="sy0">,</span><span class="co1">//scrolls a day:1 day= 24 hours= 1440 minutes= 1440/30= 48 'x_step's</span>
+    ...
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='timelineviewconfiguration'><h2>Timeline view configuration</h2></a>
+
+<p>All template functions the names of which have <em>{timeline}_some</em> in their name should be specified after the view's creation, since 
+they are defined dynamically from the timeline constructor and will be overwritten by the <a class="link-pro" href="api__scheduler_createtimelineview.html">createTimelineView</a> call.</p>
+
+<h3>Setting the start date for the Timeline view</h3>
+
+<p>For example, let's have a look how the start date of the Timeline view should be set.</p>
+
+<p>The start date of any view is defined by a <em>scheduler.date[<viewName> +"_start"]</em> function.
+In order to change the first day of the timeline scale, you need to override the <em>scheduler.date.timeline_start</em> function after the <em>scheduler.createTimelineView()</em> call:</p>
+
+<pre><code><pre class="js"><span class="co1">// set the 1st day of the week</span>
+scheduler.<span class="me1">config</span>.<span class="me1">start_on_monday</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// create a timeline in the scheduler</span>
+scheduler.<span class="me1">createTimelineView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span>
+    render<span class="sy0">:</span> <span class="st0">&quot;tree&quot;</span><span class="sy0">,</span>
+    days<span class="sy0">:</span> <span class="nu0">7</span><span class="sy0">,</span>
+    folder_dy<span class="sy0">:</span> <span class="nu0">20</span><span class="sy0">,</span>
+    x_unit<span class="sy0">:</span> <span class="st0">&quot;day&quot;</span><span class="sy0">,</span>
+    x_date<span class="sy0">:</span> <span class="st0">&quot;%D %j %F&quot;</span><span class="sy0">,</span>
+    x_step<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span>
+    x_size<span class="sy0">:</span> <span class="nu0">7</span><span class="sy0">,</span>
+    x_start<span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">,</span>
+    x_length<span class="sy0">:</span> <span class="nu0">7</span><span class="sy0">,</span>
+    y_unit<span class="sy0">:</span><span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    y_property<span class="sy0">:</span> <span class="st0">&quot;section_id&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// configure the timeline after it's created</span>
+scheduler.<span class="me1">date</span>.<span class="me1">timeline_start</span> <span class="sy0">=</span> scheduler.<span class="me1">date</span>.<span class="me1">week_start</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// initialize a scheduler</span>
+scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;timeline_tree&quot;</span><span class="sy0">,</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="st0">&quot;timeline&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='timelineobjectapi'><h2>Timeline object API</h2></a>
+
+<p>There is a set of methods you can use to work with the Timeline view.</p>
+
+<h3>Creating a timeline view</h3>
+
+<p>First, you need to create a timeline instance in the scheduler:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createTimelineView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">'timeline'</span><span class="sy0">,</span>
+    ...
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> timeline <span class="sy0">=</span> scheduler.<span class="me1">matrix</span>.<span class="me1">timeline</span><span class="sy0">;</span></pre></code></pre>
+
+<p>After that you can make use of the methods enumerated below.</p>
+
+<h3>Getting a timeline view</h3>
+
+<p>To get a timeline view object, use the <a class="link-" href="api__scheduler_getview.html">getView</a> method. It takes the name of the view as a parameter. However, if no parameter has been passed, the method returns the current view.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> timeline <span class="sy0">=</span> scheduler.<span class="me1">getView</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+timeline.<span class="me1">x_size</span> <span class="sy0">=</span> <span class="nu0">8</span><span class="sy0">;</span>
+scheduler.<span class="me1">setCurrentView</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Setting the scale range</h3>
+
+<p>To specify the scale range, use the <strong>setRange()</strong> method. It takes two parameters:</p>
+
+<ul>
+<li><strong>startDate</strong> - (<em>Date</em>) the start date of the range</li>
+<li><strong>endDate</strong> - (<em>Date</em>) the end date of the range</li>
+</ul>
+
+<pre><code><pre class="js">timeline.<span class="me1">setRange</span><span class="br0">&#40;</span>startDate<span class="sy0">,</span> endDate<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Scrolling to particular position/date/section</h3>
+
+<div class='note'><p><p>The functionality described in this section works only for the Timeline with a <a href="timeline_view.html#horizontalscroll">horizontal scroll enabled</a>.</p>
+</p></div>
+
+<p>In case you need to scroll scheduler to a certain point, you should use the <strong>scrollTo()</strong> method. Its usage is rather versatile, depending on the passed parameters:</p>
+
+<ul>
+<li>to scroll to a specific date, pass the date in question to the method:</li>
+</ul>
+
+<pre><code><pre class="js">timeline.<span class="me1">scrollTo</span><span class="br0">&#40;</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>to scroll to a specific position, pass the desired point as a pixel value:</li>
+</ul>
+
+<pre><code><pre class="js">timeline.<span class="me1">scrollTo</span><span class="br0">&#40;</span><span class="nu0">500</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>to scroll both horizontally and vertically to a specific section on a particular date, pass an object with the date and the section key:</li>
+</ul>
+
+<pre><code><pre class="js">timeline.<span class="me1">scrollTo</span><span class="br0">&#40;</span><span class="br0">&#123;</span>date<span class="sy0">:</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span> section<span class="sy0">:</span><span class="nu0">4</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>to scroll to a specific position both horizontally and vertically, pass an object with left/top pixel values:</li>
+</ul>
+
+<pre><code><pre class="js">timeline.<span class="me1">scrollTo</span><span class="br0">&#40;</span><span class="br0">&#123;</span>left<span class="sy0">:</span><span class="nu0">300</span><span class="sy0">,</span> top<span class="sy0">:</span><span class="nu0">500</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Getting coordinates of a specific position</h3>
+
+<ul>
+<li>to get the X-coordinate of a specific date on the scale, use the <strong>posFromDate()</strong> method. Pass the date as a parameter: </li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> left <span class="sy0">=</span> timeline.<span class="me1">posFromDate</span><span class="br0">&#40;</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>The method returns 0 or the maximum X-coordinate for dates outside the scale.</p>
+</p></div>
+
+<ul>
+<li>to get the Y-coordinate of a specific row, use the <strong>posFromSection()</strong> method. It takes as a parameter the number of the section:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> top <span class="sy0">=</span> timeline.<span class="me1">posFromSection</span><span class="br0">&#40;</span>section.<span class="me1">key</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>The method returns -1 if the row is not found.</p>
+</p></div>
+
+<h3>Getting scroll position</h3>
+
+<p>To return the current position of the scrollbar in the timeline, use the <strong>timeline.getScrollPosition()</strong> method. It returns an object with the current position of the scrollbar.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> timeline <span class="sy0">=</span> scheduler.<span class="me1">getView</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+timeline.<span class="me1">getScrollPosition</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// { left: 0, top: 0 }</span></pre></code></pre>
+
+<p>The returned object contains two properties:</p>
+
+<ul>
+<li><strong>left</strong> - (<em>number</em>)  the left coordinate of the scroll position</li>
+<li><strong>top</strong> - (<em>number</em>)  the top coordinate of the scroll position</li>
+</ul>
+
+<p>You can also use the <strong>onScroll</strong> event handler to catch the new scroll position. The handler function takes two parameters:</p>
+
+<ul>
+<li><strong>left</strong> - (<em>number</em>)  the left coordinate of the scroll position</li>
+<li><strong>top</strong> - (<em>number</em>)  the top coordinate of the scroll position</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> timeline <span class="sy0">=</span> scheduler.<span class="me1">getView</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+timeline.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onScroll&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>left<span class="sy0">,</span> top<span class="br0">&#41;</span><span class="br0">&#123;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Getting events assigned to some section</h3>
+
+<p>It is possible to get an array of events assigned to the specified section with the <strong>timeline.selectEvents()</strong> method. It takes as a paramter the configuration object of a section of the following type:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    section<span class="sy0">:</span> string<span class="sy0">|</span>number 
+    date<span class="sy0">:</span> Date
+    selectNested<span class="sy0">:</span> boolean 
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>where:</p>
+
+<ul>
+<li><strong>section</strong> - the id of a section</li>
+<li><strong>date</strong> - optional, if specified the method will return events overlapping the provided date column</li>
+<li><strong>selectNested</strong> - optional, if set to <em>true</em> and section is a <em>tree</em> timeline folder the method will select events from all nested sections</li>
+</ul>
+
+<p>and returns an array of event objects.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> timeline <span class="sy0">=</span> scheduler.<span class="me1">getView</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> events <span class="sy0">=</span> timeline.<span class="me1">selectEvents</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    section<span class="sy0">:</span> section.<span class="me1">key</span><span class="sy0">,</span>
+    date<span class="sy0">:</span> date<span class="sy0">,</span>
+    selectNested<span class="sy0">:</span> <span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='dynamicshangeofproperties'><h2>Dynamic сhange of properties</h2></a>
+
+<p>All defined timeline objects are stored in the <a class="link-" href="api__scheduler_matrix_other.html">scheduler.matrix</a> object.
+You can access the configuration of any timeline view by its name and change any property. Changes will be applied as soon as you update the scheduler:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">getView</span><span class="br0">&#40;</span><span class="st0">'timeline'</span><span class="br0">&#41;</span>.<span class="me1">x_size</span> <span class="sy0">=</span> <span class="nu0">12</span><span class="sy0">;</span>
+scheduler.<span class="me1">setCurrentView</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// redraws scheduler</span></pre></code></pre>
+
+<p><br>
+where 'timeline' is the name of the timeline view as specified in the <a class="link-pro" href="api__scheduler_createtimelineview.html">createTimelineView</a> method:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createTimelineView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">'timeline'</span><span class="sy0">,</span>
+    ...
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='dataloading'><h2>Data loading</h2></a>
+
+<p>Unlike basic views (such as Day, Month, Year etc.), multiple-resource views (that are Units and Timeline) require data items to have one more mandatory field:</p>
+
+<ul>
+<li><a class="link-pro" href="api__scheduler_createtimelineview.html">y_property</a> - (<em>string</em>) the name of a data property that will be used to assign events to certain sections.</li>
+</ul>
+
+<p><img src="media/timeline_loading.png"/></p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createTimelineView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+     <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span>
+     ...
+     <span class="me1">y_unit</span><span class="sy0">:</span>     
+        <span class="br0">&#91;</span><span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Room 1&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+         <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Room 2&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+         <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Room 3&quot;</span><span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+     y_property<span class="sy0">:</span><span class="st0">&quot;room_id&quot;</span><span class="sy0">,</span> 
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">parse</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>text<span class="sy0">:</span><span class="st0">&quot;Conference&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;17/09/2012 12:00&quot;</span><span class="sy0">,</span> end_date<span class="sy0">:</span><span class="st0">&quot;18/09/2012 21:00&quot;</span><span class="sy0">,</span> 
+    room_id<span class="sy0">:</span><span class="st0">&quot;1&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>text<span class="sy0">:</span><span class="st0">&quot;Meeting&quot;</span><span class="sy0">,</span>    start_date<span class="sy0">:</span><span class="st0">&quot;17/09/2012 09:00&quot;</span><span class="sy0">,</span> end_date<span class="sy0">:</span><span class="st0">&quot;17/09/2012 21:00&quot;</span><span class="sy0">,</span> 
+    room_id<span class="sy0">:</span><span class="st0">&quot;2&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>text<span class="sy0">:</span><span class="st0">&quot;Conference&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;17/09/2012 15:00&quot;</span><span class="sy0">,</span> end_date<span class="sy0">:</span><span class="st0">&quot;18/09/2012 15:00&quot;</span><span class="sy0">,</span> 
+    room_id<span class="sy0">:</span><span class="st0">&quot;3&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/06_timeline/02_lines.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Bar mode</a></p>
+
+<a name='assignmentofeventstoseveralsections'><h2>Assignment of events to several sections</h2></a>
+
+<p>Scheduler provides the possibility to assign events to several sections.</p>
+
+<p><img src="media/multiple_sections.png"/></p>
+
+<p><br></p>
+
+<p>To enable the possibility:</p>
+
+<ol>
+<li>Include the <strong>ext/dhtmlxscheduler_multisection.js</strong> file on the page</li>
+<li>Set the <a class="link-pro" href="api__scheduler_multisection_config.html">multisection</a> property to <em>true</em></li>
+<li>(Optional) Include "ext/dhtmlxscheduler_multiselect.js" file on the page to use <a class="link-" href="multiselect.html">Multiselect</a> control in the scheduler (a comfortable way to switch between sections)</li>
+</ol>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlxscheduler.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="xtra ln-xtra"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/ext/dhtmlxscheduler_multisection.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span> </span><span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlxscheduler.css&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/ext/dhtmlxscheduler_timeline.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/ext/dhtmlxscheduler_multiselect.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js"><span class="xtra ln-xtra">    scheduler.<span class="me1">config</span>.<span class="me1">multisection</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span> </span>    scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="br0">&#41;</span><span class="sy0">;</span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p>After this you can specify several sections (<a class="link-" href="api__scheduler_section_delimiter_config.html">by default, delimited with a comma</a>) 
+in the related data property of the event and the event will be rendered in all specified sections:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createTimelineView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span>
+    y_unit<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;James Smith&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span> <span class="nu0">2</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;John Williams&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span> <span class="nu0">3</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;David Miller&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span> <span class="nu0">4</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Linda Brown&quot;</span><span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    y_property<span class="sy0">:</span> <span class="st0">&quot;section_id&quot;</span><span class="sy0">,</span> </span>    ...
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2012</span><span class="sy0">,</span> <span class="nu0">5</span><span class="sy0">,</span> <span class="nu0">30</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;timeline&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+scheduler.<span class="me1">parse</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+<span class="xtra ln-xtra">    <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task A&quot;</span><span class="sy0">,</span> section_id<span class="sy0">:</span><span class="st0">'1'</span><span class="sy0">,</span>      ...<span class="br0">&#125;</span><span class="sy0">,</span></span><span class="xtra ln-xtra">    <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task B&quot;</span><span class="sy0">,</span> section_id<span class="sy0">:</span><span class="st0">'1,3'</span><span class="sy0">,</span>    ...<span class="br0">&#125;</span><span class="sy0">,</span></span><span class="xtra ln-xtra">    <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task C&quot;</span><span class="sy0">,</span> section_id<span class="sy0">:</span><span class="st0">'4'</span><span class="sy0">,</span>      ...<span class="br0">&#125;</span><span class="sy0">,</span></span><span class="xtra ln-xtra">    <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">4</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task D&quot;</span><span class="sy0">,</span> section_id<span class="sy0">:</span><span class="st0">'2,3,4'</span><span class="sy0">,</span>  ...<span class="br0">&#125;</span></span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/12_multisection_events/01_multisection_events.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Multisection events in Timeline and Units view</a></p>
+
+<a name='viewmodes'><h2>View modes</h2></a>
+
+<p>The view has 4 modes:</p>
+
+<ul>
+<li><strong>Bar</strong><br> <img src="media/timeline_bar_mode.png"/><br> <a href='samples/06_timeline/02_lines.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Bar mode</a> <br> <br></li>
+<li><strong>Cell</strong> (default)<br> <img src="media/timeline_cell_mode.png"/><br> <a href='samples/06_timeline/01_slots.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Cell mode</a>  <br> <br></li>
+<li><strong>Tree</strong><br> <img src="media/timeline_tree_mode.png"/><br> <a href='samples/06_timeline/03_tree.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Tree mode</a> <br> <br></li>
+<li><strong>Days</strong><br> <img src="media/timeline_days_mode.png"/><br> <a href='samples/06_timeline/14_days_as_sections.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Days as Timeline rows</a></li>
+</ul>
+
+<p>The needed mode is set by the <a class="link-pro" href="api__scheduler_createtimelineview.html">render</a> parameter:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createTimelineView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span>
+    render<span class="sy0">:</span> <span class="st0">&quot;bar&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='daysmodedetails'><h2>'Days' mode details</h2></a>
+
+<p>While working with the Days mode, please remember the following things:</p>
+
+<ol>
+    <li>Time scale must cover 1 day exactly. If your configuration specifies a shorter or longer period, timeline will be rendered incorrectly:
+
+<pre><code><pre class="js">scheduler.<span class="me1">createTimelineView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span> 
+    render<span class="sy0">:</span><span class="st0">&quot;days&quot;</span><span class="sy0">,</span> 
+    days<span class="sy0">:</span><span class="nu0">7</span><span class="sy0">,</span>   
+<span class="xtra ln-xtra">    <span class="co1">//time scale is configured to cover 1 day </span></span><span class="xtra ln-xtra">    x_unit<span class="sy0">:</span><span class="st0">&quot;minute&quot;</span><span class="sy0">,</span> </span><span class="xtra ln-xtra">    x_date<span class="sy0">:</span><span class="st0">&quot;%H:%i&quot;</span><span class="sy0">,</span>  </span><span class="xtra ln-xtra">    x_step<span class="sy0">:</span><span class="nu0">30</span><span class="sy0">,</span>       </span><span class="xtra ln-xtra">    x_size<span class="sy0">:</span><span class="nu0">24</span><span class="sy0">,</span>       </span><span class="xtra ln-xtra">    x_start<span class="sy0">:</span><span class="nu0">16</span>       </span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+    </li>
+    <li>The mode doesn't support <a class="link-" href="limits.html">Blocking and Marking functionality</a></li>
+    <li>
+    The format of the Y-Axis labels is specified by the <a href="api__scheduler_%7Btimelinename%7D_scale_label_template.html">scale_label</a> template:
+
+<pre><code><pre class="js">scheduler.<span class="me1">templates</span>.<span class="me1">timeline_scale_label</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>key<span class="sy0">,</span> label<span class="sy0">,</span> section<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// specifies the same labels as in the Day view</span>
+    <span class="kw1">return</span> scheduler.<span class="me1">templates</span>.<span class="me1">day_date</span><span class="br0">&#40;</span>label<span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+    </li>
+    <li>To change the start day of the displayable interval, use the <b>scheduler.date.{timeline_name}_start</b> function:
+
+<pre><code><pre class="js">scheduler.<span class="me1">date</span>.<span class="me1">timeline_start</span> <span class="sy0">=</span> <span class="kw2">function</span> <span class="br0">&#40;</span>date<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    date <span class="sy0">=</span> scheduler.<span class="me1">date</span>.<span class="me1">week_start</span><span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="sy0">;</span>
+    date <span class="sy0">=</span> scheduler.<span class="me1">date</span>.<span class="me1">add</span><span class="br0">&#40;</span>date<span class="sy0">,</span> config.<span class="me1">x_step</span><span class="sy0">*</span>config.<span class="me1">x_start</span><span class="sy0">,</span> config.<span class="me1">x_unit</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+    <span class="kw1">return</span> date<span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+    </li>
+</ol>
+
+<a name='timeintervalforviewcells'><h2>Time interval for view cells</h2></a>
+
+<p>By default, cells of the view have a one-day interval and locate events inside, according to this time. To change the default interval (for example, to leave only working hours and remove rarely used ones), use one of 2 ways:</p>
+
+<ul>
+<li>the <a class="link-pro" href="api__scheduler_createtimelineview.html">first_hour</a> and <a class="link-pro" href="api__scheduler_createtimelineview.html">last_hour</a> parameters:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">//the cell interval will be daytime from 10.00 till 18.00</span>
+scheduler.<span class="me1">createTimelineView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span>
+    first_hour<span class="sy0">:</span><span class="nu0">10</span><span class="sy0">,</span>
+    last_hour<span class="sy0">:</span><span class="nu0">18</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/11_scales/06_timeline_hours.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Changing the time interval for the view cells  </a></p>
+
+<ul>
+<li>the <strong>ignore_{viewName}</strong> property, where the <strong>viewName</strong> part is the value of the <em>name</em> option of the object passed to the <a class="link-pro" href="api__scheduler_createtimelineview.html">createTimelineView</a> method.
+<strong>ignore_{viewName}</strong> is a function that takes the cell date as a parameter, and 'removes' the hours for which the 'true' value is returned:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">//the cell interval will be daytime from 10.00 till 18.00</span>
+scheduler.<span class="me1">ignore_timeline</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="br0">&#123;</span>   <span class="co1">// &quot;timeline&quot; is the name of the view</span>
+    <span class="co1">// non-working hours</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>date.<span class="me1">getHours</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">&lt;</span> <span class="nu0">10</span> <span class="sy0">||</span> date.<span class="me1">getHours</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">&gt;</span> <span class="nu0">18</span><span class="br0">&#41;</span> <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The <strong>ignore_{viewName}</strong> method is described in more detail in the section <a class="link-" href="custom_scales.html">Hiding Time Units in X-Axis of View</a>.</p>
+
+<p><a href='samples/11_scales/04_timeline_ignore.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Hiding hours in the scale of Timeline view</a></p>
+
+<p><img src="media/timeline_scale_interval.png"/></p>
+
+<div class='note'><p><p>Please pay attention that you can't specify the ignored interval equal or larger than the common interval set for the timeline.</p>
+</p></div>
+
+<p>For instance, if you set a one-day interval for a timeline and try to "ignore" some day via the <strong>ignore_{viewName}</strong> property, it won't work. 
+Scheduler will show the ignored day, although without rendering a scale with events for it.</p>
+
+<p>To skip the "ignored" interval in the described case, you need to dynamically change the <strong>x_length</strong> setting in the <strong>scheduler._click.dhx_cal_next_button</strong> function. For example, to ignore weekends 
+and totally remove them from the timeline, you can use the following code:</p>
+
+<pre><code><pre class="js">scheduler._click.<span class="me1">dhx_cal_next_button</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>dummy<span class="sy0">,</span>step<span class="br0">&#41;</span><span class="br0">&#123;</span>
+  <span class="kw2">var</span> mode <span class="sy0">=</span> scheduler.<span class="me1">getState</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">mode</span><span class="sy0">;</span>
+  <span class="kw2">var</span> minDate <span class="sy0">=</span> scheduler.<span class="me1">getState</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">min_date</span><span class="sy0">;</span>
+  <span class="kw2">var</span> formFunc <span class="sy0">=</span> scheduler.<span class="me1">date</span>.<span class="me1">date_to_str</span><span class="br0">&#40;</span><span class="st0">&quot;%D&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="co1">// ignoring weekends</span>
+  <span class="kw1">if</span><span class="br0">&#40;</span>mode<span class="sy0">==</span><span class="st0">'timeline'</span><span class="br0">&#41;</span><span class="br0">&#123;</span>    
+  <span class="kw1">if</span><span class="br0">&#40;</span><span class="br0">&#40;</span>formFunc<span class="br0">&#40;</span>minDate<span class="br0">&#41;</span><span class="sy0">==</span><span class="st0">'Fri'</span> <span class="sy0">&amp;&amp;</span> step<span class="sy0">!=-</span><span class="nu0">1</span><span class="br0">&#41;</span> <span class="sy0">||</span> <span class="br0">&#40;</span>formFunc<span class="br0">&#40;</span>minDate<span class="br0">&#41;</span><span class="sy0">==</span><span class="st0">'Mon'</span> <span class="sy0">&amp;&amp;</span> step<span class="sy0">==-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+      scheduler.<span class="me1">matrix</span><span class="br0">&#91;</span><span class="st0">'timeline'</span><span class="br0">&#93;</span>.<span class="me1">x_length</span> <span class="sy0">=</span> <span class="nu0">24</span><span class="sy0">*</span><span class="nu0">3</span><span class="sy0">;</span>
+    <span class="kw1">else</span>                    
+      scheduler.<span class="me1">matrix</span><span class="br0">&#91;</span><span class="st0">'timeline'</span><span class="br0">&#93;</span>.<span class="me1">x_length</span> <span class="sy0">=</span> <span class="nu0">24</span><span class="sy0">;</span>               
+  <span class="br0">&#125;</span>
+ scheduler.<span class="me1">setCurrentView</span><span class="br0">&#40;</span>scheduler.<span class="me1">date</span>.<span class="me1">add</span><span class="br0">&#40;</span> 
+ scheduler.<span class="me1">date</span><span class="br0">&#91;</span>scheduler._mode<span class="sy0">+</span><span class="st0">&quot;_start&quot;</span><span class="br0">&#93;</span><span class="br0">&#40;</span>scheduler._date<span class="br0">&#41;</span><span class="sy0">,</span><span class="br0">&#40;</span>step<span class="sy0">||</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">,</span>scheduler._mode<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>  
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='snippet/e4358367.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Ignoring weekends</a></p>
+
+<a name='dataforyaxissectionsinthebarandcellmodes'><h2>Data for Y-Axis sections in the 'Bar' and 'Cell' modes</h2></a>
+
+<p>To set values for the Y-Axis in the 'Bar' and 'Cell' modes, use the <a class="link-pro" href="api__scheduler_createtimelineview.html">y_unit</a> parameter:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createTimelineView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span>
+    ...
+    <span class="me1">y_unit</span><span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;James Smith&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;John Williams&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;David Miller&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">4</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Linda Brown&quot;</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To be correctly processed, <a class="link-pro" href="api__scheduler_createtimelineview.html">y_unit</a> items must have 2 mandatory properties:</p>
+
+<ul>
+<li><strong>key</strong> - the item's id</li>
+<li><strong>label</strong> - the item's label</li>
+</ul>
+
+<a name='dataforyaxissectionsinthetreemode'><h2>Data for Y-Axis sections in the 'Tree' mode</h2></a>
+
+<p>The 'Tree' mode allows grouping items by creating multi-level folders. In addition to more convenient representation, it allows you to specify an event not only for individual event holder, but also for the whole folder (any level).</p>
+
+<p><br></p>
+
+<p>To set values for the 'Tree' timeline, use the same <a class="link-pro" href="api__scheduler_createtimelineview.html">y_unit</a> parameter that is used in the 'Bar' and 'Cell' modes, but with a wider set of properties:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createTimelineView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span>   <span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span>
+    render<span class="sy0">:</span><span class="st0">&quot;tree&quot;</span><span class="sy0">,</span>
+    ...
+    <span class="me1">y_unit</span><span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;production&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Production Department&quot;</span><span class="sy0">,</span> children<span class="sy0">:</span><span class="br0">&#91;</span>
+            <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;p1&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Managers&quot;</span><span class="sy0">,</span> children<span class="sy0">:</span><span class="br0">&#91;</span>
+                <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;pm1&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;John Williams&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;pm2&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;David Miller&quot;</span><span class="br0">&#125;</span>
+            <span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;p2&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Linda Brown&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;p3&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;George Lucas&quot;</span><span class="br0">&#125;</span>
+        <span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;sales&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Sales and Marketing&quot;</span><span class="sy0">,</span> children<span class="sy0">:</span><span class="br0">&#91;</span>
+            <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;s1&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Kate Moss&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;s2&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Dian Fossey&quot;</span><span class="br0">&#125;</span>
+        <span class="br0">&#93;</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The <a class="link-pro" href="api__scheduler_createtimelineview.html">y_unit</a> items have:</p>
+
+<ul>
+<li>2 mandatory properties:
+
+<ul>
+<li><strong>key</strong> - the item's id</li>
+<li><strong>label</strong> - the item's label</li>
+</ul></li>
+<li>2 optional properties:
+
+<ul>
+<li><strong>open</strong> - specifies, whether the section will be opened initially</li>
+<li><strong>children</strong> - an array of nested items' objects</li>
+</ul></li>
+</ul>
+
+<a name='dataforyaxissectionsinthedaysmode'><h2>Data for Y-Axis sections in the 'Days' mode</h2></a>
+
+<p>To set values for the Y-Axis in the 'Days' mode, use the <a class="link-pro" href="api__scheduler_createtimelineview.html">days</a> parameter:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createTimelineView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span>
+    ...
+    <span class="me1">days</span><span class="sy0">:</span><span class="nu0">7</span> <span class="co1">//the number of items (i.e. days) in the Y-Axis</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='dataforyaxissectionsfromtheserver'><h2>Data for Y-Axis sections from the server</h2></a>
+
+<p>To load Y-Axis sections from the server, use:</p>
+
+<ul>
+<li>On the client side -  the <a class="link-" href="api__scheduler_serverlist.html">serverList</a> method:</li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createTimelineView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span>
+    ...
+    <span class="me1">y_unit</span><span class="sy0">:</span>scheduler.<span class="me1">serverList</span><span class="br0">&#40;</span><span class="st0">&quot;sections&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><em>where <a class="link-" href="api__scheduler_serverlist.html">serverList</a>  returns a list of options with the name 'sections'</em>.</p>
+
+<ul>
+<li>On the server side </li>
+</ul>
+
+<p>The data response for the <a class="link-" href="api__scheduler_load.html">load</a> method should contain a collection with the server list name specified in JSON <a class="link-" href="data_formats.html#jsonwithcollections">of the following format</a>.</p>
+
+<p>You can also use the <a href="../connector__php__optionsconnector.html">OptionsConnector</a> connector:</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+    <span class="kw1">include</span><span class="br0">&#40;</span><span class="st_h">'connector-php/codebase/scheduler_connector.php'</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//includes the file</span>
+&nbsp;
+    <span class="re0">$res</span><span class="sy0">=</span><a href="http://www.php.net/mysql_connect"><span class="kw3">mysql_connect</span></a><span class="br0">&#40;</span><span class="st0">&quot;localhost&quot;</span><span class="sy0">,</span><span class="st0">&quot;root&quot;</span><span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//connects to the server with our DB</span>
+    <a href="http://www.php.net/mysql_select_db"><span class="kw3">mysql_select_db</span></a><span class="br0">&#40;</span><span class="st0">&quot;sampleDB&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//connects to the DB.'sampleDB' is the DB's name</span>
+&nbsp;
+    <span class="re0">$list</span> <span class="sy0">=</span> <span class="kw2">new</span> OptionsConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="sy0">,</span> <span class="re0">$dbtype</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$list</span><span class="sy0">-&gt;</span><span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;types&quot;</span><span class="sy0">,</span><span class="st0">&quot;type_id&quot;</span><span class="sy0">,</span><span class="st0">&quot;type_id(value),name(label)&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$scheduler</span> <span class="sy0">=</span> <span class="kw2">new</span> schedulerConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="sy0">,</span> <span class="re0">$dbtype</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="co1">//we set the same name that was used on the client side - 'sections'</span>
+    <span class="re0">$scheduler</span><span class="sy0">-&gt;</span><span class="me1">set_options</span><span class="br0">&#40;</span><span class="st0">&quot;sections&quot;</span><span class="sy0">,</span> <span class="re0">$list</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+    <span class="re0">$scheduler</span><span class="sy0">-&gt;</span><span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;events&quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span><span class="st0">&quot;start_date,end_date,text,type_id&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="sy1">?&gt;</span></pre></code></pre>
+
+<p><img src="media/server_list_db.png"/></p>
+
+<p>The data response should have the <a class="link-" href="data_formats.html#jsonwithcollections">JSON format</a> that includes
+the "collections" hash of necessary collections to be referenced through the <a class="link-" href="api__scheduler_serverlist.html">serverList</a> method.</p>
+
+<p><br></p>
+
+<p>Note, you can create a collection manually, instead of using dhtmlxConnector. In this case, to update the collection, use the <a class="link-" href="api__scheduler_updatecollection.html">updateCollection</a> method:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">updateCollection</span><span class="br0">&#40;</span><span class="st0">&quot;sections&quot;</span><span class="sy0">,</span> new_sections_array<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/03_extensions/17_connector_units.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Loading Units sections from the server</a></p>
+
+<a name='dynamicadditionremovalofitems'><h2>Dynamic addition/removal of items</h2></a>
+
+<p>To add/delete items on the fly, use the following methods:</p>
+
+<ul>
+<li><a class="link-pro" href="api__scheduler_addsection.html">addSection</a> </li>
+<li><a class="link-pro" href="api__scheduler_deletesection.html">deleteSection</a></li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createTimelineView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span>   <span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span>
+    render<span class="sy0">:</span><span class="st0">&quot;tree&quot;</span><span class="sy0">,</span>
+    ...
+    <span class="me1">y_unit</span><span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;production&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Production Department&quot;</span><span class="sy0">,</span> children<span class="sy0">:</span><span class="br0">&#91;</span>
+            <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;p1&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Managers&quot;</span><span class="sy0">,</span> children<span class="sy0">:</span><span class="br0">&#91;</span>
+                <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;pm1&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;John Williams&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;pm2&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;David Miller&quot;</span><span class="br0">&#125;</span>
+            <span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;p2&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Linda Brown&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;p3&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;George Lucas&quot;</span><span class="br0">&#125;</span>
+        <span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;sales&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Sales and Marketing&quot;</span><span class="sy0">,</span> children<span class="sy0">:</span><span class="br0">&#91;</span>
+            <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;s1&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Kate Moss&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;s2&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Dian Fossey&quot;</span><span class="br0">&#125;</span>
+        <span class="br0">&#93;</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">addSection</span><span class="br0">&#40;</span> <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;pm3&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;James Smith&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span> <span class="st0">&quot;p1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">addSection</span><span class="br0">&#40;</span> <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;s3&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Alex White&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span> <span class="st0">&quot;sales&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">deleteSection</span><span class="br0">&#40;</span><span class="st0">&quot;p3&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>To use the <a class="link-pro" href="api__scheduler_addsection.html">addSection</a> and <a class="link-pro" href="api__scheduler_deletesection.html">deleteSection</a> methods, the 'Tree' timeline must be currently opened in the scheduler.</p>
+</p></div>
+
+<a name='secondxaxis'><h2>Second X-Axis</h2></a>
+
+<p>The second X-Axis is placed on top of the default one and serves to group time intervals of the original scale.</p>
+
+<p><img src="media/timeline_second_axis.png"/></p>
+
+<p>You can add the second scale by using the <a class="link-pro" href="api__scheduler_createtimelineview.html">second_scale</a> parameter:</p>
+
+<pre><code><pre class="js"> scheduler.<span class="me1">createTimelineView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span>   <span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span>
+    ...
+    <span class="me1">second_scale</span><span class="sy0">:</span><span class="br0">&#123;</span>
+        x_unit<span class="sy0">:</span> <span class="st0">&quot;day&quot;</span><span class="sy0">,</span> <span class="co1">// the measuring unit of the axis (by default, 'minute')</span>
+        x_date<span class="sy0">:</span> <span class="st0">&quot;%F %d&quot;</span> <span class="co1">//the date format of the axis (&quot;July 01&quot;)</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/06_timeline/07_second_scale.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Second time scale (X-Axis)</a></p>
+
+<a name='stretchingeventsoverthecell'><h2>Stretching events over the cell</h2></a>
+
+<p>To make an event occupy the entire cell width, no matter how long this event lasts, use the <a class="link-pro" href="api__scheduler_createtimelineview.html">round_position</a> parameter:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createTimelineView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span>
+    render<span class="sy0">:</span><span class="st0">&quot;bar&quot;</span><span class="sy0">,</span>
+    ...
+    <span class="me1">round_position</span><span class="sy0">:</span><span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><strong>round_position:false</strong>(default behavior)</p>
+
+<p><img src="media/stretching_events_01.png"/></p>
+
+<p><strong>round_position:true</strong></p>
+
+<p><img src="media/stretching_events_02.png"/></p>
+
+<a name='sortingofevents'><h2>Sorting of events</h2></a>
+
+<p>By default, the Timeline view sorts events by the start date. If you want to apply a custom sorting rule, define the related logic in a function and set this function as the value
+of the <a class="link-pro" href="api__scheduler_createtimelineview.html">sort</a> parameter:</p>
+
+<p>This function will be called for each pair of adjacent values and return 1,-1 or 0:</p>
+
+<ul>
+<li><strong>1</strong> - an object with the first value in pair must go before the second one;</li>
+<li><strong>-1</strong> - the second object goes before the first one;</li>
+<li><strong>0</strong> - the objects are equal.</li>
+</ul>
+
+<p class='snippet'>
+Sorting by the text length
+</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createTimelineView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span>   <span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span>
+    render<span class="sy0">:</span><span class="st0">&quot;bar&quot;</span><span class="sy0">,</span>
+    ...
+    <span class="me1">sort</span><span class="sy0">:</span><span class="kw2">function</span><span class="br0">&#40;</span>a<span class="sy0">,</span> b<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>a.<span class="me1">text</span>.<span class="me1">length</span> <span class="sy0">&gt;</span> b.<span class="me1">text</span>.<span class="me1">length</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="co1">// display a before b</span>
+            <span class="kw1">return</span> <span class="sy0">-</span><span class="nu0">1</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span> <span class="kw1">else</span> <span class="kw1">if</span><span class="br0">&#40;</span>a.<span class="me1">text</span>.<span class="me1">length</span> <span class="sy0">&lt;</span> b.<span class="me1">text</span>.<span class="me1">length</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="kw1">return</span> <span class="nu0">1</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span> <span class="kw1">else</span><span class="br0">&#123;</span>
+            <span class="kw1">return</span> <span class="sy0">+</span>a.<span class="me1">start_date</span> <span class="sy0">&gt;</span> <span class="sy0">+</span>b.<span class="me1">start_date</span> <span class="sy0">?</span> <span class="nu0">1</span> <span class="sy0">:</span> <span class="sy0">-</span><span class="nu0">1</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='horizontalscroll'><h2>Horizontal scroll</h2></a>
+
+<p>There is a possibility to enable a horizontal scroll in the Timeline view to switch between days/weeks/months without clicking the navigation buttons.</p>
+
+<p>In order to add a horizontal scrollbar into the timeline, you should use the <strong>scrollable</strong> property of the <a class="link-pro" href="api__scheduler_createtimelineview.html">createTimelineView</a> method.
+There are also the <strong>column_width</strong> and <strong>scroll_position</strong> options that can be used to configure the horizontal scroll as it's shown in the example below:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createTimelineView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span>
+    x_unit<span class="sy0">:</span> <span class="st0">&quot;minute&quot;</span><span class="sy0">,</span>
+    x_date<span class="sy0">:</span> <span class="st0">&quot;%H:%i&quot;</span><span class="sy0">,</span>
+    x_step<span class="sy0">:</span> <span class="nu0">30</span><span class="sy0">,</span>
+    x_size<span class="sy0">:</span> <span class="nu0">24</span><span class="sy0">*</span><span class="nu0">7</span><span class="sy0">,</span>
+    x_start<span class="sy0">:</span> <span class="nu0">16</span><span class="sy0">,</span>
+    x_length<span class="sy0">:</span> <span class="nu0">48</span><span class="sy0">,</span>
+    y_unit<span class="sy0">:</span> sections<span class="sy0">,</span>
+    y_property<span class="sy0">:</span> <span class="st0">&quot;section_id&quot;</span><span class="sy0">,</span>
+    render<span class="sy0">:</span> <span class="st0">&quot;bar&quot;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    scrollable<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>  </span><span class="xtra ln-xtra">    column_width<span class="sy0">:</span> <span class="nu0">70</span><span class="sy0">,</span> </span><span class="xtra ln-xtra">    scroll_position<span class="sy0">:</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2018</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">15</span><span class="br0">&#41;</span>   </span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><strong>scrollable</strong> - (<em>boolean</em>) enables horizontal scroll in the Timeline view, <em>false</em> by default. If <em>false</em> or undefined, date columns will shrink to fit the time scale into the viewport width.
+If <em>true</em>, date columns will not shrink less than the <strong>column_width</strong> value, a horizontal scroll bar will appear when necessary.</li>
+<li><strong>column_width</strong> - (<em>boolean</em>) optional, defines the minimal width of timeline date columns, 100 by default</li>
+<li><strong>scroll_position</strong> - (<em>Date</em>) optional, renders timeline scrolled to a specific position, takes the same arguments as <code>timeline.scrollTo()</code>, i.e. the date you want timeline to be scrolled to after rendering</li>
+</ul>
+
+<p>The <strong>smart rendering</strong> feature is enabled in a scrollable Timeline by default. This functionality optimizes the performance of the Timeline view as it allows rendering only the rows, columns, and events
+visible on the screen, while other elements are being rendered during scrolling of the timeline.</p>
+
+<p><a href='samples/06_timeline/16_lines_performance.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Horizontal scroll for Timeline view</a></p>
+
+<div class='note'><p><p>Please note that the timeline scroll is not finite and the time range is limited. To switch between time intervals, you still need to use the navigation controls.</p>
+</p></div>
+
+<a name='autoscrollconfiguration'><h2>Autoscroll configuration</h2></a>
+
+<p>Autoscroll is enabled by default when you move/resize an event to the edge of the timeline viewport.</p>
+
+<p>There is a possibility to adjust sensibility and speed of autoscroll via the related properties of the <strong>autoscroll</strong> object. Use it inside of the the <a class="link-pro" href="api__scheduler_createtimelineview.html">createTimelineView</a> method:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createTimelineView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span>
+    ...
+<span class="xtra ln-xtra">    <span class="me1">autoscroll</span><span class="sy0">:</span> <span class="br0">&#123;</span>           </span><span class="xtra ln-xtra">        range_x<span class="sy0">:</span> <span class="nu0">200</span><span class="sy0">,</span>       </span><span class="xtra ln-xtra">        range_y<span class="sy0">:</span> <span class="nu0">100</span><span class="sy0">,</span>       </span><span class="xtra ln-xtra">        speed_x<span class="sy0">:</span> <span class="nu0">20</span><span class="sy0">,</span>        </span><span class="xtra ln-xtra">        speed_y<span class="sy0">:</span> <span class="nu0">10</span>         </span><span class="xtra ln-xtra">    <span class="br0">&#125;</span>                       </span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><strong>range_x</strong> - (<em>number</em>) horizontal autoscroll distance from the edge of the data area</li>
+<li><strong>range_y</strong> - (<em>number</em>) vertical autoscroll distance from the edge of the data area</li>
+<li><strong>speed_x</strong> - (<em>number</em>) horizontal autoscroll speed</li>
+<li><strong>speed_y</strong> - (<em>number</em>) vertical autoscroll speed</li>
+</ul>
+
+<a name='headerofthesectionscolumn'><h2>Header of the sections column</h2></a>
+
+<p>By default the header of the column with sections is empty. You can add a label into this header via the <a class="link-" href="api__scheduler_locale_other.html">locale</a> object in the following way:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="sy0">&lt;</span>timelineName<span class="sy0">&gt;</span>_scale_header <span class="sy0">=</span> <span class="st0">&quot;Label&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>where <timelineName> is the name of the timeline created with the <a class="link-pro" href="api__scheduler_createtimelineview.html">createTimelineView</a> method. For example:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">timeline_scale_header</span> <span class="sy0">=</span> <span class="st0">&quot;Users&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='customcontentincells'><h2>Custom content in cells</h2></a>
+
+<p>It is possible to render custom content in cell of a Timeline view, not only in the Cell mode, as it demonstrates the sample below:</p>
+
+<p><a href='samples/06_timeline/01_slots.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Cell mode</a></p>
+
+<p>You can also specify a template for the content of cells in all other modes of the Timeline view.</p>
+
+<p><img src="media/custom_cell_content.png" alt="Custom content in Timeline cells" /></p>
+
+<p><a href='samples/06_timeline/17_timeline_cell_content.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Display labels in timeline cells</a></p>
+
+<p>To enable this functionality for a particular timeline, make use of the <strong>cell_template</strong> property while creating the timeline with the <a class="link-pro" href="api__scheduler_createtimelineview.html">createTimelineView</a> method.</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">createTimelineView</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    cell_template<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+    ...
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>After that the template you've specified for this timeline will be called. For example, this is how you can show the number of events for each date in the "tree" timeline mode:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>style<span class="sy0">&gt;</span>
+    .<span class="me1">dhx_matrix_cell</span> div.<span class="me1">load</span><span class="sy0">-</span>marker<span class="br0">&#123;</span>
+        position<span class="sy0">:</span> absolute<span class="sy0">;</span>
+        width<span class="sy0">:</span> <span class="nu0">40</span><span class="sy0">%;</span>
+        height<span class="sy0">:</span> 25px<span class="sy0">;</span>
+        transform<span class="sy0">:</span> translate<span class="br0">&#40;</span><span class="nu0">70</span><span class="sy0">%,</span> <span class="nu0">20</span><span class="sy0">%</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        line<span class="sy0">-</span>height<span class="sy0">:</span> 25px<span class="sy0">;</span>
+        text<span class="sy0">-</span>align<span class="sy0">:</span> center<span class="sy0">;</span>
+        border<span class="sy0">-</span>radius<span class="sy0">:</span> 7px<span class="sy0">;</span>
+        color<span class="sy0">:</span> white<span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    .<span class="me1">load</span><span class="sy0">-</span>marker<span class="sy0">-</span>no<span class="br0">&#123;</span>
+        background<span class="sy0">:</span> #e0e0e0<span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    .<span class="me1">load</span><span class="sy0">-</span>marker<span class="sy0">-</span>light<span class="br0">&#123;</span>
+        background<span class="sy0">:</span> #aed581<span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    .<span class="me1">load</span><span class="sy0">-</span>marker<span class="sy0">-</span>high<span class="br0">&#123;</span>
+        background<span class="sy0">:</span> #ff8a65<span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+<span class="sy0">&lt;/</span>style<span class="sy0">&gt;</span>
+&nbsp;
+scheduler.<span class="me1">templates</span>.<span class="me1">timeline_cell_value</span> <span class="sy0">=</span> <span class="kw2">function</span> <span class="br0">&#40;</span>evs<span class="sy0">,</span> date<span class="sy0">,</span> section<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>section.<span class="me1">children</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw2">var</span> timeline <span class="sy0">=</span> scheduler.<span class="me1">getView</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw2">var</span> events <span class="sy0">=</span> timeline.<span class="me1">selectEvents</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+            section<span class="sy0">:</span> section.<span class="me1">key</span><span class="sy0">,</span>
+            date<span class="sy0">:</span> date<span class="sy0">,</span>
+            selectNested<span class="sy0">:</span> <span class="kw2">true</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw2">var</span> className <span class="sy0">=</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+        <span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">!</span>events.<span class="me1">length</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+            className <span class="sy0">=</span> <span class="st0">&quot;load-marker-no&quot;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span><span class="kw1">else</span> <span class="kw1">if</span><span class="br0">&#40;</span>events.<span class="me1">length</span> <span class="sy0">&lt;</span> <span class="nu0">3</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+            className <span class="sy0">=</span> <span class="st0">&quot;load-marker-light&quot;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span><span class="kw1">else</span><span class="br0">&#123;</span>
+            className <span class="sy0">=</span> <span class="st0">&quot;load-marker-high&quot;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="kw1">return</span> <span class="st0">&quot;&lt;div class='load-marker &quot;</span><span class="sy0">+</span>className<span class="sy0">+</span><span class="st0">&quot;'&gt;&quot;</span><span class="sy0">+</span>
+            events.<span class="me1">length</span>
+        <span class="sy0">+</span><span class="st0">&quot;&lt;/div&gt;&quot;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="kw1">return</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/06_timeline/17_timeline_cell_content.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Display labels in timeline cells</a></p>
+
+<a name='relatedguides'><h2>Related guides</h2></a>
+
+<ul>
+<li><a class="link-" href="configuration.html">Common Config Instructions</a></li>
+<li><a class="link-" href="timeline_view_templates.html">Timeline View Templates</a></li>
+<li><a class="link-" href="loading_data.html">Loading Data</a></li>
+<li><a class="link-" href="limits.html">Blocking and Marking Dates</a></li>
+<li><a class="link-" href="skins.html">Skins</a></li>
+<li><a class="link-" href="localization.html">Localization</a></li>
+</ul>
+
+<!-- Content Area End -->
+			<a href='timeline_view.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

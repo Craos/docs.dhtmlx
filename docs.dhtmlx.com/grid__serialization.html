@@ -1,0 +1,249 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Serializing Data to XML,CSV  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="grid__data_formats.html">Exploring Supported Data Formats</a></li><li class=""><a href="grid__loading_storing_data.html">Loading Data into Grid</a></li><li class=""><a href="grid__big_datasets_loading.html">Loading Big Datasets</a></li><li class=""><a href="grid__server_side.html">Saving Data on the Server Side</a></li><li class=" current"><a href="grid__serialization.html">Serializing Data to XML,CSV</a></li><ul><li class="inner"><a href="grid__serialization.html#xml">XML</a></li><li class="inner"><a href="grid__serialization.html#csv">CSV</a></li></ul><li class=""><a href="grid__data_export.html">Exporting Data to PDF,Excel</a></li><li class=""><a href="grid__userdata.html">Loading Additional Data to Grid</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__loading_data.html">Loading and Storing Data</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Serializing Data to XML,CSV</h1>
+
+<a name='xml'><h2>XML</h2></a>
+
+<p>To serialize dhtmlxGrid data into an XML string, use the <a class="link-pro" href="api__dhtmlxgrid_serialize.html">serialize</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myXmlString <span class="sy0">=</span> mygrid.<span class="me1">serialize</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/17_serialization/01_pro_serialize.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;<span class='doc_error'>Sample without title: dhtmlxGrid/samples/17_serialization/01_pro_serialize.html</span></a></p>
+
+<p><br></p>
+
+<p>Configuration methods and properties for XML serialization:</p>
+
+<h3>xml.s_row</h3>
+
+<p>sets a custom name for row tags</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">xml</span>.<span class="me1">s_row</span><span class="sy0">=</span><span class="st0">&quot;myrowtag&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>xml.s_cell</h3>
+
+<p>sets a custom name for cell tags</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">xml</span>.<span class="me1">s_cell</span><span class="sy0">=</span><span class="st0">&quot;mycelltag&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>xml.row_attrs.push</h3>
+
+<p>allows you to include custom row attributes to serialization</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setRowAttribute</span><span class="br0">&#40;</span><span class="st0">&quot;row3&quot;</span><span class="sy0">,</span><span class="st0">&quot;custom1&quot;</span><span class="sy0">,</span><span class="st0">&quot;data&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">mygrid</span>.<span class="me1">xml</span>.<span class="me1">row_attrs</span>.<span class="me1">push</span><span class="br0">&#40;</span><span class="st0">&quot;custom1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>xml.cell_attrs.push</h3>
+
+<p>allows you to include custom cell attributes to serialization</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">cells</span><span class="br0">&#40;</span>i<span class="sy0">,</span>j<span class="br0">&#41;</span>.<span class="me1">setAttribute</span><span class="br0">&#40;</span><span class="st0">&quot;custom2&quot;</span><span class="sy0">,</span><span class="st0">&quot;data&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">mygrid</span>.<span class="me1">xml</span>.<span class="me1">cell_attrs</span>.<span class="me1">push</span><span class="br0">&#40;</span><span class="st0">&quot;custom2&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>setSerializationLevel (PRO version)</h3>
+
+<p>specifies whether you should:</p>
+
+<ul>
+<li>serialize user data or not,</li>
+<li>serialize 'selected' attribute for the rows tags,</li>
+<li>serialize grid structure info, </li>
+<li>serialize the 'changed' attribute for the cells tags, </li>
+<li>include just changed rows to serialization, </li>
+<li>serialize cell values as CDATA sections</li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setSerializationLevel</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="sy0">,</span><span class="kw2">false</span><span class="sy0">,</span><span class="kw2">true</span><span class="sy0">,</span><span class="kw2">false</span><span class="sy0">,</span><span class="kw2">true</span><span class="sy0">,</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>setSerializableColumns (PRO version)</h3>
+
+<p>sets columns that will be included to serialization</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setSerializableColumns</span><span class="br0">&#40;</span><span class="st0">&quot;true,false,false,true,false,false,false&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>enableMathSerialization (PRO version)</h3>
+
+<p>enables serialization formulas as mathematical expressions not data values</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">enableMathSerialization</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/17_serialization/01_pro_serialize.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;<span class='doc_error'>Sample without title: dhtmlxGrid/samples/17_serialization/01_pro_serialize.html</span></a></p>
+
+<a name='csv'><h2>CSV</h2></a>
+
+<p>To serialize dhtmlxGrid data into a CSV string, use the <a class="link-pro" href="api__dhtmlxgrid_serializetocsv.html">serializeToCSV</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myCSVString <span class="sy0">=</span> mygrid.<span class="me1">serializeToCSV</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/12_initialization_loading/13_pro_load_csv.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Import/export from/to CSV</a></p>
+
+<p><br></p>
+
+<p>CSV serialization related methods:</p>
+
+<h3>setCSVDelimiter</h3>
+
+<p>sets the CSV delimeter. By default, ','(comma)</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setCSVDelimiter</span><span class="br0">&#40;</span><span class="st0">&quot;<span class="es0">\t</span>&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>enableCSVAutoID (PRO version)</h3>
+
+<p>allows you to autogenerate IDs for rows while loading a grid from a CSV string</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">enableCSVAutoID</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>enableCSVHeader (PRO version)</h3>
+
+<p>'says' to recognize the first row in the CSV string as the header</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">enableCSVAutoID</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>submitSerialization</h3>
+
+<p>'says' to include the serialized grid as a part of form submit policy</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">submitSerialization</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/12_initialization_loading/13_pro_load_csv.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Import/export from/to CSV</a></p>
+
+<!-- Content Area End -->
+			<a href='grid__serialization.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

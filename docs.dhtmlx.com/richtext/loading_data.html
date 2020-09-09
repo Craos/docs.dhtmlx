@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1591766949.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1591766949.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="RichText Docs" href="https://docs.dhtmlx.com/richtext/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Setting Content  RichText Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/c/widgets/richtext">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="initialization.html">Initialization</a></li><li class=""><a href="configuration.html">Configuration</a></li><li class=""><a href="localization.html">Localization</a></li><li class=" current"><a href="loading_data.html">Setting Content</a></li><ul><li class="inner"><a href="loading_data.html#formatofcontent">Format of content</a></li><li class="inner"><a href="loading_data.html#addingcontentintoeditor">Adding content into editor</a></li><li class="inner"><a href="loading_data.html#relatedarticles">Related articles</a></li></ul><li class=""><a href="working_with_richtext.html">Working with RichText</a></li><li class=""><a href="customization.html">Customization</a></li><li class=""><a href="event_handling.html">Event Handling</a></li><li class=""><a href="angular_integration.html">Integration with Angular</a></li><li class=""><a href="react_integration.html">Integration with React</a></li><li class=""><a href="vuejs_integration.html">Integration with Vue.js</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Setting Content</h1>
+
+<p>dhtmlxRichText editor allows loading content in the HTML and Markdown formats. Thus, besides entering text right into the editor, you can load ready content in the supported format and edit it with the help of the RichText 
+set of controls.</p>
+
+<a name='formatofcontent'><h2>Format of content</h2></a>
+
+<h3>HTML format</h3>
+
+<p>Rich Text supports standard HTML format, so you can use all habitual formatting tags. The image below presents the result of parsing a text in the HTML format into the Rich Text editor:</p>
+
+<p><img src="media/html_format.png" alt="HTML format" /></p>
+
+<h3>Markdown format</h3>
+
+<p>For parsing of a Markdown-formatted text, dhtmlxRichtext uses the <a href="https://github.com/markedjs/marked">Marked.js</a> markdown parser.
+For now the component supports basic formatting elements of the Markdown syntax. Check the cheat sheet below:</p>
+
+<p><img src="media/markdown_cheatsheet.png" alt="Markdown cheat sheet" /></p>
+
+<p>The following image demonstrates the result of parsing a text in the Markdown format into the Rich Text editor:</p>
+
+<p><img src="media/markdown_format.png" alt="Markdown format" /></p>
+
+<a name='addingcontentintoeditor'><h2>Adding content into editor</h2></a>
+
+<p>In order to add some text content into the RichText, make use of the <a class="link-" href="api__richtext_setvalue.html">setValue</a> method. The method takes two parameters:</p>
+
+<ul>
+<li><strong>value</strong> - (<em>string</em>) a string with the content you want to add into the editor in either HTML or Markdown format</li>
+<li><strong>mode</strong> - (<em>string</em>) optional, the format of text parsing: "html" (default) or "markdown"</li>
+</ul>
+
+<p>Below you can find examples of loading text in both available formats:</p>
+
+<ul>
+<li>adding HTML content</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> htmlText <span class="sy0">=</span> `<span class="sy0">&lt;</span>h1<span class="sy0">&gt;</span>Meet DHTMLX Rich Text Editor<span class="sy0">!&lt;/</span>h1<span class="sy0">&gt;</span>` <span class="sy0">+</span>
+`<span class="sy0">&lt;</span>p<span class="sy0">&gt;</span><span class="kw1">This</span> demo will show you a customizable JavaScript rich text editor.<span class="sy0">&lt;/</span>p<span class="sy0">&gt;</span>` <span class="sy0">+</span>
+`<span class="sy0">&lt;</span>p<span class="sy0">&gt;&lt;</span>i<span class="sy0">&gt;</span>Read more in<span class="sy0">&lt;/</span>i<span class="sy0">&gt;&lt;</span>a href<span class="sy0">=</span><span class="st0">&quot;https://docs.dhtmlx.com&quot;</span><span class="sy0">&gt;&lt;</span>i<span class="sy0">&gt;</span>documentation<span class="sy0">&lt;/</span>i<span class="sy0">&gt;&lt;/</span>a<span class="sy0">&gt;&lt;/</span>p<span class="sy0">&gt;</span>.`
+&nbsp;
+richtext.<span class="me1">setValue</span><span class="br0">&#40;</span>htmlText<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/01_init/03_set_html_value.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Setting HTML content.</a></p>
+
+<ul>
+<li>adding Markdown content</li>
+</ul>
+
+<div class='note'><p><p>Please note that for a text in the Markdown format you need to define paragraphs by empty lines.</p>
+</p></div>
+
+<pre><code><pre class="js"><span class="kw2">var</span> mdText <span class="sy0">=</span> `# Meet DHTMLX Rich Text Editor<span class="sy0">!</span>
+&nbsp;
+<span class="kw1">This</span> demo will show you a customizable <span class="sy0">**</span>JavaScript rich text editor<span class="sy0">**</span>.
+&nbsp;
+<span class="sy0">*</span>To learn more<span class="sy0">,</span> read <span class="br0">&#91;</span>documentation<span class="br0">&#93;</span><span class="br0">&#40;</span>https<span class="sy0">:</span><span class="co1">//docs.dhtmlx.com/richtext/index.html)*.`</span>
+&nbsp;
+richtext.<span class="me1">setValue</span><span class="br0">&#40;</span>mdText<span class="sy0">,</span><span class="st0">&quot;markdown&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/01_init/04_set_markdown_value.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Setting Markdown content.</a></p>
+
+<a name='relatedarticles'><h2>Related articles</h2></a>
+
+<p>To learn about how to get edited text in HTML and Markdown formats, read the <a class="link-" href="working_with_richtext.html">Working with RichText</a> guide.</p>
+
+<!-- Content Area End -->
+			<a href='loading_data.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='initialization.html'>Initialization</a></li>	
+	<li><a href='working_with_richtext.html'>Main Operations</a></li>
+	<li><a href='loading_data.html'>Setting Content</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Look and Feel</li>
+	<li><a href='configuration.html'>Configuration</a></li>
+	<li><a href='customization.html'>Customization</a></li>
+	<li><a href='localization.html'>Localization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Integration</li>
+	<li><a href='angular_integration.html'>RichText and Angular</a></li>
+	<li><a href='react_integration.html'>RichText and React</a></li>
+	<li><a href='vuejs_integration.html'>RichText and Vue.js</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__richtext.html#methods'>Methods</a></li>
+	<li><a href='api__refs__richtext.html#config'>Properties</a></li>
+	<li><a href='api__refs__richtext.html#events'>Events</a></li>
+</ul>
+
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

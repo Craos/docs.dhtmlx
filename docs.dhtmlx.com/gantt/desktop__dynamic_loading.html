@@ -1,0 +1,263 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Dynamic Loading (on demand)  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__loading.html">Data Loading</a></li><li class="toc-pro current"><a href="desktop__dynamic_loading.html">Dynamic Loading (on demand)</a></li><ul><li class="inner"><a href="desktop__dynamic_loading.html#howitworks">How it works</a></li><li class="inner"><a href="desktop__dynamic_loading.html#enablingdynamicloading">Enabling dynamic loading</a></li><li class="inner"><a href="desktop__dynamic_loading.html#dataformatfordynamicloading">Data format for dynamic loading</a></li></ul><li class=""><a href="desktop__supported_data_formats.html">tasksExploring Supported Data Formats</a></li><li class=""><a href="desktop__server_side.html">Server-Side Integration</a></li><li class=""><a href="desktop__performance.html">Performance: Ways to Increase</a></li><li class=""><a href="desktop__troubleshooting.html">Troubleshooting Backend Integration Issues</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__loading_storing_data.html">Loading and Storing Tasks</a></div>
+<!-- Content Area -->
+
+
+<p class='promarker'>Available only in <b>PRO Edition</b></p>
+<h1>Dynamic Loading (on demand)</h1>
+
+<div class='pronote'><p><p>This functionality is available only in the PRO edition</p>
+</p></div>
+
+<p>By default, dhtmlxGantt loads all data at once. It may become problematic when you have a big number of tasks.</p>
+
+<p>In such a situation you may use the dynamic loading mode and load data by branches (sub-projects), level by level as the user opens them.</p>
+
+<a name='howitworks'><h2>How it works</h2></a>
+
+<p>When dynamic loading is <a href="desktop__dynamic_loading.html#enabledynload">enabled</a>, the <a class="link-" href="api__gantt_load.html">gantt.load("url")</a> call will send a GET request to the specified URL, 
+expecting the response to contain only the top-level tasks, and all the nested branches displayed as closed.</p>
+
+<p>When the user clicks on the Expand icon, gantt automatically calls the <a class="link-" href="api__gantt_load.html">load</a> method sending the id of a clicked task to the server:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;url?parent_id=123&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>And expects the response to contain subtasks of the expanded item.</p>
+
+<div class='note'><p><p>You can use the <a class="link-pro" href="api__gantt_onbeforebranchloading_event.html">onBeforeBranchLoading</a> event in order to modify the request url or to add some extra parameters to it.</p>
+</p></div>
+
+<a name='enablingdynamicloading'><h2>Enabling dynamic loading</h2></a>
+
+<p><span id="enabledynload">To enable the dynamic loading in the Gantt chart</span>, you need to deal with both the client- and the server side.</p>
+
+<ul>
+<li>Client side (use the <a class="link-pro" href="api__gantt_branch_loading_config.html">branch_loading</a> option):</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">xml_date</span> <span class="sy0">=</span> <span class="st0">&quot;%Y-%m-%d %H:%i:%s&quot;</span><span class="sy0">;</span>
+gantt.<span class="me1">config</span>.<span class="me1">branch_loading</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/dynamic_loading&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>Server side:</li>
+</ul>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw1">include</span> <span class="br0">&#40;</span><span class="st_h">'config.php'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$gantt</span> <span class="sy0">=</span> <span class="kw2">new</span> JSONGanttConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="sy0">,</span> <span class="re0">$dbtype</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$parent_id</span> <span class="sy0">=</span> <a href="http://www.php.net/isset"><span class="kw3">isset</span></a><span class="br0">&#40;</span><span class="re0">$_GET</span><span class="br0">&#91;</span><span class="st0">&quot;parent_id&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span> ? <span class="re0">$_GET</span><span class="br0">&#91;</span><span class="st0">&quot;parent_id&quot;</span><span class="br0">&#93;</span> <span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$gantt</span><span class="sy0">-&gt;</span><span class="me1">mix</span><span class="br0">&#40;</span><span class="st0">&quot;open&quot;</span><span class="sy0">,</span> <span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$gantt</span><span class="sy0">-&gt;</span><span class="me1">mix</span><span class="br0">&#40;</span><span class="st0">&quot;deep&quot;</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$gantt</span><span class="sy0">-&gt;</span><span class="me1">render_links</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_links&quot;</span><span class="sy0">,</span> <span class="st0">&quot;id&quot;</span><span class="sy0">,</span> <span class="st0">&quot;source,target,type&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$gantt</span><span class="sy0">-&gt;</span><span class="me1">render_table</span><span class="br0">&#40;</span>
+    <span class="st0">&quot;gantt_tasks&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;id&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;start_date,duration,text,progress,parent&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;&quot;</span><span class="sy0">,</span> 
+    <span class="st0">&quot;parent&quot;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_extensions/06_dynamic_loading.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Loading subtasks on demand</a></p>
+
+<p><br></p>
+
+<p>Generally, the client side has no information about children of the displayed data items (as such children were not loaded from the server side).</p>
+
+<p>To pass this information, you can use a special data property '$has_child' (can be changed using <a class="link-pro" href="api__gantt_branch_loading_property_config.html">branch_loading_property</a>) that indicates the number of the child elements for the task.</p>
+
+<pre><code><pre class="php"><span class="kw2">function</span> check_children<span class="br0">&#40;</span><span class="re0">$row</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+ <span class="kw2">global</span> <span class="re0">$gantt</span><span class="sy0">;</span>
+ <span class="re0">$task_id</span> <span class="sy0">=</span> <span class="re0">$row</span><span class="sy0">-&gt;</span><span class="me1">get_value</span><span class="br0">&#40;</span><span class="st_h">'id'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+ <span class="re0">$sql</span> <span class="sy0">=</span> <span class="st0">&quot;SELECT COUNT(id) AS has_children FROM gantt_tasks WHERE parent='<span class="es4">{$task_id}</span>'&quot;</span><span class="sy0">;</span>
+ <span class="re0">$children</span> <span class="sy0">=</span> <span class="re0">$gantt</span><span class="sy0">-&gt;</span><span class="me1">sql</span><span class="sy0">-&gt;</span><span class="me1">query</span><span class="br0">&#40;</span><span class="re0">$sql</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+ <span class="re0">$child</span> <span class="sy0">=</span> <span class="re0">$gantt</span><span class="sy0">-&gt;</span><span class="me1">sql</span><span class="sy0">-&gt;</span><span class="me1">get_next</span><span class="br0">&#40;</span><span class="re0">$children</span><span class="br0">&#41;</span><span class="sy0">;</span>
+ <span class="re0">$children_qty</span> <span class="sy0">=</span> <span class="re0">$child</span><span class="br0">&#91;</span><span class="st_h">'has_children'</span><span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+ <span class="re0">$row</span><span class="sy0">-&gt;</span><span class="me1">set_userdata</span><span class="br0">&#40;</span><span class="st_h">'$has_child'</span><span class="sy0">,</span><span class="re0">$children_qty</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+<span class="re0">$gantt</span><span class="sy0">-&gt;</span><span class="me1">event</span><span class="sy0">-&gt;</span><span class="me1">attach</span><span class="br0">&#40;</span><span class="st0">&quot;beforeRender&quot;</span><span class="sy0">,</span><span class="st0">&quot;check_children&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_extensions/06_dynamic_loading.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Loading subtasks on demand</a></p>
+
+<a name='dataformatfordynamicloading'><h2>Data format for dynamic loading</h2></a>
+
+<p>The format of data for dynamic loading is the following:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    <span class="st0">&quot;tasks&quot;</span><span class="sy0">:</span><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>
+        <span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="nu0">13</span><span class="sy0">,</span>
+        <span class="st0">&quot;start_date&quot;</span><span class="sy0">:</span><span class="st0">&quot;2020-04-02 00:00:00&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;duration&quot;</span><span class="sy0">:</span><span class="nu0">10</span><span class="sy0">,</span>
+        <span class="st0">&quot;text&quot;</span><span class="sy0">:</span><span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;progress&quot;</span><span class="sy0">:</span><span class="nu0">0.2</span><span class="sy0">,</span>
+        <span class="st0">&quot;parent&quot;</span><span class="sy0">:</span><span class="nu0">12</span><span class="sy0">,</span>
+        <span class="st0">&quot;open&quot;</span><span class="sy0">:</span><span class="nu0">0</span><span class="sy0">,</span>
+        <span class="st0">&quot;$has_child&quot;</span><span class="sy0">:</span><span class="nu0">0</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>
+        <span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="nu0">14</span><span class="sy0">,</span>
+        <span class="st0">&quot;start_date&quot;</span><span class="sy0">:</span><span class="st0">&quot;2020-04-04 00:00:00&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;duration&quot;</span><span class="sy0">:</span><span class="nu0">4</span><span class="sy0">,</span>
+        <span class="st0">&quot;text&quot;</span><span class="sy0">:</span><span class="st0">&quot;Task #2&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;progress&quot;</span><span class="sy0">:</span><span class="nu0">0.9</span><span class="sy0">,</span>
+        <span class="st0">&quot;parent&quot;</span><span class="sy0">:</span><span class="nu0">12</span><span class="sy0">,</span>
+        <span class="st0">&quot;open&quot;</span><span class="sy0">:</span><span class="nu0">0</span><span class="sy0">,</span>
+        <span class="st0">&quot;$has_child&quot;</span><span class="sy0">:</span><span class="nu0">4</span>
+    <span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+&nbsp;
+    <span class="st0">&quot;links&quot;</span><span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span><span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span><span class="st0">&quot;source&quot;</span><span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span><span class="st0">&quot;target&quot;</span><span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span><span class="st0">&quot;type&quot;</span><span class="sy0">:</span><span class="st0">&quot;0&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span><span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span><span class="st0">&quot;source&quot;</span><span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span><span class="st0">&quot;target&quot;</span><span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span><span class="st0">&quot;type&quot;</span><span class="sy0">:</span><span class="st0">&quot;0&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span><span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span><span class="st0">&quot;source&quot;</span><span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span><span class="st0">&quot;target&quot;</span><span class="sy0">:</span><span class="nu0">4</span><span class="sy0">,</span><span class="st0">&quot;type&quot;</span><span class="sy0">:</span><span class="st0">&quot;0&quot;</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+&nbsp;
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>As you can see, it's the same JSON as the one used for regular data loading. To compare, check the <a class="link-" href="desktop__supported_data_formats.html">tasksExploring Supported Data Formats</a> article.</p>
+
+<p>The only difference is the <strong>$has_child</strong> property which indicates whether a task will be displayed as a 'leaf' item (without the 'expand' toggle) or as an expandable node:</p>
+
+<ul>
+<li>if the <em>$has_child</em> property is specified and contains a <a href="https://developer.mozilla.org/en-US/docs/Glossary/Truthy">'truthy'</a> value (a non-zero number, true, a non-empty string, etc.),
+the item will be displayed with the expand/collapse toggle. On expanding the toggle, an Ajax request will be sent to the server;</li>
+<li>if <em>$has_child</em> is not specified or contains a <a href="https://developer.mozilla.org/en-US/docs/Glossary/Falsy">'falsy'</a> value (zero, false, NaN, undefined, empty string, null),
+the item will be displayed without toggle, as a task which has no child items.</li>
+</ul>
+
+<p>If the request has the <em>parent_id</em> parameter, the response must contain children of the task with the specified id. If <em>parent_id</em> is not specified, the request must contain root level tasks:</p>
+
+<table class="dp_table">
+    <tr>
+        <th><b>Action</b></th><th><b>HTTP Method</b></th><th><b>URL</b></th><th><b>Response</b></th>
+    </tr>
+    <tr>
+        <td>load root level</td>
+        <td>GET</td>
+        <td>/loadUrl</td>
+        <td><a href="desktop__dynamic_loading.html#dynamicloadingformatofdata">Dynamic loading format</a></td>
+    </tr>
+    <tr>
+        <td>load children on the task</td>
+        <td>GET</td>
+        <td>/loadUrl?parent_id=id</td>
+        <td><a href="desktop__dynamic_loading.html#dynamicloadingformatofdata">Dynamic loading format</a></td>
+    </tr>
+
+</table>
+
+<!-- Content Area End -->
+			<a href='desktop__dynamic_loading.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

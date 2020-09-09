@@ -1,0 +1,366 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Loading Data into TreeView  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxtreeview.html">dhtmlXTreeView API</a></li><li class=""><a href="treeview__initialization.html">Initializing TreeView</a></li><li class=" current"><a href="treeview__loading_data.html">Loading Data into TreeView</a></li><ul><li class="inner"><a href="treeview__loading_data.html#thewaysofloading">The ways of loading</a></li><li class="inner"><a href="treeview__loading_data.html#xmlformat">XML Format</a></li><li class="inner"><a href="treeview__loading_data.html#jsonformat">JSON Format</a></li><li class="inner"><a href="treeview__loading_data.html#dynamicsubloading">Dynamic subloading</a></li></ul><li class=""><a href="treeview__dataprocessor.html">Using Dataprocessor</a></li><li class=""><a href="treeview__manipulating_checkboxes.html">Manipulating Checkboxes</a></li><li class=""><a href="treeview__handling_dnd.html">Handling Drag-and-Drop</a></li><li class=""><a href="treeview__context_menu.html">Enabling Context Menu</a></li><li class=""><a href="treeview__setting_skins.html">TreeView Skins</a></li><li class=""><a href="treeview__icons.html">Customizing Icons</a></li><li class=""><a href="treeview__selection.html">Selection in TreeView</a></li><li class=""><a href="treeview__handling_events.html">Handling Events</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="treeview__index.html">TreeView</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Loading Data into TreeView</h1>
+
+<a name='thewaysofloading'><h2>The ways of loading</h2></a>
+
+<p>1) Loading TreeView items during initialization:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myTreeView <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXTreeView<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    xml<span class="sy0">:</span> <span class="st0">&quot;some/path/filename.xml&quot;</span><span class="sy0">,</span>
+    <span class="kw3">onload</span><span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="co1">// callback, optional</span>
+        <span class="co1">// as loading is performed in async mode, this function will be called</span>
+        <span class="co1">// after all treeview items are loaded and rendered</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// or</span>
+<span class="kw2">var</span> myTreeView <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXTreeView<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    json<span class="sy0">:</span> <span class="st0">&quot;some/path/filename.json&quot;</span><span class="sy0">,</span>
+    <span class="kw3">onload</span><span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="co1">// callback, optional</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// or</span>
+<span class="kw2">var</span> myTreeView <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXTreeView<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    items<span class="sy0">:</span> <span class="br0">&#91;</span>...<span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>2) Loading TreeView items after initialization:</p>
+
+<pre><code><pre class="js">myTreeView.<span class="me1">loadStruct</span><span class="br0">&#40;</span><span class="st0">&quot;some/path/filename.xml&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// callback, optional</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// or</span>
+myTreeView.<span class="me1">loadStruct</span><span class="br0">&#40;</span><span class="st0">&quot;some/path/filename.json&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// callback, optional</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='xmlformat'><h2>XML Format</h2></a>
+
+<p>The list of used attributes:</p>
+
+<ul>
+<li>id - id of the node, required;</li>
+<li>text - label of the node, required;</li>
+<li>open - opens node and show kids, if there are any;</li>
+<li>checked - checks a checkbox;</li>
+<li>checkbox - controls checkbox, makes it hidden or disabled;</li>
+<li>userdata - a set of name=value pairs of custom user data;</li>
+<li>icons - overrides default icons.</li>
+</ul>
+
+<pre><code><pre class="xml"><span class="sc-1">&lt;!-- minimal init --&gt;</span>
+<span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;utf-8&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;tree<span class="re2">&gt;</span></span></span>
+&nbsp;
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;1&quot;</span> <span class="re0">text</span>=<span class="st0">&quot;Text 1&quot;</span> <span class="re0">open</span>=<span class="st0">&quot;1&quot;</span><span class="re2">&gt;</span></span>
+        <span class="sc-1">&lt;!-- nested items if any --&gt;</span>
+    <span class="sc3"><span class="re1">&lt;/item<span class="re2">&gt;</span></span></span>
+&nbsp;
+    <span class="sc-1">&lt;!-- checkboxes mode --&gt;</span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;2&quot;</span> <span class="re0">text</span>=<span class="st0">&quot;Text 2&quot;</span> <span class="re0">checked</span>=<span class="st0">&quot;1&quot;</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;3&quot;</span> <span class="re0">text</span>=<span class="st0">&quot;Text 3&quot;</span> <span class="re0">checked</span>=<span class="st0">&quot;1&quot;</span> <span class="re0">checkbox</span>=<span class="st0">&quot;disabled&quot;</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;4&quot;</span> <span class="re0">text</span>=<span class="st0">&quot;Text 4&quot;</span> <span class="re0">checkbox</span>=<span class="st0">&quot;disabled&quot;</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;5&quot;</span> <span class="re0">text</span>=<span class="st0">&quot;Text 5&quot;</span> <span class="re0">checkbox</span>=<span class="st0">&quot;hidden&quot;</span><span class="re2">/&gt;</span></span>
+&nbsp;
+    <span class="sc-1">&lt;!-- custom icons --&gt;</span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;6&quot;</span> <span class="re0">text</span>=<span class="st0">&quot;Text 6&quot;</span><span class="re2">&gt;</span></span>
+        <span class="sc3"><span class="re1">&lt;icons</span> <span class="re0">file</span>=<span class="st0">&quot;icon_file&quot;</span> <span class="re0">folder_opened</span>=<span class="st0">&quot;icon_opened&quot;</span></span>
+<span class="sc3">            <span class="re0">folder_closed</span>=<span class="st0">&quot;icon_closed&quot;</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;/item<span class="re2">&gt;</span></span></span>
+&nbsp;
+    <span class="sc-1">&lt;!-- userdata --&gt;</span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;7&quot;</span> <span class="re0">text</span>=<span class="st0">&quot;Text 7&quot;</span><span class="re2">&gt;</span></span>
+        <span class="sc3"><span class="re1">&lt;userdata</span> <span class="re0">name1</span>=<span class="st0">&quot;value1&quot;</span> <span class="re0">name2</span>=<span class="st0">&quot;value2&quot;</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;/item<span class="re2">&gt;</span></span></span>
+&nbsp;
+<span class="sc3"><span class="re1">&lt;/tree<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<p>Adding CSS for custom icons on the client side:</p>
+
+<pre><code><pre class="css"><span class="re1">.icon_file</span> <span class="br0">&#123;</span>
+    <span class="kw1">background-image</span><span class="sy0">:</span> <span class="kw2">url</span><span class="br0">&#40;</span><span class="co2">path/to/icon_file.png</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+<span class="re1">.icon_opened</span> <span class="br0">&#123;</span>
+    <span class="kw1">background-image</span><span class="sy0">:</span> <span class="kw2">url</span><span class="br0">&#40;</span><span class="co2">path/to/icon_opened.png</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+<span class="re1">.icon_closed</span> <span class="br0">&#123;</span>
+    <span class="kw1">background-image</span><span class="sy0">:</span> <span class="kw2">url</span><span class="br0">&#40;</span><span class="co2">path/to/icon_closed.png</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Getting userdata on the client side</p>
+
+<pre><code><pre class="js">console.<span class="me1">log</span><span class="br0">&#40;</span>myTreeView.<span class="me1">getUserData</span><span class="br0">&#40;</span><span class="st0">&quot;7&quot;</span><span class="sy0">,</span> <span class="st0">&quot;name1&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// value1</span>
+console.<span class="me1">log</span><span class="br0">&#40;</span>myTreeView.<span class="me1">getUserData</span><span class="br0">&#40;</span><span class="st0">&quot;7&quot;</span><span class="sy0">,</span> <span class="st0">&quot;name2&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// value2</span></pre></code></pre>
+
+<a name='jsonformat'><h2>JSON Format</h2></a>
+
+<pre><code><pre class="js"><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Books&quot;</span><span class="sy0">,</span> <span class="kw3">open</span><span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> items<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="co1">// nested items if any</span>
+    <span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+    <span class="co1">// checkboxes mode</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;2&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Text 2&quot;</span><span class="sy0">,</span> checked<span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;3&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Text 3&quot;</span><span class="sy0">,</span> checked<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> checkbox<span class="sy0">:</span> <span class="st0">&quot;disabled&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;4&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Text 4&quot;</span><span class="sy0">,</span> checkbox<span class="sy0">:</span> <span class="st0">&quot;disabled&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;5&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Text 5&quot;</span><span class="sy0">,</span> checkbox<span class="sy0">:</span> <span class="st0">&quot;hidden&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+    <span class="co1">// custom icons</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;6&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Text 6&quot;</span><span class="sy0">,</span> icons<span class="sy0">:</span> <span class="br0">&#123;</span>
+        file<span class="sy0">:</span> <span class="st0">&quot;icon_file&quot;</span><span class="sy0">,</span>
+        folder_opened<span class="sy0">:</span> <span class="st0">&quot;icon_opened&quot;</span><span class="sy0">,</span>
+        folder_closed<span class="sy0">:</span> <span class="st0">&quot;icon_closed&quot;</span>
+    <span class="br0">&#125;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+    <span class="co1">// userdata</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;7&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Text 7&quot;</span><span class="sy0">,</span> userdata<span class="sy0">:</span> <span class="br0">&#123;</span>
+        name1<span class="sy0">:</span> <span class="st0">&quot;value1&quot;</span><span class="sy0">,</span> name2<span class="sy0">:</span> <span class="st0">&quot;value2&quot;</span>
+    <span class="br0">&#125;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxTreeView/samples/01_init/02_init_from_json.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Init from json</a></p>
+
+<a name='dynamicsubloading'><h2>Dynamic subloading</h2></a>
+
+<p>To enable dynamic subloading, you have to specify url with <span class='url_color'>{id}</span>
+which will be replaced with node id for which nested data should be loaded:</p>
+
+<pre><code><pre class="js"><span class="co1">// during initialization</span>
+<span class="kw2">var</span> myTreeView <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXTreeView<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    json<span class="sy0">:</span> <span class="st0">&quot;path/to/script.php?id={id}&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// or after initialization</span>
+myTreeView.<span class="me1">loadStruct</span><span class="br0">&#40;</span><span class="st0">&quot;path/to/script.php?id={id}&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Server response for the top-level</h3>
+
+<p>If a node has sub-items, you need to add the <em>kids:true</em> attribute.
+For the top level <span class='url_color'>{id}</span>
+in url will be changed to <span class='url_color'>0</span>:<br>
+<span class='url_color'>path/to/script.php?id=0</span></p>
+
+<pre><code><pre class="js"><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Text 1&quot;</span><span class="sy0">,</span> kids<span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span> <span class="co1">// rendered as folder</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;2&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Text 2&quot;</span><span class="sy0">,</span> kids<span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span> <span class="co1">// rendered as folder</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;3&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Text 3&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span> <span class="co1">// rendered as file</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;4&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Text 4&quot;</span><span class="br0">&#125;</span>  <span class="co1">// rendered as file</span>
+<span class="br0">&#93;</span></pre></code></pre>
+
+<h3>Server response for the sub-level</h3>
+
+<p>Let's assume that the user opens the item with id 1, in this case <span class='url_color'>{id}</span>
+in url will be changed to <span class='url_color'>1</span>:<br>
+<span class='url_color'>path/to/script.php?id=1</span></p>
+
+<p>For a sublevel you have to specify part of parent item with id:</p>
+
+<pre><code><pre class="js"><span class="br0">&#91;</span>
+    <span class="co1">// parent level, mandatory</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;1&quot;</span><span class="sy0">,</span> items<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="co1">// nested items</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;1_1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Text 1_1&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;1_2&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Text 1_2&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;1_3&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Text 1_3&quot;</span><span class="sy0">,</span> kids<span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;1_4&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Text 1_4&quot;</span><span class="sy0">,</span> kids<span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span></pre></code></pre>
+
+<p>If the user opens item with id 2, <span class='url_color'>{id}</span>
+in url will be changed to <span class='url_color'>2</span>:<br>
+<span class='url_color'>path/to/script.php?id=2</span></p>
+
+<p>Response example:</p>
+
+<pre><code><pre class="js"><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;2&quot;</span><span class="sy0">,</span> items<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;2_1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Text 1_1&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;2_2&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Text 1_2&quot;</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span></pre></code></pre>
+
+<p>Finally, you should have the following tree:</p>
+
+<p><img style="margin: 20px auto; display: block; box-shadow: 0 0 6px rgba(127, 127, 127, 0.4);" src="media/treeview/treeview_dyn_result.png"/></p>
+
+<h3>XML format</h3>
+
+<p>The same tree in the XML format looks like this:</p>
+
+<pre><code><pre class="xml"><span class="sc-1">&lt;!-- root level --&gt;</span>
+<span class="sc3"><span class="re1">&lt;tree<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;1&quot;</span> <span class="re0">text</span>=<span class="st0">&quot;Text 1&quot;</span> <span class="re0">kids</span>=<span class="st0">&quot;true&quot;</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;2&quot;</span> <span class="re0">text</span>=<span class="st0">&quot;Text 2&quot;</span> <span class="re0">kids</span>=<span class="st0">&quot;true&quot;</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;3&quot;</span> <span class="re0">text</span>=<span class="st0">&quot;Text 3&quot;</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;4&quot;</span> <span class="re0">text</span>=<span class="st0">&quot;Text 4&quot;</span><span class="re2">/&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;/tree<span class="re2">&gt;</span></span></span>
+&nbsp;
+<span class="sc-1">&lt;!-- for item 1 --&gt;</span>
+<span class="sc3"><span class="re1">&lt;tree<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;1&quot;</span><span class="re2">&gt;</span></span>
+        <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;1_1&quot;</span> <span class="re0">text</span>=<span class="st0">&quot;Text 1_1&quot;</span><span class="re2">/&gt;</span></span>
+        <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;1_2&quot;</span> <span class="re0">text</span>=<span class="st0">&quot;Text 1_2&quot;</span><span class="re2">/&gt;</span></span>
+        <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;1_3&quot;</span> <span class="re0">text</span>=<span class="st0">&quot;Text 1_3&quot;</span> <span class="re0">kids</span>=<span class="st0">&quot;true&quot;</span><span class="re2">/&gt;</span></span>
+        <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;1_4&quot;</span> <span class="re0">text</span>=<span class="st0">&quot;Text 1_4&quot;</span> <span class="re0">kids</span>=<span class="st0">&quot;true&quot;</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;/item<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/tree<span class="re2">&gt;</span></span></span>
+&nbsp;
+<span class="sc-1">&lt;!-- for item 2 --&gt;</span>
+<span class="sc3"><span class="re1">&lt;tree<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;2&quot;</span><span class="re2">&gt;</span></span>
+        <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;2_1&quot;</span> <span class="re0">text</span>=<span class="st0">&quot;Text 2_1&quot;</span><span class="re2">/&gt;</span></span>
+        <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">id</span>=<span class="st0">&quot;2_2&quot;</span> <span class="re0">text</span>=<span class="st0">&quot;Text 2_2&quot;</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;/item<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/tree<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxTreeView/samples/01_init/06_dynamic_subloading.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Dynamic sub-loading</a></p>
+
+<p><style>
+    span.url_color {
+        color: #7d38a1;
+    }
+</style></p>
+
+<!-- Content Area End -->
+			<a href='treeview__loading_data.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

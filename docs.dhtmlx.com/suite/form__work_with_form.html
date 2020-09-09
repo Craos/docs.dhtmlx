@@ -1,0 +1,378 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Work with Form  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="form__api__refs__form.html">Form API</a></li><li class=""><a href="form__how_to_start.html">Initialization</a></li><li class=""><a href="form__controls_list.html">List of Form Controls</a></li><li class=""><a href="form__localization.html">Localization</a></li><li class=""><a href="form__configuration.html">Configuration</a></li><li class=" current"><a href="form__work_with_form.html">Work with Form</a></li><ul><li class="inner"><a href="form__work_with_form.html#gettingvaluesofcontrols">Getting values of controls</a></li><li class="inner"><a href="form__work_with_form.html#settingnewvaluesforcontrols">Setting new values for controls</a></li><li class="inner"><a href="form__work_with_form.html#enablingdisablingaform">Enabling/Disabling a form</a></li><li class="inner"><a href="form__work_with_form.html#checkingifaformisdisabled">Checking if a form is disabled</a></li><li class="inner"><a href="form__work_with_form.html#hidingshowingaform">Hiding/Showing a form</a></li><li class="inner"><a href="form__work_with_form.html#checkingifaformisvisible">Checking if a form is visible</a></li><li class="inner"><a href="form__work_with_form.html#validatingform">Validating form</a></li><li class="inner"><a href="form__work_with_form.html#sendingformtoserver">Sending form to server</a></li><li class="inner"><a href="form__work_with_form.html#clearingform">Clearing form</a></li></ul><li class=""><a href="form__customization.html">Customization</a></li><li class=""><a href="form__handling_events.html">Event Handling</a></li><li class=""><a href="form__migration.html">Migration to Newer Versions</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="form__index.html">Form</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Work with Form</h1>
+
+<a name='gettingvaluesofcontrols'><h2>Getting values of controls</h2></a>
+
+<p>You can get current values/states of Form controls with the help of the <a class="link-" href="form__api__form_getvalue_method.html">getValue</a> method. By default this method returns an object  with names or IDs of controls (if the name attribute is not defined in the config of the control) and their values/states.</p>
+
+<pre><code><pre class="js"><span class="co1">// default functionality</span>
+<span class="kw2">var</span> state <span class="sy0">=</span> form.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//-&gt;{&quot;name&quot;:&quot;John Doe&quot;,&quot;email&quot;:&quot;jd@mail.com&quot;, &quot;agree&quot;:true}</span></pre></code></pre>
+
+<p>It is also possible to get this information in the form of FormData. For this you need to pass the following parameter:</p>
+
+<ul>
+<li><strong>asFormData</strong> - (<em>boolean</em>) defines whether values of Form controls should be returned as Form Data</li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">// returning form details as FormData</span>
+<span class="kw2">var</span> state <span class="sy0">=</span> form.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/odod5v12' target='blank'><span class='sample'>Related sample: </span>&nbsp;Form. Get Value</a></p>
+
+<a name='settingnewvaluesforcontrols'><h2>Setting new values for controls</h2></a>
+
+<p>If you want to set new values or states for Form controls on the fly, there is the <a class="link-" href="form__api__form_setvalue_method.html">setValue</a> at your disposal. The method takes as a parameter an object with new values/states of controls. This
+object should contain a set of <em>key:value</em> pairs where <em>key</em> is either the name of the control or the control's id (if the name attribute is not defined in the config of the control) and <em>value</em> is a new value/state of the control:</p>
+
+<pre><code><pre class="js">form.<span class="me1">setValue</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="st0">&quot;input_name&quot;</span><span class="sy0">:</span><span class="st0">&quot;Jack London&quot;</span><span class="sy0">,</span> 
+    <span class="st0">&quot;slider_id&quot;</span><span class="sy0">:</span><span class="nu0">10</span>
+    <span class="co1">// more name:value pairs</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/7nxbtlzs' target='blank'><span class='sample'>Related sample: </span>&nbsp;Form. Set Value</a></p>
+
+<a name='enablingdisablingaform'><h2>Enabling/Disabling a form</h2></a>
+
+<p>To enable a form, use the <a class="link-" href="form__api__form_enable_method.html">enable()</a> method:</p>
+
+<pre><code><pre class="js">form.<span class="me1">enable</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To disable a form, use the <a class="link-" href="form__api__form_disable_method.html">disable()</a> method:</p>
+
+<pre><code><pre class="js">form.<span class="me1">disable</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// -&gt; true|false</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/few71nk2' target='blank'><span class='sample'>Related sample: </span>&nbsp;Form. Disable</a></p>
+
+<a name='checkingifaformisdisabled'><h2>Checking if a form is disabled</h2></a>
+
+<p>To check if a form is disabled, call the <a class="link-" href="form__api__form_isdisabled_method.html">isDisabled()</a> method:</p>
+
+<pre><code><pre class="js">form.<span class="me1">isDisabled</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; true/false</span></pre></code></pre>
+
+<p>To check whether a form control is disabled, pass the id of a control as a parameter to the  <a class="link-" href="form__api__form_isdisabled_method.html">isDisabled()</a> method:</p>
+
+<pre><code><pre class="js">form.<span class="me1">isDisabled</span><span class="br0">&#40;</span><span class="st0">&quot;input_id&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; returns true/false</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/lthu8p6p' target='blank'><span class='sample'>Related sample: </span>&nbsp;Form. Is Disabled</a></p>
+
+<a name='hidingshowingaform'><h2>Hiding/Showing a form</h2></a>
+
+<p>To hide a form, use the <a class="link-" href="form__api__form_hide_method.html">hide()</a> method:</p>
+
+<pre><code><pre class="js">form.<span class="me1">hide</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To show a form, use the <a class="link-" href="form__api__form_show_method.html">show()</a> method:</p>
+
+<pre><code><pre class="js">form.<span class="me1">show</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='checkingifaformisvisible'><h2>Checking if a form is visible</h2></a>
+
+<p>To check if a form is visible, call the <a class="link-" href="form__api__form_isvisible_method.html">isVisible()</a> method:</p>
+
+<pre><code><pre class="js">form.<span class="me1">isVisible</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; true/false</span></pre></code></pre>
+
+<p>To check whether a form control is visible, pass the id of a control as a parameter to the  <a class="link-" href="form__api__form_isvisible_method.html">isVisible()</a> method:</p>
+
+<pre><code><pre class="js">form.<span class="me1">isVisible</span><span class="br0">&#40;</span><span class="st0">&quot;input_id&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; returns true/false</span></pre></code></pre>
+
+<a name='validatingform'><h2>Validating form</h2></a>
+
+<p>In order to validate a form, you should deal with two aspects: required fields and validation rules.</p>
+
+<h3>Required fields</h3>
+
+<p>You can easily specify that an input is obligatory to be treated by a user with the help of the <strong>required</strong> attribute.</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>   
+    type<span class="sy0">:</span> <span class="st0">&quot;checkbox&quot;</span><span class="sy0">,</span>
+    label<span class="sy0">:</span> <span class="st0">&quot;I agree&quot;</span><span class="sy0">,</span>
+    labelInline<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+    <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;agree&quot;</span><span class="sy0">,</span>
+    required<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+    id<span class="sy0">:</span> <span class="st0">&quot;agree&quot;</span><span class="sy0">,</span>
+    value<span class="sy0">:</span> <span class="st0">&quot;checkboxvalue&quot;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>While you've set <strong>required:true</strong> for a field, it gets an asterisk next to its label:</p>
+
+<p><img src="media/form/required_fields.png" alt="Required fields" /></p>
+
+<p><a href='https://snippet.dhtmlx.com/0pr3var0' target='blank'><span class='sample'>Related sample: </span>&nbsp;Form. Required</a></p>
+
+<h3>Validation rules</h3>
+
+<p>To specify the way of validating a particular input/textarea, you can make use of predefined validation rules, they are:</p>
+
+<ul>
+<li>"" - empty </li>
+<li>"email" - validEmail </li>
+<li>"integer" - validInteger</li>
+<li>"numeric" - validNumeric</li>
+<li>"alphanumeric" - validAplhaNumeric </li>
+<li>"IPv4" - validIPv4 </li>
+</ul>
+
+<p>Set a string with the name of the necessary rule as a value of the <strong>validation</strong> attribute:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;input&quot;</span><span class="sy0">,</span>
+    label<span class="sy0">:</span> <span class="st0">&quot;Email&quot;</span><span class="sy0">,</span>
+    placeholder<span class="sy0">:</span> <span class="st0">&quot;jd@mail.name&quot;</span><span class="sy0">,</span>
+    validation<span class="sy0">:</span> <span class="st0">&quot;email&quot;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>There is also a possibility to specify <em>a custom validation rule</em> by setting it as a value of the <strong>validation</strong> attribute:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;input&quot;</span><span class="sy0">,</span>
+    label<span class="sy0">:</span> <span class="st0">&quot;Name&quot;</span><span class="sy0">,</span>
+    placeholder<span class="sy0">:</span> <span class="st0">&quot;John Doe&quot;</span><span class="sy0">,</span>
+    validation<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>value<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">return</span> value <span class="sy0">&amp;&amp;</span> value.<span class="me1">length</span> <span class="sy0">&gt;</span> <span class="nu0">4</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>   
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/3cz9v7rm' target='blank'><span class='sample'>Related sample: </span>&nbsp;Form. Validation</a></p>
+
+<h3>Messages</h3>
+
+<p>While specifying validation rules for form fields, you can also provide a set of messages that will notify the end user, whether he/she is filling the form in correctly. There are three types of messages available:</p>
+
+<ul>
+<li><strong>preMessage</strong> - (<em>string</em>) a message that contains instructions for interacting with the control</li>
+<li><strong>successMessage</strong> - (<em>string</em>) a message that appears in case of successful validation of the control value</li>
+<li><strong>errorMessage</strong> - (<em>string</em>) a message that appears in case of error during validation of the control value</li>
+</ul>
+
+<p>For example, a configuration object for an input with email may look as in:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;input&quot;</span><span class="sy0">,</span>
+    label<span class="sy0">:</span> <span class="st0">&quot;Email&quot;</span><span class="sy0">,</span>
+    placeholder<span class="sy0">:</span> <span class="st0">&quot;jd@mail.name&quot;</span><span class="sy0">,</span>
+    errorMessage<span class="sy0">:</span> <span class="st0">&quot;Invalid email&quot;</span><span class="sy0">,</span>
+    successMessage<span class="sy0">:</span> <span class="st0">&quot;Valid email&quot;</span><span class="sy0">,</span>
+    validation<span class="sy0">:</span> <span class="st0">&quot;email&quot;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/yhiuq2mi' target='blank'><span class='sample'>Related sample: </span>&nbsp;Form. Messages</a></p>
+
+<h3>Validation API</h3>
+
+<p>After a user has finished filling out the form according to the specified rules, it's high time to check, whether it is done correctly.
+To validate a form, make use of the <a class="link-" href="form__api__form_validate_method.html">validate</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> result <span class="sy0">=</span> form.<span class="me1">validate</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The method should return <em>true</em>, if all the fields are filled as required, or <em>false</em> if there are fields that require attention.</p>
+
+<p><a href='https://snippet.dhtmlx.com/pmz0zk16' target='blank'><span class='sample'>Related sample: </span>&nbsp;Form. Validate</a></p>
+
+<a name='sendingformtoserver'><h2>Sending form to server</h2></a>
+
+<p>To send a form to the server, make use of the <a class="link-" href="form__api__form_send_method.html">send</a> method. It takes two parameters:</p>
+
+<ul>
+<li><strong>url</strong> - (<em>string</em>) the URL of the server</li>
+<li><strong>method</strong> - (<em>string</em>) the request type, "POST" by default</li>
+<li><strong>asFormData</strong> - (<em>boolean</em>) optional, defines whether values of Form controls should be sent as Form Data</li>
+</ul>
+
+<p>and returns a promise object.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> send <span class="sy0">=</span> form.<span class="me1">send</span><span class="br0">&#40;</span><span class="st0">&quot;myserver.com&quot;</span><span class="sy0">,</span> <span class="st0">&quot;POST&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To control the process of a from sending, you can make use of the related events: <a class="link-" href="form__api__form_beforesend_event.html">beforeSend</a> and <a class="link-" href="form__api__form_aftersend_event.html">afterSend</a>:</p>
+
+<pre><code><pre class="js"><span class="co1">// fires before sending a form to the server</span>
+form.<span class="me1">events</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">&quot;BeforeSend&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+   <span class="co1">// your logic here</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// fires after sending a form to the server</span>
+form.<span class="me1">events</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">&quot;AfterSend&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+   <span class="co1">// your logic here</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='clearingform'><h2>Clearing form</h2></a>
+
+<p>The API of dhtmlxForm provides you with flexible ways of clearing a form. There is the <a class="link-" href="form__api__form_clear_method.html">clear</a> method that clears a form either fully or partially, depending on the passed parameter.</p>
+
+<ul>
+<li>"value" - clears only form values</li>
+<li>"validation" - clears form validation</li>
+<li>without parameters - clears both form values and validation</li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">// clears only form validation</span>
+form.<span class="me1">clear</span><span class="br0">&#40;</span><span class="st0">&quot;validation&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// clears only form values</span>
+form.<span class="me1">clear</span><span class="br0">&#40;</span><span class="st0">&quot;value&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// clears both form values and validation</span>
+form.<span class="me1">clear</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/a64ih4ih' target='blank'><span class='sample'>Related sample: </span>&nbsp;Form. Clear</a></p>
+
+<!-- Content Area End -->
+			<a href='form__work_with_form.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Skins Customization  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="skins.html">Skins</a></li><li class=""><a href="templates.html">Formatting Labels, Dates, Styles</a></li><li class=" current"><a href="custom_skins.html">Skins Customization</a></li><ul><li class="inner"><a href="custom_skins.html#howtostart">How to start</a></li><li class="inner"><a href="custom_skins.html#howtobuildskins">How to build skins</a></li><li class="inner"><a href="custom_skins.html#structure">Structure</a></li><li class="inner"><a href="custom_skins.html#creatingcustomskin">Creating custom skin</a></li><li class="inner"><a href="custom_skins.html#jsstylingsettings">JS styling settings</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="appearance_and_styling.html">Appearance and Styling</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Skins Customization</h1>
+
+<p>dhtmlxScheduler is shipped with style files in the following forms:</p>
+
+<ul>
+<li><strong>codebase/dhtmlxscheduler*.css</strong> - prebuilt compressed CSS files for skins, ready for production use;</li>
+<li><strong>codebase/sources/skins/dhtmlxscheduler*.css</strong> - prebuilt readable CSS files;</li>
+<li><strong>codebase/sources/less/dhtmlxscheduler*.less</strong> - source less files of Scheduler skins.</li>
+</ul>
+
+<p>The latter can be used for deep customization of existing skins or for creating a new skin.</p>
+
+<a name='howtostart'><h2>How to start</h2></a>
+
+<p>You can initialize <strong>codebase/sources/less</strong> as an NPM package. 
+The sources will contain two types of files:</p>
+
+<ul>
+<li>style sheets; </li>
+<li>files with micro variables declaration which you can use for fine-tuning the scheduler view or for creating a new skin.</li>
+</ul>
+
+<a name='howtobuildskins'><h2>How to build skins</h2></a>
+
+<p>In <strong>codebase/sources/less/</strong> run:</p>
+
+<pre><code><pre class="js"><span class="sy0">&gt;</span> npm install</pre></code></pre>
+
+<p>After install is completed, you can rebuild CSS files using the following commands:</p>
+
+<pre><code><pre class="js"><span class="sy0">&gt;</span> npm run build</pre></code></pre>
+
+<p>Or</p>
+
+<pre><code><pre class="js"><span class="sy0">&gt;</span> npm run watch</pre></code></pre>
+
+<p>The script will rebuild CSS files from sources and put them into the <em>codebase</em> folder of the scheduler package, replacing the existing ones.</p>
+
+<p>You can find declarations of colors/fonts/sizes and other aspects of the Scheduler design in <br> <strong>less/skins/&#60;skin name&#62;/skin.less</strong> files.</p>
+
+<a name='structure'><h2>Structure</h2></a>
+
+<p>The structure of the <strong>less</strong> folder for version 5.0 (may be changed in future versions) is given below:</p>
+
+<h3>Images</h3>
+
+<ul>
+<li><strong>./imgs</strong> - common/fallback images for all skins</li>
+<li><strong>./imgs_contrast_black</strong> - images used by the contrast black skin</li>
+<li><strong>./imgs_contrast_white</strong> - images used by the contrast white skin</li>
+<li><strong>./imgs_dhx_material</strong> - images used by the material skin</li>
+<li><strong>./imgs_dhx_terrace</strong> - images used by the terrace skin</li>
+<li><strong>./imgs_flat</strong> - images used by the flat skin</li>
+</ul>
+
+<h3>Skin definitions</h3>
+
+<ul>
+<li><strong>./skins</strong>
+
+<ul>
+<li><em>./basic</em> - common styles and variables used by all skins</li>
+<li><em>./contrast_black</em> - contrast black skin definition</li>
+<li><em>./contrast_white</em> - contrast white skin definition</li>
+<li><em>./material</em> - material skin definition</li>
+<li><em>./terrace</em> - terrace skin definition</li>
+<li><em>./flat</em> - flat skin definition</li>
+</ul></li>
+</ul>
+
+<h3>Entry points for building skins</h3>
+
+<ul>
+<li>dhtmlxscheduler_contrast_black.less </li>
+<li>dhtmlxscheduler_contrast_white.less</li>
+<li>dhtmlxscheduler_flat.less</li>
+<li>dhtmlxscheduler_material.less</li>
+<li>dhtmlxscheduler_terrace.less</li>
+<li>dhtmlxscheduler.less</li>
+<li>package.json</li>
+</ul>
+
+<h3>Structure of a skin folder</h3>
+
+<ul>
+<li><strong>less/skins/material/</strong>
+
+<ul>
+<li><strong>./index.less</strong> - main imports</li>
+<li><strong>./skin.less</strong> - micro variables</li>
+<li><strong>./add_styles.less</strong> - additional styles</li>
+</ul></li>
+</ul>
+
+<h3>Import</h3>
+
+<p>Currently, for most skins <strong>index.less</strong> includes the following imports:</p>
+
+<pre><code><pre class="js"><span class="coMULTI">/* import default variables*/</span>
+<span class="sy0">@</span><span class="kw2">import</span> <span class="st0">&quot;./../basic/skin&quot;</span><span class="sy0">;</span> 
+<span class="coMULTI">/* import own variables */</span>
+<span class="sy0">@</span><span class="kw2">import</span> <span class="st0">&quot;./skin&quot;</span><span class="sy0">;</span> 
+<span class="coMULTI">/* import common stylesheet */</span>
+<span class="sy0">@</span><span class="kw2">import</span> <span class="st0">&quot;./../basic/suite&quot;</span><span class="sy0">;</span> 
+<span class="coMULTI">/* apply additional styles on the top of the common stylesheet*/</span>
+<span class="sy0">@</span><span class="kw2">import</span> <span class="st0">&quot;./add_styles&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='creatingcustomskin'><h2>Creating custom skin</h2></a>
+
+<p>In order to create a new skin, you can copy and rename one of the existing skins from the <strong>sources/less/skins</strong> folder. Follow the steps below:</p>
+
+<p>1) Copy and rename one of the existing folders from the <strong>sources/less/skins</strong> folder, e.g.:</p>
+
+<pre><code><pre class="js"><span class="sy0">-&gt;</span> copy<span class="sy0">:</span>
+codebase<span class="sy0">/</span>sources<span class="sy0">/</span>less<span class="sy0">/</span>skins<span class="sy0">/</span>material
+&nbsp;
+<span class="sy0">-&gt;</span> rename to<span class="sy0">:</span>
+codebase<span class="sy0">/</span>sources<span class="sy0">/</span>less<span class="sy0">/</span>skins<span class="sy0">/</span>custom</pre></code></pre>
+
+<p>2) Create an entry point in the <strong>codebase/sources/less</strong> folder, like this:</p>
+
+<pre><code><pre class="js">codebase<span class="sy0">/</span>sources<span class="sy0">/</span>less<span class="sy0">/</span>dhtmlxscheduler_custom.<span class="me1">less</span></pre></code></pre>
+
+<p>And add the content as in:</p>
+
+<pre><code><pre class="js"><span class="sy0">@</span><span class="kw2">import</span> <span class="st0">&quot;./skins/custom/index&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>It is not required for the file name to match the folder name, since the paths are specified explicitly.</p>
+
+<p>3) Modify <strong>codebase/sources/less/package.json</strong> to add a build command for your new skin:</p>
+
+<ul>
+<li>build a skin using the "lessc" command, e.g.:</li>
+</ul>
+
+<pre><code><pre class="js">lessc .<span class="sy0">/</span>dhtmlxscheduler_custom.<span class="me1">less</span> ..<span class="sy0">/</span>..<span class="sy0">/</span>dhtmlxscheduler_custom.<span class="me1">css</span></pre></code></pre>
+
+<ul>
+<li>find the "scripts" section and append the command to the "build" script:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="sy0">&amp;&amp;</span> lessc .<span class="sy0">/</span>dhtmlxscheduler_custom.<span class="me1">less</span> ..<span class="sy0">/</span>..<span class="sy0">/</span>dhtmlxscheduler_custom.<span class="me1">css</span></pre></code></pre>
+
+<ul>
+<li>or add a new script in the following way: </li>
+</ul>
+
+<pre><code><pre class="js"><span class="st0">&quot;scripts&quot;</span><span class="sy0">:</span> <span class="br0">&#123;</span>
+ <span class="st0">&quot;build&quot;</span><span class="sy0">:</span> <span class="st0">&quot;...&quot;</span><span class="sy0">,</span>
+ <span class="st0">&quot;build-custom&quot;</span><span class="sy0">:</span> <span class="st0">&quot;lessc ./dhtmlxscheduler_custom.less ../../dhtmlxscheduler_custom.css&quot;</span>
+ <span class="st0">&quot;watch&quot;</span><span class="sy0">:</span> <span class="st0">&quot;npm-watch build&quot;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='jsstylingsettings'><h2>JS styling settings</h2></a>
+
+<p>Note, that not all aspects of Scheduler styling are controlled from CSS, some parameters are defined from the JavaScript configuration. They are:</p>
+
+<ul>
+<li><a class="link-" href="api__scheduler_hour_size_px_config.html">hour_size_px</a></li>
+<li>and all settings of the <a class="link-" href="api__scheduler_xy_other.html">scheduler.xy</a> object </li>
+</ul>
+
+<p>Currently, Scheduler uses two subsets of default settings, depending on skin applied: one for material skin and another for all other skins. The applied subset is 
+<a class="link-" href="skins.html#skindetection">defined by the name of the applied CSS file automatically</a>. In case of a custom skin such a detection may fail and you'll need to specify the skinset manually. 
+It can be done using the <strong>scheduler.skin</strong> property:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">skin</span> <span class="sy0">=</span> <span class="st0">&quot;material&quot;</span><span class="sy0">;</span> <span class="co1">// for skins based on material</span></pre></code></pre>
+
+<p>Values that include the "material" string will be interpreted as a material skin set. All other values will produce terrace/flat skin defaults.</p>
+
+<!-- Content Area End -->
+			<a href='custom_skins.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

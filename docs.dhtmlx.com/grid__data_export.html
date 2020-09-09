@@ -1,0 +1,272 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Exporting Data to PDF,Excel  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="grid__data_formats.html">Exploring Supported Data Formats</a></li><li class=""><a href="grid__loading_storing_data.html">Loading Data into Grid</a></li><li class=""><a href="grid__big_datasets_loading.html">Loading Big Datasets</a></li><li class=""><a href="grid__server_side.html">Saving Data on the Server Side</a></li><li class=""><a href="grid__serialization.html">Serializing Data to XML,CSV</a></li><li class=" current"><a href="grid__data_export.html">Exporting Data to PDF,Excel</a></li><ul><li class="inner"><a href="grid__data_export.html#pdf">PDF</a></li><li class="inner"><a href="grid__data_export.html#excel">Excel</a></li><li class="inner"><a href="grid__data_export.html#configuration">Configuration</a></li><li class="inner"><a href="grid__data_export.html#errorshandlingandlogging">Errors handling and logging</a></li><li class="inner"><a href="grid__data_export.html#onlineexportservices">Online export services</a></li></ul><li class=""><a href="grid__userdata.html">Loading Additional Data to Grid</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__loading_data.html">Loading and Storing Data</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Exporting Data to PDF,Excel</h1>
+
+<p>Pay attention to the fact that dhtmlxGrid doesn't provide full support for data export in the <strong>smart rendering</strong> or 
+<strong>paging</strong> modes and exports just the data which is already rendered on the client (not all the data).</p>
+
+<a name='pdf'><h2>PDF</h2></a>
+
+<p>The latest Export packages for installation can be found here:</p>
+
+<ul>
+<li><a href="https://github.com/DHTMLX/grid-to-pdf-php">PHP package</a>;</li>
+<li><a href="https://github.com/DHTMLX/grid-to-pdf-java">Java package</a>;</li>
+<li><a href="https://github.com/DHTMLX/grid-to-pdf-net">ASP .NET package</a>.</li>
+</ul>
+
+<p>To export data from dhtmlxGrid into a pdf document:</p>
+
+<p>1) Download and unpack the appropriate Export package to the root level of your web server to the folder <strong>codebase</strong> (you don't need to install anything, just unpack).</p>
+
+<p>2) Call the method <a class="link-pro" href="api__dhtmlxgrid_topdf.html">toPDF(path)</a>. The method takes as a parameter the path to the <strong>generate.php</strong> file resided in the Export package.</p>
+
+<p>For example, if you add a button by clicking on which dhtmlxGrid will start exporting, your code can be similar to this one:</p>
+
+<pre><code><pre class="html">// DHTMLX Suite is used
+<span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;STYLESHEET&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlx.css&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlx.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;button&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;Get as PDF&quot;</span> </span>
+<span class="sc2"><span class="kw3">onclick</span><span class="sy0">=</span><span class="st0">&quot;mygrid.toPDF('codebase/grid-pdf-php/generate.php');&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;gridbox&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width:399px;height:270px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">    mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    ...</pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<h3>Coloring the resulting document</h3>
+
+<p>The <a class="link-pro" href="api__dhtmlxgrid_topdf.html">toPDF()</a> method takes the second (<strong>optional</strong>) parameter that can be used to control the color map of the resulting PDF document.</p>
+
+<ul>
+<li><strong>'color'</strong> - full-color printing (used by default);</li>
+<li><strong>'gray'</strong> - prints in shades of black and white;</li>
+<li><strong>'bw'</strong> - prints in black and white only, no color options available;</li>
+<li><strong>'custom'</strong> - prints in the custom defined colors ( colors are defined in the <strong>gridPdfGenerator.php</strong> file ).</li>
+</ul>
+
+<h3>Custom header and footer images</h3>
+
+<p><img src='media/grid/header_image.png'/></p>
+
+<p>The <a class="link-pro" href="api__dhtmlxgrid_topdf.html">toPDF()</a> method takes the third and the fourth (<strong>optional</strong>) parameters that can be used to set custom header (footer) images for the grid.</p>
+
+<p>To add a <strong><i>header</i></strong> image to the grid:</p>
+
+<ul>
+<li>create an image with the name "header.png";</li>
+<li>put the image to the <strong>grid-pdf-php</strong> folder;</li>
+<li>set the 3rd parameter of the <a class="link-pro" href="api__dhtmlxgrid_topdf.html">toPDF()</a> method to <em>true</em>.</li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">toPDF</span><span class="br0">&#40;</span><span class="st0">'codebase/grid-pdf-php/generate.php'</span><span class="sy0">,</span><span class="st0">'color'</span><span class="sy0">,</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To add a <strong><i>footer</i></strong> image to the grid:</p>
+
+<ul>
+<li>create an image with the name "footer.png";</li>
+<li>put the image to the <strong>grid-pdf-php</strong> folder;</li>
+<li>set the 4th parameter of the <a class="link-pro" href="api__dhtmlxgrid_topdf.html">toPDF()</a> method to <em>true</em>.</li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">toPDF</span><span class="br0">&#40;</span><span class="st0">'codebase/grid-pdf-php/generate.php'</span><span class="sy0">,</span><span class="st0">'color'</span><span class="sy0">,</span><span class="kw2">false</span><span class="sy0">,</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='excel'><h2>Excel</h2></a>
+
+<p>The latest packages for installation can be found here:</p>
+
+<ul>
+<li><a href="https://github.com/DHTMLX/grid-to-excel-php">PHP package</a>;</li>
+<li><a href="https://github.com/DHTMLX/grid-to-excel-java">Java package</a>;</li>
+<li><a href="https://github.com/DHTMLX/grid-to-excel-net">ASP .NET package</a>.</li>
+</ul>
+
+<p>To export data from dhtmxlGrid into an Excel document:</p>
+
+<p>1) Download and unpack the appropriate Export package to the root level of your web server to the folder <strong>codebase</strong> (you don't need to install anything, just unpack).</p>
+
+<p>2) Call the method <a class="link-pro" href="api__dhtmlxgrid_toexcel.html">toExcel(path)</a>. The method takes as a parameter the path to the <strong>generate.php</strong> file resided in the Export package.</p>
+
+<p>For example, if you add a button by clicking on which dhtmlxGrid will start exporting, your code can be similar to this one:</p>
+
+<pre><code><pre class="html">// DHTMLX Suite is used
+<span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;STYLESHEET&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlx.css&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlx.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;button&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;Get as Excel&quot;</span> </span>
+<span class="sc2"><span class="kw3">onclick</span><span class="sy0">=</span><span class="st0">&quot;mygrid.toExcel('codebase/grid-excel-php/generate.php');&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;gridbox&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width:399px;height:270px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">    mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    ...</pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<a name='configuration'><h2>Configuration</h2></a>
+
+<p>You can define what dhtmlxGrid will look like in a PDF or Excel document after it is exported, configuring the available options in the server-side code:</p>
+
+<ul>
+<li>in case of exporting to PDF - the <strong>gridPdfGenerator.php</strong> file;</li>
+<li>in case of exporting to Excel - the <strong>gridExcelGenerator.php</strong> file.</li>
+</ul>
+
+<a name='errorshandlingandlogging'><h2>Errors handling and logging</h2></a>
+
+<p>If any error occurs during data exporting and the result output is failed, a log file named as <strong>'error_report_xxxx.xml'</strong>
+is automatically created in the <strong>grid-pdf-php</strong> (<strong>grid-excel-php</strong>) folder .</p>
+
+<p>If output isn't failed, but still there are some problems, you can edit the <strong>generate.php</strong> and change the value of the
+<strong>debug</strong> variable to provoke generating of another log file named as <strong>'debug_xxxxx.xml'</strong> :</p>
+
+<pre><code><pre class="js">$debug <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="co1">//change to</span>
+$debug <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='onlineexportservices'><h2>Online export services</h2></a>
+
+<p>In order not to download the Export package you may use online export services and call 
+the <a class="link-pro" href="api__dhtmlxgrid_topdf.html">toPDF()</a> and <a class="link-pro" href="api__dhtmlxgrid_toexcel.html">toExcel()</a> methods as:</p>
+
+<pre><code><pre class="js"><span class="co1">// exporting to PDF by using the online export service</span>
+mygrid.<span class="me1">toPDF</span><span class="br0">&#40;</span><span class="st0">&quot;https://dhtmlxgrid.appspot.com/export/pdf&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// exporting to Excel by using the online export service</span>
+mygrid.<span class="me1">toExcel</span><span class="br0">&#40;</span><span class="st0">&quot;https://dhtmlxgrid.appspot.com/export/excel&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='grid__data_export.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- meta block -->
+		<title>Selection - DHTMLX TreeGrid</title>
+		<meta name="description" content="Check interactive samples of DHTMLX TreeGrid to explore its configuration and other details.">
+		<!-- end meta block -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+		<script type="text/javascript" src="../../../codebase/suite-v=6.5.3.js"></script>
+		<link rel="stylesheet" href="../../../codebase/suite-v=6.5.3.css">
+		<link rel="stylesheet" href="../../common/index-v=6.5.3.css">
+		<link rel="stylesheet" href="../common/treegrid-v=6.5.3.css">
+		<script type="text/javascript" src="../common/books_dataset-v=6.5.3.js"></script>
+		<!-- custom sample head -->
+	<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                        'gtm.start':
+                                new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5M5RCSJ');</script>
+<!-- End Google Tag Manager -->
+
+<!-- error tracking -->
+<script src="https://cdn.ravenjs.com/3.19.1/raven.min.js" crossorigin="anonymous"></script>
+<script>Raven.config('https://a2578da6be394598bfe003e4dbb3a394@sentry.dhtmlx.ru/13').install()</script></head>
+	<body>
+		<header class="dhx_sample-header">
+			<div class="dhx_sample-header__main">
+				<nav class="dhx_sample-header__breadcrumbs">
+					<ul class="dhx_sample-header-breadcrumbs">
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="../../index.html" class="dhx_sample-header-breadcrumbs__link">Suite samples</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="../index.html" class="dhx_sample-header-breadcrumbs__link">TreeGrid samples</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="index.html" class="dhx_sample-header-breadcrumbs__link">Configuration</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<span class="dhx_sample-header-breadcrumbs__link">Selection</span>
+						</li>
+					</ul>
+				</nav>
+				<h1 class="dhx_sample-header__title">
+					<div class="dhx_sample-header__content">
+						Selection.
+						<div class="dhx_sample-docs-links">
+							Check documentation:
+							<a href="../../../treegrid__configuration.html#selection" target="_blank" class="dhx_sample-header-link">Selection</a>
+						</div>
+					</div>
+				</h1>
+		<div class="dhx_sample-header__cta" id="dhx_sample-cta">
+			<a title="Free Trial" target="_blank" class="dhx_sample-btn dhx_sample-btn--flat dhx_sample-btn--cta" 
+			href="https://dhtmlx.com/docs/products/dhtmlxSuite/download.shtml">Free Trial</a>
+		</div>
+	</div>
+</header>
+		<section class="dhx_sample-controls">
+			<label
+					class="dhx_form-group dhx_radiobutton dhx_form-group--inline dhx_form-group--no-message-holder dhx_sample-input__wrapper--pl-16">
+				<input type="radio" name="selection" id="row" class="dhx_radiobutton__input">
+				<span class="dhx_radiobutton__visual-input"></span>
+				<span class="dhx_label">Row</span>
+			</label>
+			<label
+					class="dhx_form-group dhx_radiobutton dhx_form-group--inline dhx_form-group--no-message-holder dhx_sample-input__wrapper--pl-16">
+				<input type="radio" name="selection" id="cell" class="dhx_radiobutton__input">
+				<span class="dhx_radiobutton__visual-input"></span>
+				<span class="dhx_label">Cell</span>
+			</label>
+			<label
+					class="dhx_form-group dhx_radiobutton dhx_form-group--inline dhx_form-group--no-message-holder dhx_sample-input__wrapper--pl-16">
+				<input type="radio" checked="true" name="selection" id="complex" class="dhx_radiobutton__input">
+				<span class="dhx_radiobutton__visual-input"></span>
+				<span class="dhx_label">Complex</span>
+			</label>
+		</section>
+		<section class="dhx_sample-container dhx_sample-container--treegrid">
+			<div class="dhx_sample-container__widget" id="treeGrid"></div>
+		</section>
+		<script>
+			var treeGrid;
+			var config = {
+				columns: [
+					{ width: 280, id: "name", header: [{ text: "Book Name" }] },
+					{ width: 160, id: "price", type: "string", header: [{ text: "Terms and conditions", colspan: 2 }, { text: "Price" }] },
+					{ width: 160, id: "cover", type: "string", header: [{}, { text: "Cover" }] },
+					{ width: 160, id: "ships", type: "string", header: [{ text: "Ships in" }] },
+					{ width: 160, id: "inStock", type: "string", header: [{ text: "In stock" }] }
+				],
+				selection: "complex"
+			};
+			function createGrid() {
+				if (treeGrid) {
+					treeGrid.destructor();
+				}
+				treeGrid = new dhx.TreeGrid("treeGrid", config);
+				treeGrid.data.parse(JSON.parse(JSON.stringify(dataset)));
+			}
+			var elements = document.querySelectorAll("[name=selection]");
+			for (var i = 0; i < elements.length; i++) {
+				elements[i].addEventListener("change", function (e) {
+					config.selection = e.target.id;
+					createGrid();
+				});
+			}
+			createGrid();
+		</script>
+	</body>
+</html>

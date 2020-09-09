@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Saving Data on the Server Side  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="grid__data_formats.html">Exploring Supported Data Formats</a></li><li class=""><a href="grid__loading_storing_data.html">Loading Data into Grid</a></li><li class=""><a href="grid__big_datasets_loading.html">Loading Big Datasets</a></li><li class=" current"><a href="grid__server_side.html">Saving Data on the Server Side</a></li><ul><li class="inner"><a href="grid__server_side.html#integrationwithhtmlform"> Integration with HTML form</a></li></ul><li class=""><a href="grid__serialization.html">Serializing Data to XML,CSV</a></li><li class=""><a href="grid__data_export.html">Exporting Data to PDF,Excel</a></li><li class=""><a href="grid__userdata.html">Loading Additional Data to Grid</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__loading_data.html">Loading and Storing Data</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Saving Data on the Server Side</h1>
+
+<p>To provide updating data on the server we recommend you to use the <a class="link-" href="dataprocessor__index.html">DataProcessor</a> library.</p>
+
+<p>It's very easy to use dataProcessor. All you need to do is to initialize it and attach to the grid.</p>
+
+<pre><code><pre class="js"><span class="co1">//the consructor takes the path to the server-side script as a parameter</span>
+<span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;data/connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">init</span><span class="br0">&#40;</span>mygrid<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Once the dhtmlxDataProcessor's object is initialized and attached to the grid, 
+all the changes made in the grid are automatically saved to the DB. Each time the user adds/edits/deletes records in the grid, the appropriate records are added/edited/deleted on the server.</p>
+
+<p><br>
+dataProcessor provides a special support for dhtmlxGrid for managing the process of updating data on the server side.</p>
+
+<p><img style="padding-top:20px; padding-bottom:20px;" src="media/grid/grid_dataprocessor.png"/></p>
+
+<p><strong>Main Features:</strong></p>
+
+<ul>
+<li>An updated/inserted row is marked with a bold text, a deleted one is marked with a strikethrough text;</li>
+<li>The user can set validation functions on any column. By default, the validation checks whether the specified cell has a value. 
+If validation failed, a cell is marked with a red border;</li>
+<li>The mode for data processing can be defined in the following way:
+
+<ul>
+<li>cell – when cell editing is finished, it checks whether all mandatory cells in the row got their values, whether these values have passed the validation, and if they have,
+the mode sends data to the server;</li>
+<li>row – the same as described in the previous point, but it occurs when row selection is changed or Enter button pressed;</li>
+<li>off – means that there is no automatic data sending, 
+all updated/deleted data is sent to the server on calling the script method (the user can assign it to a button, so he can choose when to save);</li>
+</ul></li>
+<li>The updated/deleted rows data is sent to the server to the URL specified by the user (it is called serverProcessor).
+The serverProcessor should return a simple XML of the specified format to let the grid know about successful/not successful processing. 
+All the necessary after-save procedures will be done automatically.</li>
+</ul>
+
+<div class='note'><p><p>You can find the detailed information about dataProcessor and use it with dhtmlxGrid in the <a class="link-" href="dataprocessor__index.html">dataProcessor documentation</a>.</p>
+</p></div>
+
+<p>You can also be interested in the tutorials that show using dataProcessor with dhtmlxGrid:</p>
+
+<ul>
+<li><a class="link-" href="tutorials__dhtmlxgrid_server__index.html">Grid. Work with the Server Side</a></li>
+<li><a class="link-" href="tutorials__binding_grid_to_form__index.html">Binding Form to Grid</a></li>
+<li><a class="link-" href="tutorials__first_app__index.html">Your First App</a></li>
+</ul>
+
+<a name='integrationwithhtmlform'><h2> Integration with HTML form</h2></a>
+
+<p>dhtmlxGrid can be used as a part of an HTML form, so that the grid's data could be sent to the server as a part of form submitting.
+It can be used if you don't want to use the <a class="link-" href="dataprocessor__index.html">DataProcessor</a> library.<br> Read more in the article <a class="link-" href="grid__htmlform_integration.html">Integration with HTML Form</a>.</p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/04_dataprocessor/01_basic_init.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Basic init of dataprocessor</a></p>
+
+<!-- Content Area End -->
+			<a href='grid__server_side.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

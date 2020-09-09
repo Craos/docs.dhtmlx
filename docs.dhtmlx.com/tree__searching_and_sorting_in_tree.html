@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Searching and Sorting in Tree  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxtree.html">dhtmlXTree API</a></li><li class=""><a href="tree__initialization_of_dhtmlxtree.html">Initializing Tree</a></li><li class=""><a href="tree__syntax_templates.html">Syntax Templates</a></li><li class=""><a href="tree__setting_tree_appearance.html">Setting Tree Appearance</a></li><li class=""><a href="tree__navigation_and_selection_in_tree.html">Navigation and Selection in Tree</a></li><li class=" current"><a href="tree__searching_and_sorting_in_tree.html">Searching and Sorting in Tree</a></li><ul><li class="inner"><a href="tree__searching_and_sorting_in_tree.html#searchingintree">Searching in Tree</a></li><li class="inner"><a href="tree__searching_and_sorting_in_tree.html#sortingintree">Sorting in Tree</a></li></ul><li class=""><a href="tree__serialization_caching_and_removing_tree.html">Serializing and Caching Tree</a></li><li class=""><a href="tree__increasing_tree_s_performance.html">Loading Big Datasets</a></li><li class=""><a href="tree__nodes_manipulation.html">Manipulating Nodes</a></li><li class=""><a href="tree__drag_and_drop_handling.html">Handling Drag-and-Drop</a></li><li class=""><a href="tree__checkboxes_manipulation.html">Manipulating Checkboxes</a></li><li class=""><a href="tree__radio_buttons_manipulation.html">Manipulating Radio Buttons</a></li><li class=""><a href="tree__simultaneous_server_update.html">Simultaneous Server Update</a></li><li class=""><a href="tree__compatibility_with_other_dhtmlx_components.html">Compatibility with Other DHTMLX Components</a></li><li class=""><a href="tree__events_handling.html">Handling Events</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="tree__index.html">Tree</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Searching and Sorting in Tree</h1>
+
+<a name='searchingintree'><h2>Searching in Tree</h2></a>
+
+<h3>Enabling Auto Search</h3>
+
+<p>First of all, the meaning of auto search should be explained. When auto search is switched on, the user can just select any item in the tree and start typing.</p>
+
+<p>The search starts from the currently selected item.
+The Tree item the name of which meets the search conditions best of all will be selected.</p>
+
+<p>To restart the search click the Backspace button.</p>
+
+<p>Auto search can be enabled only after enabling the keyboard navigation:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">enableKeyboardNavigation</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span>
+tree.<span class="me1">enableKeySearch</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// false to disable</span></pre></code></pre>
+
+<p>This method should be called before any of the data loading methods.</p>
+
+<h3>Searching Tree</h3>
+
+<p>The search in Tree can be implemented from script with the help of the findItem() and findItemIdByLabel() methods. 
+The methods differ in one thing: whether the searched item will be selected and focused when found or not:</p>
+
+<pre><code><pre class="js"><span class="co1">// the item will be selected and focused when found</span>
+tree.<span class="me1">findItem</span><span class="br0">&#40;</span>searchStr<span class="sy0">,</span> direction<span class="sy0">,</span> top<span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="co1">//or</span>
+<span class="co1">//the item will not be selected and focused when found </span>
+tree.<span class="me1">findItemIdByLabel</span><span class="br0">&#40;</span>searchStr<span class="sy0">,</span> direction<span class="sy0">,</span> top<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The parameters of both these methods are:</p>
+
+<ul>
+<li>searchStr - the search query;</li>
+<li>direction(false/true) - direction of the search, from the top to the bottom (false), and vice versa (true);</li>
+<li>top(true/false) - start searching from the top (true) or start searching from the currently selected item (false).</li>
+</ul>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxTree/samples/14_selection_sorting_navigation/06_pro_search.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Search</a></p>
+
+<a name='sortingintree'><h2>Sorting in Tree</h2></a>
+
+<h3>Sorting Tree</h3>
+
+<p>dhtmlxTree allows its users to sort the tree in either ASC or DES orders:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">sortTree</span><span class="br0">&#40;</span>itemId<span class="sy0">,</span> oder<span class="sy0">,</span> all_levels<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The user should indicate the following parameters:</p>
+
+<ul>
+<li>itemId - id of the node sorting starts from;</li>
+<li>oder(ASC/DES) - sorting order;</li>
+<li>all_levels(true/false) - sorting the tree by all levels (true), or by the current level.</li>
+</ul>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxTree/samples/14_selection_sorting_navigation/07_pro_smart_sort.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Smart XML parsing and Sorting</a></p>
+
+<h3>Custom Defined Sorting</h3>
+
+<p>The user can set a custom sort function. The function should have two parameters: id_of_item1, id_of_item2. For example:</p>
+
+<pre><code><pre class="js"><span class="co1">//define the comparator (in our case it compares the second words in labels)</span>
+<span class="kw2">function</span> mySortFunc<span class="br0">&#40;</span>idA<span class="sy0">,</span>idB<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    a<span class="sy0">=</span><span class="br0">&#40;</span>tree.<span class="me1">getItemText</span><span class="br0">&#40;</span>idA<span class="br0">&#41;</span><span class="br0">&#41;</span>.<span class="me1">split</span><span class="br0">&#40;</span><span class="st0">&quot; &quot;</span><span class="br0">&#41;</span><span class="br0">&#91;</span><span class="nu0">1</span><span class="br0">&#93;</span><span class="sy0">||</span><span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+    b<span class="sy0">=</span><span class="br0">&#40;</span>tree.<span class="me1">getItemText</span><span class="br0">&#40;</span>idB<span class="br0">&#41;</span><span class="br0">&#41;</span>.<span class="me1">split</span><span class="br0">&#40;</span><span class="st0">&quot; &quot;</span><span class="br0">&#41;</span><span class="br0">&#91;</span><span class="nu0">1</span><span class="br0">&#93;</span><span class="sy0">||</span><span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="br0">&#40;</span><span class="br0">&#40;</span>a<span class="sy0">&amp;</span>amp<span class="sy0">;</span>gt<span class="sy0">;</span>b<span class="br0">&#41;</span><span class="sy0">?</span><span class="nu0">1</span><span class="sy0">:-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Then the setCustomSortFunction() method should be called. It takes the name of the function as the incoming parameter:</p>
+
+<pre><code><pre class="js"><span class="co1">//attach the comparator to the tree</span>
+tree.<span class="me1">setCustomSortFunction</span><span class="br0">&#40;</span>mySortFunc<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>It should be noted that if a custom comparator is specified, the sortTree() method will use it for sorting.</p>
+
+<!-- Content Area End -->
+			<a href='tree__searching_and_sorting_in_tree.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

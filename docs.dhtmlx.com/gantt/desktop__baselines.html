@@ -1,0 +1,349 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Extra Elements in Timeline Area  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__task_types.html">Task Types</a></li><li class=""><a href="desktop__task_object_operations.html">Task Object/Id</a></li><li class=""><a href="desktop__task_tree_operations.html">Task Parent/Child</a></li><li class=""><a href="desktop__crud_task.html">Basic Operations with Tasks</a></li><li class=""><a href="desktop__unscheduled_tasks.html">Unscheduled Tasks</a></li><li class="toc-pro"><a href="desktop__split_tasks.html">Split Tasks</a></li><li class=""><a href="desktop__multiselection.html">Multi-Task Selection</a></li><li class=""><a href="desktop__working_time.html">Work Time Calculation</a></li><li class="toc-pro"><a href="desktop__critical_path.html">Critical Path</a></li><li class="toc-pro current"><a href="desktop__baselines.html">Extra Elements in Timeline Area</a></li><ul><li class="inner"><a href="desktop__baselines.html#commondescription">Common description</a></li><li class="inner"><a href="desktop__baselines.html#exampleofusage">Example of usage</a></li><li class="inner"><a href="desktop__baselines.html#extraoverlayforthechart">Extra overlay for the chart</a></li></ul><li class="toc-pro"><a href="desktop__milestones.html">Milestones</a></li><li class=""><a href="desktop__tooltips.html">Tooltips for Gantt Elements</a></li><li class=""><a href="desktop__text_block_for_task.html">Displaying Contents of Tasks</a></li><li class=""><a href="desktop__readonly_mode.html">Read-Only Mode</a></li><li class=""><a href="desktop__validation.html">Validation</a></li><li class=""><a href="desktop__dnd.html">Dragging Tasks within the Timeline</a></li><li class=""><a href="desktop__advanced_dnd.html">Creating/Selecting Tasks with DnD</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__task_bars.html">Configuring Tasks</a></div>
+<!-- Content Area -->
+
+
+<p class='promarker'>Available only in <b>PRO Edition</b></p>
+<h1>Extra Elements in Timeline Area</h1>
+
+<div class='pronote'><p><p>This functionality is available only in the PRO edition</p>
+</p></div>
+
+<a name='commondescription'><h2>Common description</h2></a>
+
+<p>By default, dhtmlxGantt renders elements of the timeline area as layers and does it in the following order:</p>
+
+<ol>
+<li>Timeline's grid</li>
+<li>Links</li>
+<li>Tasks</li>
+</ol>
+
+<p>Displaying additional elements, such as a baseline or deadline marker, is usually done by creating a displayable layer and placing custom elements there
+(using the absolute positioning to put custom elements next to the related task).</p>
+
+<p><strong>To add one more layer to the timeline area</strong>, use the <a class="link-pro" href="api__gantt_addtasklayer.html">addTaskLayer</a> method. As a parameter, the method takes a function that:</p>
+
+<ul>
+<li>Takes a task object;</li>
+<li>Returns either a DOM element that will be displayed, or <em>false</em> (the element for a task should be hidden).</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">addTaskLayer</span><span class="br0">&#40;</span><span class="kw2">function</span> myNewElement<span class="br0">&#40;</span>task<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw2">var</span> el <span class="sy0">=</span> document.<span class="me1">createElement</span><span class="br0">&#40;</span><span class="st0">'div'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="co1">// your code</span>
+    <span class="kw1">return</span> el<span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/04_customization/14_deadline.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Displaying deadlines</a></p>
+
+<p>Note:</p>
+
+<ol>
+<li>After you call the method, dhtmlxGantt adds a container to the timeline area. </li>
+<li>When dhtmlxGantt renders data, the <a class="link-pro" href="api__gantt_addtasklayer.html">addTaskLayer</a> method will be called for each task and the returned DOM element will be appended to the container.</li>
+<li>For placing elements, you can use a usual absolute position. </li>
+<li>When a Gantt's task is updated, it will be updated in all layers including the custom ones (the function will be called for the updated task and the related DOM element will be replaced).</li>
+<li>dhtmlxGantt provides a method for calculating task's position and size - <a class="link-" href="api__gantt_gettaskposition.html">getTaskPosition</a>. You can use it to calculate the position and size for your custom elements as well.</li>
+</ol>
+
+<p><em>To learn how to increase the perfomance speed of rendering custom elements, read the <a class="link-pro" href="api__gantt_addtasklayer.html#smartrenderingforcustomlayers">addTaskLayer</a> article.</em></p>
+
+<a name='exampleofusage'><h2>Example of usage</h2></a>
+
+<p>To understand how to apply this functionality, let's consider an example: you have a planned and an actual time for tasks and need to display both of times.</p>
+
+<p><img style="" src="media/desktop/baselines.png"/></p>
+
+<h3>Step 1. Reduce the task height and move task lines upper</h3>
+
+<p>In the initial state tasks look like this:</p>
+
+<p><img src="media/desktop/baselines_start.png"></p>
+
+<p>First of all, you need to free some space for baselines under the tasks. 
+For this purpose, it's necessary to reduce the task height to make it equal to approximately a half of the row height:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">task_height</span> <span class="sy0">=</span> <span class="nu0">16</span><span class="sy0">;</span>
+gantt.<span class="me1">config</span>.<span class="me1">row_height</span> <span class="sy0">=</span> <span class="nu0">40</span><span class="sy0">;</span></pre></code></pre>
+
+<p>And move the task line to the top of the row by applying the following CSS code:</p>
+
+<pre><code><pre class="css"><span class="re1">.gantt_task_line</span><span class="sy0">,</span> <span class="re1">.gantt_line_wrapper</span> <span class="br0">&#123;</span>
+    <span class="kw1">margin-top</span><span class="sy0">:</span> <span class="re3">-9px</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+<span class="re1">.gantt_side_content</span> <span class="br0">&#123;</span>
+    <span class="kw1">margin-bottom</span><span class="sy0">:</span> <span class="re3">7px</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+<span class="re1">.gantt_task_link</span> <span class="re1">.gantt_link_arrow</span> <span class="br0">&#123;</span>
+    <span class="kw1">margin-top</span><span class="sy0">:</span> <span class="re3">-12px</span>
+<span class="br0">&#125;</span>
+<span class="re1">.gantt_side_content</span><span class="re1">.gantt_right</span> <span class="br0">&#123;</span>
+    <span class="kw1">bottom</span><span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>The result will be the following:</p>
+
+<p><img src="media/desktop/baselines_task_height.png"></p>
+
+<h3>Step 2. Add additional data properties</h3>
+
+<p>After that, you need to add additional data properties to the task object. Let's name them: 'planned_start' and 'planned_end'.</p>
+
+<p><img style="" src="media/desktop/baseline_task_object.png"/></p>
+
+<h3>Step 3. Convert added data properties to Date objects</h3>
+
+<p>dhtmlxGantt is aware just of the 'start_date' and 'end_date' data properties and automatically parse them to Date objects.
+Any other date properties require additional processing. <br>
+To make the added 'planned_start', 'planned_end' properties recognizable by dhtmlxGantt, 
+parse them to Date objects with the help of the parseDate() method in the <a class="link-" href="api__gantt_ontaskloading_event.html">onTaskLoading</a> event handler.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onTaskLoading&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    task.<span class="me1">planned_start</span> <span class="sy0">=</span> gantt.<span class="me1">date</span>.<span class="me1">parseDate</span><span class="br0">&#40;</span>task.<span class="me1">planned_start</span><span class="sy0">,</span> <span class="st0">&quot;xml_date&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    task.<span class="me1">planned_end</span> <span class="sy0">=</span> gantt.<span class="me1">date</span>.<span class="me1">parseDate</span><span class="br0">&#40;</span>task.<span class="me1">planned_end</span><span class="sy0">,</span> <span class="st0">&quot;xml_date&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Step 4. Display custom elements for the planned time</h3>
+
+<p>Then, call the <a class="link-pro" href="api__gantt_addtasklayer.html">addTaskLayer</a> method to display planned time for task (defined by the 'planned_start' and 'planned_end' properties).</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">addTaskLayer</span><span class="br0">&#40;</span><span class="kw2">function</span> draw_planned<span class="br0">&#40;</span>task<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>task.<span class="me1">planned_start</span> <span class="sy0">&amp;&amp;</span> task.<span class="me1">planned_end</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw2">var</span> sizes <span class="sy0">=</span> gantt.<span class="me1">getTaskPosition</span><span class="br0">&#40;</span>task<span class="sy0">,</span> task.<span class="me1">planned_start</span><span class="sy0">,</span> task.<span class="me1">planned_end</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw2">var</span> el <span class="sy0">=</span> document.<span class="me1">createElement</span><span class="br0">&#40;</span><span class="st0">'div'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        el.<span class="me1">className</span> <span class="sy0">=</span> <span class="st0">'baseline'</span><span class="sy0">;</span>
+        el.<span class="me1">style</span>.<span class="me1">left</span> <span class="sy0">=</span> sizes.<span class="me1">left</span> <span class="sy0">+</span> <span class="st0">'px'</span><span class="sy0">;</span>
+        el.<span class="me1">style</span>.<span class="me1">width</span> <span class="sy0">=</span> sizes.<span class="me1">width</span> <span class="sy0">+</span> <span class="st0">'px'</span><span class="sy0">;</span>
+        el.<span class="me1">style</span>.<span class="me1">top</span> <span class="sy0">=</span> sizes.<span class="me1">top</span> <span class="sy0">+</span> gantt.<span class="me1">config</span>.<span class="me1">task_height</span>  <span class="sy0">+</span> <span class="nu0">13</span> <span class="sy0">+</span> <span class="st0">'px'</span><span class="sy0">;</span>
+        <span class="kw1">return</span> el<span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Step 5. Specify the CSS rules for the added elements</h3>
+
+<p>Next, add a style for your new elements:</p>
+
+<pre><code><pre class="css">.<span class="kw2">baseline</span> <span class="br0">&#123;</span>
+    <span class="kw1">position</span><span class="sy0">:</span> <span class="kw2">absolute</span><span class="sy0">;</span>
+    border-radius<span class="sy0">:</span> <span class="re3">2px</span><span class="sy0">;</span>
+    opacity<span class="sy0">:</span> <span class="nu0">0.6</span><span class="sy0">;</span>
+    <span class="kw1">margin-top</span><span class="sy0">:</span> <span class="re3">-7px</span><span class="sy0">;</span>
+    <span class="kw1">height</span><span class="sy0">:</span> <span class="re3">12px</span><span class="sy0">;</span>
+    <span class="kw1">background</span><span class="sy0">:</span> <span class="re0">#ffd180</span><span class="sy0">;</span>
+    <span class="kw1">border</span><span class="sy0">:</span> <span class="re3">1px</span> <span class="kw2">solid</span> <span class="kw2">rgb</span><span class="br0">&#40;</span><span class="nu0">255</span><span class="sy0">,</span><span class="nu0">153</span><span class="sy0">,</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Step 6. Add the possibility to edit added data properties in the lightbox</h3>
+
+<p>Finally, redefine the lightbox structure if you want to provide a possibility to edit the newly added properties from UI.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span> <span class="nu0">70</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;text&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span> <span class="kw3">focus</span><span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;time&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span> <span class="nu0">72</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;auto&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;duration&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;baseline&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span> <span class="nu0">72</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="br0">&#123;</span> 
+        start_date<span class="sy0">:</span> <span class="st0">&quot;planned_start&quot;</span><span class="sy0">,</span> end_date<span class="sy0">:</span> <span class="st0">&quot;planned_end&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;duration&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+gantt.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">section_baseline</span> <span class="sy0">=</span> <span class="st0">&quot;Planned&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The full code of the considered example you can see in the related sample.</p>
+
+<p><a href='samples/04_customization/15_baselines.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Display project baseline</a></p>
+
+<a name='extraoverlayforthechart'><h2>Extra overlay for the chart</h2></a>
+
+<p>dhtmlxGantt provides the possibility to add an extra layer over the Gantt Chart for placing some custom content into it. As an overlay you can use a div container, an HTML canvas, etc. To draw the overlay content, any 
+third-party library can be used.</p>
+
+<p>For example, you can add an S-curve into the extra overlay. Generally, S-curves display the growth of expenses, decrease of supplies of materials, etc.,
+and allow tracking the common progress of implementing tasks of a project.</p>
+
+<p>To add an overlay into gantt, you need to complete two steps:</p>
+
+<ul>
+<li>enable the <strong>overlay</strong> extension using the <a class="link-" href="api__gantt_plugins.html">gantt.plugins</a> method</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">plugins</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    overlay<span class="sy0">:</span> <span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>use the <strong>addOverlay()</strong> method of the <strong>gantt.ext.overlay</strong> object and pass a function that contains the logic of adding overlay content into it. 
+This function takes a container with custom content as a parameter. See examples below.</li>
+</ul>
+
+<p>The following example demonstrates how you can add a canvas overlay with S-curves for displaying the target and actual progress of the project (implemented with the help of the <a href="https://www.chartjs.org/">ChartJS</a> library):</p>
+
+<p><img src="media/desktop/overlay_scurve.png" alt="Overlay with S-curve" /></p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> overlay <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">overlay</span>.<span class="me1">addOverlay</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>container<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> canvas <span class="sy0">=</span> document.<span class="me1">createElement</span><span class="br0">&#40;</span><span class="st0">&quot;canvas&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    container.<span class="me1">appendChild</span><span class="br0">&#40;</span>canvas<span class="br0">&#41;</span><span class="sy0">;</span>
+    canvas.<span class="me1">style</span>.<span class="me1">height</span> <span class="sy0">=</span> container.<span class="me1">offsetHeight</span> <span class="sy0">+</span> <span class="st0">&quot;px&quot;</span><span class="sy0">;</span>
+    canvas.<span class="me1">style</span>.<span class="me1">width</span> <span class="sy0">=</span> container.<span class="me1">offsetWidth</span> <span class="sy0">+</span> <span class="st0">&quot;px&quot;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw2">var</span> ctx <span class="sy0">=</span> canvas.<span class="me1">getContext</span><span class="br0">&#40;</span><span class="st0">&quot;2d&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw2">var</span> myChart <span class="sy0">=</span> <span class="kw2">new</span> Chart<span class="br0">&#40;</span>ctx<span class="sy0">,</span> <span class="br0">&#123;</span>
+        type<span class="sy0">:</span> <span class="st0">&quot;line&quot;</span><span class="sy0">,</span>
+        <span class="co1">// full chart configuration</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The <strong>gantt.ext.overlay.addOverlay()</strong> method returns the id of a new overlay as a number.</p>
+
+<p><a href='samples/02_extensions/21_overlay.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Gantt chart with overlay</a></p>
+
+<h3>Overlay extension API</h3>
+
+<p>The <strong>dhtmlxgantt_overlay.js</strong> extension contains a set of API methods to simplify work with overlays. These methods are available via the <strong>gantt.ext.overlay</strong> object.</p>
+
+<h4>addOverlay</h4>
+
+<p>adds a new overlay into the Gantt Chart and returns its id. Takes a container with custom content as a parameter.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> overlay <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">overlay</span>.<span class="me1">addOverlay</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>container<span class="br0">&#41;</span><span class="br0">&#123;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h4>deleteOverlay</h4>
+
+<p>removes an overlay by its id</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">ext</span>.<span class="me1">overlay</span>.<span class="me1">deleteOverlay</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h4>getOverlaysIds</h4>
+
+<p>returns an array with ids of overlays added into the chart</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> ids <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">overlay</span>.<span class="me1">getOverlaysIds</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h4>refreshOverlay</h4>
+
+<p>repaints the specified overlay. Takes the id of an overlay as a parameter.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">ext</span>.<span class="me1">overlay</span>.<span class="me1">refreshOverlay</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h4>showOverlay</h4>
+
+<p>shows an overlay by its id. Takes the id of an overlay as a parameter.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">ext</span>.<span class="me1">overlay</span>.<span class="me1">showOverlay</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h4>hideOverlay</h4>
+
+<p>hides an overlay by its id</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">ext</span>.<span class="me1">overlay</span>.<span class="me1">hideOverlay</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h4>isOverlayVisible</h4>
+
+<p>checks visibility of the specified overlay. Returns <em>true</em> if the overlay is visible.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> isVisible <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">overlay</span>.<span class="me1">isOverlayVisible</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='desktop__baselines.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

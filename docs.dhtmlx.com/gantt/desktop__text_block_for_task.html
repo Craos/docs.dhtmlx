@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Displaying Contents of Tasks  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__task_types.html">Task Types</a></li><li class=""><a href="desktop__task_object_operations.html">Task Object/Id</a></li><li class=""><a href="desktop__task_tree_operations.html">Task Parent/Child</a></li><li class=""><a href="desktop__crud_task.html">Basic Operations with Tasks</a></li><li class=""><a href="desktop__unscheduled_tasks.html">Unscheduled Tasks</a></li><li class="toc-pro"><a href="desktop__split_tasks.html">Split Tasks</a></li><li class=""><a href="desktop__multiselection.html">Multi-Task Selection</a></li><li class=""><a href="desktop__working_time.html">Work Time Calculation</a></li><li class="toc-pro"><a href="desktop__critical_path.html">Critical Path</a></li><li class="toc-pro"><a href="desktop__baselines.html">Extra Elements in Timeline Area</a></li><li class="toc-pro"><a href="desktop__milestones.html">Milestones</a></li><li class=""><a href="desktop__tooltips.html">Tooltips for Gantt Elements</a></li><li class=" current"><a href="desktop__text_block_for_task.html">Displaying Contents of Tasks</a></li><ul><li class="inner"><a href="desktop__text_block_for_task.html#customizingformatoftaskbars">Customizing format of task bars</a></li><li class="inner"><a href="desktop__text_block_for_task.html#assigningatexttotheleftsideofabar">Assigning a text to the left side of a bar</a></li><li class="inner"><a href="desktop__text_block_for_task.html#assigningatexttotherightsideofabar">Assigning a text to the right side of a bar</a></li></ul><li class=""><a href="desktop__readonly_mode.html">Read-Only Mode</a></li><li class=""><a href="desktop__validation.html">Validation</a></li><li class=""><a href="desktop__dnd.html">Dragging Tasks within the Timeline</a></li><li class=""><a href="desktop__advanced_dnd.html">Creating/Selecting Tasks with DnD</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__task_bars.html">Configuring Tasks</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Displaying Contents of Tasks</h1>
+
+<p>A text near a task bar allows you to show additional information related to the task. 
+In most cases, it's some assigned resource -  persons, materials etc.</p>
+
+<p><img src="media/desktop/assigned_text.png"/></p>
+
+<a name='customizingformatoftaskbars'><h2>Customizing format of task bars</h2></a>
+
+<p>To change the default format of task bars, you can use the <a class="link-" href="api__gantt_task_text_template.html">task_text</a> template:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">task_text</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span>end<span class="sy0">,</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&lt;b&gt;Text:&lt;/b&gt; &quot;</span><span class="sy0">+</span>task.<span class="me1">text</span><span class="sy0">+</span><span class="st0">&quot;,&lt;b&gt; Holders:&lt;/b&gt; &quot;</span><span class="sy0">+</span>task.<span class="me1">users</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>It can contain any HTML content that should be displayed inside of the task bar.</p>
+
+<p><a href='samples/04_customization/08_templates.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Styling task bars with events</a></p>
+
+<p><img src="media/desktop/task_text.png"/></p>
+
+<a name='assigningatexttotheleftsideofabar'><h2>Assigning a text to the left side of a bar</h2></a>
+
+<p>To place a text block on the left side of a task bar, use the  <a class="link-" href="api__gantt_leftside_text_template.html">leftside_text</a> template:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">leftside_text</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&lt;b&gt;Priority: &lt;/b&gt;&quot;</span> <span class="sy0">+</span>task.<span class="me1">priority</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/04_customization/01_outer_content.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Define side content</a></p>
+
+<a name='assigningatexttotherightsideofabar'><h2>Assigning a text to the right side of a bar</h2></a>
+
+<p>To place a text block on the right side of a task bar, use the  <a class="link-" href="api__gantt_rightside_text_template.html">rightside_text</a> template:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">rightside_text</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&lt;b&gt;Holders: &lt;/b&gt;&quot;</span> <span class="sy0">+</span> task.<span class="me1">users</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/04_customization/01_outer_content.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Define side content</a></p>
+
+<!-- Content Area End -->
+			<a href='desktop__text_block_for_task.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

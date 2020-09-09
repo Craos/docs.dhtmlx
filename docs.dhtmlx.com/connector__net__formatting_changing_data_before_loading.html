@@ -1,0 +1,276 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Formatting/Changing Data Before Loading  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="connector__net__reference.html">.Net Connector API</a></li><li class=""><a href="connector__net__general_idea.html">General Idea of dhtmlxConnector</a></li><li class=""><a href="connector__net__init.html">Initializing .Net Connector</a></li><li class=""><a href="connector__net__dynamical_loading.html">Dynamic Loading</a></li><li class=""><a href="connector__net__security.html">Security</a></li><li class=""><a href="connector__net__loading_editing_data.html">Basic Loading</a></li><li class=" current"><a href="connector__net__formatting_changing_data_before_loading.html">Formatting/Changing Data Before Loading</a></li><ul><li class="inner"><a href="connector__net__formatting_changing_data_before_loading.html#basicformattingmethods">Basic Formatting Methods</a></li><li class="inner"><a href="connector__net__formatting_changing_data_before_loading.html#formattingincombo">Formatting in Combo</a></li><li class="inner"><a href="connector__net__formatting_changing_data_before_loading.html#formattingingridandtreegrid">Formatting in Grid and TreeGrid</a></li><li class="inner"><a href="connector__net__formatting_changing_data_before_loading.html#formattingintree">Formatting in Tree</a></li></ul><li class=""><a href="connector__net__filtration.html">Filtering</a></li><li class=""><a href="connector__net__sort.html">Sorting</a></li><li class=""><a href="connector__net__dp.html">Client-side requirement - dataProcessor</a></li><li class=""><a href="connector__net__complex_queries.html">Making Queries</a></li><li class=""><a href="connector__net__transactions.html">Transactions</a></li><li class=""><a href="connector__net__validating_data.html">Validating Data</a></li><li class=""><a href="connector__net__errors.html">Error handling and logging</a></li><li class=""><a href="connector__net__other_db_types.html">Other Database Types</a></li><li class=""><a href="connector__net__server_side_requirements.html">New Functions</a></li><li class=""><a href="connector__net__coding_howtos.html">HowTos</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="connector__index.html">Client-Server Communication</a><a class="n3" href="connector__net__index.html">.Net Connector</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Formatting/Changing Data Before Loading</h1>
+
+<a name='basicformattingmethods'><h2>Basic Formatting Methods</h2></a>
+
+<p>In case you need to update values which were returned from database table or set some specific formatting before sending them to the client side, you can use the <a class="link-" href="connector__net__event_itemprerender.html">ItemPrerender</a> event.</p>
+
+<p>A common use-case will be similar to the following:</p>
+
+<pre><code><pre class="js">dhtmlxGridConnector connector <span class="sy0">=</span> <span class="kw2">new</span> dhtmlxGridConnector<span class="br0">&#40;</span><span class="coMULTI">/*...*/</span><span class="br0">&#41;</span><span class="sy0">;</span>
+connector.<span class="me1">ItemPrerender</span> <span class="sy0">+=</span> <span class="kw2">new</span> EventHandler<span class="sy0">&lt;</span>ItemPrerenderEventArgs<span class="sy0">&lt;</span>dhtmlxGridDataItem<span class="sy0">&gt;&gt;</span>
+<span class="br0">&#40;</span>connector_ItemPrerender<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">void</span> connector_ItemPrerender<span class="br0">&#40;</span>object sender<span class="sy0">,</span>ItemPrerenderEventArgs<span class="sy0">&lt;</span>dhtmlxGridDataItem<span class="sy0">&gt;</span> e<span class="br0">&#41;</span>
+   <span class="br0">&#123;</span>
+      <span class="kw1">if</span> <span class="br0">&#40;</span>e.<span class="me1">DataItem</span>.<span class="me1">Index</span> <span class="sy0">%</span> <span class="nu0">2</span> <span class="sy0">==</span> <span class="nu0">0</span><span class="br0">&#41;</span>
+      e.<span class="me1">DataItem</span>.<span class="me1">BgColor</span> <span class="sy0">=</span> <span class="st0">&quot;gray&quot;</span><span class="sy0">;</span>
+   <span class="br0">&#125;</span></pre></code></pre>
+
+<p>Here, we have an event handler attached to the ItemPrerender event that sets background color for each second row.
+Each connector manipulates its own data item objects inherited from dhtmlxDataItem class. E.g. dhtmlxGridConnector uses dhtmlxGridDataItem, dhtmlxTreeConnector uses dhtmlxTreeDataItem, etc. 
+Each data item class has its own specific properties that you can change. 
+E.g. FolderClosedImage, FolderOpenedImage for dhtmlxTreeDataItem, Selected for dhtmlxComboItem or ChildRows for dhtmlxTreeGridDataItem.</p>
+
+<p>In the same way you can change the appearance of the items and data they will display. The following example will add row indexes to "countries" grid:</p>
+
+<pre><code><pre class="js"><span class="kw2">public</span> override IdhtmlxConnector CreateConnector<span class="br0">&#40;</span>HttpContext context<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+   dhtmlxGridConnector connector <span class="sy0">=</span> <span class="kw2">new</span> dhtmlxGridConnector<span class="br0">&#40;</span>
+      <span class="st0">&quot;Country&quot;</span><span class="sy0">,</span>
+      <span class="st0">&quot;ISO, PrintableName&quot;</span><span class="sy0">,</span>
+      <span class="st0">&quot;UID&quot;</span><span class="sy0">,</span>
+      dhtmlxDatabaseAdapterType.<span class="me1">SqlServer2005</span><span class="sy0">,</span> 
+      ConfigurationManager.<span class="me1">ConnectionStrings</span><span class="br0">&#91;</span><span class="st0">&quot;SamplesDatabase&quot;</span><span class="br0">&#93;</span>.<span class="me1">ConnectionString</span>
+   <span class="br0">&#41;</span><span class="sy0">;</span>
+ connector.<span class="me1">ItemPrerender</span> <span class="sy0">+=</span> <span class="kw2">new</span> EventHandler<span class="sy0">&lt;</span>ItemPrerenderEventArgs<span class="sy0">&lt;</span>dhtmlxGridDataItem<span class="sy0">&gt;&gt;</span>
+ <span class="br0">&#40;</span>connector_ItemPrerender<span class="br0">&#41;</span><span class="sy0">;</span>
+ <span class="kw1">return</span> connector<span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="kw1">void</span> connector_ItemPrerender<span class="br0">&#40;</span>
+    object sender<span class="sy0">,</span>
+    ItemPrerenderEventArgs<span class="sy0">&lt;</span>dhtmlxGridDataItem<span class="sy0">&gt;</span> e
+<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+   e.<span class="me1">DataItem</span>.<span class="me1">DataFields</span><span class="br0">&#91;</span><span class="st0">&quot;PrintableName&quot;</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="br0">&#40;</span>e.<span class="me1">DataItem</span>.<span class="me1">Index</span> <span class="sy0">+</span> <span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">ToString</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">+</span> <span class="st0">&quot;. &quot;</span> <span class="sy0">+</span> 
+   e.<span class="me1">DataItem</span>.<span class="me1">DataFields</span><span class="br0">&#91;</span><span class="st0">&quot;PrintableName&quot;</span><span class="br0">&#93;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p><strong>DataFields</strong> dictionary contains a collection of selected fields for the current data item. The <strong>index</strong> property gets the position of an item in all items collection.</p>
+
+<p>More complex formatting rules can be defined by using "extra" fields in configuration, the fields that won't be outputted to the client but can be used inside of events.</p>
+
+<pre><code><pre class="js"><span class="kw2">public</span> override IdhtmlxConnector CreateConnector<span class="br0">&#40;</span>HttpContext context<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+   dhtmlxTreeGridConnector connector <span class="sy0">=</span> <span class="kw2">new</span> dhtmlxTreeGridConnector<span class="br0">&#40;</span>
+      <span class="st0">&quot;Folders&quot;</span><span class="sy0">,</span> <span class="st0">&quot;item_nm,item_order,item_desc&quot;</span><span class="sy0">,</span> <span class="st0">&quot;item_id&quot;</span><span class="sy0">,</span> <span class="st0">&quot;item_parent_id&quot;</span><span class="sy0">,</span>
+      dhtmlxDatabaseAdapterType.<span class="me1">SqlServer2005</span><span class="sy0">,</span>
+      ConfigurationManager.<span class="me1">ConnectionStrings</span><span class="br0">&#91;</span><span class="st0">&quot;SamplesDatabase&quot;</span><span class="br0">&#93;</span>.<span class="me1">ConnectionString</span>
+      <span class="st0">&quot;is_hidden&quot;</span><span class="co1">//extra field</span>
+   <span class="br0">&#41;</span><span class="sy0">;</span>
+connector.<span class="me1">RootItemRelationIDValue</span> <span class="sy0">=</span> <span class="st0">&quot;0&quot;</span><span class="sy0">;</span><span class="co1">//set ParentID value for root items</span>
+connector.<span class="me1">ItemPrerender</span> <span class="sy0">+=</span> <span class="kw2">new</span> EventHandler
+<span class="sy0">&lt;</span>ItemPrerenderEventArgs<span class="sy0">&lt;</span>dhtmlxTreeGridDataItem<span class="sy0">&gt;&gt;</span><span class="br0">&#40;</span>connector_ItemPrerender<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">return</span> connector<span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="kw1">void</span> connector_ItemPrerender<span class="br0">&#40;</span>
+    object sender<span class="sy0">,</span>
+    ItemPrerenderEventArgs<span class="sy0">&lt;</span>dhtmlxTreeGridDataItem<span class="sy0">&gt;</span> e
+<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+   <span class="kw1">if</span> <span class="br0">&#40;</span>e.<span class="me1">DataItem</span>.<span class="me1">DataFields</span><span class="br0">&#91;</span><span class="st0">&quot;is_hidden&quot;</span><span class="br0">&#93;</span> <span class="sy0">==</span> <span class="st0">&quot;1&quot;</span><span class="br0">&#41;</span>
+   e.<span class="me1">DataItem</span>.<span class="me1">Skip</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span><span class="co1">//do not render folders that have is_hidden attribute</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>In addition to all other fields we request the "is_hidden" field as an extra one. 
+This one will not be rendered, but we can access it via the <strong>DataFields</strong> collection. The <strong>skip</strong> property is available in 
+all dhtmlxDataItem class descendants and being set to <strong>true</strong> indicates that the item will not be rendered.</p>
+
+<h3>Userdata</h3>
+
+<p>Starting from version 1.5 you get the possibility to set userdata for items.</p>
+
+<pre><code><pre class="js"><span class="kw2">public</span> override IdhtmlxConnector CreateConnector<span class="br0">&#40;</span>HttpContext context<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    dhtmlxGridConnector connector <span class="sy0">=</span> <span class="kw2">new</span> dhtmlxGridConnector<span class="br0">&#40;</span>
+    ....
+    <span class="br0">&#41;</span><span class="sy0">;</span>
+connector.<span class="me1">BeforeRender</span> <span class="sy0">+=</span> <span class="kw2">new</span> EventHandler<span class="sy0">&lt;</span>ItemPrerenderEventArgs<span class="sy0">&lt;</span>dhtmlxGridDataItem<span class="sy0">&gt;&gt;</span>
+<span class="br0">&#40;</span>connector_ItemPrerender<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">return</span> connector<span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="kw1">void</span> connector_ItemPrerender<span class="br0">&#40;</span>object sender<span class="sy0">,</span>ItemPrerenderEventArgs<span class="sy0">&lt;</span>dhtmlxGridDataItem<span class="sy0">&gt;</span> e<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    <span class="co1">//name - the user data name, value - user data string</span>
+ e.<span class="me1">DataItem</span>.<span class="me1">UserData</span>.<span class="me1">Add</span><span class="br0">&#40;</span><span class="st0">&quot;name&quot;</span><span class="sy0">,</span> <span class="st0">&quot;value&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='formattingincombo'><h2>Formatting in Combo</h2></a>
+
+<p>dhtmlxComboDataItem has only 3 properties available for changing: <strong>Value</strong>, <strong>Text</strong> and <strong>Selected</strong></p>
+
+<a name='formattingingridandtreegrid'><h2>Formatting in Grid and TreeGrid</h2></a>
+
+<p>Both grid and treeGrid have the <strong>CssClass</strong>, <strong>BgColor</strong>, <strong>Style</strong> properties available for customization in the Prerender event.
+The <strong>CssClass</strong> property allows assigning row's CSS class name, whereas the <strong>Style</strong> property allows separating the style properties assignment.
+The <strong>BgColor</strong> property allows you to set row's background color. 
+Additionally, dthmlxTreeGridDataItem has <strong>Image</strong>, <strong>HasChildren</strong> and <strong>ChildRows</strong>.
+The last two properties allow child rows manipulation. The first one lets to assign a custom image to the first column.</p>
+
+<pre><code><pre class="js"><span class="kw1">void</span> connector_ItemPrerender<span class="br0">&#40;</span>
+    object sender<span class="sy0">,</span>
+    ItemPrerenderEventArgs<span class="sy0">&lt;</span>dhtmlxTreeGridDataItem<span class="sy0">&gt;</span> e
+<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+   <span class="kw1">if</span> <span class="br0">&#40;</span>e.<span class="me1">DataItem</span>.<span class="me1">HasChildren</span><span class="br0">&#41;</span><span class="co1">//tree grid row has child rows - output it like a folder</span>
+   e.<span class="me1">DataItem</span>.<span class="me1">Image</span> <span class="sy0">=</span> <span class="st0">&quot;folder.gif&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='formattingintree'><h2>Formatting in Tree</h2></a>
+
+<p>As well as dhtmlxTreeGridDataItem, dhtmlxTreeDataItem has <strong>HasChildren</strong> and <strong>ChildNodes</strong> properties. What's more, tree allows assigning <strong>FolderOpenedImage</strong>, <strong>FolderClosedImage</strong> and <strong>LeafImage</strong> images, <strong>Checked</strong>, <strong>Text</strong> and <strong>Value</strong> properties.</p>
+
+<p>In the example below we analyze data passed into the data item and assign the "lock.gif" image to an item if it has the "is_hidden" value.</p>
+
+<pre><code><pre class="js"><span class="kw1">void</span> connector_ItemPrerender<span class="br0">&#40;</span>object sender<span class="sy0">,</span>ItemPrerenderEventArgs<span class="sy0">&lt;</span>dhtmlxTreeDataItem<span class="sy0">&gt;</span> e<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+   <span class="kw1">if</span> <span class="br0">&#40;</span>e.<span class="me1">DataItem</span>.<span class="me1">DataFields</span><span class="br0">&#91;</span><span class="st0">&quot;is_hidden&quot;</span><span class="br0">&#93;</span> <span class="sy0">==</span> <span class="st0">&quot;1&quot;</span><span class="br0">&#41;</span>
+   e.<span class="me1">DataItem</span>.<span class="me1">LeafImage</span> <span class="sy0">=</span> <span class="st0">&quot;lock.gif&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>The ItemPrerender event also might be used to check if Tree or TreeGrid item has child items. 
+Assigning to the <strong>HasChildren</strong> property of <strong>true</strong> or <strong>false</strong> values changes the way the item will be rendered.</p>
+
+<!-- Content Area End -->
+			<a href='connector__net__formatting_changing_data_before_loading.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

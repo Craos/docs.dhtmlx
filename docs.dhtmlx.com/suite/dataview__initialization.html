@@ -1,0 +1,271 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Initialization  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="dataview__api__refs__dataview.html">Dataview API</a></li><li class=" current"><a href="dataview__initialization.html">Initialization</a></li><ul><li class="inner"><a href="dataview__initialization.html#includesourcefiles">Include source files</a></li><li class="inner"><a href="dataview__initialization.html#createacontainer">Create a container</a></li><li class="inner"><a href="dataview__initialization.html#initializedataview">Initialize DataView</a></li><li class="inner"><a href="dataview__initialization.html#loaddataintodataview">Load data into DataView</a></li></ul><li class=""><a href="dataview__configuration.html">Configuration</a></li><li class=""><a href="dataview__data_loading.html">Data Loading</a></li><li class=""><a href="dataview__manipulating_data.html">Work with DataView</a></li><li class=""><a href="dataview__customization.html">Customization</a></li><li class=""><a href="dataview__events.html">Event Handling</a></li><li class=""><a href="dataview__migration.html">Migration to Newer Versions</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="dataview__index.html">DataView</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Initialization</h1>
+
+<p>To initialize dhtmlxDataView on a page, you need to take the following simple steps:</p>
+
+<ul>
+<li><a href="https://dhtmlx.com/docs/products/dhtmlxSuite/download.shtml">Download the DataView package</a> and unpack it into a folder of your project</li>
+<li><a href="dataview__initialization.html#includesourcefiles">Include source files</a></li>
+<li><a href="dataview__initialization.html#createacontainer">Create a container</a></li>
+<li><a href="dataview__initialization.html#initializedataview">Initialize DataView</a> with the object constructor</li>
+<li><a href="dataview__initialization.html#loaddataintodataview">Load data into DataView</a></li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">title</span>&gt;</span>How to Start with dhtmlxDataView<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">title</span>&gt;</span>         
+        <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../../codebase/suite.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../../codebase/suite.css&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;dataview_container&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">            <span class="co1">// creating dhtmlxDataView</span>
+            <span class="kw2">var</span> dataview <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">DataView</span><span class="br0">&#40;</span><span class="st0">&quot;dataview_container&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+                itemsInRow<span class="sy0">:</span> <span class="nu0">5</span>
+            <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre>        <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/7rjmp5ol' target='blank'><span class='sample'>Related sample: </span>&nbsp;Dataview. Basic Initialization</a></p>
+
+<a name='includesourcefiles'><h2>Include source files</h2></a>
+
+<p>Create an HTML file and place full paths to JS and CSS files of the dhtmlxSuite library into the header of the file. The files are:</p>
+
+<ul>
+<li><em>suite.js</em></li>
+<li><em>suite.css</em></li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../../codebase/suite.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../../codebase/suite.css&quot;</span>&gt;</span></pre></code></pre>
+
+<a name='createacontainer'><h2>Create a container</h2></a>
+
+<p>Add a container for DataView and give it an id, for example "dataview_container":</p>
+
+<p class='snippet'> index.html</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;dataview_container&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+<a name='initializedataview'><h2>Initialize DataView</h2></a>
+
+<p>Initialize DataView with the <code>dhx.DataView</code> object constructor. The constructor has two parameters:</p>
+
+<ul>
+<li>the HTML container for DataView,</li>
+<li>optional, an object with configuration properties (see the full list below). If this argument is not passed to the constructor, the settings will be default.</li>
+</ul>
+
+<p class='snippet'> index.html</p>
+
+<pre><code><pre class="js"><span class="co1">// creating dhtmlxDataView</span>
+<span class="kw2">var</span> dataview <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">DataView</span><span class="br0">&#40;</span><span class="st0">&quot;dataview_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    itemsInRow<span class="sy0">:</span> <span class="nu0">5</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>There is a set of properties you can specify for DataView to optimize its configuration for your needs. Read the details below.</p>
+
+<h3>Configuration properties</h3>
+
+<p>You can specify the following properties in the configuration object of DataView:</p>
+
+<table><tr><td><a class="link-" href="dataview__api__dataview_css_config.html">css</a></td><td> adds a CSS class(es) to the component</td></tr>
+<tr><td><a class="link-" href="dataview__api__dataview_data_config.html">data</a></td><td> specifies an array of data objects to set into the dataview</td></tr>
+<tr><td><a class="link-" href="dataview__api__dataview_dragcopy_config.html">dragCopy</a></td><td> defines that an item is copied to a target during drag-n-drop</td></tr>
+<tr><td><a class="link-" href="dataview__api__dataview_dragmode_config.html">dragMode</a></td><td> enables drag-n-drop in DataView</td></tr>
+<tr><td><a class="link-" href="dataview__api__dataview_editable_config.html">editable</a></td><td> enables editing in DataView</td></tr>
+<tr><td><a class="link-" href="dataview__api__dataview_gap_config.html">gap</a></td><td> sets margins for DataView items</td></tr>
+<tr><td><a class="link-" href="dataview__api__dataview_height_config.html">height</a></td><td> sets the height of Dataview</td></tr>
+<tr><td><a class="link-" href="dataview__api__dataview_itemheight_config.html">itemHeight</a></td><td> sets the height of an item</td></tr>
+<tr><td><a class="link-" href="dataview__api__dataview_itemsinrow_config.html">itemsInRow</a></td><td> specifies the number of data items in a row</td></tr>
+<tr><td><a class="link-" href="dataview__api__dataview_keynavigation_config.html">keyNavigation</a></td><td> enables/disables navigation in DataView by arrow keys</td></tr>
+<tr><td><a class="link-" href="dataview__api__dataview_multiselection_config.html">multiselection</a></td><td> enables selection of multiple DataView items</td></tr>
+<tr><td><a class="link-" href="dataview__api__dataview_template_config.html">template</a></td><td> specifies a template for DataView items</td></tr></table>
+
+<a name='loaddataintodataview'><h2>Load data into DataView</h2></a>
+
+<p>Finally, you are to load DataView with data. You can load inline or external data into DataView.</p>
+
+<ul>
+<li>to load data from a local source, use the <a class="link-" href="data_collection__api__parse.html">parse</a> method of the Data Collection object:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dataview <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">DataView</span><span class="br0">&#40;</span><span class="st0">&quot;dataview_container&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+     itemsInRow<span class="sy0">:</span> <span class="nu0">5</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+dataview.<span class="me1">data</span>.<span class="me1">parse</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>to load data from an external file, use the <a class="link-" href="data_collection__api__load.html">load</a> method of the Data Collection object:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dataview <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">DataView</span><span class="br0">&#40;</span><span class="st0">&quot;dataview_container&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    itemsInRow<span class="sy0">:</span> <span class="nu0">5</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+dataview.<span class="me1">data</span>.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;../common/dataset.json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/7rjmp5ol' target='blank'><span class='sample'>Related sample: </span>&nbsp;Dataview. Basic Initialization</a></p>
+
+<!-- Content Area End -->
+			<a href='dataview__initialization.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

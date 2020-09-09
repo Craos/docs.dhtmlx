@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- meta block -->
+		<title>Attach - DHTMLX Tabbar</title>
+		<meta name="description" content="Check interactive samples of DHTMLX Tabbar to explore its initialization and other details.">
+		<!-- end meta block -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+		<script type="text/javascript" src="../../../codebase/suite-v=6.5.3.js"></script>
+		<link rel="stylesheet" href="../../../codebase/suite-v=6.5.3.css">
+		<link rel="stylesheet" href="../../common/index-v=6.5.3.css">
+		
+		
+		<!-- custom sample head -->
+		<script src="../common/dataviewset-v=6.5.3.js"></script>
+		<script type="text/javascript" src="../common/dataview/dataview.min-v=6.5.3.js"></script>
+		<link rel="stylesheet" href="../common/dataview/dataview.min-v=6.5.3.css">
+		<script type="text/javascript" src="../common/list/list.min-v=6.5.3.js"></script>
+		<link rel="stylesheet" href="../common/list/list.min-v=6.5.3.css">
+		<style>
+			.list_item {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				height: 100%;
+				padding-left: 12px;
+			}
+			.item_name {
+				font-size: 14px;
+				font-weight: 500;
+				padding-bottom: 4px;
+				color:rgba(0, 0, 0, 0.7);
+				line-height: 20px;
+			}	
+			.item_author {
+				font-weight: 400;
+				color: rgba(0, 0, 0, 0.5);
+			}
+			.item_categories {
+				line-height: 16px;
+				font-size: 12px;
+				color:rgba(0, 0, 0, 0.5);
+			}
+			.dhx_dataview-item {
+				background: #FFF;
+			}
+			.item-wrap {
+				padding: 4px;
+				box-sizing: border-box;
+			}
+			.title {
+				font-size: 1.2em;
+				padding-bottom: 4px;
+				padding-top: 12px;
+			}
+			.image {
+				width: 100px;
+				height: 100px;
+				float: left;
+				margin-right: 12px;
+			}
+			.item-wrap--grid {
+				width: 330px;
+				height: 108px;
+				padding-top: 4px;
+				padding-left: 4px;
+			}
+			.item-wrap--list {
+				width: 1055px;
+			}
+			.item-wrap--preview {
+				width: 155px;
+				height: 180px;
+				text-align: center;
+				padding-top: 6px;
+			}
+			.item-wrap--preview .title {
+				text-align: center;
+				padding: 4px 0;
+			}
+			.item-wrap--preview .image {
+				width:140px;
+				height:140px;
+				text-align: center;
+				margin-right: 0;
+				float: none;
+			}
+			.dhx_tabbar {
+				height: 600px;
+			}
+		</style>
+	<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                        'gtm.start':
+                                new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5M5RCSJ');</script>
+<!-- End Google Tag Manager -->
+
+<!-- error tracking -->
+<script src="https://cdn.ravenjs.com/3.19.1/raven.min.js" crossorigin="anonymous"></script>
+<script>Raven.config('https://a2578da6be394598bfe003e4dbb3a394@sentry.dhtmlx.ru/13').install()</script></head>
+	<body>
+		<header class="dhx_sample-header">
+			<div class="dhx_sample-header__main">
+				<nav class="dhx_sample-header__breadcrumbs">
+					<ul class="dhx_sample-header-breadcrumbs">
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="../../index.html" class="dhx_sample-header-breadcrumbs__link">Suite samples</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="../index.html" class="dhx_sample-header-breadcrumbs__link">Tabbar samples</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="index.html" class="dhx_sample-header-breadcrumbs__link">Initialization</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<span class="dhx_sample-header-breadcrumbs__link">Attach</span>
+						</li>
+					</ul>
+				</nav>
+				<h1 class="dhx_sample-header__title">
+					<div class="dhx_sample-header__content">
+						Attach.
+					</div>
+				</h1>
+		<div class="dhx_sample-header__cta" id="dhx_sample-cta">
+			<a title="Free Trial" target="_blank" class="dhx_sample-btn dhx_sample-btn--flat dhx_sample-btn--cta" 
+			href="https://dhtmlx.com/docs/products/dhtmlxSuite/download.shtml">Free Trial</a>
+		</div>
+	</div>
+</header>
+		<section class="dhx_sample-container">
+			<div class="dhx_sample-container__widget" id="tabbar"></div>
+			
+		</section>
+
+		<script>
+			var tabbar = new dhx.Tabbar("tabbar", {
+				mode: "top",
+				css: "dhx_widget--bordered",
+				views:[
+					{ tab: "list", id: "list" },
+					{ tab: "dataview", id: "dataview"}
+				]
+			});
+			function listTemplate(item) {
+				var template = "<div class='list_item'>";
+				template += "<div class='item_name'>"+item.value;
+				
+				template+="<span class='item_author'> by "
+				template += item.authors.filter(function(item){return !!item}).join(", ");
+	 			template += item.publishedDate ? ", " + new Date(item.publishedDate.$date).getFullYear() : "";
+				template += "</span>";
+				template += "</div>";
+				
+				template += "<div class='item_categories'>"+item.categories.join(", ")+"</div>";
+				template += "</div>";
+				return template;
+			}
+			var list = new dhx.List(null, {
+				css: "",
+				template: listTemplate,
+				itemHeight: 44,
+			});
+			function dataviewTemplate(item) {
+				var template = "<div class='item_wrap item-wrap--grid'>";
+				template += "<img class='image' src=" + item.img + " />";
+				template += "<div class='title'>" + item.title + "</div>";
+				template += "<div>" + item.short + "</div>";
+				template += "</div>";
+				return template;
+			}
+			var dataview = new dhx.DataView(null, {
+				template: dataviewTemplate,
+				itemsInRow: 3,
+				gap: "10px"
+			});
+			dataview.data.parse(dataset);
+			tabbar.getCell("dataview").attach(dataview);
+			list.data.load("../common/library.json").then(function() {
+				tabbar.getCell("list").attach(list);
+			});
+		</script>
+
+	</body>
+</html>

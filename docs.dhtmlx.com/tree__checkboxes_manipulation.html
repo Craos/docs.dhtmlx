@@ -1,0 +1,267 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Manipulating Checkboxes  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxtree.html">dhtmlXTree API</a></li><li class=""><a href="tree__initialization_of_dhtmlxtree.html">Initializing Tree</a></li><li class=""><a href="tree__syntax_templates.html">Syntax Templates</a></li><li class=""><a href="tree__setting_tree_appearance.html">Setting Tree Appearance</a></li><li class=""><a href="tree__navigation_and_selection_in_tree.html">Navigation and Selection in Tree</a></li><li class=""><a href="tree__searching_and_sorting_in_tree.html">Searching and Sorting in Tree</a></li><li class=""><a href="tree__serialization_caching_and_removing_tree.html">Serializing and Caching Tree</a></li><li class=""><a href="tree__increasing_tree_s_performance.html">Loading Big Datasets</a></li><li class=""><a href="tree__nodes_manipulation.html">Manipulating Nodes</a></li><li class=""><a href="tree__drag_and_drop_handling.html">Handling Drag-and-Drop</a></li><li class=" current"><a href="tree__checkboxes_manipulation.html">Manipulating Checkboxes</a></li><ul><li class="inner"><a href="tree__checkboxes_manipulation.html#enablingdisablingcheckboxes">Enabling/Disabling Checkboxes</a></li><li class="inner"><a href="tree__checkboxes_manipulation.html#manipulatingcheckboxesstate">Manipulating Checkboxes' State</a></li></ul><li class=""><a href="tree__radio_buttons_manipulation.html">Manipulating Radio Buttons</a></li><li class=""><a href="tree__simultaneous_server_update.html">Simultaneous Server Update</a></li><li class=""><a href="tree__compatibility_with_other_dhtmlx_components.html">Compatibility with Other DHTMLX Components</a></li><li class=""><a href="tree__events_handling.html">Handling Events</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="tree__index.html">Tree</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Manipulating Checkboxes</h1>
+
+<p>dhtmlxTree operates an advanced checkbox system. Besides usual two-state checkboxes (checked/unchecked item), 
+there is a possibility to use three-state checkboxes with a "partly checked" value.</p>
+
+<a name='enablingdisablingcheckboxes'><h2>Enabling/Disabling Checkboxes</h2></a>
+
+<h3>Enabling Standard Checkboxes</h3>
+
+<p>The <a class="link-" href="api__dhtmlxtree_enablecheckboxes.html">enableCheckBoxes</a> method allows enabling standard checkboxes in Tree:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">enableCheckBoxes</span><span class="br0">&#40;</span>mode<span class="sy0">,</span> hidden<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The parameters of the method are as follows:</p>
+
+<ul>
+<li><em>mode</em> - (boolean) <em>false</em> stands for hiding all the checkboxes, while <em>true</em> stands for showing them all in the tree;</li>
+<li><em>hidden</em> - (boolean) setting it to <em>true</em> means that checkboxes are not rendered, but can be shown by the <a class="link-pro" href="api__dhtmlxtree_showitemcheckbox.html">showItemCheckbox</a> method.</li>
+</ul>
+
+<p>In the case of creating checkboxes with the help of the above mentioned method, they will possess the usual checkbox states:</p>
+
+<ul>
+<li>checked;</li>
+<li>unchecked.</li>
+</ul>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxTree/samples/02_checkboxes/01_pro_list_checked.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Lists of check boxes states</a></p>
+
+<h3>Enabling Three-State Checkboxes</h3>
+
+<p>The <a class="link-" href="api__dhtmlxtree_enablethreestatecheckboxes.html">enableThreeStateCheckboxes</a> method is responsible for enabling three-state checkboxes:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">enableThreeStateCheckboxes</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="sy0">|</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The following states are available for three-state checkboxes:</p>
+
+<ul>
+<li>checked;</li>
+<li>unchecked;</li>
+<li>partially checked.</li>
+</ul>
+
+<p>The third state takes place when an item has several child nodes among which there are checked and unchecked ones.</p>
+
+<p>It should be noted that in case when three-state checkboxes are enabled, a click on a parent unchecked checkbox will result 
+in checking it together with all its child items, and vice versa.</p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxTree/samples/02_checkboxes/03_pro_mixed_checkboxes.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Mixed checkboxes</a></p>
+
+<h3>Enabling Smart Checkboxes</h3>
+
+<p>The <a class="link-pro" href="api__dhtmlxtree_enablesmartcheckboxes.html">enableSmartCheckboxes</a> method enables auto-checking of children and parents for <em>three-state checkboxes</em>.</p>
+
+<pre><code><pre class="js">tree.<span class="me1">enableSmartCheckboxes</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="sy0">|</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>This functionality is disabled by default.</p>
+
+<h3>Disabling a Checkbox</h3>
+
+<p>A checkbox of a certain item can be disabled. The parameters that are to be specified:</p>
+
+<ul>
+<li><em>itemId</em> - (string|number) id of the item in question;</li>
+<li><em>state</em> - (boolean) indicates whether the checkbox is disabled (<em>true</em>) or enabled (<em>false</em>).</li>
+</ul>
+
+<pre><code><pre class="js">tree.<span class="me1">disableCheckbox</span><span class="br0">&#40;</span>itemId<span class="sy0">,</span> state<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Enabling Checkboxes for Specific Items</h3>
+
+<p>The user can set checkboxes for some specific items. This can be done in the following way:</p>
+
+<pre><code><pre class="js"><span class="co1">// enable checkboxes in Tree, but not render them</span>
+tree.<span class="me1">enableCheckBoxes</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="sy0">,</span> <span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...   
+<span class="co1">// show a checkbox for the specified item</span>
+tree.<span class="me1">showItemCheckbox</span><span class="br0">&#40;</span>itemId<span class="sy0">,</span> state<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The parameters of the <a class="link-pro" href="api__dhtmlxtree_showitemcheckbox.html">showItemCheckbox</a> method are:</p>
+
+<ul>
+<li><em>id</em> - (string|number) the id of an item, set <em>null</em> to change states of all items;</li>
+<li><em>state</em> - (boolean) specifies whether the checkbox will be visible (<em>true</em>) or not (<em>false</em>).</li>
+</ul>
+
+<a name='manipulatingcheckboxesstate'><h2>Manipulating Checkboxes' State</h2></a>
+
+<h3>Checking/Unchecking Tree Item</h3>
+
+<p>Any checkbox in the tree can be easily checked/unchecked from script with the help of the <a class="link-" href="api__dhtmlxtree_setcheck.html">setCheck</a> method:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">setCheck</span><span class="br0">&#40;</span>id<span class="sy0">,</span> state<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The parameters are as follows:</p>
+
+<ul>
+<li><em>id</em> - (string|number) the id of the item in question;</li>
+<li><em>state</em> - (boolean) if set to <em>true</em>, the item will be checked, while <em>false</em> means unchecking the item.</li>
+</ul>
+
+<p>It should be noted that according to the three-state checkboxes' logic,
+if a parent item has been checked with the help of the setCheck() method, all its child items will be checked as well.</p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxTree/samples/02_checkboxes/01_pro_list_checked.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Lists of check boxes states</a></p>
+
+<h3>Checking/Unchecking Tree Branch</h3>
+
+<p>Along with checking a tree item, a tree branch can also be easily checked/unchecked from script by using the <a class="link-" href="api__dhtmlxtree_setsubchecked.html">setSubChecked</a> method:</p>
+
+<pre><code><pre class="js">tree.<span class="me1">setSubChecked</span><span class="br0">&#40;</span>id<span class="sy0">,</span> state<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The parameters are as follows:</p>
+
+<ul>
+<li><em>id</em> - (string|number) the id of the item in question;</li>
+<li><em>state</em> - (true|false) if set to <em>true</em>, the branch of items will be checked, while <em>false</em> means unchecking the branch.</li>
+</ul>
+
+<h3>Getting Checkbox's State</h3>
+
+<p>The state of the specified item's checkbox can be got via the <a class="link-" href="api__dhtmlxtree_isitemchecked.html">isItemChecked</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> checkState <span class="sy0">=</span> tree.<span class="me1">isItemChecked</span><span class="br0">&#40;</span>itemId<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The method takes the id of the item in question and returns <em>true</em> for the checked state and <em>false</em> for the unchecked state correspondingly.</p>
+
+<!-- Content Area End -->
+			<a href='tree__checkboxes_manipulation.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

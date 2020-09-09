@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>RTL (Right-to-left) Mode  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="initialization.html">Initializing Scheduler on a Page</a></li><li class=""><a href="install_with_bower.html">Ways to Install Scheduler</a></li><li class=""><a href="configuration.html">Common Config Instructions</a></li><li class=""><a href="scheduler_markup.html">Scheduler Markup</a></li><li class="toc-pro"><a href="multiple_per_page.html">Creating Multiple Schedulers on a Page</a></li><li class=" current"><a href="rtl_mode.html">RTL (Right-to-left) Mode</a></li><ul><li class="inner"><a href="rtl_mode.html#rtlmodeexamples">RTL Mode Examples</a></li><li class="inner"><a href="rtl_mode.html#customizingelementsinthertlmode">Customizing elements in the RTL Mode</a></li></ul><li class=""><a href="localization.html">Localization</a></li><li class=""><a href="accessibility.html">Accessibility</a></li><li class=""><a href="extensions_list.html">Full List of Extensions</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="configuring_the_scheduler.html">Creating Scheduler on a Page</a></div>
+<!-- Content Area -->
+
+
+
+<h1>RTL (Right-to-left) Mode</h1>
+
+<p>You can enable the RTL mode for the scheduler via the <a class="link-" href="api__scheduler_rtl_config.html">rtl configuration option</a>.</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">rtl</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></pre></code></pre>
+
+<p>After implementing the RTL mode, all the elements of the calendar will be displayed automatically from right to left, except for the elements of the scheduler header.</p>
+
+<p><img src="media/rtl.png"/></p>
+
+<p><a href='samples/14_rtl/01_basic_init.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Basic initialization</a></p>
+
+<p>To reorder the elements of the scheduler header you need to redefine CSS classes of the elements, as in:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>style type<span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="sy0">&gt;</span>
+    html<span class="sy0">,</span> body<span class="br0">&#123;</span>
+        margin<span class="sy0">:</span>0px<span class="sy0">;</span>
+        padding<span class="sy0">:</span>0px<span class="sy0">;</span>
+        height<span class="sy0">:</span><span class="nu0">100</span><span class="sy0">%;</span>
+        overflow<span class="sy0">:</span>hidden<span class="sy0">;</span>
+    <span class="br0">&#125;</span>   
+&nbsp;
+    .<span class="me1">dhx_cal_prev_button</span><span class="br0">&#123;</span>right<span class="sy0">:</span> auto <span class="sy0">!</span>important<span class="sy0">;</span> left<span class="sy0">:</span> 16px <span class="sy0">!</span>important<span class="sy0">;</span><span class="br0">&#125;</span>
+    .<span class="me1">dhx_cal_next_button</span><span class="br0">&#123;</span>right<span class="sy0">:</span> auto <span class="sy0">!</span>important<span class="sy0">;</span> left<span class="sy0">:</span> 148px <span class="sy0">!</span>important<span class="sy0">;</span><span class="br0">&#125;</span>
+    .<span class="me1">dhx_cal_today_button</span><span class="br0">&#123;</span>right<span class="sy0">:</span> auto <span class="sy0">!</span>important<span class="sy0">;</span> left<span class="sy0">:</span> 57px <span class="sy0">!</span>important<span class="sy0">;</span><span class="br0">&#125;</span>
+    .<span class="me1">dhx_cal_tab</span><span class="br0">&#91;</span><span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;day_tab&quot;</span><span class="br0">&#93;</span><span class="br0">&#123;</span>left<span class="sy0">:</span> auto <span class="sy0">!</span>important<span class="sy0">;</span> right<span class="sy0">:</span> 16px <span class="sy0">!</span>important<span class="sy0">;</span><span class="br0">&#125;</span>
+    .<span class="me1">dhx_cal_tab</span><span class="br0">&#91;</span><span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;week_tab&quot;</span><span class="br0">&#93;</span><span class="br0">&#123;</span>left<span class="sy0">:</span> auto <span class="sy0">!</span>important<span class="sy0">;</span> right<span class="sy0">:</span> 103px <span class="sy0">!</span>important<span class="sy0">;</span><span class="br0">&#125;</span>
+    .<span class="me1">dhx_cal_tab</span><span class="br0">&#91;</span><span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;month_tab&quot;</span><span class="br0">&#93;</span><span class="br0">&#123;</span>left<span class="sy0">:</span> auto <span class="sy0">!</span>important<span class="sy0">;</span> right<span class="sy0">:</span> 192px <span class="sy0">!</span>important<span class="sy0">;</span><span class="br0">&#125;</span>
+    .<span class="me1">dhx_cal_container_rtl</span>  .<span class="me1">dhx_cal_tab</span> <span class="br0">&#123;</span>
+        border<span class="sy0">-</span>right<span class="sy0">-</span>style<span class="sy0">:</span> solid<span class="sy0">;</span>
+        border<span class="sy0">-</span>right<span class="sy0">-</span>width<span class="sy0">:</span> 1px<span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="sy0">&lt;/</span>style<span class="sy0">&gt;</span></pre></code></pre>
+
+<p><img src="media/reorder_header_rtl.png"/></p>
+
+<a name='rtlmodeexamples'><h2>RTL Mode Examples</h2></a>
+
+<p><b>Month View in the RTL mode</b></p>
+
+<p>Let's see how the Month View looks in the RTL mode. The event's titles and details now are located on the right side of the event's box.</p>
+
+<p><img src="media/month_view_rtl.png"/></p>
+
+<p><b>Event's Window in the RTL mode</b></p>
+
+<p>There is a good sample how the appearance of the window with event's details changes after applying the RTL mode in the image below.</p>
+
+<p><img src="media/window_with_details.png"/></p>
+
+<p><b>Timeline in the RTL mode</b></p>
+
+<p>The RTL mode automatically arranges timelines in the scheduler from right to left.</p>
+
+<p><img src="media/timeline_rtl.png"/></p>
+
+<a name='customizingelementsinthertlmode'><h2>Customizing elements in the RTL Mode</h2></a>
+
+<p>You can use additional CSS classes to apply unique styles to the separate elements in the RTL mode.</p>
+
+<p>This is the list of the CSS classes that you can set:</p>
+
+<ul>
+<li><b>dhx_cal_container_rtl</b> - applies styles to the whole container</li>
+<li><b>dhx_tooltip_rtl</b> - applies styles to the tooltip</li>
+<li><b>dhx_quick_info_rtl</b> - applies styles to the 'quick info' popup</li>
+<li><b>dhx_cal_light_rtl</b> - applies styles to the lightbox</li>
+</ul>
+
+<p>For instance:</p>
+
+<pre><code><pre class="js">.<span class="me1">dhx_cal_container_rtl</span> .<span class="me1">dhx_cal_event</span><span class="br0">&#123;</span>
+    margin<span class="sy0">-</span>right<span class="sy0">:</span> <span class="sy0">-</span>5px<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>All events of the scheduler container are moved 5px to the right.</p>
+
+<!-- Content Area End -->
+			<a href='rtl_mode.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

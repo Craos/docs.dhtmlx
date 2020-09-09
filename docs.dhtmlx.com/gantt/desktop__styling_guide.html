@@ -1,0 +1,645 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Work with Gantt Styles  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__skins.html">Available Skins</a></li><li class=""><a href="desktop__templates.html">Templates of the Gantt Chart</a></li><li class=""><a href="desktop__colouring_tasks.html">Tasks Coloring</a></li><li class=""><a href="desktop__colouring_lines.html">Links Coloring and Styling</a></li><li class=" current"><a href="desktop__styling_guide.html">Work with Gantt Styles</a></li><ul><li class="inner"><a href="desktop__styling_guide.html#stylinggrid">Styling Grid</a></li><li class="inner"><a href="desktop__styling_guide.html#stylingscale">Styling Scale</a></li><li class="inner"><a href="desktop__styling_guide.html#stylingtasks">Styling Tasks</a></li><li class="inner"><a href="desktop__styling_guide.html#stylinglinks">Styling Links</a></li><li class="inner"><a href="desktop__styling_guide.html#stylingquickinfopopup">Styling Quick Info Popup</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__styling.html">Styling</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Work with Gantt Styles</h1>
+
+<p>dhtmlxGantt provides you with a wide set of options for modifying its appearance. You can both <a class="link-" href="desktop__skins.html">change the general look of the Gantt chart by using one of the predefined skins</a>
+and adjust the styles of separate elements (tasks, links, scale, grid, etc.) of the component.</p>
+
+<p>In this guide general instructions on working with styles of Gantt parts are collected together to facilitate your wandering through the documentation. 
+Detailed information for each particular element is provided in the related articles.</p>
+
+<a name='stylinggrid'><h2>Styling Grid</h2></a>
+
+<p>You can change the style of the grid area via the related <a class="link-" href="desktop__table_templates.html">Templates of the Grid</a>.</p>
+
+<h4>Headers of the grid columns</h4>
+
+<p>There is a <a class="link-" href="api__gantt_grid_header_class_template.html">grid_header_class</a> template that allows you to apply a custom style to the headers of the grid columns. For example, you can change the background color of certain headers of the grid columns in the following way:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>style<span class="sy0">&gt;</span>
+    .<span class="me1">updColor</span><span class="br0">&#123;</span>
+        background<span class="sy0">-</span>color<span class="sy0">:</span>#ffeb8a<span class="sy0">!</span>important<span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="sy0">&lt;/</span>style<span class="sy0">&gt;</span></pre></code></pre>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">grid_header_class</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>columnName<span class="sy0">,</span> column<span class="br0">&#41;</span><span class="br0">&#123;</span>
+  <span class="kw1">if</span><span class="br0">&#40;</span>columnName <span class="sy0">==</span> <span class="st0">'duration'</span> <span class="sy0">||</span>columnName <span class="sy0">==</span> <span class="st0">'text'</span><span class="br0">&#41;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;updColor&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/desktop/styling_columns_headers.png"></p>
+
+<p><a href='snippet/356f900e.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Styling Headers of Grid Columns</a></p>
+
+<h3>Custom elements in the grid header</h3>
+
+<p>It is possible to add custom elements (such as buttons, icons, inputs, etc.) into the header of the grid. To add an element, you need to set its HTML as the value of the <strong>label</strong> property inside the 
+<a class="link-" href="api__gantt_columns_config.html"><strong>gantt.config.columns</strong></a> configuration option:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">columns</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+  <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;add&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="nu0">50</span><span class="sy0">,</span> align<span class="sy0">:</span><span class="st0">&quot;left&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">  <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;&lt;div class='searchEl'&gt;Task name &lt;input id='search' type='text'&quot;</span><span class="sy0">+</span>   </span><span class="xtra ln-xtra">    <span class="st0">&quot;placeholder='Search tasks...'&gt;&lt;/div&gt;&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="nu0">250</span><span class="sy0">,</span> tree<span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>                        </span>    <span class="co1">// other columns</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The implementation of the search functionality looks like this:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> inputEl <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">'search'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+inputEl.<span class="me1">oninput</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+  gantt.<span class="me1">refreshData</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="kw2">function</span> hasSubstr<span class="br0">&#40;</span>parentId<span class="br0">&#41;</span><span class="br0">&#123;</span>
+  <span class="kw2">var</span> task <span class="sy0">=</span> gantt.<span class="me1">getTask</span><span class="br0">&#40;</span>parentId<span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="kw1">if</span><span class="br0">&#40;</span>task.<span class="me1">text</span>.<span class="me1">toLowerCase</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">indexOf</span><span class="br0">&#40;</span>inputEl.<span class="me1">value</span>.<span class="me1">toLowerCase</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#41;</span> <span class="sy0">!==</span> <span class="sy0">-</span><span class="nu0">1</span><span class="br0">&#41;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+&nbsp;
+  <span class="kw2">var</span> child <span class="sy0">=</span> gantt.<span class="me1">getChildren</span><span class="br0">&#40;</span>parentId<span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw2">var</span> i <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span> i <span class="sy0">&lt;</span> child.<span class="me1">length</span><span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>hasSubstr<span class="br0">&#40;</span>child<span class="br0">&#91;</span>i<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+      <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+  <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onBeforeTaskDisplay&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span> task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+  <span class="kw1">if</span> <span class="br0">&#40;</span>hasSubstr<span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="br0">&#41;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/desktop/custom_elements_grid_header.png"></p>
+
+<p><a href='https://snippet.dhtmlx.com/43a01395c' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom Elements in Grid Header</a></p>
+
+<h4>Icons and images in the grid header</h4>
+
+<p>To add an image or an icon into the header, you can also put it into the inner HTML of the cell using the <strong>label</strong> property:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> textLabel <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="st0">&quot;&lt;div class='gantt-text-label'&gt;&quot;</span><span class="sy0">+</span>
+    <span class="st0">&quot;&lt;img src='http://docs.dhtmlx.com/scheduler/assets/index/icon1.png'&gt;&quot;</span><span class="sy0">+</span>
+    <span class="st0">&quot;&lt;span&gt;Text&lt;/span&gt;&quot;</span> <span class="sy0">+</span>
+    <span class="st0">&quot;&lt;/div&gt;&quot;</span>
+<span class="br0">&#93;</span>.<span class="me1">join</span><span class="br0">&#40;</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">config</span>.<span class="me1">columns</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;text&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span>textLabel<span class="sy0">,</span>tree<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="st0">'*'</span><span class="sy0">,</span> resize<span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span><span class="sy0">,</span> resize<span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;add&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">44</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://snippet.dhtmlx.com/55086fc42' target='blank'><span class='sample'>Related sample: </span>&nbsp;Images in Grid Header: Columns Config</a></p>
+
+<p>Alternatively, you can set a header cell in CSS using the <strong>.gantt_grid_head_<columnName></strong> selector:</p>
+
+<pre><code><pre class="css"><span class="re1">.gantt_grid_head_text</span>  <span class="br0">&#123;</span>
+    <span class="kw1">background-image</span><span class="sy0">:</span><span class="kw2">url</span><span class="br0">&#40;</span><span class="st0">'http://docs.dhtmlx.com/scheduler/assets/index/icon1.png'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">background-repeat</span><span class="sy0">:</span><span class="kw2">no-repeat</span><span class="sy0">;</span>  
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p><img src="media/desktop/custom_elements_grid_header_image.png"></p>
+
+<p><a href='http://snippet.dhtmlx.com/e13d18a10' target='blank'><span class='sample'>Related sample: </span>&nbsp;Images in Grid Header:CSS</a></p>
+
+<h3>Background color of the grid rows</h3>
+
+<p>You can apply a custom color for all or separate grid rows with tasks via the <a class="link-" href="api__gantt_grid_row_class_template.html">grid_row_class</a> template. For example, you can change the background color of a particular row like this:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>style<span class="sy0">&gt;</span>
+  .<span class="me1">updColor</span><span class="br0">&#123;</span>
+    background<span class="sy0">-</span>color<span class="sy0">:</span>#ffeb8a<span class="sy0">!</span>important<span class="sy0">;</span>  
+  <span class="br0">&#125;</span>
+<span class="sy0">&lt;/</span>style<span class="sy0">&gt;</span></pre></code></pre>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">grid_row_class</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+ <span class="kw1">if</span><span class="br0">&#40;</span>task.<span class="me1">id</span> <span class="sy0">==</span> <span class="nu0">12</span><span class="br0">&#41;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;updColor&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/desktop/grid_row_bg.png"></p>
+
+<p><a href='snippet/3328e356.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Coloring Grid Rows</a></p>
+
+<h3 id="customizationgridcolumns">Customization of the grid columns</h3>
+
+<p>dhtmlxGantt provides the possibility to modify the default appearance of the grid columns via the <strong>template</strong> attribute of the <a class="link-" href="api__gantt_columns_config.html"><strong>gantt.config.columns</strong></a> configuration option.</p>
+
+<p>The <strong>template</strong> attribute is a function that takes a data item object as a parameter and returns the final data template. The function definition allows you to present almost any content. For example, you can
+change the default color of the text in grid rows, or use custom elements in grid columns.</p>
+
+<h4>Text color in the grid rows</h4>
+
+<p>You can define a special color for the text of tasks depending on their priority as in:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">columns</span><span class="sy0">=</span><span class="br0">&#91;</span>
+<span class="xtra ln-xtra">    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span>       label<span class="sy0">:</span><span class="st0">&quot;Task name&quot;</span><span class="sy0">,</span>  tree<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="nu0">230</span><span class="sy0">,</span> template<span class="sy0">:</span>myFunc <span class="br0">&#125;</span><span class="sy0">,</span>   </span>    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Start time&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;duration&quot;</span><span class="sy0">,</span>   label<span class="sy0">:</span><span class="st0">&quot;Duration&quot;</span><span class="sy0">,</span>   align<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span> <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">function</span> myFunc<span class="br0">&#40;</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>task.<span class="me1">priority</span> <span class="sy0">==</span><span class="nu0">1</span><span class="br0">&#41;</span>
+        <span class="kw1">return</span> <span class="st0">&quot;&lt;div class='important'&gt;&quot;</span><span class="sy0">+</span>task.<span class="me1">text</span><span class="sy0">+</span><span class="st0">&quot; (&quot;</span><span class="sy0">+</span>task.<span class="me1">users</span><span class="sy0">+</span><span class="st0">&quot;) &lt;/div&gt;&quot;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> task.<span class="me1">text</span><span class="sy0">+</span><span class="st0">&quot; (&quot;</span><span class="sy0">+</span>task.<span class="me1">users</span><span class="sy0">+</span><span class="st0">&quot;)&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/desktop/columns_text_color.png"></p>
+
+<p><a href='samples/04_customization/05_tree_template.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Template for tree nodes</a></p>
+
+<h4>Custom elements in the grid columns</h4>
+
+<p>To add a custom element, such as a button, an input, etc. into the grid columns, you should set the HTML of the element as the value of the <strong>template</strong> attribute of the column:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> colContent <span class="sy0">=</span> <span class="kw2">function</span> <span class="br0">&#40;</span>task<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="br0">&#40;</span><span class="st0">'&lt;i class=&quot;fa gantt_button_grid gantt_grid_edit fa-pencil&quot;'</span><span class="sy0">+</span>
+                <span class="st0">'onclick=&quot;clickGridButton('</span> <span class="sy0">+</span> task.<span class="me1">id</span> <span class="sy0">+</span> <span class="st0">', <span class="es0">\'</span>edit<span class="es0">\'</span>)&quot;&gt;&lt;/i&gt;'</span> <span class="sy0">+</span>
+            <span class="st0">'&lt;i class=&quot;fa gantt_button_grid gantt_grid_add fa-plus&quot;'</span><span class="sy0">+</span>
+                <span class="st0">'onclick=&quot;clickGridButton('</span> <span class="sy0">+</span> task.<span class="me1">id</span> <span class="sy0">+</span> <span class="st0">', <span class="es0">\'</span>add<span class="es0">\'</span>)&quot;&gt;&lt;/i&gt;'</span> <span class="sy0">+</span>
+            <span class="st0">'&lt;i class=&quot;fa gantt_button_grid gantt_grid_delete fa-times&quot;'</span><span class="sy0">+</span>
+                <span class="st0">'onclick=&quot;clickGridButton('</span> <span class="sy0">+</span> task.<span class="me1">id</span> <span class="sy0">+</span> <span class="st0">', <span class="es0">\'</span>delete<span class="es0">\'</span>)&quot;&gt;&lt;/i&gt;'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">config</span>.<span class="me1">columns</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;text&quot;</span><span class="sy0">,</span> tree<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="st0">'*'</span><span class="sy0">,</span> resize<span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span><span class="sy0">,</span> resize<span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;buttons&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> colHeader<span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">75</span><span class="sy0">,</span> template<span class="sy0">:</span> colContent<span class="br0">&#125;</span>  </span><span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/desktop/custom_elements_grid_columns.png"></p>
+
+<p><a href='samples/07_grid/07_custom_buttons.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom Buttons in a Grid</a></p>
+
+<h4>Truncate long text with ellipsis in grid columns</h4>
+
+<p>Gantt shortens long text in grid rows.</p>
+
+<p>Starting from v7.0, it is possible to truncate long content of grid rows with ellipsis. To do that, you should redefine the related css class which is <strong>.gantt_tree_content</strong>:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>style<span class="sy0">&gt;</span>
+.<span class="me1">gantt_tree_content</span> <span class="br0">&#123;</span>
+    overflow<span class="sy0">:</span>hidden<span class="sy0">;</span>
+    text<span class="sy0">-</span>overflow<span class="sy0">:</span> ellipsis<span class="sy0">;</span>
+<span class="br0">&#125;</span>
+<span class="sy0">&lt;/</span>style<span class="sy0">&gt;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/desktop/truncate_text.png"></p>
+
+<p><a href='https://snippet.dhtmlx.com/5/0bfadf7d0' target='blank'><span class='sample'>Related sample: </span>&nbsp;Truncate long text with ellipsis</a></p>
+
+<a name='stylingscale'><h2>Styling Scale</h2></a>
+
+<p>The scale styling is defined by the related <a class="link-" href="desktop__timeline_templates.html">templates of the timeline area</a>.</p>
+
+<h3>Scale row</h3>
+
+<p>You can style the row of the scale with the help of the <strong>scale_row_class</strong> template. For example, define the background color:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>style<span class="sy0">&gt;</span>
+  .<span class="me1">updColor</span><span class="br0">&#123;</span>
+    background<span class="sy0">-</span>color<span class="sy0">:</span>#ffeb8a<span class="sy0">!</span>important      
+  <span class="br0">&#125;</span>
+<span class="sy0">&lt;/</span>style<span class="sy0">&gt;</span></pre></code></pre>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">scale_row_class</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>scale<span class="br0">&#41;</span><span class="br0">&#123;</span>           
+    <span class="kw1">return</span> <span class="st0">&quot;updColor&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p><img src="media/desktop/color_scale_row.png"></p>
+
+<p><a href='snippet/70bae8cb.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Styling Row of the Scale</a></p>
+
+<h3>Scale cells</h3>
+
+<p>It is also possible to style certain cells of the scale via the <strong>scale_cell_class</strong> template. For example, you can color particular days of the timeline area:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">scale_cell_class</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>date.<span class="me1">getDay</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">==</span><span class="nu0">0</span><span class="sy0">||</span>date.<span class="me1">getDay</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">==</span><span class="nu0">6</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">return</span> <span class="st0">&quot;updColor&quot;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/desktop/styling_scale_cells.png"></p>
+
+<p><a href='snippet/953ad9f3.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Styling Separate Cells on the Scale</a></p>
+
+<p>Read more in the related articles: <a class="link-" href="desktop__configuring_time_scale.html#settingthescalesstyle">Setting up Scale</a> and <a class="link-" href="desktop__highlighting_time_slots.html">Highlighting  Time Slots</a>.</p>
+
+<h3>Subscale</h3>
+
+<p>You can specify a new style for a scale via the <strong>css</strong> attribute of the <a class="link-" href="api__gantt_scales_config.html">scales</a> property. For example, you can set a specific color for the weekends as follows:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>style type<span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span><span class="sy0">&gt;</span>
+    .<span class="me1">weekend</span><span class="br0">&#123;</span>
+        background<span class="sy0">:</span> #F0DFE5 <span class="sy0">!</span>important<span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="sy0">&lt;/</span>style<span class="sy0">&gt;</span></pre></code></pre>
+
+<pre><code><pre class="js"><span class="kw2">var</span> daysStyle <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> dateToStr <span class="sy0">=</span> gantt.<span class="me1">date</span>.<span class="me1">date_to_str</span><span class="br0">&#40;</span><span class="st0">&quot;%D&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>dateToStr<span class="br0">&#40;</span>date<span class="br0">&#41;</span> <span class="sy0">==</span> <span class="st0">&quot;Sun&quot;</span><span class="sy0">||</span>dateToStr<span class="br0">&#40;</span>date<span class="br0">&#41;</span> <span class="sy0">==</span> <span class="st0">&quot;Sat&quot;</span><span class="br0">&#41;</span>  <span class="kw1">return</span> <span class="st0">&quot;weekend&quot;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">return</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">config</span>.<span class="me1">scales</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>unit<span class="sy0">:</span><span class="st0">&quot;day&quot;</span><span class="sy0">,</span> format<span class="sy0">:</span><span class="st0">&quot;%D&quot;</span><span class="sy0">,</span> css<span class="sy0">:</span>daysStyle <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/desktop/styling_subscale.png"></p>
+
+<p><a href='samples/03_scales/01_multiple_scales.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Multiple scales</a></p>
+
+<a name='stylingtasks'><h2>Styling Tasks</h2></a>
+
+<p>You can change the styling of tasks via the corresponding <a class="link-" href="desktop__timeline_templates.html">templates of the timeline area</a>.</p>
+
+<h3>Task bar</h3>
+
+<p>You can redefine the <a class="link-" href="api__gantt_task_class_template.html">task_class</a> template to refresh the styles of a task. 
+You can find the details in the article <a class="link-" href="desktop__colouring_tasks.html#redefiningthetaskstemplate">Tasks Coloring</a>.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">task_class</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> task<span class="br0">&#41;</span><span class="br0">&#123;</span><span class="kw1">return</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span><span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/desktop/coloring_tasks.png"></p>
+
+<p><a href='samples/04_customization/04_task_styles.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Task styles</a></p>
+
+<p>Templates allow applying styles dynamically. For example, you can change colors depending on the progress of the task:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">task_class</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span>end<span class="sy0">,</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>task.<span class="me1">progress</span> <span class="sy0">&gt;</span> <span class="nu0">0.5</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">return</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="kw1">else</span><span class="br0">&#123;</span>
+        <span class="kw1">return</span> <span class="st0">&quot;important&quot;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/desktop/dynamic_styling.png"></p>
+
+<p><a href='samples/04_customization/08_templates.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Styling task bars with events</a></p>
+
+<h3>Task bar text</h3>
+
+<p>The <a class="link-" href="api__gantt_task_text_template.html">task_text</a> template allows using inline styles to change the style of the task bar text:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">task_text</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+  <span class="kw1">if</span><span class="br0">&#40;</span>task.<span class="me1">id</span> <span class="sy0">==</span> <span class="nu0">12</span><span class="br0">&#41;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&lt;span style='color:red'&gt;&quot;</span><span class="sy0">+</span>task.<span class="me1">text</span><span class="sy0">+</span><span class="st0">&quot;&lt;/span&gt;&quot;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="kw1">return</span> task.<span class="me1">text</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/desktop/inline_styling_task_text.png"></p>
+
+<p><a href='snippet/c31afbec.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Inline Styling of the Task Text</a></p>
+
+<h3>Custom elements in task bars</h3>
+
+<p>You can insert custom elements into task bars via the <a class="link-" href="api__gantt_task_text_template.html">task_text</a> template as well. For example, you can add buttons into task bars in the following way:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">task_text</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> task<span class="br0">&#41;</span><span class="br0">&#123;</span>  
+  <span class="kw1">return</span> task.<span class="me1">text</span><span class="sy0">+</span><span class="st0">&quot; &lt;button&gt;Text&lt;/button&gt;&quot;</span><span class="sy0">;</span>    
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/desktop/custom_elements_task_bars.png"></p>
+
+<p><a href='snippet/97b6dddc.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom Elements in Task Bars</a></p>
+
+<h3>Setting style via properties of a task object</h3>
+
+<p>You can set additional properties in the task object configuration to define a custom color for a task. They are: <strong>color</strong>, <strong>textColor</strong> and <strong>progressColor</strong>.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> tasks <span class="sy0">=</span> <span class="br0">&#123;</span>
+  data<span class="sy0">:</span><span class="br0">&#91;</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Project #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;01-04-2013&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">18</span><span class="sy0">,</span> color<span class="sy0">:</span><span class="st0">&quot;red&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;02-04-2013&quot;</span><span class="sy0">,</span> 
+        duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span> color<span class="sy0">:</span><span class="st0">&quot;blue&quot;</span><span class="sy0">,</span> parent<span class="sy0">:</span><span class="nu0">1</span><span class="br0">&#125;</span>
+   <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">parse</span><span class="br0">&#40;</span>tasks<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">getTask</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">color</span> <span class="sy0">=</span> <span class="st0">&quot;red&quot;</span></pre></code></pre>
+
+<p>Read the related section of the <a class="link-" href="desktop__colouring_tasks.html#specifyingstyleinthepropertiesofataskobject">Tasks Coloring</a> article to get the details.</p>
+
+<h3>Styling task bars via the lightbox</h3>
+
+<p>You can define a set of predefined colors and specify them as options in the lightbox configuration to set the text or background color of a task:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> colors <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Default&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;#4B0082&quot;</span><span class="sy0">,</span>label<span class="sy0">:</span><span class="st0">&quot;Indigo&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;#FFFFF0&quot;</span><span class="sy0">,</span>label<span class="sy0">:</span><span class="st0">&quot;Ivory&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="st0">&quot;#F0E68C&quot;</span><span class="sy0">,</span>label<span class="sy0">:</span><span class="st0">&quot;Khaki&quot;</span><span class="br0">&#125;</span>
+    <span class="co1">// more colors</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">38</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span> <span class="kw3">focus</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;priority&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">22</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;color&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;select&quot;</span><span class="sy0">,</span> options<span class="sy0">:</span>colors<span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;textColor&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">22</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;textColor&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;select&quot;</span><span class="sy0">,</span> options<span class="sy0">:</span>colors<span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;auto&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/desktop/task_style_property.png"></p>
+
+<p><a href='samples/04_customization/16_inline_task_colors.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Specify inline colors for Tasks and Links</a></p>
+
+<h3>Rows of the timeline area</h3>
+
+<p>The <a class="link-" href="api__gantt_task_row_class_template.html">task_row_class</a> template allows you to change the color of the rows of the timeline area (those lying behind the Gantt tasks).</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">task_row_class</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+  <span class="kw1">if</span><span class="br0">&#40;</span>task.<span class="me1">id</span> <span class="sy0">==</span> <span class="nu0">12</span><span class="br0">&#41;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;updColor&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/desktop/styling_timeline_row.png"></p>
+
+<p><a href='snippet/25715bf1.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Styling Rows of the Timeline Area</a></p>
+
+<p><a href='samples/04_customization/02_custom_tree.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom tree formatting</a></p>
+
+<h3>Highlighting timeline cells</h3>
+
+<p>You can highlight the necessary timeline cells, depending on the day of the week with the <strong>timeline_cell_class</strong> template. The template function will iterate over the cells and apply the desired CSS
+class to the specified cells. For example, you can highlight weekends as in:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>style<span class="sy0">&gt;</span>
+    .<span class="me1">weekend</span><span class="br0">&#123;</span>
+        background<span class="sy0">:</span> #f4f7f4<span class="sy0">;</span>
+    <span class="br0">&#125;</span>   
+<span class="sy0">&lt;/</span>style<span class="sy0">&gt;</span></pre></code></pre>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">timeline_cell_class</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="kw1">item</span><span class="sy0">,</span>date<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>date.<span class="me1">getDay</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">==</span><span class="nu0">0</span><span class="sy0">||</span>date.<span class="me1">getDay</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">==</span><span class="nu0">6</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">return</span> <span class="st0">&quot;weekend&quot;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/desktop/styling_timeline_cells.png"></p>
+
+<p><a href='samples/04_customization/06_highlight_weekend.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Highlighting weekends</a></p>
+
+<p>Read more on this topic in the article <a class="link-" href="desktop__highlighting_time_slots.html">Highlighting  Time Slots</a>.</p>
+
+<h3>Showing external elements (baselines, deadlines, etc.)</h3>
+
+<div class='pronote'><p><p>This functionality is available in the PRO edition only.</p>
+</p></div>
+
+<p>You can display additional elements, such as baseline or deadline markers in the Gantt. For this you need to create a new displayable layer via the <a class="link-pro" href="api__gantt_addtasklayer.html">addTaskLayer</a> method and place custom elements there.
+As a parameter, the method takes a function that takes a task object and returns either a DOM element that will be displayed, or <em>false</em> (the element for a task should be hidden):</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">addTaskLayer</span><span class="br0">&#40;</span><span class="kw2">function</span> myNewElement<span class="br0">&#40;</span>task<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw2">var</span> el <span class="sy0">=</span> document.<span class="me1">createElement</span><span class="br0">&#40;</span><span class="st0">'div'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="co1">// your code</span>
+    <span class="kw1">return</span> el<span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Examples of external elements are:</p>
+
+<ul>
+<li>baselines</li>
+</ul>
+
+<p><img src="media/desktop/show_baselines.png"></p>
+
+<p><a href='samples/04_customization/15_baselines.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Display project baseline</a></p>
+
+<ul>
+<li>deadlines</li>
+</ul>
+
+<p><img src="media/desktop/show_deadlines.png"></p>
+
+<p><a href='samples/04_customization/14_deadline.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Displaying deadlines</a></p>
+
+<p>Read more about displaying external elements in Gantt in the article <a class="link-pro" href="desktop__baselines.html">Extra Elements in Timeline Area</a>.</p>
+
+<h3>Tooltips for tasks</h3>
+
+<p>You can provide tooltips for tasks to show their details in a compact way.</p>
+
+<p><img src="media/desktop/default_task_tooltip.png"></p>
+
+<p>Default tooltips are automatically displayed for tasks, once you include the <strong>ext/dhtmlxgantt_tooltip.js</strong> extension file on the page.</p>
+
+<h4>Custom text for tooltips</h4>
+
+<p>To set a custom text for tooltips, use the <a class="link-" href="api__gantt_tooltip_text_template.html">tooltip_text</a> template:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">tooltip_text</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span>end<span class="sy0">,</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&lt;b&gt;Task:&lt;/b&gt; &quot;</span><span class="sy0">+</span>task.<span class="me1">text</span><span class="sy0">+</span><span class="st0">&quot;&lt;br/&gt;&lt;b&gt;Duration:&lt;/b&gt; &quot;</span> <span class="sy0">+</span> task.<span class="me1">duration</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>More information about tooltips in Gantt is given in the article <a class="link-" href="desktop__tooltips.html">Tooltips for Gantt Elements</a>.</p>
+
+<a name='stylinglinks'><h2>Styling Links</h2></a>
+
+<p>You can change the style of the dependency links via the related <a class="link-" href="desktop__dependency_templates.html">Templates of Dependency Links</a>.</p>
+
+<h3>Lines of dependency links</h3>
+
+<p>You can change the color of the dependency line via the <a class="link-" href="api__gantt_link_class_template.html">link_class</a> template.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">link_class</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>link<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/desktop/coloring_links.png"></p>
+
+<p><a href='samples/04_customization/03_link_styles.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Link styles</a></p>
+
+<p>There is more information in the related article <a class="link-" href="desktop__colouring_lines.html">Links Coloring and Styling</a>.</p>
+
+<h3>Coloring links via the property of a link object</h3>
+
+<p>You can also set a custom color for a dependency link by specifying the <strong>color</strong> property in the link object:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> tasks <span class="sy0">=</span> <span class="br0">&#123;</span>
+  data<span class="sy0">:</span><span class="br0">&#91;</span>
+     <span class="co1">// tasks configuration</span>
+  <span class="br0">&#93;</span><span class="sy0">,</span>
+  links<span class="sy0">:</span><span class="br0">&#91;</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> source<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> target<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;1&quot;</span><span class="sy0">,</span> color<span class="sy0">:</span><span class="st0">&quot;red&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span> 
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> source<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> target<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;0&quot;</span><span class="sy0">,</span> color<span class="sy0">:</span><span class="st0">&quot;blue&quot;</span><span class="br0">&#125;</span>
+  <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">parse</span><span class="br0">&#40;</span>tasks<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">getLink</span><span class="br0">&#40;</span><span class="nu0">2</span><span class="br0">&#41;</span>.<span class="me1">color</span> <span class="sy0">=</span> <span class="st0">&quot;blue&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Read the related section of the <a class="link-" href="desktop__colouring_lines.html#specifyingcolorinthepropertiesofthelinkobject">Links Coloring and Styling</a> article to get the details.</p>
+
+<h3>Popups of dependency links</h3>
+
+<p>The <a class="link-" href="api__gantt_drag_link_class_template.html">drag_link_class</a> template allows styling the popup that appears when a user starts dragging a dependency line between tasks. For example, you can color the background of the popup and change the color of the popup text:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>style<span class="sy0">&gt;</span>
+  .<span class="me1">gantt_link_tooltip</span><span class="br0">&#123;</span>color<span class="sy0">:</span>red<span class="sy0">;</span> background<span class="sy0">-</span>color<span class="sy0">:</span>yellow<span class="br0">&#125;</span> 
+<span class="sy0">&lt;/</span>style<span class="sy0">&gt;</span></pre></code></pre>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">drag_link_class</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>from<span class="sy0">,</span> from_start<span class="sy0">,</span> to<span class="sy0">,</span> to_start<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;gantt_link_tooltip&quot;</span> <span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/desktop/styling_link_popup.png"></p>
+
+<p><a href='snippet/9b4d4246.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Styling the Popup of Dependency Link</a></p>
+
+<p>Check the <a class="link-" href="desktop__dependency_templates.html">Templates of Dependency Links</a> article to get more details on the topic.</p>
+
+<h3>Editing link values from UI</h3>
+
+<p>While there are lightboxes for editing and styling tasks bars, there is no built-in UI for editing links provided. Nevertheless, you can create such a UI yourself by implementing the technique described in the 
+<a class="link-" href="desktop__crud_dependency.html#editinglinkvaluesfromui">dedicated article</a>.</p>
+
+<p><img src="media/desktop/link_edit_ui.png"></p>
+
+<p><a href='http://snippet.dhtmlx.com/7c812e5bd' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom UI for Editing Link Values</a></p>
+
+<a name='stylingquickinfopopup'><h2>Styling Quick Info Popup</h2></a>
+
+<p>The styling of the Quick Info popup is defined via the <a class="link-" href="desktop__touch_templates.html">Templates of the 'Quick Info' Extension (Touch Support)</a> templates.</p>
+
+<p>You can apply the necessary style to the pop-up edit form by the <a class="link-" href="api__gantt_quick_info_class_template.html">quick_info_class</a> template. For example, you can style quick info popups for
+particular tasks as follows:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>style<span class="sy0">&gt;</span>
+  .<span class="me1">updColor</span><span class="br0">&#123;</span>
+    background<span class="sy0">-</span>color<span class="sy0">:</span>#ffeb8a<span class="sy0">!</span>important<span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+  .<span class="me1">updColor</span> .<span class="me1">gantt_cal_qi_title</span><span class="br0">&#123;</span>
+    background<span class="sy0">-</span>color<span class="sy0">:</span>#ffeb8a<span class="sy0">!</span>important<span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="sy0">&lt;/</span>style<span class="sy0">&gt;</span></pre></code></pre>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">quick_info_class</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> task<span class="br0">&#41;</span><span class="br0">&#123;</span> 
+  <span class="kw1">if</span><span class="br0">&#40;</span>task.<span class="me1">id</span> <span class="sy0">==</span> <span class="st0">&quot;12&quot;</span><span class="br0">&#41;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;updColor&quot;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">return</span> <span class="st0">&quot;&quot;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/desktop/styling_quick_info.png"></p>
+
+<p><a href='snippet/0e519fb2.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Styling Quick Info Popup</a></p>
+
+<!-- Content Area End -->
+			<a href='desktop__styling_guide.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

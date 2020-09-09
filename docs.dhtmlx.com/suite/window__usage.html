@@ -1,0 +1,258 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Work with Window  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="window__api__refs__window.html">Window API</a></li><li class=""><a href="window__how_to_start.html">Initialization</a></li><li class=""><a href="window__configuration.html">Configuration</a></li><li class=" current"><a href="window__usage.html">Work with Window</a></li><ul><li class="inner"><a href="window__usage.html#attachingcontent">Attaching content</a></li><li class="inner"><a href="window__usage.html#attachingdhtmlxcomponents">Attaching DHTMLX components</a></li><li class="inner"><a href="window__usage.html#repaintingwindow">Repainting window</a></li><li class="inner"><a href="window__usage.html#fullscreenmode">Fullscreen mode</a></li><li class="inner"><a href="window__usage.html#showinghidingwindow">Showing/hiding window</a></li><li class="inner"><a href="window__usage.html#sizingwindow">Sizing window</a></li><li class="inner"><a href="window__usage.html#positioningwindow">Positioning window</a></li><li class="inner"><a href="window__usage.html#checkingvisibilityofwindow">Checking visibility of window</a></li></ul><li class=""><a href="window__customization.html">Customization</a></li><li class=""><a href="window__handling_events.html">Event Handling</a></li><li class=""><a href="window__migration.html">Migration from 6.2 to 6.3</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="window__index.html">Window</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Work with Window</h1>
+
+<a name='attachingcontent'><h2>Attaching content</h2></a>
+
+<p>You can easily attach some HTML content to a window via the <a class="link-" href="window__api__window_attachhtml_method.html">attachHTML</a> method. It takes as a parameter a string with HTML.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dhxWindow <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Window</span><span class="br0">&#40;</span><span class="br0">&#123;</span>title<span class="sy0">:</span> <span class="st0">&quot;Window&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> html <span class="sy0">=</span> <span class="st0">&quot;&lt;h1&gt;Header&lt;/h1&gt;&lt;p&gt;paragraph&lt;/p&gt;&quot;</span><span class="sy0">;</span>
+dhxWindow.<span class="me1">attachHTML</span><span class="br0">&#40;</span>html<span class="br0">&#41;</span><span class="sy0">;</span>
+dhxWindow.<span class="me1">show</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/6uelt44m' target='blank'><span class='sample'>Related sample: </span>&nbsp;Window. Attach HTML To Window</a></p>
+
+<a name='attachingdhtmlxcomponents'><h2>Attaching DHTMLX components</h2></a>
+
+<p>dhtmlxWindow allows attaching other DHTMLX components inside it.</p>
+
+<pre><code><pre class="js">dhxWindow.<span class="me1">attach</span><span class="br0">&#40;</span><span class="st0">&quot;richtext&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>mode<span class="sy0">:</span> <span class="st0">&quot;document&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dhxWindow.<span class="me1">show</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/t9ncuuou' target='blank'><span class='sample'>Related sample: </span>&nbsp;Window. Attaching Other Components</a></p>
+
+<a name='repaintingwindow'><h2>Repainting window</h2></a>
+
+<p>In case you've changed some configuration settings of a window, you can repaint it on a page via the <a class="link-" href="window__api__window_paint_method.html">paint</a> method:</p>
+
+<pre><code><pre class="js">dhxWindow.<span class="me1">paint</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='fullscreenmode'><h2>Fullscreen mode</h2></a>
+
+<p>dhtmlxWindow can be displayed in the full screen mode. To activate the full screen mode, make use of the <a class="link-" href="window__api__window_setfullscreen_method.html">setFullScreen</a> method:</p>
+
+<pre><code><pre class="js">dhxWindow.<span class="me1">setFullScreen</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/aftti5fy' target='blank'><span class='sample'>Related sample: </span>&nbsp;Window. Fullscreen Mode</a></p>
+
+<a name='showinghidingwindow'><h2>Showing/hiding window</h2></a>
+
+<p>You can hide a particular window or show it in a particular position on a page with the help of the <a class="link-" href="window__api__window_hide_method.html">hide</a> and <a class="link-" href="window__api__window_show_method.html">show</a> methods. The <a class="link-" href="window__api__window_show_method.html">show</a> method takes two optional parameters:</p>
+
+<ul>
+<li><a class="link-" href="window__api__window_show_method.html">left</a> - (<em>number</em>) the left margin of a window</li>
+<li><a class="link-" href="window__api__window_show_method.html">top</a> - (<em>number</em>) the top margin of a window</li>
+</ul>
+
+<p>If called without parameters, the method shows a window in the default position on a page.</p>
+
+<pre><code><pre class="js"><span class="co1">// shows a window in the specified position</span>
+dhxWindow.<span class="me1">show</span><span class="br0">&#40;</span><span class="nu0">34</span><span class="sy0">,</span><span class="nu0">54</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// hides a window</span>
+dhxWindow.<span class="me1">hide</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/ee2vf9xw' target='blank'><span class='sample'>Related sample: </span>&nbsp;Window. Showing/Hiding Window</a></p>
+
+<a name='sizingwindow'><h2>Sizing window</h2></a>
+
+<p>You can change the size of a window via the <a class="link-" href="window__api__window_setsize_method.html">setSize</a> method. It takes two parameters:</p>
+
+<ul>
+<li><a class="link-" href="window__api__window_setsize_method.html">width</a> - (<em>number</em>) the width of a window</li>
+<li><a class="link-" href="window__api__window_setsize_method.html">height</a> - (<em>number</em>) the height of a window</li>
+</ul>
+
+<pre><code><pre class="js">dhxWindow.<span class="me1">setSize</span><span class="br0">&#40;</span><span class="nu0">250</span><span class="sy0">,</span><span class="nu0">250</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To get the current size of a window, use the <a class="link-" href="window__api__window_getsize_method.html">getSize</a> method. It will return an object with width and height of a window:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> size <span class="sy0">=</span> dhxWindow.<span class="me1">getSize</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; {width: 960, height: 469}</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/0zqxydvm' target='blank'><span class='sample'>Related sample: </span>&nbsp;Window. Set/Get Window Size</a></p>
+
+<a name='positioningwindow'><h2>Positioning window</h2></a>
+
+<p>To set the position of a window on the fly, make use of the <a class="link-" href="window__api__window_setposition_method.html">setPosition</a> method. You should pass two parameters to the method:</p>
+
+<ul>
+<li><a class="link-" href="window__api__window_setposition_method.html">left</a> - (<em>number</em>)  the left coordinate of a window</li>
+<li><a class="link-" href="window__api__window_setposition_method.html">top</a> - (<em>number</em>)   the top coordinate of a window</li>
+</ul>
+
+<pre><code><pre class="js">dhxWindow.<span class="me1">setPosition</span><span class="br0">&#40;</span><span class="nu0">20</span><span class="sy0">,</span><span class="nu0">20</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dhxWindow.<span class="me1">show</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To get the current position of a window, use the <a class="link-" href="window__api__window_getposition_method.html">getPosition</a> method. It will return an object with left and top coordinates of a window:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> position <span class="sy0">=</span> dhxWindow.<span class="me1">getPosition</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; {left: 480, top: 234}</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/hc3ronrk' target='blank'><span class='sample'>Related sample: </span>&nbsp;Window. Get/Set Window Position</a></p>
+
+<a name='checkingvisibilityofwindow'><h2>Checking visibility of window</h2></a>
+
+<p>You can check whether a window is hidden or shown on a page using the <a class="link-" href="window__api__window_isvisible_method.html">isVisible</a> method of the Window API. The method returns <em>true</em>, if a window is visible, and <em>false</em> if it's hidden.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> visible <span class="sy0">=</span> window.<span class="me1">isVisible</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; true/false</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/woz5c09h' target='blank'><span class='sample'>Related sample: </span>&nbsp;Window. Get Window Visible Status</a></p>
+
+<!-- Content Area End -->
+			<a href='window__usage.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

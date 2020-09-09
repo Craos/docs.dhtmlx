@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Formatting/Changing Data before Loading  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="connector__cf__reference.html">ColdFusion Connector API</a></li><li class=""><a href="connector__cf__general_idea.html">General Idea of dhtmlxConnector</a></li><li class=""><a href="connector__cf__init.html">Initializing ColdFusion Connector</a></li><li class=""><a href="connector__cf__basis.html">Basic Loading</a></li><li class=""><a href="connector__cf__dyn_loading.html">Dynamic Loading</a></li><li class=""><a href="connector__cf__filtration.html">Filtering</a></li><li class=" current"><a href="connector__cf__formatting.html">Formatting/Changing Data before Loading</a></li><ul><li class="inner"><a href="connector__cf__formatting.html#basicformattingmethods">Basic formatting methods</a></li><li class="inner"><a href="connector__cf__formatting.html#commonusage">Common usage</a></li><li class="inner"><a href="connector__cf__formatting.html#dataformatting">Data formatting</a></li><li class="inner"><a href="connector__cf__formatting.html#usingextrafields">Using extra fields</a></li><li class="inner"><a href="connector__cf__formatting.html#treetreegridspecificity">Tree/TreeGrid specificity</a></li></ul><li class=""><a href="connector__cf__sort.html">Sorting</a></li><li class=""><a href="connector__cf__dp.html">Client-Side Requirement - dataProcessor</a></li><li class=""><a href="connector__cf__complex_queries.html">Making Queries</a></li><li class=""><a href="connector__cf__multi_sync.html">Multi-User Sync</a></li><li class=""><a href="connector__cf__app_security.html">Security</a></li><li class=""><a href="connector__cf__validation.html">Validation</a></li><li class=""><a href="connector__cf__grid_columns.html">Select/Combobox Columns in Grid</a></li><li class=""><a href="connector__cf__grid_structure_server.html">Defining Grid Structure on the Server Side</a></li><li class=""><a href="connector__cf__scheduler_columns.html">Select-Box Columns in Scheduler</a></li><li class=""><a href="connector__cf__db_operations.html">Elementary DB operations with Connector</a></li><li class=""><a href="connector__cf__errors.html">Error Handling and Logging</a></li><li class=""><a href="connector__cf__event_handling.html">Handling Events</a></li><li class=""><a href="connector__cf__extending.html">Extending Functionality</a></li><li class=""><a href="connector__cf__samples.html">Samples</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="connector__index.html">Client-Server Communication</a><a class="n3" href="connector__cf__index.html">ColdFusion Connector</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Formatting/Changing Data before Loading</h1>
+
+<a name='basicformattingmethods'><h2>Basic formatting methods</h2></a>
+
+<p><strong>APPLICABLE TO:</strong> Grid, TreeGrid, Tree, Combo, Scheduler, DataView, Chart, Form</p>
+
+<p>When you need to update values which were returned from a database table or set some specific 
+formatting before sending data to the client side, you should use the <a class="link-" href="connector__cf__beforerender_event.html">beforeRender</a> event handler.</p>
+
+<a name='commonusage'><h2>Common usage</h2></a>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>cfinclude template<span class="sy0">=</span><span class="st0">&quot;../config.cfm&quot;</span><span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>cffunction <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;color_rows&quot;</span><span class="sy0">&gt;</span>
+    <span class="sy0">&lt;</span>cfargument <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;row&quot;</span><span class="sy0">&gt;</span>
+    <span class="sy0">&lt;</span>cfif ARGUMENTS.<span class="me1">row</span>.<span class="me1">get_index</span><span class="br0">&#40;</span><span class="br0">&#41;</span> mod <span class="nu0">2</span><span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>cfset ARGUMENTS.<span class="me1">row</span>.<span class="me1">set_row_color</span><span class="br0">&#40;</span><span class="st0">&quot;red&quot;</span><span class="br0">&#41;</span><span class="sy0">&gt;</span>
+    <span class="sy0">&lt;/</span>cfif<span class="sy0">&gt;</span>     
+<span class="sy0">&lt;/</span>cffunction<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>cfset grid <span class="sy0">=</span> CreateObject<span class="br0">&#40;</span>
+    <span class="st0">&quot;component&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;dhtmlxConnectors.GridConnector&quot;</span><span class="br0">&#41;</span>.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;#datasource#&quot;</span><span class="sy0">,</span><span class="st0">&quot;MySQL&quot;</span><span class="br0">&#41;</span><span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>cfset grid.<span class="me1">event</span>.<span class="me1">attach</span><span class="br0">&#40;</span><span class="st0">&quot;beforeRender&quot;</span><span class="sy0">,</span>color_rows<span class="br0">&#41;</span><span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>cfset grid.<span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;grid50000&quot;</span><span class="sy0">,</span><span class="st0">&quot;item_id&quot;</span><span class="sy0">,</span><span class="st0">&quot;item_nm,item_cd&quot;</span><span class="br0">&#41;</span><span class="sy0">&gt;</span></pre></code></pre>
+
+<ul>
+<li><strong><em>color_rows</em></strong> function sets colors for rows subject to their indices</li>
+<li>during the data generation, for each record outputted for the client side the 
+<a class="link-" href="connector__cf__beforerender_event.html">beforeRender</a> event will be executed, i.e. <strong><em>color_rows</em></strong> function will be called for each record</li>
+<li><strong><em>row</em></strong> is an instance of GridDataItem object related to the current record</li>
+</ul>
+
+<a name='dataformatting'><h2>Data formatting</h2></a>
+
+<p><strong>APPLICABLE TO:</strong> Grid, TreeGrid, Tree, Combo, Scheduler, DataView, Chart, Form</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;!---</span> render field <span class="kw1">as</span> details link <span class="sy0">---&gt;</span>
+<span class="sy0">&lt;</span>cffunction <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;formatting&quot;</span><span class="sy0">&gt;</span> 
+  <span class="sy0">&lt;</span>cfargument <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;row&quot;</span><span class="sy0">&gt;</span>
+  <span class="sy0">&lt;</span>cfset <span class="kw2">var</span> data <span class="sy0">=</span> ARGUMENTS.<span class="me1">row</span>.<span class="me1">get_value</span><span class="br0">&#40;</span><span class="st0">&quot;some_field&quot;</span><span class="br0">&#41;</span><span class="sy0">&gt;</span>
+  <span class="sy0">&lt;</span>cfset ARGUMENTS.<span class="me1">row</span>.<span class="me1">set_value</span><span class="br0">&#40;</span>
+    <span class="st0">&quot;some_field&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;&lt;a href='details.cfm?id=#data#'&gt;Details&lt;/a&gt;&quot;</span>
+  <span class="br0">&#41;</span><span class="sy0">&gt;</span>
+  <span class="sy0">&lt;!---</span> formatting date field <span class="sy0">---&gt;</span>      
+  <span class="sy0">&lt;</span>cfset data <span class="sy0">=</span> ARGUMENTS.<span class="me1">row</span>.<span class="me1">get_value</span><span class="br0">&#40;</span><span class="st0">&quot;other_field&quot;</span><span class="br0">&#41;</span><span class="sy0">&gt;</span>
+  <span class="sy0">&lt;</span>cfset ARGUMENTS.<span class="me1">row</span>.<span class="me1">set_value</span><span class="br0">&#40;</span>
+    <span class="st0">&quot;other_field&quot;</span><span class="sy0">,</span>
+    DateFormat<span class="br0">&#40;</span>lsParseDateTime<span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="sy0">,</span>
+    <span class="st0">&quot;mm-dd-yyyy&quot;</span><span class="br0">&#41;</span>
+  <span class="br0">&#41;</span><span class="sy0">&gt;</span>    
+<span class="sy0">&lt;/</span>cffunction<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>cfset grid <span class="sy0">=</span> CreateObject<span class="br0">&#40;</span>
+<span class="st0">&quot;component&quot;</span><span class="sy0">,</span>
+<span class="st0">&quot;dhtmlxConnectors.GridConnector&quot;</span><span class="br0">&#41;</span>.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;#datasource#&quot;</span><span class="sy0">,</span><span class="st0">&quot;MySQL&quot;</span>
+<span class="br0">&#41;</span><span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>cfset grid.<span class="me1">event</span>.<span class="me1">attach</span><span class="br0">&#40;</span><span class="st0">&quot;beforeRender&quot;</span><span class="sy0">,</span>formatting<span class="br0">&#41;</span><span class="sy0">&gt;</span></pre></code></pre>
+
+<ul>
+<li>the <strong><em>get_value</em></strong> and <strong><em>set_value</em></strong> methods allow you to get or set value of any field related to the record (it doesn't affect actual values in DB)</li>
+<li>if an alias was used during data configuration, you need to use it instead of real db field name as the first parameter of the get/set command. </li>
+</ul>
+
+<a name='usingextrafields'><h2>Using extra fields</h2></a>
+
+<p><strong>APPLICABLE TO:</strong> Grid, TreeGrid, Tree, Combo, Scheduler, DataView, Chart, Form</p>
+
+<p>More complex formatting rules can be defined by using <a class="link-" href="connector__cf__basis.html#extradata">extra fields</a> during the configuration.</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>cffunction <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;formatting&quot;</span><span class="sy0">&gt;</span> 
+    <span class="sy0">&lt;</span>cfargument <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;row&quot;</span><span class="sy0">&gt;</span>
+    <span class="sy0">&lt;!---</span> set row color <span class="sy0">---&gt;</span>
+    <span class="sy0">&lt;</span>cfset ARGUMENTS.<span class="me1">row</span>.<span class="me1">set_row_color</span><span class="br0">&#40;</span>ARGUMENTS.<span class="me1">row</span>.<span class="me1">get_value</span><span class="br0">&#40;</span><span class="st0">&quot;color&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">&gt;</span>
+    <span class="sy0">&lt;!---</span> save <span class="kw1">in</span> userdata <span class="sy0">---&gt;</span>
+    <span class="sy0">&lt;</span>cfset ARGUMENTS.<span class="me1">row</span>.<span class="me1">set_userdata</span><span class="br0">&#40;</span><span class="st0">&quot;some_data&quot;</span><span class="sy0">,</span>ARGUMENTS.<span class="me1">row</span>.<span class="me1">get_value</span><span class="br0">&#40;</span><span class="st0">&quot;count&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">&gt;</span>
+<span class="sy0">&lt;/</span>cffunction<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>cfset grid <span class="sy0">=</span> CreateObject<span class="br0">&#40;</span>
+<span class="st0">&quot;component&quot;</span><span class="sy0">,</span>
+<span class="st0">&quot;dhtmlxConnectors.GridConnector&quot;</span><span class="br0">&#41;</span>.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;#datasource#&quot;</span><span class="sy0">,</span><span class="st0">&quot;MySQL&quot;</span>
+<span class="br0">&#41;</span><span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>cfset grid.<span class="me1">event</span>.<span class="me1">attach</span><span class="br0">&#40;</span><span class="st0">&quot;beforeRender&quot;</span><span class="sy0">,</span>formatting<span class="br0">&#41;</span><span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>cfset grid.<span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;some_table&quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span><span class="st0">&quot;name,price&quot;</span><span class="sy0">,</span><span class="st0">&quot;color,count&quot;</span><span class="br0">&#41;</span><span class="sy0">&gt;</span></pre></code></pre>
+
+<ul>
+<li>field color isn't outputted to the client side, but used to define the property of a row. </li>
+<li>during the update/insert operation only the <em>'name'</em> and <em>'price'</em> columns can be changed, the <em>'color'</em> one will stay untouched. </li>
+<li>the <em>'count'</em> field will be sent to the client side as userdata of the row, and it will be possible to access it on the client side through the related data. </li>
+</ul>
+
+<a name='treetreegridspecificity'><h2>Tree/TreeGrid specificity</h2></a>
+
+<p><strong>APPLICABLE TO:</strong>  Tree, TreeGrid</p>
+
+<p>TreeGrid provides TreeGridDataItem and Tree provides TreeDataItem as the input parameter of the <a class="link-" href="connector__cf__beforerender_event.html">beforeRender</a> event handler. Both of them support base operations and a few specific ones.</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>cffunction <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;custom_format&quot;</span><span class="sy0">&gt;</span> 
+    <span class="sy0">&lt;</span>cfargument <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;item&quot;</span><span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>cfif ARGUMENTS.<span class="kw1">item</span>.<span class="me1">get_value</span><span class="br0">&#40;</span><span class="st0">&quot;complete&quot;</span><span class="br0">&#41;</span> gt <span class="nu0">75</span><span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>cfset ARGUMENTS.<span class="kw1">item</span>.<span class="me1">set_check_state</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">&gt;</span>
+    <span class="sy0">&lt;/</span>cfif<span class="sy0">&gt;</span>   
+        <span class="sy0">&lt;</span>cfif ARGUMENTS.<span class="kw1">item</span>.<span class="me1">get_value</span><span class="br0">&#40;</span><span class="st0">&quot;duration&quot;</span><span class="br0">&#41;</span> gt <span class="nu0">10</span><span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>cfset ARGUMENTS.<span class="kw1">item</span>.<span class="me1">set_image</span><span class="br0">&#40;</span><span class="st0">&quot;true.gif&quot;</span><span class="br0">&#41;</span><span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>cfelse<span class="sy0">&gt;</span>
+                <span class="sy0">&lt;</span>cfset ARGUMENTS.<span class="kw1">item</span>.<span class="me1">set_image</span><span class="br0">&#40;</span><span class="st0">&quot;false.gif&quot;</span><span class="br0">&#41;</span><span class="sy0">&gt;</span>
+    <span class="sy0">&lt;/</span>cfif<span class="sy0">&gt;</span>      
+<span class="sy0">&lt;/</span>cffunction<span class="sy0">&gt;</span>
+&nbsp;
+<span class="sy0">&lt;</span>cfset tree.<span class="me1">event</span>.<span class="me1">attach</span><span class="br0">&#40;</span><span class="st0">&quot;beforeRender&quot;</span><span class="sy0">,</span>custom_format<span class="br0">&#41;</span><span class="sy0">&gt;</span></pre></code></pre>
+
+<ul>
+<li>the <em><strong>set_image</strong></em> method allows setting an image of a tree element (for treegrid it accepts the only parameter, while for tree it can be 3 different images for 3 states of a tree's item)</li>
+<li>the <em><strong>set_check</strong></em> method exists only in TreeDataItem object and allows setting the state of the related checkbox (tree needs having checkboxes enabled in js. configuration code as well) </li>
+<li>the <a class="link-" href="connector__cf__beforerender_event.html">beforeRender</a> event can be used in dynamic Tree and TreeGrid to define which elements of hierarchy are branches and which ones are leafs (see details <a class="link-" href="connector__cf__dyn_loading.html#treetreegridspecific">here</a>).</li>
+</ul>
+
+<!-- Content Area End -->
+			<a href='connector__cf__formatting.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

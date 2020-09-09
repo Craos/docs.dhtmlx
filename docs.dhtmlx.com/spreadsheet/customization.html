@@ -1,0 +1,544 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1589882915.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1589882915.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Spreadsheet Docs" href="https://docs.dhtmlx.com/spreadsheet/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Customization  Spreadsheet Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/c/widgets/dhtmlxspreadsheet-jsmessage">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="initialization.html">Initialization</a></li><li class=""><a href="configuration.html">Configuration</a></li><li class=""><a href="localization.html">Localization</a></li><li class=""><a href="loading_data.html">Data Loading and Export</a></li><li class=""><a href="working_with_ssheet.html">Work with SpreadSheet</a></li><li class=""><a href="number_formatting.html">Number Formatting</a></li><li class=""><a href="handling_events.html">Event Handling</a></li><li class=" current"><a href="customization.html">Customization</a></li><ul><li class="inner"><a href="customization.html#defaultandcustomicons">Default and custom icons</a></li><li class="inner"><a href="customization.html#controlstypesandoperations">Controls types and operations</a></li><li class="inner"><a href="customization.html#toolbar">Toolbar</a></li><li class="inner"><a href="customization.html#menu">Menu</a></li><li class="inner"><a href="customization.html#contextmenu">Context menu</a></li><li class="inner"><a href="customization.html#customreadonlymode">Custom read-only mode</a></li></ul><li class=""><a href="angular_integration.html">Integration with Angular</a></li><li class=""><a href="react_integration.html">Integration with React</a></li><li class=""><a href="vuejs_integration.html">Integration with Vue.js</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Customization</h1>
+
+<p>You can customize the appearance, structure and functionality of toolbar, menu and context menu and define custom read-only behavior for SpreadSheet.</p>
+
+<a name='defaultandcustomicons'><h2>Default and custom icons</h2></a>
+
+<p>dhtmlxSpreadSheet uses the <a href="https://materialdesignicons.com/">Material Design</a>-based icons by default. However, you can use any other icon font pack, if necessary. For this, you need to include the desired icon font on 
+a page and apply icons in any possible part of the spreadsheet: in Toolbar controls, Menu and Context menu items.</p>
+
+<p>For example, you can use the <a href="https://fontawesome.com/">Font Awesome</a> icon pack by including <a href="https://fontawesome.com/how-to-use/on-the-web/setup/getting-started?using=web-fonts-with-css">link to its CDN</a> 
+after the source files of dhtmlxSpreadSheet as follows:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../../codebase/spreadsheet.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../../codebase/spreadsheet.css&quot;</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;https://use.fontawesome.com/releases/v5.3.1/css/all.css&quot;</span> </span>
+<span class="sc2">  integrity<span class="sy0">=</span><span class="st0">&quot;sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU&quot;</span>  </span>
+<span class="sc2">  crossorigin<span class="sy0">=</span><span class="st0">&quot;anonymous&quot;</span>&gt;</span></pre></code></pre>
+
+<p>Then you can use the name of the icon as the value of the <strong>icon</strong> property in the object with the control parameters for toolbar, menu or context menu. See details below.</p>
+
+<a name='controlstypesandoperations'><h2>Controls types and operations</h2></a>
+
+<h3>Types</h3>
+
+<p>There are the following types of controls you can add: <em>button</em>, <em>menuItem</em>, <em>separator</em> and <em>spacer</em>.</p>
+
+<p>The <strong>button</strong> object has the following properties:</p>
+
+<ul>
+<li><strong>type</strong> - the type of a button, set it to "button"</li>
+<li><strong>id</strong> - the id of a button</li>
+<li><strong>icon</strong> - the name of an icon from the used icon font</li>
+<li><strong>hotkey</strong> - the name of the hot key for a button</li>
+<li><strong>value</strong> - the value of a button</li>
+<li><strong>tooltip</strong> - the tooltip of a button</li>
+<li><strong>twoState</strong> -  the flag that defines whether a button can be used in two states</li>
+<li><strong>active</strong> - the state of a button: <em>true</em> - active, <em>false</em> - inactive</li>
+</ul>
+
+<p>The <strong>menuItem</strong> object has the properties below:</p>
+
+<ul>
+<li><strong>type</strong> - the type of a menu item, set it to "menuItem"</li>
+<li><strong>id</strong> - the id of a menu item</li>
+<li><strong>icon</strong> - the name of an icon from the used icon font</li>
+<li><strong>hotkey</strong> - the name of the hot key for a menu item</li>
+<li><strong>value</strong> - the value of a menu item</li>
+<li><strong>childs</strong> - an array of children controls (note that all the children should have the type <strong>menuItem</strong>)</li>
+</ul>
+
+<p>The data collection API of the <strong>toolbar</strong>, <strong>menu</strong> and <strong>context menu</strong> allows you to manipulate the controls, namely to add custom controls, remove the controls you don't need, or update the controls,
+e.g. change their icons.</p>
+
+<h3>Adding controls</h3>
+
+<p>To add a new control, apply the <strong>spreadsheet.{name}.data.add()</strong> method. It takes the parameters below:</p>
+
+<ul>
+<li><strong>config</strong> - (<em>object</em>) an object with the control config</li>
+<li><strong>index</strong> - (<em>number</em>) the index of the position to place the control into</li>
+<li><strong>parent</strong> - (<em>string</em>) the id of a parent control (for the <em>menuItem</em> type)</li>
+</ul>
+
+<p>For a button:</p>
+
+<pre><code><pre class="js"><span class="co1">// spreadsheet.menu.data.add / spreadsheet.contextMenu.data.add</span>
+spreadsheet.<span class="me1">toolbar</span>.<span class="me1">data</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;button&quot;</span><span class="sy0">,</span> <span class="co1">// &quot;menuItem&quot;</span>
+    id<span class="sy0">:</span> <span class="st0">&quot;button-id&quot;</span><span class="sy0">,</span>
+    tooltip<span class="sy0">:</span> <span class="st0">&quot;Some tooltip&quot;</span><span class="sy0">,</span>
+    icon<span class="sy0">:</span> <span class="st0">&quot;icon-name&quot;</span>
+<span class="br0">&#125;</span><span class="sy0">,</span> <span class="nu0">2</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>For a menuItem:</p>
+
+<pre><code><pre class="js"><span class="co1">// spreadsheet.menu.data.add / spreadsheet.contextMenu.data.add</span>
+spreadsheet.<span class="me1">toolbar</span>.<span class="me1">data</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;menuItem&quot;</span><span class="sy0">,</span>
+    id<span class="sy0">:</span> <span class="st0">&quot;menuitem-id&quot;</span><span class="sy0">,</span> 
+    value<span class="sy0">:</span> <span class="st0">&quot;Some value&quot;</span><span class="sy0">,</span>
+<span class="br0">&#125;</span><span class="sy0">,</span> <span class="sy0">-</span><span class="nu0">1</span><span class="sy0">,</span> <span class="st0">&quot;parent-id&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Updating controls</h3>
+
+<p>You can change the icon of the control and its other config options via the <strong>spreadsheet.{name}.data.update()</strong> method. It takes two parameters:</p>
+
+<ul>
+<li>the id of the control</li>
+<li>an object with new configuration of the control</li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">// spreadsheet.menu.data.update / spreadsheet.contextMenu.data.update</span>
+spreadsheet.<span class="me1">toolbar</span>.<span class="me1">data</span>.<span class="me1">update</span><span class="br0">&#40;</span><span class="st0">&quot;add&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> 
+    icon<span class="sy0">:</span> <span class="st0">&quot;icon_name&quot;</span> 
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Deleting controls</h3>
+
+<p>To remove a control, make use of the <strong>spreadsheet.{name}.data.remove()</strong> method. Pass the id of the control that should be removed to the method:</p>
+
+<pre><code><pre class="js"><span class="co1">// spreadsheet.menu.data.remove / spreadsheet.contextMenu.data.remove</span>
+spreadsheet.<span class="me1">toolbar</span>.<span class="me1">data</span>.<span class="me1">remove</span><span class="br0">&#40;</span><span class="st0">&quot;control-id&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='toolbar'><h2>Toolbar</h2></a>
+
+<h3>Default controls</h3>
+
+<p>The <a class="link-" href="overview.html#toolbar">default toolbar</a> contains the following blocks of controls:</p>
+
+<ul>
+<li>the <strong>Undo</strong> block
+
+<ul>
+<li>the <em>Undo</em> button (id:"undo")</li>
+<li>the <em>Redo</em> button (id:"redo")</li>
+</ul></li>
+<li>the <strong>Colors</strong> block
+
+<ul>
+<li>the <em>Text color</em> button (id:"color") </li>
+<li>the <em>Background color</em> button (id:"background")</li>
+</ul></li>
+<li>the <strong>Decoration</strong> block 
+
+<ul>
+<li>the <em>Bold</em> button (id:"font-weight-bold")</li>
+<li>the <em>Italic</em> button (id:"font-style-italic")</li>
+<li>the <em>Underline</em> button (id:"text-decoration-underline")</li>
+</ul></li>
+<li>the <strong>Align</strong> block
+
+<ul>
+<li>the <em>Align left</em> button (id: "align-left")</li>
+<li>the <em>Align center</em> button (id: "align-center")</li>
+<li>the <em>Align right</em> button (id: "align-right")</li>
+</ul></li>
+<li>the <strong>Number format</strong> block
+
+<ul>
+<li>the <em>Number format</em> menuItem (id:"format")</li>
+</ul></li>
+<li>the <strong>Help</strong> block
+
+<ul>
+<li>the <em>Help</em> button (id:"help")</li>
+</ul></li>
+</ul>
+
+<p>It is also possible to add the blocks enumerated below:</p>
+
+<ul>
+<li>the <strong>Lock</strong> block
+
+<ul>
+<li>the <em>Lock</em> button (id:"lock")</li>
+</ul></li>
+<li>the <strong>Clear</strong> block 
+
+<ul>
+<li>the <em>Clear group</em> menuItem (id:"clear-group")
+
+<ul>
+<li>the <em>Clear value</em> menuItem (id:"clear-value")</li>
+<li>the <em>Clear styles</em> menuItem (id:"clear-styles") </li>
+<li>the <em>Clear all</em> menuItem (id:"clear-all")</li>
+</ul></li>
+</ul></li>
+<li>the <strong>Rows</strong> block
+
+<ul>
+<li>the <em>Add row</em> button (id:"add-row")</li>
+<li>the <em>Remove row</em> button (id:"remove-row")</li>
+</ul></li>
+<li>the <strong>Columns</strong> block
+
+<ul>
+<li>the <em>Add column</em> button (id:"add-col")</li>
+<li>the <em>Remove column</em> button (id:"remove-col")   </li>
+</ul></li>
+<li>the <strong>File</strong> block 
+
+<ul>
+<li>the <em>Export</em> menuItem (id:"export")
+
+<ul>
+<li>the <em>"Microsoft Excel(.xlsx)"</em> menuItem (id:"export-xlsx")</li>
+</ul></li>
+<li>the <em>Import</em> menuItem (id:"import")
+
+<ul>
+<li>the <em>"Microsoft Excel(.xlsx)"</em> menuItem (id:"import-xlsx")</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h3>Adding controls</h3>
+
+<p>In the example below a new button is added into the toolbar:</p>
+
+<pre><code><pre class="js">spreadsheet.<span class="me1">toolbar</span>.<span class="me1">data</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;button&quot;</span><span class="sy0">,</span>
+    icon<span class="sy0">:</span> <span class="st0">&quot;mdi mdi-delete&quot;</span><span class="sy0">,</span>
+    tooltip<span class="sy0">:</span> <span class="st0">&quot;Remove all&quot;</span><span class="sy0">,</span>
+    id<span class="sy0">:</span> <span class="st0">&quot;remove-all&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/05_customization/01_toolbar_buttons.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Toolbar buttons</a></p>
+
+<p><img src="media/custom_toolbar_button.png" alt="Custom Toolbar Button" /></p>
+
+<p>In the example below a new menuItem option is added into the "clear-group" control:</p>
+
+<pre><code><pre class="js">spreadsheet.<span class="me1">toolbar</span>.<span class="me1">data</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;menuItem&quot;</span><span class="sy0">,</span>
+    id<span class="sy0">:</span> <span class="st0">&quot;clear-value2&quot;</span><span class="sy0">,</span> 
+    value<span class="sy0">:</span> <span class="st0">&quot;Clear value2&quot;</span>
+<span class="br0">&#125;</span><span class="sy0">,</span> <span class="sy0">-</span><span class="nu0">1</span><span class="sy0">,</span> <span class="st0">&quot;clear-group&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>There is a simplified notation for adding a menuItem, in case the exact position of the new item is not required:</p>
+
+<pre><code><pre class="js">spreadsheet.<span class="me1">toolbar</span>.<span class="me1">data</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;menuItem&quot;</span><span class="sy0">,</span>
+    id<span class="sy0">:</span> <span class="st0">&quot;clear-value2&quot;</span><span class="sy0">,</span> 
+    value<span class="sy0">:</span> <span class="st0">&quot;Clear value2&quot;</span><span class="sy0">,</span> 
+    parent<span class="sy0">:</span> <span class="st0">&quot;clear-group&quot;</span>   
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Updating controls</h3>
+
+<p>In the example below the default icons of the toolbar Undo/Redo buttons are changed to Font Awesome ones:</p>
+
+<pre><code><pre class="js">spreadsheet.<span class="me1">toolbar</span>.<span class="me1">data</span>.<span class="me1">update</span><span class="br0">&#40;</span><span class="st0">&quot;undo&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> icon<span class="sy0">:</span> <span class="st0">&quot;fa fa-undo&quot;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+spreadsheet.<span class="me1">toolbar</span>.<span class="me1">data</span>.<span class="me1">update</span><span class="br0">&#40;</span><span class="st0">&quot;redo&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> icon<span class="sy0">:</span> <span class="st0">&quot;fa fa-redo&quot;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/custom_toolbar_icons.png" alt="Custom Toolbar Icons" /></p>
+
+<p><a href='samples/05_customization/04_toolbar_icons.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Toolbar icons</a></p>
+
+<h3>Deleting controls</h3>
+
+<p>In the example below the Undo button is removed from the toolbar:</p>
+
+<pre><code><pre class="js">spreadsheet.<span class="me1">toolbar</span>.<span class="me1">data</span>.<span class="me1">remove</span><span class="br0">&#40;</span><span class="st0">&quot;undo&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='menu'><h2>Menu</h2></a>
+
+<h3>Default controls</h3>
+
+<p>The <a class="link-" href="overview.html#menu">default menu</a> has the following structure:</p>
+
+<ul>
+<li>the <strong>File</strong> menuItem (id:"edit")
+
+<ul>
+<li>the <em>Export</em> menuItem (id:"download")
+
+<ul>
+<li>the <em>"Microsoft Excel(.xlsx)"</em> menuItem (id:"export-xlsx")</li>
+</ul></li>
+<li>the <em>Import</em> menuItem (id:"import")
+
+<ul>
+<li>the <em>"Microsoft Excel(.xlsx)"</em> menuItem (id:"import-xlsx")</li>
+</ul></li>
+</ul></li>
+<li>the <strong>Edit</strong> menuItem (id:"edit")
+
+<ul>
+<li>the <em>Undo</em> menuItem (id:"undo")</li>
+<li>the <em>Redo</em> menuItem (id:"redo")</li>
+<li>the separator</li>
+<li>the <em>Lock</em> menuItem (id:"lock")</li>
+<li>the separator</li>
+<li>the <em>Clear</em> menuItem (id:"clear")
+
+<ul>
+<li>the <em>Clear value</em> menuItem (id:"clear-value")</li>
+<li>the <em>Clear styles</em> menuItem (id:"clear-styles") </li>
+<li>the <em>Clear all</em> menuItem (id:"clear-all")    </li>
+</ul></li>
+</ul></li>
+<li>the <strong>Insert</strong> menuItem (id:"insert")
+
+<ul>
+<li>the <em>Columns</em> menuItem (id:"columns")
+
+<ul>
+<li>the <em>Add column</em> menuItem (id:"add-col")</li>
+<li>the <em>Remove column</em> menuItem (id:"remove-col")</li>
+</ul></li>
+<li>the <em>Rows</em> menuItem (id:"rows")
+
+<ul>
+<li>the <em>Add rows</em> menuItem (id:"add-row")</li>
+<li>the <em>Remove rows</em> menuItem (id:"remove-row")</li>
+</ul></li>
+</ul></li>
+<li>the <strong>Format</strong> menuItem (id:"configuration")
+
+<ul>
+<li>the <em>Bold</em> menuItem (id:"font-weight-bold")</li>
+<li>the <em>Italic</em> menuItem (id:"font-style-italic")</li>
+<li>the <em>Underline</em> menuItem (id:"text-decoration-underline")</li>
+<li>the <em>Align</em> menuItem (id:"align")
+
+<ul>
+<li>the <em>Align left</em> menuItem (id:"align-left")</li>
+<li>the <em>Align center</em> menuItem (id:"align-center")</li>
+<li>the <em>Align right</em> menuItem (id:"align-right")</li>
+</ul></li>
+<li>the <em>Number format</em> menuItem (id:"format")</li>
+</ul></li>
+<li>the <strong>Help</strong> menuItem (id:"help")</li>
+</ul>
+
+<h3>Adding controls</h3>
+
+<p>In the example below a new menuItem is added into the menu:</p>
+
+<pre><code><pre class="js">spreadsheet.<span class="me1">menu</span>.<span class="me1">data</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    id<span class="sy0">:</span> <span class="st0">&quot;validate&quot;</span><span class="sy0">,</span>
+    value<span class="sy0">:</span> <span class="st0">&quot;Validate&quot;</span><span class="sy0">,</span>
+    childs<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+            id<span class="sy0">:</span> <span class="st0">&quot;isNumber&quot;</span><span class="sy0">,</span>
+            value<span class="sy0">:</span> <span class="st0">&quot;Is number&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>
+            id<span class="sy0">:</span> <span class="st0">&quot;isEven&quot;</span><span class="sy0">,</span>
+            value<span class="sy0">:</span> <span class="st0">&quot;Is even number&quot;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/custom_menuitem.png" alt="Custom Menu Item" /></p>
+
+<p><a href='samples/05_customization/02_menu.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Menu</a></p>
+
+<h3>Updating controls</h3>
+
+<p>In the example below the default icons of the Undo/Redo menuItems are changed to Font Awesome ones:</p>
+
+<pre><code><pre class="js">spreadsheet.<span class="me1">menu</span>.<span class="me1">data</span>.<span class="me1">update</span><span class="br0">&#40;</span><span class="st0">&quot;undo&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> icon<span class="sy0">:</span> <span class="st0">&quot;fa fa-undo&quot;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+spreadsheet.<span class="me1">menu</span>.<span class="me1">data</span>.<span class="me1">update</span><span class="br0">&#40;</span><span class="st0">&quot;redo&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> icon<span class="sy0">:</span> <span class="st0">&quot;fa fa-redo&quot;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/custom_menu_icons.png" alt="Custom Menu Icons" /></p>
+
+<h3>Deleting controls</h3>
+
+<p>In the example below the Undo menuItem is removed from the menu:</p>
+
+<pre><code><pre class="js">spreadsheet.<span class="me1">menu</span>.<span class="me1">data</span>.<span class="me1">remove</span><span class="br0">&#40;</span><span class="st0">&quot;undo&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='contextmenu'><h2>Context menu</h2></a>
+
+<h3>Default controls</h3>
+
+<p>The <a class="link-" href="overview.html#context">default context menu</a> has the following structure:</p>
+
+<ul>
+<li>the <strong>Lock</strong> menuItem (id:"lock")</li>
+<li>the <strong>Clear</strong> menuItem (id:"clear")
+
+<ul>
+<li>the <em>Clear value</em> menuItem (id:"clear-value")</li>
+<li>the <em>Clear styles</em> menuItem (id:"clear-styles") </li>
+<li>the <em>Clear all</em> menuItem (id:"clear-all")    </li>
+</ul></li>
+<li>the <strong>Columns</strong> menuItem (id:"columns")
+
+<ul>
+<li>the <em>Add column</em> menuItem (id:"add-col")</li>
+<li>the <em>Remove column</em> menuItem (id:"remove-col")</li>
+</ul></li>
+<li>the <strong>Rows</strong> menuItem (id:"rows")
+
+<ul>
+<li>the <em>Add rows</em> menuItem (id:"add-row")</li>
+<li>the <em>Remove rows</em> menuItem (id:"remove-row")</li>
+</ul></li>
+</ul>
+
+<h3>Adding controls</h3>
+
+<p>In the example below a new menuItem is added into the context menu:</p>
+
+<pre><code><pre class="js">spreadsheet.<span class="me1">contextMenu</span>.<span class="me1">data</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    icon<span class="sy0">:</span> <span class="st0">&quot;mdi mdi-eyedropper-variant&quot;</span><span class="sy0">,</span>
+    value<span class="sy0">:</span> <span class="st0">&quot;Paint format&quot;</span><span class="sy0">,</span>
+    id<span class="sy0">:</span> <span class="st0">&quot;paint-format&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/custom_context_menuitem.png" alt="Custom Context Menu Item" /></p>
+
+<p><a href='samples/05_customization/03_context_menu.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Context menu</a></p>
+
+<h3>Updating controls</h3>
+
+<p>In the example below the default icons of the Lock menuItem is changed to the Font Awesome one:</p>
+
+<pre><code><pre class="js">spreadsheet.<span class="me1">contextMenu</span>.<span class="me1">data</span>.<span class="me1">update</span><span class="br0">&#40;</span><span class="st0">&quot;lock&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> icon<span class="sy0">:</span> <span class="st0">&quot;fa fa-key&quot;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/custom_context_icon.png" alt="Custom Context Menu Icon" /></p>
+
+<h3>Deleting controls</h3>
+
+<p>In the example below the Undo menuItem is removed from the context menu:</p>
+
+<pre><code><pre class="js">spreadsheet.<span class="me1">contextMenu</span>.<span class="me1">data</span>.<span class="me1">remove</span><span class="br0">&#40;</span><span class="st0">&quot;undo&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='customreadonlymode'><h2>Custom read-only mode</h2></a>
+
+<p>Besides applying the <a class="link-" href="configuration.html#readonlymode">read-only mode</a> to the whole SpreadSheet, you can block certain operations via the events the name of which starts with <strong>before</strong>, e.g.:</p>
+
+<ul>
+<li><a class="link-" href="api__spreadsheet_beforeeditstart_event.html">BeforeEditStart</a></li>
+<li><a class="link-" href="api__spreadsheet_beforestylechange_event.html">BeforeStyleChange</a></li>
+<li><a class="link-" href="api__spreadsheet_beforevaluechange_event.html">BeforeValueChange</a></li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> spreadsheet <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Spreadsheet</span><span class="br0">&#40;</span><span class="st0">&quot;cont&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+spreadsheet.<span class="me1">events</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">&quot;beforeEditStart&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+spreadsheet.<span class="me1">events</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">&quot;beforeValueChange&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+spreadsheet.<span class="me1">events</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">&quot;beforeStyleChange&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+spreadsheet.<span class="me1">parse</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/05_customization/05_custom_readonly.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom readonly mode</a></p>
+
+<!-- Content Area End -->
+			<a href='customization.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='loading_data.html'>Loading Data</a></li>	
+	<li><a href='working_with_ssheet.html'>Main Operations</a></li>
+	<li><a href='handling_events.html'>Handling Events</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Look and Feel</li>
+	<li><a href='configuration.html'>Configuration</a></li>
+	<li><a href='localization.html'>Localization</a></li>
+	<li><a href='customization.html'>Customization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Integration</li>
+	<li><a href='angular_integration.html'>Angular</a></li>
+	<li><a href='react_integration.html'>React</a></li>
+	<li><a href='vuejs_integration.html'>Vue.js</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__spreadsheet.html#methods'>Methods</a></li>
+	<li><a href='api__refs__spreadsheet.html#config'>Properties</a></li>
+	<li><a href='api__refs__spreadsheet.html#events'>Events</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

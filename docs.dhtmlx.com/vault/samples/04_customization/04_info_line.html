@@ -1,0 +1,75 @@
+<html>
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Info line</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+
+        <script type="text/javascript" src="../../codebase/vault-v=3.0.0.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../codebase/vault-v=3.0.0.css">
+
+        <script type="text/javascript" src="../common/js/index-v=3.0.0.js"></script>
+        <link rel="stylesheet" type="text/css" href="../common/dhx_samples-v=3.0.0.css">
+   
+
+        <!-- metrics -->
+        <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-11031269-1', 'auto');
+        ga('send', 'pageview');
+        </script>
+
+        <!-- error tracking -->
+        <script src="https://cdn.ravenjs.com/3.19.1/raven.min.js" crossorigin="anonymous"></script>
+        <script>Raven.config('https://a2578da6be394598bfe003e4dbb3a394@sentry.dhtmlx.ru/13').install()</script>
+</head>
+    <body>        
+        <div class="top-rect-block">
+            <div class="info-line">
+                <div class="files-count">
+                    <div id="files-count-value" class="number-value">0</div>
+                    <div class="text-value">Files /&nbsp</div>
+                </div>
+                <div class="files-size">
+                    <div id="files-size-value" class="number-value">0</div>
+                    <div id="files-size-text" class="text-value">b</div>
+                </div>
+            </div>
+        </div>
+        <div id="vault" class="container with-header"></div>
+
+        <script>
+            var vault = new dhx.Vault("vault", {
+                uploader: {
+                    target: "/vault/backend/upload"
+                }
+            });
+
+            var filesCountValue = document.getElementById("files-count-value");
+            var filesSizeValue = document.getElementById("files-size-value");
+            var filesSizeText = document.getElementById("files-size-text");
+
+            vault.events.on("change", function() {
+                var count = vault.data.getLength();
+                
+                var size = vault.data.reduce(function(sum, item) {
+                    return sum + item.size;
+                }, 0);
+                filesCountValue.textContent = count;
+
+                var basis = getBasis(size, 0, true);
+
+                filesSizeValue.textContent = basis.size;
+                filesSizeText.textContent = basis.metric;
+            });
+
+            vault.data.parse(filesData);
+
+        </script>
+    </body>
+</html>

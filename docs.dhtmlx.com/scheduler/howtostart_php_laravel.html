@@ -1,0 +1,793 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>dhtmlxScheduler with PHP:Laravel  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="howtostart_dotnet_core.html">dhtmlxScheduler with ASP.NET Core</a></li><li class=""><a href="howtostart_nodejs.html">dhtmlxScheduler with Node.js</a></li><li class=""><a href="howtostart_dotnet.html">dhtmlxScheduler with ASP.NET MVC</a></li><li class=""><a href="howtostart_plain_php.html">dhtmlxScheduler with PHP</a></li><li class=" current"><a href="howtostart_php_laravel.html">dhtmlxScheduler with PHP:Laravel</a></li><ul><li class="inner"><a href="howtostart_php_laravel.html#step1initializingaproject">Step 1. Initializing a project</a></li><li class="inner"><a href="howtostart_php_laravel.html#step2addingschedulertothepage">Step 2. Adding Scheduler to the page</a></li><li class="inner"><a href="howtostart_php_laravel.html#step3preparingadatabase">Step 3. Preparing a database</a></li><li class="inner"><a href="howtostart_php_laravel.html#step4loadingdata">Step 4. Loading data</a></li><li class="inner"><a href="howtostart_php_laravel.html#step5savingchanges">Step 5. Saving changes</a></li><li class="inner"><a href="howtostart_php_laravel.html#recurringevents">Recurring events</a></li><li class="inner"><a href="howtostart_php_laravel.html#applicationsecurity">Application security</a></li><li class="inner"><a href="howtostart_php_laravel.html#troubleshooting">Trouble shooting</a></li><li class="inner"><a href="howtostart_php_laravel.html#whatsnext">What's next</a></li></ul><li class=""><a href="howtostart_php_slim4.html">dhtmlxScheduler with PHP:Slim</a></li><li class=""><a href="howtostart_ruby.html">dhtmlxScheduler with Ruby on Rails</a></li><li class=""><a href="howtostart_connector.html">dhtmlxScheduler with dhtmlxConnector</a></li><li class=""><a href="howtostart_php.html">dhtmlxScheduler with PHP:Slim 3</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="howtostart_guides.html">How to Start with dhtmlxScheduler</a></div>
+<!-- Content Area -->
+
+
+
+<h1>dhtmlxScheduler with PHP:Laravel</h1>
+
+<p>This tutorial describes how to add dhtmlxScheduler into a <a href="https://laravel.com/">Laravel</a> app.</p>
+
+<p>There are tutorials intended for building server-side integration with the help of other platforms:</p>
+
+<ul>
+<li><a class="link-" href="howtostart_dotnet_core.html">dhtmlxScheduler with ASP.NET Core</a></li>
+<li><a class="link-" href="howtostart_dotnet.html">dhtmlxScheduler with ASP.NET MVC</a></li>
+<li><a class="link-" href="howtostart_nodejs.html">dhtmlxScheduler with Node.js</a></li>
+<li><a class="link-" href="howtostart_plain_php.html">dhtmlxScheduler with PHP</a></li>
+<li><a class="link-" href="howtostart_php_slim4.html">dhtmlxScheduler with PHP:Slim</a></li>
+<li><a class="link-" href="howtostart_ruby.html">dhtmlxScheduler with Ruby on Rails</a></li>
+<li><a class="link-" href="howtostart_connector.html">dhtmlxScheduler with dhtmlxConnector</a></li>
+</ul>
+
+<p>You can get the <a href="https://github.com/DHTMLX/scheduler-howto-laravel">ready demo on GitHub</a> or follow a step-by-step guide below.</p>
+
+<div class='note'><p><p>The complete source code is <a href="https://github.com/DHTMLX/scheduler-howto-laravel">available on GitHub</a>.</p>
+</p></div>
+
+<a name='step1initializingaproject'><h2>Step 1. Initializing a project</h2></a>
+
+<h3>Creating a project</h3>
+
+<p>Create a new application using <a href="https://getcomposer.org/">Composer</a>:</p>
+
+<pre><code><pre class="php">composer create<span class="sy0">-</span>project laravel<span class="sy0">/</span>laravel scheduler<span class="sy0">-</span>howto<span class="sy0">-</span>laravel</pre></code></pre>
+
+<p>It should take a minute to download and create all necessary files. Once everything is done, you can check that everything is correct so far:</p>
+
+<pre><code><pre class="php">cd scheduler<span class="sy0">-</span>howto<span class="sy0">-</span>laravel
+php artisan serve</pre></code></pre>
+
+<p>At this step you should get a default Laravel page:</p>
+
+<p><img src="media/howtostart_laravel_blank_page.png"/></p>
+
+<a name='step2addingschedulertothepage'><h2>Step 2. Adding Scheduler to the page</h2></a>
+
+<h3>Adding a View</h3>
+
+<p>Firstly, we'll add a new page with dhtmlxScheduler to our app. Go to the <em>resources/views</em> folder and create a new view named <em>scheduler.blade.php</em>:</p>
+
+<p class='snippet'> resources/views/scheduler.blade.php </p>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+   <span class="sc2">&lt;<span class="kw2">meta</span> <span class="kw3">http-equiv</span><span class="sy0">=</span><span class="st0">&quot;Content-type&quot;</span> <span class="kw3">content</span><span class="sy0">=</span><span class="st0">&quot;text/html; charset=utf-8&quot;</span>&gt;</span>
+&nbsp;
+   <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+   <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.css&quot;</span></span>
+<span class="sc2">        <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span>&gt;</span>
+&nbsp;
+   <span class="sc2">&lt;<span class="kw2">style</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span>&gt;</span><pre class="css">       html<span class="sy0">,</span> body<span class="br0">&#123;</span>
+           <span class="kw1">height</span><span class="sy0">:</span><span class="re3">100%</span><span class="sy0">;</span>
+           <span class="kw1">padding</span><span class="sy0">:</span><span class="re3">0px</span><span class="sy0">;</span>
+           <span class="kw1">margin</span><span class="sy0">:</span><span class="re3">0px</span><span class="sy0">;</span>
+           <span class="kw1">overflow</span><span class="sy0">:</span> <span class="kw2">hidden</span><span class="sy0">;</span>
+       <span class="br0">&#125;</span></pre>
+   <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">style</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;scheduler_here&quot;</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_container&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">'width:100%; height:100%;'</span>&gt;</span>
+   <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_navline&quot;</span>&gt;</span>
+       <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_prev_button&quot;</span>&gt;</span><span class="sc1">&amp;nbsp;</span><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+       <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_next_button&quot;</span>&gt;</span><span class="sc1">&amp;nbsp;</span><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+       <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_today_button&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+       <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_date&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+       <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;day_tab&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+       <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;week_tab&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+       <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;month_tab&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+   <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+   <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_header&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+   <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_data&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span>&gt;</span><pre class="js">   scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;scheduler_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span></pre></code></pre>
+
+<p>Here we've defined a simple HTML layout, added sources of dhtmlxScheduler from <a class="link-" href="cdn_links_list.html">CDN</a> and initialized scheduler using the <a class="link-" href="api__scheduler_init.html">init</a> method.</p>
+
+<p>Note that we've also specified <strong>100% height</strong> for the document body and for the scheduler container. Scheduler will use the size of its container, so some initial sizes are required.</p>
+
+<h3>Changing the default route</h3>
+
+<p>After we've added a new page, we need to make it accessible from a browser. For this tutorial, we'll make our scheduler the default page of an app.</p>
+
+<p>Go to <em>routes/web.php</em> and change the default route:</p>
+
+<p class='snippet'> routes/web.php</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+Route<span class="sy0">::</span><span class="me2">get</span><span class="br0">&#40;</span><span class="st_h">'/'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> view<span class="br0">&#40;</span><span class="st_h">'scheduler'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Run the app again to make sure it did the trick:</p>
+
+<p><img src="media/howtostart_laravel_empty_scheduler.png"/></p>
+
+<a name='step3preparingadatabase'><h2>Step 3. Preparing a database</h2></a>
+
+<p>So, we've got an empty scheduler. Let's connect it to the database and populate it with data.</p>
+
+<h3>Creating a database</h3>
+
+<p>Be sure to update database configuration in .env, for example:</p>
+
+<p class='snippet'> .env</p>
+
+<pre><code><pre class="php">DB_CONNECTION<span class="sy0">=</span><a href="http://www.php.net/mysql"><span class="kw3">mysql</span></a>
+DB_HOST<span class="sy0">=</span>127<span class="sy0">.</span>0<span class="sy0">.</span>0<span class="sy0">.</span>1
+DB_PORT<span class="sy0">=</span><span class="nu0">3306</span>
+DB_DATABASE<span class="sy0">=</span>scheduler<span class="sy0">-</span>test
+DB_USERNAME<span class="sy0">=</span>root
+DB_PASSWORD<span class="sy0">=</span></pre></code></pre>
+
+<p>The next step is to create <a href="https://laravel.com/docs/eloquent#defining-models">model classes</a> and <a href="https://laravel.com/docs/migrations#generating-migrations">migrations</a>.
+You can generate classes and migration files using the Artisan command:</p>
+
+<pre><code><pre class="js">php artisan make<span class="sy0">:</span>model Event <span class="sy0">--</span>migration</pre></code></pre>
+
+<p>After that find the migrations in the <code>database/migrations</code> folder and define a <a href="https://laravel.com/docs/migrations#migration-structure">database schema</a>.
+Have a look at the <a class="link-" href="loading_data.html#databasestructure">database schema expected by Scheduler</a>.</p>
+
+<p>The code for the Events table looks like this:</p>
+
+<p class='snippet'> database/migrations/_create_events_table.php</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw2">use</span> Illuminate\Support\Facades\Schema<span class="sy0">;</span>
+<span class="kw2">use</span> Illuminate\Database\Schema\Blueprint<span class="sy0">;</span>
+<span class="kw2">use</span> Illuminate\Database\Migrations\Migration<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">class</span> CreateEventsTable <span class="kw2">extends</span> Migration
+<span class="br0">&#123;</span>
+    <span class="co4">/**
+     * Run the migrations.
+     *
+     * @return void
+     */</span>
+    <span class="kw2">public</span> <span class="kw2">function</span> up<span class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        Schema<span class="sy0">::</span><span class="me2">create</span><span class="br0">&#40;</span><span class="st_h">'events'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>Blueprint <span class="re0">$table</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">increments</span><span class="br0">&#40;</span><span class="st_h">'id'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">string</span><span class="br0">&#40;</span><span class="st_h">'text'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">dateTime</span><span class="br0">&#40;</span><span class="st_h">'start_date'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">dateTime</span><span class="br0">&#40;</span><span class="st_h">'end_date'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">timestamps</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="co4">/**
+     * Reverse the migrations.
+     *
+     * @return void
+     */</span>
+    <span class="kw2">public</span> <span class="kw2">function</span> down<span class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        Schema<span class="sy0">::</span><span class="me2">dropIfExists</span><span class="br0">&#40;</span><span class="st_h">'events'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>And run the migration:</p>
+
+<pre><code><pre class="php">php artisan migrate</pre></code></pre>
+
+<div class='note'><p><p>At this step, if you use an older version of MySQL database, you may get an error which looks like this: "Syntax error or access violation: 1071 Specified key was too long; max key length is 1000 bytes".</p>
+</p></div>
+
+<p>If it happens, go to <code>app/Providers/AppServiceProvider.php</code> and add required settings to <strong>AppServiceProvider</strong>:</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw2">namespace</span> App\Providers<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">use</span> Illuminate\Support\ServiceProvider<span class="sy0">;</span>
+<span class="xtra ln-xtra"><span class="kw2">use</span> Illuminate\Support\Facades\Schema<span class="sy0">;</span> </span>&nbsp;
+<span class="kw2">class</span> AppServiceProvider <span class="kw2">extends</span> ServiceProvider
+<span class="br0">&#123;</span>
+   <span class="kw2">public</span> <span class="kw2">function</span> boot<span class="br0">&#40;</span><span class="br0">&#41;</span>
+   <span class="br0">&#123;</span>
+<span class="xtra ln-xtra">       Schema<span class="sy0">::</span><span class="me2">defaultStringLength</span><span class="br0">&#40;</span><span class="nu0">191</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>   <span class="br0">&#125;</span>
+   <span class="sy0">...</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p><a href="https://laravel-news.com/laravel-5-4-key-too-long-error">Here are more details on this particular error</a>.</p>
+
+<p>While we are at the migration, we can generate some test data for our app. Generate a <a href="https://laravel.com/docs/seeding">seeder</a> class using the artisan command:</p>
+
+<pre><code><pre class="php">php artisan make<span class="sy0">:</span>seeder EventsTableSeeder</pre></code></pre>
+
+<p>Add some data to <strong>EventsTableSeeder</strong>:</p>
+
+<p class='snippet'> database/seeds/EventsTableSeeder.php</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+<span class="kw2">use</span> Illuminate\Database\Seeder<span class="sy0">;</span>
+<span class="kw2">class</span> EventsTableSeeder <span class="kw2">extends</span> Seeder
+<span class="br0">&#123;</span>
+   <span class="kw2">public</span> <span class="kw2">function</span> run<span class="br0">&#40;</span><span class="br0">&#41;</span>
+   <span class="br0">&#123;</span>
+       DB<span class="sy0">::</span><span class="me2">table</span><span class="br0">&#40;</span><span class="st_h">'events'</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">insert</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+           <span class="br0">&#91;</span><span class="st_h">'id'</span><span class="sy0">=&gt;</span><span class="nu0">1</span><span class="sy0">,</span> <span class="st_h">'text'</span><span class="sy0">=&gt;</span><span class="st_h">'Event #1'</span><span class="sy0">,</span> <span class="st_h">'start_date'</span><span class="sy0">=&gt;</span><span class="st_h">'2018-12-05 08:00:00'</span><span class="sy0">,</span>
+                <span class="st_h">'end_date'</span><span class="sy0">=&gt;</span><span class="st_h">'2018-12-05 12:00:00'</span><span class="br0">&#93;</span><span class="sy0">,</span>
+           <span class="br0">&#91;</span><span class="st_h">'id'</span><span class="sy0">=&gt;</span><span class="nu0">2</span><span class="sy0">,</span> <span class="st_h">'text'</span><span class="sy0">=&gt;</span><span class="st_h">'Event #2'</span><span class="sy0">,</span> <span class="st_h">'start_date'</span><span class="sy0">=&gt;</span><span class="st_h">'2018-12-06 15:00:00'</span><span class="sy0">,</span>
+                <span class="st_h">'end_date'</span><span class="sy0">=&gt;</span><span class="st_h">'2018-12-06 16:30:00'</span><span class="br0">&#93;</span><span class="sy0">,</span>
+           <span class="br0">&#91;</span><span class="st_h">'id'</span><span class="sy0">=&gt;</span><span class="nu0">3</span><span class="sy0">,</span> <span class="st_h">'text'</span><span class="sy0">=&gt;</span><span class="st_h">'Event #3'</span><span class="sy0">,</span> <span class="st_h">'start_date'</span><span class="sy0">=&gt;</span><span class="st_h">'2018-12-04 00:00:00'</span><span class="sy0">,</span>
+                <span class="st_h">'end_date'</span><span class="sy0">=&gt;</span><span class="st_h">'2018-12-20 00:00:00'</span><span class="br0">&#93;</span><span class="sy0">,</span>
+           <span class="br0">&#91;</span><span class="st_h">'id'</span><span class="sy0">=&gt;</span><span class="nu0">4</span><span class="sy0">,</span> <span class="st_h">'text'</span><span class="sy0">=&gt;</span><span class="st_h">'Event #4'</span><span class="sy0">,</span> <span class="st_h">'start_date'</span><span class="sy0">=&gt;</span><span class="st_h">'2018-12-01 08:00:00'</span><span class="sy0">,</span>
+                <span class="st_h">'end_date'</span><span class="sy0">=&gt;</span><span class="st_h">'2018-12-01 12:00:00'</span><span class="br0">&#93;</span><span class="sy0">,</span>
+           <span class="br0">&#91;</span><span class="st_h">'id'</span><span class="sy0">=&gt;</span><span class="nu0">5</span><span class="sy0">,</span> <span class="st_h">'text'</span><span class="sy0">=&gt;</span><span class="st_h">'Event #5'</span><span class="sy0">,</span> <span class="st_h">'start_date'</span><span class="sy0">=&gt;</span><span class="st_h">'2018-12-20 08:00:00'</span><span class="sy0">,</span>
+                <span class="st_h">'end_date'</span><span class="sy0">=&gt;</span><span class="st_h">'2018-12-20 12:00:00'</span><span class="br0">&#93;</span><span class="sy0">,</span>
+           <span class="br0">&#91;</span><span class="st_h">'id'</span><span class="sy0">=&gt;</span><span class="nu0">6</span><span class="sy0">,</span> <span class="st_h">'text'</span><span class="sy0">=&gt;</span><span class="st_h">'Event #6'</span><span class="sy0">,</span> <span class="st_h">'start_date'</span><span class="sy0">=&gt;</span><span class="st_h">'2018-12-25 08:00:00'</span><span class="sy0">,</span>
+                <span class="st_h">'end_date'</span><span class="sy0">=&gt;</span><span class="st_h">'2018-12-25 12:00:00'</span><span class="br0">&#93;</span>
+       <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+   <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>And call table seeders from <strong>DatabaseSeeder.php</strong>:</p>
+
+<p class='snippet'> database/seeds/DatabaseSeeder.php</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw2">use</span> Illuminate\Database\Seeder<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">class</span> DatabaseSeeder <span class="kw2">extends</span> Seeder
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">function</span> run<span class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">call</span><span class="br0">&#40;</span>EventsTableSeeder<span class="sy0">::</span><span class="kw2">class</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>After that we can seed our database from the command line:</p>
+
+<pre><code><pre class="php">php artisan db<span class="sy0">:</span>seed</pre></code></pre>
+
+<h3>Defining model classes</h3>
+
+<p>The data is managed via the <a href="https://laravel.com/docs/eloquent">Eloquent model</a> classes. We've already generated a class for events at the previous step.
+It is ready to use and doesn't require any changes to work with scheduler.</p>
+
+<a name='step4loadingdata'><h2>Step 4. Loading data</h2></a>
+
+<p>Once the database is created and the models are defined, we can load data into our scheduler. The client side requires dates of <a class="link-" href="data_formats.html#json">the following format</a>,
+so let's create a controller with an action that produces such a JSON. Execute the following command in the console:</p>
+
+<pre><code><pre class="php">php artisan make<span class="sy0">:</span>controller EventController</pre></code></pre>
+
+<p>Then open a new controller at <strong>app/Http/Controllers/EventController.php</strong> and add the <code>index</code> action:</p>
+
+<p class='snippet'> app/Http/Controllers/EventController.php</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+<span class="kw2">namespace</span> App\Http\Controllers<span class="sy0">;</span>
+<span class="xtra ln-xtra"><span class="kw2">use</span> App\Event<span class="sy0">;</span> </span>&nbsp;
+<span class="kw2">class</span> EventController <span class="kw2">extends</span> Controller
+<span class="br0">&#123;</span>
+<span class="xtra ln-xtra">    <span class="kw2">public</span> <span class="kw2">function</span> index<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span> </span>        <span class="re0">$events</span> <span class="sy0">=</span> <span class="kw2">new</span> Event<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">return</span> response<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+            <span class="st0">&quot;data&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$events</span><span class="sy0">-&gt;</span><span class="me1">all</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+        <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>And register a route, so the client could call this action. Note that we'll add the route to the <a href="https://laravel.com/docs/routing#basic-routing">api.php routes file</a>:</p>
+
+<p class='snippet'> routes/api.php</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw2">use</span> Illuminate\Http\Request<span class="sy0">;</span>
+&nbsp;
+Route<span class="sy0">::</span><span class="me2">get</span><span class="br0">&#40;</span><span class="st_h">'/data'</span><span class="sy0">,</span> <span class="st_h">'EventController@index'</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>And finally, call this action from the view:</p>
+
+<p class='snippet'> resources/views/scheduler.blade.php</p>
+
+<pre><code><pre class="php">scheduler<span class="sy0">.</span>config<span class="sy0">.</span><a href="http://www.php.net/date_format"><span class="kw3">date_format</span></a> <span class="sy0">=</span> <span class="st0">&quot;%Y-%m-<span class="es6">%d</span> %H:%i:<span class="es6">%s</span>&quot;</span><span class="sy0">;</span>
+scheduler<span class="sy0">.</span>init<span class="br0">&#40;</span><span class="st0">&quot;scheduler_here&quot;</span><span class="sy0">,</span> <span class="kw2">new</span> <a href="http://www.php.net/date"><span class="kw3">Date</span></a><span class="br0">&#40;</span><span class="nu0">2018</span><span class="sy0">,</span> <span class="nu0">11</span><span class="sy0">,</span> <span class="nu0">3</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;week&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+scheduler<span class="sy0">.</span>load<span class="br0">&#40;</span><span class="st0">&quot;/api/data&quot;</span><span class="sy0">,</span> <span class="st0">&quot;json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a class="link-" href="api__scheduler_load.html">scheduler.load</a> sends an AJAX request to the specified URL and will expect a JSON response as we've defined before.</p>
+
+<p>Also, note that we've specified the <a class="link-" href="api__scheduler_date_format_config.html">date_format</a> value. This is how we tell the scheduler which format of dates the data source will use, so the client side could parse them.</p>
+
+<p>If you check the app now, you should see that there are now tasks in our scheduler:</p>
+
+<p><img src="media/howtostart_laravel_loaded_events.png" alt="Loaded events" /></p>
+
+<h3>Dynamic loading</h3>
+
+<p>Currently, scheduler loads all records from the events table on startup. It can work well if you know that the amount of data will remain small over time. But when scheduler is used for something like a planning/booking
+application and you don't delete or move obsolete records to another table, the amounts of data will build up fairly quickly and in a couple of months of active usage you may find that your app requests a couple of MBs
+of events each time a user loads the page.</p>
+
+<p>It can be easily avoided by using dynamic loading. Scheduler will add the displayed dates to the request parameters and you'll be able to return only the records that need to be displayed.
+Each time a user switches to a new data range, scheduler will request a new portion of data.</p>
+
+<p>In order to enable this mode on the client go to <code>resources/views/scheduler.blade.php</code> and add the following line:</p>
+
+<p class='snippet'> resources/views/scheduler.blade.php</p>
+
+<pre><code><pre class="php">scheduler<span class="sy0">.</span>config<span class="sy0">.</span><a href="http://www.php.net/date_format"><span class="kw3">date_format</span></a> <span class="sy0">=</span> <span class="st0">&quot;%Y-%m-<span class="es6">%d</span> %H:%i:<span class="es6">%s</span>&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra">scheduler<span class="sy0">.</span>setLoadMode<span class="br0">&#40;</span><span class="st0">&quot;day&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>&nbsp;
+scheduler<span class="sy0">.</span>init<span class="br0">&#40;</span><span class="st0">&quot;scheduler_here&quot;</span><span class="sy0">,</span> <span class="kw2">new</span> <a href="http://www.php.net/date"><span class="kw3">Date</span></a><span class="br0">&#40;</span><span class="nu0">2018</span><span class="sy0">,</span> <span class="nu0">5</span><span class="sy0">,</span> <span class="nu0">6</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;week&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler<span class="sy0">.</span>load<span class="br0">&#40;</span><span class="st0">&quot;/api/events&quot;</span><span class="sy0">,</span> <span class="st0">&quot;json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>And update the app controller accordingly as in:</p>
+
+<p class='snippet'> app/Http/Controllers/EventController.php</p>
+
+<pre><code><pre class="php"><span class="kw2">class</span> EventController <span class="kw2">extends</span> Controller
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">function</span> index<span class="br0">&#40;</span>Request <span class="re0">$request</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="re0">$events</span> <span class="sy0">=</span> <span class="kw2">new</span> Event<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="re0">$from</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">from</span><span class="sy0">;</span>
+        <span class="re0">$to</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">to</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">return</span> response<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+            <span class="st0">&quot;data&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$events</span><span class="sy0">-&gt;</span>
+                <span class="me1">where</span><span class="br0">&#40;</span><span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&lt;&quot;</span><span class="sy0">,</span> <span class="re0">$to</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span>
+                <span class="me1">where</span><span class="br0">&#40;</span><span class="st0">&quot;end_date&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&gt;=&quot;</span><span class="sy0">,</span> <span class="re0">$from</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+        <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='step5savingchanges'><h2>Step 5. Saving changes</h2></a>
+
+<p>For now, our scheduler can read data from the backend. Let's make it write changes back to the database.</p>
+
+<p>The client side will work in the REST mode, meaning that it will send POST/PUT/DELETE requests for events actions.
+<a class="link-" href="server_integration.html#requestresponsedetails">Check the format of requests and all the routes the scheduler will use</a>.</p>
+
+<p>Now we need to define a controller that handles actions on the model, create route for it and enable data saving on the client side.</p>
+
+<h3>Adding controllers</h3>
+
+<p>Let's start with controllers. We'll create one RESTful <a href="https://laravel.com/docs/controllers#resource-controllers">resource controller</a> for each model. It will contain methods for adding/deleting and updating the model.</p>
+
+<h4>Controller for events</h4>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw2">namespace</span> App\Http\Controllers<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">use</span> Illuminate\Http\Request<span class="sy0">;</span>
+<span class="kw2">use</span> App\Event<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">class</span> EventController <span class="kw2">extends</span> Controller
+<span class="br0">&#123;</span>
+   <span class="kw2">public</span> <span class="kw2">function</span> index<span class="br0">&#40;</span>Request <span class="re0">$request</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+       <span class="re0">$events</span> <span class="sy0">=</span> <span class="kw2">new</span> Event<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+       <span class="re0">$from</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">from</span><span class="sy0">;</span>
+       <span class="re0">$to</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">to</span><span class="sy0">;</span>
+&nbsp;
+       <span class="kw1">return</span> response<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+           <span class="st0">&quot;data&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$events</span><span class="sy0">-&gt;</span>
+               <span class="me1">where</span><span class="br0">&#40;</span><span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&lt;&quot;</span><span class="sy0">,</span> <span class="re0">$to</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span>
+               <span class="me1">where</span><span class="br0">&#40;</span><span class="st0">&quot;end_date&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&gt;=&quot;</span><span class="sy0">,</span> <span class="re0">$from</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+       <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+   <span class="br0">&#125;</span>
+&nbsp;
+   <span class="kw2">public</span> <span class="kw2">function</span> store<span class="br0">&#40;</span>Request <span class="re0">$request</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+&nbsp;
+       <span class="re0">$event</span> <span class="sy0">=</span> <span class="kw2">new</span> Event<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+       <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">text</span> <span class="sy0">=</span> <a href="http://www.php.net/strip_tags"><span class="kw3">strip_tags</span></a><span class="br0">&#40;</span><span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">text</span><span class="br0">&#41;</span><span class="sy0">;</span>
+       <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">start_date</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">start_date</span><span class="sy0">;</span>
+       <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">end_date</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">end_date</span><span class="sy0">;</span>
+       <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">save</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+       <span class="kw1">return</span> response<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+           <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span> <span class="st0">&quot;inserted&quot;</span><span class="sy0">,</span>
+           <span class="st0">&quot;tid&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">id</span>
+       <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+   <span class="br0">&#125;</span>
+&nbsp;
+   <span class="kw2">public</span> <span class="kw2">function</span> update<span class="br0">&#40;</span><span class="re0">$id</span><span class="sy0">,</span> Request <span class="re0">$request</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+       <span class="re0">$event</span> <span class="sy0">=</span> Event<span class="sy0">::</span><span class="me2">find</span><span class="br0">&#40;</span><span class="re0">$id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+       <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">text</span> <span class="sy0">=</span> <a href="http://www.php.net/strip_tags"><span class="kw3">strip_tags</span></a><span class="br0">&#40;</span><span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">text</span><span class="br0">&#41;</span><span class="sy0">;</span>
+       <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">start_date</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">start_date</span><span class="sy0">;</span>
+       <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">end_date</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">end_date</span><span class="sy0">;</span>
+       <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">save</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+       <span class="kw1">return</span> response<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+           <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span> <span class="st0">&quot;updated&quot;</span>
+       <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+   <span class="br0">&#125;</span>
+&nbsp;
+   <span class="kw2">public</span> <span class="kw2">function</span> destroy<span class="br0">&#40;</span><span class="re0">$id</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+       <span class="re0">$event</span> <span class="sy0">=</span> Event<span class="sy0">::</span><span class="me2">find</span><span class="br0">&#40;</span><span class="re0">$id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+       <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">delete</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+       <span class="kw1">return</span> response<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+           <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span> <span class="st0">&quot;deleted&quot;</span>
+       <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+   <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>And a <a href="http://laravel.com/docs/controllers#restful-resource-controllers">route</a> for it:</p>
+
+<p class='snippet'> routes/api.php</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw2">use</span> Illuminate\Http\Request<span class="sy0">;</span>
+&nbsp;
+Route<span class="sy0">::</span><span class="me2">resource</span><span class="br0">&#40;</span><span class="st_h">'events'</span><span class="sy0">,</span> <span class="st_h">'EventController'</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>A couple of notes regarding this code:</p>
+
+<ul>
+<li>When a new task is inserted, we return its id back to the client in the <strong>tid</strong> property of the response object.</li>
+<li>We assign a default value to the <strong>progress</strong> parameter. Many request parameters are optional, which means that if a client-side task doesn't have them assigned, they won't be sent to the server action.</li>
+<li>The response JSON can have any number of additional properties, they all can be accessed from the <a class="link-" href="server_integration.html#errorhandling">client-side handler</a>.</li>
+</ul>
+
+<h3>Enabling data saving on the client side</h3>
+
+<p>Finally, we will <a class="link-" href="server_integration.html#technique">configure the client side</a> to utilize the API we've just implemented:</p>
+
+<p class='snippet'> resources/views/scheduler.blade.php</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">date_format</span> <span class="sy0">=</span> <span class="st0">&quot;%Y-%m-%d %H:%i:%s&quot;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">scheduler.<span class="me1">setLoadMode</span><span class="br0">&#40;</span><span class="st0">&quot;day&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>&nbsp;
+scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;scheduler_here&quot;</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2018</span><span class="sy0">,</span> <span class="nu0">11</span><span class="sy0">,</span> <span class="nu0">3</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;week&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra">scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/api/events&quot;</span><span class="sy0">,</span> <span class="st0">&quot;json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span><span class="xtra ln-xtra"><span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;/api/events&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>dp.<span class="me1">init</span><span class="br0">&#40;</span>scheduler<span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;REST&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Now you have a fully interactive Scheduler with the ability to view, add, update and delete events.</p>
+
+<p><img src="media/howtostart_laravel_crud.png" alt="CRUD operations" /></p>
+
+<p>Please check more of <a class="link-" href="guides.html">our guides</a> for other features of dhtmlxGantt.</p>
+
+<a name='recurringevents'><h2>Recurring events</h2></a>
+
+<p>In order to enable recurrence (e.g. "repeat event daily") you'll need to add an appropriate extension to the <strong>scheduler.blade.php</strong>, update the model and the code of the Events controller.</p>
+
+<p>Firstly, go to <strong>scheduler.blade.php</strong> and add a recurring extension after <em>dhtmlxscheduler.js</em>:</p>
+
+<p class='snippet'> resources\views\scheduler.blade.php </p>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">meta</span> <span class="kw3">http-equiv</span><span class="sy0">=</span><span class="st0">&quot;Content-type&quot;</span> <span class="kw3">content</span><span class="sy0">=</span><span class="st0">&quot;text/html; charset=utf-8&quot;</span>&gt;</span>
+&nbsp;
+  <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;https://cdn.dhtmlx.com/scheduler/edge/ext/dhtmlxscheduler_recurring.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span></pre></code></pre>
+
+<p>Now, update the model.</p>
+
+<p>Here is a complete schema, if you're starting from scratch:</p>
+
+<pre><code><pre class="php">Schema<span class="sy0">::</span><span class="me2">create</span><span class="br0">&#40;</span><span class="st_h">'events'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>Blueprint <span class="re0">$table</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">increments</span><span class="br0">&#40;</span><span class="st_h">'id'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">string</span><span class="br0">&#40;</span><span class="st_h">'text'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">dateTime</span><span class="br0">&#40;</span><span class="st_h">'start_date'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">dateTime</span><span class="br0">&#40;</span><span class="st_h">'end_date'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">string</span><span class="br0">&#40;</span><span class="st_h">'rec_type'</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">nullable</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">bigInteger</span><span class="br0">&#40;</span><span class="st_h">'event_length'</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">nullable</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">string</span><span class="br0">&#40;</span><span class="st_h">'event_pid'</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">nullable</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">timestamps</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Or, you can create the following migration:</p>
+
+<pre><code><pre class="php">php artisan make<span class="sy0">:</span>migration add_recurrings_to_events_table <span class="sy0">--</span>table<span class="sy0">=</span>events</pre></code></pre>
+
+<p><br></p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw2">use</span> Illuminate\Support\Facades\Schema<span class="sy0">;</span>
+<span class="kw2">use</span> Illuminate\Database\Schema\Blueprint<span class="sy0">;</span>
+<span class="kw2">use</span> Illuminate\Database\Migrations\Migration<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">class</span> AddRecurringsToEventsTable <span class="kw2">extends</span> Migration
+<span class="br0">&#123;</span>
+    <span class="co4">/**
+     * Run the migrations.
+     *
+     * @return void
+     */</span>
+    <span class="kw2">public</span> <span class="kw2">function</span> up<span class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        Schema<span class="sy0">::</span><span class="me2">table</span><span class="br0">&#40;</span><span class="st_h">'events'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>Blueprint <span class="re0">$table</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">string</span><span class="br0">&#40;</span><span class="st_h">'rec_type'</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">nullable</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">bigInteger</span><span class="br0">&#40;</span><span class="st_h">'event_length'</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">nullable</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="kw1">default</span><span class="br0">&#40;</span><span class="kw4">null</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">string</span><span class="br0">&#40;</span><span class="st_h">'event_pid'</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">nullable</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="co4">/**
+     * Reverse the migrations.
+     *
+     * @return void
+     */</span>
+    <span class="kw2">public</span> <span class="kw2">function</span> down<span class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        Schema<span class="sy0">::</span><span class="me2">table</span><span class="br0">&#40;</span><span class="st_h">'events'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>Blueprint <span class="re0">$table</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">dropColumn</span><span class="br0">&#40;</span><span class="st_h">'rec_type'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">dropColumn</span><span class="br0">&#40;</span><span class="st_h">'event_length'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">dropColumn</span><span class="br0">&#40;</span><span class="st_h">'event_pid'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>And run the migration:</p>
+
+<pre><code><pre class="php">php artisan migrate</pre></code></pre>
+
+<p>Now, it's time to update the controller</p>
+
+<p>Data loading does not require any changes, but we'll need to update the write actions since editing recurring series
+<a class="link-" href="recurring_events.html#editingdeletingacertainoccurrenceintheseries">require some non-intuitive steps</a>.</p>
+
+<p>Firstly, make sure to write new properties of the Event model in the "store" and "update" actions:</p>
+
+<pre><code><pre class="php"><span class="kw2">public</span> <span class="kw2">function</span> store<span class="br0">&#40;</span>Request <span class="re0">$request</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+&nbsp;
+    <span class="re0">$event</span> <span class="sy0">=</span> <span class="kw2">new</span> Event<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">text</span> <span class="sy0">=</span> <a href="http://www.php.net/strip_tags"><span class="kw3">strip_tags</span></a><span class="br0">&#40;</span><span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">text</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">start_date</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">start_date</span><span class="sy0">;</span>
+    <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">end_date</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">end_date</span><span class="sy0">;</span>
+    <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">rec_type</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">rec_type</span><span class="sy0">;</span>
+    <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">event_length</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">event_length</span><span class="sy0">;</span>
+    <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">event_pid</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">event_pid</span><span class="sy0">;</span>
+    <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">save</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">return</span> response<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+        <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span> <span class="st0">&quot;inserted&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;tid&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">id</span>
+    <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="kw2">public</span> <span class="kw2">function</span> update<span class="br0">&#40;</span><span class="re0">$id</span><span class="sy0">,</span> Request <span class="re0">$request</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="re0">$event</span> <span class="sy0">=</span> Event<span class="sy0">::</span><span class="me2">find</span><span class="br0">&#40;</span><span class="re0">$id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">text</span> <span class="sy0">=</span> <a href="http://www.php.net/strip_tags"><span class="kw3">strip_tags</span></a><span class="br0">&#40;</span><span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">text</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">start_date</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">start_date</span><span class="sy0">;</span>
+    <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">end_date</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">end_date</span><span class="sy0">;</span>
+    <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">rec_type</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">rec_type</span><span class="sy0">;</span>
+    <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">event_length</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">event_length</span><span class="sy0">;</span>
+    <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">event_pid</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">event_pid</span><span class="sy0">;</span>
+    <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">save</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">return</span> response<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+        <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span> <span class="st0">&quot;updated&quot;</span>
+    <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>After that, there are three additional cases which need handling.</p>
+
+<p>The recurring series itself is stored as a single record, and the deleted instances of series are stored as individual records linked to series marked as 'deleted'. Due to the current implementation,
+when a server sees such item added, it should reply with the "deleted" status. Such records can be detected by the <strong>$event->rec_type == "none"</strong> value:</p>
+
+<pre><code><pre class="php"><span class="kw2">public</span> <span class="kw2">function</span> store<span class="br0">&#40;</span>Request <span class="re0">$request</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+&nbsp;
+    <span class="re0">$event</span> <span class="sy0">=</span> <span class="kw2">new</span> Event<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">text</span> <span class="sy0">=</span> <a href="http://www.php.net/strip_tags"><span class="kw3">strip_tags</span></a><span class="br0">&#40;</span><span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">text</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">start_date</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">start_date</span><span class="sy0">;</span>
+    <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">end_date</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">end_date</span><span class="sy0">;</span>
+    <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">rec_type</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">rec_type</span><span class="sy0">;</span>
+    <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">event_length</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">event_length</span><span class="sy0">;</span>
+    <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">event_pid</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">event_pid</span><span class="sy0">;</span>
+    <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">save</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$status</span> <span class="sy0">=</span> <span class="st0">&quot;inserted&quot;</span><span class="sy0">;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span><span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">rec_type</span> <span class="sy0">==</span> <span class="st0">&quot;none&quot;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="re0">$status</span> <span class="sy0">=</span> <span class="st0">&quot;deleted&quot;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="kw1">return</span> response<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+        <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span> <span class="re0">$status</span><span class="sy0">,</span>
+        <span class="st0">&quot;tid&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">id</span>
+    <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Modified occurrences of the series are stored as individual instances as well. They are linked to the recurring series and a timestamp of the default occurrences that has been modified,
+so scheduler doesn't render an occurrence created by the recurring rule. When user deletes the recurring instance, instead of deleting the modified instance, we must
+mark this item as removed by setting <em>rec_type</em> to "none":</p>
+
+<pre><code><pre class="js"><span class="kw2">public</span> <span class="kw2">function</span> destroy<span class="br0">&#40;</span>$id<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    $event <span class="sy0">=</span> Event<span class="sy0">::</span>find<span class="br0">&#40;</span>$id<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="co1">// delete the modified instance of the recurring series</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>$event<span class="sy0">-&gt;</span>event_pid<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        $event<span class="sy0">-&gt;</span>rec_type <span class="sy0">=</span> <span class="st0">&quot;none&quot;</span><span class="sy0">;</span>
+        $event<span class="sy0">-&gt;</span>save<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="kw1">else</span><span class="br0">&#123;</span>
+        <span class="co1">// delete a regular instance</span>
+        $event<span class="sy0">-&gt;</span><span class="kw1">delete</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    $this<span class="sy0">-&gt;</span>deleteRelated<span class="br0">&#40;</span>$event<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> response<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span>json<span class="br0">&#40;</span><span class="br0">&#91;</span>
+        <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span> <span class="st0">&quot;deleted&quot;</span>
+    <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>And finally, when user modifies or deletes a recurring series, we should delete all modified occurrences of that series. It is required, because modified occurrences are linked to the original ones via timestamps.</p>
+
+<pre><code><pre class="php"><span class="kw2">private</span> <span class="kw2">function</span> deleteRelated<span class="br0">&#40;</span><span class="re0">$event</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+  <span class="kw1">if</span><span class="br0">&#40;</span><span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">event_pid</span> <span class="sy0">&amp;&amp;</span> <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">event_pid</span> <span class="sy0">!==</span> <span class="st0">&quot;none&quot;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    Event<span class="sy0">::</span><span class="me2">where</span><span class="br0">&#40;</span><span class="st0">&quot;event_pid&quot;</span><span class="sy0">,</span> <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">id</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">delete</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="kw2">public</span> <span class="kw2">function</span> update<span class="br0">&#40;</span><span class="re0">$id</span><span class="sy0">,</span> Request <span class="re0">$request</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="re0">$event</span> <span class="sy0">=</span> Event<span class="sy0">::</span><span class="me2">find</span><span class="br0">&#40;</span><span class="re0">$id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">text</span> <span class="sy0">=</span> <a href="http://www.php.net/strip_tags"><span class="kw3">strip_tags</span></a><span class="br0">&#40;</span><span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">text</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">start_date</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">start_date</span><span class="sy0">;</span>
+        <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">end_date</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">end_date</span><span class="sy0">;</span>
+        <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">rec_type</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">rec_type</span><span class="sy0">;</span>
+        <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">event_length</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">event_length</span><span class="sy0">;</span>
+        <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">event_pid</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">event_pid</span><span class="sy0">;</span>
+        <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">save</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">        <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">deleteRelated</span><span class="br0">&#40;</span><span class="re0">$event</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>        <span class="kw1">return</span> response<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+        <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span> <span class="st0">&quot;updated&quot;</span>
+    <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="kw2">public</span> <span class="kw2">function</span> destroy<span class="br0">&#40;</span><span class="re0">$id</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="re0">$event</span> <span class="sy0">=</span> Event<span class="sy0">::</span><span class="me2">find</span><span class="br0">&#40;</span><span class="re0">$id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="co1">// delete the modified instance of the recurring series</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span><span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">event_pid</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">rec_type</span> <span class="sy0">=</span> <span class="st0">&quot;none&quot;</span><span class="sy0">;</span>
+        <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">save</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="kw1">else</span><span class="br0">&#123;</span>
+        <span class="co1">// delete a regular instance</span>
+        <span class="re0">$event</span><span class="sy0">-&gt;</span><span class="me1">delete</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="xtra ln-xtra">    <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">deleteRelated</span><span class="br0">&#40;</span><span class="re0">$event</span><span class="br0">&#41;</span><span class="sy0">;</span></span>    <span class="kw1">return</span> response<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+          <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span> <span class="st0">&quot;deleted&quot;</span>
+    <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Parsing recurring series</h3>
+
+<p>A recurring event is stored in the database as a single record that can be splitted up by Scheduler on the client side.
+If you need to get dates of separate events on the server side, use a helper library for parsing recurring events of dhtmlxScheduler on PHP. 
+<br>
+You will find <a href="https://github.com/DHTMLX/scheduler-helper-php">the ready library on GitHub</a>.</p>
+
+<a name='applicationsecurity'><h2>Application security</h2></a>
+
+<p>Scheduler doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks.
+It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details <a class="link-hidden" href="app_security.html">in the corresponding article</a>.</p>
+
+<a name='troubleshooting'><h2>Trouble shooting</h2></a>
+
+<p>In case you've completed the above steps to implement Scheduler integration with PHP, but Scheduler doesn't render events on a page, have a look at the <a class="link-" href="troubleshooting.html">Troubleshooting Backend Integration Issues</a> article. It describes
+the ways of identifying the roots of the problems.</p>
+
+<a name='whatsnext'><h2>What's next</h2></a>
+
+<p>Now you have a fully functioning Scheduler. You can view the full code on <a href="https://github.com/DHTMLX/scheduler-howto-laravel">GitHub</a>, clone or download it and use it for your projects.</p>
+
+<p>You can also check <a class="link-" href="guides.html">guides on the numerous features of Scheduler</a> or tutorials on <a class="link-" href="howtostart_guides.html">integration of Scheduler with other backend frameworks</a>.</p>
+
+<!-- Content Area End -->
+			<a href='howtostart_php_laravel.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

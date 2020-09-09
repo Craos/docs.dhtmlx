@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599137912.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599137912.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Pivot Docs" href="https://docs.dhtmlx.com/pivot/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Localizing Pivot  Pivot Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=27">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="guides__initialization.html">Creating Pivot on a Page</a></li><li class=""><a href="guides__loading_data.html">Loading Data into Pivot</a></li><li class=""><a href="guides__working_with_pivot.html">Working with Pivot</a></li><li class=""><a href="guides__export.html">Exporting Pivot</a></li><li class=""><a href="guides__configuration.html">Configuring Pivot</a></li><li class=""><a href="guides__customization.html">Customizing Pivot</a></li><li class=""><a href="guides__using_filters.html">Manipulating with Filters</a></li><li class=" current"><a href="guides__localization.html">Localizing Pivot</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Localizing Pivot</h1>
+
+<p>Pivot provides you with the possibility to fully localize its interface into the necessary language. You just need to specify the corresponding locale via the
+<strong>dhx.i18n.setLocale</strong> method. The method takes two parameters: the pivot container and an object that contains rules of localization for a particular country.</p>
+
+<pre><code><pre class="js">dhx.<span class="me1">i18n</span>.<span class="me1">setLocale</span><span class="br0">&#40;</span><span class="st0">&quot;pivot&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    availableFields<span class="sy0">:</span> <span class="st0">&quot;available fields&quot;</span><span class="sy0">,</span>
+    values<span class="sy0">:</span> <span class="st0">&quot;data&quot;</span><span class="sy0">,</span>
+    columns<span class="sy0">:</span> <span class="st0">&quot;columns&quot;</span><span class="sy0">,</span>
+    rows<span class="sy0">:</span> <span class="st0">&quot;rows&quot;</span><span class="sy0">,</span>
+    moveFieldsHere<span class="sy0">:</span> <span class="st0">&quot;MOVE FIELDS HERE&quot;</span><span class="sy0">,</span>
+    hideSettings<span class="sy0">:</span> <span class="st0">&quot;Hide Settings&quot;</span><span class="sy0">,</span>
+    showSettings<span class="sy0">:</span> <span class="st0">&quot;Show Settings&quot;</span><span class="sy0">,</span>
+    apply<span class="sy0">:</span> <span class="st0">&quot;Apply&quot;</span><span class="sy0">,</span>
+    day<span class="sy0">:</span> <span class="st0">&quot;Day&quot;</span><span class="sy0">,</span>
+    week<span class="sy0">:</span> <span class="st0">&quot;Week&quot;</span><span class="sy0">,</span>
+    month<span class="sy0">:</span> <span class="st0">&quot;Month&quot;</span><span class="sy0">,</span>
+    quarter<span class="sy0">:</span> <span class="st0">&quot;Quarter&quot;</span><span class="sy0">,</span>
+    year<span class="sy0">:</span> <span class="st0">&quot;Year&quot;</span><span class="sy0">,</span>
+    min<span class="sy0">:</span> <span class="st0">&quot;Min&quot;</span><span class="sy0">,</span>
+    max<span class="sy0">:</span> <span class="st0">&quot;Max&quot;</span><span class="sy0">,</span>
+    sum<span class="sy0">:</span> <span class="st0">&quot;Sum&quot;</span><span class="sy0">,</span>
+    count<span class="sy0">:</span> <span class="st0">&quot;Count&quot;</span><span class="sy0">,</span>
+    equal<span class="sy0">:</span> <span class="st0">&quot;Equal&quot;</span><span class="sy0">,</span>
+    notEqual<span class="sy0">:</span> <span class="st0">&quot;Not Equal&quot;</span><span class="sy0">,</span>
+    contains<span class="sy0">:</span> <span class="st0">&quot;Contains&quot;</span><span class="sy0">,</span>
+    notContains<span class="sy0">:</span> <span class="st0">&quot;Not Contains&quot;</span><span class="sy0">,</span>
+    typeHere<span class="sy0">:</span> <span class="st0">&quot;Type Here&quot;</span><span class="sy0">,</span>
+    selectAll<span class="sy0">:</span> <span class="st0">&quot;Select All&quot;</span><span class="sy0">,</span>
+    unselectAll<span class="sy0">:</span> <span class="st0">&quot;Unselect All&quot;</span><span class="sy0">,</span>
+    cancel<span class="sy0">:</span> <span class="st0">&quot;Cancel&quot;</span><span class="sy0">,</span>
+    ok<span class="sy0">:</span> <span class="st0">&quot;Ok&quot;</span><span class="sy0">,</span>
+    total<span class="sy0">:</span> <span class="st0">&quot;Total&quot;</span><span class="sy0">,</span>
+    date<span class="sy0">:</span> <span class="br0">&#123;</span>
+        month_full<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;January&quot;</span><span class="sy0">,</span> <span class="st0">&quot;February&quot;</span><span class="sy0">,</span> <span class="st0">&quot;March&quot;</span><span class="sy0">,</span> <span class="st0">&quot;April&quot;</span><span class="sy0">,</span> <span class="st0">&quot;May&quot;</span><span class="sy0">,</span> <span class="st0">&quot;June&quot;</span><span class="sy0">,</span> <span class="st0">&quot;July&quot;</span><span class="sy0">,</span> 
+            <span class="st0">&quot;August&quot;</span><span class="sy0">,</span> <span class="st0">&quot;September&quot;</span><span class="sy0">,</span> <span class="st0">&quot;October&quot;</span><span class="sy0">,</span> <span class="st0">&quot;November&quot;</span><span class="sy0">,</span> <span class="st0">&quot;December&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        month_short<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;Jan&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Feb&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Mar&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Apr&quot;</span><span class="sy0">,</span> <span class="st0">&quot;May&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Jun&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Jul&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Aug&quot;</span><span class="sy0">,</span> 
+            <span class="st0">&quot;Sep&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Oct&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Nov&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Dec&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        day_full<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;Sunday&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Monday&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Tuesday&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Wednesday&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Thursday&quot;</span><span class="sy0">,</span> 
+            <span class="st0">&quot;Friday&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Saturday&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        day_short<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;Sun&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Mon&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Tue&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Wed&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Thu&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Fri&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Sat&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        quarter<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;Q1&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Q2&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Q3&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Q4&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        week<span class="sy0">:</span> <span class="st0">&quot;W&quot;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    types<span class="sy0">:</span><span class="br0">&#123;</span>
+        operations<span class="sy0">:</span><span class="br0">&#91;</span>
+            <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;sum&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Sum&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;min&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Min&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;max&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Max&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;count&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Count&quot;</span><span class="br0">&#125;</span>
+&nbsp;
+        <span class="br0">&#93;</span><span class="sy0">,</span>
+        dates<span class="sy0">:</span><span class="br0">&#91;</span>
+            <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;dateByDay&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Day&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;dateByWeek&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Week&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;dateByMonth&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Month&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;dateByQuarter&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Quarter&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;dateByYear&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Year&quot;</span><span class="br0">&#125;</span>
+        <span class="br0">&#93;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>After that, you need to initialize Pivot and check how the labels' names have changed.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> pivot <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Pivot</span><span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    data<span class="sy0">:</span> dataset<span class="sy0">,</span>
+    fields<span class="sy0">:</span> <span class="br0">&#123;</span>
+        rows<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;form&quot;</span><span class="sy0">,</span> <span class="st0">&quot;name&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        columns<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;year&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> <span class="st0">&quot;id&quot;</span><span class="sy0">:</span> <span class="st0">&quot;when&quot;</span><span class="sy0">,</span> <span class="st0">&quot;group&quot;</span><span class="sy0">:</span> <span class="st0">&quot;dateByQuarter&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        values<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="st0">&quot;oil&quot;</span><span class="sy0">,</span> method<span class="sy0">:</span> <span class="st0">&quot;max&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span> <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="st0">&quot;oil&quot;</span><span class="sy0">,</span> method<span class="sy0">:</span> <span class="st0">&quot;sum&quot;</span> <span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    fieldList<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="st0">&quot;name&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;name&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span> <span class="st0">&quot;year&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;year&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="co1">// all fields</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/01_init/02_localization.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Localization - DHTMLX Pivot</a></p>
+
+<!-- Content Area End -->
+			<a href='guides__localization.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Overview</li>
+	<li><a href='overview.html'>Pivot Overview</a></li>
+	<li><a href='how_to_start.html'>How to Start</a></li>
+	<li><a href='migrating.html'>Migration</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='guides__initialization.html'>Initialization</a></li>
+	<li><a href='guides__loading_data.html'>Data Loading</a></li>
+	<li><a href='guides__working_with_pivot.html#definingdataoperations'>Data Operations</a></li>	
+	
+</ul>
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='guides__configuration.html#definingpivotlookandfeel'>Pivot Layout</a></li>	
+	<li><a href='guides__configuration.html'>Fields and Operations</a></li>
+	<li><a href='guides__localization.html'>Localization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__pivot.html#constructor'>Constructor</a></li>
+	<li><a href='api__refs__pivot_methods.html'>Methods</a></li>
+	<li><a href='api__refs__pivot_props.html'>Properties</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Dynamic Loading  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="ajax__api__refs__ajax.html">AJAX</a></li><li class=""><a href="helpers__await_redraw.html">AwaitRedraw</a></li><li class=""><a href="helpers__base_elements.html">CSS classes of base elements</a></li><li class=""><a href="css_manager__api__refs__css_manager.html">CssManager</a></li><li class=""><a href="data_collection__api__refs__datacollection.html">DataCollection API</a></li><li class=""><a href="helpers__datadrivers.html">DataDrivers</a></li><li class=""><a href="data_proxy__api__refs__data_proxy.html">DataProxy</a></li><li class=""><a href="helpers__icon.html">Default Icons</a></li><li class="toc-pro current"><a href="helpers__lazydataproxy.html">Dynamic Loading</a></li><ul><li class="inner"><a href="helpers__lazydataproxy.html#initializelazydataproxy">Initialize LazyDataProxy</a></li><li class="inner"><a href="helpers__lazydataproxy.html#serversideresponse">Server-side Response</a></li><li class="inner"><a href="helpers__lazydataproxy.html#updatingurl">Updating URL</a></li></ul><li class=""><a href="helpers__resize_handler.html">Resizer</a></li><li class=""><a href="selection__api__refs__selection.html">Selection Object API</a></li><li class=""><a href="tree_collection__api__refs__treecollection.html">TreeCollection API</a></li><li class=""><a href="uploader__api__refs__uploader.html">Uploader Object API</a></li><li class=""><a href="helpers__using_typescript.html">Using DHTMLX with TypeScript</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="helpers.html">Helpers</a></div>
+<!-- Content Area -->
+
+
+<p class='promarker'>Available only in <b>PRO Edition</b></p>
+<h1>Dynamic Loading</h1>
+
+<div class='pronote'><p><p>This functionality requires PRO version of the dhtmlxGrid (or DHTMLX suite) package.</p>
+</p></div>
+
+<p>To load data dynamically from the server you can make use of the <strong>LazyDataProxy</strong> helper while loading data into dhtmlxGrid or dhtmlxList. 
+This helper allows getting data partially, on demand, and rendering only those records that are in the visible area.</p>
+
+<p>Read the related articles for detailed information about how to display large lists and tabular data efficiently:</p>
+
+<ul>
+<li><a class="link-" href="grid__data_loading.html#dynamicloading">dynamic loading in Grid</a></li>
+<li><a class="link-" href="list__load_data.html#dynamicloading">dynamic loading in List</a> (You need to set the <strong>virtual:true</strong> property in the configuration object of List) </li>
+</ul>
+
+<a name='initializelazydataproxy'><h2>Initialize LazyDataProxy</h2></a>
+
+<p>Initialize LazyDataProxy with the dhx.LazyDataProxy object constructor. The constructor takes two parameters:</p>
+
+<ul>
+<li><strong>url</strong> - (<em>string</em>) the URL which the component will use to load data after its initialization</li>
+<li><strong>config</strong> - (<em>object</em>) a configuration object which contains parameters for loading data from the server</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">new</span> dhx.<span class="me1">LazyDataProxy</span><span class="br0">&#40;</span><span class="st0">&quot;https://docs.dhtmlx.com/suite/backend/lazyload&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    limit<span class="sy0">:</span> <span class="nu0">30</span><span class="sy0">,</span>
+    prepare<span class="sy0">:</span> <span class="nu0">5</span><span class="sy0">,</span>
+    delay<span class="sy0">:</span> <span class="nu0">150</span><span class="sy0">,</span>
+    from<span class="sy0">:</span> <span class="nu0">0</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Parameters</h3>
+
+<p>There is a list of parameters that you can specify in the configuration object. All parameters are optional.</p>
+
+<ul>
+<li><strong>from</strong> - (<em>number</em>) the index of the first data item to start loading from; default value: 0</li>
+<li><strong>limit</strong> - (<em>number</em>) the count of records that should be loaded from the server during each dynamic loading request; default value: 50</li>
+<li><strong>delay</strong> - (<em>number</em>) time interval (in milliseconds) to wait before the next dynamic loading request to the server (allows decreasing the number of server request during quick scrolling); default value: 50</li>
+<li><strong>prepare</strong> - (<em>number</em>) the count of extra records that should be loaded from the server; default value: 0</li>
+</ul>
+
+<a name='serversideresponse'><h2>Server-side Response</h2></a>
+
+<p>Server side will send the following data to the client side:</p>
+
+<ul>
+<li><strong>data</strong> - (<em>array</em>) - the array of data records</li>
+<li><strong>from</strong> - (<em>number</em>) - starting position in the data set to add the loaded data to</li>
+<li><strong>total_count</strong> - (<em>number</em>) - the total number of records available on the server</li>
+</ul>
+
+<pre><code><pre class="js">data<span class="sy0">:</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>country<span class="sy0">:</span> <span class="st0">&quot;DR Congo&quot;</span><span class="sy0">,</span> population<span class="sy0">:</span> <span class="st0">&quot;84004989&quot;</span><span class="sy0">,</span> yearlyChange<span class="sy0">:</span> <span class="st0">&quot;0.0328&quot;</span><span class="br0">&#125;</span>
+    <span class="br0">&#123;</span>country<span class="sy0">:</span> <span class="st0">&quot;Germany&quot;</span><span class="sy0">,</span> population<span class="sy0">:</span> <span class="st0">&quot;82293457&quot;</span><span class="sy0">,</span> yearlyChange<span class="sy0">:</span> <span class="st0">&quot;0.0022&quot;</span><span class="br0">&#125;</span>
+    <span class="br0">&#123;</span>country<span class="sy0">:</span> <span class="st0">&quot;Iran&quot;</span><span class="sy0">,</span> population<span class="sy0">:</span> <span class="st0">&quot;82011735&quot;</span><span class="sy0">,</span> yearlyChange<span class="sy0">:</span> <span class="st0">&quot;0.0105&quot;</span><span class="br0">&#125;</span>
+    <span class="br0">&#123;</span>country<span class="sy0">:</span> <span class="st0">&quot;Turkey&quot;</span><span class="sy0">,</span> population<span class="sy0">:</span> <span class="st0">&quot;81916871&quot;</span><span class="sy0">,</span> yearlyChange<span class="sy0">:</span> <span class="st0">&quot;0.0145&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">,</span> 
+total_count<span class="sy0">:</span> <span class="nu0">233</span><span class="sy0">,</span>
+from<span class="sy0">:</span> <span class="nu0">15</span></pre></code></pre>
+
+<a name='updatingurl'><h2>Updating URL</h2></a>
+
+<p>You can use the <strong>updateURL</strong> method to update the URL where the data will be loaded or to change parameters for loading data from the backend. The method takes two parameters:</p>
+
+<ul>
+<li><strong>url</strong> - (<em>string</em>) the URL which the component will use to load data after its initialization. If not specified, the currently existing URL will be used.</li>
+<li><strong>config</strong> - (<em>object</em>) a configuration object with parameters for loading data from the server. If not specified, clears parameters set earlier.</li>
+</ul>
+
+<pre><code><pre class="js">lazyDataProxy.<span class="me1">updateURL</span><span class="br0">&#40;</span><span class="st0">&quot;https://docs.dhtmlx.com/suite/backend/lazyload&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    limit<span class="sy0">:</span> <span class="nu0">30</span><span class="sy0">,</span>
+    prepare<span class="sy0">:</span> <span class="nu0">5</span><span class="sy0">,</span>
+    delay<span class="sy0">:</span> <span class="nu0">150</span><span class="sy0">,</span>
+    from<span class="sy0">:</span> <span class="nu0">0</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='helpers__lazydataproxy.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

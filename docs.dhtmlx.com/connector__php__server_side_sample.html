@@ -1,0 +1,298 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Samples of Server-Side Initialization  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="connector__php__client_side_sample.html">Samples of Client-Side Initialization</a></li><li class=" current"><a href="connector__php__server_side_sample.html">Samples of Server-Side Initialization</a></li><ul><li class="inner"><a href="connector__php__server_side_sample.html#dbtypes">DB types</a></li><li class="inner"><a href="connector__php__server_side_sample.html#componenttypes">Component types</a></li></ul><li class=""><a href="connector__php__grid_stucture.html">Defining Grid Structure on Server Side</a></li><li class=""><a href="connector__php__gridconnector_usage.html">dhtmlxConnector for Grid</a></li><li class=""><a href="connector__php__formconnector_usage.html">dhtmlxConnector for Form</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="connector__index.html">Client-Server Communication</a><a class="n3" href="connector__php__index.html">PHP Connector</a><a class="n4" href="connector__php__samples.html">Samples</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Samples of Server-Side Initialization</h1>
+
+<a name='dbtypes'><h2>DB types</h2></a>
+
+<h3>PDO ( php_pdo )</h3>
+
+<pre><code><pre class="php"><span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/grid_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/db_pdo.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$res</span><span class="sy0">=</span><span class="kw2">new</span> PDO<span class="br0">&#40;</span><span class="st_h">'mysql:hostocalhost;dbname=test'</span><span class="sy0">,</span> <span class="re0">$user</span><span class="sy0">,</span> <span class="re0">$pass</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$gridConn</span> <span class="sy0">=</span> <span class="kw2">new</span> GridConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="sy0">,</span><span class="st0">&quot;PDO&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>MySQLi ( php_mysqli )</h3>
+
+<pre><code><pre class="php"><span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/grid_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/db_mysqli.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$mysqli</span> <span class="sy0">=</span> <span class="kw2">new</span> mysqli<span class="br0">&#40;</span><span class="re0">$server</span><span class="sy0">,</span> <span class="re0">$user</span><span class="sy0">,</span> <span class="re0">$pass</span><span class="sy0">,</span> <span class="re0">$mysql_db</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="re0">$gridConn</span> <span class="sy0">=</span> <span class="kw2">new</span> GridConnector<span class="br0">&#40;</span><span class="re0">$mysqli</span><span class="sy0">,</span><span class="st0">&quot;MySQLi&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>SQLite ( php_sqlite )</h3>
+
+<pre><code><pre class="php"><span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/grid_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/db_sqlite.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span><span class="re0">$db</span> <span class="sy0">=</span> <a href="http://www.php.net/sqlite_open"><span class="kw3">sqlite_open</span></a><span class="br0">&#40;</span><span class="st_h">'db'</span><span class="sy0">,</span> <span class="nu8">0777</span><span class="sy0">,</span> <span class="re0">$sqliteerror</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <a href="http://www.php.net/die"><span class="kw3">die</span></a><span class="br0">&#40;</span><span class="re0">$sqliteerror</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="re0">$gridConn</span> <span class="sy0">=</span> <span class="kw2">new</span> GridConnector<span class="br0">&#40;</span><span class="re0">$db</span><span class="sy0">,</span><span class="st0">&quot;SQLite&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>PostgreSQL ( php_pg )</h3>
+
+<pre><code><pre class="php"><span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/grid_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/db_postgre.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$res</span><span class="sy0">=</span><a href="http://www.php.net/pg_connect"><span class="kw3">pg_connect</span></a><span class="br0">&#40;</span><span class="st0">&quot;hostocalhost port=5432 dbname=mary&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$gridConn</span> <span class="sy0">=</span> <span class="kw2">new</span> GridConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="sy0">,</span><span class="st0">&quot;Postgre&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Oracle ( php_oci )</h3>
+
+<pre><code><pre class="php"><span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/grid_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/db_oracle.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$res</span> <span class="sy0">=</span> oci_connect<span class="br0">&#40;</span><span class="st0">&quot;scott&quot;</span><span class="sy0">,</span> <span class="st0">&quot;tiger&quot;</span><span class="sy0">,</span> <span class="re0">$db</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$gridConn</span> <span class="sy0">=</span> <span class="kw2">new</span> GridConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="sy0">,</span><span class="st0">&quot;Oracle&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>MSSQL ( php_mssql )</h3>
+
+<pre><code><pre class="php"><span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/grid_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/db_mssql.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$res</span><span class="sy0">=</span><a href="http://www.php.net/mssql_connect"><span class="kw3">mssql_connect</span></a><span class="br0">&#40;</span><span class="st_h">'.SQLEXPRESS'</span><span class="sy0">,</span><span class="st0">&quot;sa&quot;</span><span class="sy0">,</span><span class="st0">&quot;1&quot;</span><span class="sy0">,</span><span class="kw4">false</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<a href="http://www.php.net/mssql_select_db"><span class="kw3">mssql_select_db</span></a><span class="br0">&#40;</span><span class="st0">&quot;sampleDB&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$gridConn</span> <span class="sy0">=</span> <span class="kw2">new</span> GridConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="sy0">,</span><span class="st0">&quot;MsSQL&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>MSSQL ( php_sqlsrv )</h3>
+
+<pre><code><pre class="php"><span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/grid_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/db_sqlsrv.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$conn</span> <span class="sy0">=</span> sqlsrv_connect<span class="br0">&#40;</span> <span class="re0">$serverName</span><span class="sy0">,</span> <span class="re0">$connectionInfo</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+&nbsp;
+<span class="re0">$gridConn</span> <span class="sy0">=</span> <span class="kw2">new</span> GridConnector<span class="br0">&#40;</span><span class="re0">$conn</span><span class="sy0">,</span><span class="st0">&quot;SQLSrv&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>MySQL ( php_mysql ) (deprecated)</h3>
+
+<pre><code><pre class="php"><span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/grid_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$res</span><span class="sy0">=</span><a href="http://www.php.net/mysql_connect"><span class="kw3">mysql_connect</span></a><span class="br0">&#40;</span><span class="st0">&quot;localhost&quot;</span><span class="sy0">,</span><span class="st0">&quot;root&quot;</span><span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<a href="http://www.php.net/mysql_select_db"><span class="kw3">mysql_select_db</span></a><span class="br0">&#40;</span><span class="st0">&quot;myDatabase&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$gridConn</span> <span class="sy0">=</span> <span class="kw2">new</span> GridConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="sy0">,</span><span class="st0">&quot;MySQL&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>File System</h3>
+
+<pre><code><pre class="php"><span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/grid_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/db_pdo.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$gridConn</span> <span class="sy0">=</span> <span class="kw2">new</span> GridConnector<span class="br0">&#40;</span><span class="st0">&quot;/var/www/test&quot;</span><span class="sy0">,</span><span class="st0">&quot;FileSystem&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$grid</span><span class="sy0">-&gt;</span><span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;./&quot;</span><span class="sy0">,</span> <span class="st0">&quot;id&quot;</span><span class="sy0">,</span> <span class="st0">&quot;A,B,C,D,E,F&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Excel file</h3>
+
+<pre><code><pre class="php"><span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/grid_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/db_excel.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$res</span><span class="sy0">=</span><span class="kw2">new</span> PDO<span class="br0">&#40;</span><span class="st_h">'mysql:hostocalhost;dbname=test'</span><span class="sy0">,</span> <span class="re0">$user</span><span class="sy0">,</span> <span class="re0">$pass</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$grid</span> <span class="sy0">=</span> <span class="kw2">new</span> GridConnector<span class="br0">&#40;</span><span class="st0">&quot;some.xls&quot;</span><span class="sy0">,</span> <span class="st0">&quot;ExcelDBDataWrapper&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$grid</span><span class="sy0">-&gt;</span><span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;A18:F83&quot;</span><span class="sy0">,</span> <span class="st0">&quot;id&quot;</span><span class="sy0">,</span> <span class="st0">&quot;A,B,C,D,E,F&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='componenttypes'><h2>Component types</h2></a>
+
+<p>For other components the syntax of constructor is exactly the same, except that "Grid" in the object name is replaced with the component's name.</p>
+
+<h3>Grid</h3>
+
+<pre><code><pre class="php"><span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/grid_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//...</span>
+<span class="re0">$gridConn</span> <span class="sy0">=</span> <span class="kw2">new</span> GridConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="sy0">,</span><span class="st0">&quot;MySQL&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>TreeGrid</h3>
+
+<pre><code><pre class="php"><span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/treegrid_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//...</span>
+<span class="re0">$treeGridConn</span> <span class="sy0">=</span> <span class="kw2">new</span> TreeGridConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="sy0">,</span><span class="st0">&quot;MySQL&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Tree</h3>
+
+<pre><code><pre class="php"><span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/tree_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//...</span>
+<span class="re0">$treeConn</span> <span class="sy0">=</span> <span class="kw2">new</span> TreeConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="sy0">,</span><span class="st0">&quot;MySQL&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Combo</h3>
+
+<pre><code><pre class="php"><span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/combo_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//...</span>
+<span class="re0">$comboConn</span> <span class="sy0">=</span> <span class="kw2">new</span> ComboConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="sy0">,</span><span class="st0">&quot;MySQL&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Scheduler</h3>
+
+<pre><code><pre class="php"><span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/scheduler_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//...</span>
+<span class="re0">$schedulerConn</span> <span class="sy0">=</span> <span class="kw2">new</span> SchedulerConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="sy0">,</span><span class="st0">&quot;MySQL&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Form</h3>
+
+<pre><code><pre class="php"><span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/form_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//...</span>
+<span class="re0">$formConn</span> <span class="sy0">=</span> <span class="kw2">new</span> FormConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="sy0">,</span><span class="st0">&quot;MySQL&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>DataView</h3>
+
+<pre><code><pre class="php"><span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/dataview_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//...</span>
+<span class="re0">$dataConn</span> <span class="sy0">=</span> <span class="kw2">new</span> DataViewConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="sy0">,</span><span class="st0">&quot;MySQL&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Chart</h3>
+
+<pre><code><pre class="php"><span class="kw1">require</span><span class="br0">&#40;</span><span class="st0">&quot;connector/chart_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//...</span>
+<span class="re0">$chartConn</span> <span class="sy0">=</span> <span class="kw2">new</span> ChartConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="sy0">,</span><span class="st0">&quot;MySQL&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>DataStore</h3>
+
+<pre><code><pre class="php"><span class="kw1">require_once</span><span class="br0">&#40;</span><span class="st0">&quot;../../connector/data_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">require_once</span><span class="br0">&#40;</span><span class="st0">&quot;../../connector/db_sqlite.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span><span class="re0">$db</span> <span class="sy0">=</span> <a href="http://www.php.net/sqlite_open"><span class="kw3">sqlite_open</span></a><span class="br0">&#40;</span><span class="st_h">'db'</span><span class="sy0">,</span> <span class="nu8">0777</span><span class="sy0">,</span> <span class="re0">$sqliteerror</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <a href="http://www.php.net/die"><span class="kw3">die</span></a><span class="br0">&#40;</span><span class="re0">$sqliteerror</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+<span class="re0">$storeConn</span> <span class="sy0">=</span> <span class="kw2">new</span> JSONDataConnector<span class="br0">&#40;</span><span class="re0">$db</span><span class="sy0">,</span><span class="st0">&quot;SQLite&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='connector__php__server_side_sample.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

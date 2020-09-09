@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Month View  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="day_view.html">Day View</a></li><li class=""><a href="week_view.html">Week View</a></li><li class=" current"><a href="month_view.html">Month View</a></li><ul><li class="inner"><a href="month_view.html#initialization">Initialization</a></li><li class="inner"><a href="month_view.html#removingthemonthviewtab">Removing the Month view tab</a></li><li class="inner"><a href="month_view.html#limitingthenumberofeventsinacell">Limiting the number of events in a cell</a></li><li class="inner"><a href="month_view.html#hidingdaysinthexaxisoftheview">Hiding days in the X-Axis of the view</a></li><li class="inner"><a href="month_view.html#presentingdaysnumbersasclickablelinks">Presenting  days' numbers as clickable links</a></li><li class="inner"><a href="month_view.html#resizingeventsbydragndropver41">Resizing events by drag-n-drop (ver. 4.1+)</a></li><li class="inner"><a href="month_view.html#relatedguides">Related guides</a></li></ul><li class=""><a href="agenda_view.html">Agenda View</a></li><li class=""><a href="map_view.html">Map View</a></li><li class="toc-pro"><a href="timeline_view.html">Timeline View</a></li><li class="toc-pro"><a href="weekagenda_view.html">Week Agenda View</a></li><li class="toc-pro"><a href="units_view.html">Units View</a></li><li class=""><a href="year_view.html">Year View</a></li><li class="toc-pro"><a href="grid_view.html">Grid View</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="views.html">Views</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Month View</h1>
+
+<p>The Month view displays a single month of the calendar.</p>
+
+<p><img src="media/month_view.png"/></p>
+
+<a name='initialization'><h2>Initialization</h2></a>
+
+<p>The Month view is added to the  <a class="link-" href="scheduler_markup.html">basic scheduler's markup</a> by default. That's why you don't need to provide any extra code for adding the view to the scheduler.</p>
+
+<pre><code><pre class="js"><span class="co1">//just usual initialization. The Month view will be added by default</span>
+scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span><span class="nu0">0</span><span class="sy0">,</span><span class="nu0">10</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="st0">&quot;month&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">scheduler</span>.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/data/events&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/01_initialization_loading/01_basic_init.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Basic initialization</a></p>
+
+<a name='removingthemonthviewtab'><h2>Removing the Month view tab</h2></a>
+
+<p>To remove the Month view tab from the scheduler, remove the related div from the <a class="link-" href="scheduler_markup.html">scheduler's markup</a>:</p>
+
+<pre><code><pre class="js"><span class="co1">//remove this div to remove the Month tab</span>
+<span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;month_tab&quot;</span> style<span class="sy0">=</span><span class="st0">&quot;right:204px;&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span></pre></code></pre>
+
+<a name='limitingthenumberofeventsinacell'><h2>Limiting the number of events in a cell</h2></a>
+
+<p>By default, the scheduler lengthens the cell's height to display all assigned events.</p>
+
+<p>Starting from version 4.0, you have the possibility to control the number of events,displayable in a cell, and thereby the maximum height of cells.</p>
+
+<p>To set the maximum number of events in a cell, use the  <a class="link-" href="api__scheduler_max_month_events_config.html">max_month_events</a> option:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">max_month_events</span> <span class="sy0">=</span> <span class="nu0">3</span><span class="sy0">;</span>
+..
+<span class="me1">scheduler</span>.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span><span class="nu0">5</span><span class="sy0">,</span><span class="nu0">30</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="st0">&quot;month&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>If the number of assigned events exceeds the option's value, the scheduler will display the 'View more' link. 
+The link will redirect the user to the Day view, where he or she can see a full list of assigned events.</p>
+
+<p><a href='samples/02_customization/31_view_more.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;'View more' link in the Month view</a></p>
+
+<a name='hidingdaysinthexaxisoftheview'><h2>Hiding days in the X-Axis of the view</h2></a>
+
+<p>To hide some days in the scale, e.g. leave just work days and remove holidays, use the <strong>ignore_month()</strong> method. <br>
+The method is a function that takes the cell date as a parameter. To hide a certain day, return <em>true</em> for it.</p>
+
+<pre><code><pre class="js"><span class="co1">// 0 refers to Sunday, 6 - to Saturday</span>
+scheduler.<span class="me1">ignore_month</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>date.<span class="me1">getDay</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">==</span> <span class="nu0">6</span> <span class="sy0">||</span> date.<span class="me1">getDay</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">==</span> <span class="nu0">0</span><span class="br0">&#41;</span> <span class="co1">//hides Saturdays and Sundays</span>
+        <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/11_scales/01_month_ignore.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Hiding week days in the scale of Month view</a></p>
+
+<a name='presentingdaysnumbersasclickablelinks'><h2>Presenting  days' numbers as clickable links</h2></a>
+
+<p>Days' numbers in the Month view can be presented as clickable links that open the related day in the specified view.</p>
+
+<p>To display days in the view's cells as clickable links:</p>
+
+<ol>
+    <li>
+Include the <b>ext/dhtmlxscheduler_active_links.js</b> extension file on the page:
+
+<pre><code><pre class="html">  <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../codebase/ext/dhtmlxscheduler_active_links.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+    </li>
+    <li> (<i>Optionally</i>) Specify the <a class="link-" href="api__scheduler_active_link_view_config.html">active_link_view</a> to set the view you want to open month's days in. By default, it's the <a class="link-" href="day_view.html">Day View</a>:
+
+<pre><code><pre class="js"><span class="co1">//the user will be skipped to the Week view after clicking on a day link</span>
+scheduler.<span class="me1">config</span>.<span class="me1">active_link_view</span> <span class="sy0">=</span> <span class="st0">&quot;week&quot;</span><span class="sy0">;</span>
+...
+<span class="me1">scheduler</span>.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2012</span><span class="sy0">,</span><span class="nu0">7</span><span class="sy0">,</span><span class="nu0">6</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="st0">&quot;month&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+    </li>
+</ol>
+
+<p><a href='samples/03_extensions/06_links_plugin.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Month days as links</a></p>
+
+<a name='resizingeventsbydragndropver41'><h2>Resizing events by drag-n-drop (ver. 4.1+)</h2></a>
+
+<p>By default, users can't resize events in the Month view by drag-n-drop (only through the edit form).</p>
+
+<p>To provide resizing of multi-day events by drag-n-drop, set the <a class="link-" href="api__scheduler_resize_month_events_config.html">resize_month_events</a> property to <em>true</em>:</p>
+
+<pre><code><pre class="js"><span class="co1">//resizing multi-day events by drag-n-drop</span>
+<span class="xtra ln-xtra">scheduler.<span class="me1">config</span>.<span class="me1">resize_month_events</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span> </span>&nbsp;
+scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span><span class="nu0">0</span><span class="sy0">,</span><span class="nu0">10</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="st0">&quot;month&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_customization/32_resizable_month_events.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Resizable events in Month view</a></p>
+
+<p><br></p>
+
+<p>To provide resizing both multi- and single-day events by drag-n-drop, set the <a class="link-" href="api__scheduler_resize_month_timed_config.html">resize_month_timed</a> property to <em>true</em> as well:</p>
+
+<pre><code><pre class="js"><span class="co1">//resizing both single- and multi-day events by drag-n-drop</span>
+<span class="xtra ln-xtra">scheduler.<span class="me1">config</span>.<span class="me1">resize_month_events</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></span><span class="xtra ln-xtra">scheduler.<span class="me1">config</span>.<span class="me1">resize_month_timed</span><span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>  </span>scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span><span class="nu0">0</span><span class="sy0">,</span><span class="nu0">10</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="st0">&quot;month&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><strong>Please, note:</strong></p>
+
+<ul>
+<li>The <a class="link-" href="api__scheduler_resize_month_timed_config.html">resize_month_timed</a> property makes sense only with the <a class="link-" href="api__scheduler_resize_month_events_config.html">resize_month_events</a> property enabled.</li>
+<li>When the <a class="link-" href="api__scheduler_resize_month_timed_config.html">resize_month_timed</a> property is enabled, single-day events change their look:</li>
+</ul>
+
+<p><img src="media/api/resizemonthtimed_config.png"/></p>
+
+<a name='relatedguides'><h2>Related guides</h2></a>
+
+<ul>
+<li><a class="link-" href="configuration.html">Common Config Instructions</a></li>
+<li><a class="link-" href="month_view_templates.html">Month View Templates</a></li>
+<li><a class="link-" href="loading_data.html">Loading Data</a></li>
+<li><a class="link-" href="event_object_operations.html">Event Object Operations</a></li>
+<li><a class="link-" href="limits.html">Blocking and Marking Dates</a></li>
+<li><a class="link-" href="skins.html">Skins</a></li>
+</ul>
+
+<!-- Content Area End -->
+			<a href='month_view.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

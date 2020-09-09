@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Changing Buttons in the Lightbox  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="lightbox_editors.html">Lightbox Controls</a></li><li class=""><a href="lightbox_editors_manipulations.html">Manipulations with Lightbox</a></li><li class=""><a href="custom_lightbox_editor.html">Custom Lightbox Control</a></li><li class=""><a href="custom_details_form.html">Fully Custom Lightbox</a></li><li class=" current"><a href="changing_lightbox_buttons.html">Changing Buttons in the Lightbox</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="configuring_the_lightbox.html">Configuring the Lightbox</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Changing Buttons in the Lightbox</h1>
+
+<p>There is a possibility to redefine the default buttons in the lightbox.</p>
+
+<p><img src="media/lightbox_buttons.png"/></p>
+
+<p>Let's start from the collection where all these buttons are stored.<br>
+By default, the lightbox contains 3 buttons ('Save', 'Cancel', 'Delete') that are specified by the <a class="link-" href="api__scheduler_buttons_left_config.html">buttons_left</a> and <a class="link-" href="api__scheduler_buttons_right_config.html">buttons_right</a> configuration options.</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">buttons_left</span> <span class="sy0">=</span> <span class="br0">&#91;</span><span class="st0">&quot;dhx_save_btn&quot;</span><span class="sy0">,</span> <span class="st0">&quot;dhx_cancel_btn&quot;</span><span class="br0">&#93;</span><span class="sy0">;</span>
+scheduler.<span class="me1">config</span>.<span class="me1">buttons_right</span> <span class="sy0">=</span> <span class="br0">&#91;</span><span class="st0">&quot;dhx_delete_btn&quot;</span><span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To redefine the default sets of buttons, follow the steps below:</p>
+
+<p>1 . Specify new members of the <strong>buttons_left</strong> or <strong>buttons_right</strong> array like this:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">buttons_left</span> <span class="sy0">=</span> <span class="br0">&#91;</span><span class="st0">&quot;dhx_save_btn&quot;</span><span class="sy0">,</span><span class="st0">&quot;dhx_cancel_btn&quot;</span><span class="sy0">,</span><span class="st0">&quot;locate_button&quot;</span><span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>2 . Set the button label as follows:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">locale</span>.<span class="me1">labels</span><span class="br0">&#91;</span><span class="st0">&quot;locate_button&quot;</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="st0">&quot;Location&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>3 . Specify the desired colors for the buttons via the following selector - <strong>{buttonName}_set</strong>. For example:</p>
+
+<pre><code><pre class="js">.<span class="me1">dhx_save_btn_set</span><span class="br0">&#123;</span>
+    background<span class="sy0">-</span>color<span class="sy0">:</span>#4CAF50<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p><a href='snippet/0af39c5f.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom Color for Buttons</a></p>
+
+<p>4 . Set an icon for a button (and/or apply some other styling) by specifying the CSS class as in:</p>
+
+<pre><code><pre class="js">.<span class="me1">locate_button</span>
+<span class="br0">&#123;</span>
+    background<span class="sy0">-</span>image<span class="sy0">:</span>url<span class="br0">&#40;</span><span class="st0">'../../codebase/imgs/location.gif'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    background<span class="sy0">-</span>position<span class="sy0">:</span> <span class="sy0">-</span>2px 0px<span class="sy0">;</span>
+    width<span class="sy0">:</span>20px<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>5 . Define the <a class="link-" href="api__scheduler_onlightboxbutton_event.html">onLightboxButton</a> handler that will treat clicks on the button in the following way:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onLightboxButton&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>button_id<span class="sy0">,</span> node<span class="sy0">,</span> e<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>button_id <span class="sy0">==</span> <span class="st0">&quot;locate_button&quot;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw3">alert</span><span class="br0">&#40;</span><span class="st0">&quot;Location!&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='changing_lightbox_buttons.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

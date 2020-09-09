@@ -1,0 +1,422 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Drag-and-Drop Support  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="grid__basic_operations.html">Common Operations with Grid and its Elements</a></li><li class=""><a href="grid__columns_types.html">Column Types</a></li><li class=""><a href="grid__headers_and_footers.html">Headers and Footers</a></li><li class=""><a href="grid__frozen_columns.html">Freezing Columns (the 'Split' Mode)</a></li><li class=""><a href="grid__navigation.html">Enabling Keyboard Navigation</a></li><li class=""><a href="grid__selection.html">Managing the Selection</a></li><li class=" current"><a href="grid__drag_and_drop.html">Drag-and-Drop Support</a></li><ul><li class="inner"><a href="grid__drag_and_drop.html#common">Common</a></li><li class="inner"><a href="grid__drag_and_drop.html#draganddroprelatedmethods">Drag-and-drop related methods</a></li><li class="inner"><a href="grid__drag_and_drop.html#advanced">Advanced</a></li></ul><li class=""><a href="grid__handling_cookies.html">Saving Grid Configuration in Cookies</a></li><li class=""><a href="grid__xml_configuration.html">Configuring Grid from XML</a></li><li class=""><a href="grid__json_configuration.html">Configuring Grid from JSON</a></li><li class=""><a href="grid__grouping_columns.html">Grouping Columns</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__configuring_the_grid.html">Configuring Grid</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Drag-and-Drop Support</h1>
+
+<p>The library supports drag-and-drop within a grid or several grids on the page.</p>
+
+<a name='common'><h2>Common</h2></a>
+
+<p>To enable the possibility to drag-and-drop rows in the grid, you should call method <a class="link-" href="api__dhtmlxgrid_enabledraganddrop.html">enableDragAndDrop()</a> with the <strong>true</strong> parameter:</p>
+
+<p class='snippet'>
+Enabling drag-and-drop in the grid
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">mygrid</span>.<span class="me1">enableDragAndDrop</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>The dragContext object</h3>
+
+<p>The dragContext object is available during the <a class="link-notsure" href="api__dhtmlxgrid_ondrag_event.html">onDrag</a> event and contains the following properties:</p>
+
+<ul>
+<li>dragContext.source - type of the source component ("tree","grid","treeGrid");</li>
+<li>dragContext.target - type of the target component;</li>
+<li>dragContext.sobj - the source object;</li>
+<li>dragContext.tobj - the target object;</li>
+<li>dragContext.dropmode - whether the dragged item will be a "child" or a "sibling";</li>
+<li>dragContext.mode - whether the dragged item will be copied or just moved: "copy" or "move";</li>
+<li>dragContext.sid - id of the dragged item;</li>
+<li>dragContext.tid - id of the drag landing item.</li>
+</ul>
+
+<a name='draganddroprelatedmethods'><h2>Drag-and-drop related methods</h2></a>
+
+<ul>
+<li><strong>enableDragAndDrop()</strong> - enables/disables drag-and-drop in the grid(s) on the page</li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">enableDragAndDrop</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><strong>enableDragOrder()</strong> - switches to the mode when the dragged items are dropped in the target location in the same order 
+they were selected in the source location. Makes sense for multiple selection model only</li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">enableDragOrder</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><strong>enableMercyDrag()</strong> (PRO version) - enables the mode when items are dragged without removing (copying instead of moving) </li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">enableMercyDrag</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><strong>setDragBehavior()</strong> - sets the drag-and-drop behavior (see details in the API reference)</li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setDragBehavior</span><span class="br0">&#40;</span>sibling<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//the item is dropped as a sibling of the target item</span></pre></code></pre>
+
+<ul>
+<li><strong>enableColumnMove()</strong> (PRO version) - allows you to move columns with drag-and-drop</li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">enableColumnMove</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onBeforeCMove&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>sInd<span class="sy0">,</span>tInd<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="kw3">confirm</span><span class="br0">&#40;</span><span class="st0">&quot;Allows you to move column &quot;</span><span class="sy0">+</span>sInd<span class="sy0">+</span><span class="st0">&quot; to position &quot;</span><span class="sy0">+</span>tInd<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//return 'true' to allow moving, 'false' - to prohibit it</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/05_drag_n_drop/01_drag_grid.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Drag and Drop between Grids</a></p>
+
+<a name='advanced'><h2>Advanced</h2></a>
+
+<p>Information stated in the <a class="link-" href="grid__drag_and_drop.html#common">'Common'</a> part is enough in most cases.</br> The current part should be used just if you want to customize existing
+drag-and-drop behaviour.</p>
+
+<p>The part covers the following topics:</p>
+
+<ul>
+<li><a href="grid__drag_and_drop.html#customtext">Custom text of the dragging items</a>;</li>
+<li><a href="grid__drag_and_drop.html#denydrag">Denying dragging of specific items</a>;</li>
+<li><a href="grid__drag_and_drop.html#denydrop">Denying dropping to specific positions</a>;</li>
+<li><a href="grid__drag_and_drop.html#switch">Switching between 'move' and 'copy' behaviors</a>;</li>
+<li><a href="grid__drag_and_drop.html#customization">Customizing the 'Drag' action</a>;</li>
+<li><a href="grid__drag_and_drop.html#drag">Dragging between several grids</a>;</li>
+<li><a href="grid__drag_and_drop.html#events">Related events</a>.</li>
+</ul>
+
+<h3 id="customtext">Custom text of the dragging items</h3>
+
+<p>To redefine the text displaying for the dragging item(s), use the <strong>rowToDragElement</strong> property. Inside the dragged text you can use any HTML.</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">rowToDragElement</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">//any custom logic here</span>
+    <span class="kw1">return</span> text<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Let's consider use-cases of specifying the following content:</p>
+
+<ul>
+<li>A fixed image and the value of the dragged row in the first column:</li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">rowToDragElement</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> text <span class="sy0">=</span> <span class="st0">&quot;&lt;img src='some.gif'&gt; - &quot;</span> <span class="sy0">+</span> mygrid.<span class="me1">cellById</span><span class="br0">&#40;</span>id<span class="sy0">,</span><span class="nu0">0</span><span class="br0">&#41;</span>.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> text<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>The number of dragged items (in case of multiselect selection):</li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">rowToDragElement</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">//_dragged.length - the number of dragging items</span>
+    <span class="kw2">var</span> text <span class="sy0">=</span> mygrid._dragged.<span class="me1">length</span> <span class="sy0">+</span> <span class="st0">&quot;item(s)&quot;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> text<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>The text of the dragged items (in case of multiselect selection):</li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">rowToDragElement</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> text<span class="sy0">=</span><span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+    <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw2">var</span> i<span class="sy0">=</span><span class="nu0">0</span><span class="sy0">;</span> i<span class="sy0">&lt;</span><span class="kw1">this</span>._dragged.<span class="me1">length</span><span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span>
+        text <span class="sy0">+=</span> mygrid.<span class="me1">cellById</span><span class="br0">&#40;</span>mygrid._dragged<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="me1">idd</span><span class="sy0">,</span><span class="nu0">0</span><span class="br0">&#41;</span>.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">+</span> <span class="st0">&quot;&lt;br/&gt;&quot;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> text<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3 id="denydrag">Denying dragging of specific items</h3>
+
+<p>To deny dragging of specific items you can use the <strong>onBeforeDrag</strong> event.</p>
+
+<p>Let's assume, you load data from an XML file and want to deny dragging of some rows. For this purpose, mark 
+the unnecessary rows in any possible way, e.g. by user data:</p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;rows<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;row</span> <span class="re0">id</span>=<span class="st0">&quot;1&quot;</span><span class="re2">&gt;</span><span class="re1">&lt;cell<span class="re2">&gt;</span></span></span> data 1 <span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span><span class="re1">&lt;/row<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;row</span> <span class="re0">id</span>=<span class="st0">&quot;2&quot;</span><span class="re2">&gt;</span><span class="re1">&lt;cell<span class="re2">&gt;</span></span></span> data 2 <span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;userdata</span> <span class="re0">name</span>=<span class="st0">&quot;drag&quot;</span><span class="re2">&gt;</span></span>deny<span class="sc3"><span class="re1">&lt;/userdata<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/row<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/rows<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<p>And then define the event handler as follows:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onBeforeDrag&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// denies dragging if user data exists</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>grid.<span class="me1">getUserData</span><span class="br0">&#40;</span>id<span class="sy0">,</span><span class="st0">&quot;drag&quot;</span><span class="br0">&#41;</span><span class="sy0">==</span><span class="st0">&quot;deny&quot;</span><span class="br0">&#41;</span> <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+    <span class="co1">// allows dragging in any other case</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>                                        
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>From now on, each time d-n-d starts, user data of the dragged item will be checked, and the row can be dragged only if it isn't marked as 'denied'.</p>
+
+<h3 id="denydrop">Denying dropping to specific positions</h3>
+
+<p>To deny dropping to some positions (e.g. to allow dragging A to B, but deny dragging A to C), you can use the <strong>onDragIn</strong>  or <strong>onDrag</strong> events 
+and return <strong>false</strong> each time you want to block the operation.</p>
+
+<p>Let's assume you load data from an XML file and want to deny dropping items A to positions of items B. 
+For this purpose mark rows based on the mentioned rule in any possible way, e.g. by userdata:</p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;rows<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;row</span> <span class="re0">id</span>=<span class="st0">&quot;1&quot;</span><span class="re2">&gt;</span></span> <span class="sc3"><span class="re1">&lt;cell<span class="re2">&gt;</span></span></span> data 1 <span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span> <span class="sc3"><span class="re1">&lt;userdata</span> <span class="re0">name</span>=<span class="st0">&quot;drag&quot;</span><span class="re2">&gt;</span></span>A<span class="sc3"><span class="re1">&lt;/userdata<span class="re2">&gt;</span></span></span> <span class="sc3"><span class="re1">&lt;/row<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;row</span> <span class="re0">id</span>=<span class="st0">&quot;2&quot;</span><span class="re2">&gt;</span></span> <span class="sc3"><span class="re1">&lt;cell<span class="re2">&gt;</span></span></span> data 2 <span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span> <span class="sc3"><span class="re1">&lt;userdata</span> <span class="re0">name</span>=<span class="st0">&quot;drag&quot;</span><span class="re2">&gt;</span></span>B<span class="sc3"><span class="re1">&lt;/userdata<span class="re2">&gt;</span></span></span> <span class="sc3"><span class="re1">&lt;/row<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/rows<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<p>And then define event handler as follows:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onDragIn&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>sid<span class="sy0">,</span>tid<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// nothing can be dropped in a row marked as 'B'</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>mygrid.<span class="me1">getUserData</span><span class="br0">&#40;</span>tid<span class="sy0">,</span><span class="st0">&quot;drag&quot;</span><span class="br0">&#41;</span><span class="sy0">==</span><span class="st0">&quot;B&quot;</span><span class="br0">&#41;</span> <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span> 
+    <span class="co1">// allows dropping in any other cases</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>                                   
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//or</span>
+mygrid.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onDrag&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>sid<span class="sy0">,</span>tid<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>mygrid.<span class="me1">getUserData</span><span class="br0">&#40;</span>tid<span class="sy0">,</span><span class="st0">&quot;drag&quot;</span><span class="br0">&#41;</span><span class="sy0">==</span><span class="st0">&quot;B&quot;</span><span class="br0">&#41;</span> <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The described scenario make more sense for TreeGrid, but it can also be used with some customization in case of a plain Grid.</p>
+
+<h3 id="switch">Switching between 'move' and 'copy' behaviors</h3>
+
+<p>By default, rows are moved (not copied) during the d-n-d operation.</p>
+
+<p>To add some custom rules to this behavior use the <strong>moveRowTo()</strong> method.</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onDrag&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>sid<span class="sy0">,</span>tid<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// moves an item as a sibling of some other element</span>
+    mygrid.<span class="me1">moveRowTo</span><span class="br0">&#40;</span>sid<span class="sy0">,</span>someID<span class="sy0">,</span><span class="st0">&quot;copy&quot;</span><span class="sy0">,</span><span class="st0">&quot;sibling&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="co1">// blocks default d-n-d</span>
+    <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>                                   
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To enable the 'copy' behavior, set the <strong>enableMercyDrag</strong> command to <strong>true</strong>.</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">enableMercyDrag</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>You have one more way to set the 'copy' behavior - the <strong>dragContext</strong> object, available only for the <strong>onDrag</strong> event.</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onDrag&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>sid<span class="sy0">,</span>tid<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// copies an item instead of moving it</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span>some_check<span class="br0">&#40;</span>sid<span class="sy0">,</span>tid<span class="br0">&#41;</span><span class="br0">&#41;</span> mygrid.<span class="me1">dragContext</span>.<span class="me1">mode</span><span class="sy0">=</span><span class="st0">&quot;copy&quot;</span><span class="sy0">;</span> 
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In case of dhtmlxTreeGrid, you have the method setDragBehavior() to set the desired type of behavior:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setDragBehavior</span><span class="br0">&#40;</span><span class="st0">&quot;child&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// the item is dropped as a child of the target item</span></pre></code></pre>
+
+<p>In order not to move or copy an item and apply just some custom logic to it, just return <strong>true</strong> within the <strong>onDrag</strong> event handler.</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onDrag&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>sid<span class="sy0">,</span>tid<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    some_custom_code<span class="br0">&#40;</span>sid<span class="sy0">,</span>tid<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3 id="customization">Customizing the 'drag' action</h3>
+
+<p>The 'drag' action can be customized with the help of the <strong>onDragIn</strong>, <strong>onDragOut</strong> events.</p>
+
+<p>Let's consider the following scenario: each time the dragged item enters the borders of any possible dropping its background is coloured in red. 
+When the item is moved outside the dropping's borders - the background is cleared.</p>
+
+<pre><code><pre class="js"><span class="co1">// sid - id of dragged item , tid - id of dropping item</span>
+mygrid.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onDragIn&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>sid<span class="sy0">,</span>tid<span class="sy0">,</span>sgrid<span class="sy0">,</span>tgrid<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>tid<span class="br0">&#41;</span>    <span class="co1">// tid may be null if dropping is in the grid body</span>
+        mygrid.<span class="me1">setRowTextStyle</span><span class="br0">&#40;</span>tid<span class="sy0">,</span><span class="st0">&quot;background-color:red;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">// marks current dropping</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>                                                          
+<span class="br0">&#125;</span><span class="br0">&#41;</span>
+&nbsp;
+mygrid.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onDragOut&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>tid<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>tid<span class="br0">&#41;</span>
+        mygrid.<span class="me1">setRowTextStyle</span><span class="br0">&#40;</span>tid<span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// clears styles set on the previous step</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<h3 id="drag">Dragging between several grids</h3>
+
+<p>To customize the 'drag' action between several grids, use the <strong>gridToGrid</strong> property.</p>
+
+<pre><code><pre class="js"><span class="co1">//snippet just copies the data, without applying any modifications to it</span>
+mygrid.<span class="me1">gridToGrid</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>rowId<span class="sy0">,</span>sgrid<span class="sy0">,</span>tgrid<span class="br0">&#41;</span><span class="br0">&#123;</span>
+      <span class="kw2">var</span> z<span class="sy0">=</span><span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">;</span> 
+      <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw2">var</span> i<span class="sy0">=</span><span class="nu0">0</span><span class="sy0">;</span> i<span class="sy0">&lt;</span>sgrid.<span class="me1">getColumnCount</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span> <span class="co1">//applies to each cell in source grid</span>
+          z<span class="br0">&#91;</span>i<span class="br0">&#93;</span><span class="sy0">=</span>sgrid.<span class="me1">cellById</span><span class="br0">&#40;</span>rowId<span class="sy0">,</span>i<span class="br0">&#41;</span>.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// prepares data for the target grid</span>
+      <span class="kw1">return</span> z<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>In case when d-n-d occurs between dhtmlxTree and dhtmlxGrid, the same can be done by using the <strong>treeToGridElement</strong> and <strong>gridToTreeElement</strong> elements:</p>
+
+<pre><code><pre class="js"><span class="co1">//from dhtmlxGrid to dhtmlxTree</span>
+mygrid.<span class="me1">gridToTreeElement</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>tree<span class="sy0">,</span>treeID<span class="sy0">,</span>gridID<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// takes data from 1st column as value for tree</span>
+    <span class="kw1">return</span> <span class="kw1">this</span>.<span class="me1">cellById</span><span class="br0">&#40;</span>gridId<span class="sy0">,</span><span class="nu0">0</span><span class="br0">&#41;</span>.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">//from dhtmlxTree to dhtmlxGrid</span>
+mygrid.<span class="me1">treeToGridElement</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>tree<span class="sy0">,</span>treeID<span class="sy0">,</span>gridID<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// sets the tree text as a value of 1st column in the grid</span>
+    <span class="kw2">var</span> z<span class="sy0">=</span><span class="br0">&#91;</span>treeObj.<span class="me1">getItemText</span><span class="br0">&#40;</span>treeID<span class="br0">&#41;</span><span class="br0">&#93;</span><span class="sy0">;</span>    
+    <span class="kw1">return</span> z<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3 id="events">Related events</h3>
+
+<p>The following events are generated during the d-n-d process:</p>
+
+<ul>
+<li><a class="link-" href="api__dhtmlxgrid_onbeforedrag_event.html">onBeforeDrag</a> - fires when drag operation is started; the event can be blocked;</li>
+<li><a class="link-pro" href="api__dhtmlxgrid_ondragin_event.html">onDragIn</a> - fires when an item is dragged to another potential target; the event can be blocked;</li>
+<li><a class="link-pro" href="api__dhtmlxgrid_ondragout_event.html">onDragOut</a> - fires when an item is dragged out from the potential target;</li>
+<li><a class="link-notsure" href="api__dhtmlxgrid_ondrag_event.html">onDrag</a> - fires when an item is dragged to another target and the mouse is released; the event can be blocked;</li>
+<li><a class="link-pro" href="api__dhtmlxgrid_ondrop_event.html">onDrop</a> - fires when an item is already placed in its final position. It can be used to catch the moment when the operation is finished.</li>
+</ul>
+
+<p>In the default scenario there is no need to use any of the mentioned events, because the grid will process all the operations on its own. 
+But sometimes the default behavior needs to be customized. In this case the mentioned events can be used.</p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/05_drag_n_drop/02_pro_drag_events.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Drag-and-drop events</a></p>
+
+<!-- Content Area End -->
+			<a href='grid__drag_and_drop.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

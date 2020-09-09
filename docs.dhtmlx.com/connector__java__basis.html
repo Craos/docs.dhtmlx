@@ -1,0 +1,339 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Basic Loading  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="connector__java__reference.html">Java Connector API</a></li><li class=""><a href="connector__java__general_idea.html">General Idea of dhtmlxConnector</a></li><li class=""><a href="connector__java__init.html">Initializing Java Connector</a></li><li class=" current"><a href="connector__java__basis.html">Basic Loading</a></li><ul><li class="inner"><a href="connector__java__basis.html#loadingfromdatabasetable">Loading from database table</a></li><li class="inner"><a href="connector__java__basis.html#loadingfromdataarray">Loading from data array</a></li></ul><li class=""><a href="connector__java__dyn_loading.html">Dynamic Loading</a></li><li class=""><a href="connector__java__filtration.html">Filtering</a></li><li class=""><a href="connector__java__formatting.html">Formatting/Changing Data Before Loading</a></li><li class=""><a href="connector__java__sort.html">Sorting</a></li><li class=""><a href="connector__java__columns_in_grid.html">Select/Combobox Columns in Grid</a></li><li class=""><a href="connector__java__dp.html">Client-Side Requirement - dataProcessor</a></li><li class=""><a href="connector__java__complex_queries.html">Making Queries</a></li><li class=""><a href="connector__java__transactions.html">Transactions</a></li><li class=""><a href="connector__java__app_security.html">Security</a></li><li class=""><a href="connector__java__validation.html">Validation</a></li><li class=""><a href="connector__java__errors.html">Error Handling and Logging</a></li><li class=""><a href="connector__java__event_handling.html">Handling Events</a></li><li class=""><a href="connector__java__data_protocol.html">Data Protocol</a></li><li class=""><a href="connector__java__server_side_requirements.html">New Functions</a></li><li class=""><a href="connector__java__coding_howtos.html">HowTos</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="connector__index.html">Client-Server Communication</a><a class="n3" href="connector__java__index.html">Java Connector</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Basic Loading</h1>
+
+<p>In this chapter you'll learn how to load data from:</p>
+
+<ul>
+<li><a class="link-" href="connector__java__basis.html#loadingfromdatabasetable">database table</a></li>
+<li><a class="link-" href="connector__java__basis.html#loadingfromdataarray">data array</a></li>
+</ul>
+
+<div class='note'><p><p>In order to load data correctly, your 'id' field in the database must be auto-increment.</p>
+</p></div>
+
+<a name='loadingfromdatabasetable'><h2>Loading from database table</h2></a>
+
+<p><strong>APPLICABLE TO:</strong> Grid, TreeGrid, Tree, Combo, Scheduler</p>
+
+<p>Loading characteristics are defined at the stage of component configuration.</p>
+
+<p>There are 2 ways to specify the desired data:</p>
+
+<ul>
+<li><a href="connector__java__basis.html#one_table">by the render_table() method when you work with one table</a></li>
+<li><a href="connector__java__basis.html#several_tables">by the render_sql() method when you work with several tables</a></li>
+<li><a href="connector__java__basis.html#stored_procedures">by the render_complex_sql() method when you use it to call stored procedures in the database</a></li>
+</ul>
+
+<h3 id="one_table">Work with one table</h3>
+
+<p>When all the necessary data is placed in one database table, you should use the <strong>render_table()</strong> method:</p>
+
+<pre><code><pre class="js">grid.<span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;grid50&quot;</span><span class="sy0">,</span><span class="st0">&quot;item_id&quot;</span><span class="sy0">,</span><span class="st0">&quot;item_nm,item_cd&quot;</span><span class="sy0">,</span> <span class="st0">&quot;extra1, extra2&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>database table name</strong></li>
+<li><strong>name of the identity field</strong> (optional)</li>
+<li><strong>a list of fields</strong> which should be used as values of the component item (cells of grid, item label in tree, text of option in combo)</li>
+<li><strong>a list of extra fields</strong> (you may learn more about extra fields <a href="connector__java__basis.html#extra">here</a>)</li>
+</ul>
+
+<p>If you want to render all fields from DB (except for the key field), you can use a simplified command:</p>
+
+<pre><code><pre class="js">grid.<span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;grid50&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>That's enough to make connector implement select, insert, update and delete operations.</p>
+
+<h3 id="several_tables">Work with several tables</h3>
+
+<p>If your SQL statement contains more than one table, connector won't be able to generate insert/update/delete operations correctly and you will need to make one of the following actions:</p>
+
+<ol>
+<li>Define sql for each operation manually</li>
+<li>Use server-side events to define your own processing logic</li>
+<li>Define different configs for select and update operations</li>
+</ol>
+
+<p>The 3rd approach is shown in the code snippet below:</p>
+
+<pre><code><pre class="js"><span class="kw1">if</span><span class="br0">&#40;</span>gridConn.<span class="me1">is_select_mode</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#123;</span><span class="co1">//code for loading data</span>
+    gridConn.<span class="me1">render_sql</span><span class="br0">&#40;</span>
+        <span class="st0">&quot;Select * from tableA, tableB  where  tableA.id=tableB.id&quot;</span><span class="sy0">,</span> 
+        <span class="st0">&quot;a.id&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;name,price,other&quot;</span>
+    <span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="kw1">else</span><span class="br0">&#123;</span><span class="co1">//code for other operations - i.e. update/insert/delete</span>
+    gridConn.<span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;tableA&quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span><span class="st0">&quot;name,price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>With such init code grid will be loaded with three columns of data from 2 tables, but during saving only data from the first table will be saved.</p>
+
+<h4>Complex queries</h4>
+
+<p>You are allowed to use any SQL statements to populate a dhtmlx component through dhtmlxConnector. For complex SQL queries we strongly encourage you to use the <strong>render_complex_sql()</strong> method:</p>
+
+<pre><code><pre class="js">grid.<span class="me1">render_complex_sql</span><span class="br0">&#40;</span>
+    <span class="st0">&quot;SELECT name from tableA WHERE dept= (SELECT dept FROM tableB where name 'John')&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;contact_id&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;name,surname,age,address&quot;</span><span class="sy0">,</span> 
+    <span class="st0">&quot;extra1, extra2&quot;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong><em>sql</em> statement</strong></li>
+<li><strong>name of the identity field</strong> (optional)</li>
+<li><strong>a list of fields</strong> which should be used as values of the component item (cells for grid, item label for tree, text of option for combo)</li>
+<li><strong>a list of extra fields</strong> (you may learn more about extra fields <a href="connector__java__basis.html#extra">here</a>)</li>
+<li><strong>parent ID field name</strong> for hierarchical structures (required for tree and treegrid)</li>
+</ul>
+
+<p>In case your SQL query was against a single table, it is quite probable that insert/update/delete
+operations do not require any additional code. dhtmlxConnector will parse your SQL and generate 
+insert/update/delete statements based on the used table and fields' names.</p>
+
+<h3 id="stored_procedures">Calling stored procedures</h3>
+
+<p>Starting from version 1.5, you can load data using in SQL statements stored procedures. The library provides a special method for this need - <strong>render_complex_sql</strong>.</p>
+
+<pre><code><pre class="php">grid<span class="sy0">.</span>render_complex_sql<span class="br0">&#40;</span>
+    <span class="st0">&quot;exec usp_findusers 'John'&quot;</span><span class="sy0">,</span> 
+    <span class="st0">&quot;id&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;name,surname,age,address,phone&quot;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3 id="extra">Extra data</h3>
+
+<p>The last parameter of the <em>render_array</em>, <em>render_sql</em>, <em>render_complex_sql</em> and <em>render_table</em> methods allows defining a list of fields which will be extracted from database table but won't be sent to the client side.</p>
+
+<p>These fields can be used as attributes or flags, mapped to different properties of records (userdata, row styles, images, etc.).</p>
+
+<pre><code><pre class="js">grid.<span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;tableA&quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span><span class="st0">&quot;name,price&quot;</span><span class="sy0">,</span><span class="st0">&quot;extra1,extra2&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// or</span>
+grid.<span class="me1">render_sql</span><span class="br0">&#40;</span>
+    <span class="st0">&quot;Select * from tableA, tableB  where  tableA.id=tableB.id&quot;</span><span class="sy0">,</span> 
+    <span class="st0">&quot;table_a_id&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;name,price,other&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;extra1,extra2&quot;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>extra1 and extra2 fields will be available in all server-side events but won't be sent to client side, and won't be included in update/insert operations.</p>
+
+<h3>Tree and TreeGrid specificity</h3>
+
+<p>In case of Tree and TreeGrid, the <em>render_array</em>, <em>render_sql</em>, <em>render_complex_sql</em> methods accept one more parameter - relation ID. For default treegrid hierarchy - it's the name of the field which will be used to link parent and child records.</p>
+
+<pre><code><pre class="js">treeGrid.<span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;tableA&quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span><span class="st0">&quot;name,price&quot;</span><span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="sy0">,</span><span class="st0">&quot;parent_id&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// or</span>
+treeGrid.<span class="me1">render_sql</span><span class="br0">&#40;</span>
+    <span class="st0">&quot;Select * from tableA, tableB  where  tableA.id=tableB.id&quot;</span><span class="sy0">,</span> 
+    <span class="st0">&quot;a.id&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;name,price,other&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;parent_id&quot;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Aliases</h3>
+
+<p>To make the usage of extracted data handier you can use aliases for DB field names (makes sense only if you use server-side events):</p>
+
+<pre><code><pre class="js">grid.<span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;tableA&quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span><span class="st0">&quot;name,price(product_price)&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// or</span>
+grid.<span class="me1">render_sql</span><span class="br0">&#40;</span>
+    <span class="st0">&quot;Select *,tableA.id as aid from tableA, tableB  where  tableA.id=tableB.id&quot;</span><span class="sy0">,</span> 
+    <span class="st0">&quot;tableA.id(aid)&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;name,price(product_price),other&quot;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='loadingfromdataarray'><h2>Loading from data array</h2></a>
+
+<p>Starting from version 1.5, instead of database you can load data from an array which can be filled with any kind of external logic.</p>
+
+<p>To load data from an array, create public object(s) of any class implementing the Iterable Interface and call the method <strong>render_array</strong>.</p>
+
+<p>Beware, the method can't be used for storing data but you still can use <a class="link-" href="connector__java__event_handling.html#commonuse">event handlers</a> to intercept data saving command and process them in some custom way.</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>name of an array or an array itself</strong></li>
+<li><strong>name of the identity field</strong> (optional)</li>
+<li><strong>a list of fields</strong> which should be used as values of the component item (cells for grid, item label for tree, text of option for combo)</li>
+<li><strong>a list of extra fields</strong> (you may learn more about extra fields <a href="connector__java__basis.html#extra">here</a>)</li>
+<li><strong>parent ID field name</strong> for hierarchical structures (required for tree and treegrid)</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">public</span> <span class="kw2">class</span> SchedulerEvent <span class="br0">&#123;</span>
+&nbsp;
+ <span class="kw2">public</span> int event_id<span class="sy0">;</span>
+ <span class="kw2">public</span> String start_date<span class="sy0">;</span>
+ <span class="kw2">public</span> String end_date<span class="sy0">;</span>
+ <span class="kw2">public</span> String event_name<span class="sy0">;</span>
+&nbsp;
+ <span class="kw2">public</span> SchedulerEvent<span class="br0">&#40;</span>int id<span class="sy0">,</span> String start<span class="sy0">,</span> String end<span class="sy0">,</span> String text<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    event_id <span class="sy0">=</span> id<span class="sy0">;</span>
+    start_date <span class="sy0">=</span> start<span class="sy0">;</span>
+    end_date <span class="sy0">=</span> end<span class="sy0">;</span>
+    event_name <span class="sy0">=</span> text<span class="sy0">;</span>
+ <span class="br0">&#125;</span>
+&nbsp;
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="kw2">protected</span> <span class="kw1">void</span> configure<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    ArrayList<span class="sy0">&lt;</span>Object<span class="sy0">&gt;</span> data <span class="sy0">=</span> <span class="kw2">new</span> ArrayList<span class="sy0">&lt;</span>Object<span class="sy0">&gt;</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    data.<span class="me1">add</span><span class="br0">&#40;</span><span class="kw2">new</span> SchedulerEvent<span class="br0">&#40;</span>
+                    <span class="nu0">1</span><span class="sy0">,</span> 
+                    <span class="st0">&quot;2012-05-24 00:00&quot;</span><span class="sy0">,</span> 
+                    <span class="st0">&quot;2012-05-25 00:00&quot;</span><span class="sy0">,</span> 
+                    <span class="st0">&quot;creation time&quot;</span>
+            <span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    data.<span class="me1">add</span><span class="br0">&#40;</span><span class="kw2">new</span> SchedulerEvent<span class="br0">&#40;</span><span class="nu0">2</span><span class="sy0">,</span> <span class="st0">&quot;2010-02-16&quot;</span><span class="sy0">,</span> <span class="st0">&quot;2084-06-08&quot;</span><span class="sy0">,</span> <span class="st0">&quot;second part&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    SchedulerConnector c <span class="sy0">=</span> <span class="kw2">new</span> SchedulerConnector<span class="br0">&#40;</span><span class="kw2">null</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    c.<span class="me1">render_array</span><span class="br0">&#40;</span>data<span class="sy0">,</span> <span class="st0">&quot;event_id&quot;</span><span class="sy0">,</span><span class="st0">&quot;start_date,end_date,event_name&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p><a class="link-" href="connector__java__basis.html">Back to top</a></p>
+
+<!-- Content Area End -->
+			<a href='connector__java__basis.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

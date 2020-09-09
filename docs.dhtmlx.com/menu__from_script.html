@@ -1,0 +1,282 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Loading from Script  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxmenu.html">dhtmlXMenu API</a></li><li class=""><a href="menu__how_to_start.html">How to Start with Menu?</a></li><li class=""><a href="menu__object_constructor.html">Object Constructor</a></li><li class=""><a href="menu__xml_file.html">Loading from XML</a></li><li class=""><a href="menu__html_object.html">Loading from HTML Object</a></li><li class=" current"><a href="menu__from_script.html">Loading from Script</a></li><ul><li class="inner"><a href="menu__from_script.html#externaljsonfile">External JSON file</a></li><li class="inner"><a href="menu__from_script.html#jsonstring">JSON String</a></li><li class="inner"><a href="menu__from_script.html#jsonformattemplate">JSON Format Template</a></li></ul><li class=""><a href="menu__dynamic_loading.html">Dynamic Loading (with Ajax)</a></li><li class=""><a href="menu__configuring_menu.html">Configuring Menu</a></li><li class=""><a href="menu__configuring_menu_items.html">Configuring Menu Items</a></li><li class=""><a href="menu__skinning_menu.html">Skinning Menu</a></li><li class=""><a href="menu__fa_icons.html">Font Awesome Icons in Menu</a></li><li class=""><a href="menu__creating_context_menu.html">Creating a Context Menu</a></li><li class=""><a href="menu__used_terms.html">Used Terms</a></li><li class=""><a href="menu__handling_events.html">Handling Events</a></li><li class=""><a href="menu__using_iterator.html">Using Iterator</a></li><li class=""><a href="menu__migration.html">Migration from 3.6 to 4.0</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="menu__index.html">Menu</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Loading from Script</h1>
+
+<p>Loading data from script means that the user should write a special method for adding every menu item. In our example to add a new sibling item, a child item, a new separator and set a hotkey, we should write the following:</p>
+
+<pre><code><pre class="js"><span class="co1">// adding the first item to the menu, &quot;nextToId&quot; param is null</span>
+myMenu.<span class="me1">addNewSibling</span><span class="br0">&#40;</span><span class="kw2">null</span><span class="sy0">,</span> <span class="st0">&quot;file&quot;</span><span class="sy0">,</span> <span class="st0">&quot;File&quot;</span><span class="sy0">,</span> <span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="co1">// adding a new child item</span>
+myMenu.<span class="me1">addNewChild</span><span class="br0">&#40;</span><span class="st0">&quot;file&quot;</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="st0">&quot;file_new&quot;</span><span class="sy0">,</span> <span class="st0">&quot;New&quot;</span><span class="sy0">,</span> <span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="co1">// setting a hotkey to a button</span>
+myMenu.<span class="me1">setHotKey</span><span class="br0">&#40;</span><span class="st0">&quot;file_new&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Ctrl+N&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="co1">// adding a separator</span>
+myMenu.<span class="me1">addNewSeparator</span><span class="br0">&#40;</span><span class="st0">&quot;file_new&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>(Refer to the section <a class="link-" href="menu__configuring_menu_items.html">Configuring Menu Items</a> to learn about the methods used in the above mentioned snippet.)</p>
+
+<p>Adding first menu item with script:</p>
+
+<pre><code><pre class="js"><span class="co1">// init Menu</span>
+<span class="kw2">var</span> myMenu <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXMenuObject<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// adding first top-level item</span>
+myMenu.<span class="me1">addNewSibling</span><span class="br0">&#40;</span><span class="kw2">null</span><span class="sy0">,</span> <span class="st0">&quot;itemId&quot;</span><span class="sy0">,</span> <span class="st0">&quot;itemText&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// or</span>
+myMenu.<span class="me1">addNewChild</span><span class="br0">&#40;</span><span class="kw2">null</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="st0">&quot;itemId&quot;</span><span class="sy0">,</span> <span class="st0">&quot;itemText&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>         
+&nbsp;
+<span class="co1">// adding first sub-level checkbox/radiobutton</span>
+myMenu.<span class="me1">addCheckbox</span><span class="br0">&#40;</span><span class="st0">&quot;child&quot;</span><span class="sy0">,</span> <span class="st0">&quot;nextToId&quot;</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="st0">&quot;itemId&quot;</span><span class="sy0">,</span> <span class="st0">&quot;itemText&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+myMenu.<span class="me1">addRadioButton</span><span class="br0">&#40;</span><span class="st0">&quot;child&quot;</span><span class="sy0">,</span> <span class="st0">&quot;nextToId&quot;</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="st0">&quot;itemId&quot;</span><span class="sy0">,</span> <span class="st0">&quot;itemText&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='externaljsonfile'><h2>External JSON file</h2></a>
+
+<p>To load menu data from a JSON file use the <a class="link-" href="api__link__dhtmlxmenu_loadstruct.html">loadStruct()</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myMenu <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXMenu<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+myMenu.<span class="me1">loadStruct</span><span class="br0">&#40;</span><span class="st0">&quot;server/data.json&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// data loaded and rendered</span>
+    <span class="co1">// your code here</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The first parameter of the loadStruct() method is the path to the JSON file, while the second parameter is an optional user-defined handler.</p>
+
+<a name='jsonstring'><h2>JSON String</h2></a>
+
+<p>To load data from a JSON string, use the same method - <a class="link-" href="api__link__dhtmlxmenu_loadstruct.html">loadStruct()</a>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myMenu <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXMenu<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+myMenu.<span class="me1">loadStruct</span><span class="br0">&#40;</span><span class="st0">'{data:[{id:&quot;a1&quot;,..},{id:&quot;a2&quot;,..}]}'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// data loaded and rendered</span>
+    <span class="co1">// your code here</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The first parameter for the loadStruct() method is the JSON string, while the second parameter is an optional user-defined handler.</p>
+
+<a name='jsonformattemplate'><h2>JSON Format Template</h2></a>
+
+<pre><code><pre class="js"><span class="co1">// common for all-at-once loading</span>
+<span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;a&quot;</span><span class="sy0">,</span> items<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;a1&quot;</span><span class="sy0">,</span> ...<span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;a2&quot;</span><span class="sy0">,</span> ...<span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;a3&quot;</span><span class="sy0">,</span> ...<span class="br0">&#125;</span>
+    <span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;b&quot;</span><span class="sy0">,</span> ...<span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;c&quot;</span><span class="sy0">,</span> ...<span class="br0">&#125;</span>
+<span class="br0">&#93;</span>
+&nbsp;
+<span class="co1">// dyn.loading, root level</span>
+<span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;a&quot;</span><span class="sy0">,</span> complex<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> ...<span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;b&quot;</span><span class="sy0">,</span> complex<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> ...<span class="br0">&#125;</span>
+<span class="br0">&#93;</span>
+<span class="co1">// dyn.loading, nested levels</span>
+<span class="br0">&#123;</span>
+    parentId<span class="sy0">:</span> <span class="st0">&quot;a&quot;</span><span class="sy0">,</span>                      <span class="co1">// required, parent item id</span>
+    items<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;a1&quot;</span><span class="sy0">,</span> complex<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> ...<span class="br0">&#125;</span><span class="sy0">,</span> <span class="co1">// has subitems</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="st0">&quot;a2&quot;</span><span class="sy0">,</span> ...<span class="br0">&#125;</span>                 <span class="co1">// single item</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">// item</span>
+<span class="br0">&#123;</span>
+    id<span class="sy0">:</span>      <span class="st0">&quot;open&quot;</span>         <span class="co1">// required, will be generated automatically if empty</span>
+    text<span class="sy0">:</span>    <span class="st0">&quot;Open&quot;</span>         <span class="co1">// required, item text</span>
+    img<span class="sy0">:</span>     <span class="st0">&quot;open.gif&quot;</span>     <span class="co1">// optional, icon for enabled item</span>
+    imgdis<span class="sy0">:</span>  <span class="st0">&quot;open_dis.gif&quot;</span> <span class="co1">// optional, icon for disabled item</span>
+    enabled<span class="sy0">:</span> <span class="kw2">false</span>          <span class="co1">// optional, false to disable on init</span>
+    complex<span class="sy0">:</span> <span class="kw2">true</span>           <span class="co1">// optional, dyn.load only, true if item has subitems</span>
+    hotkey<span class="sy0">:</span>  <span class="st0">&quot;Ctrl+O&quot;</span>       <span class="co1">// optional, hotkey (text in menu only)</span>
+    userdata<span class="sy0">:</span> <span class="br0">&#123;</span>             <span class="co1">// optional, userdata, name:value pairs</span>
+        p1<span class="sy0">:</span> <span class="st0">&quot;value1&quot;</span><span class="sy0">,</span>
+        p2<span class="sy0">:</span> <span class="st0">&quot;value2&quot;</span>
+    <span class="br0">&#125;</span>
+    link<span class="sy0">:</span> <span class="br0">&#123;</span>                 <span class="co1">// optional, direct link for onclick</span>
+        target<span class="sy0">:</span> <span class="st0">&quot;blank&quot;</span>     <span class="co1">// optional, open in a new tab/window</span>
+        link<span class="sy0">:</span>   <span class="st0">&quot;url&quot;</span>       <span class="co1">// required, url to open</span>
+    <span class="br0">&#125;</span>
+    items<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span><span class="br0">&#125;</span><span class="sy0">,</span><span class="br0">&#123;</span><span class="br0">&#125;</span><span class="sy0">,</span>...<span class="br0">&#93;</span>      <span class="co1">// optional, subitems if any</span>
+    <span class="co1">// deprecated from 4.0:</span>
+    disabled<span class="sy0">:</span>      <span class="kw2">true</span>             <span class="co1">// =&gt; enabled: false</span>
+    img_disabled<span class="sy0">:</span> <span class="st0">&quot;open_dis.gif&quot;</span>    <span class="co1">// =&gt; imgdis:  &quot;open_dis.gif&quot;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">// checkbox</span>
+<span class="br0">&#123;</span>
+    id<span class="sy0">:</span>      <span class="st0">&quot;l_num&quot;</span>            <span class="co1">// required, will be generated automatically if empty</span>
+    type<span class="sy0">:</span>    <span class="st0">&quot;checkbox&quot;</span>         <span class="co1">// required, item type</span>
+    text<span class="sy0">:</span>    <span class="st0">&quot;Line Numbering&quot;</span>   <span class="co1">// required, item text</span>
+    checked<span class="sy0">:</span> <span class="kw2">true</span>               <span class="co1">// optional, true to check on init</span>
+    enabled<span class="sy0">:</span> <span class="kw2">false</span>              <span class="co1">// optional, false to disable on init</span>
+    hotkey<span class="sy0">:</span>  <span class="st0">&quot;Ctrl+L N&quot;</span>         <span class="co1">// optional, hotkey (text in menu only)</span>
+    userdata<span class="sy0">:</span> <span class="br0">&#123;</span>                 <span class="co1">// optional, userdata, name:value pairs</span>
+        p1<span class="sy0">:</span> <span class="st0">&quot;value1&quot;</span><span class="sy0">,</span>
+        p2<span class="sy0">:</span> <span class="st0">&quot;value2&quot;</span>
+    <span class="br0">&#125;</span>
+    <span class="co1">// deprecated from 4.0:</span>
+    disabled<span class="sy0">:</span> <span class="kw2">true</span>              <span class="co1">// =&gt; enabled: false</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">// radio button</span>
+<span class="br0">&#123;</span>
+    id<span class="sy0">:</span>      <span class="st0">&quot;transparent&quot;</span>      <span class="co1">// required, will be generated automatically if empty</span>
+    type<span class="sy0">:</span>    <span class="st0">&quot;radio&quot;</span>            <span class="co1">// required, item type</span>
+    group<span class="sy0">:</span>   <span class="st0">&quot;bgcolor&quot;</span>          <span class="co1">// required, radiobuttons group</span>
+    text<span class="sy0">:</span>    <span class="st0">&quot;Transparent&quot;</span>      <span class="co1">// required, item text</span>
+    checked<span class="sy0">:</span> <span class="kw2">true</span>               <span class="co1">// optional, true to check on init</span>
+    enabled<span class="sy0">:</span> <span class="kw2">false</span>              <span class="co1">// optional, false to disable on init</span>
+    hotkey<span class="sy0">:</span>  <span class="st0">&quot;Ctrl+F T&quot;</span>         <span class="co1">// optional, hotkey (text in menu only)</span>
+    userdata<span class="sy0">:</span> <span class="br0">&#123;</span>                 <span class="co1">// optional, userdata, name:value pairs</span>
+        p1<span class="sy0">:</span> <span class="st0">&quot;value1&quot;</span><span class="sy0">,</span>
+        p2<span class="sy0">:</span> <span class="st0">&quot;value2&quot;</span>
+    <span class="br0">&#125;</span>
+    <span class="co1">// deprecated from 4.0:</span>
+    disabled<span class="sy0">:</span> <span class="kw2">true</span>              <span class="co1">// =&gt; enabled: false</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">// separator</span>
+<span class="br0">&#123;</span>
+    id<span class="sy0">:</span>   <span class="st0">&quot;s_id&quot;</span>        <span class="co1">// required, will be generated automatically if empty</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;separator&quot;</span>   <span class="co1">// required, item type</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='menu__from_script.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

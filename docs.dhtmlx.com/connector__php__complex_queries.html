@@ -1,0 +1,267 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Making Queries  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="connector__php__reference.html">PHP Connector API</a></li><li class=""><a href="connector__php__general_idea.html">General Idea of dhtmlxConnector</a></li><li class=""><a href="connector__php__init.html">Initializing PHP Connector</a></li><li class=""><a href="connector__php__summarized_functionality.html">Components Functionality</a></li><li class=""><a href="connector__php__basis.html">Basic Loading</a></li><li class=""><a href="connector__php__dyn_loading.html">Dynamic Loading</a></li><li class=""><a href="connector__php__filtration.html">Filtering</a></li><li class=""><a href="connector__php__formatting.html">Formatting/Changing Data Before Loading</a></li><li class=""><a href="connector__php__sort.html">Sorting</a></li><li class=""><a href="connector__php__dp.html">Client-Side Requirement - DataProcessor</a></li><li class=" current"><a href="connector__php__complex_queries.html">Making Queries</a></li><ul><li class="inner"><a href="connector__php__complex_queries.html#simplequeries">Simple queries</a></li><li class="inner"><a href="connector__php__complex_queries.html#complexqueries">Complex queries</a></li><li class="inner"><a href="connector__php__complex_queries.html#transactions">Transactions</a></li><li class="inner"><a href="connector__php__complex_queries.html#insertoperationinoracledb">INSERT operation in Oracle DB</a></li></ul><li class=""><a href="connector__php__form_changes.html">Saving Data Changes Made in Form</a></li><li class=""><a href="connector__php__app_security.html">Security</a></li><li class=""><a href="connector__php__validation.html">Validation</a></li><li class=""><a href="connector__php__grid_data_export.html">Data Export</a></li><li class=""><a href="connector__php__db_operations.html">Elementary DB Operations with Connector</a></li><li class=""><a href="connector__php__errors.html">Error Handling and Logging</a></li><li class=""><a href="connector__php__event_handling.html">Handling Events</a></li><li class=""><a href="connector__php__extending.html">Extending Functionality</a></li><li class=""><a href="connector__php__frameworks.html">Using Connector with Popular Frameworks</a></li><li class=""><a href="connector__php__samples.html">Samples</a></li><li class=""><a href="connector__php__release_notes.html">Migration and New Functions</a></li><li class=""><a href="connector__php__coding_howtos.html">HowTos</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="connector__index.html">Client-Server Communication</a><a class="n3" href="connector__php__index.html">PHP Connector</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Making Queries</h1>
+
+<a name='simplequeries'><h2>Simple queries</h2></a>
+
+<p><strong>Applicable to:</strong> Grid, TreeGrid, Tree, Combo, Scheduler, DataView, Chart, Form, DataStore сomponents</p>
+
+<p>By default, the connector generates all INSERT/UPDATE/DELETE queries automatically, based on configuration.</p>
+
+<p>For more details on this topic, see the <a class="link-" href="connector__php__basis.html">'Basic Loading'</a> chapter.</p>
+
+<div class='note'><p><p>In case of dnd, the connector will process an action as a sequence of 'insert' and 'delete' operations.</p>
+</p></div>
+
+<a name='complexqueries'><h2>Complex queries</h2></a>
+
+<p>When you need to define your own logic you should use one of two ways:</p>
+
+<ul>
+<li><a href="connector__php__complex_queries.html#custom_quieries">defining custom SQL code for operation</a></li>
+<li><a href="connector__php__complex_queries.html#server_side_events">using server-side events to customize operations</a></li>
+</ul>
+
+<h3 id="custom_quieries">Custom queries for an action</h3>
+
+<p><strong>Applicable to:</strong> Grid, TreeGrid, Tree, Combo, Scheduler, DataView, Chart, Form, DataStore сomponents</p>
+
+<p>You can define your own SQL code for a specific action (INSERT, UPDATE or DELETE) as follows:</p>
+
+<pre><code><pre class="php"><span class="re0">$grid</span><span class="sy0">-&gt;</span><span class="me1">sql</span><span class="sy0">-&gt;</span><span class="me1">attach</span><span class="br0">&#40;</span><span class="st0">&quot;Update&quot;</span><span class="sy0">,</span><span class="st0">&quot;Update tableA set name='{name}',
+    price={price} where id={id}&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//...</span>
+<span class="re0">$grid</span><span class="sy0">-&gt;</span><span class="me1">render_complex_sql</span><span class="br0">&#40;</span><span class="st0">&quot; .. &quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span><span class="st0">&quot;price,name&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>an action's name. Possible values are: 'Update', 'Insert', 'Delete'</li>
+<li>SQL statement. It can use the fields(or their aliases) which were mentioned in the <em>render_sql</em> or <em>render_table</em> method while loading data.</li>
+</ul>
+
+<h3 id="server_side_events">Using server-side events</h3>
+
+<p><strong>Applicable to:</strong> Grid, TreeGrid, Tree, Combo, Scheduler, DataView, Chart, Form, DataStore сomponents</p>
+
+<p>To customize operations you can use the following server-side events:</p>
+
+<ul>
+<li><a class="link-" href="connector__php__beforeupdate_event.html">beforeUpdate</a></li>
+<li><a class="link-" href="connector__php__beforeinsert_event.html">beforeInsert</a></li>
+<li><a class="link-" href="connector__php__beforedelete_event.html">beforeDelete</a></li>
+<li><a class="link-" href="connector__php__beforeprocessing_event.html">beforeProcessing</a></li>
+</ul>
+
+<pre><code><pre class="php"><span class="co1">//data preprocessing before update</span>
+<span class="kw2">function</span> my_update<span class="br0">&#40;</span><span class="re0">$data</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="re0">$price</span> <span class="sy0">=</span> <span class="re0">$data</span><span class="sy0">-&gt;</span><span class="me1">get_value</span><span class="br0">&#40;</span><span class="st0">&quot;price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$price</span> <span class="sy0">=</span> <a href="http://www.php.net/intval"><span class="kw3">intval</span></a><span class="br0">&#40;</span><span class="re0">$price</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$data</span><span class="sy0">-&gt;</span><span class="me1">set_value</span><span class="br0">&#40;</span><span class="st0">&quot;price&quot;</span><span class="sy0">,</span><span class="st0">&quot;10&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span> 
+<span class="re0">$conn</span><span class="sy0">-&gt;</span><span class="me1">event</span><span class="sy0">-&gt;</span><span class="me1">attach</span><span class="br0">&#40;</span><span class="st0">&quot;beforeUpdate&quot;</span><span class="sy0">,</span><span class="st0">&quot;my_update&quot;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<pre><code><pre class="php"><span class="co1">//including an additional field to request</span>
+<span class="kw2">function</span> my_update<span class="br0">&#40;</span><span class="re0">$data</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="re0">$data</span><span class="sy0">-&gt;</span><span class="me1">add_field</span><span class="br0">&#40;</span><span class="st0">&quot;userId&quot;</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//will be included in update processing</span>
+<span class="br0">&#125;</span> 
+<span class="re0">$conn</span><span class="sy0">-&gt;</span><span class="me1">event</span><span class="sy0">-&gt;</span><span class="me1">attach</span><span class="br0">&#40;</span><span class="st0">&quot;beforeUpdate&quot;</span><span class="sy0">,</span><span class="st0">&quot;my_update&quot;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<pre><code><pre class="php"><span class="co1">//a fully custom code</span>
+<span class="kw2">function</span> my_update<span class="br0">&#40;</span><span class="re0">$data</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">global</span> <span class="re0">$conn</span><span class="sy0">;</span>
+    <span class="re0">$price</span><span class="sy0">=</span><span class="re0">$data</span><span class="sy0">-&gt;</span><span class="me1">get_value</span><span class="br0">&#40;</span><span class="st0">&quot;price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$id</span><span class="sy0">=</span><span class="re0">$data</span><span class="sy0">-&gt;</span><span class="me1">get_value</span><span class="br0">&#40;</span><span class="st0">&quot;id&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$conn</span><span class="sy0">-&gt;</span><span class="me1">sql</span><span class="sy0">-&gt;</span><span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;UPDATE some_table SET price='<span class="es4">{$price}</span>' where id=<span class="es4">{$id}</span>&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="co1">//success() marks operation as finished and stops any further action processing</span>
+    <span class="re0">$data</span><span class="sy0">-&gt;</span><span class="me1">success</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="br0">&#125;</span> 
+<span class="re0">$conn</span><span class="sy0">-&gt;</span><span class="me1">event</span><span class="sy0">-&gt;</span><span class="me1">attach</span><span class="br0">&#40;</span><span class="st0">&quot;beforeUpdate&quot;</span><span class="sy0">,</span><span class="st0">&quot;my_update&quot;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<a name='transactions'><h2>Transactions</h2></a>
+
+<p><strong>Applicable to:</strong> Grid</p>
+
+<p>Grid allows using transactions for data INSERT/UPDATE/DELETE operations (make sure that the used DB engine has the support of transactions).</p>
+
+<p>They can be enabled in 2 modes:</p>
+
+<p>1) <strong>global</strong></p>
+
+<pre><code><pre class="php"><span class="re0">$conn</span><span class="sy0">-&gt;</span><span class="me1">sql</span><span class="sy0">-&gt;</span><span class="me1">set_transaction_mode</span><span class="br0">&#40;</span><span class="st0">&quot;global&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>Component uses single transaction for all records inside of single request. </li>
+<li>If any operation fails, all record operations will be rolled back, all updated rows will be returned with error status</li>
+<li>If custom validation was assigned and has blocked any record - all the records inside of the request will be blocked</li>
+</ul>
+
+<p>2) <strong>record</strong></p>
+
+<pre><code><pre class="php"><span class="re0">$conn</span><span class="sy0">-&gt;</span><span class="me1">sql</span><span class="sy0">-&gt;</span><span class="me1">set_transaction_mode</span><span class="br0">&#40;</span><span class="st0">&quot;record&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>Component uses separate transactions for each record in request</li>
+<li>If any operation fails, it will not affect other operations</li>
+</ul>
+
+<a name='insertoperationinoracledb'><h2>INSERT operation in Oracle DB</h2></a>
+
+<p><strong>Applicable to:</strong> Grid, TreeGrid, Tree, Combo, Scheduler, DataView, Chart, Form, DataStore сomponents</p>
+
+<p>Oracle doesn't have auto ID generation functionality, so you need to provide some custom ID for each insert operation.</p>
+
+<p>There are 2 ways to achieve this:</p>
+
+<p>1) <strong>custom ID generation</strong> - id generated by PHP code</p>
+
+<pre><code><pre class="php"><span class="kw2">function</span> pre_insert<span class="br0">&#40;</span><span class="re0">$data</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="re0">$new_id</span> <span class="sy0">=</span> <a href="http://www.php.net/time"><span class="kw3">time</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">%</span><span class="nu19">10000</span><span class="sy0">;</span> <span class="co1">//any other ID generation logic can be used here</span>
+    <span class="re0">$data</span><span class="sy0">-&gt;</span><span class="me1">add_field</span><span class="br0">&#40;</span><span class="st0">&quot;EMPLOYEE_ID&quot;</span><span class="sy0">,</span><span class="re0">$new_id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+<span class="re0">$grid</span><span class="sy0">-&gt;</span><span class="me1">event</span><span class="sy0">-&gt;</span><span class="me1">attach</span><span class="br0">&#40;</span><span class="st0">&quot;beforeInsert&quot;</span><span class="sy0">,</span><span class="st0">&quot;pre_insert&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$grid</span><span class="sy0">-&gt;</span><span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;EMPLOYEES&quot;</span><span class="sy0">,</span><span class="st0">&quot;EMPLOYEE_ID&quot;</span><span class="sy0">,</span><span class="st0">&quot;FIRST_NAME,LAST_NAME&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>2) <strong>using sequence</strong> for ID generation</p>
+
+<pre><code><pre class="php"><span class="re0">$grid</span><span class="sy0">-&gt;</span><span class="me1">sql</span><span class="sy0">-&gt;</span><span class="me1">sequence</span><span class="br0">&#40;</span><span class="st0">&quot;EMPLOYEES_INC.nextVal&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//sequence name</span>
+<span class="re0">$grid</span><span class="sy0">-&gt;</span><span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;EMPLOYEES&quot;</span><span class="sy0">,</span><span class="st0">&quot;EMPLOYEE_ID&quot;</span><span class="sy0">,</span><span class="st0">&quot;FIRST_NAME,LAST_NAME&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='connector__php__complex_queries.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

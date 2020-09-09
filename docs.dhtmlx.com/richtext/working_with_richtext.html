@@ -1,0 +1,257 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1591766949.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1591766949.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="RichText Docs" href="https://docs.dhtmlx.com/richtext/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Working with RichText  RichText Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/c/widgets/richtext">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="initialization.html">Initialization</a></li><li class=""><a href="configuration.html">Configuration</a></li><li class=""><a href="localization.html">Localization</a></li><li class=""><a href="loading_data.html">Setting Content</a></li><li class=" current"><a href="working_with_richtext.html">Working with RichText</a></li><ul><li class="inner"><a href="working_with_richtext.html#gettingcontentfromeditor">Getting content from editor</a></li><li class="inner"><a href="working_with_richtext.html#statistics">Statistics</a></li><li class="inner"><a href="working_with_richtext.html#fullscreenmode">Full screen mode</a></li><li class="inner"><a href="working_with_richtext.html#editorapi">Editor API</a></li></ul><li class=""><a href="customization.html">Customization</a></li><li class=""><a href="event_handling.html">Event Handling</a></li><li class=""><a href="angular_integration.html">Integration with Angular</a></li><li class=""><a href="react_integration.html">Integration with React</a></li><li class=""><a href="vuejs_integration.html">Integration with Vue.js</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Working with RichText</h1>
+
+<p>The API of dhtmlxRichText includes a basic set of methods that let you perform operations on the component. You can serialize edited text into either HTML or Markdown formats, get the number of the typed characters and enter/exit the full screen mode of the editor on the fly.</p>
+
+<a name='gettingcontentfromeditor'><h2>Getting content from editor</h2></a>
+
+<p>After you've entered the necessary text into the editor and formatted it to your taste, you can save the result in any of <a class="link-" href="loading_data.html#formatofcontent">supported formats</a>.</p>
+
+<p>To save the edited text, make use of the <a class="link-" href="api__richtext_getvalue.html">getValue</a> method. The method takes an only parameter:</p>
+
+<ul>
+<li><strong>mode</strong> - (<em>string</em>) the format the text should be saved in: "html", "markdown" or "text" (for a plain text). "html" is used by default</li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">// getting content in the Markdown format</span>
+<span class="kw2">var</span> content <span class="sy0">=</span> richtext.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="st0">&quot;markdown&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/03_usage/01_get_value.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Getting content.</a></p>
+
+<p>If you are in two minds about how to add content into the RichText editor, there is the <a class="link-" href="loading_data.html">Setting Content</a> article.</p>
+
+<a name='statistics'><h2>Statistics</h2></a>
+
+<p>RichText editor allows you to show statistics about the edited text. There is the <strong>Statistics</strong> control in the toolbar that serves for this purpose:</p>
+
+<p><img src="media/stats_control.png" alt="Statistics control" /></p>
+
+<h3>Getting statistics</h3>
+
+<p>You can provide users with information about the number of characters, words and characters excluding spaces with the help of the <a class="link-" href="api__richtext_getstats.html">getStats</a> method.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> stats <span class="sy0">=</span> richtext.<span class="me1">getStats</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The method returns an object with available statistical data about the text edited in the RichText editor. For example:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>chars<span class="sy0">:</span> <span class="nu0">467</span><span class="sy0">,</span> words<span class="sy0">:</span> <span class="nu0">80</span><span class="sy0">,</span> charsExlSpace<span class="sy0">:</span> <span class="nu0">393</span><span class="br0">&#125;</span></pre></code></pre>
+
+<p><a href='samples/03_usage/02_get_stats.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Getting statistics.</a></p>
+
+<p>You can also get each field of statistical data separately, as it described below.</p>
+
+<h4>Characters</h4>
+
+<p>To return the count of characters typed into the editor, use the <strong>chars</strong> property:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> chars <span class="sy0">=</span> richtext.<span class="me1">getStats</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">chars</span><span class="sy0">;</span></pre></code></pre>
+
+<h4>Words</h4>
+
+<p>To return the count of words typed into the editor, use the <strong>words</strong> property:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> chars <span class="sy0">=</span> richtext.<span class="me1">getStats</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">words</span><span class="sy0">;</span></pre></code></pre>
+
+<h4>Characters without spaces</h4>
+
+<p>To return the count of characters typed into the editor excluding the number of spaces, use the <strong>charsExlSpace</strong> property:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> chars <span class="sy0">=</span> richtext.<span class="me1">getStats</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">charsExlSpace</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>How to display statistics</h3>
+
+<p>Using the <a class="link-" href="api__richtext_getstats.html">getStats</a> method you can display info on the number of entered characters in any part of your application. For example, in a separate container by a click on a button:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>button onclick<span class="sy0">=</span><span class="st0">&quot;calc()&quot;</span> <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_btn dhx_btn--flat&quot;</span><span class="sy0">&gt;</span>Characters Count<span class="sy0">&lt;/</span>button<span class="sy0">&gt;</span>
+&nbsp;
+<span class="sy0">&lt;</span>div<span class="sy0">&gt;</span>
+    The count of characters<span class="sy0">:</span> <span class="sy0">&lt;</span>span id<span class="sy0">=</span><span class="st0">&quot;characters-amount&quot;</span><span class="sy0">&gt;&lt;/</span>span<span class="sy0">&gt;</span>
+<span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span>
+&nbsp;
+<span class="kw2">function</span> calc<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+   document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">'characters-amount'</span><span class="br0">&#41;</span>.<span class="me1">innerText</span> <span class="sy0">=</span> richtext.<span class="me1">getStats</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">chars</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p><a href='samples/03_usage/02_get_stats.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Getting statistics.</a></p>
+
+<h3 id="customstats">Custom statistics</h3>
+
+<p>Besides the default statistical data, you can display any custom data via the <a class="link-" href="api__richtext_customstats_config.html">customStats</a> configuration option. Set an array with necessary statistical parameters as a value of this option. 
+Each parameter represents an object with two properties:</p>
+
+<ul>
+<li><strong>name</strong> - (<em>string</em>) the name of the field that should be displayed</li>
+<li><strong>callback</strong> - (<em>function</em>) a function that implements the logic of counting entries of the specified field</li>
+</ul>
+
+<p>In the example below the editor shows the number of sentences together with the count of characters and words:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> rich <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Richtext</span><span class="br0">&#40;</span><span class="st0">&quot;rich&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    customStats<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+           <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;chars&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>
+           <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;words&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>
+           <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;sentences&quot;</span><span class="sy0">,</span>
+           cb<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>text<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+               <span class="kw2">var</span> rawSentences <span class="sy0">=</span> text.<span class="me1">split</span><span class="br0">&#40;</span><span class="co2">/[.?!]+/</span><span class="br0">&#41;</span><span class="sy0">;</span>
+               <span class="kw2">var</span> count <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span>
+               <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw2">var</span> i<span class="sy0">=</span><span class="nu0">0</span><span class="sy0">;</span> i<span class="sy0">&lt;</span>rawSentences.<span class="me1">length</span><span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+                   <span class="kw1">if</span> <span class="br0">&#40;</span>rawSentences<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="me1">length</span> <span class="sy0">&gt;</span> <span class="nu0">0</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+                       count <span class="sy0">+=</span> <span class="nu0">1</span><span class="sy0">;</span>
+                   <span class="br0">&#125;</span>
+               <span class="br0">&#125;</span>
+               <span class="kw1">return</span> count<span class="sy0">;</span>
+           <span class="br0">&#125;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    toolbarBlocks<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;default&quot;</span><span class="sy0">,</span> <span class="st0">&quot;stats&quot;</span><span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/custom_stats.png" alt="Custom statistics" /></p>
+
+<p><a href='samples/02_configuration/04_custom_stats.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom stats.</a></p>
+
+<a name='fullscreenmode'><h2>Full screen mode</h2></a>
+
+<p>You can enter/exit the full screen mode for the Rich text editor with the help of the corresponding API methods: <a class="link-" href="api__richtext_fullscreen.html">fullScreen</a> and <a class="link-" href="api__richtext_exitfullscreen.html">exitFullScreen</a>:</p>
+
+<pre><code><pre class="js"><span class="co1">// enter full screen</span>
+richtext.<span class="me1">fullScreen</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// exit full screen</span>
+richtext.<span class="me1">exitFullScreen</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='editorapi'><h2>Editor API</h2></a>
+
+<p>The editor of RichText contains a set of methods that make it easy to work with text on the fly. In order to get access to the API of the editor, call the <a class="link-" href="api__richtext_geteditorapi.html">getEditorAPI</a> method.
+It returns an object with all available methods.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> EditorAPI <span class="sy0">=</span> richtext.<span class="me1">getEditorAPI</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The list of methods included into the object returned by the <strong>getEditorAPI()</strong> method is the following:</p>
+
+<ul>
+<li><a class="link-" href="api__editor_api__add.html">add</a> </li>
+<li><a class="link-" href="api__editor_api__getmodel.html">getModel</a></li>
+<li><a class="link-" href="api__editor_api__getposition.html">getPosition</a></li>
+<li><a class="link-" href="api__editor_api__getselection.html">getSelection</a></li>
+<li><a class="link-" href="api__editor_api__remove.html">remove</a> </li>
+<li><a class="link-" href="api__editor_api__setmodel.html">setModel</a></li>
+<li><a class="link-" href="api__editor_api__setselection.html">setSelection</a></li>
+<li><a class="link-" href="api__editor_api__update.html">update</a> </li>
+</ul>
+
+<p>For example, to add a text into the RichText editor, use the following code:</p>
+
+<pre><code><pre class="js">richtext.<span class="me1">getEditorAPI</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="st0">&quot;text&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/06_editor_api/06_add.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Adding text.</a></p>
+
+<!-- Content Area End -->
+			<a href='working_with_richtext.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='initialization.html'>Initialization</a></li>	
+	<li><a href='working_with_richtext.html'>Main Operations</a></li>
+	<li><a href='loading_data.html'>Setting Content</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Look and Feel</li>
+	<li><a href='configuration.html'>Configuration</a></li>
+	<li><a href='customization.html'>Customization</a></li>
+	<li><a href='localization.html'>Localization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Integration</li>
+	<li><a href='angular_integration.html'>RichText and Angular</a></li>
+	<li><a href='react_integration.html'>RichText and React</a></li>
+	<li><a href='vuejs_integration.html'>RichText and Vue.js</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__richtext.html#methods'>Methods</a></li>
+	<li><a href='api__refs__richtext.html#config'>Properties</a></li>
+	<li><a href='api__refs__richtext.html#events'>Events</a></li>
+</ul>
+
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

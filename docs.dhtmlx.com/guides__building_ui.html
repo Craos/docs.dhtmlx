@@ -1,0 +1,325 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>DHTMLX Coding Principles  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="guides__package_structure.html">DHTMLX Package Structure</a></li><li class=" current"><a href="guides__building_ui.html">DHTMLX Coding Principles</a></li><ul><li class="inner"><a href="guides__building_ui.html#positioningcomponentsonthepage">Positioning components on the page</a></li><li class="inner"><a href="guides__building_ui.html#initializingcomponents">Initializing components</a></li><li class="inner"><a href="guides__building_ui.html#handlingevents">Handling events</a></li><li class="inner"><a href="guides__building_ui.html#settingglobalparameters">Setting global parameters</a></li></ul><li class=""><a href="guides__lib_compiler.html">Using libCompiler</a></li><li class=""><a href="guides__demo_for_support.html">Creating a Demo for Support</a></li><li class=""><a href="guides__using_typescript.html">Using DHTMLX with TypeScript</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="guides__index.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>DHTMLX Coding Principles</h1>
+
+<p>This article describes different ways to organize and design the user interface for your app.</p>
+
+<a name='positioningcomponentsonthepage'><h2>Positioning components on the page</h2></a>
+
+<p>Actually, to structure a page you can use usual HTML and <a href="guides__building_ui.html#attach_to_html_obj">place components into specified HTML elements</a>. It will work well if you need to have a few components on the page.</p>
+
+<p class='snippet'>
+Attaching DHTMLX components to HTML elements on the page
+</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;mygrid_box&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width:600px; height:160px;float:left;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;myform_box&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width:350px; height:160px; padding-left:10px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">    <span class="kw2">var</span> mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">&quot;mygrid_box&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>   <span class="co1">// initializes a grid in DIV                          </span>
+    <span class="kw2">var</span> myform <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXForm<span class="br0">&#40;</span><span class="st0">&quot;myform_box&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>         <span class="co1">// initializes a form in DIV</span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p><br></p>
+
+<p>But if the amount of components is rather big, we recommend using special layout components of the DHTMLX library to design the page:</p>
+
+<ol>
+<li><a class="link-" href="layout__index.html">dhtmlxLayout</a> - arranges the content in columns and rows where after you can place different components, including another dhtmlxLayout objects.</li>
+<li><a class="link-" href="accordion__index.html">dhtmlxAccordion</a> - presents the content in multiple horizontal or vertical panes. </li>
+<li><a class="link-" href="tabbar__index.html">dhtmlxTabbar</a> - presents a navigation tab panel that keeps a set of views and displays one view at a time.</li>
+</ol>
+
+<table class="list" cellspacing="0" cellpadding="5" border="0">
+    <thead>
+    <tr>
+        <th>
+            Layout      
+        </th>
+        <th style="text-align:center;">
+            Accordion
+        </th>
+        <th style="text-align:center;">
+            Tabbar
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><img style="margin: 20px auto 20px auto;display: block;box-shadow: #D8D8D8 0px 0px 7px 1px;" src="media/auxiliary_docs/layout_in_table.png"/></td>
+        <td><img style="margin: 20px auto 20px auto;display: block;box-shadow: #D8D8D8 0px 0px 7px 1px;" src="media/auxiliary_docs/accordion_in_table.png"/></td>
+        <td><img style="margin: 20px auto 20px auto;display: block;box-shadow: #D8D8D8 0px 0px 7px 1px;" src="media/auxiliary_docs/tabbar_in_table.png"/></td>
+    </tr>
+    </tbody>
+</table>
+
+<p>The main of them is <a class="link-" href="layout__index.html">dhtmlxLayout</a> using which you can define any structure for the page. 
+Hereafter we will talk about it in detail. The use of other components you can find in the related documentation (<a class="link-" href="accordion__index.html">dhtmlxAccordion documentation</a>, <a class="link-" href="tabbar__index.html">dhtmlxTabbar documentation</a>).</p>
+
+<h3>Using dhtmlxLayout</h3>
+
+<p>dhtmlxLayout allows you to arrange the content in any desirable number of columns and rows. There is a big number of <a class="link-" href="layout__patterns.html">predefined patterns</a>.
+Moreover, you can <a href="guides__building_ui.html#nesting_layouts">insert layouts into each other</a> to create really complex structures. As for <a class="link-" href="menu__index.html">menu</a> and <a class="link-" href="toolbar__index.html">toolbar</a>, 
+you can add them both to the whole layout and to a specific cell.</p>
+
+<p>So, you place layout(s) on the page and then <a href="guides__building_ui.html#attaching_content">allocate DHTMLX components, HTML objects, etc. in the created cells</a>:</p>
+
+<p class='snippet'>
+Attaching a DHTMLX component to a layout's cell
+</p>
+
+<pre><code><pre class="js"><span class="xtra ln-xtra">myLayout <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXLayout<span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span><span class="st0">&quot;4I&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>myGrid <span class="sy0">=</span> myLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;a&quot;</span><span class="br0">&#41;</span>.<span class="me1">attachGrid</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The dhtmlXLayout() constructor takes 2 parameters:</p>
+
+<ol>
+<li>An HTML container for the layout.</li>
+<li>The <a class="link-" href="layout__patterns.html">layout's pattern</a>.</li>
+</ol>
+
+<h4>Referring to layout's cells</h4>
+
+<p>To refer to a layout's cell, the <a class="link-" href="api__dhtmlxlayout_cells.html">cells</a> method is used. The method takes the cell id as a parameter and returns the cell object.</p>
+
+<p>By default, cells have 1-letter ids taken in the alphabetical order from left to right, from top to bottom: "a", "b", "c" and so further.</p>
+
+<p><img style="margin: 20px auto 20px auto;display: block;box-shadow: #D8D8D8 0px 0px 7px 1px;" src="media/auxiliary_docs/cells_ids.png"/></p>
+
+<pre><code><pre class="js"><span class="xtra ln-xtra">myLayout <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXLayout<span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span><span class="st0">&quot;4I&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span><span class="kw2">var</span> cellA <span class="sy0">=</span> myLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;a&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h4 id="attaching_content">Attaching content to layout's cells</h4>
+
+<p>Detailed information about the types of content you can attach to cells and the ways that you can do this is given in the article <a class="link-" href="layout__attach_components.html">Attaching Components</a>.</p>
+
+<h4 id="nesting_layouts">Nesting layouts into each other</h4>
+
+<p>If none of the predefined layout patterns fits you, you can create any structure by inserting layouts into each other.</p>
+
+<p>For example:</p>
+
+<pre><code><pre class="js">dhxLayout <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXLayoutObject<span class="br0">&#40;</span><span class="st0">&quot;parentId&quot;</span><span class="sy0">,</span> <span class="st0">&quot;3J&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+dhxLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;b&quot;</span><span class="br0">&#41;</span>.<span class="me1">hideHeader</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dhxLayout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;b&quot;</span><span class="br0">&#41;</span>.<span class="me1">attachLayout</span><span class="br0">&#40;</span><span class="st0">&quot;3E&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>As a result, you will get a combination of two layout patterns:</p>
+
+<p><img style="border: 1px #C4C4C5 solid;margin: 20px auto 20px auto;display: block;box-shadow: #D8D8D8 0px 0px 7px 1px;" src="media/auxiliary_docs/nesting_layouts.png"/></p>
+
+<a name='initializingcomponents'><h2>Initializing components</h2></a>
+
+<p>There are 2 ways to initialize any component of the library:</p>
+
+<ol>
+<li>In an HTML element.</li>
+<li>In a cell of a layout component (<a class="link-" href="layout__index.html">dhtmlxLayout</a>, <a class="link-" href="accordion__index.html">dhtmlxAccordion</a>, etc.).</li>
+</ol>
+
+<h3 id="attach_to_html_obj">Initializing a DHTMLX component in an HTML element</h3>
+
+<p>It's a common way of initialization, components are initialized through the constructor function.</p>
+
+<p class='snippet'>
+Initializing a grid
+</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;box&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width: 600px; height: 400px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">myGrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">&quot;box&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<ul>
+<li>The names of all constructors coincide with the names of components.</li>
+<li>The constructors take different parameters (depending on a component) but one of parameters is a constant - an HTML container (or its id) where a component's instance will be created.</li>
+<li>Some components allow changing the parent HTML item after initialization. Another way to relocate a component on the page is to relocate its HTML container. </li>
+</ul>
+
+<h3>Initializing a DHTMLX component in a cell of a layout component</h3>
+
+<p>To initialize DHTMLX components in a specific cell of a layout component, you need to use the <strong>attach&#91;componentName&#93;</strong> methods.</p>
+
+<p>Generally, such methods look like this: <strong>layout.cells("cell_id").attach&#91;componentName&#93;</strong>:</p>
+
+<pre><code><pre class="js">myAccordion <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXAccordion<span class="br0">&#40;</span>document.<span class="me1">body</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">myGrid <span class="sy0">=</span> myAccordion.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;a&quot;</span><span class="br0">&#41;</span>.<span class="me1">attachGrid</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p>The way is similar to the previous one with the only difference - instead of a constructor function you need to write the 'attach' method of a layout (or more exactly, the method of a separate layout cell). 
+As a result, the component is initialized directly in the appropriate cell.</p>
+
+<a name='handlingevents'><h2>Handling events</h2></a>
+
+<p>To attach an event handler to any DHTMLX component, you need to use the <a class="link-" href="api__link__dhtmlxlayout_attachevent.html">attachEvent</a> method as in:</p>
+
+<pre><code><pre class="js">componentObj.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onSomeEvent&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// handler code</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The method takes 2 parameters:</p>
+
+<ul>
+<li><strong>name</strong> - (<em>string</em>) the event name.</li>
+<li><strong>handler</strong> - (<em>function</em>) the handler function.</li>
+</ul>
+
+<p>Handler functions take different parameters depending on the attached events.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myGrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+myGrid.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onRowSelect&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>rowId<span class="sy0">,</span>cellInd<span class="br0">&#41;</span><span class="br0">&#123;</span>
+   <span class="kw3">alert</span><span class="br0">&#40;</span><span class="st0">&quot;The row &quot;</span><span class="sy0">+</span> rowId <span class="sy0">+</span><span class="st0">&quot; is selected. The cell &quot;</span><span class="sy0">+</span> cellInd <span class="sy0">+</span><span class="st0">&quot; is clicked.&quot;</span><span class="br0">&#41;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>You can find the full list of events and detailed information about their parameters in the "API Reference" chapter of the related component documentation.</p>
+
+<a name='settingglobalparameters'><h2>Setting global parameters</h2></a>
+
+<p>There are some parameters which can be set for all components on the page at once. Currently, they are:</p>
+
+<ol>
+<li>The skin's name.</li>
+<li>The relative path to the source images (relative to your HTML file). </li>
+</ol>
+
+<pre><code><pre class="js">dhtmlx.<span class="me1">skin</span> <span class="sy0">=</span> <span class="st0">&quot;dhx_terrace&quot;</span><span class="sy0">;</span> <span class="co1">// sets the &quot;dhx_terrace&quot; skin for components on the page</span>
+<span class="co1">// indicates that source images for components are in the directory &quot;./codebase/imgs&quot;</span>
+dhtmlx.<span class="me1">image_path</span> <span class="sy0">=</span> <span class="st0">&quot;codebase/imgs/&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The lines above set the "dhx_terrace" skin and specify the path to the source images for all the components on the page.</p>
+
+<div class='note'><p><p>If these properties are set for concrete objects later, they will have a higher priority status.</p>
+</p></div>
+
+<!-- Content Area End -->
+			<a href='guides__building_ui.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

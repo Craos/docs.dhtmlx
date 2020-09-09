@@ -1,0 +1,308 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Work with Toolbar  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="toolbar__api__refs__toolbar.html">Toolbar API</a></li><li class=""><a href="toolbar__how_to_start.html">Initialization</a></li><li class=""><a href="toolbar__controls_list.html">List of Toolbar Controls</a></li><li class=""><a href="toolbar__load_data.html">Data Loading</a></li><li class=" current"><a href="toolbar__common_methods.html">Work with Toolbar</a></li><ul><li class="inner"><a href="toolbar__common_methods.html#settinggettingvaluesandstates">Setting/getting values and states</a></li><li class="inner"><a href="toolbar__common_methods.html#hidingandshowingcontrols">Hiding and showing controls</a></li><li class="inner"><a href="toolbar__common_methods.html#disablingandenablingcontrols">Disabling and enabling controls</a></li><li class="inner"><a href="toolbar__common_methods.html#checkingifatoolbaritemisdisabled">Checking if a Toolbar item is disabled</a></li><li class="inner"><a href="toolbar__common_methods.html#addingatooltiptoacontrol">Adding a tooltip to a control</a></li><li class="inner"><a href="toolbar__common_methods.html#usingtreecollectionapi">Using Tree collection API</a></li></ul><li class=""><a href="toolbar__customization.html">Customization</a></li><li class=""><a href="toolbar__handling_events.html">Event Handling</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="toolbar__index.html">Toolbar</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Work with Toolbar</h1>
+
+<a name='settinggettingvaluesandstates'><h2>Setting/getting values and states</h2></a>
+
+<p>You can change the value or state (for a TwoState button) of a control with the help of the <a class="link-" href="toolbar__api__toolbar_setstate_method.html">setState()</a> method. It takes one parameter: a <em>key-value</em> pair with the ID of the control and its new value (state).</p>
+
+<p>Here is how you can use it to change the state of a TwoState button:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;button&quot;</span><span class="sy0">,</span> twoState<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span> id<span class="sy0">:</span><span class="st0">&quot;check&quot;</span><span class="br0">&#125;</span>
+...
+<span class="me1">toolbar</span>.<span class="me1">setState</span><span class="br0">&#40;</span><span class="br0">&#123;</span><span class="st0">&quot;check&quot;</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//or</span>
+toolbar.<span class="me1">setState</span><span class="br0">&#40;</span><span class="br0">&#123;</span><span class="st0">&quot;check&quot;</span><span class="sy0">:</span><span class="kw2">false</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>And this is how you can change the value of an input:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;input&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span><span class="st0">&quot;name&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span><span class="st0">&quot;&quot;</span><span class="br0">&#125;</span>
+...
+<span class="me1">toolbar</span>.<span class="me1">setState</span><span class="br0">&#40;</span><span class="br0">&#123;</span><span class="st0">&quot;name&quot;</span><span class="sy0">:</span><span class="st0">&quot;Maintenance&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/h34uh1dr' target='blank'><span class='sample'>Related sample: </span>&nbsp;Toolbar. Set State</a></p>
+
+<p>To get the current value of the control, use the <a class="link-" href="toolbar__api__toolbar_getstate_method.html">getState()</a> method.</p>
+
+<p>This is what the method returns for a TwoState button:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;button&quot;</span><span class="sy0">,</span> twoState<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span> id<span class="sy0">:</span><span class="st0">&quot;check&quot;</span><span class="br0">&#125;</span>
+...
+<span class="me1">toolbar</span>.<span class="me1">getState</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// { &quot;check&quot;:true }</span>
+<span class="co1">// or</span>
+<span class="co1">// { &quot;check&quot;:false }</span></pre></code></pre>
+
+<p>And this is a possible return value for an input:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;input&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span><span class="st0">&quot;name&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span><span class="st0">&quot;Maintenance&quot;</span><span class="br0">&#125;</span>
+...
+<span class="me1">toolbar</span>.<span class="me1">getState</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//{&quot;name&quot;:&quot;Maintenance&quot;}</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/kvttdgad' target='blank'><span class='sample'>Related sample: </span>&nbsp;Toolbar. Get State</a></p>
+
+<a name='hidingandshowingcontrols'><h2>Hiding and showing controls</h2></a>
+
+<p>You can show or hide controls by their IDs. Pass them to the corresponding methods - <a class="link-" href="toolbar__api__toolbar_show_method.html">show()</a> and <a class="link-" href="toolbar__api__toolbar_hide_method.html">hide()</a>:</p>
+
+<pre><code><pre class="js">toolbar.<span class="me1">hide</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// hides a control</span>
+toolbar.<span class="me1">show</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// shows a control</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/cldp89u4' target='blank'><span class='sample'>Related sample: </span>&nbsp;Toolbar. Hide/Show</a></p>
+
+<a name='disablingandenablingcontrols'><h2>Disabling and enabling controls</h2></a>
+
+<p>You can disable or enable controls. The related methods - <a class="link-" href="toolbar__api__toolbar_enable_method.html">enable()</a> and <a class="link-" href="toolbar__api__toolbar_disable_method.html">disable()</a> - take the IDs of controls as parameters:</p>
+
+<pre><code><pre class="js">toolbar.<span class="me1">disable</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// disables a control</span>
+toolbar.<span class="me1">enable</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>  <span class="co1">// enables a control</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/ovblenaf' target='blank'><span class='sample'>Related sample: </span>&nbsp;Toolbar. Enable/Disable</a></p>
+
+<a name='checkingifatoolbaritemisdisabled'><h2>Checking if a Toolbar item is disabled</h2></a>
+
+<p>To check if an item of Toolbar is disabled, call the <a class="link-" href="toolbar__api__toolbar_isdisabled_method.html">isDisabled()</a> method. The method takes one parameter:</p>
+
+<ul>
+<li><strong>id</strong> - (<em>string</em>) an id of a menu item</li>
+</ul>
+
+<pre><code><pre class="js">menu.<span class="me1">isDisabled</span><span class="br0">&#40;</span><span class="st0">&quot;1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; true/false</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/ovblenaf' target='blank'><span class='sample'>Related sample: </span>&nbsp;Toolbar. Enable/Disable</a></p>
+
+<a name='addingatooltiptoacontrol'><h2>Adding a tooltip to a control</h2></a>
+
+<p>You can attach a tooltip to a control. For this you need to provide the <strong>tooltip</strong> property with the tooltip text in the control object before the toolbar initialization:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;text&quot;</span><span class="sy0">,</span>
+    value<span class="sy0">:</span> <span class="st0">&quot;test1&quot;</span><span class="sy0">,</span>
+    tooltip<span class="sy0">:</span> <span class="st0">&quot;tooltip for test1&quot;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/105levtd' target='blank'><span class='sample'>Related sample: </span>&nbsp;Toolbar. Tooltips</a></p>
+
+<a name='usingtreecollectionapi'><h2>Using Tree collection API</h2></a>
+
+<p>You can manipulate the controls of Toolbar with the help of the <a class="link-" href="tree_collection__api__refs__treecollection.html">Tree collection API</a>.</p>
+
+<h3>Adding new controls into Toolbar</h3>
+
+<p>It is possible to add more controls into the initialized Toolbar on the fly. Use the <strong>add()</strong> method of Tree Collection. It takes three parameters:</p>
+
+<ul>
+<li><strong>config</strong> - (<em>object</em>) the configuration object of the added control</li>
+<li><strong>index</strong> - (<em>number</em>) optional, the position to add a control at</li>
+<li><strong>parent</strong> - (<em>string</em>) optional, the id of a parent control (for the <em>menuItem</em> control type)</li>
+</ul>
+
+<pre><code><pre class="js">toolbar.<span class="me1">data</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    type<span class="sy0">:</span><span class="st0">&quot;button&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span><span class="st0">&quot;Add&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+toolbar.<span class="me1">data</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    type<span class="sy0">:</span><span class="st0">&quot;separator&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+toolbar.<span class="me1">data</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    type<span class="sy0">:</span><span class="st0">&quot;button&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span><span class="st0">&quot;Remove&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/r6jv9kk2' target='blank'><span class='sample'>Related sample: </span>&nbsp;Toolbar. Add</a></p>
+
+<p>Templates for Toolbar controls in the JSON format are given <a class="link-" href="toolbar__load_data.html#jsonformattemplates">here</a>.</p>
+
+<h3>Updating config of controls</h3>
+
+<p>You can change config options of the control via the <strong>update()</strong> method of Tree Collection. It takes two parameters:</p>
+
+<ul>
+<li><strong>id</strong> - the id of the control</li>
+<li><strong>config</strong> - an object with new configuration of the control</li>
+</ul>
+
+<p>For example, you can change the icon of a control:</p>
+
+<pre><code><pre class="js">toolbar.<span class="me1">data</span>.<span class="me1">update</span><span class="br0">&#40;</span><span class="st0">&quot;edit&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> 
+    icon<span class="sy0">:</span> <span class="st0">&quot;mdi mdi-pencil&quot;</span> 
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/xfs5gh5t' target='blank'><span class='sample'>Related sample: </span>&nbsp;Toolbar. Update</a></p>
+
+<h3>Removing controls from Toolbar</h3>
+
+<p>To remove a control, make use of the <strong>remove()</strong> method of Tree Collection. Pass the id of the control that should be removed to the method:</p>
+
+<pre><code><pre class="js">toolbar.<span class="me1">data</span>.<span class="me1">remove</span><span class="br0">&#40;</span><span class="st0">&quot;control-id&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/w8jcn1t2' target='blank'><span class='sample'>Related sample: </span>&nbsp;Toolbar. Remove</a></p>
+
+<h3>Rearranging controls</h3>
+
+<p>You can move menu controls to different positions with the <strong>move()</strong> method of Tree Collection. For example, this is how you can move an item with ID "2" to the left edge of the toolbar:</p>
+
+<pre><code><pre class="js">toolbar.<span class="me1">data</span>.<span class="me1">move</span><span class="br0">&#40;</span><span class="st0">&quot;2&quot;</span><span class="sy0">,</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><br></p>
+
+<div class='note'><p><p>Check the full list of <a class="link-" href="tree_collection__api__refs__treecollection.html">Tree collection API</a>.</p>
+</p></div>
+
+<!-- Content Area End -->
+			<a href='toolbar__common_methods.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Configuration  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="chart__api__refs__chart.html">Chart API</a></li><li class=""><a href="chart__charts_overview.html">Overview of Chart Types</a></li><li class=""><a href="chart__initialization.html">Initialization</a></li><li class=" current"><a href="chart__configuration_properties.html">Configuration</a></li><ul><li class="inner"><a href="chart__configuration_properties.html#mainproperties">Main properties</a></li><li class="inner"><a href="chart__configuration_properties.html#scales">Scales</a></li><li class="inner"><a href="chart__configuration_properties.html#series">Series</a></li><li class="inner"><a href="chart__configuration_properties.html#legend">Legend</a></li></ul><li class=""><a href="chart__data_loading.html">Data Loading</a></li><li class=""><a href="chart__usage.html">Work with Chart</a></li><li class=""><a href="chart__customization.html">Customization</a></li><li class=""><a href="chart__events.html">Event Handling</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="chart__index.html">Chart</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Configuration</h1>
+
+<p>This chapter will guide you through the set of Chart configuration options. It explores both common dhtmlxChart properties actual for all chart types and the config options individual for particular types.</p>
+
+<p>You need to set necessary properties from those listed below within the configuration object passed to the chart constructor function and thus adjust the chart settings to meet your needs.</p>
+
+<a name='mainproperties'><h2>Main properties</h2></a>
+
+<p>dhtmlxChart includes several configuration options that are mostly common for all chart types. They are:</p>
+
+<ul>
+<li><a class="link-" href="chart__api__chart_type_config.html">type</a> - (<em>string</em>) defines the <a class="link-" href="chart__charts_overview.html">type of a chart</a> to initialize; "bar", "x-bar" (for horizontal Bar chart), "line", "spline", "scatter", "area", 
+"splineArea", "donut", "pie", "pie3D" and "radar"</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> chart <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Chart</span><span class="br0">&#40;</span><span class="st0">&quot;chart&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    type<span class="sy0">:</span><span class="st0">&quot;bar&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><a class="link-" href="chart__api__chart_scales_config.html">scales</a> - (<em>object</em>) defines configuration of chart scales. <a href="chart__configuration_properties.html#scales">Check details below</a>.</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> chart <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Chart</span><span class="br0">&#40;</span><span class="st0">&quot;chart&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    scales<span class="sy0">:</span><span class="br0">&#123;</span><span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><a class="link-" href="chart__api__chart_series_config.html">series</a> - (<em>array</em>) defines configuration of chart series. <a href="chart__configuration_properties.html#series">Check details below</a>.</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> chart <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Chart</span><span class="br0">&#40;</span><span class="st0">&quot;chart&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    series<span class="sy0">:</span><span class="br0">&#91;</span><span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><a class="link-" href="chart__api__chart_legend_config.html">legend</a> - (<em>object</em>) defines the configuration of a chart legend. <a href="chart__configuration_properties.html#legend">Check details below</a>.</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> chart <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Chart</span><span class="br0">&#40;</span><span class="st0">&quot;chart&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    legend<span class="sy0">:</span><span class="br0">&#123;</span><span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><a class="link-" href="chart__api__chart_maxpoints_config.html">maxPoints</a> - (<em>number</em>) displays an average number of values in case a data set is too large to show all the values in the chart</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> chart <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Chart</span><span class="br0">&#40;</span><span class="st0">&quot;chart&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    type<span class="sy0">:</span><span class="st0">&quot;line&quot;</span><span class="sy0">,</span>
+    maxPoints<span class="sy0">:</span><span class="nu0">100</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/6917eudu' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Max Points</a></p>
+
+<a name='scales'><h2>Scales</h2></a>
+
+<p>There are "left","right","top","bottom" and "radial" (for Radar chart) types of <a class="link-" href="chart__api__chart_scales_config.html">scales</a>. Scales have both common and specific options.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> chart <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Chart</span><span class="br0">&#40;</span><span class="st0">&quot;chart_container&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    type<span class="sy0">:</span><span class="st0">&quot;area&quot;</span><span class="sy0">,</span>
+    scales<span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="st0">&quot;bottom&quot;</span> <span class="sy0">:</span> <span class="br0">&#123;</span>
+            text<span class="sy0">:</span> <span class="st0">'month'</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="st0">&quot;left&quot;</span> <span class="sy0">:</span> <span class="br0">&#123;</span>
+            padding<span class="sy0">:</span> <span class="nu0">10</span><span class="sy0">,</span>
+            max<span class="sy0">:</span> <span class="nu0">90</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    series<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+           value<span class="sy0">:</span> <span class="st0">'company A'</span><span class="sy0">,</span>
+           strokeWidth<span class="sy0">:</span> <span class="nu0">2</span>
+           <span class="co1">// more options   </span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><strong>type</strong> - (<em>string</em>) the type of a scale: "left","right","top","bottom","radial" (see details below)</li>
+<li><strong>title</strong> - (<em>string</em>) sets a title for a scale <br><a href='https://snippet.dhtmlx.com/5ir00fer' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Scale Title</a></li>
+<li><strong>text</strong> - (<em>string</em>) sets a template for labels of data items rendered on a scale</li>
+<li><strong>textTemplate</strong> - (<em>function</em>) sets a template for scale labels <br><a href='https://snippet.dhtmlx.com/nhm3438n' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Text Template For Scale Labels</a></li>
+<li><strong>textPadding</strong> - (<em>number</em>) distance between labels of data items and the scale</li>
+<li><strong>showText</strong> - (<em>boolean</em>) shows/hides labels of data items on the scale</li>
+<li><strong>scaleRotate</strong> - (<em>number</em>) the degree of rotation of labels of data items on the scale <br><a href='https://snippet.dhtmlx.com/iw00fgl5' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Scale Rotate</a></li>
+<li><strong>scalePadding</strong> - (<em>number</em>) distance between the scale and its title</li>
+<li><strong>hidden</strong> - (<em>boolean</em>) hides/shows the whole scale </li>
+<li><strong>grid</strong> - (<em>boolean</em>) shows/hides the grid lines (for x,y, or both scales). <em>true</em> by default for both scales (scales lines are shown). To hide both scales lines, you need to set <em>grid:false</em> in the configs of each scale 
+<br> <a href='https://snippet.dhtmlx.com/leqdx9qr' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Grid</a></li>
+<li><strong>dashed</strong> - (<em>boolean</em>) sets the dashed type for a scale. Use the <em>dashed:true</em> option in the configuration of the scale <br><a href='https://snippet.dhtmlx.com/gnj1xc3r' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Dashed Grid</a></li>
+<li><strong>targetLine</strong> - (<em>number</em>) shows a threshold line (a target value); looks for the specified value in the data <br><a href='https://snippet.dhtmlx.com/0h6n0yuy' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Target Line</a></li>
+<li><strong>targetValue</strong>  - (<em>number</em>) allows setting a threshold line at any defined level (any number, not necessarily from the data) <br><a href='https://snippet.dhtmlx.com/8d9kgw28' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Target Value</a></li>
+<li><strong>max</strong> - (<em>number</em>) the maximal value of the Y scale</li>
+<li><strong>min</strong> - (<em>number</em>) the minimal value of the Y scale</li>
+<li><strong>log</strong> - (<em>boolean</em>) sets the Y scale as logarithmic</li>
+<li><strong>padding</strong> - (<em>number</em>) the padding between the values of the Y scale (area)</li>
+<li><strong>maxTicks</strong> - (<em>number</em>) sets the maximal number of ticks on the Y scale</li>
+<li><strong>size</strong> - (<em>number</em>) sets the padding between the scale and the chart container</li>
+<li><strong>locator</strong> - (<em>string</em>) points to the data property, the values of which should be rendered in the chart (used for Scatter chart only) </li>
+</ul>
+
+<p>The <strong>radial</strong> scale is used for Radar chart and has its own properties, due to peculiarities of configuration:</p>
+
+<ul>
+<li><strong>radial</strong> scale
+
+<ul>
+<li><strong>value</strong> - (<em>string</em>) the name of a <a class="link-" href="chart__data_loading.html#preparingdataset">data set</a> property to take data values from (map to)</li>
+<li><strong>zebra</strong> - (<em>boolean</em>) sets a striped scale coloring for the Radar chart (alternation of two colors in a step)</li>
+<li><strong>showAxis</strong> - (<em>boolean</em>) renders values of the scale</li>
+</ul></li>
+</ul>
+
+<p><a href='https://snippet.dhtmlx.com/yksfvhhl' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Axis Configuration</a></p>
+
+<a name='series'><h2>Series</h2></a>
+
+<p><a class="link-" href="chart__api__chart_series_config.html">Series</a> present an array of objects each of which contains a number of properties for rendering a separate <a class="link-" href="chart__data_loading.html#preparingdataset">data set</a> on a chart.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> chart <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Chart</span><span class="br0">&#40;</span><span class="st0">&quot;chart_container&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    type<span class="sy0">:</span><span class="st0">&quot;bar&quot;</span><span class="sy0">,</span>
+    scales<span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="st0">&quot;bottom&quot;</span> <span class="sy0">:</span> <span class="br0">&#123;</span>
+            text<span class="sy0">:</span> <span class="st0">&quot;month&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="st0">&quot;left&quot;</span> <span class="sy0">:</span> <span class="br0">&#123;</span><span class="br0">&#125;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    series<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+            id<span class="sy0">:</span> <span class="st0">&quot;A&quot;</span><span class="sy0">,</span>
+            value<span class="sy0">:</span> <span class="st0">&quot;company A&quot;</span><span class="sy0">,</span>
+            fill<span class="sy0">:</span> <span class="st0">&quot;#394E79&quot;</span><span class="sy0">,</span>
+            stacked<span class="sy0">:</span> stacked<span class="sy0">,</span>
+            color<span class="sy0">:</span> <span class="st0">&quot;none&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>
+            id<span class="sy0">:</span> <span class="st0">&quot;B&quot;</span><span class="sy0">,</span>
+            value<span class="sy0">:</span><span class="st0">&quot;company B&quot;</span><span class="sy0">,</span>
+            fill<span class="sy0">:</span> <span class="st0">&quot;#5E83BA&quot;</span><span class="sy0">,</span>
+            stacked<span class="sy0">:</span> stacked<span class="sy0">,</span>
+            color<span class="sy0">:</span> <span class="st0">&quot;none&quot;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>The list of config options for series (for charts with scales)</h3>
+
+<ul>
+<li><strong>id</strong> - (<em>string</em>) the id of a series</li>
+<li><strong>gradient</strong> - (<em>function</em>) a function that defines a color gradient for bars <br><a href='https://snippet.dhtmlx.com/j3duyn2q' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Bar Gradient</a></li>
+<li><strong>type</strong> - (<em>string</em>) the type of a chart</li>
+<li><strong>active</strong> - (<em>boolean</em>) defines, whether a series is active/inactive</li>
+<li><strong>pointColor</strong> - (<em>string</em>) the color of data item points in a series  </li>
+<li><strong>dashed</strong> - (<em>boolean</em>) sets the dashed type for a series line</li>
+<li><strong>strokeWidth</strong> - (<em>number</em>) the width of the chart outline</li>
+<li><strong>value</strong> - (<em>string</em>) the name of a <a class="link-" href="chart__data_loading.html#preparingdataset">data set</a> property to map data values to</li>
+<li><strong>pointType</strong> - (<em>string</em>) sets the type of the point of the data item. There are the following point types:"circle","rect","triangle","rhombus","simpleRect","simpleCircle","empty" <br><a href='https://snippet.dhtmlx.com/cbj54wwu' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Point Types</a></li>
+<li><strong>css</strong> - (<em>string</em>) adds a style class for a series</li>
+<li><strong>color</strong> - (<em>string</em>) the color of the series outline</li>
+<li><strong>tooltip</strong> - (<em>boolean</em>) shows values of data items in tooltips, <em>true</em> by default</li>
+<li><strong>tooltipTemplate</strong> - (<em>function</em>) a function that defines a template for showing values of data items in tooltip <br><a href='https://snippet.dhtmlx.com/mbz7dkku' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Tooltip Template</a></li>
+</ul>
+
+<h4>Options specific for Area, Bar and Radar charts</h4>
+
+<ul>
+<li><strong>fill</strong> - (<em>string</em>) the color of the series filling in Hex format</li>
+<li><strong>alpha</strong> - (<em>number</em>) transparency of the series filling</li>
+</ul>
+
+<h4>Options specific for Bar charts</h4>
+
+<ul>
+<li><strong>baseLine</strong> - (<em>number</em>) sets a base line for rendering data items (bars) <br><a href='https://snippet.dhtmlx.com/6tls4qhf' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Base Line</a></li>
+<li><strong>stacked</strong> - (<em>boolean</em>) defines whether a stacked chart will be rendered  <br><a href='https://snippet.dhtmlx.com/ilew1ds4' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Stacked Chart</a></li>
+<li><strong>barWidth</strong> - (<em>number</em>) sets the width of bars </li>
+<li><strong>showText</strong> - (<em>boolean</em>) shows/hides values of data items in bars</li>
+<li><strong>showTextTemplate</strong> - (<em>function</em>) a function that specifies the template for showing values of data items in bars </li>
+<li><strong>showTextRotate</strong> - (<em>number|string</em>) the degree of rotation of text values of data items in bars <br><a href='https://snippet.dhtmlx.com/o7ke2f1s' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Show Text</a></li>
+</ul>
+
+<h3>The list of config options for series (for charts without scales: Pie, Pie3D, Donut)</h3>
+
+<ul>
+<li><strong>id</strong> - (<em>string</em>) the id of a series</li>
+<li><strong>text</strong> - (<em>string</em>) the name of the <a class="link-" href="chart__data_loading.html#preparingdataset">data set</a> property to map labels of data values to  </li>
+<li><strong>value</strong> - (<em>string</em>) the name of the <a class="link-" href="chart__data_loading.html#preparingdataset">data set</a> property to map data values to</li>
+<li><strong>color</strong> - (<em>string</em>) points to the property in a <a class="link-" href="chart__data_loading.html#preparingdataset">data set</a> that defines the color of a pie/donut sector</li>
+<li><strong>useLines</strong> - (<em>boolean</em>) shows/hides lines used to "connect" chart sectors with labels</li>
+<li><strong>subType</strong> - (<em>string|boolean</em>) specifies the subtype of a chart: "basic"|"percentOnly"|"valueOnly" (used for Donut chart only)</li>
+<li><strong>stroke</strong> - (<em>string</em>) the color of lines between sectors of a chart</li>
+<li><strong>strokeWidth</strong> - (number) the width of lines between sectors of a chart</li>
+<li><strong>monochrome</strong> - (<em>boolean|string</em>) colors chart sections in the shades of a color specified as a value of this property (e.g. "blue", "red"). It can be also set as HEX code (#ff00ff), as RGB code (rgb(255, 15, 0)) or as RGBA color code (rgba(255, 15, 0, 0.2)).</li>
+<li><strong>paddings</strong> - (<em>number</em>) paddings between a chart and its initial position </li>
+<li><strong>showText</strong> - (<em>boolean</em>) shows/hides values of data items on the chart (Pie, Pie3D) </li>
+<li><strong>showTextTemplate</strong> - (<em>function</em>) a function that specifies the template for showing values of data items on the chart (Pie, Pie3D) </li>
+</ul>
+
+<a name='legend'><h2>Legend</h2></a>
+
+<p>The <a class="link-" href="chart__api__chart_legend_config.html">legend</a> object may contain a number of options that define its configuration.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> chart <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Chart</span><span class="br0">&#40;</span><span class="st0">&quot;chart_container&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    scales<span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="co1">// scales config</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    series<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="co1">// list of series </span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    legend<span class="sy0">:</span> <span class="br0">&#123;</span>
+        series<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;A&quot;</span><span class="sy0">,</span> <span class="st0">&quot;B&quot;</span><span class="sy0">,</span> <span class="st0">&quot;C&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        valign<span class="sy0">:</span> <span class="st0">&quot;top&quot;</span><span class="sy0">,</span>
+        halign<span class="sy0">:</span> <span class="st0">&quot;right&quot;</span>
+    <span class="br0">&#125;</span>    
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/00ei3q23' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Enable Legend</a></p>
+
+<p><a href='https://snippet.dhtmlx.com/pgqf1yxj' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Legend Position</a></p>
+
+<h3>The list of config options for legend (for charts with scales)</h3>
+
+<ul>
+<li><strong>form</strong> - (<em>string</em>) the form of the legend markers ("rect" or "circle")<br><a href='https://snippet.dhtmlx.com/n8wsfv5n' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Legend Form</a></li>
+<li><strong>itemPadding</strong> - (<em>number</em>) padding between legend items</li>
+<li><strong>halign</strong> -  (<em>string</em>) the horizontal alignment of the legend block: "left"|"right"|"center"</li>
+<li><strong>valign</strong> - (<em>string</em>) the vertical alignment of the block: "top"|"bottom"|"middle"</li>
+<li><strong>series</strong> - (<em>array</em>) the list of series that should be shown in the legend</li>
+<li><strong>margin</strong> - (<em>number</em>) margin between the scale and the legend</li>
+</ul>
+
+<h3>The list of config options for legend (for charts without scales: Pie, Pie3D, Donut)</h3>
+
+<ul>
+<li><strong>values</strong> - (<em>object</em>) maps attributes of legend items to <a class="link-" href="chart__data_loading.html#preparingdataset">data set</a> properties. Contains the following properties:<br />
+
+<ul>
+<li><strong>id</strong> - (<em>string,number</em>) the id of the series that will be bound to the legend</li>
+<li><strong>text</strong> - (<em>string</em>) the pointer to the data value to take a text for the legend from </li>
+<li><strong>color</strong> - (<em>string</em>) the pointer to the data value to take a color for the legend from </li>
+<li><strong>alpha</strong> - (<em>number</em>) transparency of a legend item</li>
+</ul></li>
+<li><strong>form</strong> - (<em>string</em>) the form of the legend markers ("rect" or "circle")</li>
+<li><strong>itemPadding</strong> - (<em>number</em>) padding between legend items</li>
+<li><strong>halign</strong> -  (<em>string</em>) the horizontal alignment of the legend block: "left"|"right"|"center"</li>
+<li><strong>valign</strong> - (<em>string</em>) the vertical alignment of the block: "top"|"bottom"|"middle"</li>
+<li><strong>margin</strong> - (<em>number</em>) margin between the scale and the legend</li>
+</ul>
+
+<!-- Content Area End -->
+			<a href='chart__configuration_properties.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

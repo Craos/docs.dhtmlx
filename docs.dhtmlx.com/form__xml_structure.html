@@ -1,0 +1,286 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>XML Format  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxform.html">dhtmlXForm API</a></li><li class=""><a href="form__how_to_start.html">How to Start with dhtmlxForm</a></li><li class=""><a href="form__constructor_of_dhtmlx_form.html">Object Constructor</a></li><li class=""><a href="form__controls_list.html">List of Controls</a></li><li class=" current"><a href="form__xml_structure.html">XML Format</a></li><ul><li class="inner"><a href="form__xml_structure.html#initialdata">Initial Data</a></li><li class="inner"><a href="form__xml_structure.html#xmlformatexample">XML Format Example</a></li><li class="inner"><a href="form__xml_structure.html#forminitialization">Form Initialization</a></li><li class="inner"><a href="form__xml_structure.html#codesamplesforspecificitems">Code samples for specific items</a></li></ul><li class=""><a href="form__json_structure.html">JSON Format</a></li><li class=""><a href="form__html_structure.html">HTML Format</a></li><li class=""><a href="form__working_with_userdata.html">Working with Userdata</a></li><li class=""><a href="form__other_configuration.html">Config and Operations</a></li><li class=""><a href="form__positioning.html">Positioning Controls</a></li><li class=""><a href="form__validation.html">Validation</a></li><li class=""><a href="form__custom_item.html">Creating a Custom Control</a></li><li class=""><a href="form__server_side.html">Server-side Integration</a></li><li class=""><a href="form__dhtmlx_components.html">Integration with DHTMLX</a></li><li class=""><a href="form__data_binding.html">Binding Data</a></li><li class=""><a href="form__handling_events.html">Handling Events</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="form__index.html">Form</a></div>
+<!-- Content Area -->
+
+
+
+<h1>XML Format</h1>
+
+<p>Before considering XML details we'd like to mention that among possible ways of initialization we recommend to use JSON as the handiest way.</p>
+
+<a name='initialdata'><h2>Initial Data</h2></a>
+
+<p>As initial data we'll take the following form:</p>
+
+<p><img src="media/form/welcome.png"/></p>
+
+<a name='xmlformatexample'><h2>XML Format Example</h2></a>
+
+<p>In XML data will look as:</p>
+
+<p><strong>welcome.xml</strong></p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;UTF-8&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;items<span class="re2">&gt;</span></span></span>
+   <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">type</span>=<span class="st0">&quot;fieldset&quot;</span> <span class="re0">name</span>=<span class="st0">&quot;data&quot;</span> <span class="re0">label</span>=<span class="st0">&quot;Welcome&quot;</span> <span class="re0">inputWidth</span>=<span class="st0">&quot;auto&quot;</span><span class="re2">&gt;</span></span>
+       <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">type</span>=<span class="st0">&quot;input&quot;</span> <span class="re0">name</span>=<span class="st0">&quot;name&quot;</span> <span class="re0">label</span>=<span class="st0">&quot;Login&quot;</span> <span class="re0">position</span>=<span class="st0">&quot;label-top&quot;</span><span class="re2">/&gt;</span></span>
+       <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">type</span>=<span class="st0">&quot;password&quot;</span> <span class="re0">name</span>=<span class="st0">&quot;pass&quot;</span> <span class="re0">label</span>=<span class="st0">&quot;Password&quot;</span> <span class="re0">position</span>=<span class="st0">&quot;label-top&quot;</span><span class="re2">/&gt;</span></span>
+       <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">type</span>=<span class="st0">&quot;button&quot;</span> <span class="re0">name</span>=<span class="st0">&quot;save&quot;</span> <span class="re0">value</span>=<span class="st0">&quot;Proceed&quot;</span><span class="re2">/&gt;</span></span>
+   <span class="sc3"><span class="re1">&lt;/item<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/items<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<a name='forminitialization'><h2>Form Initialization</h2></a>
+
+<h3>from XML file</h3>
+
+<p><strong>welcome.html</strong></p>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;codebase/skins/dhtmlxform_dhx_skyblue.css&quot;</span>&gt;</span>
+ <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlx.js&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+ <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;STYLESHEET&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlx.css&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">body</span> <span class="kw3">onload</span><span class="sy0">=</span><span class="st0">&quot;doOnLoad()&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;form_container&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width:250px;height:300px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">        <span class="kw2">var</span> myForm<span class="sy0">;</span>
+        <span class="kw2">function</span> doOnLoad<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            myForm <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXForm<span class="br0">&#40;</span><span class="st0">&quot;form_container&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            myForm.<span class="me1">loadStruct</span><span class="br0">&#40;</span><span class="st0">&quot;welcome.xml&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span></pre>    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+<h3>from XML string</h3>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlx.js&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;STYLESHEET&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlx.css&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">body</span> <span class="kw3">onload</span><span class="sy0">=</span><span class="st0">&quot;doOnLoad()&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;form_container&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width:250px;height:300px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">      <span class="kw2">var</span> myForm<span class="sy0">,</span> formData<span class="sy0">;</span>
+        <span class="kw2">function</span> doOnLoad<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            formData <span class="sy0">=</span> <span class="br0">&#91;</span>
+              <span class="st0">'&lt;items&gt; 
+                &lt;item type=&quot;fieldset&quot; name=&quot;data&quot; label=&quot;Welcome&quot; inputWidth=&quot;auto&quot;&gt; 
+                    &lt;item type=&quot;input&quot; name=&quot;name&quot; label=&quot;Login&quot;/&gt; 
+                    &lt;item type=&quot;password&quot; name=&quot;pass&quot; label=&quot;Password&quot;/&gt; 
+                    &lt;item type=&quot;button&quot; name=&quot;save&quot; value=&quot;Proceed&quot;/&gt; 
+                 &lt;/item&gt; 
+              &lt;/items&gt;'</span>
+            <span class="br0">&#93;</span>
+            myForm <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXForm<span class="br0">&#40;</span><span class="st0">&quot;form_container&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            myForm.<span class="me1">loadStruct</span><span class="br0">&#40;</span>formData<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span></pre>    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxForm/samples/01_init/05_init_from_xml_string.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Init from xml string</a></p>
+
+<a name='codesamplesforspecificitems'><h2>Code samples for specific items</h2></a>
+
+<p><strong>combo:</strong></p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;UTF-8&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;items<span class="re2">&gt;</span></span></span>
+   <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">type</span>=<span class="st0">&quot;combo&quot;</span> <span class="re0">label</span>=<span class="st0">&quot;Select Location&quot;</span> <span class="re0">inputWidth</span>=<span class="st0">&quot;120&quot;</span><span class="re2">&gt;</span></span>
+       <span class="sc3"><span class="re1">&lt;option</span> <span class="re0">text</span>=<span class="st0">&quot;Open Air&quot;</span> <span class="re0">value</span>=<span class="st0">&quot;1&quot;</span><span class="re2">/&gt;</span></span>
+       <span class="sc3"><span class="re1">&lt;option</span> <span class="re0">text</span>=<span class="st0">&quot;Private Party&quot;</span> <span class="re0">value</span>=<span class="st0">&quot;2&quot;</span> <span class="re2">/&gt;</span></span>
+   <span class="sc3"><span class="re1">&lt;/item<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/items<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<p><strong>multiselect:</strong></p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;UTF-8&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;items<span class="re2">&gt;</span></span></span>
+   <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">type</span>=<span class="st0">&quot;multiselect&quot;</span> <span class="re0">label</span>=<span class="st0">&quot;Can create/edit/delete users=&quot;</span> <span class="re0">inputWidth</span>=<span class="st0">&quot;120&quot;</span><span class="re2">&gt;</span></span>
+       <span class="sc3"><span class="re1">&lt;option</span> <span class="re0">text</span>=<span class="st0">&quot;Administrators&quot;</span> <span class="re0">value</span>=<span class="st0">&quot;Option 1&quot;</span> <span class="re0">selected</span>=<span class="st0">&quot;true&quot;</span><span class="re2">/&gt;</span></span>
+       <span class="sc3"><span class="re1">&lt;option</span> <span class="re0">text</span>=<span class="st0">&quot;Power users&quot;</span> <span class="re0">value</span>=<span class="st0">&quot;Option 2&quot;</span> <span class="re0">selected</span>=<span class="st0">&quot;true&quot;</span><span class="re2">/&gt;</span></span>
+       <span class="sc3"><span class="re1">&lt;option</span> <span class="re0">text</span>=<span class="st0">&quot;Registered users&quot;</span> <span class="re0">value</span>=<span class="st0">&quot;Option 3&quot;</span><span class="re2">/&gt;</span></span>
+       <span class="sc3"><span class="re1">&lt;option</span> <span class="re0">text</span>=<span class="st0">&quot;Guests&quot;</span> <span class="re0">value</span>=<span class="st0">&quot;Option 4&quot;</span><span class="re2">/&gt;</span></span>
+       <span class="sc3"><span class="re1">&lt;option</span> <span class="re0">text</span>=<span class="st0">&quot;All users&quot;</span> <span class="re0">value</span>=<span class="st0">&quot;Option 5&quot;</span><span class="re2">/&gt;</span></span>
+   <span class="sc3"><span class="re1">&lt;/item<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/items<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<p><strong>radio:</strong></p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;UTF-8&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;items<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">type</span>=<span class="st0">&quot;radio&quot;</span> <span class="re0">name</span>=<span class="st0">&quot;effect&quot;</span> <span class="re0">label</span>=<span class="st0">&quot;No effects&quot;</span> <span class="re0">value</span>=<span class="st0">&quot;by_pages&quot;</span> </span>
+<span class="sc3">          <span class="re0">position</span>=<span class="st0">&quot;label-right&quot;</span> <span class="re0">readonly</span>=<span class="st0">&quot;true&quot;</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">type</span>=<span class="st0">&quot;radio&quot;</span> <span class="re0">name</span>=<span class="st0">&quot;effect&quot;</span> <span class="re0">label</span>=<span class="st0">&quot;Effects&quot;</span> <span class="re0">value</span>=<span class="st0">&quot;custom&quot;</span> <span class="re0">checked</span>=<span class="st0">&quot;true&quot;</span> </span>
+<span class="sc3">          <span class="re0">position</span>=<span class="st0">&quot;label-right&quot;</span><span class="re2">&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">type</span>=<span class="st0">&quot;radio&quot;</span> <span class="re0">name</span>=<span class="st0">&quot;opt2&quot;</span> <span class="re0">label</span>=<span class="st0">&quot;Shadow&quot;</span> </span>
+<span class="sc3">          <span class="re0">position</span>=<span class="st0">&quot;label-right&quot;</span> <span class="re0">checked</span>=<span class="st0">&quot;true&quot;</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">type</span>=<span class="st0">&quot;radio&quot;</span> <span class="re0">name</span>=<span class="st0">&quot;opt2&quot;</span> <span class="re0">label</span>=<span class="st0">&quot;Perspective&quot;</span> <span class="re0">position</span>=<span class="st0">&quot;label-right&quot;</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">type</span>=<span class="st0">&quot;radio&quot;</span> <span class="re0">name</span>=<span class="st0">&quot;opt2&quot;</span> <span class="re0">label</span>=<span class="st0">&quot;Shear&quot;</span> <span class="re0">position</span>=<span class="st0">&quot;label-right&quot;</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">type</span>=<span class="st0">&quot;button&quot;</span> <span class="re0">value</span>=<span class="st0">&quot;Proceed&quot;</span><span class="re2">/&gt;</span></span>
+   <span class="sc3"><span class="re1">&lt;/item<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/items<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<p><strong>select:</strong></p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;UTF-8&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;items<span class="re2">&gt;</span></span></span>
+   <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">type</span>=<span class="st0">&quot;select&quot;</span> <span class="re0">label</span>=<span class="st0">&quot;Welcome&quot;</span> <span class="re0">inputWidth</span>=<span class="st0">&quot;100&quot;</span><span class="re2">&gt;</span></span>
+       <span class="sc3"><span class="re1">&lt;option</span> <span class="re0">text</span>=<span class="st0">&quot;Admin&quot;</span> <span class="re0">value</span>=<span class="st0">&quot;admin&quot;</span><span class="re2">&gt;</span></span>
+            <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">type</span>=<span class="st0">&quot;checkbox&quot;</span> <span class="re0">label</span>=<span class="st0">&quot;Show logs window&quot;</span><span class="re2">/&gt;</span></span>
+            <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">type</span>=<span class="st0">&quot;checkbox&quot;</span> <span class="re0">label</span>=<span class="st0">&quot;Show advanced options&quot;</span><span class="re2">/&gt;</span></span>
+       <span class="sc3"><span class="re1">&lt;/option<span class="re2">&gt;</span></span></span>
+       <span class="sc3"><span class="re1">&lt;option</span> <span class="re0">text</span>=<span class="st0">&quot;Organiser&quot;</span> <span class="re0">value</span>=<span class="st0">&quot;org&quot;</span> <span class="re2">/&gt;</span></span>
+       <span class="sc3"><span class="re1">&lt;option</span> <span class="re0">text</span>= <span class="st0">&quot;Power User&quot;</span> <span class="re0">value</span>=<span class="st0">&quot;poweruser&quot;</span><span class="re2">/&gt;</span></span>
+       <span class="sc3"><span class="re1">&lt;option</span> <span class="re0">text</span>= <span class="st0">&quot;User&quot;</span> <span class="re0">value</span>=<span class="st0">&quot;user&quot;</span> <span class="re0">selected</span>=<span class="st0">&quot;true&quot;</span><span class="re2">/&gt;</span></span>
+   <span class="sc3"><span class="re1">&lt;/item<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/items<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<p><strong>settings:</strong></p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;UTF-8&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;items<span class="re2">&gt;</span></span></span>
+   <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">type</span>=<span class="st0">&quot;settings&quot;</span> <span class="re0">position</span>=<span class="st0">&quot;label-left&quot;</span> <span class="re0">labelAlign</span>=<span class="st0">&quot;right&quot;</span> </span>
+<span class="sc3">         <span class="re0">labelWidth</span>=<span class="st0">&quot;120&quot;</span> <span class="re0">inputWidth</span>=<span class="st0">&quot;120&quot;</span><span class="re2">/&gt;</span></span>
+   <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">type</span>=<span class="st0">&quot;input&quot;</span> <span class="re0">label</span>=<span class="st0">&quot;Name&quot;</span> <span class="re0">value</span>=<span class="st0">&quot;John Smith&quot;</span><span class="re2">/&gt;</span></span>
+   <span class="sc3"><span class="re1">&lt;item</span> <span class="re0">type</span>=<span class="st0">&quot;password&quot;</span> <span class="re0">label</span>=<span class="st0">&quot;Password&quot;</span> <span class="re0">value</span>=<span class="st0">&quot;123&quot;</span><span class="re2">/&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;/items<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='form__xml_structure.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

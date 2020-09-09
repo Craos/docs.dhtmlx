@@ -1,0 +1,342 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Tooltips for Gantt Elements  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__task_types.html">Task Types</a></li><li class=""><a href="desktop__task_object_operations.html">Task Object/Id</a></li><li class=""><a href="desktop__task_tree_operations.html">Task Parent/Child</a></li><li class=""><a href="desktop__crud_task.html">Basic Operations with Tasks</a></li><li class=""><a href="desktop__unscheduled_tasks.html">Unscheduled Tasks</a></li><li class="toc-pro"><a href="desktop__split_tasks.html">Split Tasks</a></li><li class=""><a href="desktop__multiselection.html">Multi-Task Selection</a></li><li class=""><a href="desktop__working_time.html">Work Time Calculation</a></li><li class="toc-pro"><a href="desktop__critical_path.html">Critical Path</a></li><li class="toc-pro"><a href="desktop__baselines.html">Extra Elements in Timeline Area</a></li><li class="toc-pro"><a href="desktop__milestones.html">Milestones</a></li><li class=" current"><a href="desktop__tooltips.html">Tooltips for Gantt Elements</a></li><ul><li class="inner"><a href="desktop__tooltips.html#activation">Activation</a></li><li class="inner"><a href="desktop__tooltips.html#customtext">Custom text</a></li><li class="inner"><a href="desktop__tooltips.html#tooltipapi">Tooltip API</a></li><li class="inner"><a href="desktop__tooltips.html#tooltipsfordifferentelements">Tooltips for different elements</a></li><li class="inner"><a href="desktop__tooltips.html#customizationoftooltipbehavior">Customization of tooltip behavior</a></li><li class="inner"><a href="desktop__tooltips.html#timeout">Timeout</a></li><li class="inner"><a href="desktop__tooltips.html#position">Position</a></li><li class="inner"><a href="desktop__tooltips.html#displayingarea">Displaying area</a></li></ul><li class=""><a href="desktop__text_block_for_task.html">Displaying Contents of Tasks</a></li><li class=""><a href="desktop__readonly_mode.html">Read-Only Mode</a></li><li class=""><a href="desktop__validation.html">Validation</a></li><li class=""><a href="desktop__dnd.html">Dragging Tasks within the Timeline</a></li><li class=""><a href="desktop__advanced_dnd.html">Creating/Selecting Tasks with DnD</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__task_bars.html">Configuring Tasks</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Tooltips for Gantt Elements</h1>
+
+<p>Tooltips allow you to add extra information for users without overflowing the screen with text. By default, tooltips are added to Gantt tasks.</p>
+
+<p><img src="media/desktop/task_tooltip.png"/></p>
+
+<p>You can <a href="desktop__tooltips.html#tooltipsfordifferentelements">add tooltips to any Gantt element</a> via the corresponding API.</p>
+
+<a name='activation'><h2>Activation</h2></a>
+
+<p>To activate tooltips for tasks, enable the <strong>tooltip</strong> plugin using the <a class="link-" href="api__gantt_plugins.html">gantt.plugins</a> method:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>script<span class="sy0">&gt;</span>
+<span class="xtra ln-xtra">    gantt.<span class="me1">plugins</span><span class="br0">&#40;</span><span class="br0">&#123;</span> </span><span class="xtra ln-xtra">        tooltip<span class="sy0">:</span> <span class="kw2">true</span> </span><span class="xtra ln-xtra">    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>&nbsp;
+    gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="sy0">&lt;/</span>script<span class="sy0">&gt;</span></pre></code></pre>
+
+<p><a href='samples/02_extensions/02_tooltip.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Tooltip</a></p>
+
+<p>Once the extension is activated, tooltips will be automatically displayed with the default settings.</p>
+
+<a name='customtext'><h2>Custom text</h2></a>
+
+<p>By default, tooltips display 3 properties of a task:</p>
+
+<ol>
+<li>The start date of a task.</li>
+<li>The end date of a task.</li>
+<li>The task name.</li>
+</ol>
+
+<p>To set a custom text for tooltips, use the <a class="link-" href="api__gantt_tooltip_text_template.html">tooltip_text</a> template:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">tooltip_text</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span>end<span class="sy0">,</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&lt;b&gt;Task:&lt;/b&gt; &quot;</span><span class="sy0">+</span>task.<span class="me1">text</span><span class="sy0">+</span><span class="st0">&quot;&lt;br/&gt;&lt;b&gt;Duration:&lt;/b&gt; &quot;</span> <span class="sy0">+</span> task.<span class="me1">duration</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='tooltipapi'><h2>Tooltip API</h2></a>
+
+<h3>Tooltip object</h3>
+
+<p>You can access the object of tooltip as <strong>gantt.ext.tooltips.tooltip</strong>. This object allows manipulating the position, content and visibility of tooltip via a set of methods:</p>
+
+<ul>
+<li><strong>getNode()</strong> - returns the HTML element of the tooltip  </li>
+<li><strong>setViewport()</strong> - locks the position of tooltip to the boundaries of the specified HTML element
+
+<ul>
+<li><strong>node</strong> - (<em>HTMLElement</em>) the HTML element under the question</li>
+</ul></li>
+<li><strong>show()</strong> - displays the tooltip at specific coordinates (relative to document.body). The method can take different parameters, depending on the position your want show tooltip at:
+
+<ul>
+<li>To display tooltip at specific coordinates (relative to document.body), pass: 
+
+<ul>
+<li><strong>left</strong> - (<em>number</em>) the X coordinate</li>
+<li><strong>top</strong> - (<em>number</em>) the Y coordinate </li>
+</ul></li>
+<li>To display tooltip at the mouse event coordinates (<em>tooltip_offset_x/y</em> and viewport will be taken into account), pass:
+
+<ul>
+<li><strong>event</strong> - (<em>Event</em>) the mouse event object  </li>
+</ul></li>
+</ul></li>
+<li><strong>hide()</strong> - hides the tooltip element</li>
+<li><strong>setContent()</strong>- puts HTML content into the tooltip. Takes as a parameter:
+
+<ul>
+<li><strong>html</strong> - (<em>string</em>) a string with HTML content for the tooltip</li>
+</ul></li>
+</ul>
+
+<h3>Methods</h3>
+
+<p>There are several methods that allow controlling behavior of the tooltip while hovering over DOM elements.</p>
+
+<h4 id="attach">gantt.ext.tooltips.attach()</h4>
+
+<p>adds tooltip with extended configuration. The method takes an object with tooltip settings as a parameter. The settings that can be adjusted via the method are the following:</p>
+
+<ul>
+<li><strong>selector</strong> - (<em>string</em>) defines CSS-selector for the elements to listen to mouse events on</li>
+<li><strong>onmouseenter</strong> - (<em>function</em>) a handler called when the mouse pointer enters the element. The parameters are:
+
+<ul>
+<li><strong>event</strong> - (<em>Event</em>) a native mouse event</li>
+<li><strong>node</strong> -  (<em>HTMLElement</em>) the HTML node</li>
+</ul></li>
+<li><strong>onmousemove</strong> - (<em>function</em>) a handler called when the mouse pointer moves inside the element. The parameters are:
+
+<ul>
+<li><strong>event</strong> - (<em>Event</em>) a native mouse event</li>
+<li><strong>node</strong> -  (<em>HTMLElement</em>) the HTML node</li>
+</ul></li>
+<li><strong>onmouseleave</strong> - (<em>function</em>) a handler called when the mouse pointer leaves the element. The parameters are:<br />
+
+<ul>
+<li><strong>event</strong> - (<em>Event</em>) a native mouse event</li>
+<li><strong>node</strong> -  (<em>HTMLElement</em>) the HTML node</li>
+</ul></li>
+<li><strong>global</strong> - (<em>boolean</em>) defines whether the module listens to mouse events on the whole page (<em>true</em>) or only inside a gantt element (<em>false</em>). By default the option is set to <em>false</em>.</li>
+</ul>
+
+<h4 id="tooltipfor">gantt.ext.tooltips.tooltipFor()</h4>
+
+<p>adds a tooltip for the specified Gantt element. It is a more simplified version of the <strong>attach()</strong> method. The method takes as a parameter <em>an object with tooltip details</em>. This object has the following properties:</p>
+
+<ul>
+<li><strong>selector</strong> - (<em>string</em>) a CSS-selector of the Gantt element to add a tooltip to</li>
+<li><strong>html</strong> - (<em>function</em>) a template for the tooltip. The template function takes two parameters in its turn:
+
+<ul>
+<li><strong>event</strong> - (<em>Event</em>) a native mouse event</li>
+<li><strong>node</strong> -  (<em>HTMLElement</em>) the HTML node
+and returns a string with a template.</li>
+</ul></li>
+<li><strong>global</strong> - (<em>boolean</em>) optional, defines whether the module listens to mouse events on the whole page (<em>true</em>) or only inside a gantt element (<em>false</em>). By default the option is set to <em>false</em>. </li>
+</ul>
+
+<h4 id="detach">gantt.ext.tooltips.detach()</h4>
+
+<p>removes tooltip. As a parameter the method takes:</p>
+
+<ul>
+<li><strong>selector</strong> - (<em>string</em>) the CSS selector of a Gantt element</li>
+</ul>
+
+<a name='tooltipsfordifferentelements'><h2>Tooltips for different elements</h2></a>
+
+<p>By default, tooltips are added just to the Gantt tasks, but you can also set tooltips for any other Gantt element. For example, for a resource marker:</p>
+
+<p><img src="media/desktop/resource_marker_tooltip.png" alt="Resource marker tooltip" /></p>
+
+<p>There are two corresponding methods in the <a href="desktop__tooltips.html#tooltipapi">tooltip API</a> for this purpose:</p>
+
+<ul>
+<li>the <a href="desktop__tooltips.html#tooltipfor"><strong>gantt.ext.tooltips.tooltipFor()</strong></a> method </li>
+</ul>
+
+<p>For example, this is how you can add tooltips for cells of the timeline scale:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> domHelper <span class="sy0">=</span> gantt.<span class="me1">utils</span>.<span class="me1">dom</span><span class="sy0">;</span>
+<span class="kw2">var</span> pos <span class="sy0">=</span> domHelper .<span class="me1">getRelativeEventPosition</span><span class="br0">&#40;</span>event<span class="sy0">,</span> gantt.$task_scale<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">return</span> gantt.<span class="me1">templates</span>.<span class="me1">task_date</span><span class="br0">&#40;</span>gantt.<span class="me1">dateFromPos</span><span class="br0">&#40;</span>pos.<span class="me1">x</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_extensions/22_tooltip_api.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom Tooltips</a></p>
+
+<p>A tooltip added in this way will follow the mouse pointer and use the settings <em><a class="link-" href="api__gantt_tooltip_offset_x_config.html">tooltip_offset_x</a></em>, <em><a class="link-" href="api__gantt_tooltip_offset_y_config.html">tooltip_offset_y</a></em>, <em><a class="link-" href="api__gantt_tooltip_timeout_config.html">tooltip_timeout</a></em>,
+<a class="link-" href="api__gantt_tooltip_hide_timeout_config.html">tooltip_hide_timeout</a>.</p>
+
+<ul>
+<li>the <a href="desktop__tooltips.html#attach"><strong>gantt.ext.tooltips.attach()</strong></a> method </li>
+</ul>
+
+<p>This method allows adding a tooltip with an extended configuration to adjust tooltip behavior to the movement of the mouse pointer.</p>
+
+<a name='customizationoftooltipbehavior'><h2>Customization of tooltip behavior</h2></a>
+
+<p>There is a possibility to modify the default behavior of tooltip. It can be achieved by removing the default tooltip handler and adding a custom one:</p>
+
+<ul>
+<li>Remove the built-in tooltip handler from tasks with the <a href="desktop__tooltips.html#detach"><strong>gantt.ext.tooltips.detach</strong></a> method:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">// remove the built-in tooltip handler from tasks</span>
+gantt.<span class="me1">ext</span>.<span class="me1">tooltips</span>.<span class="me1">detach</span><span class="br0">&#40;</span><span class="st0">&quot;[&quot;</span><span class="sy0">+</span>gantt.<span class="me1">config</span>.<span class="me1">task_attribute</span><span class="sy0">+</span><span class="st0">&quot;]:not(.gantt_task_row)&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>Add the desired tooltip behavior via the <a href="desktop__tooltips.html#attach"><strong>gantt.ext.tooltips.attach()</strong></a> method. In the example below tooltip is shown only above the table:</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">ext</span>.<span class="me1">tooltips</span>.<span class="me1">tooltipFor</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+  selector<span class="sy0">:</span> <span class="st0">&quot;.gantt_grid [&quot;</span><span class="sy0">+</span>gantt.<span class="me1">config</span>.<span class="me1">task_attribute</span><span class="sy0">+</span><span class="st0">&quot;]&quot;</span><span class="sy0">,</span>
+  html<span class="sy0">:</span> <span class="br0">&#40;</span>event<span class="sy0">:</span> MouseEvent<span class="br0">&#41;</span> <span class="sy0">=&gt;</span> <span class="br0">&#123;</span>
+     <span class="kw1">if</span> <span class="br0">&#40;</span>gantt.<span class="me1">config</span>.<span class="me1">touch</span> <span class="sy0">&amp;&amp;</span> <span class="sy0">!</span>gantt.<span class="me1">config</span>.<span class="me1">touch_tooltip</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+     <span class="kw1">return</span><span class="sy0">;</span>
+   <span class="br0">&#125;</span>
+&nbsp;
+   <span class="kw2">const</span> targetTaskId <span class="sy0">=</span> gantt.<span class="me1">locate</span><span class="br0">&#40;</span>event<span class="br0">&#41;</span><span class="sy0">;</span>
+   <span class="kw1">if</span><span class="br0">&#40;</span>gantt.<span class="me1">isTaskExists</span><span class="br0">&#40;</span>targetTaskId<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+     <span class="kw2">const</span> task <span class="sy0">=</span> gantt.<span class="me1">getTask</span><span class="br0">&#40;</span>targetTaskId<span class="br0">&#41;</span><span class="sy0">;</span>
+     <span class="kw1">return</span> gantt.<span class="me1">templates</span>.<span class="me1">tooltip_text</span><span class="br0">&#40;</span>task.<span class="me1">start_date</span><span class="sy0">,</span> task.<span class="me1">end_date</span><span class="sy0">,</span> task<span class="br0">&#41;</span><span class="sy0">;</span>
+   <span class="br0">&#125;</span>
+   <span class="kw1">return</span> <span class="kw2">null</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span><span class="sy0">,</span>
+  global<span class="sy0">:</span> <span class="kw2">false</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='timeout'><h2>Timeout</h2></a>
+
+<p>You can configure the time of tooltips showing and hiding via the related settings.</p>
+
+<p>To specify the time period in milliseconds before a tooltip for a task will appear, use the <a class="link-" href="api__gantt_tooltip_timeout_config.html">tooltip_timeout</a>:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">tooltip_timeout</span> <span class="sy0">=</span> <span class="nu0">50</span><span class="sy0">;</span>
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To define how long (in milliseconds) a tooltip will be shown after the user moves the cursor to another position, use the <a class="link-" href="api__gantt_tooltip_hide_timeout_config.html">tooltip_hide_timeout</a> property:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">tooltip_hide_timeout</span> <span class="sy0">=</span> <span class="nu0">5000</span><span class="sy0">;</span>
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='position'><h2>Position</h2></a>
+
+<p>The position of a tooltip can be configured by changing offsets of its default position via the two configuration properties:</p>
+
+<ul>
+<li><a class="link-" href="api__gantt_tooltip_offset_x_config.html">tooltip_offset_x</a> - sets the horizontal offset of the tooltip position</li>
+<li><a class="link-" href="api__gantt_tooltip_offset_y_config.html">tooltip_offset_y</a> - sets the vertical offset of the tooltip position</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">tooltip_offset_x</span> <span class="sy0">=</span> <span class="nu0">30</span><span class="sy0">;</span>
+gantt.<span class="me1">config</span>.<span class="me1">tooltip_offset_y</span> <span class="sy0">=</span> <span class="nu0">40</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='displayingarea'><h2>Displaying area</h2></a>
+
+<p>Before version 6.1 tooltips have been displayed only inside the timeline area. After v6.1 release tooltips displaying isn't limited, and a tooltip follows the movement of the mouse pointer.</p>
+
+<p>If necessary, you can restore the previous behavior by using the code below before initialization of Gantt:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onGanttReady&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> tooltips <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">tooltips</span><span class="sy0">;</span>
+    tooltips.<span class="me1">tooltip</span>.<span class="me1">setViewport</span><span class="br0">&#40;</span>gantt.$task_data<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">parse</span><span class="br0">&#40;</span>demo_tasks<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='desktop__tooltips.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

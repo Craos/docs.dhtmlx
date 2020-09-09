@@ -1,0 +1,318 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Client-Side Requirement - DataProcessor  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="connector__php__reference.html">PHP Connector API</a></li><li class=""><a href="connector__php__general_idea.html">General Idea of dhtmlxConnector</a></li><li class=""><a href="connector__php__init.html">Initializing PHP Connector</a></li><li class=""><a href="connector__php__summarized_functionality.html">Components Functionality</a></li><li class=""><a href="connector__php__basis.html">Basic Loading</a></li><li class=""><a href="connector__php__dyn_loading.html">Dynamic Loading</a></li><li class=""><a href="connector__php__filtration.html">Filtering</a></li><li class=""><a href="connector__php__formatting.html">Formatting/Changing Data Before Loading</a></li><li class=""><a href="connector__php__sort.html">Sorting</a></li><li class=" current"><a href="connector__php__dp.html">Client-Side Requirement - DataProcessor</a></li><ul><li class="inner"><a href="connector__php__dp.html#filestoincludeontheclientside">Files to include on the client side</a></li><li class="inner"><a href="connector__php__dp.html#initializingandlinkingtoconnector">Initializing and linking to connector</a></li><li class="inner"><a href="connector__php__dp.html#validation">Validation</a></li><li class="inner"><a href="connector__php__dp.html#changingdefaultprocessing">Changing default processing</a></li><li class="inner"><a href="connector__php__dp.html#renamingthequerystatusparameter">Renaming the query status parameter</a></li></ul><li class=""><a href="connector__php__complex_queries.html">Making Queries</a></li><li class=""><a href="connector__php__form_changes.html">Saving Data Changes Made in Form</a></li><li class=""><a href="connector__php__app_security.html">Security</a></li><li class=""><a href="connector__php__validation.html">Validation</a></li><li class=""><a href="connector__php__grid_data_export.html">Data Export</a></li><li class=""><a href="connector__php__db_operations.html">Elementary DB Operations with Connector</a></li><li class=""><a href="connector__php__errors.html">Error Handling and Logging</a></li><li class=""><a href="connector__php__event_handling.html">Handling Events</a></li><li class=""><a href="connector__php__extending.html">Extending Functionality</a></li><li class=""><a href="connector__php__frameworks.html">Using Connector with Popular Frameworks</a></li><li class=""><a href="connector__php__samples.html">Samples</a></li><li class=""><a href="connector__php__release_notes.html">Migration and New Functions</a></li><li class=""><a href="connector__php__coding_howtos.html">HowTos</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="connector__index.html">Client-Server Communication</a><a class="n3" href="connector__php__index.html">PHP Connector</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Client-Side Requirement - DataProcessor</h1>
+
+<p>The connector itself lets just pass data from the server side to the client side.</p>
+
+<p>When you need to pass data back (e.g. you've updated a record and want to save updates in the database) you should use dataProcessor additionally.</p>
+
+<p><img src="media/connector/php/scheme_04.png" alt="connector/php/scheme_04.png" /></p>
+
+<p>Shortly, data exchange with dataProcessor can be characterized as follows:</p>
+
+<p>1)  After you've made some changes the client sends a query with <a class="link-" href="dataprocessor__basic_principles.html#incomingparameters">several parameters</a> to server.
+ The parameter we are mostly interested in is <strong>!nativeeditor_status</strong> (the parameter's name can be changed. Go <a class="link-" href="connector__php__dp.html#renamingthequerystatusparameter">here</a> for details). It defines the status of operation and can have one of the following values:</p>
+
+<ul>
+<li><strong>updated</strong></li>
+<li><strong>inserted</strong></li>
+<li><strong>deleted</strong></li>
+</ul>
+
+<p>2)  The server tries to implement the required query. If the operation has been performed successfully, the server returns the same status that it had got. Otherwise, the status "<strong>error</strong>" is returned.</p>
+
+<p>3)  While exchanging, data undergoes default processing both on the server side and client side, i.e. data will be updated/inserted/deleted 
+automatically (just initialize dataProcessor and dhtmlxConnector), no additional code is needed. You can affect this default processing by means of events (see details below).</p>
+
+<a name='filestoincludeontheclientside'><h2>Files to include on the client side</h2></a>
+
+<p>If you use the '<strong><em>dhtmlxSuite</em></strong>' package (<em>dhtmlx.js, dhtmlx.css</em> code files), you don't need to add any additional files.</p>
+
+<p>But if you use the components standalone you should add one more file - <strong>dataprocessor.js</strong>.</p>
+
+<p>Remember that <strong>dataprocessor.js</strong> should be included BEFORE <strong>connector.js</strong>.</p>
+
+<a name='initializingandlinkingtoconnector'><h2>Initializing and linking to connector</h2></a>
+
+<p>To initialize dataProcessor you should write 2 commands:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span>url<span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">init</span><span class="br0">&#40;</span>mygrid<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To link dataProcessor to the connector you should specify the connector file as a parameter of the constructor:</p>
+
+<pre><code><pre class="js">dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;myconnector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">init</span><span class="br0">&#40;</span>mygrid<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='validation'><h2>Validation</h2></a>
+
+<h3>Client-side validation</h3>
+
+<p>Dataprocessor allows validating data before sending it to the server side (see details <a class="link-" href="dataprocessor__configuration.html#validation">here</a>).</p>
+
+<h3>Server-side validation</h3>
+
+<p>You may see the details of the server-side validation in the <a class="link-" href="connector__php__validation.html">related chapter of this documentation</a>.</p>
+
+<a name='changingdefaultprocessing'><h2>Changing default processing</h2></a>
+
+<p>As it was mentioned above, to affect the default data processing either on the server side or on the client side, you should use events (they can be either dataProcessor or dhtmlxConnector events).</p>
+
+<h3>Changing default data processing on the server side</h3>
+
+<p>There are the following ways to affect the server-side processing:</p>
+
+<p>1)  To use handler functions of <strong>dhtmlxConnector</strong> events:</p>
+
+<ul>
+<li><a class="link-" href="connector__php__beforeupdate_event.html">beforeUpdate Event</a>   </li>
+<li><a class="link-" href="connector__php__beforeinsert_event.html">beforeInsert Event</a></li>
+<li><a class="link-" href="connector__php__beforedelete_event.html">beforeDelete Event</a>  </li>
+<li><a class="link-" href="connector__php__beforeprocessing_event.html">beforeProcessing Event</a></li>
+</ul>
+
+<p>2)  To create a data model (OOP style; available from version 1.5)</p>
+
+<pre><code><pre class="php"><span class="kw2">class</span> EventModel<span class="br0">&#123;</span>
+    <span class="kw2">function</span> get<span class="br0">&#40;</span><span class="re0">$request</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">return</span> array_of_data<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw2">function</span> update<span class="br0">&#40;</span><span class="re0">$action</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="co1">//call $action-&gt;success(); or $action-&gt;invalid(); </span>
+        <span class="co1">//to mark operation as completed or invalid</span>
+    <span class="br0">&#125;</span>
+    <span class="kw2">function</span> insert<span class="br0">&#40;</span><span class="re0">$action</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="co1">//call $action-&gt;success(); or $action-&gt;invalid(); </span>
+        <span class="co1">//to mark operation as completed or invalid</span>
+    <span class="br0">&#125;</span>
+    <span class="kw2">function</span> delete<span class="br0">&#40;</span><span class="re0">$action</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="co1">//call $action-&gt;success(); or $action-&gt;invalid(); </span>
+        <span class="co1">//to mark operation as completed or invalid</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="re0">$connector</span> <span class="sy0">=</span> <span class="kw2">new</span> GridConnector<span class="br0">&#40;</span><span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">db</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$connector</span><span class="sy0">-&gt;</span><span class="me1">configure</span><span class="br0">&#40;</span><span class="st0">&quot;events&quot;</span><span class="sy0">,</span> <span class="st0">&quot;event_id&quot;</span><span class="sy0">,</span> <span class="st0">&quot;start_date, end_date, event_name&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$connector</span><span class="sy0">-&gt;</span><span class="me1">useModel</span><span class="br0">&#40;</span><span class="kw2">new</span> EventModel<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$connector</span><span class="sy0">-&gt;</span><span class="me1">render</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Any of the methods in the model can be skipped, in such a case the connector will try to generate its own version of logic.</p>
+
+<p>The methods <strong>update()</strong>, <strong>insert()</strong>, <strong>delete()</strong> take the <a class="link-" href="connector__php__dataaction_object_methods.html">DataAction</a> object as a parameter (the same as the 
+the <a class="link-" href="connector__php__beforeprocessing_event.html">beforeProcessing</a> event does).</p>
+
+<p>The method <strong>get()</strong> takes the request object and must return an array of a hash (the same as the <a class="link-" href="connector__php__connector_object_methods.html#renderarray">render_array</a> method does).</p>
+
+<p>You can also combine 2 variants and use a data model and events at the same time.
+The handlers will be invoked in the following order:</p>
+
+<ul>
+<li>'before' events (<a class="link-" href="connector__php__beforeprocessing_event.html">beforeProcessing</a>,...);</li>
+<li>data model;</li>
+<li>'after' events (<a class="link-" href="connector__php__afterupdate_event.html">afterUpdate</a>,...). </li>
+</ul>
+
+<h3>Changing default data processing on the client side</h3>
+
+<p>Changing default data processing on the client side can be done in one of the following ways:</p>
+
+<p>1) On the server side through handler functions of <strong>dhtmlxConnector</strong> events:</p>
+
+<ul>
+<li><a class="link-" href="connector__php__afterupdate_event.html">afterUpdate Event</a></li>
+<li><a class="link-" href="connector__php__afterinsert_event.html">afterInsert Event</a></li>
+<li><a class="link-" href="connector__php__afterdelete_event.html">afterDelete Event</a>  </li>
+<li><a class="link-" href="connector__php__afterprocessing_event.html">afterProcessing Event</a></li>
+</ul>
+
+<p>2) On the client side through handler functions of <strong>dataProcessor</strong> events:</p>
+
+<ul>
+<li><a class="link-" href="api__dataprocessor_onbeforeupdate_event.html">onBeforeUpdate</a></li>
+<li><a class="link-" href="api__dataprocessor_onafterupdate_event.html">onAfterUpdate</a></li>
+</ul>
+
+<p>3) On the client side through the <strong>dataProcessor</strong>'s method <a class="link-" href="api__dataprocessor_defineaction.html">defineAction()</a>.</p>
+
+<p>The method allows defining a handler function of the specified status.</p>
+
+<pre><code><pre class="js">dp.<span class="me1">defineAction</span><span class="br0">&#40;</span><span class="st0">&quot;update&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>sid<span class="sy0">,</span>response<span class="br0">&#41;</span><span class="br0">&#123;</span>
+...
+<span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span><span class="co1">// return false to cancel default data processing at all</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<ul>
+<li><p>meanwhile, you can change the status of server-side response through the <strong>dhtmlxConnector</strong>'s method
+<a class="link-" href="connector__php__dataaction_object_methods.html#setstatus">set_status()</a> and assign the appropriate processing
+through the <a class="link-" href="api__dataprocessor_defineaction.html">defineAction()</a> method.</p>
+
+<p>The status can be changed in 2 ways:</p>
+
+<ol>
+<li><p>by setting another predefined status ('updated', 'inserted', 'deleted'). In this case you just change the default processing, write some additions to it.</p></li>
+<li><p>by setting a custom status on the server side. In this case you cancel the default processing at all and should define all actions on the client side by yourself.</p></li>
+</ol>
+
+<pre><code><pre class="js">$data<span class="sy0">-&gt;</span>set_status<span class="br0">&#40;</span><span class="st0">&quot;my_status&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>For more details see the chapter <a class="link-" href="connector__php__validation.html#customstatus">'Custom status'</a>.</p></li>
+</ul>
+
+<a name='renamingthequerystatusparameter'><h2>Renaming the query status parameter</h2></a>
+
+<p>Starting from version 1.5 you get the possibility to rename the query status parameter named by default as <strong>!nativeeditor_status</strong>.</p>
+
+<p>When can you use this function?</p>
+
+<p>The most obvious example - the case when you want to use dhtmlxConnector+dataProcessor with the <a class="link-" href="tutorials__connector_codeigniter__index.html">CodeIgniter framework</a>.</p>
+
+<p>Here you face the following problem: dataProcessor protocol is incompatible with the framework as the framework blocks the default name of the parameter.
+The problem can be fixed by renaming the parameter on both server and client sides:</p>
+
+<p><strong>Client side:</strong></p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span>.<span class="sy0">/</span>data<span class="br0">&#41;</span><span class="sy0">;</span> 
+dp.<span class="me1">action_param</span> <span class="sy0">=</span> <span class="st0">&quot;dhx_editor_status&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><strong>Server side:</strong></p>
+
+<pre><code><pre class="php">DataProcessor<span class="sy0">::</span><span class="re0">$action_param</span> <span class="sy0">=</span><span class="st0">&quot;dhx_editor_status&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='connector__php__dp.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

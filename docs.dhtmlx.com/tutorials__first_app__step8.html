@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Step 8. Add a Form to the Page  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="tutorials__first_app__step1.html">Step 1. Create the App's File</a></li><li class=""><a href="tutorials__first_app__step2.html">Step 2. Specify the Layout</a></li><li class=""><a href="tutorials__first_app__step3.html">Step 3. Add a Menu</a></li><li class=""><a href="tutorials__first_app__step4.html">Step 4. Add a Toolbar</a></li><li class=""><a href="tutorials__first_app__step5.html">Step 5. Add a Grid</a></li><li class=""><a href="tutorials__first_app__step6.html">Step 6. Load Data to the Grid</a></li><li class=""><a href="tutorials__first_app__step7.html">Step 7. Add Filters to the Grid</a></li><li class=" current"><a href="tutorials__first_app__step8.html">Step 8. Add a Form to the Page</a></li><li class=""><a href="tutorials__first_app__step9.html">Step 9. Bind the Form to the Grid</a></li><li class=""><a href="tutorials__first_app__step10.html">Step 10. Save Data From the Form</a></li><li class=""><a href="tutorials__first_app__step11.html">Step 11. Add/Delete Records in the Grid</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="tutorials__index.html">Tutorials</a><a class="n3" href="tutorials__first_app__index.html">Your First App</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Step 8. Add a Form to the Page</h1>
+
+<p>Our next point is adding a form to the page. The form's fields will display the details of the contact in the the selected grid's row. Thus, our form will 
+have several fields for contacts details and a button "Submit" to save changes made in the grid through the form.</p>
+
+<p><img style="border: 1px #C4C4C5 solid;margin: 20px auto 20px auto;display: block;box-shadow: #D8D8D8 0px 0px 6px 1px;" src="media/tutorials/first_app/form.png"/></p>
+
+<div style="font-weight:bold; color: rgb(65, 65, 65); padding-top: 20px; font-size: 15px;">To put the form to the layout's cell:</div>
+
+<ol>
+    <li>Call the <a class="link-" href="api__link__dhtmlxlayoutcell_attachform.html">attachForm()</a> method to attach a form to the right panel of the layout:<br><br>
+<p class='snippet'>
+"index.html" file
+</p>
+
+<pre><code><pre class="js">contactForm <span class="sy0">=</span> layout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;b&quot;</span><span class="br0">&#41;</span>.<span class="me1">attachForm</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+   </li>
+    
+   <li>Create an XML file in the "<i>data</i> " folder and name it "<i>form.xml</i> ".</li>
+   
+   <li>Open the "<i>form.xml</i> " file and add the following code to it:<br><br>
+
+<pre><code><pre class="js"><span class="sy0">&lt;?</span>xml version<span class="sy0">=</span><span class="st0">&quot;1.0&quot;</span><span class="sy0">?&gt;</span>
+<span class="sy0">&lt;</span>items<span class="sy0">&gt;</span>
+    <span class="sy0">&lt;</span><span class="kw1">item</span> type<span class="sy0">=</span><span class="st0">&quot;settings&quot;</span>  inputWidth<span class="sy0">=</span><span class="st0">&quot;220&quot;</span>  position<span class="sy0">=</span><span class="st0">&quot;label-left&quot;</span>  
+    labelWidth<span class="sy0">=</span><span class="st0">&quot;70&quot;</span><span class="sy0">/&gt;</span>
+    <span class="sy0">&lt;</span><span class="kw1">item</span> type<span class="sy0">=</span><span class="st0">&quot;label&quot;</span>  label<span class="sy0">=</span><span class="st0">&quot;Name&quot;</span><span class="sy0">/&gt;</span>
+    <span class="sy0">&lt;</span><span class="kw1">item</span> type<span class="sy0">=</span><span class="st0">&quot;input&quot;</span>  label<span class="sy0">=</span><span class="st0">&quot;First Name&quot;</span>  <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;fname&quot;</span>    offsetLeft<span class="sy0">=</span><span class="st0">&quot;15&quot;</span><span class="sy0">/&gt;</span>
+    <span class="sy0">&lt;</span><span class="kw1">item</span> type<span class="sy0">=</span><span class="st0">&quot;input&quot;</span>  label<span class="sy0">=</span><span class="st0">&quot;Last Name&quot;</span>   <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;lname&quot;</span>    offsetLeft<span class="sy0">=</span><span class="st0">&quot;15&quot;</span><span class="sy0">/&gt;</span>
+    <span class="sy0">&lt;</span><span class="kw1">item</span> type<span class="sy0">=</span><span class="st0">&quot;label&quot;</span>  label<span class="sy0">=</span><span class="st0">&quot;Internet&quot;</span><span class="sy0">/&gt;</span>
+    <span class="sy0">&lt;</span><span class="kw1">item</span> type<span class="sy0">=</span><span class="st0">&quot;input&quot;</span>  label<span class="sy0">=</span><span class="st0">&quot;Email&quot;</span>       <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;email&quot;</span>    offsetLeft<span class="sy0">=</span><span class="st0">&quot;15&quot;</span><span class="sy0">/&gt;</span>
+    <span class="sy0">&lt;</span><span class="kw1">item</span> type<span class="sy0">=</span><span class="st0">&quot;button&quot;</span>     value<span class="sy0">=</span><span class="st0">&quot;Submit&quot;</span>   offsetTop<span class="sy0">=</span><span class="st0">&quot;15&quot;</span> offsetLeft<span class="sy0">=</span><span class="st0">&quot;230&quot;</span><span class="sy0">/&gt;</span>
+<span class="sy0">&lt;/</span>items<span class="sy0">&gt;</span></pre></code></pre>
+
+<i>The <b>name</b> attribute is necessary to load data from a database (the value of the attribute = the name of of the related DB table field).
+  Also the attribute is used to access form fields through API.</i>
+</li>
+    
+<li>Call the <a class="link-" href="api__link__dhtmlxform_loadstruct.html">loadStruct()</a> method to load the structure specified in the "<i>form.xml</i> " file to the form:<br><br>
+<p class='snippet'>
+"index.html" file
+</p>
+
+<pre><code><pre class="js">contactForm <span class="sy0">=</span> layout.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;b&quot;</span><span class="br0">&#41;</span>.<span class="me1">attachForm</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">contactForm.<span class="me1">loadStruct</span><span class="br0">&#40;</span><span class="st0">&quot;data/form.xml&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+</li>
+</ol>
+
+<p><img style="display:block; margin: 20px auto 20px auto;" src="media/tutorials/first_app/step8.png"/></p>
+
+<div id="tutorial_step">
+    <a id="next_step" class="link-" href="tutorials__first_app__step9.html"></a>
+</div>
+
+<!-- Content Area End -->
+			<a href='tutorials__first_app__step8.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Task Parent/Child  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__task_types.html">Task Types</a></li><li class=""><a href="desktop__task_object_operations.html">Task Object/Id</a></li><li class=" current"><a href="desktop__task_tree_operations.html">Task Parent/Child</a></li><ul><li class="inner"><a href="desktop__task_tree_operations.html#parentofatask">Parent of a task</a></li><li class="inner"><a href="desktop__task_tree_operations.html#childrenofatask">Children of a task</a></li><li class="inner"><a href="desktop__task_tree_operations.html#checkingifataskhasachild">Checking if a task has a child</a></li><li class="inner"><a href="desktop__task_tree_operations.html#nexttaskinatree">Next task in a tree</a></li><li class="inner"><a href="desktop__task_tree_operations.html#previoustaskinatree">Previous task in a tree</a></li><li class="inner"><a href="desktop__task_tree_operations.html#siblingsofatask">Siblings of a task</a></li><li class="inner"><a href="desktop__task_tree_operations.html#nextsiblingofatask">Next sibling of a task</a></li><li class="inner"><a href="desktop__task_tree_operations.html#previoussiblingofatask">Previous sibling of a task</a></li></ul><li class=""><a href="desktop__crud_task.html">Basic Operations with Tasks</a></li><li class=""><a href="desktop__unscheduled_tasks.html">Unscheduled Tasks</a></li><li class="toc-pro"><a href="desktop__split_tasks.html">Split Tasks</a></li><li class=""><a href="desktop__multiselection.html">Multi-Task Selection</a></li><li class=""><a href="desktop__working_time.html">Work Time Calculation</a></li><li class="toc-pro"><a href="desktop__critical_path.html">Critical Path</a></li><li class="toc-pro"><a href="desktop__baselines.html">Extra Elements in Timeline Area</a></li><li class="toc-pro"><a href="desktop__milestones.html">Milestones</a></li><li class=""><a href="desktop__tooltips.html">Tooltips for Gantt Elements</a></li><li class=""><a href="desktop__text_block_for_task.html">Displaying Contents of Tasks</a></li><li class=""><a href="desktop__readonly_mode.html">Read-Only Mode</a></li><li class=""><a href="desktop__validation.html">Validation</a></li><li class=""><a href="desktop__dnd.html">Dragging Tasks within the Timeline</a></li><li class=""><a href="desktop__advanced_dnd.html">Creating/Selecting Tasks with DnD</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__task_bars.html">Configuring Tasks</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Task Parent/Child</h1>
+
+<p>In this article you will find methods related to the tree nature of the Gantt chart tasks.</p>
+
+<p><em>To learn about basic operations of getting the task object/id, refer to the <a class="link-" href="desktop__task_object_operations.html">Task Object/Id</a> article.</em></p>
+
+<a name='parentofatask'><h2>Parent of a task</h2></a>
+
+<p>To get the parent of a task, use the <a class="link-" href="api__gantt_getparent.html">getParent</a> method or the "<strong>parent</strong>" property of the task's object:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">getParent</span><span class="br0">&#40;</span><span class="st0">&quot;t1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//-&gt;&quot;pr_2&quot;</span>
+<span class="co1">//or</span>
+<span class="kw2">var</span> taskObj <span class="sy0">=</span> gantt.<span class="me1">getTask</span><span class="br0">&#40;</span><span class="st0">&quot;t1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//-&gt; {id:&quot;t1&quot;, text:&quot;Task #5&quot;, parent:&quot;pr_2&quot;, ...}</span>
+<span class="kw2">var</span> taskParent <span class="sy0">=</span> taskObj.<span class="me1">parent</span><span class="sy0">;</span>  <span class="co1">//-&gt; &quot;pr_2&quot;</span></pre></code></pre>
+
+<p>Note, if there is no parent for the specified task, the method returns the <a class="link-" href="api__gantt_root_id_config.html">root id</a>.</p>
+
+<a name='childrenofatask'><h2>Children of a task</h2></a>
+
+<p>To get children of a branch task, use the <a class="link-" href="api__gantt_getchildren.html">getChildren</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#123;</span>
+  tasks<span class="sy0">:</span><span class="br0">&#91;</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Project #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;01-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">18</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;t_1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span>    start_date<span class="sy0">:</span><span class="st0">&quot;02-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span>
+     parent<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">;</span>
+gantt.<span class="me1">getChildren</span><span class="br0">&#40;</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//-&gt;[&quot;t_1&quot;]</span></pre></code></pre>
+
+<a name='checkingifataskhasachild'><h2>Checking if a task has a child</h2></a>
+
+<p>To check if some task has a child task, use the <a class="link-" href="api__gantt_haschild.html">hasChild</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#123;</span>
+  tasks<span class="sy0">:</span><span class="br0">&#91;</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Project #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;01-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">18</span><span class="sy0">,</span> 
+     <span class="kw3">open</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;t_1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;02-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span>
+     parent<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;t_2&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #2&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;11-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span>
+     parent<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#125;</span>
+   <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">parse</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra">gantt.<span class="me1">hasChild</span><span class="br0">&#40;</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//-&gt; true  </span></span><span class="xtra ln-xtra">gantt.<span class="me1">hasChild</span><span class="br0">&#40;</span><span class="st0">&quot;t_1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//-&gt; false</span></span></pre></code></pre>
+
+<a name='nexttaskinatree'><h2>Next task in a tree</h2></a>
+
+<p>To get the object of a task next to the specified one, use the <a class="link-" href="api__gantt_getnext.html">getNext</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#123;</span>
+  tasks<span class="sy0">:</span><span class="br0">&#91;</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Project #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;01-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">18</span><span class="sy0">,</span> 
+     <span class="kw3">open</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;t_1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;02-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span>
+     parent<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;t_2&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #2&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;11-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span>
+     parent<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#125;</span>
+   <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">parse</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra">gantt.<span class="me1">getNext</span><span class="br0">&#40;</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="sy0">-&gt;</span> <span class="st0">&quot;t_1&quot;</span>   </span><span class="xtra ln-xtra">gantt.<span class="me1">getNext</span><span class="br0">&#40;</span><span class="st0">&quot;t_1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="sy0">-&gt;</span> <span class="st0">&quot;t_2&quot;</span>   </span><span class="xtra ln-xtra">gantt.<span class="me1">getNext</span><span class="br0">&#40;</span><span class="st0">&quot;t_2&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="sy0">-&gt;</span> <span class="kw2">null</span></span></pre></code></pre>
+
+<p>Note, the gantt considers tasks regardless of the tree level</p>
+
+<a name='previoustaskinatree'><h2>Previous task in a tree</h2></a>
+
+<p>To get the object of a task next to the specified one, use the <a class="link-" href="api__gantt_getprev.html">getPrev</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#123;</span>
+  tasks<span class="sy0">:</span><span class="br0">&#91;</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Project #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;01-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">18</span><span class="sy0">,</span> 
+     <span class="kw3">open</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;t_1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;02-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span>
+     parent<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;t_2&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #2&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;11-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span>
+     parent<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#125;</span>
+   <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">parse</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra">gantt.<span class="me1">getPrev</span><span class="br0">&#40;</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="sy0">-&gt;</span>  <span class="kw2">null</span>   </span><span class="xtra ln-xtra">gantt.<span class="me1">getPrev</span><span class="br0">&#40;</span><span class="st0">&quot;t_1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="sy0">-&gt;</span> <span class="st0">&quot;p_1&quot;</span>   </span><span class="xtra ln-xtra">gantt.<span class="me1">getPrev</span><span class="br0">&#40;</span><span class="st0">&quot;t_2&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="sy0">-&gt;</span> <span class="st0">&quot;t_1&quot;</span></span></pre></code></pre>
+
+<p>Note, the gantt considers tasks regardless of the tree level</p>
+
+<a name='siblingsofatask'><h2>Siblings of a task</h2></a>
+
+<p>To get siblings of the specified task, use the  <a class="link-" href="api__gantt_getsiblings.html">getSiblings</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#123;</span>
+  tasks<span class="sy0">:</span><span class="br0">&#91;</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Project #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;01-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">18</span><span class="sy0">,</span> 
+     <span class="kw3">open</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;t_1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;02-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span>
+     parent<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;t_2&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #2&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;11-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span>
+     parent<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#125;</span>
+   <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">parse</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra">gantt.<span class="me1">getSiblings</span><span class="br0">&#40;</span><span class="st0">&quot;t_1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="sy0">-&gt;</span>  <span class="br0">&#91;</span><span class="st0">&quot;t_1&quot;</span><span class="sy0">,</span> <span class="st0">&quot;t_2]</span></span></pre></code></pre>
+
+<a name='nextsiblingofatask'><h2>Next sibling of a task</h2></a>
+
+<p>To get the next sibling of the specified task, use the  <a class="link-" href="api__gantt_getnextsibling.html">getNextSibling</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#123;</span>
+  tasks<span class="sy0">:</span><span class="br0">&#91;</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Project #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;01-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">18</span><span class="sy0">,</span> 
+     <span class="kw3">open</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;t_1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;02-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span>
+     parent<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;t_2&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #2&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;11-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span>
+     parent<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#125;</span>
+   <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">parse</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra">gantt.<span class="me1">getNextSibling</span><span class="br0">&#40;</span><span class="st0">&quot;t_1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="sy0">-&gt;</span>  <span class="st0">&quot;t_2&quot;</span> </span><span class="xtra ln-xtra">gantt.<span class="me1">getNextSibling</span><span class="br0">&#40;</span><span class="st0">&quot;t_2&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="sy0">-&gt;</span>  <span class="kw2">null</span> <span class="br0">&#40;</span><span class="kw1">if</span> no next sibling<span class="br0">&#41;</span></span></pre></code></pre>
+
+<a name='previoussiblingofatask'><h2>Previous sibling of a task</h2></a>
+
+<p>To get the previous sibling of the specified task, use the  <a class="link-" href="api__gantt_getprevsibling.html">getPrevSibling</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#123;</span>
+  tasks<span class="sy0">:</span><span class="br0">&#91;</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Project #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;01-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">18</span><span class="sy0">,</span> 
+     <span class="kw3">open</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;t_1&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;02-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span>
+     parent<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;t_2&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #2&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;11-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span>
+     parent<span class="sy0">:</span><span class="st0">&quot;p_1&quot;</span><span class="br0">&#125;</span>
+   <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">parse</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra">gantt.<span class="me1">getPrevSibling</span><span class="br0">&#40;</span><span class="st0">&quot;t_2&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="sy0">-&gt;</span>  <span class="st0">&quot;t_1&quot;</span> </span><span class="xtra ln-xtra">gantt.<span class="me1">getPrevSibling</span><span class="br0">&#40;</span><span class="st0">&quot;t_1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="sy0">-&gt;</span>  <span class="kw2">null</span> <span class="br0">&#40;</span><span class="kw1">if</span> no previous sibling<span class="br0">&#41;</span></span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='desktop__task_tree_operations.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

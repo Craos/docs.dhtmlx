@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Loading and Manipulating Data  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxtreegrid.html">dhtmlXTreeGrid API</a></li><li class=""><a href="treegrid__treegrid_initialization.html">Initializing TreeGrid</a></li><li class=" current"><a href="treegrid__manipulating_data.html">Loading and Manipulating Data</a></li><ul><li class="inner"><a href="treegrid__manipulating_data.html#dynamicloadingintreegrid">Dynamic Loading in TreeGrid</a></li><li class="inner"><a href="treegrid__manipulating_data.html#smartparsingintreegrid">Smart Parsing in TreeGrid</a></li><li class="inner"><a href="treegrid__manipulating_data.html#settingitemslabel">Setting Item's Label</a></li><li class="inner"><a href="treegrid__manipulating_data.html#addingremovingrows">Adding/Removing Rows</a></li><li class="inner"><a href="treegrid__manipulating_data.html#expandingcollapsingrows">Expanding/Collapsing Rows</a></li></ul><li class=""><a href="treegrid__specific_api.html">TreeGrid Specific API</a></li><li class=""><a href="treegrid__specific_extensions.html">TreeGrid Specific Extensions</a></li><li class=""><a href="treegrid__filtering_in_treegrid.html">Filtering in TreeGrid</a></li><li class=""><a href="treegrid__using_get_methods.html">Using Get-Methods</a></li><li class=""><a href="treegrid__fa_icons.html">Font Awesome Icons in TreeGrid</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="treegrid__index.html">TreeGrid</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Loading and Manipulating Data</h1>
+
+<a name='dynamicloadingintreegrid'><h2>Dynamic Loading in TreeGrid</h2></a>
+
+<p>Dynamic loading means loading the levels on request (on opening a node that has children). To make it work in dhtmlxTreeGrid the following requirements should be fulfilled:</p>
+
+<ul>
+    <li>
+When initializing TreeGrid, the URL of the server routine that returns the nested level should be specified:
+
+
+<pre><code><pre class="js">treegrid.<span class="me1">kidsXmlFile</span><span class="sy0">=</span><span class="st0">&quot;pro_treeGrid_dynamic.php&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+
+This routine will get the URL parameter's id that is the id of the row that was opened (in other words, id of the row that is the parent of the level that should be returned by the above-mentioned routine).
+    </li>
+    <li>
+Initial TreeGrid XML (as well as the XML returned by the routine mentioned in the previous point) should have &#60;row&#62; tags with the attribute <b>xmlkids="1"</b> (only the rows that have child items):
+
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;row</span> <span class="re0">id</span>=<span class="st0">&quot;parent1&quot;</span> <span class="re0">xmlkids</span>=<span class="st0">&quot;1&quot;</span><span class="re2">&gt;</span></span> 
+    <span class="sc3"><span class="re1">&lt;cell<span class="re2">&gt;</span></span></span>...<span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span> 
+    ...</pre></code></pre>
+
+
+JSON format:
+
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    rows<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="st0">&quot;parent1&quot;</span><span class="sy0">,</span>xmlkids<span class="sy0">:</span><span class="st0">&quot;1&quot;</span><span class="sy0">,</span> data<span class="sy0">:</span><span class="br0">&#91;</span><span class="st0">&quot;row A&quot;</span><span class="br0">&#93;</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+    </li>
+    <li>
+The XML returned by the routine specified in the first point should have the attribute <b>parent="xxx"</b> in the top level tag &#60;rows&#62;:
+
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>rows parent<span class="sy0">=</span><span class="st0">&quot;parent1&quot;</span><span class="sy0">&gt;</span> 
+    <span class="sy0">&lt;</span>row id<span class="sy0">=</span><span class="st0">&quot;child1&quot;</span> xmlkids<span class="sy0">=</span><span class="st0">&quot;1&quot;</span><span class="sy0">&gt;</span> 
+        <span class="sy0">&lt;</span>cell<span class="sy0">&gt;</span>...
+        ...</pre></code></pre>
+
+    </li>
+</ul>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxTreeGrid/samples/01_initialization_loading/01_treeGrid_dynamic.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Dynamic loading (using PHP)</a></p>
+
+<a name='smartparsingintreegrid'><h2>Smart Parsing in TreeGrid</h2></a>
+
+<p>Smart parsing can increase the performance of the TreeGrid control when the user has lots of nodes and levels in it. Smart parsing can be enabled in the following way:</p>
+
+<pre><code><pre class="js">treegrid.<span class="me1">enableSmartXMLParsing</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxTreeGrid/samples/02_loading_big_datasets/02_treegrid_smartpars.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Smart Parsing</a></p>
+
+<a name='settingitemslabel'><h2>Setting Item's Label</h2></a>
+
+<p>The following method is used for setting item's label in TreeGrid:</p>
+
+<pre><code><pre class="js">treegrid.<span class="me1">setLabel</span><span class="br0">&#40;</span>val<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// new label value</span></pre></code></pre>
+
+<a name='addingremovingrows'><h2>Adding/Removing Rows</h2></a>
+
+<p>It's simple to add a new row into dhtmlxTreeGrid with the help of the method <a class="link-" href="api__link__dhtmlxtreegrid_addrow.html">addRow</a>:</p>
+
+<pre><code><pre class="js">treegrid.<span class="me1">addRow</span><span class="br0">&#40;</span>new_id<span class="sy0">,</span> text<span class="sy0">,</span> ind<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The parameters of the method are responsible for the following:</p>
+
+<ul>
+<li>new_id - id of a new row;</li>
+<li>text - array/string of row labels, can be a comma-separated list or an array;</li>
+<li>ind - should be set to null;</li>
+<li>parent_id - id of the parent row;</li>
+<li>img - url to images for this new row; </li>
+<li>child(true/false) - child flag, optional.</li>
+</ul>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxTreeGrid/samples/03_nodes_rows_manipulations/03_treeGrid_basic.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;TreeGrid basic operations</a></p>
+
+<a name='expandingcollapsingrows'><h2>Expanding/Collapsing Rows</h2></a>
+
+<p>The following methods should be used to expand/collapse a row in the TreeGrid:</p>
+
+<pre><code><pre class="js">treegrid.<span class="me1">openItem</span><span class="br0">&#40;</span>rowId<span class="br0">&#41;</span><span class="sy0">;</span>
+treegrid.<span class="me1">closeItem</span><span class="br0">&#40;</span>rowId<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='treegrid__manipulating_data.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

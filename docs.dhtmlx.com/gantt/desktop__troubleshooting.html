@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Troubleshooting Backend Integration Issues  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__loading.html">Data Loading</a></li><li class="toc-pro"><a href="desktop__dynamic_loading.html">Dynamic Loading (on demand)</a></li><li class=""><a href="desktop__supported_data_formats.html">tasksExploring Supported Data Formats</a></li><li class=""><a href="desktop__server_side.html">Server-Side Integration</a></li><li class=""><a href="desktop__performance.html">Performance: Ways to Increase</a></li><li class=" current"><a href="desktop__troubleshooting.html">Troubleshooting Backend Integration Issues</a></li><ul><li class="inner"><a href="desktop__troubleshooting.html#symptoms">Symptoms</a></li><li class="inner"><a href="desktop__troubleshooting.html#reasons">Reasons</a></li><li class="inner"><a href="desktop__troubleshooting.html#checkfortheerrormessagesonthepage">Check for the error messages on the page</a></li><li class="inner"><a href="desktop__troubleshooting.html#checkwhatisrequestedbytheclient">Check what is requested by the client</a></li><li class="inner"><a href="desktop__troubleshooting.html#checkwhatisreturnedfromtheserver">Check what is returned from the server</a></li><li class="inner"><a href="desktop__troubleshooting.html#checkwhatisloadedintothegantt">Check what is loaded into the Gantt</a></li><li class="inner"><a href="desktop__troubleshooting.html#lastresort">Last resort</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__loading_storing_data.html">Loading and Storing Tasks</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Troubleshooting Backend Integration Issues</h1>
+
+<a name='symptoms'><h2>Symptoms</h2></a>
+
+<p>1&#46; You try to implement the backend API either manually or following our <a class="link-" href="desktop__howtostart_guides.html">tutorials</a>, but Gantt doesn't show any tasks or links when you open the page.</p>
+
+<p>or</p>
+
+<p>2&#46; You have troubles with saving changes to the backend.</p>
+
+<a name='reasons'><h2>Reasons</h2></a>
+
+<p>There may be many reasons and solutions for incorrect behavior on different platforms, which we are not going to touch in this article.</p>
+
+<p>Our goal here is to walk you through the common steps of investigating this kind of issue. Once you locate the issue and understand why the app is not working, the fix is usually trivial.</p>
+
+<a name='checkfortheerrormessagesonthepage'><h2>Check for the error messages on the page</h2></a>
+
+<p>1&#46; Open the browser dev tools and reload the page. Do you see any error messages in the browser console?</p>
+
+<p><img src="media/desktop/check_errors.png" alt="Check for errors" /></p>
+
+<p>2&#46; If there are any, evaluate the errors and decide whether you are able to deal with them by yourself. Otherwise, proceed to the next step.</p>
+
+<a name='checkwhatisrequestedbytheclient'><h2>Check what is requested by the client</h2></a>
+
+<p>1&#46; Open the <strong>Network</strong> panel, make sure <em>XHR</em> requests are visible.</p>
+
+<p>2&#46; Reload the page and find a request that should load data from the backend. Make sure it goes to the correct URL and check the response status.</p>
+
+<p><img src="media/desktop/request_check.png" alt="Check request" /></p>
+
+<p>Are there any errors?</p>
+
+<p>404 response status would mean there is either an incorrect URL passed to the <code>gantt.init</code> method or a problem in the routing settings of your application.</p>
+
+<a name='checkwhatisreturnedfromtheserver'><h2>Check what is returned from the server</h2></a>
+
+<p>Select the request and check the response preview or the raw response content.</p>
+
+<p><img src="media/desktop/check_response.png" alt="Check response" /></p>
+
+<p>Does the response look similar to the <a class="link-" href="desktop__loading.html#loadingfromserver">expected data format</a>?</p>
+
+<h3>If you see an error message from the web server instead of the Gantt data</h3>
+
+<p>You can be sure that something is wrong with the backend code or database connection settings.</p>
+
+<p>Usually, the error response contains enough info to figure out what causes the issue. If you see a generic <code>500 server error</code> message, you may need to temporary disable custom error pages on your server in order to see
+the actual error. It's done differently on various platforms. If you're not sure where to start, just google "disable custom error page in <%your server or framework%>".</p>
+
+<h3>If the data looks more or less ok</h3>
+
+<p>Take a look at the <code>id</code>, <code>start_date</code>, <code>end_date</code>, <code>duration</code>, <code>parent</code> properties.</p>
+
+<ul>
+<li><p><code>id</code> - items with the same id will be merged. If you have five tasks with matching ids, Gantt will display only one of them.</p></li>
+<li><p><code>parent</code> - entries the <code>parent</code> value of which matches the <a class="link-" href="api__gantt_root_id_config.html"><code>root_id</code> config</a> will be displayed at the root level of the tasks tree (by default - any empty value, including zero or null).
+If the <code>parent</code> property is not empty and your dataset doesn't contain an appropriate parent task, such an item won't be displayed at all.</p></li>
+<li><p><code>start_date</code>, <code>end_date</code>, <code>duration</code> - make sure your entries contain at least two of these properties, e.g. <code>start_date</code>+<code>duration</code>. There is more information in the <a class="link-" href="desktop__loading.html#loadingtaskdates">Data Loading</a> article.</p></li>
+</ul>
+
+<p>Make sure that the <code>start_date</code>/<code>end_date</code> formats match the format you specify in the <a class="link-" href="api__gantt_date_format_config.html">date_format</a> config of gantt.</p>
+
+<h3>If you find something unusual in the property values</h3>
+
+<p>Check what is stored in your database, probably the issue is there. If date formats don't match, either change the <code>date_format</code> config, or modify the code that serialized task dates before outputting them to the client.</p>
+
+<a name='checkwhatisloadedintothegantt'><h2>Check what is loaded into the Gantt</h2></a>
+
+<ol>
+<li><p>Open the browser console and run <code>gantt.getTaskByTime()</code>.</p></li>
+<li><p>Inspect the console output. You'll likely see an array of tasks.</p></li>
+</ol>
+
+<p><img src="media/desktop/check_data.png" alt="Check data" /></p>
+
+<p>Again, you can check the <code>start_date</code>, <code>end_date</code> and <code>parent</code> properties of tasks.</p>
+
+<h3>Filters</h3>
+
+<p>If you don't see any obvious issues there, try to check your code, probably tasks are <a class="link-" href="desktop__filtering.html">hidden by filter</a>.</p>
+
+<a name='lastresort'><h2>Last resort</h2></a>
+
+<p>If none of the above helps, or if you don't see neither tasks, nor console errors, try to <a href="https://forum.dhtmlx.com/c/gantt">post your question at our forum</a> or contact our tech support regarding your issue.</p>
+
+<p>Please be sure to provide all the info you've collected completing the steps above.</p>
+
+<p>Also, our team will need a minimal reproducible demo: either a standalone package with a simplified app (the gantt page, all required files, a database dump with some test data, or a static JSON file with data you 
+try to load), or an online link where we could check the issue in the browser.</p>
+
+<!-- Content Area End -->
+			<a href='desktop__troubleshooting.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

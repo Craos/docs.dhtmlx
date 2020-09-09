@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Basic Operations with Tasks  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__task_types.html">Task Types</a></li><li class=""><a href="desktop__task_object_operations.html">Task Object/Id</a></li><li class=""><a href="desktop__task_tree_operations.html">Task Parent/Child</a></li><li class=" current"><a href="desktop__crud_task.html">Basic Operations with Tasks</a></li><ul><li class="inner"><a href="desktop__crud_task.html#addinganewtask">Adding a new task</a></li><li class="inner"><a href="desktop__crud_task.html#updatingatasksproperty">Updating a task's property</a></li><li class="inner"><a href="desktop__crud_task.html#redrawingtasks">Redrawing tasks</a></li><li class="inner"><a href="desktop__crud_task.html#deletingtasks">Deleting tasks</a></li><li class="inner"><a href="desktop__crud_task.html#cascadedeletingofnestedtasks">Cascade deleting of nested tasks</a></li><li class="inner"><a href="desktop__crud_task.html#removingalltasksfromtheganttchart">Removing all tasks from the Gantt chart</a></li></ul><li class=""><a href="desktop__unscheduled_tasks.html">Unscheduled Tasks</a></li><li class="toc-pro"><a href="desktop__split_tasks.html">Split Tasks</a></li><li class=""><a href="desktop__multiselection.html">Multi-Task Selection</a></li><li class=""><a href="desktop__working_time.html">Work Time Calculation</a></li><li class="toc-pro"><a href="desktop__critical_path.html">Critical Path</a></li><li class="toc-pro"><a href="desktop__baselines.html">Extra Elements in Timeline Area</a></li><li class="toc-pro"><a href="desktop__milestones.html">Milestones</a></li><li class=""><a href="desktop__tooltips.html">Tooltips for Gantt Elements</a></li><li class=""><a href="desktop__text_block_for_task.html">Displaying Contents of Tasks</a></li><li class=""><a href="desktop__readonly_mode.html">Read-Only Mode</a></li><li class=""><a href="desktop__validation.html">Validation</a></li><li class=""><a href="desktop__dnd.html">Dragging Tasks within the Timeline</a></li><li class=""><a href="desktop__advanced_dnd.html">Creating/Selecting Tasks with DnD</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__task_bars.html">Configuring Tasks</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Basic Operations with Tasks</h1>
+
+<p>In this chapter you'll learn how to do basic operations with tasks: to create or delete a task, to dynamically update a task's property.</p>
+
+<a name='addinganewtask'><h2>Adding a new task</h2></a>
+
+<p>To add a new task to the Gantt chart, use the <a class="link-" href="api__gantt_addtask.html">addTask</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> taskId <span class="sy0">=</span> gantt.<span class="me1">addTask</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    id<span class="sy0">:</span><span class="nu0">10</span><span class="sy0">,</span>
+    text<span class="sy0">:</span><span class="st0">&quot;Project #1&quot;</span><span class="sy0">,</span>
+    start_date<span class="sy0">:</span><span class="st0">&quot;02-09-2020&quot;</span><span class="sy0">,</span>
+    duration<span class="sy0">:</span><span class="nu0">28</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Preventing from adding tasks to certain levels</h3>
+
+<p>A quite easy way to prevent users from adding sub-tasks to a task of a certain level (or based on some other condition) is to hide the 'Add'  button through CSS.</p>
+
+<p>You can assign a CSS class for each task row using the <a class="link-" href="api__gantt_grid_row_class_template.html">grid_row_class</a> template:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">grid_row_class</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span> start<span class="sy0">,</span> end<span class="sy0">,</span> task <span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span> task.$level <span class="sy0">&gt;</span> <span class="nu0">1</span> <span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">return</span> <span class="st0">&quot;nested_task&quot;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>and hide the 'Add' button for such rows:</p>
+
+<pre><code><pre class="css"><span class="re1">.nested_task</span> .gantt_add<span class="br0">&#123;</span>
+    <span class="kw1">display</span><span class="sy0">:</span> <span class="kw2">none</span> !important<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p><a href='samples/08_api/11_project_structure.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Predefined Project Structure</a></p>
+
+<a name='updatingatasksproperty'><h2>Updating a task's property</h2></a>
+
+<p>To dynamically update a property of a task object, use the <a class="link-" href="api__gantt_updatetask.html">updateTask</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> task <span class="sy0">=</span> gantt.<span class="me1">getTask</span><span class="br0">&#40;</span><span class="nu0">10</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//-&gt;{id:10,text:&quot;Task #10&quot;,start_date:&quot;02-09-2020&quot;,...}</span>
+&nbsp;
+<span class="xtra ln-xtra">task.<span class="me1">text</span> <span class="sy0">=</span> <span class="st0">&quot;Task #10_1&quot;</span><span class="sy0">;</span> </span><span class="xtra ln-xtra">gantt.<span class="me1">updateTask</span><span class="br0">&#40;</span><span class="nu0">10</span><span class="br0">&#41;</span><span class="sy0">;</span> </span><span class="xtra ln-xtra">gantt.<span class="me1">refreshData</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<a name='redrawingtasks'><h2>Redrawing tasks</h2></a>
+
+<p>To re-draw all tasks in the Gantt chart, use the <a class="link-" href="api__gantt_refreshdata.html">refreshData</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> task <span class="sy0">=</span> gantt.<span class="me1">getTask</span><span class="br0">&#40;</span><span class="nu0">10</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//-&gt;{id:10,text:&quot;Task #10&quot;,start_date:&quot;02-09-2020&quot;,...}</span>
+<span class="kw2">var</span> task2 <span class="sy0">=</span> gantt.<span class="me1">getTask</span><span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//-&gt;{id:11,text:&quot;Task #11&quot;,start_date:&quot;05-09-2020&quot;,...}</span>
+&nbsp;
+<span class="xtra ln-xtra">task.<span class="me1">text</span> <span class="sy0">=</span> <span class="st0">&quot;Task #10_1&quot;</span><span class="sy0">;</span>  </span><span class="xtra ln-xtra">task2.<span class="me1">text</span> <span class="sy0">=</span> <span class="st0">&quot;Task #11_1&quot;</span><span class="sy0">;</span> </span><span class="xtra ln-xtra">gantt.<span class="me1">refreshData</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<a name='deletingtasks'><h2>Deleting tasks</h2></a>
+
+<p>To delete a task, use the <a class="link-" href="api__gantt_deletetask.html">deleteTask</a> method:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">deleteTask</span><span class="br0">&#40;</span>taskId<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='cascadedeletingofnestedtasks'><h2>Cascade deleting of nested tasks</h2></a>
+
+<p>There is a <a class="link-" href="api__gantt_cascade_delete_config.html">cascade_delete</a> config that regulates the process of deleting tasks from Gantt. By default, it is set to <em>true</em>,
+which means that when you delete a task, Gantt sends a request to a server for each nested task and link of the deleted task.</p>
+
+<p>If you don't need to send multiple requests to the server, you can simply disable the <a class="link-" href="api__gantt_cascade_delete_config.html">cascade_delete</a> config:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">cascade_delete</span> <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In that case Gantt will send only one request to the server - for deleting just the parent task, while its nested tasks and links will be deleted by the server.</p>
+
+<p>The <a class="link-" href="api__gantt_cascade_delete_config.html">cascade_delete</a> option affects the way of implemeting a backend. Read more in the 
+<a class="link-" href="desktop__server_side.html#cascadedeletion">related section of the Server-side Integration article</a>.</p>
+
+<a name='removingalltasksfromtheganttchart'><h2>Removing all tasks from the Gantt chart</h2></a>
+
+<p>To clear the Gantt chart from tasks, call the <a class="link-" href="api__gantt_clearall.html">clearAll</a> method:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">clearAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='desktop__crud_task.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

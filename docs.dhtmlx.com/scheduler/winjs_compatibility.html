@@ -1,0 +1,308 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>dhtmlxScheduler in Windows Store Apps  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="minicalendar.html">Mini Calendar (Date Picker)</a></li><li class=""><a href="touch_support.html">Mobile Responsive Scheduler</a></li><li class=""><a href="content_security_policy.html">Content Security Policy Compliance</a></li><li class=" current"><a href="winjs_compatibility.html">dhtmlxScheduler in Windows Store Apps</a></li><ul><li class="inner"><a href="winjs_compatibility.html#filestoinclude">Files to include</a></li><li class="inner"><a href="winjs_compatibility.html#initialization">Initialization</a></li><li class="inner"><a href="winjs_compatibility.html#schedulerconfiguration">Scheduler configuration</a></li><li class="inner"><a href="winjs_compatibility.html#loadingdata">Loading data</a></li><li class="inner"><a href="winjs_compatibility.html#managingcreateupdatedeleteoperations">Managing Create/Update/Delete operations</a></li><li class="inner"><a href="winjs_compatibility.html#anexampleofcrudlogicfortheindexeddbdatabase">An example of CRUD logic for the IndexedDB database</a></li><li class="inner"><a href="winjs_compatibility.html#notsupportedfunctionality">Not supported functionality</a></li></ul><li class=""><a href="live_update.html">Live Update Mode</a></li><li class=""><a href="multiple_users.html">Multiple Users</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="special_extensions.html">Special Extensions and Editions</a></div>
+<!-- Content Area -->
+
+
+
+<h1>dhtmlxScheduler in Windows Store Apps</h1>
+
+<p>dhtmlxScheduler can be used in Windows Store applications written in JavaScript and HTML.</p>
+
+<p>You need to download a special edition of dhtmlxScheduler - <a href="http://dhtmlx.com/x/download/regular/dhtmlxScheduler_windows.zip">http://dhtmlx.com/x/download/regular/dhtmlxScheduler_windows.zip</a>.</p>
+
+<p>To make it easy to learn the topic, you can go through the step-by-step tutorial - <a href="../index.html">Basic Windows 8 app with dhtmlxScheduler</a>.</p>
+
+<a name='filestoinclude'><h2>Files to include</h2></a>
+
+<p>You need to include 4 files to work with the dhtmlxScheduler library:</p>
+
+<pre><code><pre class="js"><span class="co1">//core files</span>
+<span class="sy0">&lt;</span>script src<span class="sy0">=</span><span class="st0">&quot;/lib/dhtmlxscheduler.js&quot;</span><span class="sy0">&gt;&lt;/</span>script<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>link href<span class="sy0">=</span><span class="st0">&quot;/lib/dhtmlxscheduler.css&quot;</span> rel<span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="sy0">/&gt;</span></pre></code></pre>
+
+<div class='note'><p><p>Note, here is the minimum set of files needed to run an app with dhtmlxScheduler. If you use the functionality that implemented in scheduler's extension(s), include the related extension file(s) additionally.</p>
+</p></div>
+
+<a name='initialization'><h2>Initialization</h2></a>
+
+<p>The scheduler is initialized in a standard way:</p>
+
+<ul>
+<li>Firstly, in the app's start page  (by default, it's the  <em>default.html</em> file), define a standard set of the div containers for scheduler's elements:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>div id<span class="sy0">=</span><span class="st0">&quot;scheduler_here&quot;</span> <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_container&quot;</span> style<span class="sy0">=</span><span class="st0">'width:100%; height:100%;'</span><span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_navline&quot;</span><span class="sy0">&gt;</span>
+            <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_prev_button&quot;</span><span class="sy0">&gt;&amp;</span>nbsp<span class="sy0">;&lt;/</span>div<span class="sy0">&gt;</span>
+            <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_next_button&quot;</span><span class="sy0">&gt;&amp;</span>nbsp<span class="sy0">;&lt;/</span>div<span class="sy0">&gt;</span>
+            <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_today_button&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+            <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_date&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+            <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;day_tab&quot;</span> style<span class="sy0">=</span><span class="st0">&quot;right:204px;&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+            <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;week_tab&quot;</span> style<span class="sy0">=</span><span class="st0">&quot;right:140px;&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+            <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_tab&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;month_tab&quot;</span> style<span class="sy0">=</span><span class="st0">&quot;right:76px;&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+        <span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_header&quot;</span><span class="sy0">&gt;</span>
+        <span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_cal_data&quot;</span><span class="sy0">&gt;</span>
+        <span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span>       
+<span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span></pre></code></pre>
+
+<ul>
+<li>And then, initialize the scheduler (you can put the initialization code right into the <strong>ready</strong> function within the <strong>app.onactivated</strong> event handler):</li>
+</ul>
+
+<pre><code><pre class="js">app.<span class="me1">onactivated</span> <span class="sy0">=</span> <span class="kw2">function</span> <span class="br0">&#40;</span>args<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>args.<span class="me1">detail</span>.<span class="me1">kind</span> <span class="sy0">===</span> activation.<span class="me1">ActivationKind</span>.<span class="me1">launch</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>args.<span class="me1">detail</span>.<span class="me1">previousExecutionState</span> <span class="sy0">!==</span> 
+            activation.<span class="me1">ApplicationExecutionState</span>.<span class="me1">terminated</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+&nbsp;
+                WinJS.<span class="me1">Utilities</span>.<span class="me1">ready</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span> 
+                     scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+            <span class="br0">&#125;</span><span class="sy0">,</span> <span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="br0">&#125;</span> <span class="kw1">else</span> <span class="br0">&#123;</span> <span class="br0">&#125;</span>
+        args.<span class="me1">setPromise</span><span class="br0">&#40;</span>WinJS.<span class="me1">UI</span>.<span class="me1">processAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='schedulerconfiguration'><h2>Scheduler configuration</h2></a>
+
+<p>Again, scheduler is <a class="link-" href="configuration.html">configured in a standard  way</a>:</p>
+
+<pre><code><pre class="js">WinJS.<span class="me1">Utilities</span>.<span class="me1">ready</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span> 
+      scheduler.<span class="me1">config</span>.<span class="me1">multi_day</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+      scheduler.<span class="me1">config</span>.<span class="me1">details_on_create</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+      scheduler.<span class="me1">config</span>.<span class="me1">details_on_dblclick</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+      scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2012</span><span class="sy0">,</span> <span class="nu0">10</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;month&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">,</span> <span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='loadingdata'><h2>Loading data</h2></a>
+
+<p>To load data to the scheduler you have to use the <a class="link-" href="api__scheduler_parse.html">parse</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> storeItems <span class="sy0">=</span> <span class="br0">&#91;</span>
+     <span class="br0">&#123;</span> text<span class="sy0">:</span><span class="st0">&quot;Friday&quot;</span><span class="sy0">,</span>  start_date<span class="sy0">:</span><span class="st0">&quot;11.04.2012 00:00&quot;</span><span class="sy0">,</span>end_date<span class="sy0">:</span><span class="st0">&quot;11.05.2012 17:00&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span> text<span class="sy0">:</span><span class="st0">&quot;New Year&quot;</span><span class="sy0">,</span>start_date<span class="sy0">:</span><span class="st0">&quot;11.05.2012 14:00&quot;</span><span class="sy0">,</span>end_date<span class="sy0">:</span><span class="st0">&quot;10.05.2012 17:00&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span> text<span class="sy0">:</span><span class="st0">&quot;Birthday&quot;</span><span class="sy0">,</span>start_date<span class="sy0">:</span><span class="st0">&quot;11.06.2012 16:00&quot;</span><span class="sy0">,</span>end_date<span class="sy0">:</span><span class="st0">&quot;11.06.2012 17:00&quot;</span> <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+WinJS.<span class="me1">Utilities</span>.<span class="me1">ready</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span> 
+      scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+      scheduler.<span class="me1">parse</span><span class="br0">&#40;</span>storeItems<span class="sy0">,</span> <span class="st0">&quot;json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">,</span> <span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Mandatory data properties</h3>
+
+<p>You data items must contain the following mandatory properties:</p>
+
+<ul>
+<li><strong>start_date</strong> - the date when a task is scheduled to begin. The date format defined by the <a class="link-" href="api__scheduler_date_format_config.html">date_format</a> config option</li>
+<li><strong>end_date</strong> - the date when a task is scheduled to be completed. The date format defined by the <a class="link-" href="api__scheduler_date_format_config.html">date_format</a> config option</li>
+<li><strong>text</strong>  - the text of a task</li>
+</ul>
+
+<h3>Available formats</h3>
+
+<ul>
+<li><a class="link-" href="data_formats.html#json">JSON</a></li>
+<li><a class="link-" href="data_formats.html#xml">XML</a></li>
+<li><a class="link-" href="data_formats.html#ical">iCal</a></li>
+</ul>
+
+<a name='managingcreateupdatedeleteoperations'><h2>Managing Create/Update/Delete operations</h2></a>
+
+<p>Generally, scheduler uses DataProcessor to implement CRUD operations. But DataProcessor is incompatible with the Windows 8 apps. Therefore, in that apps you should use events and provide the processing logic manually.</p>
+
+<ul>
+<li><a class="link-" href="api__scheduler_onconfirmedbeforeeventdelete_event.html">onConfirmedBeforeEventDelete</a> - fires after the user has clicked on the delete button and confirmed the deletion</li>
+<li><a class="link-" href="api__scheduler_oneventchanged_event.html">onEventChanged</a> - fires after the event has been edited and changes were saved (the user clicks the edit and save buttons, respectively)</li>
+<li><a class="link-" href="api__scheduler_oneventadded_event.html">onEventAdded</a> - fires when the user adds a new event</li>
+<li><em>Note, when you create a new event in the scheduler, it gets an auto-generated id. When this event is saved in the data source, the auto-generated id can be replaced with the id given by the data source. 
+In case the event's id has been changed in the data source, you can use the <a class="link-" href="api__scheduler_changeeventid.html">changeEventId</a> method to change the event's id in the scheduler, accordingly.</em></li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onConfirmedBeforeEventDelete&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span> event<span class="br0">&#41;</span><span class="br0">&#123;</span>
+       <span class="co1">// your custom code</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onEventChanged&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>id<span class="sy0">,</span> event<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+       <span class="co1">// your custom code</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onEventAdded&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>id<span class="sy0">,</span> event<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+       <span class="co1">// your custom code</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='anexampleofcrudlogicfortheindexeddbdatabase'><h2>An example of CRUD logic for the IndexedDB database</h2></a>
+
+<p>Here is a general example of implementing the 'insert' operation. The 'delete'/'update'/'read' operations can be implemented by analogy with the 'insert' operation.</p>
+
+<pre><code><pre class="js"><span class="co1">//connects to indexedDb and fires the callback in case of success</span>
+<span class="kw2">function</span> connect<span class="br0">&#40;</span>callback<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">try</span><span class="br0">&#123;</span>
+        <span class="kw2">var</span> db <span class="sy0">=</span> <span class="kw2">null</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw2">var</span> req <span class="sy0">=</span> window.<span class="me1">indexedDB</span>.<span class="kw3">open</span><span class="br0">&#40;</span><span class="st0">&quot;SchedulerApp&quot;</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        req.<span class="me1">onsuccess</span> <span class="sy0">=</span> <span class="kw2">function</span> <span class="br0">&#40;</span>ev<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            db <span class="sy0">=</span> ev.<span class="me1">target</span>.<span class="me1">result</span><span class="sy0">;</span>
+            <span class="kw1">if</span><span class="br0">&#40;</span>callback<span class="br0">&#41;</span><span class="co1">//fire a callback on connect</span>
+                callback<span class="br0">&#40;</span>db<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        req.<span class="me1">onupgradeneeded</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>e<span class="br0">&#41;</span><span class="br0">&#123;</span>
+            <span class="co1">//The event is fired while connecting to the new database or </span>
+            <span class="co1">//on changing the version.</span>
+            <span class="co1">//This is the only place for defining database structure(object stores)</span>
+            <span class="kw2">var</span> db <span class="sy0">=</span> ev.<span class="me1">target</span>.<span class="me1">result</span><span class="sy0">;</span>
+&nbsp;
+            <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span>db.<span class="me1">objectStoreNames</span>.<span class="me1">contains</span><span class="br0">&#40;</span><span class="st0">&quot;events&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+                <span class="co1">//create data store, set 'id' as autoincremental key</span>
+                <span class="kw2">var</span> events <span class="sy0">=</span> db.<span class="me1">createObjectStore</span><span class="br0">&#40;</span>
+                    <span class="st0">&quot;events&quot;</span><span class="sy0">,</span> 
+                    <span class="br0">&#123;</span> keyPath<span class="sy0">:</span> <span class="st0">&quot;id&quot;</span><span class="sy0">,</span> autoIncrement<span class="sy0">:</span> <span class="kw2">true</span> <span class="br0">&#125;</span>
+                <span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="br0">&#125;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span><span class="kw1">catch</span><span class="br0">&#40;</span>e<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">//adds js object to the database and fires callback in case of success</span>
+<span class="kw2">function</span> insertEvent<span class="br0">&#40;</span>data<span class="sy0">,</span> callback<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    connect<span class="br0">&#40;</span><span class="kw2">function</span> <span class="br0">&#40;</span>db<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw2">var</span> store <span class="sy0">=</span> db.<span class="me1">transaction</span><span class="br0">&#40;</span><span class="st0">&quot;events&quot;</span><span class="sy0">,</span> <span class="st0">&quot;readwrite&quot;</span><span class="br0">&#41;</span>.<span class="me1">objectStore</span><span class="br0">&#40;</span><span class="st0">&quot;events&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw2">var</span> updated <span class="sy0">=</span> store.<span class="me1">add</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="sy0">;</span>
+        updated.<span class="me1">onsuccess</span> <span class="sy0">=</span> <span class="kw2">function</span> <span class="br0">&#40;</span>res<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            callback<span class="br0">&#40;</span>res.<span class="me1">target</span>.<span class="me1">result</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">// uses all defined above with the dhtmlxScheduler</span>
+<span class="co1">// when the user adds an event into the scheduler - it will be saved to the database</span>
+scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onEventAdded&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>id<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw2">var</span> ev <span class="sy0">=</span>copyEvent<span class="br0">&#40;</span>scheduler.<span class="me1">getEvent</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//copyEvent -function for deep copying</span>
+    <span class="kw1">delete</span> ev.<span class="me1">id</span><span class="sy0">;</span><span class="co1">//real id will be assigned by the database</span>
+&nbsp;
+    insertEvent<span class="br0">&#40;</span>ev<span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>newId<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        scheduler.<span class="me1">changeEventId</span><span class="br0">&#40;</span>id<span class="sy0">,</span> newId<span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//update event id in the app</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='notsupportedfunctionality'><h2>Not supported functionality</h2></a>
+
+<p>There are some features of a standard scheduler that aren't supported in Windows Store apps. They are:</p>
+
+<ul>
+<li>DataProcessor</li>
+<li>Map view</li>
+<li>Export to PDF</li>
+</ul>
+
+<!-- Content Area End -->
+			<a href='winjs_compatibility.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

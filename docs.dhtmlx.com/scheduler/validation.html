@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Validation  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="event_object_operations.html">Event Object Operations</a></li><li class=""><a href="adding_events.html">Adding/Deleting Events</a></li><li class=""><a href="filtering.html">Filtering Events</a></li><li class=""><a href="dhtmlx_components_integration.html">Drag-and-Drop Operations</a></li><li class=""><a href="recurring_events.html">Recurring Events</a></li><li class=""><a href="readonly.html">Read-only Mode</a></li><li class=" current"><a href="validation.html">Validation</a></li><ul><li class="inner"><a href="validation.html#clientsidevalidation">Client-side validation</a></li><li class="inner"><a href="validation.html#serversidevalidation">Server-side validation</a></li></ul><li class=""><a href="collisions.html">Preventing Double Events in a Time Slot</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="managing_events.html">Managing Scheduler Events</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Validation</h1>
+
+<p>Validation allows you to control the data entered by the user in order to exclude the possibility of saving incorrect values. 
+For example, with validation you can prevent creation of events without description.</p>
+
+<p>Generally, to validate the data entered by the user, use the events provided by the <a class="link-" href="api__refs__scheduler_events.html">dhtmlxScheduler API</a> and catch the input data to process them in accordance with their correctness:</p>
+
+<a name='clientsidevalidation'><h2>Client-side validation</h2></a>
+
+<p>The following events are mostly important and commonly used for data validation:</p>
+
+<ul>
+<li><a class="link-" href="api__scheduler_oneventsave_event.html">onEventSave</a> - fires when the user clicks on the 'Save' button in the lightbox</li>
+<li><a class="link-" href="api__scheduler_onbeforeeventcreated_event.html">onBeforeEventCreated</a> - fires before a new event is added to the Scheduler</li>
+<li><a class="link-" href="api__scheduler_onbeforeeventchanged_event.html">onBeforeEventChanged</a> - fires  before an event is updated</li>
+</ul>
+
+<p>The simplest validation can be achieved with the help of the <a class="link-" href="api__scheduler_oneventsave_event.html">onEventSave</a> event. The event is invoked when the user clicks the 'Save' button on the form. 
+Returning <em>true</em> from the event will save the changes, returning <em>false</em> will cancel the further processing and leave the lightbox opened.</p>
+
+<p>For example, to restrict saving of an event, if it doesn't have any description, or in case the text is too short, use the code like this:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onEventSave&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span>ev<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span>ev.<span class="me1">text</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        dhtmlx.<span class="kw3">alert</span><span class="br0">&#40;</span><span class="st0">&quot;Text must not be empty&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>ev.<span class="me1">text</span>.<span class="me1">length</span> <span class="sy0">&lt;</span> <span class="nu0">20</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        dhtmlx.<span class="kw3">alert</span><span class="br0">&#40;</span><span class="st0">&quot;Text too small&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_customization/08_validation.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Validating lightbox fields</a></p>
+
+<a name='serversidevalidation'><h2>Server-side validation</h2></a>
+
+<p>The solution above has a shortcoming - the event won't fire if the data in the lightbox has been changed through an inline editor or by dragging over the Scheduler.</p>
+
+<p>To prove this and catch all changes made in the Scheduler (editing, creating, deleting etc.), use the <a class="link-" href="server_integration.html">dataProcessor</a> object or, to be precise, one of its events - 
+<a href="../api__dataprocessor_onbeforeupdate_event.html">onBeforeUpdate</a>. The event fires before sending data to the server and after any change, made in the Scheduler (not only in the lightbox).</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;scheduler_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;data.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> gantt.<span class="me1">dataProcessor</span><span class="br0">&#40;</span><span class="st0">&quot;data.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">init</span><span class="br0">&#40;</span>scheduler<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+dp.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onBeforeUpdate&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>id<span class="sy0">,</span> <span class="kw3">status</span><span class="sy0">,</span> data<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span>data.<span class="me1">text</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        dhtmlx.<span class="me1">message</span><span class="br0">&#40;</span><span class="st0">&quot;The event's text can't be empty!&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>where:</p>
+
+<ul>
+<li><strong>id</strong> - (<em>string</em>) the event's id.</li>
+<li><strong>status</strong> - (<em>'updated', 'inserted', deleted'</em>) the event's operation status.</li>
+<li><strong>data</strong> - (<em>object</em>) the data to send.</li>
+</ul>
+
+<p>Note, when the field fails validation, changes aren't sent to the server, but stay on the client and can be used for further processing.</p>
+
+<!-- Content Area End -->
+			<a href='validation.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

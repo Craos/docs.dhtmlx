@@ -1,0 +1,283 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Common Tasks & Errors  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dataprocessor.html">dataProcessor API</a></li><li class=""><a href="dataprocessor__basic_principles.html">Basic Operating Principles</a></li><li class=""><a href="dataprocessor__initialization.html">Initializing DataProcessor</a></li><li class=""><a href="dataprocessor__configuration.html">Configuring DataProcessor</a></li><li class=" current"><a href="dataprocessor__common_tasks.html">Common Tasks & Errors</a></li><ul><li class="inner"><a href="dataprocessor__common_tasks.html#commontasks">Common Tasks</a></li><li class="inner"><a href="dataprocessor__common_tasks.html#commonerrors">Common Errors</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="connector__index.html">Client-Server Communication</a><a class="n3" href="dataprocessor__index.html">DataProcessor</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Common Tasks &amp; Errors</h1>
+
+<p>In this chapter we consider most popular tasks &amp; errors you can face during the development process.</p>
+
+<a name='commontasks'><h2>Common Tasks</h2></a>
+
+<h3>Update completion</h3>
+
+<p>There are two events which can be used to catch the finish of data sync operation:</p>
+
+<pre><code><pre class="js">dp.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onAfterUpdateFinish&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+   <span class="kw3">alert</span><span class="br0">&#40;</span><span class="st0">&quot;single row updated&quot;</span><span class="br0">&#41;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onFullSync&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+   <span class="kw3">alert</span><span class="br0">&#40;</span><span class="st0">&quot;all rows updated&quot;</span><span class="br0">&#41;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>At any time the update state can be checked as follows:</p>
+
+<pre><code><pre class="js">dp.<span class="me1">getSyncState</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>which will return <strong>true</strong> if all data is synced by the server and <strong>false</strong> otherwise.</p>
+
+<h3>Manual row updating</h3>
+
+<p>DataProcessor detects a row changing only by the edit operations. If a row was changed by a direct API calling, it will not be updated. 
+In such case you can manually call the dataProcessor to inform about the update operation:</p>
+
+<pre><code><pre class="js">grid.<span class="me1">cells</span><span class="br0">&#40;</span>id<span class="sy0">,</span>ind<span class="br0">&#41;</span>.<span class="me1">setValue</span><span class="br0">&#40;</span>new_one<span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">setUpdated</span><span class="br0">&#40;</span>id<span class="sy0">,</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The row can be marked as "not updated" in the same manner (may be useful in some scenarios):</p>
+
+<pre><code><pre class="js">dp.<span class="me1">setUpdated</span><span class="br0">&#40;</span>id<span class="sy0">,</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>If you want to mark a row with the status different from "updated" (not sure how it can be useful, but still) it can be done as shown below:</p>
+
+<pre><code><pre class="js">dp.<span class="me1">setUpdated</span><span class="br0">&#40;</span>id<span class="sy0">,</span><span class="kw2">true</span><span class="sy0">,</span><span class="st0">&quot;status name&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Error catching</h3>
+
+<p>Starting from version 2.1, dataProcessor has a default reaction on the "error" response type which is used to report about server-side errors. 
+The row marked as <strong>error</strong> will be highlighted in the grid. And it will not be sent back to the server until one of the following events occurs:</p>
+
+<p><strong>1.</strong> A user edits data in a row;</p>
+
+<p><strong>2.</strong> Rows set back to the updated status through the <a class="link-" href="api__dataprocessor_setupdated.html">setUpdated</a> command.</p>
+
+<h3>Server-side validation</h3>
+
+<p>It's a reaction on the "invalid" status in the server-side response. It's similar to "error", but has a different visual marking.</p>
+
+<p>If you want to extend it, you should do the following on the client side:</p>
+
+<pre><code><pre class="js">dp.<span class="me1">defineAction</span><span class="br0">&#40;</span><span class="st0">&quot;invalid&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>response<span class="br0">&#41;</span><span class="br0">&#123;</span>
+<span class="kw2">var</span> message <span class="sy0">=</span> response.<span class="me1">getAttribute</span><span class="br0">&#40;</span><span class="st0">&quot;message&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw3">alert</span><span class="br0">&#40;</span>message<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<p>And you need to do some work on the server-side (if the data isn't valid, a text message will be returned):</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;?xml <span class="kw3">version</span><span class="sy0">=</span><span class="st0">&quot;1.0&quot;</span> encoding<span class="sy0">=</span><span class="st0">&quot;UTF-8&quot;</span>?&gt;</span>
+<span class="sc2">&lt;data&gt;</span>
+  <span class="sc2">&lt;<span class="kw3">action</span> sid<span class="sy0">=</span><span class="st0">&quot;{gr_id}&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;invalid&quot;</span> message<span class="sy0">=</span><span class="st0">&quot;Data in the first column is not valid&quot;</span> <span class="sy0">/</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span>data&gt;</span></pre></code></pre>
+
+<h3>Loading extra data during update</h3>
+
+<p>It's possible to extend the default after-update reaction as:</p>
+
+<pre><code><pre class="js">dp.<span class="me1">defineAction</span><span class="br0">&#40;</span><span class="st0">&quot;updated&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>response<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> sid <span class="sy0">=</span> response.<span class="me1">getAttribute</span><span class="br0">&#40;</span><span class="st0">&quot;sid&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw2">var</span> extra <span class="sy0">=</span> response.<span class="me1">getAttribute</span><span class="br0">&#40;</span><span class="st0">&quot;extra&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">this</span>.<span class="me1">obj</span>.<span class="me1">cells</span><span class="br0">&#40;</span>sid<span class="sy0">,</span><span class="nu0">0</span><span class="br0">&#41;</span>.<span class="me1">setValue</span><span class="br0">&#40;</span>extra<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<p>With such a code you will be able to specify any additional data which needs to be updated in the grid after receiving XML response from the server:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>data<span class="sy0">&gt;</span>
+ <span class="sy0">&lt;</span>action sid<span class="sy0">=</span><span class="st0">&quot;{gr_id}&quot;</span> type<span class="sy0">=</span><span class="st0">&quot;updated&quot;</span> tid<span class="sy0">=</span><span class="st0">&quot;{gr_id}&quot;</span> extra<span class="sy0">=</span><span class="st0">&quot;new value for first column&quot;</span> <span class="sy0">/&gt;</span>
+<span class="sy0">&lt;/</span>data<span class="sy0">&gt;</span></pre></code></pre>
+
+<h3>Sending extra data to server</h3>
+
+<p>In the case of grid, if you'd like to send some extra data in addition to those, that were sent through the <a class="link-" href="api__dataprocessor_senddata.html">dp.sendData()</a> command,
+you can use the  method <a class="link-" href="api__dhtmlxgrid_setuserdata.html">setUserData()</a> (sets global userdata for a grid).</p>
+
+<pre><code><pre class="js">myGrid.<span class="me1">setUserData</span><span class="br0">&#40;</span><span class="st0">&quot;&quot;</span><span class="sy0">,</span> <span class="st0">&quot;some&quot;</span><span class="sy0">,</span> <span class="st0">&quot;value&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>On the server side you can get the sent data through the <a class="link-" href="api__dataprocessor_onbeforeupdate_event.html">onBeforeUpdate</a> event:</p>
+
+<pre><code><pre class="php">dp<span class="sy0">.</span>attachEvent<span class="br0">&#40;</span><span class="st0">&quot;onBeforeUpdate&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span>action<span class="br0">&#41;</span><span class="br0">&#123;</span>
+  action<span class="sy0">.</span>get_value<span class="br0">&#40;</span>some<span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="kw1">return</span> <span class="kw4">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<p>Also it's possible to include any custom parameters directly into dataprocessor's URL used in the client-side dataProcessor constructor:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> DataProcessor<span class="br0">&#40;</span><span class="st0">&quot;some.php?field=&quot;</span><span class="sy0">+</span>field_name<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">//on server-side for all calls you will have:</span>
+<span class="co1">//$_GET['field']</span></pre></code></pre>
+
+<h3>Partial data sending</h3>
+
+<p>If you update data 'partially', you can face the problem when only the first part is updated. For example, you have 3 columns in a grid and want to update some record. 
+At first, you update the first cell. It's updated correctly. You try to update the second and the third ones but they won't do. The following technique will help you to update the 2 last cells:</p>
+
+<pre><code><pre class="php">cells<span class="br0">&#40;</span>rId<span class="sy0">,</span> <span class="nu0">2</span><span class="br0">&#41;</span><span class="sy0">.</span>setValue<span class="br0">&#40;</span>age<span class="br0">&#41;</span><span class="sy0">;</span>
+cells<span class="br0">&#40;</span>rId<span class="sy0">,</span> <span class="nu0">2</span><span class="br0">&#41;</span><span class="sy0">.</span>cell<span class="sy0">.</span>wasChanged <span class="sy0">=</span> <span class="kw4">true</span><span class="sy0">;</span><span class="co1">//added</span>
+cells<span class="br0">&#40;</span>rId<span class="sy0">,</span> <span class="nu0">3</span><span class="br0">&#41;</span><span class="sy0">.</span>setValue<span class="br0">&#40;</span>gender<span class="br0">&#41;</span><span class="sy0">;</span>
+cells<span class="br0">&#40;</span>rId<span class="sy0">,</span> <span class="nu0">3</span><span class="br0">&#41;</span><span class="sy0">.</span>cell<span class="sy0">.</span>wasChanged <span class="sy0">=</span> <span class="kw4">true</span><span class="sy0">;</span><span class="co1">//added</span></pre></code></pre>
+
+<h3>Changing URL</h3>
+
+<p>To change the URL of the dataprocessor after it's been initialized you can use the following code:</p>
+
+<pre><code><pre class="js">dp.<span class="me1">serverProcessor</span> <span class="sy0">=</span> <span class="st0">&quot;some_new_url&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Currently, there is no way to detach dataprocessor from an object. But you can use this technique and reset its URL.</p>
+
+<a name='commonerrors'><h2>Common Errors</h2></a>
+
+<h3>Incorrect XML error</h3>
+
+<p>The most probable cause is some server-side error which breaks the XML. You can enable the debug console and check the response of the server side to receive more information 
+(debug console can detect many types of xml-related errors and show the reasons of these problems).</p>
+
+<h3>Deleted rows are not removed from the grid</h3>
+
+<p>Actually it is not an error - the rows will be removed only after synchronizing with the server.
+You can define a custom marking routine which will hide rows instead of striking them through.</p>
+
+<h4>Deleted rows are not removed from the grid after synchronizing with the server (updated/inserted rows stay bold)</h4>
+
+<p>The most probable cause is the incorrect values of the "action" attribute in the response XML.</p>
+
+<h3>JS error after synchronizing with the server</h3>
+
+<p>Most probably this error is caused by incorrect values of the "sid" and "tid" attributes in the response XML.</p>
+
+<!-- Content Area End -->
+			<a href='dataprocessor__common_tasks.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Step 6. Provide Filtering Data by Years  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="tutorials__dynamic_charts__step1.html">Step 1. Create the App's File</a></li><li class=""><a href="tutorials__dynamic_charts__step2.html">Step 2. Specify the Layout</a></li><li class=""><a href="tutorials__dynamic_charts__step3.html">Step 3. Add a Grid</a></li><li class=""><a href="tutorials__dynamic_charts__step4.html">Step 4. Add a Chart</a></li><li class=""><a href="tutorials__dynamic_charts__step5.html">Step 5. Provide switching between 'Profits' and 'Losses'</a></li><li class=" current"><a href="tutorials__dynamic_charts__step6.html">Step 6. Provide Filtering Data by Years</a></li><li class=""><a href="tutorials__dynamic_charts__step7.html">Step 7. Provide Grouping Data</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="tutorials__index.html">Tutorials</a><a class="n3" href="tutorials__dynamic_charts__index.html">Dynamic Apps</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Step 6. Provide Filtering Data by Years</h1>
+
+<p>The next dynamic feature is filtering and  we will add a possibility to filter input data by years.</p>
+
+<p>We will provide 2 options:</p>
+
+<ol>
+<li>Displaying data for the all period (default view. No filtering)</li>
+<li>Displaying data for the last 5 years (filtering by years, where <em>year>currentYear-5</em>). </li>
+</ol>
+
+<p>To implement this functionality, we need a little effort:</p>
+
+<ul>
+<li>To add 2 more radio buttons to the form.</li>
+<li>To check which radio button is checked.</li>
+<li>If needed, to call the <a class="link-" href="api__dhtmlxchart_filter.html">filter</a> method of <a class="link-" href="chart__index.html">dhtmlxChart</a> to filter the data.</li>
+</ul>
+
+<div style="font-weight:bold; color: rgb(65, 65, 65); padding-top: 10px; font-size: 15px;">To filter data displayed in the chart:</div>
+
+<ol>
+    <li>Open the "<i>data/form.xml</i> " file and add the filtering controls there so the final file looks as in:<br><br> 
+<p class='snippet'>
+"data/form.xml" file
+</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;?</span>xml version<span class="sy0">=</span><span class="st0">&quot;1.0&quot;</span><span class="sy0">?&gt;</span>
+<span class="sy0">&lt;</span>items<span class="sy0">&gt;</span>
+    <span class="sy0">&lt;</span><span class="kw1">item</span> type<span class="sy0">=</span><span class="st0">&quot;settings&quot;</span> position<span class="sy0">=</span><span class="st0">&quot;label-right&quot;</span> offsetLeft<span class="sy0">=</span><span class="st0">&quot;20&quot;</span> 
+    labelWidth<span class="sy0">=</span><span class="st0">&quot;150&quot;</span><span class="sy0">/&gt;</span>
+    <span class="sy0">&lt;</span><span class="kw1">item</span> type<span class="sy0">=</span><span class="st0">&quot;block&quot;</span> width<span class="sy0">=</span><span class="st0">&quot;230&quot;</span> offsetLeft<span class="sy0">=</span><span class="st0">&quot;0&quot;</span><span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span><span class="kw1">item</span> type<span class="sy0">=</span><span class="st0">&quot;label&quot;</span> label<span class="sy0">=</span><span class="st0">&quot;Show report for:&quot;</span> offsetLeft<span class="sy0">=</span><span class="st0">&quot;0&quot;</span><span class="sy0">/&gt;</span>
+        <span class="sy0">&lt;</span><span class="kw1">item</span> type<span class="sy0">=</span><span class="st0">&quot;radio&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;type&quot;</span> value<span class="sy0">=</span><span class="st0">&quot;profits&quot;</span> label<span class="sy0">=</span><span class="st0">&quot;Profits&quot;</span> 
+        checked<span class="sy0">=</span><span class="st0">&quot;true&quot;</span> <span class="sy0">/&gt;</span>
+        <span class="sy0">&lt;</span><span class="kw1">item</span> type<span class="sy0">=</span><span class="st0">&quot;radio&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;type&quot;</span> value<span class="sy0">=</span><span class="st0">&quot;losses&quot;</span> label<span class="sy0">=</span><span class="st0">&quot;Losses&quot;</span><span class="sy0">/&gt;</span>
+<span class="xtra ln-xtra">        <span class="sy0">&lt;</span><span class="kw1">item</span> type<span class="sy0">=</span><span class="st0">&quot;label&quot;</span> label<span class="sy0">=</span><span class="st0">&quot;Use data for:&quot;</span> offsetLeft<span class="sy0">=</span><span class="st0">&quot;0&quot;</span><span class="sy0">/&gt;</span> </span><span class="xtra ln-xtra">        <span class="sy0">&lt;</span><span class="kw1">item</span> type<span class="sy0">=</span><span class="st0">&quot;radio&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;filter&quot;</span> value<span class="sy0">=</span><span class="st0">&quot;all_time&quot;</span> label<span class="sy0">=</span><span class="st0">&quot;All period&quot;</span></span><span class="xtra ln-xtra">        checked<span class="sy0">=</span><span class="st0">&quot;true&quot;</span><span class="sy0">/&gt;</span></span><span class="xtra ln-xtra">        <span class="sy0">&lt;</span><span class="kw1">item</span> type<span class="sy0">=</span><span class="st0">&quot;radio&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;filter&quot;</span> value<span class="sy0">=</span><span class="st0">&quot;last5&quot;</span> label<span class="sy0">=</span><span class="st0">&quot;Last 5 years&quot;</span><span class="sy0">/&gt;</span></span>    <span class="sy0">&lt;/</span>item<span class="sy0">&gt;</span>
+<span class="sy0">&lt;/</span>items<span class="sy0">&gt;</span></pre></code></pre>
+
+    </li>
+    <li>Switch to the "<i>index.html</i> " file and add filtering functionality there so the final file looks as in:<br><br> 
+<p class='snippet'>
+"index.html" file
+</p>
+
+<pre><code><pre class="js">form.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onChange&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>id<span class="sy0">,</span> value<span class="sy0">,</span> state<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> formValues <span class="sy0">=</span> form.<span class="me1">getFormData</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>   
+    <span class="kw2">var</span> field<span class="sy0">=</span><span class="br0">&#40;</span>formValues.<span class="me1">report_type</span> <span class="sy0">==</span> <span class="st0">&quot;profits&quot;</span><span class="sy0">?</span><span class="st0">&quot;data2&quot;</span><span class="sy0">:</span><span class="st0">&quot;data3&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    chart.<span class="me1">clearAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>                             
+    chart.<span class="me1">define</span><span class="br0">&#40;</span><span class="st0">&quot;value&quot;</span><span class="sy0">,</span><span class="st0">&quot;#&quot;</span><span class="sy0">+</span>field<span class="sy0">+</span><span class="st0">&quot;#&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    chart.<span class="me1">parse</span><span class="br0">&#40;</span>grid<span class="sy0">,</span><span class="st0">&quot;dhtmlxgrid&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>     
+&nbsp;
+<span class="xtra ln-xtra">    <span class="kw1">if</span> <span class="br0">&#40;</span>formValues.<span class="me1">filter</span> <span class="sy0">==</span> <span class="st0">&quot;last5&quot;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span> </span><span class="xtra ln-xtra">        <span class="kw2">var</span> currentYear <span class="sy0">=</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">getFullYear</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>     <span class="co1">//gets the current year   </span></span><span class="xtra ln-xtra">        chart.<span class="me1">filter</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>obj<span class="br0">&#41;</span><span class="br0">&#123;</span>             <span class="co1">//filters the data in the chart   </span></span><span class="xtra ln-xtra">            <span class="kw1">return</span> obj.<span class="me1">data0</span> <span class="sy0">&gt;</span><span class="br0">&#40;</span>currentYear<span class="sy0">-</span><span class="nu0">5</span><span class="br0">&#41;</span><span class="sy0">;</span>  <span class="co1">//returns data for last 5 years </span></span><span class="xtra ln-xtra">        <span class="br0">&#125;</span><span class="br0">&#41;</span> </span><span class="xtra ln-xtra">    <span class="br0">&#125;</span>                </span>    chart.<span class="me1">render</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+</ol>
+
+<p><img style="display:block; margin: 20px auto 20px auto;" src="media/tutorials/dynamic_chart/step_6.png"/></p>
+
+<div id="tutorial_step">
+    <a id="next_step" class="link-" href="tutorials__dynamic_charts__step7.html"></a>
+</div>
+
+<!-- Content Area End -->
+			<a href='tutorials__dynamic_charts__step6.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

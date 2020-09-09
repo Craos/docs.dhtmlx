@@ -1,0 +1,504 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Ajax  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=" current"><a href="ajax__index.html">Ajax</a></li><ul><li class="inner"><a href="ajax__index.html#sendingdata">Sending Data</a></li><li class="inner"><a href="ajax__index.html#incomingdataparsing">Incoming Data Parsing</a></li><li class="inner"><a href="ajax__index.html#gettingbinarydata">Getting Binary Data</a></li><li class="inner"><a href="ajax__index.html#promiseapiforajaxrequests">Promise API for Ajax requests</a></li><li><a href="api__refs__dhtmlxajax.html">dhtmlxAjax API</a></li><li><a href="ajax__migration.html">Migration to v4.1</a></li></ul><li class=""><a href="cell__index.html">Cell</a></li><li class=""><a href="event__index.html">Event</a></li><li class=""><a href="message__index.html">Message</a></li><li class=""><a href="dhxtemplate.html">Template</a></li><li class=""><a href="api__refs__common.html">Common API</a></li><li class=""><a href="api__refs__dataloading.html">DataLoading API</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="helpers__index.html">Helpers</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Ajax</h1>
+
+<p>This section is dedicated to the Ajax helper and describes the operations which can be performed with the help of Ajax.</p>
+
+<div class="h2">API reference</div>
+
+<ul>
+<li><a class="link-" href="api__refs__dhtmlxajax.html">dhtmlxAjax API</a></li>
+</ul>
+
+<div class="h2">Migration</div>
+
+<ul>
+<li><a class="link-" href="ajax__migration.html">Migration to v4.1</a></li>
+</ul>
+
+<a name='sendingdata'><h2>Sending Data</h2></a>
+
+<p>The simplest Ajax call can be performed as:</p>
+
+<pre><code><pre class="js">dhx.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>text<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    dhx.<span class="me1">message</span><span class="br0">&#40;</span>text<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// show server-side response</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The above code makes an asynchronous GET request to the "some.php" script and shows its response through a callback function.</p>
+
+<h3>Passing parameters</h3>
+
+<p>You can pass extra parameters:</p>
+
+<ul>
+<li>by including them in the request string:</li>
+</ul>
+
+<pre><code><pre class="js">dhx.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="st0">&quot;some.php?action=info&amp;id=123&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>by a separate string with parameters:</li>
+</ul>
+
+<pre><code><pre class="js">dhx.<span class="me1">ajax</span>.<span class="me1">get</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="sy0">,</span> <span class="st0">&quot;action=info&amp;id=123&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>by using a separate JSON object:</li>
+</ul>
+
+<pre><code><pre class="js">dhx.<span class="me1">ajax</span>.<span class="me1">get</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span> action<span class="sy0">:</span><span class="st0">&quot;info&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span><span class="nu0">123</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In case of object notation, the library will escape values automatically except for the case with FormData.</p>
+
+<ul>
+<li>by using FormData:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> formData <span class="sy0">=</span> <span class="kw2">new</span> FormData<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+formData.<span class="me1">append</span><span class="br0">&#40;</span><span class="st0">&quot;action&quot;</span><span class="sy0">,</span> <span class="st0">&quot;info&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+formData.<span class="me1">append</span><span class="br0">&#40;</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span> <span class="st0">&quot;123&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+dhx.<span class="me1">ajax</span>.<span class="me1">post</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="sy0">,</span> formData<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Post mode</h3>
+
+<p>The same function can be used to make POST requests:</p>
+
+<pre><code><pre class="js">dhx.<span class="me1">ajax</span>.<span class="me1">post</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Here you can use two methods to provide extra parameters:</p>
+
+<pre><code><pre class="js"><span class="co1">//$_POST[&quot;action&quot;]=&quot;info&quot;, $_POST[&quot;id&quot;]=&quot;123&quot;</span>
+dhx.<span class="me1">ajax</span>.<span class="me1">post</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="sy0">,</span><span class="st0">&quot;action=info&amp;id=123&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dhx.<span class="me1">ajax</span>.<span class="me1">post</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> action<span class="sy0">:</span><span class="st0">&quot;info&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span><span class="nu0">123</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>Note that when passing extra parameters into the server script by a separate string|object, you should specify the type of a request (GET or POST).</p>
+</p></div>
+
+<h3>Sync mode</h3>
+
+<p>There are two ways that Ajax can access the server:</p>
+
+<ul>
+<li>synchronous (before continuing, script waits for the server to reply back).</li>
+<li>asynchronous (script continues page processing and handles the reply as it comes).</li>
+</ul>
+
+<p>By default, all requests are performed in the asynchronous mode, but there is a synchronous alternative:</p>
+
+<pre><code><pre class="js">dhx.<span class="me1">ajax</span>.<span class="me1">sync</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">get</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dhx.<span class="me1">ajax</span>.<span class="me1">sync</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">post</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Callback</h3>
+
+<p>For asynchronous Ajax calls you can define a callback function as the last parameter of the method. For GET and POST requests the syntax is the same.</p>
+
+<p>The callback function takes the following arguments:</p>
+
+<ul>
+<li><strong>text</strong> - full text of response;</li>
+<li><strong>data</strong> - response data that should be parsed as JSON or XML, whichever is applicable. It features the following methods to get the data: 
+
+<ul>
+<li><em>json()</em> - parses data as JSON;</li>
+<li><em>xml()</em> - parses data as XML;</li>
+<li><em>rawxml()</em> - gets raw XML data;</li>
+<li><em>text()</em> - gets response text;</li>
+</ul></li>
+<li><strong>XmlHttpRequest</strong> - loader object.</li>
+</ul>
+
+<p>GET requests:</p>
+
+<pre><code><pre class="js">dhx.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>text<span class="sy0">,</span> data<span class="sy0">,</span> XmlHttpRequest<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    data <span class="sy0">=</span> data.<span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="co1">//..</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+&nbsp;
+dhx.<span class="me1">ajax</span>.<span class="me1">get</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>text<span class="sy0">,</span> data<span class="sy0">,</span> XmlHttpRequest<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">//...</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>POST request:</p>
+
+<pre><code><pre class="js">dhx.<span class="me1">ajax</span>.<span class="me1">post</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>text<span class="sy0">,</span> data<span class="sy0">,</span> XmlHttpRequest<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">//...</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>If you pass parameters to the server side script, the syntax is as follows:</p>
+
+<pre><code><pre class="js">dhx.<span class="me1">ajax</span>.<span class="me1">get</span><span class="br0">&#40;</span>url<span class="sy0">,</span> params<span class="sy0">,</span> callback<span class="br0">&#41;</span><span class="sy0">;</span>
+dhx.<span class="me1">ajax</span>.<span class="me1">post</span><span class="br0">&#40;</span>url<span class="sy0">,</span> params<span class="sy0">,</span> callback<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>It's possible to define two callback methods, one for valid server side response and the second one for the error response:</p>
+
+<pre><code><pre class="js">dhx.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    error<span class="sy0">:</span><span class="kw2">function</span><span class="br0">&#40;</span>text<span class="sy0">,</span> data<span class="sy0">,</span> XmlHttpRequest<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw3">alert</span><span class="br0">&#40;</span><span class="st0">&quot;error&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    success<span class="sy0">:</span><span class="kw2">function</span><span class="br0">&#40;</span>text<span class="sy0">,</span> data<span class="sy0">,</span> XmlHttpRequest<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw3">alert</span><span class="br0">&#40;</span><span class="st0">&quot;success&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>If you need to trigger multiple callbacks after the method's execution is finished, you can define an array of callbacks as the last parameter:</p>
+
+<pre><code><pre class="js"><span class="co1">//GET requests</span>
+dhx.<span class="me1">ajax</span>.<span class="me1">get</span><span class="br0">&#40;</span>url<span class="sy0">,</span> <span class="br0">&#91;</span>array of callbacks<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dhx.<span class="me1">ajax</span>.<span class="me1">get</span><span class="br0">&#40;</span>url<span class="sy0">,</span> params<span class="sy0">,</span> <span class="br0">&#91;</span>array of callbacks<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">//POST requests</span>
+dhx.<span class="me1">ajax</span>.<span class="me1">post</span><span class="br0">&#40;</span>url<span class="sy0">,</span> <span class="br0">&#91;</span>array of callbacks<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dhx.<span class="me1">ajax</span>.<span class="me1">post</span><span class="br0">&#40;</span>url<span class="sy0">,</span> params<span class="sy0">,</span> <span class="br0">&#91;</span>array of callbacks<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In some cases you may need to provide some extra data for callback, which can be done in the next way:</p>
+
+<pre><code><pre class="js"><span class="kw2">function</span> after_call<span class="br0">&#40;</span>text<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw3">alert</span><span class="br0">&#40;</span><span class="st0">&quot;Call: &quot;</span><span class="sy0">+</span><span class="kw1">this</span>.<span class="me1">data</span><span class="sy0">+</span><span class="st0">&quot;, response: &quot;</span><span class="sy0">+</span>text<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+dhx.<span class="me1">ajax</span>.<span class="me1">get</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="sy0">,</span> after_call<span class="sy0">,</span> <span class="br0">&#123;</span> data<span class="sy0">:</span><span class="st0">&quot;my ajax&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Basically, the parameter after callback will be accessible as "this" in the callback method.</p>
+
+<p>For <strong>sync</strong> requests, there is no callback, because there is no need for waiting:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> xhr <span class="sy0">=</span> dhx.<span class="me1">ajax</span>.<span class="me1">sync</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">get</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> text <span class="sy0">=</span> xhr.<span class="me1">responseText</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Extra headers</h3>
+
+<p>If the server side code requires some extra headers, you can send them using the <strong>headers</strong> param of the <a class="link-" href="api__dhtmlxajax_query.html">dhx.ajax.query</a> method, as in:</p>
+
+<pre><code><pre class="js">dhx.<span class="me1">ajax</span>.<span class="me1">query</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    method<span class="sy0">:</span><span class="st0">&quot;POST&quot;</span><span class="sy0">,</span>
+    url<span class="sy0">:</span><span class="st0">&quot;some.php&quot;</span><span class="sy0">,</span>
+    data<span class="sy0">:</span><span class="st0">&quot;k1=v1&amp;k2=v2&quot;</span><span class="sy0">,</span>
+    async<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span>
+    callback<span class="sy0">:</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    headers<span class="sy0">:</span><span class="br0">&#123;</span>
+        <span class="st0">&quot;Sent-by&quot;</span><span class="sy0">:</span><span class="st0">&quot;My Script&quot;</span> <span class="co1">// any custom headers can be defined in such a way        </span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='incomingdataparsing'><h2>Incoming Data Parsing</h2></a>
+
+<h4>Plain response</h4>
+
+<p>In general case you can use the <em>text</em> parameter of the callback to access the data:</p>
+
+<pre><code><pre class="js">dhx.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="st0">&quot;./data.php&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>text<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    dhx.<span class="me1">message</span><span class="br0">&#40;</span>text<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<h4>JSON response</h4>
+
+<p>While you can use the above code to access raw text response, there is a more neat solution:</p>
+
+<pre><code><pre class="js">dhx.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>text<span class="sy0">,</span> data<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">//text = '{ some :&quot;abc&quot;}'</span>
+    <span class="kw3">alert</span><span class="br0">&#40;</span>data.<span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">some</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//abc</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>the second parameter of response can provide you with a ready-to-use JSON object.</p>
+
+<h4>XML response</h4>
+
+<p>The same as it was described above, you can use:</p>
+
+<pre><code><pre class="js">dhx.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>text<span class="sy0">,</span> data<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">//text = '&lt;data some='abc'&gt;&lt;/data&gt;'</span>
+    <span class="kw3">alert</span><span class="br0">&#40;</span>data.<span class="me1">xml</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">some</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//abc</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>If necessary, you can access raw XML object by using  <em>data.rawxml()</em>.</p>
+
+<h4>Other formats</h4>
+
+<p class='snippet'> CSV</p>
+
+<pre><code><pre class="js">dhx.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>text<span class="sy0">,</span> xml<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> obj <span class="sy0">=</span> dhx.<span class="me1">DataDriver</span>.<span class="me1">csv</span>.<span class="me1">toObject</span><span class="br0">&#40;</span>text<span class="sy0">,</span>xml<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw3">alert</span><span class="br0">&#40;</span>obj<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//row and column indexes</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p class='snippet'> JSArray</p>
+
+<pre><code><pre class="js">dhx.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>text<span class="sy0">,</span> xml<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> obj <span class="sy0">=</span> dhx.<span class="me1">DataDriver</span>.<span class="me1">jsarray</span>.<span class="me1">toObject</span><span class="br0">&#40;</span>text<span class="sy0">,</span>xml<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw3">alert</span><span class="br0">&#40;</span>obj<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//row and column indexes</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p class='snippet'> HTML</p>
+
+<pre><code><pre class="js">dhx.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>text<span class="sy0">,</span>xml<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">//text = '&lt;ul&gt;&lt;li some='abc'&gt;&lt;/ul&gt;'</span>
+    <span class="kw2">var</span> obj <span class="sy0">=</span> dhx.<span class="me1">DataDriver</span>.<span class="me1">html</span>.<span class="me1">toObject</span><span class="br0">&#40;</span>text<span class="sy0">,</span>xml<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw3">alert</span><span class="br0">&#40;</span>obj<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span>.<span class="me1">some</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//abc</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h4>Extra parameters</h4>
+
+<p>If all above is not enough, you can access raw xmlHttpRequest and poll it for additional data:</p>
+
+<pre><code><pre class="js">dhx.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>text<span class="sy0">,</span>xml<span class="sy0">,</span> ajax<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw3">alert</span><span class="br0">&#40;</span>ajax.<span class="kw3">status</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='gettingbinarydata'><h2>Getting Binary Data</h2></a>
+
+<p>DHTMLX Ajax class offers a pattern for retrieving binary data objects from the server.</p>
+
+<p>It can be done with the dedicated <strong>response()</strong> method that allows setting responseType directly. Now only <strong>"blob"</strong> type is fully supported and 
+<strong>"document"</strong> with some restrictions.</p>
+
+<pre><code><pre class="js">dhx.<span class="me1">ajax</span>.<span class="me1">response</span><span class="br0">&#40;</span><span class="st0">&quot;blob&quot;</span><span class="br0">&#41;</span>.<span class="me1">get</span><span class="br0">&#40;</span><span class="st0">&quot;patch.zip&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>text<span class="sy0">,</span> data<span class="br0">&#41;</span><span class="br0">&#123;</span>
+  <span class="co1">//data - is a data blob</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Functionality will not work in IE8-IE9 as these browsers cannot work with blob objects at all.</p>
+
+<a name='promiseapiforajaxrequests'><h2>Promise API for Ajax requests</h2></a>
+
+<p>DHTMLX is integrated with the <a href="http://promisesaplus.com/">Promiz.js</a> library, which allows treating the result of asynchronous operations without callbacks.</p>
+
+<p>In other words, any Ajax request performed by DHTMLX returns a <strong>promise</strong> object that represents the eventual result of this request.
+It can be treated by the <strong>then()</strong> method that is automatically executed when server response arrives.</p>
+
+<pre><code><pre class="js"><span class="co1">//&quot;promise&quot; object is returned by either of these methods</span>
+<span class="kw2">var</span> promise <span class="sy0">=</span> dhx.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> promise <span class="sy0">=</span> dhx.<span class="me1">ajax</span>.<span class="me1">get</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> promise <span class="sy0">=</span> dhx.<span class="me1">ajax</span>.<span class="me1">post</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">//realdata - data that came from server</span>
+promise.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>realdata<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    ...
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h4>Forming a chain of requests with Promises</h4>
+
+<pre><code><pre class="js">dhx.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="st0">&quot;someA.php&quot;</span><span class="br0">&#41;</span>.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>realdataA<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> dhx.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="st0">&quot;someB.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span>.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>realdataB<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> dhx.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="st0">&quot;someC.php&quot;</span><span class="br0">&#41;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span>.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>realdataC<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    ...
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h4>Error handling with Promise objects</h4>
+
+<p><strong>then()</strong> method can be used to treat errors:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> promise <span class="sy0">=</span> dhx.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="br0">&#41;</span>
+promise.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span> success<span class="br0">&#40;</span>realdata<span class="br0">&#41;</span><span class="br0">&#123;</span><span class="br0">&#125;</span><span class="sy0">,</span> <span class="kw2">function</span> error<span class="br0">&#40;</span>err<span class="br0">&#41;</span><span class="br0">&#123;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Additionally, the <strong>fail()</strong> method can be used for error handling:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> promise <span class="sy0">=</span> dhx.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="st0">&quot;a.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">promise</span>.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>realdata<span class="br0">&#41;</span><span class="br0">&#123;</span> <span class="coMULTI">/*success*/</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+promise.<span class="me1">fail</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>err<span class="br0">&#41;</span><span class="br0">&#123;</span><span class="coMULTI">/*error*/</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Or, you can do it in one and the same function:</p>
+
+<pre><code><pre class="js">promise.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>realdata<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">//success</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span>.<span class="me1">fail</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>err<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">//error</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>All the <strong>methods of the promise object</strong> come from the <strong>Promiz.js</strong> library and can be found <a href="https://github.com/zolmeister/promiz">there</a>.</p>
+
+<h4>dhx.promise interface</h4>
+
+<p>DHTMLX offers an interface for working with promise objects - <strong><a class="link-" href="api__common_promise_other.html">dhx.promise</a></strong> - featuring a set of methods that duplicate 
+<a href="https://github.com/zolmeister/promiz">Promise object methods</a>.</p>
+
+<p><strong>dhx.promise constructor</strong></p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> my_promise <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">promise</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>success<span class="sy0">,</span> fail<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    dhx.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>text<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>text<span class="br0">&#41;</span> success<span class="br0">&#40;</span>text<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">else</span> fail<span class="br0">&#40;</span>text.<span class="me1">error</span><span class="br0">&#41;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">//realdata - data that came from server</span>
+my_promise.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>realdata<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    ...
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><strong>dhx.promise</strong> can be used, for instance, in the following cases:</p>
+
+<ul>
+<li><em>Resolve all promises in the resulting array</em></li>
+</ul>
+
+<p>You can treat several Ajax requests and perform some action when callbacks are received from all of them using the <strong>all()</strong> method:</p>
+
+<pre><code><pre class="js">first <span class="sy0">=</span> dhx.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="st0">&quot;someA.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+second <span class="sy0">=</span> dhx.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="st0">&quot;someB.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+third <span class="sy0">=</span> dhx.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="st0">&quot;someC.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+&nbsp;
+dhx.<span class="me1">promise</span>.<span class="me1">all</span><span class="br0">&#40;</span><span class="br0">&#91;</span>first<span class="sy0">,</span>second<span class="sy0">,</span>third<span class="br0">&#93;</span><span class="br0">&#41;</span>.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>results<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> first_result <span class="sy0">=</span> results<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">;</span>
+    <span class="kw2">var</span> second_result <span class="sy0">=</span> results<span class="br0">&#91;</span><span class="nu0">1</span><span class="br0">&#93;</span><span class="sy0">;</span>
+    <span class="kw2">var</span> third_result <span class="sy0">=</span> results<span class="br0">&#91;</span><span class="nu0">2</span><span class="br0">&#93;</span><span class="sy0">;</span>
+    <span class="co1">// do something</span>
+    ...
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><em>Create a new instance of a deferred object</em></li>
+</ul>
+
+<p>For this, you need to use the <strong>defer()</strong> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> deferred_promise <span class="sy0">=</span> dhx.<span class="me1">promise</span>.<span class="me1">defer</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+dhx.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>text<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>text<span class="br0">&#41;</span> deferred_promise.<span class="me1">resolve</span><span class="br0">&#40;</span>text<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">else</span> deferred_promise.<span class="me1">reject</span><span class="br0">&#40;</span>text.<span class="me1">error</span><span class="br0">&#41;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+deferred_promise.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>realdata<span class="br0">&#41;</span><span class="br0">&#123;</span>...<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='ajax__index.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

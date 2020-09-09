@@ -1,0 +1,496 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Specifying Columns  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=" current"><a href="desktop__specifying_columns.html">Specifying Columns</a></li><ul><li class="inner"><a href="desktop__specifying_columns.html#overview">Overview</a></li><li class="inner"><a href="desktop__specifying_columns.html#hidingtheaddbuttonforcertaintasks">Hiding the "Add" button for certain tasks</a></li><li class="inner"><a href="desktop__specifying_columns.html#width">Width</a></li><li class="inner"><a href="desktop__specifying_columns.html#datamappingandtemplates">Data mapping and templates</a></li><li class="inner"><a href="desktop__specifying_columns.html#textalignment">Text alignment</a></li><li class="inner"><a href="desktop__specifying_columns.html#wbscode">WBS code</a></li><li class="inner"><a href="desktop__specifying_columns.html#timeconstraintsfortasks">Time constraints for tasks</a></li><li class="inner"><a href="desktop__specifying_columns.html#resizing">Resizing</a></li><li class="inner"><a href="desktop__specifying_columns.html#visibility">Visibility</a></li><li class="inner"><a href="desktop__specifying_columns.html#horizontalscrollbar">Horizontal scrollbar</a></li><li class="inner"><a href="desktop__specifying_columns.html#styling">Styling</a></li></ul><li class=""><a href="desktop__tree_column.html">Configuring the Tree Column</a></li><li class=""><a href="desktop__reordering_tasks.html">Reordering Tasks</a></li><li class=""><a href="desktop__sorting.html">Sorting Columns</a></li><li class="toc-pro"><a href="desktop__grouping.html">Grouping Tasks</a></li><li class=""><a href="desktop__filtering.html">Filtering Tasks</a></li><li class=""><a href="desktop__inline_editing.html">Inline Editing in Grid</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__table.html">Configuring Grid Area</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Specifying Columns</h1>
+
+<p>Grid's columns are configured with the <a class="link-" href="api__gantt_columns_config.html">columns</a> parameter.</p>
+
+<p><img src="media/desktop/gantt_left.png"/></p>
+
+<pre><code><pre class="js"><span class="co1">// default columns definition</span>
+gantt.<span class="me1">config</span>.<span class="me1">columns</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span>       label<span class="sy0">:</span><span class="st0">&quot;Task name&quot;</span><span class="sy0">,</span>  width<span class="sy0">:</span><span class="st0">&quot;*&quot;</span><span class="sy0">,</span> tree<span class="sy0">:</span><span class="kw2">true</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Start time&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span><span class="st0">&quot;center&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;duration&quot;</span><span class="sy0">,</span>   label<span class="sy0">:</span><span class="st0">&quot;Duration&quot;</span><span class="sy0">,</span>   align<span class="sy0">:</span><span class="st0">&quot;center&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;add&quot;</span><span class="sy0">,</span>        label<span class="sy0">:</span><span class="st0">&quot;&quot;</span><span class="sy0">,</span>           width<span class="sy0">:</span><span class="nu0">44</span> <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>You can take a look at the video guide that describes how to specify columns of the grid.</p>
+
+<iframe width="676" height="400" src="https://www.youtube.com/embed/-BoznxJmJIo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<a name='overview'><h2>Overview</h2></a>
+
+<p>By default, the grid contains 4 columns:</p>
+
+<ol>
+<li>Task name</li>
+<li>Start date</li>
+<li>Duration </li>
+<li>'+' column. A special column with the <code>name="add"</code> that displays the '+' sign which allows users to add children for a task.</li>
+</ol>
+
+<div class='note'><p><p>Note, you needn't to specify the <a class="link-" href="api__gantt_columns_config.html">columns</a> parameter to present the default columns in the grid.</p>
+</p></div>
+
+<p>The <a class="link-" href="api__gantt_columns_config.html">columns</a> parameter is an array, each object of which presents a single column. 
+So, for example, to define 5 columns in the grid: 'Task', 'Start Date', 'End Date', 'Holder', 'Progress', specify the <a class="link-" href="api__gantt_columns_config.html">columns</a> parameter as in:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">columns</span> <span class="sy0">=</span>  <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span>       label<span class="sy0">:</span><span class="st0">&quot;Task name&quot;</span><span class="sy0">,</span>  tree<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="st0">&quot;*&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;holder&quot;</span><span class="sy0">,</span>     label<span class="sy0">:</span><span class="st0">&quot;Holder&quot;</span><span class="sy0">,</span>     align<span class="sy0">:</span><span class="st0">&quot;center&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Start time&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span><span class="st0">&quot;center&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;end_date&quot;</span><span class="sy0">,</span>   label<span class="sy0">:</span><span class="st0">&quot;End date&quot;</span><span class="sy0">,</span>   align<span class="sy0">:</span><span class="st0">&quot;center&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;progress&quot;</span><span class="sy0">,</span>   label<span class="sy0">:</span><span class="st0">&quot;Progress&quot;</span><span class="sy0">,</span>   align<span class="sy0">:</span><span class="st0">&quot;center&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>where 'text', 'holder', 'start_date', 'end_date', 'progress' are <a class="link-" href="desktop__specifying_columns.html#datamappingandtemplates">the names of the data properties</a>.</p>
+
+<a name='hidingtheaddbuttonforcertaintasks'><h2>Hiding the "Add" button for certain tasks</h2></a>
+
+<p>A quite easy way to prevent users from adding sub-tasks to specific tasks is to hide the 'Add'  button through CSS.</p>
+
+<ol>
+<li>First, assign a CSS class for each task row using the <a class="link-" href="api__gantt_grid_row_class_template.html">grid_row_class</a> template:
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">grid_row_class</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span> start<span class="sy0">,</span> end<span class="sy0">,</span> task <span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span> task.$level <span class="sy0">&gt;</span> <span class="nu0">1</span> <span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">return</span> <span class="st0">&quot;nested_task&quot;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+</li>
+<li>Then, hide the 'Add' button for such rows:
+
+
+<pre><code><pre class="css"><span class="re1">.nested_task</span> .gantt_add<span class="br0">&#123;</span>
+    <span class="kw1">display</span><span class="sy0">:</span> <span class="kw2">none</span> !important<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+</li>
+</ol>
+
+<p><a href='samples/08_api/11_project_structure.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Predefined Project Structure</a></p>
+
+<a name='width'><h2>Width</h2></a>
+
+<p>To set the width of a column, use the attribute <a class="link-" href="api__gantt_columns_config.html">width</a> in the related column's object:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">columns</span> <span class="sy0">=</span>  <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span>       label<span class="sy0">:</span><span class="st0">&quot;Task name&quot;</span><span class="sy0">,</span>  width<span class="sy0">:</span><span class="st0">&quot;*&quot;</span><span class="sy0">,</span> tree<span class="sy0">:</span><span class="kw2">true</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Start time&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="nu0">150</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;duration&quot;</span><span class="sy0">,</span>   label<span class="sy0">:</span><span class="st0">&quot;Duration&quot;</span><span class="sy0">,</span>   width<span class="sy0">:</span><span class="nu0">120</span> <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>Use the '*' value, to make the column occupy all the remaining space.</p>
+</p></div>
+
+<h3>Min/max column width</h3>
+
+<p>The <strong>min_width/max_width</strong> properties can be used to limit the column width in case of resize operations:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">columns</span> <span class="sy0">=</span>  <span class="br0">&#91;</span>
+ <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Task name&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="st0">&quot;*&quot;</span><span class="sy0">,</span> min_width<span class="sy0">:</span> <span class="nu0">150</span><span class="sy0">,</span> max_width<span class="sy0">:</span><span class="nu0">300</span><span class="sy0">,</span> tree<span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+ <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Start time&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="nu0">150</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+ <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;duration&quot;</span><span class="sy0">,</span>   label<span class="sy0">:</span><span class="st0">&quot;Duration&quot;</span><span class="sy0">,</span>   width<span class="sy0">:</span><span class="nu0">120</span> <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='datamappingandtemplates'><h2>Data mapping and templates</h2></a>
+
+<p>By default, dhtmlxGantt populates the grid with data properties that correspond to the names of the columns.
+For example, if you set <strong>name:"holder"</strong> for a column, dhtmlxGantt will look for a such data property in the incoming JSON data, and if such a property exists, load it to the column.</p>
+
+<h4>Using templates for column data</h4>
+
+<p>If you want to present a mix of several data properties in a column, you can use any name for the column, but set the data template via the <strong>template</strong> attribute of the <a class="link-" href="api__gantt_columns_config.html">columns</a> parameter.
+For instance, you can specify <strong>name:"staff"</strong> for a column and define a template function that will return the <em>holder</em> and <em>progress</em> data properties to be loaded into the column.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">columns</span> <span class="sy0">=</span>  <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span>       label<span class="sy0">:</span><span class="st0">&quot;Task name&quot;</span><span class="sy0">,</span>  tree<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="st0">&quot;*&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Start time&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;staff&quot;</span><span class="sy0">,</span>      label<span class="sy0">:</span><span class="st0">&quot;Holder(s)&quot;</span><span class="sy0">,</span> template<span class="sy0">:</span><span class="kw2">function</span><span class="br0">&#40;</span>obj<span class="br0">&#41;</span><span class="br0">&#123;</span>
+                                <span class="kw1">return</span> obj.<span class="me1">holder</span><span class="sy0">+</span><span class="st0">&quot;(&quot;</span><span class="sy0">+</span>obj.<span class="me1">progress</span><span class="sy0">+</span><span class="st0">&quot;)&quot;</span><span class="br0">&#125;</span> <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='textalignment'><h2>Text alignment</h2></a>
+
+<p>To set the horizontal alignment of the text in a column, use the <a class="link-" href="api__gantt_columns_config.html">align</a> attribute in the related column's object:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">columns</span> <span class="sy0">=</span>  <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span>       label<span class="sy0">:</span><span class="st0">&quot;Task name&quot;</span><span class="sy0">,</span>  tree<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span> align<span class="sy0">:</span><span class="st0">&quot;center&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Start time&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;duration&quot;</span><span class="sy0">,</span>   label<span class="sy0">:</span><span class="st0">&quot;Duration&quot;</span><span class="sy0">,</span>   align<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span> <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='wbscode'><h2>WBS code</h2></a>
+
+<p>You can add a column that will display the outline numbers of tasks (their WBS code). For this, you need to use the <a class="link-" href="api__gantt_getwbscode.html">getWBSCode</a> method in the column template.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">columns</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+<span class="xtra ln-xtra">    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;wbs&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;WBS&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="nu0">40</span><span class="sy0">,</span> template<span class="sy0">:</span>gantt.<span class="me1">getWBSCode</span> <span class="br0">&#125;</span><span class="sy0">,</span> </span>    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Task name&quot;</span><span class="sy0">,</span> tree<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="nu0">170</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span><span class="st0">&quot;center&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">90</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span><span class="st0">&quot;center&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">60</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;add&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="nu0">40</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/07_grid/09_wbs_column.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Show Task WBS Codes (Outline Numbers)</a></p>
+
+<h3>Getting WBS code of the task</h3>
+
+<p>The <a class="link-" href="api__gantt_getwbscode.html">getWBSCode</a> method returns the WBS code of the necessary task. For example, we load the following tasks into gantt:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">parse</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+ <span class="st0">&quot;tasks&quot;</span><span class="sy0">:</span><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> <span class="st0">&quot;text&quot;</span><span class="sy0">:</span><span class="st0">&quot;Project #1&quot;</span><span class="sy0">,</span> <span class="st0">&quot;start_date&quot;</span><span class="sy0">:</span><span class="st0">&quot;28-03-2020&quot;</span><span class="sy0">,</span> 
+        <span class="st0">&quot;duration&quot;</span><span class="sy0">:</span><span class="st0">&quot;11&quot;</span><span class="sy0">,</span> <span class="st0">&quot;parent&quot;</span><span class="sy0">:</span><span class="st0">&quot;0&quot;</span><span class="sy0">,</span> <span class="st0">&quot;open&quot;</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> <span class="st0">&quot;text&quot;</span><span class="sy0">:</span><span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span> <span class="st0">&quot;start_date&quot;</span><span class="sy0">:</span><span class="st0">&quot;01-04-2020&quot;</span><span class="sy0">,</span> 
+        <span class="st0">&quot;duration&quot;</span><span class="sy0">:</span><span class="st0">&quot;18&quot;</span><span class="sy0">,</span> <span class="st0">&quot;parent&quot;</span><span class="sy0">:</span><span class="st0">&quot;1&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> <span class="st0">&quot;text&quot;</span><span class="sy0">:</span><span class="st0">&quot;Task #2&quot;</span><span class="sy0">,</span> <span class="st0">&quot;start_date&quot;</span><span class="sy0">:</span><span class="st0">&quot;02-04-2020&quot;</span><span class="sy0">,</span> 
+        <span class="st0">&quot;duration&quot;</span><span class="sy0">:</span><span class="st0">&quot;8&quot;</span><span class="sy0">,</span> <span class="st0">&quot;parent&quot;</span><span class="sy0">:</span><span class="st0">&quot;1&quot;</span><span class="br0">&#125;</span>
+ <span class="br0">&#93;</span><span class="sy0">,</span>
+ <span class="st0">&quot;links&quot;</span><span class="sy0">:</span><span class="br0">&#91;</span><span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>and we want to get the WBS code of the task with id=3. For this, we pass the object of a task as a parameter to the <a class="link-" href="api__gantt_getwbscode.html">getWBSCode</a> method. It will return a string with the WBS code of the task:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> wbs_code <span class="sy0">=</span> gantt.<span class="me1">getWBSCode</span><span class="br0">&#40;</span>gantt.<span class="me1">getTask</span><span class="br0">&#40;</span><span class="nu0">3</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; returns &quot;1.2&quot;</span></pre></code></pre>
+
+<h3>Getting task by WBS code</h3>
+
+<p>You can also get the object of a task by passing its WBS code to the <a class="link-" href="api__gantt_gettaskbywbscode.html">getTaskByWBSCode</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> task <span class="sy0">=</span> gantt.<span class="me1">getTaskByWBSCode</span><span class="br0">&#40;</span><span class="st0">&quot;1.2&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// =&gt; {id:&quot;t1&quot;, text:&quot;Task #1, unscheduled: true, duration: 1, …}</span></pre></code></pre>
+
+<a name='timeconstraintsfortasks'><h2>Time constraints for tasks</h2></a>
+
+<div class='pronote'><p><p>This functionality is available only in the PRO edition</p>
+</p></div>
+
+<p>You can add separate grid columns that will allow setting the type of <a class="link-pro" href="desktop__auto_scheduling.html#timeconstraintsfortasks">time constraint</a> for a task and the date of constraint, if it is required by the chosen type.
+These columns have the "constraint_type" and "constraint_date" names, correspondingly.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">columns</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>
+      <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;constraint_type&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span><span class="st0">&quot;center&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="nu0">100</span><span class="sy0">,</span> 
+        template<span class="sy0">:</span><span class="kw2">function</span><span class="br0">&#40;</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span><span class="co1">//template logic}, </span>
+        resize<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> editor<span class="sy0">:</span> constraintTypeEditor
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>
+      <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;constraint_date&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span><span class="st0">&quot;center&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="nu0">120</span><span class="sy0">,</span> 
+        template<span class="sy0">:</span><span class="kw2">function</span><span class="br0">&#40;</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span><span class="co1">//template logic}, </span>
+        resize<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> editor<span class="sy0">:</span> constraintDateEditor
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;add&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">44</span> <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The columns are linked to objects of inline editors that allow selecting the necessary type of constraint for a task and edit its date right in the grid.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> constraintTypeEditor <span class="sy0">=</span> <span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;select&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;constraint_type&quot;</span><span class="sy0">,</span> options<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span> key<span class="sy0">:</span> <span class="st0">&quot;asap&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> gantt.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">asap</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> key<span class="sy0">:</span> <span class="st0">&quot;alap&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> gantt.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">alap</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> key<span class="sy0">:</span> <span class="st0">&quot;snet&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> gantt.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">snet</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> key<span class="sy0">:</span> <span class="st0">&quot;snlt&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> gantt.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">snlt</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> key<span class="sy0">:</span> <span class="st0">&quot;fnet&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> gantt.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">fnet</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> key<span class="sy0">:</span> <span class="st0">&quot;fnlt&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> gantt.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">fnlt</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> key<span class="sy0">:</span> <span class="st0">&quot;mso&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> gantt.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">mso</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> key<span class="sy0">:</span> <span class="st0">&quot;mfo&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> gantt.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">mfo</span> <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> constraintDateEditor <span class="sy0">=</span> <span class="br0">&#123;</span>
+    type<span class="sy0">:</span><span class="st0">&quot;date&quot;</span><span class="sy0">,</span> 
+    map_to<span class="sy0">:</span><span class="st0">&quot;constraint_date&quot;</span><span class="sy0">,</span> 
+    min<span class="sy0">:</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">,</span> 
+    max<span class="sy0">:</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2020</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_extensions/19_constraints_scheduling.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Schedule From Project Start &amp; Constraints</a></p>
+
+<a name='resizing'><h2>Resizing</h2></a>
+
+<div class='pronote'><p><p>The functionality below is available only in the PRO edition</p>
+</p></div>
+
+<p>To provide users a possibility to resize a column by dragging the right column's border, use the <a class="link-" href="api__gantt_columns_config.html">resize</a> attribute in the related column's object:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">columns</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+  <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> tree<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="st0">&quot;*&quot;</span><span class="sy0">,</span>resize<span class="sy0">:</span><span class="kw2">true</span> <span class="br0">&#125;</span><span class="sy0">,</span><span class="co1">//-&gt; 'resize' active</span>
+  <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> resize<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span> min_width<span class="sy0">:</span><span class="nu0">100</span> <span class="br0">&#125;</span><span class="sy0">,</span><span class="co1">//-&gt; 'resize' limited by 'min_width'</span>
+  <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span><span class="st0">&quot;center&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>              <span class="co1">//-&gt; no resize</span>
+  <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;add&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="st0">&quot;44&quot;</span> <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_extensions/04_grid_resize.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Resizable columns in grid</a></p>
+
+<p>To make the whole grid resizable by dragging the grid's border, use the <a class="link-" href="api__gantt_layout_config.html">gantt.config.layout</a> option and specify grid and resizer objects with the necessary configuration inside.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">layout</span> <span class="sy0">=</span> <span class="br0">&#123;</span>
+    css<span class="sy0">:</span> <span class="st0">&quot;gantt_container&quot;</span><span class="sy0">,</span>
+    rows<span class="sy0">:</span><span class="br0">&#91;</span>
+      <span class="br0">&#123;</span>
+        cols<span class="sy0">:</span> <span class="br0">&#91;</span>
+          <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;grid&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;grid&quot;</span><span class="sy0">,</span> scrollX<span class="sy0">:</span><span class="st0">&quot;scrollHor&quot;</span><span class="sy0">,</span> scrollY<span class="sy0">:</span><span class="st0">&quot;scrollVer&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+          <span class="br0">&#123;</span>resizer<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">1</span><span class="br0">&#125;</span><span class="sy0">,</span>
+          <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span> scrollX<span class="sy0">:</span><span class="st0">&quot;scrollHor&quot;</span><span class="sy0">,</span> scrollY<span class="sy0">:</span><span class="st0">&quot;scrollVer&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+          <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;scrollbar&quot;</span><span class="sy0">,</span> <span class="kw3">scroll</span><span class="sy0">:</span> <span class="st0">&quot;y&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span><span class="st0">&quot;scrollVer&quot;</span><span class="br0">&#125;</span>
+        <span class="br0">&#93;</span>
+       <span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;scrollbar&quot;</span><span class="sy0">,</span> <span class="kw3">scroll</span><span class="sy0">:</span> <span class="st0">&quot;x&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span><span class="st0">&quot;scrollHor&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">20</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To preserve the grid's size during resizing of columns, set the <a class="link-pro" href="api__gantt_keep_grid_width_config.html">keep_grid_width</a> option to <em>true</em>:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">columns</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> tree<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="st0">&quot;*&quot;</span><span class="sy0">,</span> resize<span class="sy0">:</span><span class="kw2">true</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span><span class="st0">&quot;center&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> align<span class="sy0">:</span><span class="st0">&quot;center&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="nu0">70</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;add&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="nu0">44</span> <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra">gantt.<span class="me1">config</span>.<span class="me1">keep_grid_width</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span> </span>gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_extensions/04_grid_resize.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Resizable columns in grid</a></p>
+
+<h3>Events</h3>
+
+<p>dhtmlxGantt provides 6 events for handling the resizing behavior:</p>
+
+<ul>
+<li><a class="link-pro" href="api__gantt_oncolumnresizestart_event.html">onColumnResizeStart</a> - fires before the user starts to drag the column's border to resize the column</li>
+<li><a class="link-pro" href="api__gantt_oncolumnresize_event.html">onColumnResize</a> - fires when the user is dragging the column's border to resize the column</li>
+<li><a class="link-pro" href="api__gantt_oncolumnresizeend_event.html">onColumnResizeEnd</a> - fires after the user finished dragging the column's border to resize the column<br><br></li>
+<li><a class="link-pro" href="api__gantt_ongridresizestart_event.html">onGridResizeStart</a> - fires before the user starts to drag the grid's border to resize the grid</li>
+<li><a class="link-pro" href="api__gantt_ongridresize_event.html">onGridResize</a> - fires when the user is dragging the grid's border to resize the grid</li>
+<li><a class="link-pro" href="api__gantt_ongridresizeend_event.html">onGridResizeEnd</a> - fires after the user finished dragging the grid's border to resize the grid</li>
+</ul>
+
+<a name='visibility'><h2>Visibility</h2></a>
+
+<p>To manipulate the visibility of a column, use the <a class="link-" href="api__gantt_columns_config.html">hide</a> attribute in the related column's object.<br> 
+Visibility can be toggled dynamically, by changing the value of the 'hide' property and refreshing the Gantt chart:</p>
+
+<div class='pronote'><p><p>This functionality is available only in the PRO edition</p>
+</p></div>
+
+<p class='snippet'>
+Switching between basic and detailed view</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">columns</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;text&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Task name&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="st0">&quot;*&quot;</span><span class="sy0">,</span> tree<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> resize<span class="sy0">:</span> <span class="kw2">true</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;start_date&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Start time&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Duration&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">60</span><span class="sy0">,</span> hide<span class="sy0">:</span><span class="kw2">true</span>  <span class="br0">&#125;</span><span class="sy0">,</span> </span><span class="xtra ln-xtra">    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;planned_start&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Planned start&quot;</span><span class="sy0">,</span> hide<span class="sy0">:</span><span class="kw2">true</span>  <span class="br0">&#125;</span><span class="sy0">,</span> </span><span class="xtra ln-xtra">    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;planned_end&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Planned end&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span><span class="nu0">80</span><span class="sy0">,</span> hide<span class="sy0">:</span><span class="kw2">true</span>  <span class="br0">&#125;</span><span class="sy0">,</span></span>    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;add&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">36</span> <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> show_details <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="kw2">function</span> toggleView<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    show_details <span class="sy0">=</span> <span class="sy0">!</span>show_details<span class="sy0">;</span>
+    gantt.<span class="me1">getGridColumn</span><span class="br0">&#40;</span><span class="st0">&quot;duration&quot;</span><span class="br0">&#41;</span>.<span class="me1">hide</span> <span class="sy0">=</span> <span class="sy0">!</span>show_details<span class="sy0">;</span>
+    gantt.<span class="me1">getGridColumn</span><span class="br0">&#40;</span><span class="st0">&quot;planned_start&quot;</span><span class="br0">&#41;</span>.<span class="me1">hide</span> <span class="sy0">=</span> <span class="sy0">!</span>show_details<span class="sy0">;</span>
+    gantt.<span class="me1">getGridColumn</span><span class="br0">&#40;</span><span class="st0">&quot;planned_end&quot;</span><span class="br0">&#41;</span>.<span class="me1">hide</span> <span class="sy0">=</span> <span class="sy0">!</span>show_details<span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">if</span><span class="br0">&#40;</span>show_details<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        gantt.<span class="me1">config</span>.<span class="me1">grid_width</span> <span class="sy0">=</span> <span class="nu0">600</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="kw1">else</span><span class="br0">&#123;</span>
+        gantt.<span class="me1">config</span>.<span class="me1">grid_width</span> <span class="sy0">=</span> <span class="nu0">300</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+        gantt.<span class="me1">render</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_extensions/07_managing_grid_columns.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Hiding grid columns</a></p>
+
+<p>You can take a look at the video guide that demonstrates how to manage the visibility of columns in the grid.</p>
+
+<iframe width="676" height="400" src="https://www.youtube.com/embed/rqYrqqoaI_U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<a name='horizontalscrollbar'><h2>Horizontal scrollbar</h2></a>
+
+<p>You can make Grid scrollable using the <strong>scrollable</strong> property of the <a class="link-" href="desktop__layout_config.html">layout</a> configuration option. 
+<a class="link-" href="desktop__layout_config.html#scrollbar">Read about binding layout views to a scrollbar</a>.</p>
+
+<p>The presence of a horizontal scrollbar in the grid allows Gantt to automatically adjust the width of the columns during resizing the width of the grid. <a class="link-" href="api__gantt_grid_elastic_columns_config.html">Read more about how to enable this functionality</a>.</p>
+
+<p>In addition to the <strong>scrollable</strong> attribute, you need to add a <em>horizontal scrollbar element</em> into the layout and connect it to the grid as follows:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">layout</span> <span class="sy0">=</span> <span class="br0">&#123;</span>
+  css<span class="sy0">:</span> <span class="st0">&quot;gantt_container&quot;</span><span class="sy0">,</span>
+  cols<span class="sy0">:</span> <span class="br0">&#91;</span>
+   <span class="br0">&#123;</span>
+     width<span class="sy0">:</span><span class="nu0">400</span><span class="sy0">,</span>
+     min_width<span class="sy0">:</span> <span class="nu0">300</span><span class="sy0">,</span>
+&nbsp;
+     <span class="co1">// adding horizontal scrollbar to the grid via the scrollX attribute</span>
+     rows<span class="sy0">:</span><span class="br0">&#91;</span>
+<span class="xtra ln-xtra">      <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;grid&quot;</span><span class="sy0">,</span> scrollX<span class="sy0">:</span> <span class="st0">&quot;gridScroll&quot;</span><span class="sy0">,</span> scrollable<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> scrollY<span class="sy0">:</span> <span class="st0">&quot;scrollVer&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span> </span><span class="xtra ln-xtra">      <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;scrollbar&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;gridScroll&quot;</span><span class="br0">&#125;</span>  </span>     <span class="br0">&#93;</span>
+   <span class="br0">&#125;</span><span class="sy0">,</span>
+   <span class="br0">&#123;</span>resizer<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">1</span><span class="br0">&#125;</span><span class="sy0">,</span>
+   <span class="br0">&#123;</span>
+     rows<span class="sy0">:</span><span class="br0">&#91;</span>
+      <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span> scrollX<span class="sy0">:</span> <span class="st0">&quot;scrollHor&quot;</span><span class="sy0">,</span> scrollY<span class="sy0">:</span> <span class="st0">&quot;scrollVer&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;scrollbar&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;scrollHor&quot;</span><span class="br0">&#125;</span>
+     <span class="br0">&#93;</span>
+   <span class="br0">&#125;</span><span class="sy0">,</span>
+   <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;scrollbar&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;scrollVer&quot;</span><span class="br0">&#125;</span>
+  <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Since you'll be displaying separate scrollbars for a grid and a timeline, you may want to synchronize their visibility, so both scrollbars would be visible or hidden at the same time.</p>
+
+<p><img src="media/desktop/scrollable_grid.png"></p>
+
+<p>It can be done by assigning both scrollbars to the same <em>visibility group</em>:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">layout</span> <span class="sy0">=</span> <span class="br0">&#123;</span>
+  css<span class="sy0">:</span> <span class="st0">&quot;gantt_container&quot;</span><span class="sy0">,</span>
+  cols<span class="sy0">:</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>
+      width<span class="sy0">:</span><span class="nu0">400</span><span class="sy0">,</span>
+      min_width<span class="sy0">:</span> <span class="nu0">300</span><span class="sy0">,</span>
+      rows<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;grid&quot;</span><span class="sy0">,</span> scrollX<span class="sy0">:</span> <span class="st0">&quot;gridScroll&quot;</span><span class="sy0">,</span> scrollable<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> scrollY<span class="sy0">:</span> <span class="st0">&quot;scrollVer&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span> 
+&nbsp;
+         <span class="co1">// horizontal scrollbar for the grid</span>
+<span class="xtra ln-xtra">        <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;scrollbar&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;gridScroll&quot;</span><span class="sy0">,</span> group<span class="sy0">:</span><span class="st0">&quot;horizontal&quot;</span><span class="br0">&#125;</span> </span>      <span class="br0">&#93;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>resizer<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">1</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>
+      rows<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span> scrollX<span class="sy0">:</span> <span class="st0">&quot;scrollHor&quot;</span><span class="sy0">,</span> scrollY<span class="sy0">:</span> <span class="st0">&quot;scrollVer&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+&nbsp;
+        <span class="co1">// horizontal scrollbar for the timeline</span>
+<span class="xtra ln-xtra">        <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;scrollbar&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;scrollHor&quot;</span><span class="sy0">,</span> group<span class="sy0">:</span><span class="st0">&quot;horizontal&quot;</span><span class="br0">&#125;</span>  </span>      <span class="br0">&#93;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;scrollbar&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;scrollVer&quot;</span><span class="br0">&#125;</span>
+  <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>If at least one of the scrollbars assigned to the same group is visible, all scrollbars of the group will be visible.</p>
+
+<p><a href='samples/07_grid/10_scrollable_grid.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Horizontal scroll inside Grid</a></p>
+
+<a name='styling'><h2>Styling</h2></a>
+
+<p>For information on styling cells of the grid, read <a class="link-" href="desktop__styling_guide.html#stylinggrid">Work with Gantt Styles</a>.</p>
+
+<!-- Content Area End -->
+			<a href='desktop__specifying_columns.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Searching in Grid  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="grid__iterators.html">Iterating Over Data</a></li><li class=""><a href="grid__sorting.html">Sorting Data</a></li><li class=""><a href="grid__filtering.html">Filtering Data</a></li><li class=" current"><a href="grid__searching.html">Searching in Grid</a></li><ul><li class="inner"><a href="grid__searching.html#searchboxintheheader">Search box in the header</a></li><li class="inner"><a href="grid__searching.html#anhtmlinputasasearchbox">An HTML input as a search box</a></li><li class="inner"><a href="grid__searching.html#programmaticsearching">Programmatic searching</a></li></ul><li class=""><a href="grid__grouping_rows.html">Grouping Data by Rows</a></li><li class=""><a href="grid__formatting.html">Formatting Number and Date Values</a></li><li class=""><a href="grid__statistics_counter.html">Statistics Counters</a></li><li class=""><a href="grid__validation.html">Validating Data Items</a></li><li class=""><a href="grid__math.html">Using Math Formulas for Data</a></li><li class=""><a href="grid__clipboard.html">Clipboard Operations</a></li><li class=""><a href="grid__undo_redo.html">Providing Undo/Redo Operations</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__managing_data.html">Managing Data in Grid</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Searching in Grid</h1>
+
+<p>Searching is case-insensitive. If you use the dhtmlxSuite package you don't need to include additional extension files.</p>
+
+<a name='searchboxintheheader'><h2>Search box in the header</h2></a>
+
+<p>A built-in search box is provided as a type of built-in filters - '<strong>text_search</strong>' and set with the help of the method <a class="link-" href="api__dhtmlxgrid_attachheader.html">attachHeader</a>.
+Read more about built-in filters in the article <a class="link-" href="grid__filtering.html">Filtering</a>.</p>
+
+<p><a href="https://dhtmlx.com/docs/products/dhtmlxGrid/samples/08_filtering/06_pro_search.html">
+    <img src='media/grid/search_box_header.png'/>
+</a></p>
+
+<p>Searching is invoked automatically as soon as you start typing something in the input.
+It doesn't filter the grid but moves the selection to the nearest row containing the input text.</p>
+
+<p class='snippet'>
+Specifying a search box in the header
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Book Title,Author,Price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">attachHeader</span><span class="br0">&#40;</span><span class="st0">&quot;#text_search,,&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...</pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/08_filtering/06_pro_search.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Search box</a></p>
+
+<a name='anhtmlinputasasearchbox'><h2>An HTML input as a search box</h2></a>
+
+<p>A standard HTML input can be used as a search box for dhtmlxGrid.</p>
+
+<p><img src='media/grid/search_box_input.png'/></p>
+
+<p>To make auto filter from an input you should use the method makeSearch():</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>input 
+    type<span class="sy0">=</span><span class="st0">&quot;text&quot;</span> 
+    title<span class="sy0">=</span><span class="st0">&quot;search&quot;</span> 
+    placeholder<span class="sy0">=</span><span class="st0">&quot;Search the book...&quot;</span> 
+    id<span class="sy0">=</span><span class="st0">&quot;searchFilter&quot;</span>
+<span class="sy0">&gt;&lt;/</span>input<span class="sy0">&gt;</span>
+&nbsp;
+<span class="sy0">&lt;</span>script<span class="sy0">&gt;</span>
+mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Sales,Book Title,Author,Price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">mygrid</span>.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+mygrid.<span class="me1">makeSearch</span><span class="br0">&#40;</span><span class="st0">&quot;searchFilter&quot;</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">// params:input id,column index (0-based numbering)</span>
+<span class="sy0">&lt;/</span>script<span class="sy0">&gt;</span></pre></code></pre>
+
+<a name='programmaticsearching'><h2>Programmatic searching</h2></a>
+
+<p>If you need to get cells that meet some criteria, you can use the method <a class="link-pro" href="api__dhtmlxgrid_findcell.html">findCell()</a> to make programmatic searching.</p>
+
+<p>The method takes 3 parameters:</p>
+
+<ul>
+<li><em>value</em> - the search criterion;</li>
+<li><em>index</em> - the index of the column (zero-based numbering);</li>
+<li><em>flag</em> - sets whether just the first occurrence or all occurrences should be returned .</li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">//searches the specified value throughout the grid</span>
+<span class="kw2">var</span> searchResult<span class="sy0">=</span>mygrid.<span class="me1">findCell</span><span class="br0">&#40;</span><span class="st0">&quot;alfa&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">//searches the specified value in the second column. Returns just the first occurrence</span>
+<span class="kw2">var</span> searchResult<span class="sy0">=</span>mygrid.<span class="me1">findCell</span><span class="br0">&#40;</span><span class="st0">&quot;alfa&quot;</span><span class="sy0">,</span><span class="nu0">1</span><span class="sy0">,</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p></br>
+The method returns an array of the appropriate results looking like:</p>
+
+<p class='snippet'>
+The format of data returned by method findCell()
+</p>
+
+<pre><code><pre class="js"><span class="co1">//items: the row id and the cell index</span>
+<span class="br0">&#91;</span>
+    <span class="br0">&#91;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="st0">&quot;3&quot;</span><span class="br0">&#93;</span>
+    <span class="br0">&#91;</span><span class="st0">&quot;row5&quot;</span><span class="sy0">,</span><span class="st0">&quot;5&quot;</span><span class="br0">&#93;</span>
+<span class="br0">&#93;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='grid__searching.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

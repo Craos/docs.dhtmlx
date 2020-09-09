@@ -1,0 +1,93 @@
+<!doctype html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>Grid view</title>
+
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-11031269-1', 'auto');
+	ga('send', 'pageview');
+</script>
+<script src="https://cdn.ravenjs.com/3.10.0/raven.min.js"></script>
+<script>Raven.config('https://b506cc95e6244203a69070d518196d06@sentry.dhtmlx.ru/7').install()</script></head>
+	<script src="../../codebase/dhtmlxscheduler-v=5.3.9.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../codebase/ext/dhtmlxscheduler_grid_view-v=5.3.9.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="../../codebase/dhtmlxscheduler_material-v=5.3.9.css" type="text/css" charset="utf-8">
+
+<style type="text/css" >
+	html, body{
+		margin:0;
+		padding:0;
+		height:100%;
+		overflow:hidden;
+	}
+</style>
+
+<script type="text/javascript" charset="utf-8">
+	function init() {
+
+        scheduler.createGridView({
+            fields:[
+                {id:"id"},
+                {id:"text"},
+                {id:"date"}
+            ],
+            select:false,
+            paging:true
+        });
+        scheduler.createGridView({
+            name:"grid1",
+            fields:[
+                {id:"id",       label:'Id', width:90, sort:'int' },
+                {id:"text",     label:'Text', width:'*', valign:'middle'},
+                {id:"start_date", label:'From', align:'left', width:150, valign:'top'},
+                {id:"end_date", label:'To', align:'left', width:150, valign:'bottom'}],
+            rowHeight:42
+        });
+        scheduler.createGridView({
+            name:"grid2",
+            fields:[
+                {id:"id",       label:'Id', align:'right', width:80, sort:'int'},
+                {id:"date",     label:'Date', sort:'date' },
+                {id:"text",     label:'Text', align:'left', width:200,  sort:'str'},
+                {id:"text",     label:"Alternate sorting", align:'left',
+                    sort:function(a,b){return a.text.length > b.text.length ? 1 : -1},
+                    template:function(start,end,ev){return "1# "+ev.text}
+                }],
+            from:new Date(2017, 3, 10),
+            to:new Date(2017, 5,23)
+        });
+
+        scheduler.locale.labels.grid2_tab = "Template";
+        scheduler.locale.labels.grid1_tab = "RowHeight";
+        scheduler.locale.labels.grid_tab = "MinInit";
+
+		scheduler.init('scheduler_here',new Date(2017,5,30),"grid");
+		scheduler.load("../common/events.json")
+	}
+</script>
+
+<body onload="init();">
+	<div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
+		<div class="dhx_cal_navline">
+			<div class="dhx_cal_prev_button">&nbsp;</div>
+			<div class="dhx_cal_next_button">&nbsp;</div>
+			<div class="dhx_cal_today_button"></div>
+			<div class="dhx_cal_date"></div>
+			<div class="dhx_cal_tab" name="day_tab"></div>
+			<div class="dhx_cal_tab" name="week_tab"></div>
+			<div class="dhx_cal_tab" name="grid_tab"></div>
+            <div class="dhx_cal_tab" name="grid1_tab" style="width:100px;"></div>
+            <div class="dhx_cal_tab" name="grid2_tab" style="width:95px;"></div>
+
+		</div>
+		<div class="dhx_cal_header">
+		</div>
+		<div class="dhx_cal_data">
+		</div>		
+	</div>
+</body>

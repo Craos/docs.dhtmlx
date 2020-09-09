@@ -1,0 +1,366 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Basic Operating Principles  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dataprocessor.html">dataProcessor API</a></li><li class=" current"><a href="dataprocessor__basic_principles.html">Basic Operating Principles</a></li><ul><li class="inner"><a href="dataprocessor__basic_principles.html#commonrequestparametersformat">Common request parameters format</a></li><li class="inner"><a href="dataprocessor__basic_principles.html#schedulerrequestparamsexamples">Scheduler request params examples</a></li><li class="inner"><a href="dataprocessor__basic_principles.html#gridandtreerequestparams">Grid and Tree request params</a></li><li class="inner"><a href="dataprocessor__basic_principles.html#responsedetails">Response details</a></li></ul><li class=""><a href="dataprocessor__initialization.html">Initializing DataProcessor</a></li><li class=""><a href="dataprocessor__configuration.html">Configuring DataProcessor</a></li><li class=""><a href="dataprocessor__common_tasks.html">Common Tasks & Errors</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="connector__index.html">Client-Server Communication</a><a class="n3" href="dataprocessor__index.html">DataProcessor</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Basic Operating Principles</h1>
+
+<p>If you use DHTMLX PHP connectors - please, refer to <a class="link-" href="connector__php__index.html">PHP Connector</a>.<br></p>
+
+<p>The default package contains an example of the server-side code for PHP (by additional request the similar code for Java/ColdFusion/C#.Net/RubyOnRails can be sent).</p>
+
+<p>In this chapter we'd like to show you dataProcessor in details (a bit changed image from the main page will be to the point). <br></p>
+
+<p>Let's take a look at the example. You have some data stored in a database and want to represent them in a grid with the possibility to edit them. 
+Let's look inside and learn what role dataProcessor plays here.</p>
+
+<p align="center"><img src="media/dataprocessor/dataprocessor_principles.png"/></p>
+
+<a name='commonrequestparametersformat'><h2>Common request parameters format</h2></a>
+
+<p>First of all, dataProcessor gets the data (all the parameters are part of the <em>GET</em> or <em>POST</em> requests).</p>
+
+<p>The <a class="link-" href="api__dataprocessor_settransactionmode.html">setTransactionMode</a> method is used to set the desired transaction mode.</p>
+
+<p>There are several types of requests:</p>
+
+<p>1) a separate request for each record</p>
+
+<pre><code><pre class="js">dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;POST&quot;</span><span class="sy0">,</span> <span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Request values are:</p>
+
+<ul>
+<li><strong>id</strong> - the record's id</li>
+<li><strong>property1</strong> - 1st data property of an updated record  </li>
+<li><strong>property2</strong> - 2nd data property of an updated record   </li>
+<li><strong>propertyN</strong> - (N+1)th data property of an updated record   </li>
+<li><strong>!nativeeditor_status</strong> - defines the type of the operation (insert, update, delete), possible values are:
+
+<ul>
+<li><strong>inserted</strong> - the record was added;</li>
+<li><strong>deleted</strong> - the record was deleted;</li>
+<li><strong>updated</strong> or any other value - the record was updated;</li>
+</ul></li>
+</ul>
+
+<div class='note'><p><p>Depending on the value of "!nativeeditor_status" the related section of the server-side logic is triggered.</p>
+</p></div>
+
+<p>2) several records in one request</p>
+
+<pre><code><pre class="js">dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;POST&quot;</span><span class="sy0">,</span> <span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Request values are:</p>
+
+<ul>
+<li><strong>{event1_id}_id</strong> - the 1st record's id</li>
+<li><strong>{event1_id}_property1</strong> - 1st data property of the 1st record </li>
+<li><strong>{event1_id}_property2</strong> - 2nd data property of the 1st record </li>
+<li><strong>{event1_id}_propertyN</strong> - (N+1)th data property of the 1st record </li>
+<li><strong>{event1_id}_!nativeeditor_status</strong> - defines the type of the operation (insert, update, delete), possible values are:
+
+<ul>
+<li><strong>inserted</strong> - the record was added;</li>
+<li><strong>deleted</strong> - the record was deleted;</li>
+<li><strong>updated</strong> or any other value - the record was updated;</li>
+</ul></li>
+<li><strong>{event2_id}_id</strong> - the 2nd record's id</li>
+<li><strong>{event2_id}_property1</strong> - 1st data property of the 2nd record </li>
+<li><strong>{event2_id}_property2</strong> - 2nd data property of the 2nd record </li>
+<li><strong>{event2_id}_propertyN</strong> - (N+1)th data property of the 2nd record </li>
+<li><strong>{event2_id}_!nativeeditor_status</strong> - defines the type of the operation (insert, update, delete), possible values are:
+
+<ul>
+<li><strong>inserted</strong> - the record was added;</li>
+<li><strong>deleted</strong> - the record was deleted;</li>
+<li><strong>updated</strong> or any other value - the record was updated;</li>
+</ul></li>
+<li><strong>ids</strong> - the ids of all the records in the request (ids:{event1_id},{event2_id})</li>
+</ul>
+
+<div class='note'><p><p>A dataprocessor request can pass any number of data properties.
+An id is a mandatory parameter, other data properties are completely optional.</p>
+</p></div>
+
+<p>3) a request based on the rules of <a class="link-" href="dataprocessor__initialization.html#usingdataprocessorwithrestapi">REST API</a></p>
+
+<pre><code><pre class="js">dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;REST&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>4) a request sent by <a class="link-" href="dataprocessor__initialization.html#usingdataprocessorinjsonmode">dataProcessor in the JSON mode</a></p>
+
+<pre><code><pre class="js">dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;JSON&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='schedulerrequestparamsexamples'><h2>Scheduler request params examples</h2></a>
+
+<p>An example of Scheduler request values for a separate request for each record is given below:</p>
+
+<ul>
+<li><strong>id</strong>: 71</li>
+<li><strong>start_date</strong>: 2014-11-04 15:00</li>
+<li><strong>end_date</strong>: 2014-11-04 18:00</li>
+<li><strong>text</strong>:  Recinto Ferial - Valencia </li>
+<li><strong>details</strong>: Details for  Recinto Ferial - Valencia </li>
+<li><strong>!nativeeditor_status</strong>: updated</li>
+</ul>
+
+<p>The following example presents Scheduler request values in case of several records in one request:</p>
+
+<ul>
+<li><strong>15_id</strong>: 15</li>
+<li><strong>15_start_date</strong>: 2015-04-06 10:00</li>
+<li><strong>15_end_date</strong>: 2015-04-06 16:45</li>
+<li><strong>15_text</strong>: New event</li>
+<li><strong>15_section_id</strong>: 3</li>
+<li><strong>15_!nativeeditor_status</strong>:updated</li>
+<li><strong>16_id</strong>: 16</li>
+<li><strong>16_start_date</strong>: 2015-04-08 8:00</li>
+<li><strong>16_end_date</strong>: 2015-04-08 10:00</li>
+<li><strong>16_text</strong>: New event</li>
+<li><strong>16_section_id</strong>: 5</li>
+<li><strong>16_!nativeeditor_status</strong>: updated</li>
+<li><strong>ids</strong>: 15,16</li>
+</ul>
+
+<a name='gridandtreerequestparams'><h2>Grid and Tree request params</h2></a>
+
+<p>The request values for a grid row update are:</p>
+
+<ul>
+<li><strong>gr_id</strong> - the id of a row in the grid for which some operation is executed;</li>
+<li><strong>!nativeeditor_status</strong> - defines the type of the operation (insert, update, delete), possible values are:
+
+<ul>
+<li><strong>inserted</strong> - the row was added;</li>
+<li><strong>deleted</strong> - the row was deleted;</li>
+<li><strong>updated</strong> or any other value - the row was updated;</li>
+</ul></li>
+<li><strong>c0</strong> - the data of the first column in the updated row;</li>
+<li><strong>c1</strong> - the data of the second column in the updated row;</li>
+<li>...</li>
+<li><strong>cN</strong> - the data of the (N+1)th column in the grid.</li>
+</ul>
+
+<p>The request values for a tree branch update are:</p>
+
+<ul>
+<li><strong>tr_id</strong> - the id of the node in the tree for which some operation is executed;</li>
+<li><strong>tr_pid</strong> - the parent's id;</li>
+<li><strong>tr_order</strong> - the node's sequence on the level;</li>
+<li><strong>tr_text</strong> - the node's text(label);</li>
+<li>Userdata blocks are passed with their names.</li>
+<li><strong>!nativeeditor_status</strong> - the type of the operation, possible values are:
+
+<ul>
+<li><strong>inserted</strong> - item is inserted;</li>
+<li><strong>deleted</strong> - item is deleted;</li>
+<li><strong>updated</strong> or if an item doesn't exist - item is updated.</li>
+</ul></li>
+</ul>
+
+<a name='responsedetails'><h2>Response details</h2></a>
+
+<p>Then dataProcessor processes the incoming parameters, makes all the necessary operations in the database and returns the response.</p>
+
+<div class='note'><p><p>The response must be a valid XML or JSON in order to be processed correctly.</p>
+</p></div>
+
+<p>XML response must have the following format:</p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;data<span class="re2">&gt;</span></span></span>
+   <span class="sc3"><span class="re1">&lt;action</span> <span class="re0">type</span>=<span class="st0">&quot;some&quot;</span> <span class="re0">sid</span>=<span class="st0">&quot;some&quot;</span> <span class="re0">tid</span>=<span class="st0">&quot;some&quot;</span> <span class="re2">/&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;/data<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<p>where:</p>
+
+<ul>
+<li><strong>type</strong> - the type of the operation;</li>
+<li><strong>sid</strong> - the original row ID (the same as gr_id);</li>
+<li><strong>tid</strong> - the ID of the row after the operation (may be the same as gr_id, or a different one - it can be used during a new row adding, when a temporary ID 
+created on the client-side is replaced with the ID taken from the DB, or by any other business rule).</li>
+</ul>
+
+<p>Since the version 4.1 dataProcessor can work with <a class="link-" href="dataprocessor__initialization.html#usingdataprocessorwithrestapi">JSON responses</a>.</p>
+
+<p>A simple JSON response should look as:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span><span class="st0">&quot;status&quot;</span><span class="sy0">:</span><span class="st0">&quot;ok&quot;</span><span class="br0">&#125;</span>
+<span class="co1">//or</span>
+<span class="br0">&#123;</span><span class="st0">&quot;tid&quot;</span><span class="sy0">:</span><span class="nu0">121</span><span class="br0">&#125;</span></pre></code></pre>
+
+<p>A more complex example can be as follows:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span><span class="st0">&quot;action&quot;</span><span class="sy0">:</span><span class="st0">&quot;updated&quot;</span><span class="sy0">,</span> <span class="st0">&quot;sid&quot;</span><span class="sy0">:</span><span class="nu0">15</span><span class="sy0">,</span> <span class="st0">&quot;tid&quot;</span><span class="sy0">:</span><span class="nu0">15</span><span class="br0">&#125;</span></pre></code></pre>
+
+<p>To return an error in response of JSON format, use the following code:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span><span class="st0">&quot;action&quot;</span><span class="sy0">:</span><span class="st0">&quot;error&quot;</span><span class="sy0">,</span> ...<span class="br0">&#125;</span></pre></code></pre>
+
+<h4 id="response">Types of response</h4>
+
+<p>There are 5 predefined types of response:</p>
+
+<ul>
+<li>updated;</li>
+<li>inserted;</li>
+<li>deleted;</li>
+<li>invalid;</li>
+<li>error.</li>
+</ul>
+
+<p>dataProcessor already contains the logic that defines the default processing of the stated types of response (in other words, actions). 
+You can attach custom handlers to add some extra reaction but, in general, you needn't care about the processing of these actions.</p>
+
+<p>In some cases you may need to return some additional information (the most common use-case - an error during a DB operation). 
+To dispose a problem you can use an additional response type:</p>
+
+<pre><code><pre class="js"><span class="kw2">function</span> some_error<span class="br0">&#40;</span>node<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    <span class="kw3">alert</span><span class="br0">&#40;</span>node.<span class="me1">getAttribute</span><span class="br0">&#40;</span><span class="st0">&quot;type&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>    <span class="co1">// 'my_error'</span>
+    <span class="kw3">alert</span><span class="br0">&#40;</span>node.<span class="me1">firstChild</span>.<span class="me1">data</span><span class="br0">&#41;</span><span class="sy0">;</span>         <span class="co1">// Details</span>
+    <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+dp.<span class="me1">defineAction</span><span class="br0">&#40;</span><span class="st0">&quot;error&quot;</span><span class="sy0">,</span>some_error<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>where <em>some_error</em> - a custom function which will be called when the response of "my_error" type is received.</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>data<span class="sy0">&gt;</span>
+   <span class="sy0">&lt;</span>action type<span class="sy0">=</span><span class="st0">&quot;my_error&quot;</span> sid<span class="sy0">=</span><span class="st0">&quot;id&quot;</span> tid<span class="sy0">=</span><span class="st0">&quot;id&quot;</span><span class="sy0">&gt;</span>Details<span class="sy0">&lt;/</span>action<span class="sy0">&gt;</span>
+<span class="sy0">&lt;/</span>data<span class="sy0">&gt;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='dataprocessor__basic_principles.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

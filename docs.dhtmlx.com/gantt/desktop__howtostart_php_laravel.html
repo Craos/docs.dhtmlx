@@ -1,0 +1,789 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>dhtmlxGantt with PHP: Laravel  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__howtostart_dotnet_core.html">dhtmlxGantt with ASP.NET Core</a></li><li class=""><a href="desktop__howtostart_nodejs.html">dhtmlxGantt with Node.js</a></li><li class=""><a href="desktop__howtostart_dotnet.html">dhtmlxGantt with ASP.NET MVC</a></li><li class=" current"><a href="desktop__howtostart_php_laravel.html">dhtmlxGantt with PHP: Laravel</a></li><ul><li class="inner"><a href="desktop__howtostart_php_laravel.html#step1initializingaproject">Step 1. Initializing a project</a></li><li class="inner"><a href="desktop__howtostart_php_laravel.html#step2addinggantttothepage">Step 2. Adding Gantt to the page</a></li><li class="inner"><a href="desktop__howtostart_php_laravel.html#step3creatingmodelsandmigrations">Step 3. Creating models and migrations</a></li><li class="inner"><a href="desktop__howtostart_php_laravel.html#step4loadingdata">Step 4. Loading data</a></li><li class="inner"><a href="desktop__howtostart_php_laravel.html#step5savingchanges">Step 5. Saving changes</a></li><li class="inner"><a href="desktop__howtostart_php_laravel.html#storingtheorderoftasks">Storing the order of tasks</a></li><li class="inner"><a href="desktop__howtostart_php_laravel.html#applicationsecurity">Application security</a></li><li class="inner"><a href="desktop__howtostart_php_laravel.html#troubleshooting">Trouble shooting</a></li><li class="inner"><a href="desktop__howtostart_php_laravel.html#whatsnext">What's next</a></li></ul><li class=""><a href="desktop__howtostart_php_slim4.html">dhtmlxGantt with PHP:Slim</a></li><li class=""><a href="desktop__howtostart_ruby.html">dhtmlxGantt with Ruby on Rails</a></li><li class=""><a href="desktop__howtostart_php.html">dhtmlxGantt with PHP:Slim3</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__howtostart_guides.html">How to Start with dhtmlxGantt</a></div>
+<!-- Content Area -->
+
+
+
+<h1>dhtmlxGantt with PHP: Laravel</h1>
+
+<p>This tutorial describes how to add dhtmlxGantt into a <a href="https://laravel.com/">Laravel</a> app.</p>
+
+<p>There are tutorials intended for building server-side integration with the help of other platforms:</p>
+
+<ul>
+<li><a class="link-" href="desktop__howtostart_dotnet.html">dhtmlxGantt with ASP.NET MVC</a></li>
+<li><a class="link-" href="desktop__howtostart_dotnet_core.html">dhtmlxGantt with ASP.NET Core</a></li>
+<li><a class="link-" href="desktop__howtostart_nodejs.html">dhtmlxGantt with Node.js</a></li>
+<li><a class="link-" href="desktop__howtostart_php_slim4.html">dhtmlxGantt with PHP:Slim</a></li>
+<li><a class="link-" href="desktop__howtostart_ruby.html">dhtmlxGantt with Ruby on Rails</a></li>
+</ul>
+
+<div class='note'><p><p>The complete source code is <a href="https://github.com/DHTMLX/gantt-howto-php-laravel">available on GitHub</a>.</p>
+</p></div>
+
+<p>You can have a look at the video guide that shows how to create a Gantt chart using PHP Laravel.</p>
+
+<iframe width="704" height="400" src="https://www.youtube.com/embed/eu5R86a-9jA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<a name='step1initializingaproject'><h2>Step 1. Initializing a project</h2></a>
+
+<h3>Creating a project</h3>
+
+<p>Create a new application using <a href="https://getcomposer.org/">Composer</a>:</p>
+
+<pre><code><pre class="php">composer create<span class="sy0">-</span>project laravel<span class="sy0">/</span>laravel gantt<span class="sy0">-</span>laravel<span class="sy0">-</span>app</pre></code></pre>
+
+<p>It should take a minute to download and create all necessary files. 
+Once everything is done, you can check that everything is correct so far:</p>
+
+<pre><code><pre class="php">cd gantt<span class="sy0">-</span>laravel<span class="sy0">-</span>app
+php artisan serve</pre></code></pre>
+
+<p>At this step you should get a default Laravel page:</p>
+
+<p><img src="media/desktop/how_to_start_laravel_blank_page.png"/></p>
+
+<a name='step2addinggantttothepage'><h2>Step 2. Adding Gantt to the page</h2></a>
+
+<h3>Adding a View</h3>
+
+<p>Firstly, we'll add a new page with dhtmlxGantt to our app.
+Go to the <em>resources/views</em> folder and create a new view named <em>gantt.blade.php</em>:</p>
+
+<p class='snippet'> resources/views/gantt.blade.php </p>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">meta</span> <span class="kw3">http-equiv</span><span class="sy0">=</span><span class="st0">&quot;Content-type&quot;</span> <span class="kw3">content</span><span class="sy0">=</span><span class="st0">&quot;text/html; charset=utf-8&quot;</span>&gt;</span>
+&nbsp;
+    <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css&quot;</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span>&gt;</span>
+&nbsp;
+    <span class="sc2">&lt;<span class="kw2">style</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span>&gt;</span><pre class="css">        html<span class="sy0">,</span> body<span class="br0">&#123;</span>
+            <span class="kw1">height</span><span class="sy0">:</span><span class="re3">100%</span><span class="sy0">;</span>
+            <span class="kw1">padding</span><span class="sy0">:</span><span class="re3">0px</span><span class="sy0">;</span>
+            <span class="kw1">margin</span><span class="sy0">:</span><span class="re3">0px</span><span class="sy0">;</span>
+            <span class="kw1">overflow</span><span class="sy0">:</span> <span class="kw2">hidden</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span></pre>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">style</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;gantt_here&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">'width:100%; height:100%;'</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span>&gt;</span><pre class="js">    gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre><span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span></pre></code></pre>
+
+<p>Here we've defined a simple HTML layout, added sources of dhtmlxGantt from <a class="link-" href="desktop__cdn_links_list.html">CDN</a> and initialized gantt using the <a class="link-" href="api__gantt_init.html">init</a> method.</p>
+
+<p>Note that we've also specified <strong>100% height</strong> for the document body and for the gantt container. Gantt will use the size of its container, so some initial sizes are required.</p>
+
+<h3>Changing the default route</h3>
+
+<p>After we've added a new page, we need to make it accessible from a browser. For this tutorial, we'll make our gantt the default page of an app.</p>
+
+<p>Go to <em>routes/web.php</em> and change the default route:</p>
+
+<p class='snippet'> routes/web.php</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+Route<span class="sy0">::</span><span class="me2">get</span><span class="br0">&#40;</span><span class="st_h">'/'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> view<span class="br0">&#40;</span><span class="st_h">'gantt'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Run the app again to make sure it did the trick:</p>
+
+<p><img src="media/desktop/how_to_start_laravel_empty_gantt.png"/></p>
+
+<a name='step3creatingmodelsandmigrations'><h2>Step 3. Creating models and migrations</h2></a>
+
+<p>So, we've got an empty gantt chart. Let's connect it to the database and populate it with data.</p>
+
+<h3>Creating a database</h3>
+
+<p>Be sure to update database configuration in <em>.env</em>, for example:</p>
+
+<p class='snippet'> .env</p>
+
+<pre><code><pre class="php">DB_CONNECTION<span class="sy0">=</span><a href="http://www.php.net/mysql"><span class="kw3">mysql</span></a>
+DB_HOST<span class="sy0">=</span>127<span class="sy0">.</span>0<span class="sy0">.</span>0<span class="sy0">.</span>1
+DB_PORT<span class="sy0">=</span><span class="nu0">3306</span>
+DB_DATABASE<span class="sy0">=</span>gantt<span class="sy0">-</span>test
+DB_USERNAME<span class="sy0">=</span>root
+DB_PASSWORD<span class="sy0">=</span></pre></code></pre>
+
+<p>The next step is to create <a href="https://laravel.com/docs/eloquent#defining-models">model classes</a> and
+<a href="https://laravel.com/docs/migrations#generating-migrations">migrations</a>. You can generate classes and migration files using the Artisan command:</p>
+
+<pre><code><pre class="js">php artisan make<span class="sy0">:</span>model Task <span class="sy0">--</span>migration</pre></code></pre>
+
+<p>and</p>
+
+<pre><code><pre class="js">php artisan make<span class="sy0">:</span>model Link <span class="sy0">--</span>migration</pre></code></pre>
+
+<p>After that find the migrations in the <code>database/migrations</code> folder and define a <a href="https://laravel.com/docs/migrations#migration-structure">database schema</a>. 
+You can find the database schema expected by the gantt <a class="link-" href="desktop__loading.html#databasestructure">here</a>.</p>
+
+<p>The code for the Tasks table looks like this:</p>
+
+<p class='snippet'> database/migrations/_create_tasks_table.php</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw2">use</span> Illuminate\Support\Facades\Schema<span class="sy0">;</span>
+<span class="kw2">use</span> Illuminate\Database\Schema\Blueprint<span class="sy0">;</span>
+<span class="kw2">use</span> Illuminate\Database\Migrations\Migration<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">class</span> CreateTasksTable <span class="kw2">extends</span> Migration
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">function</span> up<span class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        Schema<span class="sy0">::</span><span class="me2">create</span><span class="br0">&#40;</span><span class="st_h">'tasks'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>Blueprint <span class="re0">$table</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">increments</span><span class="br0">&#40;</span><span class="st_h">'id'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">string</span><span class="br0">&#40;</span><span class="st_h">'text'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">integer</span><span class="br0">&#40;</span><span class="st_h">'duration'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">float</span><span class="br0">&#40;</span><span class="st_h">'progress'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">dateTime</span><span class="br0">&#40;</span><span class="st_h">'start_date'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">integer</span><span class="br0">&#40;</span><span class="st_h">'parent'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">timestamps</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="kw2">public</span> <span class="kw2">function</span> down<span class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        Schema<span class="sy0">::</span><span class="me2">dropIfExists</span><span class="br0">&#40;</span><span class="st_h">'tasks'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Below you will find the code for the Links table:</p>
+
+<p class='snippet'> database/migrations/_create_links_table.php</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw2">use</span> Illuminate\Support\Facades\Schema<span class="sy0">;</span>
+<span class="kw2">use</span> Illuminate\Database\Schema\Blueprint<span class="sy0">;</span>
+<span class="kw2">use</span> Illuminate\Database\Migrations\Migration<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">class</span> CreateLinksTable <span class="kw2">extends</span> Migration
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">function</span> up<span class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        Schema<span class="sy0">::</span><span class="me2">create</span><span class="br0">&#40;</span><span class="st_h">'links'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>Blueprint <span class="re0">$table</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">increments</span><span class="br0">&#40;</span><span class="st_h">'id'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">string</span><span class="br0">&#40;</span><span class="st_h">'type'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">integer</span><span class="br0">&#40;</span><span class="st_h">'source'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">integer</span><span class="br0">&#40;</span><span class="st_h">'target'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">timestamps</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="kw2">public</span> <span class="kw2">function</span> down<span class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        Schema<span class="sy0">::</span><span class="me2">dropIfExists</span><span class="br0">&#40;</span><span class="st_h">'links'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>And run the migration:</p>
+
+<pre><code><pre class="php">php artisan migrate</pre></code></pre>
+
+<p>While we're at it, we can generate some test data for our app. 
+Generate a <a href="https://laravel.com/docs/seeding">seeder</a> class using the artisan command:</p>
+
+<pre><code><pre class="php">php artisan make<span class="sy0">:</span>seeder TasksTableSeeder
+php artisan make<span class="sy0">:</span>seeder LinksTableSeeder</pre></code></pre>
+
+<p>Add some data to <strong>TasksTableSeeder</strong>:</p>
+
+<p class='snippet'> database/seeds/TasksTableSeeder.php</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw2">use</span> Illuminate\Database\Seeder<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">class</span> TasksTableSeeder <span class="kw2">extends</span> Seeder
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">function</span> run<span class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        DB<span class="sy0">::</span><span class="me2">table</span><span class="br0">&#40;</span><span class="st_h">'tasks'</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">insert</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+            <span class="br0">&#91;</span><span class="st_h">'id'</span><span class="sy0">=&gt;</span><span class="nu0">1</span><span class="sy0">,</span> <span class="st_h">'text'</span><span class="sy0">=&gt;</span><span class="st_h">'Project #1'</span><span class="sy0">,</span> <span class="st_h">'start_date'</span><span class="sy0">=&gt;</span><span class="st_h">'2017-04-01 00:00:00'</span><span class="sy0">,</span> 
+                <span class="st_h">'duration'</span><span class="sy0">=&gt;</span><span class="nu0">5</span><span class="sy0">,</span> <span class="st_h">'progress'</span><span class="sy0">=&gt;</span><span class="nu19">0.8</span><span class="sy0">,</span> <span class="st_h">'parent'</span><span class="sy0">=&gt;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">,</span>
+            <span class="br0">&#91;</span><span class="st_h">'id'</span><span class="sy0">=&gt;</span><span class="nu0">2</span><span class="sy0">,</span> <span class="st_h">'text'</span><span class="sy0">=&gt;</span><span class="st_h">'Task #1'</span><span class="sy0">,</span> <span class="st_h">'start_date'</span><span class="sy0">=&gt;</span><span class="st_h">'2017-04-06 00:00:00'</span><span class="sy0">,</span> 
+                <span class="st_h">'duration'</span><span class="sy0">=&gt;</span><span class="nu0">4</span><span class="sy0">,</span> <span class="st_h">'progress'</span><span class="sy0">=&gt;</span><span class="nu19">0.5</span><span class="sy0">,</span> <span class="st_h">'parent'</span><span class="sy0">=&gt;</span><span class="nu0">1</span><span class="br0">&#93;</span><span class="sy0">,</span>
+            <span class="br0">&#91;</span><span class="st_h">'id'</span><span class="sy0">=&gt;</span><span class="nu0">3</span><span class="sy0">,</span> <span class="st_h">'text'</span><span class="sy0">=&gt;</span><span class="st_h">'Task #2'</span><span class="sy0">,</span> <span class="st_h">'start_date'</span><span class="sy0">=&gt;</span><span class="st_h">'2017-04-05 00:00:00'</span><span class="sy0">,</span> 
+                <span class="st_h">'duration'</span><span class="sy0">=&gt;</span><span class="nu0">6</span><span class="sy0">,</span> <span class="st_h">'progress'</span><span class="sy0">=&gt;</span><span class="nu19">0.7</span><span class="sy0">,</span> <span class="st_h">'parent'</span><span class="sy0">=&gt;</span><span class="nu0">1</span><span class="br0">&#93;</span><span class="sy0">,</span>
+            <span class="br0">&#91;</span><span class="st_h">'id'</span><span class="sy0">=&gt;</span><span class="nu0">4</span><span class="sy0">,</span> <span class="st_h">'text'</span><span class="sy0">=&gt;</span><span class="st_h">'Task #3'</span><span class="sy0">,</span> <span class="st_h">'start_date'</span><span class="sy0">=&gt;</span><span class="st_h">'2017-04-07 00:00:00'</span><span class="sy0">,</span> 
+                <span class="st_h">'duration'</span><span class="sy0">=&gt;</span><span class="nu0">2</span><span class="sy0">,</span> <span class="st_h">'progress'</span><span class="sy0">=&gt;</span><span class="nu0">0</span><span class="sy0">,</span> <span class="st_h">'parent'</span><span class="sy0">=&gt;</span><span class="nu0">1</span><span class="br0">&#93;</span><span class="sy0">,</span>
+            <span class="br0">&#91;</span><span class="st_h">'id'</span><span class="sy0">=&gt;</span><span class="nu0">5</span><span class="sy0">,</span> <span class="st_h">'text'</span><span class="sy0">=&gt;</span><span class="st_h">'Task #1.1'</span><span class="sy0">,</span> <span class="st_h">'start_date'</span><span class="sy0">=&gt;</span><span class="st_h">'2017-04-05 00:00:00'</span><span class="sy0">,</span> 
+                <span class="st_h">'duration'</span><span class="sy0">=&gt;</span><span class="nu0">5</span><span class="sy0">,</span> <span class="st_h">'progress'</span><span class="sy0">=&gt;</span><span class="nu19">0.34</span><span class="sy0">,</span> <span class="st_h">'parent'</span><span class="sy0">=&gt;</span><span class="nu0">2</span><span class="br0">&#93;</span><span class="sy0">,</span>
+            <span class="br0">&#91;</span><span class="st_h">'id'</span><span class="sy0">=&gt;</span><span class="nu0">6</span><span class="sy0">,</span> <span class="st_h">'text'</span><span class="sy0">=&gt;</span><span class="st_h">'Task #1.2'</span><span class="sy0">,</span> <span class="st_h">'start_date'</span><span class="sy0">=&gt;</span><span class="st_h">'2017-04-11 00:00:00'</span><span class="sy0">,</span> 
+                <span class="st_h">'duration'</span><span class="sy0">=&gt;</span><span class="nu0">4</span><span class="sy0">,</span> <span class="st_h">'progress'</span><span class="sy0">=&gt;</span><span class="nu19">0.5</span><span class="sy0">,</span> <span class="st_h">'parent'</span><span class="sy0">=&gt;</span><span class="nu0">2</span><span class="br0">&#93;</span><span class="sy0">,</span>
+            <span class="br0">&#91;</span><span class="st_h">'id'</span><span class="sy0">=&gt;</span><span class="nu0">7</span><span class="sy0">,</span> <span class="st_h">'text'</span><span class="sy0">=&gt;</span><span class="st_h">'Task #2.1'</span><span class="sy0">,</span> <span class="st_h">'start_date'</span><span class="sy0">=&gt;</span><span class="st_h">'2017-04-07 00:00:00'</span><span class="sy0">,</span> 
+                <span class="st_h">'duration'</span><span class="sy0">=&gt;</span><span class="nu0">5</span><span class="sy0">,</span> <span class="st_h">'progress'</span><span class="sy0">=&gt;</span><span class="nu19">0.2</span><span class="sy0">,</span> <span class="st_h">'parent'</span><span class="sy0">=&gt;</span><span class="nu0">3</span><span class="br0">&#93;</span><span class="sy0">,</span>
+            <span class="br0">&#91;</span><span class="st_h">'id'</span><span class="sy0">=&gt;</span><span class="nu0">8</span><span class="sy0">,</span> <span class="st_h">'text'</span><span class="sy0">=&gt;</span><span class="st_h">'Task #2.2'</span><span class="sy0">,</span> <span class="st_h">'start_date'</span><span class="sy0">=&gt;</span><span class="st_h">'2017-04-06 00:00:00'</span><span class="sy0">,</span> 
+                <span class="st_h">'duration'</span><span class="sy0">=&gt;</span><span class="nu0">4</span><span class="sy0">,</span> <span class="st_h">'progress'</span><span class="sy0">=&gt;</span><span class="nu19">0.9</span><span class="sy0">,</span> <span class="st_h">'parent'</span><span class="sy0">=&gt;</span><span class="nu0">3</span><span class="br0">&#93;</span>
+        <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>And call table seeders from <strong>DatabaseSeeder.php</strong>:</p>
+
+<p class='snippet'> database/seeds/DatabaseSeeder.php</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw2">use</span> Illuminate\Database\Seeder<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">class</span> DatabaseSeeder <span class="kw2">extends</span> Seeder
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">function</span> run<span class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">call</span><span class="br0">&#40;</span>TasksTableSeeder<span class="sy0">::</span><span class="kw2">class</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">call</span><span class="br0">&#40;</span>LinksTableSeeder<span class="sy0">::</span><span class="kw2">class</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>After that we can seed our database from the command line:</p>
+
+<pre><code><pre class="php">php artisan db<span class="sy0">:</span>seed</pre></code></pre>
+
+<h3>Defining model classes</h3>
+
+<p>The data is managed via the <a href="https://laravel.com/docs/eloquent">Eloquent model</a> classes. We've already generated classes for tasks and links at the previous step.
+They are ready to use and don't require any changes to work with gantt.</p>
+
+<p>What we can do, however, is to add an <strong>open</strong> <a class="link-" href="desktop__loading.html#dataproperties">attribute of the Task class</a> to 
+<a href="https://laravel.com/docs/eloquent-serialization#appending-values-to-json">JSON response</a>. It will make the project tree expanded when tasks are loaded to the client side. 
+Otherwise, all branches would be closed initially:</p>
+
+<p>The Task model will look as in:</p>
+
+<p class='snippet'> /app/Task.php </p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw2">namespace</span> App<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">use</span> Illuminate\Database\Eloquent\Model<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">class</span> Task <span class="kw2">extends</span> Model
+<span class="br0">&#123;</span>
+<span class="xtra ln-xtra">    <span class="kw2">protected</span> <span class="re0">$appends</span> <span class="sy0">=</span> <span class="br0">&#91;</span><span class="st0">&quot;open&quot;</span><span class="br0">&#93;</span><span class="sy0">;</span></span>&nbsp;
+<span class="xtra ln-xtra">    <span class="kw2">public</span> <span class="kw2">function</span> getOpenAttribute<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span></span><span class="xtra ln-xtra">        <span class="kw1">return</span> <span class="kw4">true</span><span class="sy0">;</span></span><span class="xtra ln-xtra">    <span class="br0">&#125;</span></span><span class="br0">&#125;</span></pre></code></pre>
+
+<p>And the Link model doesn't need any changes:</p>
+
+<p class='snippet'> /app/Link.php </p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw2">namespace</span> App<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">use</span> Illuminate\Database\Eloquent\Model<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">class</span> <a href="http://www.php.net/link"><span class="kw3">Link</span></a> <span class="kw2">extends</span> Model
+<span class="br0">&#123;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='step4loadingdata'><h2>Step 4. Loading data</h2></a>
+
+<p>Once the database is created and the models are defined, we can load data into our gantt. 
+The client side requires dates of <a class="link-" href="desktop__supported_data_formats.html#json">the following format</a>, so let's create a controller with an action that produces such JSON:</p>
+
+<p class='snippet'> app/Http/Controllers/GanttController.php</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+<span class="kw2">namespace</span> App\Http\Controllers<span class="sy0">;</span>
+<span class="kw2">use</span> App\Task<span class="sy0">;</span>
+<span class="kw2">use</span> App\<a href="http://www.php.net/link"><span class="kw3">Link</span></a><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">class</span> GanttController <span class="kw2">extends</span> Controller
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">function</span> get<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="re0">$tasks</span> <span class="sy0">=</span> <span class="kw2">new</span> Task<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="re0">$links</span> <span class="sy0">=</span> <span class="kw2">new</span> <a href="http://www.php.net/link"><span class="kw3">Link</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">return</span> response<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+            <span class="st0">&quot;data&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$tasks</span><span class="sy0">-&gt;</span><span class="me1">all</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span>
+            <span class="st0">&quot;links&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$links</span><span class="sy0">-&gt;</span><span class="me1">all</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+        <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>And register a route, so the client could call this action. Note that we'll add the route to the <a href="https://laravel.com/docs/routing#basic-routing">api.php routes file</a>:</p>
+
+<p class='snippet'> routes/api.php</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw2">use</span> Illuminate\Http\Request<span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra">Route<span class="sy0">::</span><span class="me2">get</span><span class="br0">&#40;</span><span class="st_h">'/data'</span><span class="sy0">,</span> <span class="st_h">'GanttController@get'</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p>And finally, call this action from the view:</p>
+
+<p class='snippet'> resources/views/gantt.blade.php </p>
+
+<pre><code><pre class="js"><span class="xtra ln-xtra">gantt.<span class="me1">config</span>.<span class="me1">date_format</span> <span class="sy0">=</span> <span class="st0">&quot;%Y-%m-%d %H:%i:%s&quot;</span><span class="sy0">;</span></span>&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra">gantt.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/api/data&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p><a class="link-" href="api__gantt_load.html">gantt.load</a> sends an AJAX request to the specified URL and will expect a <a class="link-" href="desktop__supported_data_formats.html#json">JSON response</a> as we've defined before.</p>
+
+<p>Also, note that we've specified the <a class="link-" href="api__gantt_date_format_config.html">date_format</a> value. 
+This is how we tell the gantt which format of dates the data source will use, so the client side could parse them.</p>
+
+<p>If you check the app now, you should see that there are now tasks in our gantt chart:</p>
+
+<p><img src="media/desktop/how_to_start_laravel_complete.png"/></p>
+
+<a name='step5savingchanges'><h2>Step 5. Saving changes</h2></a>
+
+<p>For now, our gantt can read data from the backend. Let's make it write changes back to the database.</p>
+
+<p>The client side will work in the REST mode, meaning that it will send POST/PUT/DELETE requests for tasks and links actions. 
+You can find the format of requests and all the routes the gantt will use <a class="link-" href="desktop__server_side.html#requestresponsedetails">here</a>.</p>
+
+<p>What we need now is to define controllers that handle actions on both models, create routes for them and enable data saving on the client side.</p>
+
+<h3>Adding controllers</h3>
+
+<p>Let's start with controllers. We'll create one RESTful <a href="https://laravel.com/docs/controllers#resource-controllers">resource controller</a> for each model. 
+It will contain methods for adding/deleting and updating the model.</p>
+
+<h4>Controller for tasks</h4>
+
+<p class='snippet'> app/Http/Controllers/TaskController.php</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+<span class="kw2">namespace</span> App\Http\Controllers<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">use</span> Illuminate\Http\Request<span class="sy0">;</span>
+<span class="kw2">use</span> App\Task<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">class</span> TaskController <span class="kw2">extends</span> Controller
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">function</span> store<span class="br0">&#40;</span>Request <span class="re0">$request</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+&nbsp;
+        <span class="re0">$task</span> <span class="sy0">=</span> <span class="kw2">new</span> Task<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">text</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">text</span><span class="sy0">;</span>
+        <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">start_date</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">start_date</span><span class="sy0">;</span>
+        <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">duration</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">duration</span><span class="sy0">;</span>
+        <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">progress</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">has</span><span class="br0">&#40;</span><span class="st0">&quot;progress&quot;</span><span class="br0">&#41;</span> ? <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">progress</span> <span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">;</span>
+        <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">parent</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">parent</span><span class="sy0">;</span>
+&nbsp;
+        <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">save</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">return</span> response<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+            <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span> <span class="st0">&quot;inserted&quot;</span><span class="sy0">,</span>
+            <span class="st0">&quot;tid&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">id</span>
+        <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="kw2">public</span> <span class="kw2">function</span> update<span class="br0">&#40;</span><span class="re0">$id</span><span class="sy0">,</span> Request <span class="re0">$request</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="re0">$task</span> <span class="sy0">=</span> Task<span class="sy0">::</span><span class="me2">find</span><span class="br0">&#40;</span><span class="re0">$id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">text</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">text</span><span class="sy0">;</span>
+        <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">start_date</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">start_date</span><span class="sy0">;</span>
+        <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">duration</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">duration</span><span class="sy0">;</span>
+        <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">progress</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">has</span><span class="br0">&#40;</span><span class="st0">&quot;progress&quot;</span><span class="br0">&#41;</span> ? <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">progress</span> <span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">;</span>
+        <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">parent</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">parent</span><span class="sy0">;</span>
+&nbsp;
+        <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">save</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">return</span> response<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+            <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span> <span class="st0">&quot;updated&quot;</span>
+        <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="kw2">public</span> <span class="kw2">function</span> destroy<span class="br0">&#40;</span><span class="re0">$id</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="re0">$task</span> <span class="sy0">=</span> Task<span class="sy0">::</span><span class="me2">find</span><span class="br0">&#40;</span><span class="re0">$id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">delete</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">return</span> response<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+            <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span> <span class="st0">&quot;deleted&quot;</span>
+        <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>And a <a href="http://laravel.com/docs/controllers#restful-resource-controllers">route</a> for it:</p>
+
+<p class='snippet'> routes/api.php</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw2">use</span> Illuminate\Http\Request<span class="sy0">;</span>
+&nbsp;
+Route<span class="sy0">::</span><span class="me2">get</span><span class="br0">&#40;</span><span class="st_h">'/data'</span><span class="sy0">,</span> <span class="st_h">'GanttController@get'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">Route<span class="sy0">::</span><span class="me2">resource</span><span class="br0">&#40;</span><span class="st_h">'task'</span><span class="sy0">,</span> <span class="st_h">'TaskController'</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p>A couple of notes regarding this code:</p>
+
+<ul>
+<li>When a new task is inserted, we return its id back to the client in the <strong>tid</strong> property of the response object</li>
+<li>We assign a default value to the <strong>progress</strong> parameter. 
+Many request parameters are optional, which means that if a client-side task doesn't have them assigned, they won't be sent to the server action.</li>
+<li>The response JSON can have any number of additional properties, they all can be accessed from the <a class="link-" href="desktop__server_side.html#errorhandling">client-side handler</a></li>
+</ul>
+
+<p>Now let's implement the same for a LinkController.</p>
+
+<h4>Controller for links</h4>
+
+<p class='snippet'> app/Http/Controllers/LinkController.php</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+<span class="kw2">namespace</span> App\Http\Controllers<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">use</span> Illuminate\Http\Request<span class="sy0">;</span>
+<span class="kw2">use</span> App\<a href="http://www.php.net/link"><span class="kw3">Link</span></a><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">class</span> LinkController <span class="kw2">extends</span> Controller
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">function</span> store<span class="br0">&#40;</span>Request <span class="re0">$request</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="re0">$link</span> <span class="sy0">=</span> <span class="kw2">new</span> <a href="http://www.php.net/link"><span class="kw3">Link</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="re0">$link</span><span class="sy0">-&gt;</span><span class="me1">type</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">type</span><span class="sy0">;</span>
+        <span class="re0">$link</span><span class="sy0">-&gt;</span><span class="me1">source</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">source</span><span class="sy0">;</span>
+        <span class="re0">$link</span><span class="sy0">-&gt;</span><span class="me1">target</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">target</span><span class="sy0">;</span>
+&nbsp;
+        <span class="re0">$link</span><span class="sy0">-&gt;</span><span class="me1">save</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">return</span> response<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+            <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span> <span class="st0">&quot;inserted&quot;</span><span class="sy0">,</span>
+            <span class="st0">&quot;tid&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$link</span><span class="sy0">-&gt;</span><span class="me1">id</span>
+        <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="kw2">public</span> <span class="kw2">function</span> update<span class="br0">&#40;</span><span class="re0">$id</span><span class="sy0">,</span> Request <span class="re0">$request</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="re0">$link</span> <span class="sy0">=</span> <a href="http://www.php.net/link"><span class="kw3">Link</span></a><span class="sy0">::</span><span class="me2">find</span><span class="br0">&#40;</span><span class="re0">$id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="re0">$link</span><span class="sy0">-&gt;</span><span class="me1">type</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">type</span><span class="sy0">;</span>
+        <span class="re0">$link</span><span class="sy0">-&gt;</span><span class="me1">source</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">source</span><span class="sy0">;</span>
+        <span class="re0">$link</span><span class="sy0">-&gt;</span><span class="me1">target</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">target</span><span class="sy0">;</span>
+&nbsp;
+        <span class="re0">$link</span><span class="sy0">-&gt;</span><span class="me1">save</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">return</span> response<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+            <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span> <span class="st0">&quot;updated&quot;</span>
+        <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="kw2">public</span> <span class="kw2">function</span> destroy<span class="br0">&#40;</span><span class="re0">$id</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="re0">$link</span> <span class="sy0">=</span> <a href="http://www.php.net/link"><span class="kw3">Link</span></a><span class="sy0">::</span><span class="me2">find</span><span class="br0">&#40;</span><span class="re0">$id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="re0">$link</span><span class="sy0">-&gt;</span><span class="me1">delete</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">return</span> response<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+            <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span> <span class="st0">&quot;deleted&quot;</span>
+        <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>And its routes:</p>
+
+<p class='snippet'> routes/api.php</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw2">use</span> Illuminate\Http\Request<span class="sy0">;</span>
+&nbsp;
+Route<span class="sy0">::</span><span class="me2">get</span><span class="br0">&#40;</span><span class="st_h">'/data'</span><span class="sy0">,</span> <span class="st_h">'GanttController@get'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+Route<span class="sy0">::</span><span class="me2">resource</span><span class="br0">&#40;</span><span class="st_h">'task'</span><span class="sy0">,</span> <span class="st_h">'TaskController'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">Route<span class="sy0">::</span><span class="me2">resource</span><span class="br0">&#40;</span><span class="st_h">'link'</span><span class="sy0">,</span> <span class="st_h">'LinkController'</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<h3>Enabling data saving on the client side</h3>
+
+<p>Finally, we will <a class="link-" href="desktop__server_side.html#technique">configure the client side</a> to utilize the API we've just implemented:</p>
+
+<p class='snippet'> resources/views/gantt.blade.php </p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">date_format</span> <span class="sy0">=</span> <span class="st0">&quot;%Y-%m-%d %H:%i:%s&quot;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/api/data&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra"><span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> gantt.<span class="me1">dataProcessor</span><span class="br0">&#40;</span><span class="st0">&quot;/api&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span><span class="xtra ln-xtra">dp.<span class="me1">init</span><span class="br0">&#40;</span>gantt<span class="br0">&#41;</span><span class="sy0">;</span></span><span class="xtra ln-xtra">dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;REST&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p>Now you have a fully interactive Gantt chart with the ability to view, add, update and delete tasks and links.</p>
+
+<p><img src="media/desktop/how_to_start_laravel_crud.png"/></p>
+
+<p>Please check more of <a class="link-" href="desktop__guides.html">our guides</a> for more features of dhtmlxGantt.</p>
+
+<a name='storingtheorderoftasks'><h2>Storing the order of tasks</h2></a>
+
+<p>The client-side gantt allows <a class="link-" href="desktop__reordering_tasks.html">reordering tasks</a> using drag and drop. So if you use this feature, you'll have to store this order in the database. 
+You can check the common <a class="link-" href="desktop__server_side.html#storingtheorderoftasks">description here</a>.</p>
+
+<p>Let's now add this feature to our app.</p>
+
+<h3>Enable tasks reordering on the client</h3>
+
+<p>Firstly, we need to allow users to change task order in the UI. Open the <em>Index</em> view and update the configuration of gantt:</p>
+
+<p class='snippet'> resources/views/gantt.blade.php </p>
+
+<pre><code><pre class="js"><span class="xtra ln-xtra">gantt.<span class="me1">config</span>.<span class="me1">order_branch</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></span><span class="xtra ln-xtra">gantt.<span class="me1">config</span>.<span class="me1">order_branch_free</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></span>&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Enable tasks reordering on the server</h3>
+
+<p>Now, let's reflect these changes on the backend. We are going to store the order in the column named "sortorder"." A complete tasks' schema may look as follows:</p>
+
+<pre><code><pre class="php">Schema<span class="sy0">::</span><span class="me2">create</span><span class="br0">&#40;</span><span class="st_h">'tasks'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>Blueprint <span class="re0">$table</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">increments</span><span class="br0">&#40;</span><span class="st_h">'id'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">string</span><span class="br0">&#40;</span><span class="st_h">'text'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">integer</span><span class="br0">&#40;</span><span class="st_h">'duration'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">float</span><span class="br0">&#40;</span><span class="st_h">'progress'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">dateTime</span><span class="br0">&#40;</span><span class="st_h">'start_date'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">integer</span><span class="br0">&#40;</span><span class="st_h">'parent'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">integer</span><span class="br0">&#40;</span><span class="st_h">'sortorder'</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="kw1">default</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">timestamps</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Or you can add a migration to the schema we've generated earlier:</p>
+
+<pre><code><pre class="js">php artisan make<span class="sy0">:</span>migration add_sortorder_to_tasks_table <span class="sy0">--</span>table<span class="sy0">=</span>tasks</pre></code></pre>
+
+<p>The code of the Migration file is:</p>
+
+<p class='snippet'> database/migrations/_add_sortorder_to_tasks_table.php</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+&nbsp;
+<span class="kw2">use</span> Illuminate\Support\Facades\Schema<span class="sy0">;</span>
+<span class="kw2">use</span> Illuminate\Database\Schema\Blueprint<span class="sy0">;</span>
+<span class="kw2">use</span> Illuminate\Database\Migrations\Migration<span class="sy0">;</span>
+&nbsp;
+<span class="kw2">class</span> AddSortorderToTasksTable <span class="kw2">extends</span> Migration
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">function</span> up<span class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        Schema<span class="sy0">::</span><span class="me2">table</span><span class="br0">&#40;</span><span class="st_h">'tasks'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>Blueprint <span class="re0">$table</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">integer</span><span class="br0">&#40;</span><span class="st_h">'sortorder'</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="kw1">default</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="kw2">public</span> <span class="kw2">function</span> down<span class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        Schema<span class="sy0">::</span><span class="me2">table</span><span class="br0">&#40;</span><span class="st_h">'tasks'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>Blueprint <span class="re0">$table</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="re0">$table</span><span class="sy0">-&gt;</span><span class="me1">dropColumn</span><span class="br0">&#40;</span><span class="st_h">'sortorder'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>And apply the migration:</p>
+
+<pre><code><pre class="js">php artisan migrate</pre></code></pre>
+
+<p>After that we need to update CRUD defined in our controllers.</p>
+
+<p>1 . <b>GET /data</b> must return tasks ordered by the <code>sortorder</code> column:</p>
+
+<p class='snippet'> app/Http/Controllers/GanttController.php</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+<span class="kw2">namespace</span> App\Http\Controllers<span class="sy0">;</span>
+<span class="kw2">use</span> App\Task<span class="sy0">;</span>
+<span class="kw2">use</span> App\<a href="http://www.php.net/link"><span class="kw3">Link</span></a><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">class</span> GanttController <span class="kw2">extends</span> Controller
+<span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">function</span> get<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="re0">$tasks</span> <span class="sy0">=</span> <span class="kw2">new</span> Task<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="re0">$links</span> <span class="sy0">=</span> <span class="kw2">new</span> <a href="http://www.php.net/link"><span class="kw3">Link</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">return</span> response<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+<span class="xtra ln-xtra">            <span class="st0">&quot;data&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$tasks</span><span class="sy0">-&gt;</span><span class="me1">orderBy</span><span class="br0">&#40;</span><span class="st_h">'sortorder'</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">get</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span></span>            <span class="st0">&quot;links&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$links</span><span class="sy0">-&gt;</span><span class="me1">all</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+        <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>2 . Newly added tasks must receive the initial value <code>sortorder</code>:</p>
+
+<p class='snippet'> app/Http/Controllers/TaskController.php</p>
+
+<pre><code><pre class="php"><span class="kw2">public</span> <span class="kw2">function</span> store<span class="br0">&#40;</span>Request <span class="re0">$request</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="re0">$task</span> <span class="sy0">=</span> <span class="kw2">new</span> Task<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">text</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">text</span><span class="sy0">;</span>
+    <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">start_date</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">start_date</span><span class="sy0">;</span>
+    <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">duration</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">duration</span><span class="sy0">;</span>
+    <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">progress</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">has</span><span class="br0">&#40;</span><span class="st0">&quot;progress&quot;</span><span class="br0">&#41;</span> ? <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">progress</span> <span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">;</span>
+    <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">parent</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">parent</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">    <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">sortorder</span> <span class="sy0">=</span> Task<span class="sy0">::</span><a href="http://www.php.net/max"><span class="kw3">max</span></a><span class="br0">&#40;</span><span class="st0">&quot;sortorder&quot;</span><span class="br0">&#41;</span> <span class="sy0">+</span> <span class="nu0">1</span><span class="sy0">;</span></span>&nbsp;
+    <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">save</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">return</span> response<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+        <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span> <span class="st0">&quot;inserted&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;tid&quot;</span> <span class="sy0">=&gt;</span> <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">id</span>
+    <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>3 . Finally, when a user reorders tasks, task orders must be <a class="link-" href="desktop__server_side.html#storingtheorderoftasks">updated</a>:</p>
+
+<p class='snippet'> app/Http/Controllers/TaskController.php</p>
+
+<pre><code><pre class="php"><span class="kw2">public</span> <span class="kw2">function</span> update<span class="br0">&#40;</span><span class="re0">$id</span><span class="sy0">,</span> Request <span class="re0">$request</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="re0">$task</span> <span class="sy0">=</span> Task<span class="sy0">::</span><span class="me2">find</span><span class="br0">&#40;</span><span class="re0">$id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">text</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">text</span><span class="sy0">;</span>
+    <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">start_date</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">start_date</span><span class="sy0">;</span>
+    <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">duration</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">duration</span><span class="sy0">;</span>
+    <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">progress</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">has</span><span class="br0">&#40;</span><span class="st0">&quot;progress&quot;</span><span class="br0">&#41;</span> ? <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">progress</span> <span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">;</span>
+    <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">parent</span> <span class="sy0">=</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">parent</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$task</span><span class="sy0">-&gt;</span><span class="me1">save</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra">    <span class="kw1">if</span><span class="br0">&#40;</span><span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">has</span><span class="br0">&#40;</span><span class="st0">&quot;target&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#123;</span></span><span class="xtra ln-xtra">        <span class="re0">$this</span><span class="sy0">-&gt;</span><span class="me1">updateOrder</span><span class="br0">&#40;</span><span class="re0">$id</span><span class="sy0">,</span> <span class="re0">$request</span><span class="sy0">-&gt;</span><span class="me1">target</span><span class="br0">&#41;</span><span class="sy0">;</span></span><span class="xtra ln-xtra">    <span class="br0">&#125;</span></span>&nbsp;
+    <span class="kw1">return</span> response<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">json</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+        <span class="st0">&quot;action&quot;</span><span class="sy0">=&gt;</span> <span class="st0">&quot;updated&quot;</span>
+    <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="kw2">private</span> <span class="kw2">function</span> updateOrder<span class="br0">&#40;</span><span class="re0">$taskId</span><span class="sy0">,</span> <span class="re0">$target</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="re0">$nextTask</span> <span class="sy0">=</span> <span class="kw4">false</span><span class="sy0">;</span>
+    <span class="re0">$targetId</span> <span class="sy0">=</span> <span class="re0">$target</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">if</span><span class="br0">&#40;</span><a href="http://www.php.net/strpos"><span class="kw3">strpos</span></a><span class="br0">&#40;</span><span class="re0">$target</span><span class="sy0">,</span> <span class="st0">&quot;next:&quot;</span><span class="br0">&#41;</span> <span class="sy0">===</span> <span class="nu0">0</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="re0">$targetId</span> <span class="sy0">=</span> <a href="http://www.php.net/substr"><span class="kw3">substr</span></a><span class="br0">&#40;</span><span class="re0">$target</span><span class="sy0">,</span> <a href="http://www.php.net/strlen"><span class="kw3">strlen</span></a><span class="br0">&#40;</span><span class="st0">&quot;next:&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="re0">$nextTask</span> <span class="sy0">=</span> <span class="kw4">true</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="kw1">if</span><span class="br0">&#40;</span><span class="re0">$targetId</span> <span class="sy0">==</span> <span class="st0">&quot;null&quot;</span><span class="br0">&#41;</span>
+        <span class="kw1">return</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$targetOrder</span> <span class="sy0">=</span> Task<span class="sy0">::</span><span class="me2">find</span><span class="br0">&#40;</span><span class="re0">$targetId</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">sortorder</span><span class="sy0">;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span><span class="re0">$nextTask</span><span class="br0">&#41;</span>
+        <span class="re0">$targetOrder</span><span class="sy0">++;</span>
+&nbsp;
+    Task<span class="sy0">::</span><span class="me2">where</span><span class="br0">&#40;</span><span class="st0">&quot;sortorder&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&gt;=&quot;</span><span class="sy0">,</span> <span class="re0">$targetOrder</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span><span class="me1">increment</span><span class="br0">&#40;</span><span class="st0">&quot;sortorder&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$updatedTask</span> <span class="sy0">=</span> Task<span class="sy0">::</span><span class="me2">find</span><span class="br0">&#40;</span><span class="re0">$taskId</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$updatedTask</span><span class="sy0">-&gt;</span><span class="me1">sortorder</span> <span class="sy0">=</span> <span class="re0">$targetOrder</span><span class="sy0">;</span>
+    <span class="re0">$updatedTask</span><span class="sy0">-&gt;</span><span class="me1">save</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='applicationsecurity'><h2>Application security</h2></a>
+
+<p>Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details <a class="link-hidden" href="desktop__app_security.html">in the corresponding article</a>.</p>
+
+<a name='troubleshooting'><h2>Trouble shooting</h2></a>
+
+<p>In case you've completed the above steps to implement Gantt integration with PHP but Gantt doesn't render tasks and links on a page, have a look at the <a class="link-" href="desktop__troubleshooting.html">Troubleshooting Backend Integration Issues</a> article. It describes 
+the ways of identifying the roots of the problems.</p>
+
+<a name='whatsnext'><h2>What's next</h2></a>
+
+<p>Now you have a fully functioning gantt. You can view the full code on <a href="https://github.com/DHTMLX/gantt-howto-php-laravel">GitHub</a>, clone or download it and use it for your projects.</p>
+
+<p>You can also check <a class="link-" href="desktop__guides.html">guides on the numerous features of gantt</a> or tutorials on <a class="link-" href="desktop__howtostart_guides.html">integrating Gantt with other backend frameworks</a>.</p>
+
+<!-- Content Area End -->
+			<a href='desktop__howtostart_php_laravel.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

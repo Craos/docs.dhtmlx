@@ -1,0 +1,434 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Manipulations with Lightbox  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="lightbox_editors.html">Lightbox Controls</a></li><li class=" current"><a href="lightbox_editors_manipulations.html">Manipulations with Lightbox</a></li><ul><li class="inner"><a href="lightbox_editors_manipulations.html#gettingsettingthecontrolvalue">Getting/setting the control value</a></li><li class="inner"><a href="lightbox_editors_manipulations.html#openingthelightboxonasingleclick">Opening the lightbox on a single click</a></li><li class="inner"><a href="lightbox_editors_manipulations.html#checkingwhetherthelightboxisopened">Checking whether the lightbox is opened</a></li><li class="inner"><a href="lightbox_editors_manipulations.html#mappingpropertiesofaneventobjecttothelightboxsections">Mapping properties of an event object to the lightbox sections</a></li><li class="inner"><a href="lightbox_editors_manipulations.html#automaticenddateinthetimecontrol">Automatic end date in the Time control</a></li><li class="inner"><a href="lightbox_editors_manipulations.html#settingthedefaultvalueforalightboxscontrol">Setting the default value for a lightbox's control</a></li><li class="inner"><a href="lightbox_editors_manipulations.html#changingtheorderofdatetimecontrolsandremovingtimeselectors">Changing the order of date-time controls and removing time selectors</a></li><li class="inner"><a href="lightbox_editors_manipulations.html#readonlymode">Read-only mode</a></li><li class="inner"><a href="lightbox_editors_manipulations.html#makingasectionhiddenforsomeevents">Making a section hidden for some events</a></li><li class="inner"><a href="lightbox_editors_manipulations.html#typesoflightbox">Types of  lightbox</a></li><li class="inner"><a href="lightbox_editors_manipulations.html#linkingselectcontrols">Linking select controls</a></li><li class="inner"><a href="lightbox_editors_manipulations.html#dynamicchangingofthelightboxsections">Dynamic changing of the lightbox sections</a></li></ul><li class=""><a href="custom_lightbox_editor.html">Custom Lightbox Control</a></li><li class=""><a href="custom_details_form.html">Fully Custom Lightbox</a></li><li class=""><a href="changing_lightbox_buttons.html">Changing Buttons in the Lightbox</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="configuring_the_lightbox.html">Configuring the Lightbox</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Manipulations with Lightbox</h1>
+
+<a name='gettingsettingthecontrolvalue'><h2>Getting/setting the control value</h2></a>
+
+<p>To get/set the value of the section's control, use the <a class="link-" href="api__scheduler_formsection.html">formSection</a> object as in:</p>
+
+<pre><code><pre class="js"><span class="co1">//to get the value</span>
+<span class="kw2">var</span> value <span class="sy0">=</span> scheduler.<span class="me1">formSection</span><span class="br0">&#40;</span><span class="st0">'description'</span><span class="br0">&#41;</span>.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">//to set the value</span>
+scheduler.<span class="me1">formSection</span><span class="br0">&#40;</span><span class="st0">'description'</span><span class="br0">&#41;</span>.<span class="me1">setValue</span><span class="br0">&#40;</span><span class="st0">'abc'</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_customization/22_opertions_with_lightbox.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Setting/getting values of lightbox's controls</a></p>
+
+<a name='openingthelightboxonasingleclick'><h2>Opening the lightbox on a single click</h2></a>
+
+<p>It is possible to open the existing lightbox on a single click. For this purpose, make use of the  <a class="link-" href="api__scheduler_onclick_event.html">onClick</a> event and <a class="link-" href="api__scheduler_showlightbox.html">showLightbox</a> method:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onClick&quot;</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>id<span class="sy0">,</span> e<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    scheduler.<span class="me1">showLightbox</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/5/50e639d2a' target='blank'><span class='sample'>Related sample: </span>&nbsp;Opening the lightbox on one click</a></p>
+
+<p>The lightbox will be opened when the user clicks the left mouse button on the event box.</p>
+
+<a name='checkingwhetherthelightboxisopened'><h2>Checking whether the lightbox is opened</h2></a>
+
+<p>To check whether the lightbox is currently opened or closed, use the <strong>lightbox_id</strong> property of the state object returned by the <a class="link-" href="api__scheduler_getstate.html">getState</a> method. 
+If the lightbox is opened, the method will return the id of the opened event, otherwise 'null' or 'undefined' will be returned:</p>
+
+<pre><code><pre class="js"><span class="kw1">if</span> <span class="br0">&#40;</span>scheduler.<span class="me1">getState</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">lightbox_id</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">//the code for the opened lightbox</span>
+<span class="br0">&#125;</span> <span class="kw1">else</span> <span class="br0">&#123;</span>
+    <span class="co1">//the code for the closed lightbox</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='mappingpropertiesofaneventobjecttothelightboxsections'><h2>Mapping properties of an event object to the lightbox sections</h2></a>
+
+<p>To map a property of an event object to a lightbox section, do the following:</p>
+
+<ul>
+<li>Make sure your data source returns events in a <a class="link-" href="data_formats.html">supported format</a></li>
+</ul>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span> 
+   <span class="st0">&quot;data&quot;</span><span class="sy0">:</span><span class="br0">&#91;</span>
+      <span class="br0">&#123;</span>
+          <span class="st0">&quot;id&quot;</span><span class="sy0">:</span><span class="st0">&quot;1&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;start_date&quot;</span><span class="sy0">:</span><span class="st0">&quot;2019-03-02 00:00:00&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;end_date&quot;</span><span class="sy0">:</span><span class="st0">&quot;2019-03-04 00:00:00&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;text&quot;</span><span class="sy0">:</span><span class="st0">&quot;Graduation ceremony&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;type&quot;</span><span class="sy0">:</span><span class="st0">&quot;1&quot;</span><span class="sy0">,</span>
+          <span class="st0">&quot;location&quot;</span><span class="sy0">:</span><span class="st0">&quot;London&quot;</span>
+      <span class="br0">&#125;</span><span class="sy0">,</span>
+      ...
+   <span class="br0">&#93;</span>                                       
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Note, that all properties your data source returns will be added to event objects and will available for the <a class="link-" href="event_object_operations.html">client-side API</a>.</p>
+
+<ul>
+<li>In order to map a lightbox control to a specific property, assign the name of the event property to the <strong>map_to</strong> property of a section:</li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span><span class="sy0">=</span><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">70</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span> <span class="sy0">,</span> <span class="kw3">focus</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;locationInput&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">35</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;location&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;typeSelect&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;type&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;select&quot;</span><span class="sy0">,</span> options<span class="sy0">:</span>scheduler.<span class="me1">serverList</span><span class="br0">&#40;</span><span class="st0">&quot;types&quot;</span><span class="br0">&#41;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;auto&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Only exceptions are the <a class="link-" href="time.html">time</a> and the <a class="link-" href="recurring_events.html#recurringlightbox">recurring</a> controls that are always mapped to a fixed properties (<strong>event.start_date/event.end_date</strong> and <strong>event.rec_type/event.event_length/event.event_pid</strong> respectively).</p>
+
+<a name='automaticenddateinthetimecontrol'><h2>Automatic end date in the Time control</h2></a>
+
+<p>To set the initial duration of events and make the end date automatically change to preserve this value, use
+the <a class="link-" href="api__scheduler_event_duration_config.html">event_duration</a> and <a class="link-" href="api__scheduler_auto_end_date_config.html">auto_end_date</a> properties:</p>
+
+<pre><code><pre class="js"><span class="co1">//specify the event duration in minutes for the auto_end_time parameter</span>
+scheduler.<span class="me1">config</span>.<span class="me1">event_duration</span> <span class="sy0">=</span> <span class="nu0">60</span><span class="sy0">;</span> 
+scheduler.<span class="me1">config</span>.<span class="me1">auto_end_date</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_customization/11_auto_end_date.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Automatic end date</a></p>
+
+<p>With such configuration, each time the user changes the start event time or date in the lightbox, 
+the end event time and date will be changed automatically, in order to make the event duration equal to 60 minutes 
+(the value of the <a class="link-" href="api__scheduler_event_duration_config.html">event_duration</a> option).</p>
+
+<a name='settingthedefaultvalueforalightboxscontrol'><h2>Setting the default value for a lightbox's control</h2></a>
+
+<p>To set the default value for a lightbox's section, use the <strong>default_value</strong> property of the section's object.</p>
+
+<p>For example, you have added a custom section that displays the event's location to the lightbox and called it 'Location'. 
+When the user creates a new event, the field will be just empty. To correct such a behavior and to display, say, the address of 
+the Greenwich Observatory by default, specify the lightbox as in:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">50</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span> <span class="kw3">focus</span><span class="sy0">:</span><span class="kw2">true</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;location&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">43</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;event_location&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span> 
+    default_value<span class="sy0">:</span><span class="st0">&quot;Blackheath Avenue London,Greenwich,Greater London SE10 8XJ,UK&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">72</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;auto&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Note, the <strong>default_value</strong> property sets the default value for the lightbox's section, not for a new event, i.e. a new event  gets the specified value only after the user opens the lightbox and saves the event.</p>
+
+<p>To set the default value directly for new events, use the <a class="link-" href="api__scheduler_oneventcreated_event.html">onEventCreated</a> event:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onEventCreated&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span>e<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    scheduler.<span class="me1">getEvent</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">location</span> <span class="sy0">=</span> <span class="st0">'Blackheath Avenue London, Greenwich...'</span><span class="sy0">;</span>
+    scheduler.<span class="me1">updateEvent</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// renders the updated event</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='changingtheorderofdatetimecontrolsandremovingtimeselectors'><h2>Changing the order of date-time controls and removing time selectors</h2></a>
+
+<p>You have the possibility to change the order of date-time controls in the 'Time period' section or to remove some of them. To do this, 
+use the <strong>time_format</strong> property:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span><span class="sy0">=</span><span class="br0">&#91;</span>
+  <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">130</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span> <span class="sy0">,</span> <span class="kw3">focus</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+  <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span> ...<span class="sy0">,</span> time_format<span class="sy0">:</span><span class="br0">&#91;</span><span class="st0">&quot;%H:%i&quot;</span><span class="sy0">,</span><span class="st0">&quot;%m&quot;</span><span class="sy0">,</span><span class="st0">&quot;%d&quot;</span><span class="sy0">,</span><span class="st0">&quot;%Y&quot;</span><span class="br0">&#93;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>Note, you can't change the data presentation format, just the order of items in the array.</p>
+</p></div>
+
+<p>For example, you can change the format as in:</p>
+
+<pre><code><pre class="js"><span class="co1">//default</span>
+time_format<span class="sy0">:</span><span class="br0">&#91;</span><span class="st0">&quot;%H:%i&quot;</span><span class="sy0">,</span> <span class="st0">&quot;%m&quot;</span><span class="sy0">,</span> <span class="st0">&quot;%d&quot;</span><span class="sy0">,</span> <span class="st0">&quot;%Y&quot;</span><span class="br0">&#93;</span> 
+<span class="co1">//month goes first</span>
+time_format<span class="sy0">:</span><span class="br0">&#91;</span><span class="st0">&quot;%m&quot;</span><span class="sy0">,</span><span class="st0">&quot;%d&quot;</span><span class="sy0">,</span> <span class="st0">&quot;%Y&quot;</span><span class="sy0">,</span> <span class="st0">&quot;%H:%i&quot;</span><span class="br0">&#93;</span>
+<span class="co1">//the year selector is removed</span>
+time_format<span class="sy0">:</span><span class="br0">&#91;</span><span class="st0">&quot;%H:%i&quot;</span><span class="sy0">,</span> <span class="st0">&quot;%m&quot;</span><span class="sy0">,</span> <span class="st0">&quot;%d&quot;</span><span class="br0">&#93;</span>
+<span class="co1">//incorrect</span>
+time_format<span class="sy0">:</span><span class="br0">&#91;</span><span class="st0">&quot;%H:%i&quot;</span><span class="sy0">,</span> <span class="st0">&quot;%M&quot;</span><span class="sy0">,</span> <span class="st0">&quot;%d&quot;</span><span class="sy0">,</span> <span class="st0">&quot;%Y&quot;</span><span class="br0">&#93;</span> <span class="co1">//&quot;%m&quot; was changed to &quot;%M&quot;</span></pre></code></pre>
+
+<a name='readonlymode'><h2>Read-only mode</h2></a>
+
+<p>The detailed information about the read-only mode see in chapter <a class="link-" href="readonly.html">Read-only Mode</a>.</p>
+
+<a name='makingasectionhiddenforsomeevents'><h2>Making a section hidden for some events</h2></a>
+
+<p>To make a section hidden for specific events, redefine its <strong>set_value</strong> method as in:<br></p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">form_blocks</span>.<span class="me1">textarea</span>.<span class="me1">set_value</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>node<span class="sy0">,</span>value<span class="sy0">,</span>ev<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    node.<span class="me1">firstChild</span>.<span class="me1">value</span><span class="sy0">=</span>value<span class="sy0">||</span><span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+    <span class="kw2">var</span> style <span class="sy0">=</span> ev.<span class="me1">some_property</span><span class="sy0">?</span><span class="st0">&quot;&quot;</span><span class="sy0">:</span><span class="st0">&quot;none&quot;</span><span class="sy0">;</span>
+    node.<span class="me1">style</span>.<span class="me1">display</span><span class="sy0">=</span>style<span class="sy0">;</span> <span class="co1">// editor area</span>
+    node.<span class="me1">previousSibling</span>.<span class="me1">style</span>.<span class="me1">display</span><span class="sy0">=</span>style<span class="sy0">;</span> <span class="co1">//section header</span>
+    scheduler.<span class="me1">setLightboxSize</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//correct size of lightbox</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>'Full-day event' option</h3>
+
+<p>To add the 'full-day event' option to the lightbox, set the <a class="link-" href="api__scheduler_full_day_config.html">full_day</a> option to <em>true</em>.
+For this, just add the next code line:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">full_day</span>  <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Once, the <a class="link-" href="api__scheduler_full_day_config.html">full_day</a> option is enabled, the <strong>Full Day</strong> checkbox 
+will be displayed in the left part of the <strong>Time period</strong> section. After selection, 
+all entry fields of the section will be blocked, and the event duration will be set as 
+a full day from <strong>0.00am</strong> the current cell date to <strong>0.00am</strong> next day.</p>
+
+<p><a href='samples/02_customization/12_full_day_event.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Full day events</a></p>
+
+<a name='typesoflightbox'><h2>Types of  lightbox</h2></a>
+
+<p>The lightbox can be presented in one of 2 types:</p>
+
+<ul>
+<li>Standard (wide);</li>
+<li>Short.</li>
+</ul>
+
+<p>In the default skin, the lightbox can be presented only in the standard (wide) type, while in the 'glossy' or 'classic' skin you can choose between types.</p>
+
+<p>To set the desired type, use the <a class="link-" href="api__scheduler_wide_form_config.html">wide_form</a> property:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">wide_form</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></pre></code></pre>
+
+<p><strong>Standard (wide) lightbox</strong>:</p>
+
+<p><img src="media/scheduler_wide_form.png" alt="scheduler_wide_form.png" /></p>
+
+<p><strong>Short form</strong>:</p>
+
+<p><img src="media/scheduler_standard_form.png" alt="scheduler_standard_form.png" /></p>
+
+<h3>Button in the section header</h3>
+
+<p>It's possible to have a custom button in the section header. To add a button to the header of a section, complete the following steps:</p>
+
+<ul>
+<li>Specify the 'button' property to the section object:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">130</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span> button<span class="sy0">:</span><span class="st0">&quot;help&quot;</span><span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>Set the label for the button:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">// 'help' is the value of the 'button' property</span>
+scheduler.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">button_help</span> <span class="sy0">=</span> <span class="st0">&quot;Help label&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>Specify the handler of button clicks:</li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">form_blocks</span>.<span class="me1">textarea</span>.<span class="me1">button_click</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>index<span class="sy0">,</span>button<span class="sy0">,</span>shead<span class="sy0">,</span>sbody<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// any custom code</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>where:</p>
+
+<ul>
+<li><strong>index</strong> - (<em>number</em>) the section's index. Zero-based numbering</li>
+<li><strong>button</strong> - (<em>HTMLElement</em>) the HTML element of the button</li>
+<li><strong>shead</strong> - (<em>HTMLElement</em>) the HTML element of the section header</li>
+<li><strong>sbody</strong> - (<em>HTMLElement</em>) the HTML element of the section body</li>
+</ul>
+
+<p>You can define the image used for the button through the following CSS class:</p>
+
+<pre><code><pre class="js">.<span class="me1">dhx_custom_button_help</span><span class="br0">&#123;</span>
+    background<span class="sy0">-</span>image<span class="sy0">:</span>url<span class="br0">&#40;</span>imgs<span class="sy0">/</span>but_help.<span class="me1">gif</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='linkingselectcontrols'><h2>Linking select controls</h2></a>
+
+<p>You can make select controls in the lightbox dependent on each other. To do this use <a class="link-" href="select.html#properties">the onchange property</a> of the select control, as in:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> update_select_options <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>select<span class="sy0">,</span> options<span class="br0">&#41;</span> <span class="br0">&#123;</span> <span class="co1">// helper function</span>
+    select.<span class="me1">options</span>.<span class="me1">length</span> <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span>
+    <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw2">var</span> i<span class="sy0">=</span><span class="nu0">0</span><span class="sy0">;</span> i<span class="sy0">&lt;</span>options.<span class="me1">length</span><span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw2">var</span> option <span class="sy0">=</span> options<span class="br0">&#91;</span>i<span class="br0">&#93;</span><span class="sy0">;</span>
+        select<span class="br0">&#91;</span>i<span class="br0">&#93;</span> <span class="sy0">=</span> <span class="kw2">new</span> Option<span class="br0">&#40;</span>option.<span class="me1">label</span><span class="sy0">,</span> option.<span class="me1">key</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> parent_onchange <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>event<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw2">var</span> new_child_options <span class="sy0">=</span> child_select_options<span class="br0">&#91;</span><span class="kw1">this</span>.<span class="me1">value</span><span class="br0">&#93;</span><span class="sy0">;</span>
+    update_select_options<span class="br0">&#40;</span>scheduler.<span class="me1">formSection</span><span class="br0">&#40;</span><span class="st0">'child'</span><span class="br0">&#41;</span>.<span class="me1">control</span><span class="sy0">,</span> new_child_options<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onBeforeLightbox&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> ev <span class="sy0">=</span> scheduler.<span class="me1">getEvent</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span>ev.<span class="me1">child_id</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw2">var</span> parent_id <span class="sy0">=</span> ev.<span class="me1">parent_id</span><span class="sy0">||</span>parent_select_options<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span>.<span class="me1">key</span><span class="sy0">;</span>
+        <span class="kw2">var</span> new_child_options <span class="sy0">=</span> child_select_options<span class="br0">&#91;</span>parent_id<span class="br0">&#93;</span><span class="sy0">;</span>
+        update_select_options<span class="br0">&#40;</span>
+            scheduler.<span class="me1">formSection</span><span class="br0">&#40;</span><span class="st0">'child'</span><span class="br0">&#41;</span>.<span class="me1">control</span><span class="sy0">,</span> new_child_options
+        <span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+scheduler.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span><span class="sy0">=</span><span class="br0">&#91;</span>
+    ...
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;parent&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">23</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;select&quot;</span><span class="sy0">,</span> options<span class="sy0">:</span> parent_select_options<span class="sy0">,</span> 
+     map_to<span class="sy0">:</span><span class="st0">&quot;parent_id&quot;</span><span class="sy0">,</span> onchange<span class="sy0">:</span>parent_onchange <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;child&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">23</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;select&quot;</span><span class="sy0">,</span> options<span class="sy0">:</span> child_select_options<span class="sy0">,</span> 
+     map_to<span class="sy0">:</span><span class="st0">&quot;child_id&quot;</span> <span class="br0">&#125;</span>
+    ...
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_customization/26_linked_selects_in_lightbox.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Linking select controls in the lightbox</a></p>
+
+<p><img src='media/linking_controls.png'></p>
+
+<p>The <b>onchange</b> event is fired when a user changes the selected option of the parent section. The options of the child section will change accordingly.</p>
+
+<a name='dynamicchangingofthelightboxsections'><h2>Dynamic changing of the lightbox sections</h2></a>
+
+<p>There is a possibility to change the lightbox sections dynamically. It means, that the sections of the lightbox can be hidden, blocked or displayed depending on the specified configuration.</p>
+
+<p>You can change the lightbox sections dynamically via <a class="link-" href="api__scheduler_resetlightbox.html">the resetLightbox()</a> method. For instance:</p>
+
+<p>1&#46; Create two arrays with the lightbox configuration that will contain two different sets of controls.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> full_lightbox <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span> <span class="nu0">200</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;text&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span> <span class="kw3">focus</span><span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;hidden&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span> <span class="nu0">23</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;hidden&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;textarea&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;time&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span> <span class="nu0">72</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;time&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;auto&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+<span class="kw2">var</span> restricted_lightbox <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span> <span class="nu0">200</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;text&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span> <span class="kw3">focus</span><span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;time&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span> <span class="nu0">72</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;time&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;auto&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>2&#46; At the next step you need to implement the following steps:</p>
+
+<ul>
+<li><p>Before displaying a new lightbox, call the <b>resetLightbox()</b> method to remove the current set of controls of the edit form and generate a new lightbox object with another set of controls.</p></li>
+<li><p>Get the event object by its id and and specify the condition depending on which this or that lightbox configuration will be applied. In the example below the condition is introduced via the "restricted" attribute.</p></li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onBeforeLightbox&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>event_id<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    scheduler.<span class="me1">resetLightbox</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw2">var</span> ev <span class="sy0">=</span> scheduler.<span class="me1">getEvent</span><span class="br0">&#40;</span>event_id<span class="br0">&#41;</span><span class="sy0">;</span>
+    scheduler.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#40;</span>ev.<span class="me1">restricted</span><span class="br0">&#41;</span> <span class="sy0">?</span>
+        restricted_lightbox <span class="sy0">:</span> full_lightbox<span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>3&#46; Use the 'restricted' event propery to apply "restricted_lightbox" config. Otherwise, the full lightbox will be displayed.</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2017</span><span class="sy0">,</span> <span class="nu0">5</span><span class="sy0">,</span> <span class="nu0">30</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;week&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">parse</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> start_date<span class="sy0">:</span> <span class="st0">&quot;2017-06-27 04:00&quot;</span><span class="sy0">,</span> end_date<span class="sy0">:</span> <span class="st0">&quot;2017-06-27 7:00&quot;</span><span class="sy0">,</span> 
+        text<span class="sy0">:</span> <span class="st0">&quot;Restricted event&quot;</span><span class="sy0">,</span> hidden<span class="sy0">:</span> <span class="st0">&quot;You won't see me&quot;</span><span class="sy0">,</span> restricted<span class="sy0">:</span> <span class="kw2">true</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> start_date<span class="sy0">:</span> <span class="st0">&quot;2017-06-29 05:00&quot;</span><span class="sy0">,</span> end_date<span class="sy0">:</span> <span class="st0">&quot;2017-06-29 11:00&quot;</span><span class="sy0">,</span> 
+        text<span class="sy0">:</span> <span class="st0">&quot;Full access&quot;</span><span class="sy0">,</span> hidden<span class="sy0">:</span> <span class="st0">&quot;Hidden text&quot;</span> <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src='media/dinamicchanges_lightbox.png'></p>
+
+<p><a href='samples/02_customization/29_changing_lightbox_configurations.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Dynamic changing of lightbox configurations  </a></p>
+
+<!-- Content Area End -->
+			<a href='lightbox_editors_manipulations.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

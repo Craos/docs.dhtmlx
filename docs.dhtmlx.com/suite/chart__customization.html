@@ -1,0 +1,363 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Customization  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="chart__api__refs__chart.html">Chart API</a></li><li class=""><a href="chart__charts_overview.html">Overview of Chart Types</a></li><li class=""><a href="chart__initialization.html">Initialization</a></li><li class=""><a href="chart__configuration_properties.html">Configuration</a></li><li class=""><a href="chart__data_loading.html">Data Loading</a></li><li class=""><a href="chart__usage.html">Work with Chart</a></li><li class=" current"><a href="chart__customization.html">Customization</a></li><ul><li class="inner"><a href="chart__customization.html#stylingchart">Styling chart</a></li><li class="inner"><a href="chart__customization.html#addingtemplatetoscalelabels">Adding template to scale labels</a></li><li class="inner"><a href="chart__customization.html#addingcolorgradientforbars">Adding color gradient for bars</a></li><li class="inner"><a href="chart__customization.html#addingtemplatetotooltips">Adding template to tooltips</a></li><li class="inner"><a href="chart__customization.html#addingtemplatetotextvaluesofdataitemsinbars">Adding template to text values of data items in bars</a></li></ul><li class=""><a href="chart__events.html">Event Handling</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="chart__index.html">Chart</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Customization</h1>
+
+<a name='stylingchart'><h2>Styling chart</h2></a>
+
+<p>There is a possibility to make changes in the look and feel of a chart.</p>
+
+<p><img style="margin: 0px 0px 0px 10px; display: block;" src="media/chart/custom_style.png" alt=""/></p>
+
+<p><a href='https://snippet.dhtmlx.com/p82iew5s' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Custom Styling</a></p>
+
+<p>For this you need to take the following steps:</p>
+
+<ul>
+<li>add a new CSS class(es) with desired settings in the &lt;style&gt; section of your HTML page or in your file with styles (don't forget to include your file on the page in this case)</li>
+</ul>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>style<span class="sy0">&gt;</span>
+    .<span class="me1">my_first_class</span> <span class="br0">&#123;</span>
+        <span class="coMULTI">/*some styles*/</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    .<span class="me1">my_second_class</span> <span class="br0">&#123;</span>
+        <span class="coMULTI">/*some styles*/</span>
+    <span class="br0">&#125;</span>
+<span class="sy0">&lt;/</span>style<span class="sy0">&gt;</span></pre></code></pre>
+
+<ul>
+<li>specify the name of the created CSS class (or names of classes separated by spaces) as the value of the <a class="link-" href="chart__api__chart_css_config.html">css</a> property in the Chart configuration:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> chart <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Chart</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    css<span class="sy0">:</span><span class="st0">&quot;my_first_class my_second_class&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>For example:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>style<span class="sy0">&gt;</span>
+    .<span class="me1">custom</span><span class="sy0">-</span><span class="kw2">class</span> .<span class="me1">dhx_chart</span><span class="sy0">-</span>graph_area <span class="br0">&#123;</span>
+        fill<span class="sy0">:</span>#<span class="nu0">444</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    .<span class="me1">custom</span><span class="sy0">-</span><span class="kw2">class</span> .<span class="me1">grid</span><span class="sy0">-</span>line <span class="br0">&#123;</span>
+        stroke<span class="sy0">:</span> white<span class="sy0">;</span>
+        stroke<span class="sy0">-</span>width<span class="sy0">:</span> <span class="nu0">0.5</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    .<span class="me1">custom</span><span class="sy0">-</span><span class="kw2">class</span> .<span class="me1">chart</span>.<span class="me1">bar</span> <span class="br0">&#123;</span>
+        fill<span class="sy0">:</span> orange<span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="sy0">&lt;/</span>style<span class="sy0">&gt;</span>
+&nbsp;
+<span class="kw2">const</span> chart <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Chart</span><span class="br0">&#40;</span><span class="st0">&quot;chart&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;bar&quot;</span><span class="sy0">,</span>
+    css<span class="sy0">:</span> <span class="st0">&quot;custom-class dhx_widget--bg_white dhx_widget--bordered&quot;</span><span class="sy0">,</span>
+    scales<span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="st0">&quot;top&quot;</span><span class="sy0">:</span> <span class="br0">&#123;</span>
+            size<span class="sy0">:</span> <span class="nu0">100</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="st0">&quot;bottom&quot;</span> <span class="sy0">:</span> <span class="br0">&#123;</span>
+            text<span class="sy0">:</span> <span class="st0">&quot;month&quot;</span><span class="sy0">,</span> size<span class="sy0">:</span> <span class="nu0">100</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="st0">&quot;left&quot;</span> <span class="sy0">:</span> <span class="br0">&#123;</span>
+            size<span class="sy0">:</span> <span class="nu0">100</span><span class="sy0">,</span> maxTicks<span class="sy0">:</span> <span class="nu0">10</span><span class="sy0">,</span> max<span class="sy0">:</span> <span class="nu0">100</span><span class="sy0">,</span> min<span class="sy0">:</span> <span class="nu0">0</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="st0">&quot;right&quot;</span><span class="sy0">:</span> <span class="br0">&#123;</span>
+            size<span class="sy0">:</span> <span class="nu0">100</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    series<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+            id<span class="sy0">:</span> <span class="st0">&quot;A&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;company C&quot;</span><span class="sy0">,</span> color<span class="sy0">:</span> <span class="st0">&quot;#5E83BA&quot;</span><span class="sy0">,</span>
+            pointType<span class="sy0">:</span> <span class="st0">&quot;circle&quot;</span><span class="sy0">,</span> fill<span class="sy0">:</span> <span class="st0">&quot;#5E83BA&quot;</span><span class="sy0">,</span> size<span class="sy0">:</span> <span class="nu0">35</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='addingtemplatetoscalelabels'><h2>Adding template to scale labels</h2></a>
+
+<p><img style="margin: 0px 0px 0px 10px; display: block;" src="media/chart/text_template.png" alt=""/></p>
+
+<p><a href='https://snippet.dhtmlx.com/nhm3438n' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Text Template For Scale Labels</a></p>
+
+<p>While configuring chart scales you can add a template for the labels of the scales by using the <strong>textTemplate</strong> configuration option of <a class="link-" href="chart__configuration_properties.html#scales">scales</a>:</p>
+
+<pre><code><pre class="js"><span class="kw2">const</span> chart <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Chart</span><span class="br0">&#40;</span><span class="st0">&quot;chart&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    type<span class="sy0">:</span><span class="st0">&quot;line&quot;</span><span class="sy0">,</span>
+    css<span class="sy0">:</span> <span class="st0">&quot;dhx_widget--bg_white dhx_widget--bordered&quot;</span><span class="sy0">,</span>
+    scales<span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="st0">&quot;bottom&quot;</span> <span class="sy0">:</span> <span class="br0">&#123;</span>
+            text<span class="sy0">:</span> <span class="st0">&quot;month&quot;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">            textTemplate<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>month<span class="br0">&#41;</span> <span class="br0">&#123;</span> </span><span class="xtra ln-xtra">                <span class="kw1">return</span> <span class="st0">&quot;m:&quot;</span> <span class="sy0">+</span> month<span class="sy0">;</span> </span><span class="xtra ln-xtra">            <span class="br0">&#125;</span> </span>        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="st0">&quot;left&quot;</span> <span class="sy0">:</span> <span class="br0">&#123;</span>
+            maxTicks<span class="sy0">:</span> <span class="nu0">10</span><span class="sy0">,</span> max<span class="sy0">:</span> <span class="nu0">100</span><span class="sy0">,</span> min<span class="sy0">:</span> <span class="nu0">0</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    series<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+            id<span class="sy0">:</span> <span class="st0">&quot;A&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;company C&quot;</span><span class="sy0">,</span> color<span class="sy0">:</span> <span class="st0">&quot;#5E83BA&quot;</span><span class="sy0">,</span> strokeWidth<span class="sy0">:</span> <span class="nu0">2</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='addingcolorgradientforbars'><h2>Adding color gradient for bars</h2></a>
+
+<p><img style="margin: 0px 0px 0px 10px; display: block;" src="media/chart/bar_gradient.png" alt=""/></p>
+
+<p><a href='https://snippet.dhtmlx.com/j3duyn2q' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Bar Gradient</a></p>
+
+<p>It is possible to define a color gradient for bars with the help of the <strong>gradient</strong> option of <a class="link-" href="chart__configuration_properties.html#series">series</a>. You need to set its value as a function that takes the color of the series filling in Hex format as a parameter:</p>
+
+<pre><code><pre class="js"><span class="kw2">const</span> chart <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Chart</span><span class="br0">&#40;</span><span class="st0">&quot;chart&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    type<span class="sy0">:</span><span class="st0">&quot;bar&quot;</span><span class="sy0">,</span>
+    css<span class="sy0">:</span> <span class="st0">&quot;dhx_widget--bg_white dhx_widget--bordered&quot;</span><span class="sy0">,</span>
+    scales<span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="st0">&quot;bottom&quot;</span> <span class="sy0">:</span> <span class="br0">&#123;</span>
+            text<span class="sy0">:</span> <span class="st0">&quot;month&quot;</span><span class="sy0">,</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="st0">&quot;left&quot;</span> <span class="sy0">:</span> <span class="br0">&#123;</span>
+            max<span class="sy0">:</span> <span class="nu0">90</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    series<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+            id<span class="sy0">:</span> <span class="st0">&quot;A&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;company A&quot;</span><span class="sy0">,</span> color<span class="sy0">:</span> <span class="st0">&quot;none&quot;</span><span class="sy0">,</span> size<span class="sy0">:</span> <span class="nu0">35</span><span class="sy0">,</span>
+            fill<span class="sy0">:</span> <span class="st0">&quot;#5E83BA&quot;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">            gradient<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>color<span class="br0">&#41;</span> <span class="br0">&#123;</span> </span><span class="xtra ln-xtra">                <span class="kw1">return</span> <span class="br0">&#123;</span> </span><span class="xtra ln-xtra">                    stops<span class="sy0">:</span> <span class="br0">&#91;</span> </span><span class="xtra ln-xtra">                        <span class="br0">&#123;</span> </span><span class="xtra ln-xtra">                            offset<span class="sy0">:</span> <span class="nu0">0.5</span><span class="sy0">,</span> </span><span class="xtra ln-xtra">                            color<span class="sy0">:</span> color<span class="sy0">,</span> </span><span class="xtra ln-xtra">                            opacity<span class="sy0">:</span> <span class="nu0">1</span> </span><span class="xtra ln-xtra">                        <span class="br0">&#125;</span><span class="sy0">,</span> </span><span class="xtra ln-xtra">                        <span class="br0">&#123;</span> </span><span class="xtra ln-xtra">                            offset<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> </span><span class="xtra ln-xtra">                            color<span class="sy0">:</span> <span class="st0">&quot;#394E79&quot;</span><span class="sy0">,</span> </span><span class="xtra ln-xtra">                            opacity<span class="sy0">:</span> <span class="nu0">1</span> </span><span class="xtra ln-xtra">                        <span class="br0">&#125;</span> </span><span class="xtra ln-xtra">                    <span class="br0">&#93;</span> </span><span class="xtra ln-xtra">                <span class="br0">&#125;</span> </span><span class="xtra ln-xtra">            <span class="br0">&#125;</span> </span>        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='addingtemplatetotooltips'><h2>Adding template to tooltips</h2></a>
+
+<p><img style="margin: 0px 0px 0px 10px; display: block;" src="media/chart/show_tooltip.png" alt=""/></p>
+
+<p><a href='https://snippet.dhtmlx.com/mbz7dkku' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Tooltip Template</a></p>
+
+<p>You can easily define a template for showing values of data items in tooltip via the <strong>tooltipTemplate</strong> option of <a class="link-" href="chart__configuration_properties.html#series">series</a>:</p>
+
+<pre><code><pre class="js"><span class="xtra ln-xtra"><span class="kw2">function</span> tooltipTemplate<span class="br0">&#40;</span>p<span class="br0">&#41;</span> <span class="br0">&#123;</span> </span><span class="xtra ln-xtra">  <span class="kw1">return</span> <span class="st0">&quot;x: &quot;</span> <span class="sy0">+</span> p<span class="br0">&#91;</span><span class="nu0">1</span><span class="br0">&#93;</span> <span class="sy0">+</span> <span class="st0">&quot;, y: &quot;</span> <span class="sy0">+</span> p<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">;</span> </span><span class="xtra ln-xtra"><span class="br0">&#125;</span><span class="sy0">;</span> </span>&nbsp;
+<span class="kw2">const</span> chart <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Chart</span><span class="br0">&#40;</span><span class="st0">&quot;chart&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    css<span class="sy0">:</span> <span class="st0">&quot;dhx_widget--bg_white dhx_widget--bordered&quot;</span><span class="sy0">,</span>
+    scales<span class="sy0">:</span> <span class="br0">&#123;</span>
+        bottom<span class="sy0">:</span><span class="br0">&#123;</span>
+            locator<span class="sy0">:</span> <span class="st0">&quot;value B&quot;</span><span class="sy0">,</span> title<span class="sy0">:</span> <span class="st0">&quot;value B&quot;</span><span class="sy0">,</span> max<span class="sy0">:</span> <span class="nu0">70</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        left<span class="sy0">:</span><span class="br0">&#123;</span>
+            title<span class="sy0">:</span> <span class="st0">&quot;value A&quot;</span><span class="sy0">,</span> max<span class="sy0">:</span> <span class="nu0">70</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    series<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span>
+        id<span class="sy0">:</span> <span class="st0">&quot;A&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;scatter&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;value A&quot;</span><span class="sy0">,</span> valueY<span class="sy0">:</span><span class="st0">&quot;value B&quot;</span><span class="sy0">,</span>
+        pointType<span class="sy0">:</span> <span class="st0">&quot;circle&quot;</span><span class="sy0">,</span> color<span class="sy0">:</span> <span class="st0">&quot;#EEB98E&quot;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">        tooltipTemplate<span class="sy0">:</span> tooltipTemplate </span>    <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>
+        id<span class="sy0">:</span> <span class="st0">&quot;B&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;scatter&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;value B&quot;</span><span class="sy0">,</span> valueY<span class="sy0">:</span> <span class="st0">&quot;value A&quot;</span><span class="sy0">,</span>
+        pointType<span class="sy0">:</span> <span class="st0">&quot;rect&quot;</span><span class="sy0">,</span> color<span class="sy0">:</span> <span class="st0">&quot;#5E83BA&quot;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">        tooltipTemplate<span class="sy0">:</span> tooltipTemplate </span>    <span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    legend<span class="sy0">:</span> <span class="br0">&#123;</span>
+        series<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;A&quot;</span><span class="sy0">,</span> <span class="st0">&quot;B&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        usePointType<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='addingtemplatetotextvaluesofdataitemsinbars'><h2>Adding template to text values of data items in bars</h2></a>
+
+<p><img style="margin: 0px 0px 0px 10px; display: block;" src="media/chart/show_text.png" alt=""/></p>
+
+<p><a href='https://snippet.dhtmlx.com/o7ke2f1s' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Show Text</a></p>
+
+<p>The <strong>showTextTemplate</strong> option of <a class="link-" href="chart__configuration_properties.html#series">series</a> lets you an opportunity to add a template to values that are shown for data items in bars:</p>
+
+<pre><code><pre class="js"><span class="kw2">const</span> chart <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Chart</span><span class="br0">&#40;</span><span class="st0">&quot;chart&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;bar&quot;</span><span class="sy0">,</span>
+    css<span class="sy0">:</span> <span class="st0">&quot;dhx_widget--bg_white dhx_widget--bordered&quot;</span><span class="sy0">,</span>
+    scales<span class="sy0">:</span> <span class="br0">&#123;</span>
+        bottom <span class="sy0">:</span> <span class="br0">&#123;</span>
+            text<span class="sy0">:</span> <span class="st0">&quot;month&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        left <span class="sy0">:</span> <span class="br0">&#123;</span>
+            max<span class="sy0">:</span> <span class="nu0">1000</span><span class="sy0">,</span> maxTicks<span class="sy0">:</span> <span class="nu0">10</span><span class="sy0">,</span> min<span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">,</span>
+            textTemplate<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>cost<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+                <span class="kw1">return</span> cost <span class="sy0">!==</span> <span class="nu0">0</span> <span class="sy0">?</span> <span class="st0">&quot;$&quot;</span> <span class="sy0">+</span> cost <span class="sy0">+</span> <span class="st0">&quot;.00&quot;</span> <span class="sy0">:</span> cost <span class="sy0">+</span> <span class="st0">&quot;.00&quot;</span>
+            <span class="br0">&#125;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    series<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+            id<span class="sy0">:</span> <span class="st0">&quot;A&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;company A&quot;</span><span class="sy0">,</span> color<span class="sy0">:</span> <span class="st0">&quot;#81C4E8&quot;</span><span class="sy0">,</span> fill<span class="sy0">:</span> <span class="st0">&quot;#81C4E8&quot;</span><span class="sy0">,</span>
+            showText<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+            showTextRotate<span class="sy0">:</span> <span class="sy0">-</span><span class="nu0">90</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">            showTextTemplate<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>sum<span class="br0">&#41;</span> <span class="br0">&#123;</span> </span><span class="xtra ln-xtra">                <span class="kw1">return</span> <span class="st0">&quot;$ &quot;</span> <span class="sy0">+</span> sum <span class="sy0">+</span> <span class="st0">&quot;.00&quot;</span><span class="sy0">;</span> </span><span class="xtra ln-xtra">            <span class="br0">&#125;</span><span class="sy0">,</span> </span>            barWidth<span class="sy0">:</span> <span class="nu0">22</span><span class="sy0">,</span> tooltip<span class="sy0">:</span> <span class="kw2">false</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>
+            id<span class="sy0">:</span> <span class="st0">&quot;B&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;company B&quot;</span><span class="sy0">,</span> color<span class="sy0">:</span> <span class="st0">&quot;#74A2E7&quot;</span><span class="sy0">,</span> fill<span class="sy0">:</span> <span class="st0">&quot;#74A2E7&quot;</span><span class="sy0">,</span>
+            showText<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span>
+            showTextRotate<span class="sy0">:</span> <span class="st0">&quot;-90&quot;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">            showTextTemplate<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>sum<span class="br0">&#41;</span> <span class="br0">&#123;</span> </span><span class="xtra ln-xtra">                <span class="kw1">return</span> <span class="st0">&quot;$ &quot;</span> <span class="sy0">+</span> sum <span class="sy0">+</span> <span class="st0">&quot;.00&quot;</span><span class="sy0">;</span> </span><span class="xtra ln-xtra">            <span class="br0">&#125;</span><span class="sy0">,</span> </span>            barWidth<span class="sy0">:</span> <span class="nu0">22</span><span class="sy0">,</span> tooltip<span class="sy0">:</span> <span class="kw2">false</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    legend<span class="sy0">:</span> <span class="br0">&#123;</span>
+        series<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;A&quot;</span><span class="sy0">,</span> <span class="st0">&quot;B&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+        halign<span class="sy0">:</span> <span class="st0">&quot;right&quot;</span><span class="sy0">,</span>
+        valign<span class="sy0">:</span> <span class="st0">&quot;middle&quot;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='chart__customization.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

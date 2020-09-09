@@ -1,0 +1,519 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Recurring Events  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="event_object_operations.html">Event Object Operations</a></li><li class=""><a href="adding_events.html">Adding/Deleting Events</a></li><li class=""><a href="filtering.html">Filtering Events</a></li><li class=""><a href="dhtmlx_components_integration.html">Drag-and-Drop Operations</a></li><li class=" current"><a href="recurring_events.html">Recurring Events</a></li><ul><li class="inner"><a href="recurring_events.html#configurationoptions">Configuration Options</a></li><li class="inner"><a href="recurring_events.html#recurringlightbox">'Recurring' Lightbox</a></li><li class="inner"><a href="recurring_events.html#serversideintegration">Server-side Integration</a></li><li class="inner"><a href="recurring_events.html#parsingseriesonthebackend">Parsing series on the backend</a></li><li class="inner"><a href="recurring_events.html#editingdeletingacertainoccurrenceintheseries">Editing/deleting a certain occurrence in the series</a></li><li class="inner"><a href="recurring_events.html#draggingallsequence">Dragging all sequence</a></li><li class="inner"><a href="recurring_events.html#customcontrolforthelightboxsrecurringblock">Custom control for the lightbox's recurring block</a></li></ul><li class=""><a href="readonly.html">Read-only Mode</a></li><li class=""><a href="validation.html">Validation</a></li><li class=""><a href="collisions.html">Preventing Double Events in a Time Slot</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="managing_events.html">Managing Scheduler Events</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Recurring Events</h1>
+
+<p>By default, the scheduler doesn't support recurring events. To enable such support, you need to include a special extension file on the page - <strong>ext/dhtmlxscheduler_recurring.js</strong>.</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;ext/ext/dhtmlxscheduler_recurring.js&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p>Once the support for recurring events is activated, the lightbox starts looking as shown below:</p>
+
+<p><img src="media/recurring_lightbox.png"/></p>
+
+<a name='configurationoptions'><h2>Configuration Options</h2></a>
+
+<p>The library provides the following options to configure recurring events:</p>
+
+<ul><li><a class="link-" href="api__scheduler_repeat_date_config.html">repeat_date</a> - sets the date format of the 'end by' field in the 'recurring' lightbox</li>
+<li><a class="link-" href="api__scheduler_include_end_by_config.html">include_end_by</a> - defines whether the date specified in the 'end by' field should be exclusive or inclusive</li>
+<li><a class="link-" href="api__scheduler_repeat_precise_config.html">repeat_precise</a> - prevents including past days to events with the 'weekly' recurrence</li>
+<li><a class="link-" href="api__scheduler_occurrence_timestamp_in_utc_config.html">occurrence_timestamp_in_utc</a> - allows working with recurring events independently of time zones</li></ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">repeat_date</span> <span class="sy0">=</span> <span class="st0">&quot;%m/%d/%Y&quot;</span><span class="sy0">;</span>
+scheduler.<span class="me1">config</span>.<span class="me1">include_end_by</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+...
+<span class="me1">scheduler</span>.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">'scheduler_here'</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span> <span class="nu0">7</span><span class="sy0">,</span> <span class="nu0">5</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;month&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/03_extensions/01_recurring_events.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Recurring events</a></p>
+
+<a name='recurringlightbox'><h2>'Recurring' Lightbox</h2></a>
+
+<p>By default, once the recurring extension is enabled, the lightbox starts to have one more section  - "Repeat event". 
+And the default definition of the 'recurring' lightbox starts to be as in:</p>
+
+<pre><code><pre class="js"><span class="br0">&#91;</span>    
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">130</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span> <span class="sy0">,</span> <span class="kw3">focus</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;recurring&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">115</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;recurring&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;rec_type&quot;</span><span class="sy0">,</span> 
+        button<span class="sy0">:</span><span class="st0">&quot;recurring&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">72</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;auto&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>You may add any extra sections, but need to preserve both the "recurring" and "time" sections. 
+Also, it's required to place the "time" section <strong>after</strong> the "recurring" one.</p>
+
+<p><a href='samples/03_extensions/01_recurring_events.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Recurring events</a></p>
+
+<a name='serversideintegration'><h2>Server-side Integration</h2></a>
+
+<p>A recurring event is stored in the database as a single record that contains all fields of a regular event plus 3 additional:</p>
+
+<ol>
+<li><strong>rec_type</strong> - (<em>varchar</em>) defines the logic of repetition. This field is filled in automatically</li>
+<li><strong>event_length</strong> - (<em>long int</em>) the actual time length of an event in seconds</li>
+<li><strong>event_pid</strong> - (<em>int</em>) the parent id of a series of events</li>
+</ol>
+
+<p>So, the connector query will have a look similar to the next one:</p>
+
+<pre><code><pre class="php"><span class="re0">$scheduler</span><span class="sy0">-&gt;</span><span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;events_rec&quot;</span><span class="sy0">,</span><span class="st0">&quot;event_id&quot;</span><span class="sy0">,</span>
+<span class="st0">&quot;start_date,end_date,text,rec_type,event_pid,event_length&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In a usual case, in addition to the mandatory fields you can extract any extra data from the DB.</p>
+
+<p>However, fields <strong>start_date</strong> and <strong>end_date</strong> slightly change their meaning:</p>
+
+<ul>
+<li><strong>start_date</strong> - the start date of the first event in a series in the format 'yyyy-mm-dd hh:mm:ss' (<a class="link-" href="settings_format.html">Date Format Specification</a>).</li>
+<li><strong>end_date</strong> - the end date of the last event in a series in the format 'yyyy-mm-dd 00:00:00' (<a class="link-" href="settings_format.html">Date Format Specification</a>).</li>
+</ul>
+
+<p>For example, a recurring event that starts on January 3, 2019 at 10:00, repeats every day and ends on January 13, 2019 at 12:00, 
+will be presented in the database as follows:</p>
+
+<pre><code><pre class="js">id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span>
+start_date<span class="sy0">:</span><span class="st0">&quot;2019-01-03 10:00:00&quot;</span><span class="sy0">,</span>
+end_date<span class="sy0">:</span><span class="st0">&quot;2019-01-13 00:00:00&quot;</span><span class="sy0">,</span>
+text<span class="sy0">:</span><span class="st0">&quot;some_text&quot;</span><span class="sy0">,</span>
+details<span class="sy0">:</span><span class="st0">&quot;&quot;</span><span class="sy0">,</span>
+rec_type<span class="sy0">:</span><span class="st0">&quot;day_1___&quot;</span><span class="sy0">,</span>
+event_length<span class="sy0">:</span><span class="st0">&quot;7200&quot;</span><span class="sy0">,</span>
+event_pid<span class="sy0">:</span><span class="st0">&quot;0&quot;</span> <span class="co1">//0 for the parent events or the ID of parent events for sub-events</span></pre></code></pre>
+
+<p>The client side gets data from the <strong>rec_type</strong> field as a string of the following format:</p>
+
+<pre><code><pre class="html">[type]_[count]_[day]_[count2]_[days]#[extra]</pre></code></pre>
+
+<p>where:</p>
+
+<ul>
+<li><em>type</em> - the type of repetition: 'day','week','month','year'.</li>
+<li><em>count</em> - the interval between events in the "type" units.</li>
+<li><em>day</em> and <em>count2</em> - define a day of a month ( first Monday, third Friday, etc ).</li>
+<li><em>days</em> - a comma-separated list of affected week days.</li>
+<li><em>extra</em> - extra info that can be used to change the presentation of recurring details.</li>
+</ul>
+
+<p>Examples of the <strong>rec_type</strong> data:</p>
+
+<ul>
+<li><em>"day_3___"</em> - each three days</li>
+<li><em>"month _2___"</em> - each two months</li>
+<li><em>"month_1_1_2_"</em> - second Monday of each month</li>
+<li><em>"week_2___1,5"</em> - Monday and Friday of each second week </li>
+</ul>
+
+<p><em>The double or triple underline indicates that the related parameters of the string are omitted</em>.</p>
+
+<a name='parsingseriesonthebackend'><h2>Parsing series on the backend</h2></a>
+
+<p>A recurring event is stored in the database as a single record that can be splitted up by Scheduler on the client side.
+If you need to get dates of separate events on the server side, use a helper library for parsing recurring events of dhtmlxScheduler on ASP.NET/ASP.NET Core/PHP.</p>
+
+<p>You will find the ready libraries on our GitHub:</p>
+
+<ul>
+<li><a href="https://github.com/DHTMLX/scheduler-recurring-events-dotnet">for ASP.NET/ASP.NET Core</a></li>
+<li><a href="https://github.com/DHTMLX/scheduler-helper-php">for PHP 5.4+</a></li>
+</ul>
+
+<a name='editingdeletingacertainoccurrenceintheseries'><h2>Editing/deleting a certain occurrence in the series</h2></a>
+
+<p>There is a possibility to delete or edit a particular occurrence in a series.</p>
+
+<h3>Important tips</h3>
+
+<ul>
+<li>For each update of the recurring event a separate record is created in the DB.</li>
+<li>Particular occurrences refer to the parent event through the <strong>event_pid</strong> property.</li>
+<li>Once you have edited an occurrence in the series, the <strong>event_length</strong> field for this update 
+will store the time stamp of the date, when the occurrence should have happened if it wasn't edited, instead of the real event length. 
+So if the occurrence has happened on July 27, 2019 at 15:00 and was moved to July 30, 2019 15:00, the time stamp would reflect the first date. 
+The time stamp is measured in seconds from UNIX epoch.</li>
+<li>Note that if your DB contains records of edited occurrences in the series and you decide to 'Edit series' via the lightbox, all the stored records will be deleted after saving. 
+The only record that will remain is the main recurring event, while its occurrences will lose their differences (will become identical).</li>
+</ul>
+
+<h3>Let's consider an example</h3>
+
+<p>You are a fan of the Olympic Games and want to watch the upcoming London Olympic Games 2012 (<em>27 July - 12 August</em>) as much as possible. 
+So you decide to create a recurring event that <em>starts at 17.00</em> (the end of your work day) and <em>ends at 23.00</em> (the time for you to be asleep).
+But as the Opening Ceremony <em>starts only at 19.00</em> you want to edit the first event in the series (at this particular day) and set the time period 
+<em>from 19.00 to 23.00</em>. Also, you remember that on <em>August 1, 2012</em> you have deadline and most probably you will be at home too late to watch anything. 
+So you need to delete <em>August 1, 2012</em> from the series as well.</p>
+
+<h4>Shortly, your actions are the following:</h4>
+
+<ol>
+<li>To create a recurring event <strong><em>(17.00-23.00)</em></strong> from <strong>July 27,2012</strong> till <strong>August 12,2012</strong>.</li>
+<li>To edit a particular occurrence on <strong>July 27,2012</strong> - to change the time period <strong><em>from 17.00-23.00 to 19.00-23.00</em></strong>.</li>
+<li>To delete a particular occurrence on <strong>August 1,2012</strong> from the series.</li>
+</ol>
+
+<p>Consequently, we should have 3 records referring to our recurring event in the DB.</p>
+
+<h4>What happens in DB as we follow action by action:</h4>
+
+<p>Creating the recurring event:</p>
+
+<p><img src="media/create_a_recurring_event.png" alt="create_a_recurring_event.png" /></p>
+
+<p>Editing <strong>July 27,2012</strong>:</p>
+
+<p><img src="media/edit_a_recurring_event.png" alt="edit_a_recurring_event.png" /></p>
+
+<p>Deleting <strong>August 1,2012</strong>:</p>
+
+<p><img src="media/delete_an_occurrence.png" alt="delete_an_occurrence.png" /></p>
+
+<h3>Server-side logic</h3>
+
+<p>In addition to extra fields, a specific logic needs to be added to the server-side controller:</p>
+
+<ul>
+<li>If an event with <strong>rec_type==none</strong> was inserted - the response must have the "deleted" status.</li>
+<li>If an event with <strong>rec_type!=none</strong> was updated or deleted - all records with the related <strong>event_pid</strong> must be deleted.</li>
+<li>If an event with the <strong>event_pid</strong> value was deleted - it needs updating with <strong>rec_type==none</strong> instead of deleting.</li>
+</ul>
+
+<div class='note'><p><p>You can find complete code examples <a class="link-" href="howtostart_guides.html">here</a></p>
+</p></div>
+
+<p>If you use <a href="https://github.com/DHTMLX/connector-php">PHP Connector</a> library, the server code may look like the following:</p>
+
+<pre><code><pre class="php"><span class="kw2">function</span> delete_related<span class="br0">&#40;</span><span class="re0">$action</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">global</span> <span class="re0">$scheduler</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$status</span> <span class="sy0">=</span> <span class="re0">$action</span><span class="sy0">-&gt;</span><span class="me1">get_status</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$type</span> <span class="sy0">=</span><span class="re0">$action</span><span class="sy0">-&gt;</span><span class="me1">get_value</span><span class="br0">&#40;</span><span class="st0">&quot;rec_type&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$pid</span> <span class="sy0">=</span><span class="re0">$action</span><span class="sy0">-&gt;</span><span class="me1">get_value</span><span class="br0">&#40;</span><span class="st0">&quot;event_pid&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="co1">//when series changed or deleted we need to remove all linked events</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="br0">&#40;</span><span class="re0">$status</span> <span class="sy0">==</span> <span class="st0">&quot;deleted&quot;</span> <span class="sy0">||</span> <span class="re0">$status</span> <span class="sy0">==</span> <span class="st0">&quot;updated&quot;</span><span class="br0">&#41;</span> <span class="sy0">&amp;&amp;</span> <span class="re0">$type</span><span class="sy0">!=</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="re0">$scheduler</span><span class="sy0">-&gt;</span><span class="me1">sql</span><span class="sy0">-&gt;</span><span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;DELETE FROM events_rec WHERE 
+        event_pid='&quot;</span><span class="sy0">.</span><span class="re0">$scheduler</span><span class="sy0">-&gt;</span><span class="me1">sql</span><span class="sy0">-&gt;</span><span class="me1">escape</span><span class="br0">&#40;</span><span class="re0">$action</span><span class="sy0">-&gt;</span><span class="me1">get_id</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">.</span><span class="st0">&quot;'&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="re0">$status</span> <span class="sy0">==</span> <span class="st0">&quot;deleted&quot;</span> <span class="sy0">&amp;&amp;</span> <span class="re0">$pid</span> <span class="sy0">!=</span> <span class="nu0">0</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="re0">$scheduler</span><span class="sy0">-&gt;</span><span class="me1">sql</span><span class="sy0">-&gt;</span><span class="me1">query</span><span class="br0">&#40;</span><span class="st0">&quot;UPDATE events_rec SET rec_type='none' WHERE 
+        event_id='&quot;</span><span class="sy0">.</span><span class="re0">$scheduler</span><span class="sy0">-&gt;</span><span class="me1">sql</span><span class="sy0">-&gt;</span><span class="me1">escape</span><span class="br0">&#40;</span><span class="re0">$action</span><span class="sy0">-&gt;</span><span class="me1">get_id</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">.</span><span class="st0">&quot;'&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="re0">$action</span><span class="sy0">-&gt;</span><span class="me1">success</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span>
+<span class="kw2">function</span> insert_related<span class="br0">&#40;</span><span class="re0">$action</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="re0">$status</span> <span class="sy0">=</span> <span class="re0">$action</span><span class="sy0">-&gt;</span><span class="me1">get_status</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$type</span> <span class="sy0">=</span><span class="re0">$action</span><span class="sy0">-&gt;</span><span class="me1">get_value</span><span class="br0">&#40;</span><span class="st0">&quot;rec_type&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="re0">$status</span> <span class="sy0">==</span> <span class="st0">&quot;inserted&quot;</span> <span class="sy0">&amp;&amp;</span> <span class="re0">$type</span> <span class="sy0">==</span> <span class="st0">&quot;none&quot;</span><span class="br0">&#41;</span>
+        <span class="re0">$action</span><span class="sy0">-&gt;</span><span class="me1">set_status</span><span class="br0">&#40;</span><span class="st0">&quot;deleted&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="re0">$scheduler</span><span class="sy0">-&gt;</span><span class="me1">event</span><span class="sy0">-&gt;</span><span class="me1">attach</span><span class="br0">&#40;</span><span class="st0">&quot;beforeProcessing&quot;</span><span class="sy0">,</span><span class="st0">&quot;delete_related&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$scheduler</span><span class="sy0">-&gt;</span><span class="me1">event</span><span class="sy0">-&gt;</span><span class="me1">attach</span><span class="br0">&#40;</span><span class="st0">&quot;afterProcessing&quot;</span><span class="sy0">,</span><span class="st0">&quot;insert_related&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='draggingallsequence'><h2>Dragging all sequence</h2></a>
+
+<p>To add for users the possibility to move the entire sequence while dragging recurring events, add the next code before scheduler initialization:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onBeforeEventChanged&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>dev<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> parts <span class="sy0">=</span> scheduler.<span class="me1">getState</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">drag_id</span>.<span class="me1">toString</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">split</span><span class="br0">&#40;</span><span class="st0">&quot;#&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>parts.<span class="me1">length</span> <span class="sy0">&gt;</span> <span class="nu0">1</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+&nbsp;
+        <span class="kw2">var</span> series <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">getEvent</span><span class="br0">&#40;</span>parts<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        series.<span class="me1">start_date</span>.<span class="me1">setHours</span><span class="br0">&#40;</span>dev.<span class="me1">start_date</span>.<span class="me1">getHours</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        series.<span class="me1">start_date</span>.<span class="me1">setMinutes</span><span class="br0">&#40;</span>dev.<span class="me1">start_date</span>.<span class="me1">getMinutes</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        series.<span class="me1">event_length</span> <span class="sy0">=</span> <span class="br0">&#40;</span>dev.<span class="me1">end_date</span> <span class="sy0">-</span> dev.<span class="me1">start_date</span><span class="br0">&#41;</span> <span class="sy0">/</span> <span class="nu0">1000</span><span class="sy0">;</span>
+&nbsp;
+        setTimeout<span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+            scheduler.<span class="me1">addEvent</span><span class="br0">&#40;</span>series<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='customcontrolforthelightboxsrecurringblock'><h2>Custom control for the lightbox's recurring block</h2></a>
+
+<p>Starting from version 4.2, dhtxmlScheduler allows you to specify a custom HTML form for the 'recurring' block of the lightbox.</p>
+
+<h4>What customizations can you do?</h4>
+
+<ol>
+<li>To change the form markup</li>
+<li>To delete unnecessary elements (e.g., the 'yearly' repeat type and all related inputs)</li>
+<li>To set some default values for inputs (e.g., you need that all series are created with 'no end date'. Then, you make the 'no end date' option checked and hide  the 
+whole block for specifying the recurrence end.</li>
+</ol>
+
+<h3>Usage example</h3>
+
+<p>Lets start with an example. Let's imagine you want to remove the 'monthly' and 'yearly' repeat types and have the 'no end date' option for all events (i.e. remove the block for specifying the recurrence end).</p>
+
+<ol> 
+<li>Define the markup of a custom form and place it somewhere on the page (you can start by copying the default template, which can be found at <b>'scheduler\sources\locale\recurring\'</b>):
+
+<pre><code><pre class="html"><span class="xtra ln-xtra"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_form_repeat&quot;</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;my_recurring_form&quot;</span>&gt;</span> </span>  <span class="sc2">&lt;<span class="kw2">form</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span>&gt;</span>
+      <span class="sc2">&lt;<span class="kw2">select</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;repeat&quot;</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;day&quot;</span>&gt;</span>Daily<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;week&quot;</span>&gt;</span>Weekly<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+      <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">select</span>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span>&gt;</span>
+      <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;display:none;&quot;</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;dhx_repeat_day&quot;</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;hidden&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;day_type&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;d&quot;</span><span class="sy0">/</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;hidden&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;day_count&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;1&quot;</span> <span class="sy0">/</span>&gt;</span>
+      <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+      <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;display:none;&quot;</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;dhx_repeat_week&quot;</span>&gt;</span>
+        Repeat every week next days:<span class="sc2">&lt;<span class="kw2">br</span> <span class="sy0">/</span>&gt;</span>
+&nbsp;
+       <span class="sc2">&lt;<span class="kw2">label</span>&gt;&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;checkbox&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;week_day&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;1&quot;</span> <span class="sy0">/</span>&gt;</span>Monday<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">label</span>&gt;</span>
+       <span class="sc2">&lt;<span class="kw2">label</span>&gt;&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;checkbox&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;week_day&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;2&quot;</span> <span class="sy0">/</span>&gt;</span>Tuesday<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">label</span>&gt;</span>
+       <span class="sc2">&lt;<span class="kw2">label</span>&gt;&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;checkbox&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;week_day&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;3&quot;</span> <span class="sy0">/</span>&gt;</span>Wednesday<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">label</span>&gt;</span>
+       <span class="sc2">&lt;<span class="kw2">label</span>&gt;&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;checkbox&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;week_day&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;4&quot;</span> <span class="sy0">/</span>&gt;</span>Thursday<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">label</span>&gt;</span>
+       <span class="sc2">&lt;<span class="kw2">label</span>&gt;&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;checkbox&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;week_day&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;5&quot;</span> <span class="sy0">/</span>&gt;</span>Friday<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">label</span>&gt;</span>
+       <span class="sc2">&lt;<span class="kw2">label</span>&gt;&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;checkbox&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;week_day&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;6&quot;</span> <span class="sy0">/</span>&gt;</span>Saturday<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">label</span>&gt;</span>
+       <span class="sc2">&lt;<span class="kw2">label</span>&gt;&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;checkbox&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;week_day&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;0&quot;</span> <span class="sy0">/</span>&gt;</span>Sunday<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">label</span>&gt;</span>
+       <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;hidden&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;week_count&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;1&quot;</span> <span class="sy0">/</span>&gt;</span>
+      <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+&nbsp;
+    <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;hidden&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;no&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;end&quot;</span>&gt;</span>
+  <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">form</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+</li>
+<li> Set the 'form' parameter of the 'recurring' section to the id of your custom form: 
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">130</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span> <span class="sy0">,</span> <span class="kw3">focus</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;recurring&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;recurring&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;rec_type&quot;</span><span class="sy0">,</span> button<span class="sy0">:</span><span class="st0">&quot;recurring&quot;</span><span class="sy0">,</span> 
+<span class="xtra ln-xtra">      form<span class="sy0">:</span><span class="st0">&quot;my_recurring_form&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span></span>    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">72</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;auto&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+</li>
+</ol>
+
+<div style="text-align:center;"><img src="media/custom_recurring_form.png"/></div>
+
+<h3>Main parts</h3>
+
+<p>You can find the default HTML structure of the lightbox's recurring block for different languages at the <b>'scheduler\sources\locale\recurring\'</b> directory.<br>
+For example,for the English locale you need to see the  <b>'scheduler\sources\locale\recurring\repeat_template_en.htm'</b> file.</p>
+
+<p>Basically, the recurring block of the lightbox contains 3 groups of controls:</p>
+
+<p>1) Controls for choosing the type of recurrence. These inputs have the name 'repeat' and one of the following values: 'daily', 'weekly', 'monthly', 'yearly'.
+The form must have at least one 'repeat' input with the value. You can use radio buttons, selects or set the default type in the hidden input.</p>
+
+<p>Consider the following examples, each of those is a valid way for selecting the type of recurrence in the form.</p>
+
+<ul>
+<li>Radiobuttons</li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">label</span>&gt;&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;radio&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;repeat&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;day&quot;</span> <span class="sy0">/</span>&gt;</span>Daily<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">label</span>&gt;&lt;<span class="kw2">br</span> <span class="sy0">/</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">label</span>&gt;&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;radio&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;repeat&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;week&quot;</span><span class="sy0">/</span>&gt;</span>Weekly<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">label</span>&gt;&lt;<span class="kw2">br</span> <span class="sy0">/</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">label</span>&gt;&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;radio&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;repeat&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;month&quot;</span> <span class="sy0">/</span>&gt;</span>Monthly<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">label</span>&gt;&lt;<span class="kw2">br</span> <span class="sy0">/</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">label</span>&gt;&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;radio&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;repeat&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;year&quot;</span> <span class="sy0">/</span>&gt;</span>Yearly<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">label</span>&gt;</span></pre></code></pre>
+
+<ul>
+<li>Select input, without 'Monthly' and 'Yearly' options:</li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">select</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;repeat&quot;</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;day&quot;</span>&gt;</span>Daily<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">option</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;week&quot;</span>&gt;</span>Weekly<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">option</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">select</span>&gt;</span></pre></code></pre>
+
+<ul>
+<li>Hidden input (the lightbox will create only 'Daily' series):</li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;hidden&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;repeat&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;day&quot;</span> <span class="sy0">/</span>&gt;</span></pre></code></pre>
+
+<p>2) A block for configuring the recurrence depending on the repeat type. For example, for the 'Daily' repeat type, the block will take the following structure:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_repeat_center&quot;</span>&gt;</span>
+   <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;display:none;&quot;</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;dhx_repeat_day&quot;</span>&gt;</span>
+     <span class="sc2">&lt;<span class="kw2">label</span>&gt;</span>
+       <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_repeat_radio&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;radio&quot;</span> </span>
+<span class="sc2">            <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;day_type&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;d&quot;</span><span class="sy0">/</span>&gt;</span>Every
+     <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">label</span>&gt;</span>
+       <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_repeat_text&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text&quot;</span> </span>
+<span class="sc2">            <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;day_count&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;1&quot;</span> <span class="sy0">/</span>&gt;</span>day<span class="sc2">&lt;<span class="kw2">br</span>&gt;</span>
+     <span class="sc2">&lt;<span class="kw2">label</span>&gt;</span>
+       <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_repeat_radio&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;radio&quot;</span> </span>
+<span class="sc2">            <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;day_type&quot;</span> <span class="kw3">checked</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;w&quot;</span><span class="sy0">/</span>&gt;</span>Every workday
+     <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">label</span>&gt;</span>
+  <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+...
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+<p>Note, that the markup which is related to a specific type of recurrence can be wrapped in a div with the <b>id</b> in the following format <b>"dhx_repeat_&lt;repeat type&gt;"</b>, e.g. "dhx_repeat_day".
+In this case it will be displayed only when the appropriate repeat type is selected.</p>
+
+<p>3) Controls for specifying the end of recurrence. The end of recurrence is defined by input with the name 'end'.
+<br>Possible values are <b>'no'</b>, <b>'date_of_end'</b>, <b>'occurences_count'</b>.</p>
+
+<p>Similar to the 'repeat' controls, the form must have at least one input of this type.</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">&quot;dhx_repeat_right&quot;</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">label</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;radio&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;end&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;no&quot;</span> <span class="kw3">checked</span><span class="sy0">/</span>&gt;</span>No end date
+  <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">label</span>&gt;&lt;<span class="kw2">br</span> <span class="sy0">/</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">label</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;radio&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;end&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;date_of_end&quot;</span> <span class="sy0">/</span>&gt;</span>After<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">label</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;date_of_end&quot;</span> <span class="sy0">/</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">br</span> <span class="sy0">/</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">label</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;radio&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;end&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;occurences_count&quot;</span> <span class="sy0">/</span>&gt;</span>After<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">label</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;occurences_count&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;1&quot;</span> <span class="sy0">/</span>&gt;</span>Occurrences
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+<p>The date for the <b>'date_of_end'</b> mode must be defined in an input named 'date_of_end'. The same works for the <b>'occurences_count'</b> mode, 
+that takes the number of occurrences  from an input named 'occurences_count'.
+<br></p>
+
+<p>You can remove any type or predefine it in a hidden input:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;hidden&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;end&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;date_of_end&quot;</span> <span class="sy0">/</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;hidden&quot;</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">&quot;date_of_end&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;01.01.2016&quot;</span> <span class="sy0">/</span>&gt;</span></pre></code></pre>
+
+<h3>Notes for changing the recurring block</h3>
+
+<p>Please, before starting to apply a custom configuration to the lightbox's recurring block, note the following things:</p>
+
+<ol>
+<li>The 'name' attribute is  hardcoded for all inputs -  the inputs with different names will be ignored.</li>
+<li>The 'value' attribute is fixed for all inputs except for ones that imply direct input.</li>
+<li>When you specify a new form - dhtmlxScheduler doesn't use it directly and just  replicates your HTML structure into the lightbox's template.
+It means that all event handlers or custom properties that have been attached to  DOMElements of your form from the code won't be applied to the form in the lightbox.
+If you want to attach event handlers, you need to either specify it as an inline HTML attribute, or attach a handler to the form when it's shown in the lightbox.</li>
+</ol>
+
+<div class='note'><p><p>Beware, dhtmlxScheduler doesn't work with your original HTML form and just creates it's copy in the lightbox's template.</p>
+</p></div>
+
+<p>For example:</p>
+
+<ul>
+<li>the following line will be copied to the lightbox:</li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">onclick</span><span class="sy0">=</span><span class="st0">&quot;handler()&quot;</span>&gt;</span></pre></code></pre>
+
+<ul>
+<li>the line below won't be copied to the lightbox:</li>
+</ul>
+
+<pre><code><pre class="js">addEventListener<span class="br0">&#40;</span>node<span class="sy0">,</span> <span class="st0">&quot;click&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>...<span class="br0">&#125;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='recurring_events.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

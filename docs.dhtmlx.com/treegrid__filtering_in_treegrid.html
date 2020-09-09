@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Filtering in TreeGrid  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxtreegrid.html">dhtmlXTreeGrid API</a></li><li class=""><a href="treegrid__treegrid_initialization.html">Initializing TreeGrid</a></li><li class=""><a href="treegrid__manipulating_data.html">Loading and Manipulating Data</a></li><li class=""><a href="treegrid__specific_api.html">TreeGrid Specific API</a></li><li class=""><a href="treegrid__specific_extensions.html">TreeGrid Specific Extensions</a></li><li class=" current"><a href="treegrid__filtering_in_treegrid.html">Filtering in TreeGrid</a></li><ul><li class="inner"><a href="treegrid__filtering_in_treegrid.html#filteringbylevel">Filtering by Level</a></li><li class="inner"><a href="treegrid__filtering_in_treegrid.html#toplevelshowmode">"Top Level Show" Mode</a></li></ul><li class=""><a href="treegrid__using_get_methods.html">Using Get-Methods</a></li><li class=""><a href="treegrid__fa_icons.html">Font Awesome Icons in TreeGrid</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="treegrid__index.html">TreeGrid</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Filtering in TreeGrid</h1>
+
+<p>While filtering in a plain grid is pretty obvious and doesn't have space for variations, filtering in TreeGrid can be applied in many different ways.</p>
+
+<a name='filteringbylevel'><h2>Filtering by Level</h2></a>
+
+<p>Filtering in TreeGrid affects only the last level of hierarchy (leaf items) by default. This mode can be enabled with the help of the method <a class="link-pro" href="api__dhtmlxtreegrid_setfiltrationlevel.html">setFiltrationLevel</a>:</p>
+
+<pre><code><pre class="js">treegrid.<span class="me1">setFilrationLevel</span><span class="br0">&#40;</span><span class="sy0">-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><br></p>
+
+<p>For example:</p>
+
+<p><img src="media/treegrid/filtering.png"/></p>
+
+<p><br></p>
+
+<p>The dataset presented on the picture above will be filtered like this:</p>
+
+<p><img src="media/treegrid/filtering_1.png"/></p>
+
+<p><br></p>
+
+<p>The branches in which the item is not found will be fully hidden:</p>
+
+<p><img src="media/treegrid/filtering_2.png"/></p>
+
+<p>The values that are not on the last level were ignored.</p>
+
+<p><br></p>
+
+<p>The level of filtration can be changed again in the following way:</p>
+
+<pre><code><pre class="js">treegrid.<span class="me1">setFiltrationLevel</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// upmost level has the index 0</span></pre></code></pre>
+
+<p>After this command, the filtering uses the data from different levels of hierarchy and the filtering will show the following results:</p>
+
+<p><img src="media/treegrid/filtering_3.png"/></p>
+
+<p><img src="media/treegrid/filtering_4.png"/></p>
+
+<p>In the second case, the user can see the items situated below the found one.</p>
+
+<p>It is possible to force TreeGrid to filter data on all the levels of hierarchy at the same time in the following way:</p>
+
+<pre><code><pre class="js">treegrid.<span class="me1">setFiltrationLevel</span><span class="br0">&#40;</span><span class="sy0">-</span><span class="nu0">2</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/treegrid/filtering_5.png"/></p>
+
+<p><img src="media/treegrid/filtering_6.png"/></p>
+
+<p>In such a mode filtering shows only the items that match the filtering criteria, while the lower level items are not shown.</p>
+
+<a name='toplevelshowmode'><h2>"Top Level Show" Mode</h2></a>
+
+<p>This mode can be enabled like this:</p>
+
+<pre><code><pre class="js">treegrid.<span class="me1">setFiltrationLevel</span><span class="br0">&#40;</span><span class="sy0">-</span><span class="nu0">1</span><span class="sy0">,</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In such a mode, the upper level items without children and matching the filtering criteria are still shown, the items situated on the filtration level and below are hidden.</p>
+
+<p><img src="media/treegrid/filtering_7.png"/></p>
+
+<p><img src="media/treegrid/filtering_8.png"/></p>
+
+<p>In the second picture both Music and DVD haven't matched the filtering criteria because filtering runs only for the last level items but they are still shown.</p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxTreeGrid/samples/04_grid_operations/02_treegrid_filtering.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Search and Filtering in TreeGrid</a></p>
+
+<!-- Content Area End -->
+			<a href='treegrid__filtering_in_treegrid.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

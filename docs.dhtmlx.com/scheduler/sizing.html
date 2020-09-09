@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Sizing the Scale and Events Boxes  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="custom_events_display.html">Custom Event's Box</a></li><li class=""><a href="custom_events_color.html">Custom Event's Color</a></li><li class=""><a href="custom_events_content.html">Custom Event's Content</a></li><li class=""><a href="tooltips.html">Tooltips</a></li><li class=""><a href="customizing_edit_select_bars.html">Customizing "Select" and "Edit" Bars</a></li><li class=" current"><a href="sizing.html">Sizing the Scale and Events Boxes</a></li><ul><li class="inner"><a href="sizing.html#howtomakeshorteventsfitthescale">How to make short events fit the scale</a></li><li class="inner"><a href="sizing.html#preventingshorteventsfromoverlapping">Preventing short events from overlapping</a></li><li class="inner"><a href="sizing.html#howtochangethebackgroundaccordingtothesetscale">How to change the background according to the set scale</a></li><li class="inner"><a href="sizing.html#howtochangethescalespacing">How to change the scale spacing</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="customizing_events.html">Customizing Events</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Sizing the Scale and Events Boxes</h1>
+
+<p>In this article we would like to consider scale's and event box's sizing through the example of solving 4 problems:</p>
+
+<p><strong>Problem 1:</strong> <a class="link-" href="sizing.html#howtomakeshorteventsfitthescale">Events that last less then 1 hour look in the scheduler the same as the 1-hour events do. 
+I want short events to fit the scale.</a></p>
+
+<p><strong>Problem 2:</strong> <a class="link-" href="sizing.html#preventingshorteventsfromoverlapping">Events that last less then 1 hour and occur at the different times but within one hour overlap. 
+I want such short events not to overlap.</a></p>
+
+<p><strong>Problem 3:</strong> <a class="link-" href="sizing.html#howtochangethebackgroundaccordingtothesetscale">I change the scale unit height and want to change the striped background accordingly.</a></p>
+
+<p><strong>Problem 4:</strong> <a class="link-" href="sizing.html#howtochangethescalespacing">The default scale spacing is 1 hour. I want to change it and make, for example, 30 minutes.</a></p>
+
+<a name='howtomakeshorteventsfitthescale'><h2>How to make short events fit the scale</h2></a>
+
+<p>First, let's learn the default behavior of the events boxes:</p>
+
+<ul>
+<li>the default scale unit height is 44px (or the hour height).</li>
+<li>the minimum height of the event box is 44px. </li>
+<li>events that last less than 1 hour take the size of 44px. So, 15-minute and 1-hour events  will look the same in the scheduler.</li>
+<li>events that last more than 1 hour take their height according to the side scale (assuming that 1 hour is equal to 44px - a 90-minutes event will take 63px in height).</li>
+</ul>
+
+<p>Let's assume you want 30-minute events to fit the scale. Then you have 2 solutions:</p>
+
+<ul>
+<li>To increase the height of the scale's unit </li>
+<li>To customize the event box</li>
+</ul>
+
+<p><img src="media/30-minute_custom_event.png" alt="30-minute_custom_event.png" /></p>
+
+<h3>Solution 1. Changing the scale unit's height</h3>
+
+<p>To change the height of the scale's unit you should use the <a class="link-" href="api__scheduler_hour_size_px_config.html">hour_size_px</a> configuration option.</p>
+
+<p>For example, to increase the unit's height twice you should call the option as in:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">hour_size_px</span> <span class="sy0">=</span> <span class="nu0">88</span><span class="sy0">;</span>
+&nbsp;
+scheduler.<span class="me1">init</span><span class="br0">&#40;</span>...<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Now the scale unit's height is 88 px and the 30-minute event taking 44px will occupy the 30-minute height, as it's needed.</p>
+
+<p><a href='samples/02_customization/09_timestep.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Changing the Y-Axis step</a></p>
+
+<h3>Solution 2. Customizing the event box</h3>
+
+<p>To customize the events boxes display, you should use the <a class="link-" href="api__scheduler_renderevent.html">renderEvent</a> method that allows you to set your own template for the events.</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">renderEvent</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>container<span class="sy0">,</span> ev<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="co1">//your customizing code</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Read the details in the related chapter - <a class="link-" href="custom_events_display.html">Custom Event's Box</a>.</p>
+
+<p><a href='samples/02_customization/27_custom_event_box.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom event box</a></p>
+
+<a name='preventingshorteventsfromoverlapping'><h2>Preventing short events from overlapping</h2></a>
+
+<p>To display short events separately and eliminate a possibility of their overlapping, 
+you should set the <a class="link-" href="api__scheduler_separate_short_events_config.html">separate_short_events</a> option to <em>true</em>:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">separate_short_events</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/overlapping.png" alt="overlapping.png" /></p>
+
+<a name='howtochangethebackgroundaccordingtothesetscale'><h2>How to change the background according to the set scale</h2></a>
+
+<p>The scheduler background is set by a mere image.</p>
+
+<p>To change the background image you should redefine the related css class which is <strong>.dhx_scale_holder</strong>:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>style<span class="sy0">&gt;</span>
+.<span class="me1">dhx_scale_holder</span> <span class="br0">&#123;</span>
+     background<span class="sy0">-</span>image<span class="sy0">:</span> url<span class="br0">&#40;</span><span class="st0">&quot;imgs/myNewImage.png&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+<span class="sy0">&lt;/</span>style<span class="sy0">&gt;</span></pre></code></pre>
+
+<pre><code><pre class="js">scheduler.<span class="me1">init</span><span class="br0">&#40;</span>...<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/changing_background.png" alt="changing_background.png" /></p>
+
+<a name='howtochangethescalespacing'><h2>How to change the scale spacing</h2></a>
+
+<p>To change the default scale spacing you need to rewrite the <a class="link-" href="api__scheduler_hour_scale_template.html">hour_scale</a> template.</p>
+
+<p>To make the scale spacing equal to 30 minutes you can rewrite the template as follows:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> format <span class="sy0">=</span> scheduler.<span class="me1">date</span>.<span class="me1">date_to_str</span><span class="br0">&#40;</span><span class="st0">&quot;%H:%i&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> step <span class="sy0">=</span> <span class="nu0">30</span><span class="sy0">;</span>
+&nbsp;
+scheduler.<span class="me1">templates</span>.<span class="me1">hour_scale</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> html<span class="sy0">=</span><span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+    <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw2">var</span> i<span class="sy0">=</span><span class="nu0">0</span><span class="sy0">;</span> i<span class="sy0">&lt;</span><span class="nu0">60</span><span class="sy0">/</span>step<span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        html<span class="sy0">+=</span><span class="st0">&quot;&lt;div style='height:22px;line-height:22px;'&gt;&quot;</span><span class="sy0">+</span>format<span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="sy0">+</span><span class="st0">&quot;&lt;/div&gt;&quot;</span><span class="sy0">;</span>
+        date <span class="sy0">=</span> scheduler.<span class="me1">date</span>.<span class="me1">add</span><span class="br0">&#40;</span>date<span class="sy0">,</span>step<span class="sy0">,</span><span class="st0">&quot;minute&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">return</span> html<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p><img src="media/scale_spacing.png" alt="scale_spacing.png" /></p>
+
+<p><strong>Related samples:</strong></p>
+
+<p><a href='samples/02_customization/21_custom_hour_scale.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom Y-Axis</a></p>
+
+<!-- Content Area End -->
+			<a href='sizing.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

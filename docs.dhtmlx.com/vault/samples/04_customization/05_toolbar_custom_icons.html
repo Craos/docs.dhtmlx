@@ -1,0 +1,33 @@
+<html>
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Custom icons for toolbar</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+
+        <script type="text/javascript" src="../../codebase/vault-v=3.0.0.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../codebase/vault-v=3.0.0.css">
+
+        <script type="text/javascript" src="../common/js/index-v=3.0.0.js"></script>
+        <link rel="stylesheet" type="text/css" href="../common/dhx_samples-v=3.0.0.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css?v=3.0.0" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+    <body>
+        <div class="top-rect-block">
+            <div class="text-value">Custom icons for toolbar</div>
+        </div>
+        <div id="vault" class="container with-header"></div>
+        <script>
+            var vault = new dhx.Vault("vault", {
+                uploader: {
+                    target: "/vault/backend/upload",
+                    autosend: false
+                }
+            });
+            vault.data.parse(filesData);
+
+            vault.toolbar.data.update("add", {icon: "far fa-plus-square"});
+            vault.toolbar.data.update("remove-all", {icon: "far fa-trash-alt"});
+            vault.toolbar.data.update("upload", {icon: "far fa-save"});
+        </script>
+    </body>
+</html>

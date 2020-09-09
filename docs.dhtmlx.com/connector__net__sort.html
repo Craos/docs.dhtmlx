@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Sorting  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="connector__net__reference.html">.Net Connector API</a></li><li class=""><a href="connector__net__general_idea.html">General Idea of dhtmlxConnector</a></li><li class=""><a href="connector__net__init.html">Initializing .Net Connector</a></li><li class=""><a href="connector__net__dynamical_loading.html">Dynamic Loading</a></li><li class=""><a href="connector__net__security.html">Security</a></li><li class=""><a href="connector__net__loading_editing_data.html">Basic Loading</a></li><li class=""><a href="connector__net__formatting_changing_data_before_loading.html">Formatting/Changing Data Before Loading</a></li><li class=""><a href="connector__net__filtration.html">Filtering</a></li><li class=" current"><a href="connector__net__sort.html">Sorting</a></li><ul><li class="inner"><a href="connector__net__sort.html#urlmanipulation">URL manipulation</a></li><li class="inner"><a href="connector__net__sort.html#thesortingtypeconnector">The sorting type 'connector'</a></li></ul><li class=""><a href="connector__net__dp.html">Client-side requirement - dataProcessor</a></li><li class=""><a href="connector__net__complex_queries.html">Making Queries</a></li><li class=""><a href="connector__net__transactions.html">Transactions</a></li><li class=""><a href="connector__net__validating_data.html">Validating Data</a></li><li class=""><a href="connector__net__errors.html">Error handling and logging</a></li><li class=""><a href="connector__net__other_db_types.html">Other Database Types</a></li><li class=""><a href="connector__net__server_side_requirements.html">New Functions</a></li><li class=""><a href="connector__net__coding_howtos.html">HowTos</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="connector__index.html">Client-Server Communication</a><a class="n3" href="connector__net__index.html">.Net Connector</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Sorting</h1>
+
+<p>There are 2 ways to implement server-side sorting:</p>
+
+<ul>
+<li><a class="link-" href="connector__net__sort.html#urlmanipulation">by specifying additional parameters in URL</a></li>
+<li><a class="link-" href="connector__net__sort.html#sortingtypeconnector">by using the sorting type 'connector' during the component configuration</a></li>
+</ul>
+
+<a name='urlmanipulation'><h2>URL manipulation</h2></a>
+
+<p><strong>APPLICABLE TO:</strong>Grid, TreeGrid, Tree, Combo, Scheduler, DataView, Form</p>
+
+<p>You can control how data will be sorted inside a column by specifying additional parameters in URL.</p>
+
+<pre><code><pre class="js"><span class="co1">//ORDER by field_2 ASC</span>
+grid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;some.php?connector=true&amp;dhx_sort[2]=asc&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//ORDER by field_2 ASC, field_3 DESC</span>
+grid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;some.php?connector=true&amp;dhx_sort[2]=asc&amp;dhx_sort[3]esc&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='thesortingtypeconnector'><h2>The sorting type 'connector'</h2></a>
+
+<p><strong>APPLICABLE TO:</strong>Grid, TreeGrid</p>
+
+<p>To sort grid/treegrid content with connectors you need to use '<em>connector</em>' as a sorting type during the grid initialization.</p>
+
+<pre><code><pre class="js">grid.<span class="me1">setColSorting</span><span class="br0">&#40;</span><span class="st0">&quot;connector,str,na&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In the code snippet above, the first column will be sorted on the server side with connectors, the second as a string on the client side, the third column won't be sortable.</p>
+
+<p>By assigning to sorting type 'connector' you just 'say' that sorting will be implemented on the server side.</p>
+
+<p>To define the way, 'behaviour' of sorting, you should use the <a class="link-" href="connector__net__event_beforeselect.html">beforeSelect</a> event.</p>
+
+<p>The event doesn't allow writing a custom sorting logic, but you can affect SORT BY clause of a generated SQL request.<br />
+The current collection of sorting rules could be accessed by using a DataRequest object, which can be found in any connector.</p>
+
+<pre><code><pre class="js">connector.<span class="me1">BeforeSelect</span> <span class="sy0">+=</span> <span class="kw2">new</span> EventHandler<span class="br0">&#40;</span>connector_BeforeSelect<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">void</span> connector_BeforeSelect<span class="br0">&#40;</span>object sender<span class="sy0">,</span> EventArgs e<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+   <span class="kw1">this</span>.<span class="me1">Connector</span>.<span class="me1">Request</span>.<span class="me1">OrderBy</span>.<span class="me1">Add</span><span class="br0">&#40;</span>
+    <span class="co1">//sorts the first selected field in the descending order, no matter what the field is</span>
+      <span class="kw2">new</span> OrderByField<span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">Connector</span>.<span class="me1">Request</span>.<span class="me1">RequestedFields</span><span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">,</span> <span class="st0">&quot;DESC&quot;</span><span class="br0">&#41;</span> 
+   <span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Alternatively, we can rewrite this example like:</p>
+
+<pre><code><pre class="js">connector.<span class="me1">BeforeSelect</span> <span class="sy0">+=</span> <span class="kw2">new</span> EventHandler<span class="br0">&#40;</span>connector_BeforeSelect<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">void</span> connector_BeforeSelect<span class="br0">&#40;</span>object sender<span class="sy0">,</span> EventArgs e<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+   <span class="kw1">this</span>.<span class="me1">Connector</span>.<span class="me1">Request</span>.<span class="me1">OrderBy</span>.<span class="me1">Add</span><span class="br0">&#40;</span>
+    <span class="co1">//sorts the &quot;PrintableName&quot; field in the descending order</span>
+      <span class="kw2">new</span> OrderByField<span class="br0">&#40;</span><span class="br0">&#40;</span>TableField<span class="br0">&#41;</span><span class="st0">&quot;PrintableName&quot;</span><span class="sy0">,</span> <span class="st0">&quot;DESC&quot;</span><span class="br0">&#41;</span> 
+   <span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>or even:</p>
+
+<pre><code><pre class="js">connector.<span class="me1">BeforeSelect</span> <span class="sy0">+=</span> <span class="kw2">new</span> EventHandler<span class="br0">&#40;</span>connector_BeforeSelect<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">void</span> connector_BeforeSelect<span class="br0">&#40;</span>object sender<span class="sy0">,</span> EventArgs e<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    <span class="co1">//sorts by the &quot;PrintableName&quot; expression</span>
+   <span class="kw1">this</span>.<span class="me1">Connector</span>.<span class="me1">Request</span>.<span class="me1">OrderBy</span>.<span class="me1">Add</span><span class="br0">&#40;</span><span class="kw2">new</span> OrderByExpression<span class="br0">&#40;</span><span class="st0">&quot;PrintableName DESC&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>All 3 examples, shown above, cause the same effect. 
+The <strong>OrderBy</strong> collection is a collection of <strong>OrderByStatement</strong> objects. 
+<strong>OrderByStatement</strong> itself is an abstract class, but it has 2 descendants: <strong>OrderByField</strong> and <strong>OrderByExpression</strong>.</p>
+
+<p><strong>OrderByField</strong> allows you to specify the field object you want to order by and its direction. 
+The desired field can be taken from the <strong>Request.RequestedFields</strong> collection created right on the spot. 
+<strong>OrderByExpression</strong> allows you to specify a ready-to-use SQL statement that will be inserted directly into ORDER BY sql statement.</p>
+
+<h3>OrderByExpression usage</h3>
+
+<pre><code><pre class="js">connector.<span class="me1">BeforeSelect</span> <span class="sy0">+=</span> <span class="kw2">new</span> EventHandler<span class="br0">&#40;</span>connector_BeforeSelect<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">void</span> connector_BeforeSelect<span class="br0">&#40;</span>object sender<span class="sy0">,</span> EventArgs e<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    <span class="kw1">this</span>.<span class="me1">Connector</span>.<span class="me1">Request</span>.<span class="me1">OrderBy</span>.<span class="me1">Add</span><span class="br0">&#40;</span>
+    <span class="co1">//ORDER BY CreatedDate's year</span>
+    <span class="kw2">new</span> OrderByExpression<span class="br0">&#40;</span><span class="st0">&quot;DATEPART(yy, Person.CreatedDate) DESC&quot;</span><span class="br0">&#41;</span> 
+    <span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='connector__net__sort.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

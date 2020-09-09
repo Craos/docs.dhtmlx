@@ -1,0 +1,376 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Work with Ribbon  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="ribbon__api__refs__ribbon.html">Ribbon API</a></li><li class=""><a href="ribbon__how_to_start.html">Initialization</a></li><li class=""><a href="ribbon__controls.html">List of Ribbon Controls</a></li><li class=""><a href="ribbon__loading_json.html">Data Loading</a></li><li class=" current"><a href="ribbon__operating_ribbon.html">Work with Ribbon</a></li><ul><li class="inner"><a href="ribbon__operating_ribbon.html#settinggettingvaluesandstates">Setting/getting values and states</a></li><li class="inner"><a href="ribbon__operating_ribbon.html#hidingandshowingcontrols">Hiding and showing controls</a></li><li class="inner"><a href="ribbon__operating_ribbon.html#disablingandenablingcontrols">Disabling and enabling controls</a></li><li class="inner"><a href="ribbon__operating_ribbon.html#checkingifaribbonitemisdisabled">Checking if a Ribbon item is disabled</a></li><li class="inner"><a href="ribbon__operating_ribbon.html#usingtreecollectionapi">Using Tree collection API</a></li></ul><li class=""><a href="ribbon__fa_icons.html">Customization</a></li><li class=""><a href="ribbon__handling_events.html">Event Handling</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="ribbon__index.html">Ribbon</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Work with Ribbon</h1>
+
+<a name='settinggettingvaluesandstates'><h2>Setting/getting values and states</h2></a>
+
+<p>You can change the value or state (for a TwoState button) of a control with the help of the <a class="link-" href="ribbon__api__ribbon_setstate_method.html">setState()</a> method. It takes one parameter: a <em>key-value</em> pair with the ID of the control and its new value (state).</p>
+
+<p>This is how you can set the state of a twoState button:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span> type<span class="sy0">:</span><span class="st0">&quot;button&quot;</span><span class="sy0">,</span> twoState<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span> id<span class="sy0">:</span><span class="st0">&quot;check&quot;</span> <span class="br0">&#125;</span>
+...
+<span class="me1">ribbon</span>.<span class="me1">setState</span><span class="br0">&#40;</span><span class="br0">&#123;</span><span class="st0">&quot;check&quot;</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+ribbon.<span class="me1">setState</span><span class="br0">&#40;</span><span class="br0">&#123;</span><span class="st0">&quot;check&quot;</span><span class="sy0">:</span><span class="kw2">false</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/i7kabram' target='blank'><span class='sample'>Related sample: </span>&nbsp;Ribbon. Set State</a></p>
+
+<p>And this is how you can change the value of an input:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span> type<span class="sy0">:</span><span class="st0">&quot;input&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;file_name&quot;</span> <span class="br0">&#125;</span>
+...
+<span class="me1">ribbon</span>.<span class="me1">setState</span><span class="br0">&#40;</span><span class="br0">&#123;</span><span class="st0">&quot;file_name&quot;</span><span class="sy0">:</span><span class="st0">&quot;My file&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To get the current value of the control, use the <a class="link-" href="ribbon__api__ribbon_getstate_method.html">getState()</a> method.</p>
+
+<p>This is what the method returns for a TwoState button:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span> type<span class="sy0">:</span><span class="st0">&quot;button&quot;</span><span class="sy0">,</span> twoState<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span> id<span class="sy0">:</span><span class="st0">&quot;check&quot;</span> <span class="br0">&#125;</span>
+...
+<span class="me1">ribbon</span>.<span class="me1">getState</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// { check:true }</span>
+<span class="co1">// or</span>
+<span class="co1">// { check:false }</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/coei9fys' target='blank'><span class='sample'>Related sample: </span>&nbsp;Ribbon. Get State</a></p>
+
+<p>And this is how you can get the current value of an input:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span> type<span class="sy0">:</span><span class="st0">&quot;input&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span><span class="st0">&quot;file_name&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span><span class="st0">&quot;My file&quot;</span> <span class="br0">&#125;</span>
+...
+<span class="me1">ribbon</span>.<span class="me1">getState</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// {&quot;file_name&quot;:&quot;My file&quot;}</span></pre></code></pre>
+
+<a name='hidingandshowingcontrols'><h2>Hiding and showing controls</h2></a>
+
+<p>You can show or hide controls by their IDs. Pass them to the corresponding methods - <a class="link-" href="ribbon__api__ribbon_show_method.html">show()</a> and <a class="link-" href="ribbon__api__ribbon_hide_method.html">hide()</a>:</p>
+
+<pre><code><pre class="js">ribbon.<span class="me1">hide</span><span class="br0">&#40;</span><span class="st0">&quot;add_btn&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+ribbon.<span class="me1">show</span><span class="br0">&#40;</span><span class="br0">&#91;</span><span class="st0">&quot;save_btn&quot;</span><span class="sy0">,</span><span class="st0">&quot;del_btn&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/1jkf7954' target='blank'><span class='sample'>Related sample: </span>&nbsp;Ribbon. Show/Hide Ribbon Item</a></p>
+
+<a name='disablingandenablingcontrols'><h2>Disabling and enabling controls</h2></a>
+
+<p>You can disable or enable controls. The related methods - <a class="link-" href="ribbon__api__ribbon_enable_method.html">enable()</a> and <a class="link-" href="ribbon__api__ribbon_disable_method.html">disable()</a> - take the IDs of controls as parameters:</p>
+
+<pre><code><pre class="js">ribbon.<span class="me1">disable</span><span class="br0">&#40;</span><span class="st0">&quot;add_btn&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+ribbon.<span class="me1">enable</span><span class="br0">&#40;</span><span class="br0">&#91;</span><span class="st0">&quot;save_btn&quot;</span><span class="sy0">,</span><span class="st0">&quot;del_btn&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/l3f8pq2g' target='blank'><span class='sample'>Related sample: </span>&nbsp;Ribbon. Enable/Disable Ribbon Item</a></p>
+
+<a name='checkingifaribbonitemisdisabled'><h2>Checking if a Ribbon item is disabled</h2></a>
+
+<p>To check if an item of Ribbon is disabled, call the <a class="link-" href="ribbon__api__ribbon_isdisabled_method.html">isDisabled()</a> method. The method takes one parameter:</p>
+
+<ul>
+<li><strong>id</strong> - (<em>string</em>) an id of a menu item</li>
+</ul>
+
+<pre><code><pre class="js">ribbon.<span class="me1">isDisabled</span><span class="br0">&#40;</span><span class="st0">&quot;1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// -&gt; true/false</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/l3f8pq2g' target='blank'><span class='sample'>Related sample: </span>&nbsp;Ribbon. Enable/Disable Ribbon Item</a></p>
+
+<a name='usingtreecollectionapi'><h2>Using Tree collection API</h2></a>
+
+<h3>Adding controls</h3>
+
+<p>You can add controls dynamically with the <strong>add()</strong> method of <a class="link-" href="tree_collection__api__refs__treecollection.html">TreeCollection</a>.</p>
+
+<pre><code><pre class="js">ribbon.<span class="me1">data</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    type<span class="sy0">:</span><span class="st0">&quot;button&quot;</span><span class="sy0">,</span>
+    icon<span class="sy0">:</span><span class="st0">&quot;dxi-plus&quot;</span><span class="sy0">,</span>
+    value<span class="sy0">:</span><span class="st0">&quot;New&quot;</span>
+<span class="br0">&#125;</span><span class="sy0">,-</span><span class="nu0">1</span><span class="sy0">,</span><span class="st0">&quot;blockId&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/bphk7h9u' target='blank'><span class='sample'>Related sample: </span>&nbsp;Ribbon. Add</a></p>
+
+<p>This is how you can add a block of controls:</p>
+
+<pre><code><pre class="js">ribbon.<span class="me1">data</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    label<span class="sy0">:</span><span class="st0">&quot;File&quot;</span><span class="sy0">,</span>
+    type<span class="sy0">:</span><span class="st0">&quot;block&quot;</span><span class="sy0">,</span>
+    id<span class="sy0">:</span><span class="st0">&quot;files&quot;</span><span class="sy0">,</span>
+    direction<span class="sy0">:</span><span class="st0">&quot;row&quot;</span><span class="sy0">,</span>
+    items<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+            icon<span class="sy0">:</span> <span class="st0">&quot;dxi dxi-undo&quot;</span><span class="sy0">,</span>
+            size<span class="sy0">:</span> <span class="st0">&quot;small&quot;</span><span class="sy0">,</span>
+            ribbonHeight<span class="sy0">:</span> <span class="st0">&quot;double&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>
+            icon<span class="sy0">:</span> <span class="st0">&quot;dxi dxi-redo&quot;</span><span class="sy0">,</span>
+            size<span class="sy0">:</span> <span class="st0">&quot;small&quot;</span><span class="sy0">,</span>
+            ribbonHeight<span class="sy0">:</span> <span class="st0">&quot;double&quot;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Getting controls by IDs</h3>
+
+<p>You can get a particular Ribbon control by its ID via the <strong>getItem()</strong> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> add_btn <span class="sy0">=</span> ribbon.<span class="me1">data</span>.<span class="me1">getItem</span><span class="br0">&#40;</span><span class="st0">&quot;add_btn&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To get the ID of the parent of the control, call the <strong>getParent()</strong> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> parentId <span class="sy0">=</span> ribbon.<span class="me1">data</span>.<span class="me1">getParent</span><span class="br0">&#40;</span><span class="st0">&quot;add_btn&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>You can also access the children of a control with the <strong>getItems()</strong> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> items <span class="sy0">=</span> ribbon.<span class="me1">data</span>.<span class="me1">getItems</span><span class="br0">&#40;</span><span class="st0">&quot;block1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>You can use the <strong>getLength()</strong> method of TreeCollection to count children of a control:</p>
+
+<pre><code><pre class="js">ribbon.<span class="me1">data</span>.<span class="me1">getLength</span><span class="br0">&#40;</span><span class="st0">&quot;block1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Iterating through controls</h3>
+
+<p>You can work with all (or some) Ribbon controls with the help of the <strong>map()</strong> method of TreeCollection:</p>
+
+<pre><code><pre class="js">ribbon.<span class="me1">data</span>.<span class="me1">map</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="kw1">item</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// remove all icons</span>
+    <span class="kw1">item</span>.<span class="me1">icon</span> <span class="sy0">=</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+ribbon.<span class="me1">paint</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Iterating through children</h3>
+
+<p>To iterate through all controls in a particular block, pass one more parameter to <strong>map()</strong> - the ID of the block:</p>
+
+<pre><code><pre class="js">ribbon.<span class="me1">data</span>.<span class="me1">map</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="kw1">item</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// remove all icons</span>
+    <span class="kw1">item</span>.<span class="me1">icon</span> <span class="sy0">=</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">,</span><span class="st0">&quot;bl_1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+ribbon.<span class="me1">paint</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>If you want to iterate only through immediate children, pass a third parameter - <em>false</em>:</p>
+
+<pre><code><pre class="js">ribbon.<span class="me1">data</span>.<span class="me1">map</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="kw1">item</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">/// remove all icons</span>
+    <span class="kw1">item</span>.<span class="me1">icon</span> <span class="sy0">=</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">,</span><span class="st0">&quot;bl_1&quot;</span><span class="sy0">,</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span>
+ribbon.<span class="me1">paint</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Iterating through children is also can be done with the <strong>eachChild()</strong> method of TreeCollection:</p>
+
+<pre><code><pre class="js">ribbon.<span class="me1">data</span>.<span class="me1">eachChild</span><span class="br0">&#40;</span><span class="st0">&quot;bl_1&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="kw1">item</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// remove all icons</span>
+    <span class="kw1">item</span>.<span class="me1">icon</span> <span class="sy0">=</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+ribbon.<span class="me1">paint</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To access only the immediate children, add the <strong>direct</strong> parameter and set it to <em>false</em>:</p>
+
+<pre><code><pre class="js">ribbon.<span class="me1">data</span>.<span class="me1">eachChild</span><span class="br0">&#40;</span><span class="st0">&quot;bl_1&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="kw1">item</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// remove all icons</span>
+    <span class="kw1">item</span>.<span class="me1">icon</span> <span class="sy0">=</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">,</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span>
+ribbon.<span class="me1">paint</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To check whether an item has childs, use the <strong>haveItems()</strong> method of TreeCollection:</p>
+
+<pre><code><pre class="js">ribbon.<span class="me1">data</span>.<span class="me1">haveItems</span><span class="br0">&#40;</span><span class="st0">&quot;block1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// -&gt; true</span></pre></code></pre>
+
+<h3>Iterating through parents</h3>
+
+<p>To iterate through all the parent items (the immediate parent and its parent, etc. until the parent is the ribbon itself), use the <strong>eachParent()</strong> method of TreeCollection:</p>
+
+<pre><code><pre class="js">ribbon.<span class="me1">data</span>.<span class="me1">eachParent</span><span class="br0">&#40;</span><span class="st0">&quot;new_btn&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="kw1">item</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    console.<span class="me1">log</span><span class="br0">&#40;</span><span class="kw1">item</span><span class="br0">&#41;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Rearranging Ribbon controls</h3>
+
+<p>You can move Ribbon items to different positions with the <strong>move()</strong> method of TreeCollection. For example, this is how you can move a block with ID "bl_2" to the right edge of the Ribbon:</p>
+
+<pre><code><pre class="js">ribbon.<span class="me1">data</span>.<span class="me1">move</span><span class="br0">&#40;</span><span class="st0">&quot;bl_2&quot;</span><span class="sy0">,-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>The ID should always be a string, even if in the configuration of control you've set it as a number.</p>
+</p></div>
+
+<p>To get the current position of a block, use the <strong>getIndex()</strong> method of TreeCollection:</p>
+
+<pre><code><pre class="js">ribbon.<span class="me1">data</span>.<span class="me1">getIndex</span><span class="br0">&#40;</span><span class="st0">&quot;bl_2&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Making copies of controls</h3>
+
+<p>You can add a copy of a control and place it in the specified position on the ribbon with the <strong>copy()</strong> method of TreeCollection:</p>
+
+<pre><code><pre class="js">ribbon.<span class="me1">data</span>.<span class="me1">copy</span><span class="br0">&#40;</span><span class="st0">&quot;block1&quot;</span><span class="sy0">,</span><span class="nu0">2</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>You can copy a control into a block of the same ribbon:</p>
+
+<pre><code><pre class="js">ribbon.<span class="me1">data</span>.<span class="me1">copy</span><span class="br0">&#40;</span><span class="st0">&quot;save_btn&quot;</span><span class="sy0">,</span><span class="nu0">1</span><span class="sy0">,</span>ribbon.<span class="me1">data</span><span class="sy0">,</span><span class="st0">&quot;block2&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>You can also copy a control and place it into another ribbon:</p>
+
+<pre><code><pre class="js">ribbon1.<span class="me1">data</span>.<span class="me1">copy</span><span class="br0">&#40;</span><span class="st0">&quot;save_btn&quot;</span><span class="sy0">,</span><span class="nu0">1</span><span class="sy0">,</span>ribbon2.<span class="me1">data</span><span class="sy0">,</span><span class="st0">&quot;block3&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Clearing Ribbon</h3>
+
+<p>To remove all controls from Ribbon, users should call the <strong>removeAll()</strong> method of TreeCollection. Afterwards, you can load other items.</p>
+
+<pre><code><pre class="js">ribbon.<span class="me1">data</span>.<span class="me1">removeAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+ribbon.<span class="me1">data</span>.<span class="me1">parse</span><span class="br0">&#40;</span>new_controls<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='ribbon__operating_ribbon.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

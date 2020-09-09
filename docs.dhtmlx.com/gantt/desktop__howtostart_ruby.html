@@ -1,0 +1,666 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>dhtmlxGantt with Ruby on Rails  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__howtostart_dotnet_core.html">dhtmlxGantt with ASP.NET Core</a></li><li class=""><a href="desktop__howtostart_nodejs.html">dhtmlxGantt with Node.js</a></li><li class=""><a href="desktop__howtostart_dotnet.html">dhtmlxGantt with ASP.NET MVC</a></li><li class=""><a href="desktop__howtostart_php_laravel.html">dhtmlxGantt with PHP: Laravel</a></li><li class=""><a href="desktop__howtostart_php_slim4.html">dhtmlxGantt with PHP:Slim</a></li><li class=" current"><a href="desktop__howtostart_ruby.html">dhtmlxGantt with Ruby on Rails</a></li><ul><li class="inner"><a href="desktop__howtostart_ruby.html#step1creatingaproject">Step 1. Creating a project</a></li><li class="inner"><a href="desktop__howtostart_ruby.html#step2addinggantttothepage">Step 2. Adding Gantt to the page</a></li><li class="inner"><a href="desktop__howtostart_ruby.html#step3creatingmodels">Step 3. Creating models</a></li><li class="inner"><a href="desktop__howtostart_ruby.html#step4loadingdata">Step 4. Loading data</a></li><li class="inner"><a href="desktop__howtostart_ruby.html#step5savingchanges">Step 5. Saving changes</a></li><li class="inner"><a href="desktop__howtostart_ruby.html#storingtheorderoftasks">Storing the order of tasks</a></li><li class="inner"><a href="desktop__howtostart_ruby.html#applicationsecurity">Application security</a></li><li class="inner"><a href="desktop__howtostart_ruby.html#troubleshooting">Trouble shooting</a></li><li class="inner"><a href="desktop__howtostart_ruby.html#whatsnext">What's next</a></li></ul><li class=""><a href="desktop__howtostart_php.html">dhtmlxGantt with PHP:Slim3</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__howtostart_guides.html">How to Start with dhtmlxGantt</a></div>
+<!-- Content Area -->
+
+
+
+<h1>dhtmlxGantt with Ruby on Rails</h1>
+
+<p>In this article you'll learn how to create a Gantt chart with a <a href="http://rubyonrails.org/">Ruby on Rails</a> backend.
+For implementing this app we'll use Ruby 2.4.1, Rails 5.1.3 and MySQL. This tutorial assumes that you have all prerequisites already installed. 
+Otherwise please visit <a href="http://guides.rubyonrails.org/index.html">the official tutorials</a> first.</p>
+
+<p>If you use some other technology, check the list of available integration variants below:</p>
+
+<ul>
+<li><a class="link-" href="desktop__howtostart_dotnet_core.html">dhtmlxGantt with ASP.NET Core</a></li>
+<li><a class="link-" href="desktop__howtostart_dotnet.html">dhtmlxGantt with ASP.NET MVC</a></li>
+<li><a class="link-" href="desktop__howtostart_nodejs.html">dhtmlxGantt with Node.js</a></li>
+<li><a class="link-" href="desktop__howtostart_php_laravel.html">dhtmlxGantt with PHP: Laravel</a></li>
+<li><a class="link-" href="desktop__howtostart_php_slim4.html">dhtmlxGantt with PHP:Slim</a></li>
+</ul>
+
+<p>Have a look at the <a href="https://github.com/DHTMLX/gantt-howto-rails">demo</a> on GitHub.</p>
+
+<a name='step1creatingaproject'><h2>Step 1. Creating a project</h2></a>
+
+<p>To add a new project just run the following command in the terminal:</p>
+
+<pre><code><pre class="js">rails <span class="kw2">new</span> gantt<span class="sy0">-</span>app <span class="sy0">-</span>d mysql</pre></code></pre>
+
+<a name='step2addinggantttothepage'><h2>Step 2. Adding Gantt to the page</h2></a>
+
+<p>Let's start with creating a controller and a default page for our application.
+Move to the application folder and generate a new controller with the <em>index</em> action:</p>
+
+<pre><code><pre class="js">cd gantt<span class="sy0">-</span>app
+rails generate controller gantt index</pre></code></pre>
+
+<p>The output should confirm that new files were created.</p>
+
+<h3>Setting a default route</h3>
+
+<p>To configure the routing, open the file <em>config/routes.rb</em>. Change the default route to the "index" action of our new controller:</p>
+
+<p class='snippet'> config/routes.rb</p>
+
+<pre><code><pre class="js">Rails.<span class="me1">application</span>.<span class="me1">routes</span>.<span class="me1">draw</span> <span class="kw1">do</span>
+  root <span class="sy0">:</span>to <span class="sy0">=&gt;</span> <span class="st0">&quot;gantt#index&quot;</span>
+end</pre></code></pre>
+
+<p>After that we can test our server by running in the command line:</p>
+
+<pre><code><pre class="js">rails server</pre></code></pre>
+
+<p>Open <em>http://localhost:3000/</em> in your browser. The result should be like this:</p>
+
+<p><img src="media/desktop/how_to_start_rails_blank_page.png"></p>
+
+<p>So the app is working and we've got our default page, now we can proceed to adding a gantt chart.</p>
+
+<h3>Adding Gantt to the View</h3>
+
+<p>Now we are ready to add a gantt chart to our page.</p>
+
+<p>Open the layout page and add a yield into the <em>head</em> tag. We'll use it to add dhtmlxgantt files to the page:</p>
+
+<p class='snippet'> app/views/layouts/application.html.erb</p>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">title</span>&gt;</span>dhtmlxGantt<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">title</span>&gt;</span>
+  <span class="sc2">&lt;%<span class="sy0">=</span> stylesheet_link_tag <span class="st0">'application'</span>, <span class="kw3">media</span>:<span class="st0">'all'</span>,<span class="st0">'data-turbolinks-track'</span> <span class="sy0">=</span>&gt;</span> true %&gt;
+  <span class="sc2">&lt;%<span class="sy0">=</span> javascript_include_tag <span class="st0">'application'</span>, <span class="st0">'data-turbolinks-track'</span> <span class="sy0">=</span>&gt;</span> true %&gt;  
+<span class="xtra ln-xtra">  <span class="sc2">&lt;%<span class="sy0">=</span> yield<span class="br0">&#40;</span>:head<span class="br0">&#41;</span> %&gt;</span> </span>  <span class="sc2">&lt;%<span class="sy0">=</span> csrf_meta_tags %&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+&nbsp;
+    <span class="sc2">&lt;%<span class="sy0">=</span> yield %&gt;</span>
+&nbsp;
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+<p>After that, go to the <em>gantt/index</em> view and add a gantt chart there:</p>
+
+<p class='snippet'> app/views/gantt/index.html.erb</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;%</span> content_for <span class="sy0">:</span>head <span class="kw1">do</span> <span class="sy0">%&gt;</span>
+    <span class="sy0">&lt;%=</span> stylesheet_link_tag <span class="st0">'https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css'</span> <span class="sy0">%&gt;</span>
+    <span class="sy0">&lt;%=</span> javascript_include_tag <span class="st0">'https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js'</span> <span class="sy0">%&gt;</span>
+<span class="sy0">&lt;%</span> end <span class="sy0">%&gt;</span>
+&nbsp;
+<span class="sy0">&lt;</span>div id<span class="sy0">=</span><span class="st0">&quot;gantt_here&quot;</span> style<span class="sy0">=</span><span class="st0">'width:100%; height:800px;'</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+&nbsp;
+<span class="sy0">&lt;</span>script<span class="sy0">&gt;</span>
+    gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="sy0">&lt;/</span>script<span class="sy0">&gt;</span></pre></code></pre>
+
+<p>Note that we've added dhtmlx gantt files from <a class="link-" href="desktop__cdn_links_list.html">CDN</a> rather than locally. 
+For the development you'll want to use a readable version of source codes that comes with the download package.</p>
+
+<p>After that we can have a look at the current result. Open <em>http://localhost:3000/</em> (the rails server) in a browser.
+You should get the following result:</p>
+
+<p><img src="media/desktop/how_to_start_rails_empty_gantt.png"></p>
+
+<p>Thus you've got a Gantt chart where you can add tasks and modify them. But it lacks the saving ability.
+To provide it, we need to proceed with creating models.</p>
+
+<a name='step3creatingmodels'><h2>Step 3. Creating models</h2></a>
+
+<p>Since we're using MySQL, make sure that you have correct connection settings in <em>config/database.yml</em>, for example:</p>
+
+<p class='snippet'> config/database.yml</p>
+
+<pre><code><pre class="js">development<span class="sy0">:</span>
+  adapter<span class="sy0">:</span> mysql2
+  encoding<span class="sy0">:</span> utf8
+  host<span class="sy0">:</span> localhost
+  database<span class="sy0">:</span> gantt<span class="sy0">-</span>app
+  username<span class="sy0">:</span> root
+  password<span class="sy0">:</span></pre></code></pre>
+
+<p>Now we need to create models for <a class="link-" href="desktop__loading.html#standarddatabasestructure">tasks and links</a>.</p>
+
+<p>To create a model for tasks, we need to run a command that contains the task properties:</p>
+
+<pre><code><pre class="js">rails generate model Task \
+    text<span class="sy0">:</span>string \
+    start_date<span class="sy0">:</span>datetime \
+    duration<span class="sy0">:</span>integer \
+    parent<span class="sy0">:</span>integer \
+    progress<span class="sy0">:</span>decimal</pre></code></pre>
+
+<p>A similar but shorter command is used to create a model for links:</p>
+
+<pre><code><pre class="js">rails generate model Link \
+    source<span class="sy0">:</span>integer \
+    target<span class="sy0">:</span>integer \
+    link_type<span class="sy0">:</span>string<span class="sy0">:</span>limit1</pre></code></pre>
+
+<p>Note that dhtmlxgantt link object must have a property named <b><a class="link-" href="desktop__loading.html#standarddatabasestructure">type</a></b>, 
+which stores the type of the relation (start-to-start, finish-to-finish, etc.).</p>
+
+<p>We can't add such a property to our model, since the "<b>type</b>" name is already reserved by ActiveRecord. 
+As a workaround, we'll name this property <b>link_type</b> and will do the required mapping in the controller.</p>
+
+<p>You can have a look at the full list of properties, both mandatory and optional, available for the <a class="link-" href="desktop__loading.html#task_properties">Task object</a> and 
+<a class="link-" href="desktop__loading.html#link_properties">Link object</a>.</p>
+
+<p>After that we need to run a migration in order to update our database:</p>
+
+<pre><code><pre class="js">rake db<span class="sy0">:</span>migrate</pre></code></pre>
+
+<p>Let's add some test data while we're here:</p>
+
+<p>1&#46; Open the Rails console by running:</p>
+
+<pre><code><pre class="js">rails c</pre></code></pre>
+
+<p>2&#46; Add a couple of tasks and links like this:</p>
+
+<pre><code><pre class="js">Task.<span class="me1">create</span> <span class="sy0">:</span>text<span class="sy0">=&gt;</span><span class="st0">&quot;Task 1&quot;</span><span class="sy0">,</span> <span class="sy0">:</span>start_date<span class="sy0">=&gt;</span><span class="st0">&quot;2015-10-25&quot;</span><span class="sy0">,</span>  <span class="sy0">:</span>duration<span class="sy0">=&gt;</span><span class="nu0">2</span><span class="sy0">,</span> <span class="sy0">:</span>progress<span class="sy0">=&gt;</span><span class="nu0">0</span><span class="sy0">;</span>
+Task.<span class="me1">create</span> <span class="sy0">:</span>text<span class="sy0">=&gt;</span><span class="st0">&quot;Task 2&quot;</span><span class="sy0">,</span> <span class="sy0">:</span>start_date<span class="sy0">=&gt;</span><span class="st0">&quot;2015-10-27&quot;</span><span class="sy0">,</span>  <span class="sy0">:</span>duration<span class="sy0">=&gt;</span><span class="nu0">3</span><span class="sy0">,</span> <span class="sy0">:</span>progress<span class="sy0">=&gt;</span><span class="nu0">0.5</span><span class="sy0">;</span>
+Link.<span class="me1">create</span> <span class="sy0">:</span>source<span class="sy0">=&gt;</span><span class="nu0">1</span><span class="sy0">,</span> <span class="sy0">:</span>target<span class="sy0">=&gt;</span><span class="nu0">2</span><span class="sy0">,</span> <span class="sy0">:</span>link_type<span class="sy0">=&gt;</span><span class="st0">&quot;0&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>3&#46; Enter "exit" to close the console.</p>
+
+<p>Next we need to implement data loading and saving in the chart with the help of controllers.</p>
+
+<a name='step4loadingdata'><h2>Step 4. Loading data</h2></a>
+
+<p>After we've created model classes and run the migration, we can load the database data into our gantt.</p>
+
+<p>dhtmlxGantt expects data in the <a class="link-" href="desktop__supported_data_formats.html">JSON format</a>, so firstly we'll add a new action to our <em>GanttController</em> where we'll read, 
+format and output gantt data:</p>
+
+<p class='snippet'> app/controllers/gantt_controller.rb</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> GanttController <span class="sy0">&lt;</span> ApplicationController
+  def index
+  end
+&nbsp;
+  def data 
+    tasks <span class="sy0">=</span> Task.<span class="me1">all</span>
+    links <span class="sy0">=</span> Link.<span class="me1">all</span>
+&nbsp;
+    render <span class="sy0">:</span>json<span class="sy0">=&gt;</span><span class="br0">&#123;</span>
+      <span class="sy0">:</span>data <span class="sy0">=&gt;</span> tasks.<span class="me1">map</span><span class="br0">&#123;</span><span class="sy0">|</span>task<span class="sy0">|</span><span class="br0">&#123;</span>
+        <span class="sy0">:</span>id <span class="sy0">=&gt;</span> task.<span class="me1">id</span><span class="sy0">,</span>
+        <span class="sy0">:</span>text <span class="sy0">=&gt;</span> task.<span class="me1">text</span><span class="sy0">,</span>
+        <span class="sy0">:</span>start_date <span class="sy0">=&gt;</span> task.<span class="me1">start_date</span>.<span class="me1">to_formatted_s</span><span class="br0">&#40;</span><span class="sy0">:</span>db<span class="br0">&#41;</span><span class="sy0">,</span>
+        <span class="sy0">:</span>duration <span class="sy0">=&gt;</span> task.<span class="me1">duration</span><span class="sy0">,</span>
+        <span class="sy0">:</span>progress <span class="sy0">=&gt;</span> task.<span class="me1">progress</span><span class="sy0">,</span>
+        <span class="sy0">:</span>parent <span class="sy0">=&gt;</span> task.<span class="me1">parent</span><span class="sy0">,</span>
+        <span class="sy0">:</span><span class="kw3">open</span> <span class="sy0">=&gt;</span> <span class="kw2">true</span>
+      <span class="br0">&#125;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="sy0">:</span>links <span class="sy0">=&gt;</span> links.<span class="me1">map</span><span class="br0">&#123;</span><span class="sy0">|</span>link<span class="sy0">|</span><span class="br0">&#123;</span>
+        <span class="sy0">:</span>id <span class="sy0">=&gt;</span> link.<span class="me1">id</span><span class="sy0">,</span>
+        <span class="sy0">:</span>source <span class="sy0">=&gt;</span> link.<span class="me1">source</span><span class="sy0">,</span>
+        <span class="sy0">:</span>target <span class="sy0">=&gt;</span> link.<span class="me1">target</span><span class="sy0">,</span>
+        <span class="sy0">:</span>type <span class="sy0">=&gt;</span> link.<span class="me1">link_type</span>
+      <span class="br0">&#125;</span><span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+  end
+end</pre></code></pre>
+
+<p>Add a route for this action into <em>routes.rb</em>:</p>
+
+<p class='snippet'> config/routes.rb</p>
+
+<pre><code><pre class="js">Rails.<span class="me1">application</span>.<span class="me1">routes</span>.<span class="me1">draw</span> <span class="kw1">do</span>
+  root <span class="sy0">:</span>to <span class="sy0">=&gt;</span> <span class="st0">&quot;gantt#index&quot;</span>
+&nbsp;
+<span class="xtra ln-xtra">  scope <span class="st0">'/api'</span> <span class="kw1">do</span></span><span class="xtra ln-xtra">    get <span class="st0">&quot;/data&quot;</span><span class="sy0">,</span> <span class="sy0">:</span>to <span class="sy0">=&gt;</span> <span class="st0">&quot;gantt#data&quot;</span></span><span class="xtra ln-xtra">  end</span>end</pre></code></pre>
+
+<p>And call this action from the client side using the <a class="link-" href="api__gantt_load.html">gantt.load</a> method:</p>
+
+<p class='snippet'> app/views/gantt/index.html.erb</p>
+
+<pre><code><pre class="js"><span class="xtra ln-xtra">gantt.<span class="me1">config</span>.<span class="me1">date_format</span> <span class="sy0">=</span> <span class="st0">&quot;%Y-%m-%d %H:%i:%s&quot;</span><span class="sy0">;</span></span>&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">gantt.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/api/data&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p>Note that <a class="link-" href="api__gantt_date_format_config.html">date_format</a> config specifies the <a href="http://api.rubyonrails.org/v5.1/classes/DateTime.html#method-i-to_formatted_s">format of dates</a> 
+(<b>start_date</b> of Task) that comes from the server.</p>
+
+<p>If you run the server now and open <em>http://localhost:3000/</em> in your browser, you should be able to see a gantt chart populated with tasks and links from the database.
+No changes would be posted back to the database, however. We're going to fix it in the next step.</p>
+
+<a name='step5savingchanges'><h2>Step 5. Saving changes</h2></a>
+
+<p>dhtmlxGantt can transmit all changes made by the user to the RESTful API on a backend, where everything can be saved to the database. 
+You can check the protocol details <a class="link-" href="desktop__server_side.html#technique">here</a>.</p>
+
+<p>That's the way we're going to implement data saving now:</p>
+
+<p>Firstly, we will enable posting changes on the client:</p>
+
+<p class='snippet'> app/views/gantt/index.html.erb</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">date_format</span> <span class="sy0">=</span> <span class="st0">&quot;%Y-%m-%d %H:%i:%s&quot;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/api/data&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra"><span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> gantt.<span class="me1">dataProcessor</span><span class="br0">&#40;</span><span class="st0">&quot;/api&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span><span class="xtra ln-xtra">dp.<span class="me1">init</span><span class="br0">&#40;</span>gantt<span class="br0">&#41;</span><span class="sy0">;</span></span><span class="xtra ln-xtra">dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;REST&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p>Then, we need to add two controllers: one for Tasks and another one for Links and implement all the required actions.</p>
+
+<h3>Creating Task controller</h3>
+
+<p>Let's start with a controller for Tasks:</p>
+
+<pre><code><pre class="js">rails generate controller task <span class="sy0">--</span>no<span class="sy0">-</span>helper <span class="sy0">--</span>no<span class="sy0">-</span>assets <span class="sy0">--</span>no<span class="sy0">-</span>view<span class="sy0">-</span>specs</pre></code></pre>
+
+<p>Since this controller is not going to have any views, we've used <em>--no-</em> flags in order not to generate files we won't need.</p>
+
+<p>Next we will implement actions for creating, updating and deleting tasks:</p>
+
+<p class='snippet'> app/controllers/task_controller.rb</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> TaskController <span class="sy0">&lt;</span> ApplicationController
+    protect_from_forgery
+&nbsp;
+    def update
+        task <span class="sy0">=</span> Task.<span class="me1">find</span><span class="br0">&#40;</span>params<span class="br0">&#91;</span><span class="st0">&quot;id&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span>
+        task.<span class="me1">text</span> <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">&quot;text&quot;</span><span class="br0">&#93;</span>
+        task.<span class="me1">start_date</span> <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">&quot;start_date&quot;</span><span class="br0">&#93;</span>
+        task.<span class="me1">duration</span> <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">&quot;duration&quot;</span><span class="br0">&#93;</span>
+        task.<span class="me1">progress</span> <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">&quot;progress&quot;</span><span class="br0">&#93;</span> <span class="sy0">||</span> <span class="nu0">0</span>
+        task.<span class="me1">parent</span> <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">&quot;parent&quot;</span><span class="br0">&#93;</span>
+        task.<span class="me1">save</span>
+&nbsp;
+        render <span class="sy0">:</span>json <span class="sy0">=&gt;</span> <span class="br0">&#123;</span><span class="sy0">:</span>action <span class="sy0">=&gt;</span> <span class="st0">&quot;updated&quot;</span><span class="br0">&#125;</span>
+    end
+&nbsp;
+    def add
+        task <span class="sy0">=</span> Task.<span class="me1">create</span><span class="br0">&#40;</span> 
+            <span class="sy0">:</span>text <span class="sy0">=&gt;</span> params<span class="br0">&#91;</span><span class="st0">&quot;text&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span> 
+            <span class="sy0">:</span>start_date<span class="sy0">=&gt;</span> params<span class="br0">&#91;</span><span class="st0">&quot;start_date&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span> 
+            <span class="sy0">:</span>duration <span class="sy0">=&gt;</span> params<span class="br0">&#91;</span><span class="st0">&quot;duration&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+            <span class="sy0">:</span>progress <span class="sy0">=&gt;</span> params<span class="br0">&#91;</span><span class="st0">&quot;progress&quot;</span><span class="br0">&#93;</span> <span class="sy0">||</span> <span class="nu0">0</span><span class="sy0">,</span> 
+            <span class="sy0">:</span>parent <span class="sy0">=&gt;</span> params<span class="br0">&#91;</span><span class="st0">&quot;parent&quot;</span><span class="br0">&#93;</span>
+        <span class="br0">&#41;</span>
+&nbsp;
+        render <span class="sy0">:</span>json <span class="sy0">=&gt;</span> <span class="br0">&#123;</span><span class="sy0">:</span>action <span class="sy0">=&gt;</span> <span class="st0">&quot;inserted&quot;</span><span class="sy0">,</span> <span class="sy0">:</span>tid <span class="sy0">=&gt;</span> task.<span class="me1">id</span><span class="br0">&#125;</span>
+    end
+&nbsp;
+    def <span class="kw1">delete</span>
+        Task.<span class="me1">find</span><span class="br0">&#40;</span>params<span class="br0">&#91;</span><span class="st0">&quot;id&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span>.<span class="me1">destroy</span>
+        render <span class="sy0">:</span>json <span class="sy0">=&gt;</span> <span class="br0">&#123;</span><span class="sy0">:</span>action <span class="sy0">=&gt;</span> <span class="st0">&quot;deleted&quot;</span><span class="br0">&#125;</span>
+    end
+end</pre></code></pre>
+
+<p>A couple of notes regarding this code:</p>
+
+<ul>
+<li>we don't need the get action since all data is already loaded from <em>gantt#data</em></li>
+<li>the <em>progress</em> property may be not initialized on the client by default, so we need to provide the default value here. 
+Alternatively, we could have defined the default value in the model class,
+(which can be done, for example, using <a href="http://api.rubyonrails.org/classes/ActiveRecord/Migration.html">migration</a>) </li>
+<li>an action that creates a new item should return the database id of a newly inserted record back to the client</li>
+</ul>
+
+<p>After that we need to add the new routes to the config, and users will be able to view/create/update and delete tasks in our gantt chart:</p>
+
+<p class='snippet'> config/routes.rb</p>
+
+<pre><code><pre class="js">Rails.<span class="me1">application</span>.<span class="me1">routes</span>.<span class="me1">draw</span> <span class="kw1">do</span>
+  root <span class="sy0">:</span>to <span class="sy0">=&gt;</span> <span class="st0">&quot;gantt#index&quot;</span>
+&nbsp;
+  scope <span class="st0">'/api'</span> <span class="kw1">do</span>
+    get <span class="st0">&quot;/data&quot;</span><span class="sy0">,</span> <span class="sy0">:</span>to <span class="sy0">=&gt;</span> <span class="st0">&quot;gantt#data&quot;</span>
+&nbsp;
+<span class="xtra ln-xtra">    post <span class="st0">&quot;/task&quot;</span><span class="sy0">,</span> <span class="sy0">:</span>to <span class="sy0">=&gt;</span> <span class="st0">&quot;task#add&quot;</span></span><span class="xtra ln-xtra">    put <span class="st0">&quot;/task/:id&quot;</span><span class="sy0">,</span> <span class="sy0">:</span>to <span class="sy0">=&gt;</span> <span class="st0">&quot;task#update&quot;</span></span><span class="xtra ln-xtra">    <span class="kw1">delete</span> <span class="st0">&quot;/task/:id&quot;</span><span class="sy0">,</span> <span class="sy0">:</span>to <span class="sy0">=&gt;</span> <span class="st0">&quot;task#delete&quot;</span></span>  end
+end</pre></code></pre>
+
+<p>Now, let's do the same for links.</p>
+
+<h3>Creating Link controller</h3>
+
+<p>Generate a Link controller:</p>
+
+<pre><code><pre class="js">rails generate controller link <span class="sy0">--</span>no<span class="sy0">-</span>helper <span class="sy0">--</span>no<span class="sy0">-</span>assets <span class="sy0">--</span>no<span class="sy0">-</span>view<span class="sy0">-</span>specs</pre></code></pre>
+
+<p>The implementation may look like this:</p>
+
+<p class='snippet'> app/controllers/link_controller.rb</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> LinkController <span class="sy0">&lt;</span> ApplicationController
+    protect_from_forgery
+&nbsp;
+    def update
+        link <span class="sy0">=</span> Link.<span class="me1">find</span><span class="br0">&#40;</span>params<span class="br0">&#91;</span><span class="st0">&quot;id&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span>
+        link.<span class="me1">source</span> <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">&quot;source&quot;</span><span class="br0">&#93;</span>
+        link.<span class="me1">target</span> <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">&quot;target&quot;</span><span class="br0">&#93;</span>
+        link.<span class="me1">link_type</span> <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">&quot;type&quot;</span><span class="br0">&#93;</span>
+        link.<span class="me1">save</span>
+&nbsp;
+        render <span class="sy0">:</span>json <span class="sy0">=&gt;</span> <span class="br0">&#123;</span><span class="sy0">:</span>action <span class="sy0">=&gt;</span> <span class="st0">&quot;updated&quot;</span><span class="br0">&#125;</span>
+    end
+&nbsp;
+    def add
+        link <span class="sy0">=</span> Link.<span class="me1">create</span><span class="br0">&#40;</span> 
+            <span class="sy0">:</span>source <span class="sy0">=&gt;</span> params<span class="br0">&#91;</span><span class="st0">&quot;source&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span> 
+            <span class="sy0">:</span>target <span class="sy0">=&gt;</span> params<span class="br0">&#91;</span><span class="st0">&quot;target&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span> 
+            <span class="sy0">:</span>link_type <span class="sy0">=&gt;</span> params<span class="br0">&#91;</span><span class="st0">&quot;type&quot;</span><span class="br0">&#93;</span>
+        <span class="br0">&#41;</span>
+&nbsp;
+        render <span class="sy0">:</span>json <span class="sy0">=&gt;</span> <span class="br0">&#123;</span><span class="sy0">:</span>action <span class="sy0">=&gt;</span> <span class="st0">&quot;inserted&quot;</span><span class="sy0">,</span> <span class="sy0">:</span>tid <span class="sy0">=&gt;</span> link.<span class="me1">id</span><span class="br0">&#125;</span>
+    end
+&nbsp;
+    def <span class="kw1">delete</span>
+        Link.<span class="me1">find</span><span class="br0">&#40;</span>params<span class="br0">&#91;</span><span class="st0">&quot;id&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span>.<span class="me1">destroy</span>
+        render <span class="sy0">:</span>json <span class="sy0">=&gt;</span> <span class="br0">&#123;</span><span class="sy0">:</span>action <span class="sy0">=&gt;</span> <span class="st0">&quot;deleted&quot;</span><span class="br0">&#125;</span>
+    end
+end</pre></code></pre>
+
+<p>Then add routes for new actions:</p>
+
+<p class='snippet'> config/routes.rb</p>
+
+<pre><code><pre class="js">Rails.<span class="me1">application</span>.<span class="me1">routes</span>.<span class="me1">draw</span> <span class="kw1">do</span>
+  root <span class="sy0">:</span>to <span class="sy0">=&gt;</span> <span class="st0">&quot;gantt#index&quot;</span>
+&nbsp;
+  scope <span class="st0">'/api'</span> <span class="kw1">do</span>
+    get <span class="st0">&quot;/data&quot;</span><span class="sy0">,</span> <span class="sy0">:</span>to <span class="sy0">=&gt;</span> <span class="st0">&quot;gantt#data&quot;</span>
+&nbsp;
+    post <span class="st0">&quot;/task&quot;</span><span class="sy0">,</span> <span class="sy0">:</span>to <span class="sy0">=&gt;</span> <span class="st0">&quot;task#add&quot;</span>
+    put <span class="st0">&quot;/task/:id&quot;</span><span class="sy0">,</span> <span class="sy0">:</span>to <span class="sy0">=&gt;</span> <span class="st0">&quot;task#update&quot;</span>
+    <span class="kw1">delete</span> <span class="st0">&quot;/task/:id&quot;</span><span class="sy0">,</span> <span class="sy0">:</span>to <span class="sy0">=&gt;</span> <span class="st0">&quot;task#delete&quot;</span>
+&nbsp;
+<span class="xtra ln-xtra">    post <span class="st0">&quot;/link&quot;</span><span class="sy0">,</span> <span class="sy0">:</span>to <span class="sy0">=&gt;</span> <span class="st0">&quot;link#add&quot;</span></span><span class="xtra ln-xtra">    put <span class="st0">&quot;/link/:id&quot;</span><span class="sy0">,</span> <span class="sy0">:</span>to <span class="sy0">=&gt;</span> <span class="st0">&quot;link#update&quot;</span></span><span class="xtra ln-xtra">    <span class="kw1">delete</span> <span class="st0">&quot;/link/:id&quot;</span><span class="sy0">,</span> <span class="sy0">:</span>to <span class="sy0">=&gt;</span> <span class="st0">&quot;link#delete&quot;</span></span>  end
+end</pre></code></pre>
+
+<p>And that's it. If you run application now you'll have an interactive gantt chart with Rails and MySql backend:</p>
+
+<p><img src="media/desktop/how_to_start_rails_complete.png"></p>
+
+<p>Please check more of <a class="link-" href="desktop__guides.html">our guides</a> for more features of dhtmlxGantt.</p>
+
+<a name='storingtheorderoftasks'><h2>Storing the order of tasks</h2></a>
+
+<p>The client-side gantt allows <a class="link-" href="desktop__reordering_tasks.html">reordering tasks</a> using drag and drop. So if you use this feature, you'll have to store this order in the database. 
+You can <a class="link-" href="desktop__server_side.html#storingtheorderoftasks">check the common description here</a>.</p>
+
+<p>Let's now add this feature to our app.</p>
+
+<h3>Enable tasks reordering on the client</h3>
+
+<p>Firstly, we need to allow users to change tasks order in the UI. Open the <em>Index</em> view and update the configuration of gantt:</p>
+
+<p class='snippet'> app/views/gantt/index.html.erb</p>
+
+<pre><code><pre class="js"><span class="xtra ln-xtra">gantt.<span class="me1">config</span>.<span class="me1">order_branch</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></span><span class="xtra ln-xtra">gantt.<span class="me1">config</span>.<span class="me1">order_branch_free</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></span>&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Now, let's reflect these changes on the backend. We need to add the order info to our model, we'll name it <em>sortorder</em>. The updated model declaration may look like this:</p>
+
+<pre><code><pre class="js">rails generate model Task \
+    text<span class="sy0">:</span>string \
+    start_date<span class="sy0">:</span>datetime \
+    duration<span class="sy0">:</span>integer \
+    parent<span class="sy0">:</span>integer \
+    progress<span class="sy0">:</span>decimal \ 
+<span class="xtra ln-xtra">    sortorder<span class="sy0">:</span>integer</span></pre></code></pre>
+
+<p>Or add a new property to the existing model:</p>
+
+<p>1&#46; create a migration:</p>
+
+<pre><code><pre class="js">rails generate migration add_sortorder_to_tasks sortorder<span class="sy0">:</span>integer</pre></code></pre>
+
+<p>2&#46; Open the generated migration and add a default value to the "sortorder" column:</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> AddSortorderToTasks <span class="sy0">&lt;</span> ActiveRecord<span class="sy0">::</span>Migration<span class="br0">&#91;</span><span class="nu0">5.1</span><span class="br0">&#93;</span>
+  def change
+    add_column <span class="sy0">:</span>tasks<span class="sy0">,</span> <span class="sy0">:</span>sortorder<span class="sy0">,</span> <span class="sy0">:</span>integer<span class="sy0">,</span> <span class="sy0">:</span><span class="kw2">default</span><span class="sy0">=&gt;</span><span class="nu0">0</span>
+  end
+end</pre></code></pre>
+
+<p>And migrate:</p>
+
+<pre><code><pre class="js">rake db<span class="sy0">:</span>migrate</pre></code></pre>
+
+<p>After that we need to update CRUD in the controllers:</p>
+
+<ul>
+<li>the <em>data</em> action must return tasks ordered by the <code>sortorder</code> column: </li>
+</ul>
+
+<p class='snippet'> app/controllers/gantt_controller.rb</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> GanttController <span class="sy0">&lt;</span> ApplicationController
+  def index
+  end
+&nbsp;
+  def data 
+    tasks <span class="sy0">=</span> Task.<span class="me1">all</span>
+    links <span class="sy0">=</span> Link.<span class="me1">all</span>
+&nbsp;
+    render <span class="sy0">:</span>json<span class="sy0">=&gt;</span><span class="br0">&#123;</span>
+<span class="xtra ln-xtra">      <span class="sy0">:</span>data <span class="sy0">=&gt;</span> tasks.<span class="me1">order</span><span class="br0">&#40;</span><span class="sy0">:</span>sortorder<span class="br0">&#41;</span>.<span class="me1">map</span><span class="br0">&#123;</span><span class="sy0">|</span>task<span class="sy0">|</span><span class="br0">&#123;</span> </span>        <span class="sy0">:</span>id <span class="sy0">=&gt;</span> task.<span class="me1">id</span><span class="sy0">,</span>
+        <span class="sy0">:</span>text <span class="sy0">=&gt;</span> task.<span class="me1">text</span><span class="sy0">,</span>
+        <span class="sy0">:</span>start_date <span class="sy0">=&gt;</span> task.<span class="me1">start_date</span>.<span class="me1">to_formatted_s</span><span class="br0">&#40;</span><span class="sy0">:</span>db<span class="br0">&#41;</span><span class="sy0">,</span>
+        <span class="sy0">:</span>duration <span class="sy0">=&gt;</span> task.<span class="me1">duration</span><span class="sy0">,</span>
+        <span class="sy0">:</span>progress <span class="sy0">=&gt;</span> task.<span class="me1">progress</span><span class="sy0">,</span>
+        <span class="sy0">:</span>parent <span class="sy0">=&gt;</span> task.<span class="me1">parent</span><span class="sy0">,</span>
+        <span class="sy0">:</span><span class="kw3">open</span> <span class="sy0">=&gt;</span> <span class="kw2">true</span>
+      <span class="br0">&#125;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="sy0">:</span>links <span class="sy0">=&gt;</span> links.<span class="me1">map</span><span class="br0">&#123;</span><span class="sy0">|</span>link<span class="sy0">|</span><span class="br0">&#123;</span>
+        <span class="sy0">:</span>id <span class="sy0">=&gt;</span> link.<span class="me1">id</span><span class="sy0">,</span>
+        <span class="sy0">:</span>source <span class="sy0">=&gt;</span> link.<span class="me1">source</span><span class="sy0">,</span>
+        <span class="sy0">:</span>target <span class="sy0">=&gt;</span> link.<span class="me1">target</span><span class="sy0">,</span>
+        <span class="sy0">:</span>type <span class="sy0">=&gt;</span> link.<span class="me1">link_type</span>
+      <span class="br0">&#125;</span><span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+  end
+end</pre></code></pre>
+
+<ul>
+<li>newly added tasks must receive the initial value <code>sortorder</code>: </li>
+</ul>
+
+<p class='snippet'> app/controllers/task_controller.rb</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> TaskController <span class="sy0">&lt;</span> ApplicationController
+    ...
+    <span class="me1">def</span> add
+&nbsp;
+<span class="xtra ln-xtra">        maxOrder <span class="sy0">=</span> Task.<span class="me1">maximum</span><span class="br0">&#40;</span><span class="st0">&quot;sortorder&quot;</span><span class="br0">&#41;</span> <span class="sy0">||</span> <span class="nu0">0</span></span>&nbsp;
+        task <span class="sy0">=</span> Task.<span class="me1">create</span><span class="br0">&#40;</span> 
+            <span class="sy0">:</span>text <span class="sy0">=&gt;</span> params<span class="br0">&#91;</span><span class="st0">&quot;text&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span> 
+            <span class="sy0">:</span>start_date<span class="sy0">=&gt;</span> params<span class="br0">&#91;</span><span class="st0">&quot;start_date&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span> 
+            <span class="sy0">:</span>duration <span class="sy0">=&gt;</span> params<span class="br0">&#91;</span><span class="st0">&quot;duration&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+            <span class="sy0">:</span>progress <span class="sy0">=&gt;</span> params<span class="br0">&#91;</span><span class="st0">&quot;progress&quot;</span><span class="br0">&#93;</span> <span class="sy0">||</span> <span class="nu0">0</span><span class="sy0">,</span> 
+            <span class="sy0">:</span>parent <span class="sy0">=&gt;</span> params<span class="br0">&#91;</span><span class="st0">&quot;parent&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">            <span class="sy0">:</span>sortorder <span class="sy0">=&gt;</span> maxOrder <span class="sy0">+</span> <span class="nu0">1</span></span>        <span class="br0">&#41;</span>
+&nbsp;
+        render <span class="sy0">:</span>json <span class="sy0">=&gt;</span> <span class="br0">&#123;</span><span class="sy0">:</span>action <span class="sy0">=&gt;</span> <span class="st0">&quot;inserted&quot;</span><span class="sy0">,</span> <span class="sy0">:</span>tid <span class="sy0">=&gt;</span> task.<span class="me1">id</span><span class="br0">&#125;</span>
+    end
+&nbsp;
+end</pre></code></pre>
+
+<ul>
+<li>finally, when a user reorders tasks, task orders must be <a class="link-" href="desktop__server_side.html#storingtheorderoftasks">updated</a>:</li>
+</ul>
+
+<p class='snippet'> app/controllers/task_controller.rb</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> TaskController <span class="sy0">&lt;</span> ApplicationController
+    protect_from_forgery
+&nbsp;
+    def update
+        task <span class="sy0">=</span> Task.<span class="me1">find</span><span class="br0">&#40;</span>params<span class="br0">&#91;</span><span class="st0">&quot;id&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span>
+        task.<span class="me1">text</span> <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">&quot;text&quot;</span><span class="br0">&#93;</span>
+        task.<span class="me1">start_date</span> <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">&quot;start_date&quot;</span><span class="br0">&#93;</span>
+        task.<span class="me1">duration</span> <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">&quot;duration&quot;</span><span class="br0">&#93;</span>
+        task.<span class="me1">progress</span> <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">&quot;progress&quot;</span><span class="br0">&#93;</span> <span class="sy0">||</span> <span class="nu0">0</span>
+        task.<span class="me1">parent</span> <span class="sy0">=</span> params<span class="br0">&#91;</span><span class="st0">&quot;parent&quot;</span><span class="br0">&#93;</span>
+        task.<span class="me1">save</span>
+&nbsp;
+<span class="xtra ln-xtra">        <span class="kw1">if</span><span class="br0">&#40;</span>params<span class="br0">&#91;</span><span class="st0">'target'</span><span class="br0">&#93;</span><span class="br0">&#41;</span></span><span class="xtra ln-xtra">            Task.<span class="me1">updateOrder</span><span class="br0">&#40;</span>task.<span class="me1">id</span><span class="sy0">,</span> params<span class="br0">&#91;</span><span class="st0">'target'</span><span class="br0">&#93;</span><span class="br0">&#41;</span></span><span class="xtra ln-xtra">        end</span>&nbsp;
+        render <span class="sy0">:</span>json <span class="sy0">=&gt;</span> <span class="br0">&#123;</span><span class="sy0">:</span>action <span class="sy0">=&gt;</span> <span class="st0">&quot;updated&quot;</span><span class="br0">&#125;</span>
+    end
+&nbsp;
+    ...
+<span class="me1">end</span></pre></code></pre>
+
+<p>Task.updateOrder implementation:</p>
+
+<p class='snippet'> app/models/task.rb</p>
+
+<pre><code><pre class="js"><span class="kw2">class</span> Task <span class="sy0">&lt;</span> ApplicationRecord
+    def self.<span class="me1">updateOrder</span><span class="br0">&#40;</span>taskId<span class="sy0">,</span> target<span class="br0">&#41;</span>
+        nextTask <span class="sy0">=</span> <span class="kw2">false</span>
+        targetId <span class="sy0">=</span> target
+&nbsp;
+        <span class="kw1">if</span><span class="br0">&#40;</span>target.<span class="me1">start_with</span><span class="sy0">?</span><span class="br0">&#40;</span><span class="st0">'next:'</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+            targetId <span class="sy0">=</span> target<span class="br0">&#91;</span><span class="st0">'next:'</span>.<span class="me1">length</span><span class="sy0">,</span> target.<span class="me1">length</span><span class="br0">&#93;</span>
+            nextTask <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+        end
+&nbsp;
+        <span class="kw1">if</span><span class="br0">&#40;</span>targetId <span class="sy0">==</span> <span class="st0">'null'</span><span class="br0">&#41;</span>
+            <span class="kw1">return</span>
+        end
+&nbsp;
+        targetTask <span class="sy0">=</span> self.<span class="me1">find</span><span class="br0">&#40;</span>targetId<span class="br0">&#41;</span>
+&nbsp;
+        targetOrder <span class="sy0">=</span> targetTask.<span class="me1">sortorder</span>
+&nbsp;
+        <span class="kw1">if</span><span class="br0">&#40;</span>nextTask<span class="br0">&#41;</span>
+            targetOrder <span class="sy0">+=</span> <span class="nu0">1</span>
+        end
+&nbsp;
+        self.<span class="me1">where</span><span class="br0">&#40;</span><span class="st0">&quot;sortorder &gt;= ?&quot;</span><span class="sy0">,</span> targetOrder<span class="br0">&#41;</span>.
+            <span class="me1">update_all</span><span class="br0">&#40;</span><span class="st0">'sortorder = sortorder + 1'</span><span class="br0">&#41;</span>
+&nbsp;
+        task <span class="sy0">=</span> self.<span class="me1">find</span><span class="br0">&#40;</span>taskId<span class="br0">&#41;</span>
+        task.<span class="me1">sortorder</span> <span class="sy0">=</span> targetOrder
+        task.<span class="me1">save</span>
+    end
+end</pre></code></pre>
+
+<a name='applicationsecurity'><h2>Application security</h2></a>
+
+<p>Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and 
+CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details <a class="link-hidden" href="desktop__app_security.html">in the corresponding article</a>.</p>
+
+<a name='troubleshooting'><h2>Trouble shooting</h2></a>
+
+<p>In case you've completed the above steps to implement Gantt integration with Ruby on Rails, but Gantt doesn't render tasks and links on a page, have a look at the <a class="link-" href="desktop__troubleshooting.html">Troubleshooting Backend Integration Issues</a> article. It describes 
+the ways of identifying the roots of the problems.</p>
+
+<a name='whatsnext'><h2>What's next</h2></a>
+
+<p>Now you have a fully functioning gantt. You can view the full code on <a href="https://github.com/DHTMLX/gantt-howto-rails">GitHub</a>, clone or download it and use it for your projects.</p>
+
+<p>You can also check <a class="link-" href="desktop__guides.html">guides on the numerous features of gantt</a> or tutorials on <a class="link-" href="desktop__howtostart_guides.html">integrating Gantt with other backend frameworks</a>.</p>
+
+<!-- Content Area End -->
+			<a href='desktop__howtostart_ruby.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

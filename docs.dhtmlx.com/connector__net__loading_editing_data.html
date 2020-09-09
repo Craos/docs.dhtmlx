@@ -1,0 +1,340 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Basic Loading  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="connector__net__reference.html">.Net Connector API</a></li><li class=""><a href="connector__net__general_idea.html">General Idea of dhtmlxConnector</a></li><li class=""><a href="connector__net__init.html">Initializing .Net Connector</a></li><li class=""><a href="connector__net__dynamical_loading.html">Dynamic Loading</a></li><li class=""><a href="connector__net__security.html">Security</a></li><li class=" current"><a href="connector__net__loading_editing_data.html">Basic Loading</a></li><ul><li class="inner"><a href="connector__net__loading_editing_data.html#loadingfromadatabasetable">Loading from a database table</a></li><li class="inner"><a href="connector__net__loading_editing_data.html#loadingfromadataarray">Loading from a data array</a></li></ul><li class=""><a href="connector__net__formatting_changing_data_before_loading.html">Formatting/Changing Data Before Loading</a></li><li class=""><a href="connector__net__filtration.html">Filtering</a></li><li class=""><a href="connector__net__sort.html">Sorting</a></li><li class=""><a href="connector__net__dp.html">Client-side requirement - dataProcessor</a></li><li class=""><a href="connector__net__complex_queries.html">Making Queries</a></li><li class=""><a href="connector__net__transactions.html">Transactions</a></li><li class=""><a href="connector__net__validating_data.html">Validating Data</a></li><li class=""><a href="connector__net__errors.html">Error handling and logging</a></li><li class=""><a href="connector__net__other_db_types.html">Other Database Types</a></li><li class=""><a href="connector__net__server_side_requirements.html">New Functions</a></li><li class=""><a href="connector__net__coding_howtos.html">HowTos</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="connector__index.html">Client-Server Communication</a><a class="n3" href="connector__net__index.html">.Net Connector</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Basic Loading</h1>
+
+<p>In this chapter you'll find base information concerning static loading of data from:</p>
+
+<ul>
+<li><a class="link-" href="connector__net__loading_editing_data.html#loadingfromadatabasetable">a database table(s)</a></li>
+<li><a class="link-" href="connector__net__loading_editing_data.html#loadingfromadataarray">an array</a></li>
+</ul>
+
+<div class='note'><p><p>In order to load data correctly, your 'id' field in the database must be autoincrement.</p>
+</p></div>
+
+<a name='loadingfromadatabasetable'><h2>Loading from a database table</h2></a>
+
+<p>Loading characteristics are defined at the stage of component configuration.</p>
+
+<h3>Work with one table</h3>
+
+<p>When all necessary data is placed in one database table you should  use one of the following approaches:</p>
+
+<ul>
+<li>To initialize the connector by SQL query, from which it will take the table name, filtering and ordering rules, columns list, etc.</li>
+<li>To pass the table name and columns separately.</li>
+</ul>
+
+<h4>Initialization by SQL query</h4>
+
+<p><br></p>
+
+<pre><code><pre class="js">dhtmlxGridConnector connector <span class="sy0">=</span> <span class="kw2">new</span> dhtmlxGridConnector<span class="br0">&#40;</span>
+   <span class="st0">&quot;SELECT ISO, PrintableName FROM Country&quot;</span><span class="sy0">,</span>
+   <span class="st0">&quot;UID&quot;</span><span class="sy0">,</span>
+   dhtmlxDatabaseAdapterType.<span class="me1">SqlServer2005</span><span class="sy0">,</span>
+   ConfigurationManager.<span class="me1">ConnectionStrings</span><span class="br0">&#91;</span><span class="st0">&quot;SamplesDatabase&quot;</span><span class="br0">&#93;</span>.<span class="me1">ConnectionString</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>For insert/update/delete operations, connectors need the primary key name of the table and the foreign key name for hierarchical controls. Connectors require database adapter to work with database engine or database engine type, and connection string to let connector initialize it automatically. Some connectors also require the names of columns for binding to well-known dhtmlx component properties (e.g. NodeTextColumnName for dhtmlxTreeConnector or StartDateColumnName for dhtmlxSchedulerConnector).</p>
+
+<h4>Manual specifying of the table name and columns</h4>
+
+<p><br></p>
+
+<pre><code><pre class="js">dhtmlxGridConnector connector <span class="sy0">=</span> <span class="kw2">new</span> dhtmlxGridConnector<span class="br0">&#40;</span>
+   <span class="st0">&quot;BookStore&quot;</span><span class="sy0">,</span>
+   <span class="st0">&quot;sales, title, author, price, instore, shipping, bestseller, pub_date&quot;</span><span class="sy0">,</span>
+   <span class="st0">&quot;book_id&quot;</span><span class="sy0">,</span>
+   dhtmlxDatabaseAdapterType.<span class="me1">SqlServer2005</span><span class="sy0">,</span>
+   ConfigurationManager.<span class="me1">ConnectionStrings</span><span class="br0">&#91;</span><span class="st0">&quot;SamplesDatabase&quot;</span><span class="br0">&#93;</span>.<span class="me1">ConnectionString</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In common case connector constructors of such type accept:</p>
+
+<ul>
+<li>the database table name</li>
+<li>a comma-delimited columns list (some connectors ignore it)</li>
+<li>the name of the identity field</li>
+<li>a database adapter type or adapter itself</li>
+<li>connectionString </li>
+</ul>
+
+<h3>Work with several tables</h3>
+
+<p>You can use any SQL statements to populate a dhtmlx component through dhtmlxConnector.</p>
+
+<pre><code><pre class="js">dhtmlxGridConnector connector <span class="sy0">=</span> <span class="kw2">new</span> dhtmlxGridConnector<span class="br0">&#40;</span>
+    <span class="co1">//SQL with inner join statement </span>
+    <span class="st0">&quot;SELECT UID,
+    PrintableName,
+    TimeZone FROM Country INNER JOIN Timezone ON Country.TZID=Timezone.TZID&quot;</span><span class="sy0">,</span>
+    <span class="co1">//Primary key name</span>
+    <span class="st0">&quot;UID&quot;</span><span class="sy0">,</span>
+    <span class="co1">//Database adapter type </span>
+    dhtmlxDatabaseAdapterType.<span class="me1">SqlServer2005</span><span class="sy0">,</span> 
+    <span class="co1">//connection string</span>
+    ConfigurationManager.<span class="me1">ConnectionStrings</span><span class="br0">&#91;</span><span class="st0">&quot;SamplesDatabase&quot;</span><span class="br0">&#93;</span>.<span class="me1">ConnectionString</span> 
+<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>But if your SQL statement contains more than one table, connector won't be able to generate insert/update/delete operations correctly and you will need to make one of the following actions:</p>
+
+<ol>
+<li>Define sql for each operation manually</li>
+<li>Use server-side events to define your own processing logic</li>
+<li>Define different configs for select and update operations</li>
+</ol>
+
+<p>The 3rd approach is shown in the code snippet below:</p>
+
+<pre><code><pre class="js">dhtmlxGridConnector connector <span class="sy0">=</span> <span class="kw2">new</span> dhtmlxGridConnector<span class="br0">&#40;</span>
+   <span class="co1">//SQL with inner join statement </span>
+   <span class="st0">&quot;SELECT UID, 
+   PrintableName, 
+   TimeZone, 
+   TZID FROM Country INNER JOIN Timezone ON Country.TZID = Timezone.TZID&quot;</span><span class="sy0">,</span>
+   <span class="co1">//Primary key name</span>
+   <span class="st0">&quot;UID&quot;</span><span class="sy0">,</span>
+   <span class="co1">//Database adapter type</span>
+   dhtmlxDatabaseAdapterType.<span class="me1">SqlServer2005</span><span class="sy0">,</span>  
+   <span class="co1">//connection string</span>
+   ConfigurationManager.<span class="me1">ConnectionStrings</span><span class="br0">&#91;</span><span class="st0">&quot;SamplesDatabase&quot;</span><span class="br0">&#93;</span>.<span class="me1">ConnectionString</span> 
+<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+connector.<span class="me1">Request</span>.<span class="me1">CustomSQLs</span>.<span class="me1">Add</span><span class="br0">&#40;</span>CustomSQLType.<span class="me1">Update</span><span class="sy0">,</span> 
+   <span class="sy0">@</span><span class="st0">&quot;UPDATE Country SET PrintableName = '{PrintableName}' WHERE UID{UID}'; 
+   UPDATE TimeZone SET TimeZone = '{TimeZone}' WHERE TZID {TZID}&quot;</span></pre></code></pre>
+
+<p>With such init code grid will display and update data from both tables.</p>
+
+<h3>Extra data</h3>
+
+<p>dhtmlxGridConnector and dhtmlxTreeGridConnector have an optional constructor parameter - <strong>ExtraColumnNames</strong>.
+You can use it to define a list of fields which will be extracted from database table, but won't be sent to the client side.</p>
+
+<p>These fields can be used as attributes or flags, mapped to different properties of records (userdata, row styles, images, etc.).</p>
+
+<pre><code><pre class="js">dhtmlxGridConnector connector <span class="sy0">=</span> <span class="kw2">new</span> dhtmlxGridConnector<span class="br0">&#40;</span>
+    <span class="co1">//SQL with inner join statement </span>
+   <span class="st0">&quot;SELECT UID, 
+   PrintableName, 
+   TimeZone, 
+   TZID FROM Country INNER JOIN Timezone ON Country.TZID = Timezone.TZID&quot;</span><span class="sy0">,</span>
+   <span class="co1">//Primary key name</span>
+   <span class="st0">&quot;UID&quot;</span><span class="sy0">,</span>
+   <span class="co1">//Database adapter type </span>
+   dhtmlxDatabaseAdapterType.<span class="me1">SqlServer2005</span><span class="sy0">,</span> 
+   <span class="co1">//connection string</span>
+   ConfigurationManager.<span class="me1">ConnectionStrings</span><span class="br0">&#91;</span><span class="st0">&quot;SamplesDatabase&quot;</span><span class="br0">&#93;</span>.<span class="me1">ConnectionString</span><span class="sy0">,</span> 
+   <span class="st0">&quot;TZID&quot;</span><span class="co1">//This column will be requested, appeared in all events, but won't be rendered</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Aliases</h3>
+
+<p>To make usage of extracted data handier you can use aliases for DB field names (makes sense only if you use server-side events):</p>
+
+<pre><code><pre class="js">dhtmlxTreeConnector connector <span class="sy0">=</span> <span class="kw2">new</span> dhtmlxTreeConnector<span class="br0">&#40;</span>
+   <span class="st0">&quot;Folders&quot;</span><span class="sy0">,</span> 
+   <span class="st0">&quot;FolderID AS ID&quot;</span><span class="sy0">,</span> 
+   <span class="st0">&quot;ParentID&quot;</span><span class="sy0">,</span> 
+   dhtmlxDatabaseAdapterType.<span class="me1">SqlServer2005</span><span class="sy0">,</span> 
+   ConfigurationManager.<span class="me1">ConnectionStrings</span><span class="br0">&#91;</span><span class="st0">&quot;SamplesDatabase&quot;</span><span class="br0">&#93;</span>.<span class="me1">ConnectionString</span><span class="sy0">,</span>
+   <span class="st0">&quot;FolderName AS Text&quot;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Tree and TreeGrid specificity</h3>
+
+<p>In case of Tree and TreeGrid , the constructor accepts one more parameter - <strong>ParentIDColumnName</strong>. For default treegrid hierarchy - it's the name of a field , which will be used to link parent and child records.</p>
+
+<pre><code><pre class="js">dhtmlxTreeConnector connector <span class="sy0">=</span> <span class="kw2">new</span> dhtmlxTreeConnector<span class="br0">&#40;</span>
+   <span class="st0">&quot;Folders&quot;</span><span class="sy0">,</span> 
+   <span class="st0">&quot;FolderID&quot;</span><span class="sy0">,</span> 
+   <span class="st0">&quot;ParentID&quot;</span><span class="sy0">,</span> 
+   dhtmlxDatabaseAdapterType.<span class="me1">SqlServer2005</span><span class="sy0">,</span> 
+   ConfigurationManager.<span class="me1">ConnectionStrings</span><span class="br0">&#91;</span><span class="st0">&quot;SamplesDatabase&quot;</span><span class="br0">&#93;</span>.<span class="me1">ConnectionString</span><span class="sy0">,</span>
+   <span class="st0">&quot;FolderName&quot;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Sometimes during the work with hierarchical data structures the question appears: what value should be used for indicating the top (root) item? 
+dhtmlxTree(Grid)Connector assumes that the root item's ParentID value is <strong>null</strong>.
+You can change it by assigning a new value to the <strong>RootItemRelationIDValue</strong> property:</p>
+
+<pre><code><pre class="js">connector.<span class="me1">RootItemRelationIDValue</span> <span class="sy0">=</span> <span class="st0">&quot;0&quot;</span><span class="sy0">;</span> <span class="co1">//Set ParentID value for root items</span></pre></code></pre>
+
+<h3>Stored procedures</h3>
+
+<p>You can use stored procedures to initialize connector. In this case, connector won't be able to generate insert/update/delete operations, so you will need to define each operation manually. The second parameter(primary key) becomes inessential, so you can set it to empty string. You can also use stored procedures in CRUD operations, just like regular SQL statements.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> connector <span class="sy0">=</span> <span class="kw2">new</span> dhtmlxJSONDataConnector<span class="br0">&#40;</span>
+   <span class="st0">&quot;EXECUTE storedProc&quot;</span><span class="sy0">,</span>               
+   <span class="st0">&quot;&quot;</span><span class="sy0">,</span>
+   dhtmlxDatabaseAdapterType.<span class="me1">SqlServer2005</span><span class="sy0">,</span>
+   ConfigurationManager.<span class="me1">ConnectionStrings</span><span class="br0">&#91;</span><span class="st0">&quot;SamplesDatabase&quot;</span><span class="br0">&#93;</span>.<span class="me1">ConnectionString</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>use server-side events to define your own processing logic.</li>
+</ul>
+
+<a name='loadingfromadataarray'><h2>Loading from a data array</h2></a>
+
+<p>Starting from version 1.5, instead of database you can load data from an array which can be filled with any kind of external logic.</p>
+
+<p>In such a case the connector's constructors accept:</p>
+
+<ul>
+<li>the IEnumerable collection</li>
+<li>a comma-delimited columns list (some connectors ignore it)</li>
+<li>the name of the identity field</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">public</span> override IdhtmlxConnector CreateConnector<span class="br0">&#40;</span>HttpContext context<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    <span class="kw2">var</span> data <span class="sy0">=</span> <span class="kw2">new</span> DHTMLXDataContext<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw2">var</span> connector <span class="sy0">=</span> <span class="kw2">new</span> dhtmlxGridConnector<span class="br0">&#40;</span>
+        data.<span class="me1">BookStores</span><span class="sy0">,</span> 
+        <span class="st0">&quot;sales, title, author, price, instore, shipping, bestseller, pub_date&quot;</span><span class="sy0">,</span> 
+        <span class="st0">&quot;book_id&quot;</span>
+    <span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">return</span> connector<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='connector__net__loading_editing_data.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

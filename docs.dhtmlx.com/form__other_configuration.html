@@ -1,0 +1,387 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Config and Operations  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxform.html">dhtmlXForm API</a></li><li class=""><a href="form__how_to_start.html">How to Start with dhtmlxForm</a></li><li class=""><a href="form__constructor_of_dhtmlx_form.html">Object Constructor</a></li><li class=""><a href="form__controls_list.html">List of Controls</a></li><li class=""><a href="form__xml_structure.html">XML Format</a></li><li class=""><a href="form__json_structure.html">JSON Format</a></li><li class=""><a href="form__html_structure.html">HTML Format</a></li><li class=""><a href="form__working_with_userdata.html">Working with Userdata</a></li><li class=" current"><a href="form__other_configuration.html">Config and Operations</a></li><ul><li class="inner"><a href="form__other_configuration.html#addingremovingitems">Adding/removing items</a></li><li class="inner"><a href="form__other_configuration.html#savingdata">Saving data</a></li><li class="inner"><a href="form__other_configuration.html#restoringformsstate">Restoring form's state</a></li><li class="inner"><a href="form__other_configuration.html#settingcheckedstate">Setting checked state</a></li><li class="inner"><a href="form__other_configuration.html#settinginputslabels">Setting inputs' labels</a></li><li class="inner"><a href="form__other_configuration.html#managingoptionscollection">Managing options collection</a></li><li class="inner"><a href="form__other_configuration.html#settinginputsvalues">Setting input's values</a></li><li class="inner"><a href="form__other_configuration.html#gettingtypeofanitem">Getting type of an item</a></li><li class="inner"><a href="form__other_configuration.html#checkingifanitemexists">Checking if an item exists</a></li><li class="inner"><a href="form__other_configuration.html#addingdetailsunderinput">Adding details under input</a></li><li class="inner"><a href="form__other_configuration.html#settingatooltip">Setting a tooltip</a></li><li class="inner"><a href="form__other_configuration.html#destructingforminstance">Destructing Form instance</a></li></ul><li class=""><a href="form__positioning.html">Positioning Controls</a></li><li class=""><a href="form__validation.html">Validation</a></li><li class=""><a href="form__custom_item.html">Creating a Custom Control</a></li><li class=""><a href="form__server_side.html">Server-side Integration</a></li><li class=""><a href="form__dhtmlx_components.html">Integration with DHTMLX</a></li><li class=""><a href="form__data_binding.html">Binding Data</a></li><li class=""><a href="form__handling_events.html">Handling Events</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="form__index.html">Form</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Config and Operations</h1>
+
+<p>You can perform various operations on items (control of visibility, checking of state, item existence etc.). 
+For their executing you have a number of methods and attributes.</p>
+
+<div class='note'><p><p>For saving memory, we recommend to destruct dhtmlxForm instance at the end of the form usage by the <a class="link-" href="api__dhtmlxform_unload.html">unload()</a> method. See the details <a class="link-" href="form__other_configuration.html#destructingdhtmlxforminstance">below</a>.</p>
+</p></div>
+
+<a name='addingremovingitems'><h2>Adding/removing items</h2></a>
+
+<p>To add/remove some dhtmlxForm's item dynamically, you should use one of the following methods:</p>
+
+<ul>
+<li><a class="link-" href="api__dhtmlxform_additem.html">addItem()</a> - adds a new item to the form;</li>
+<li><a class="link-" href="api__dhtmlxform_removeitem.html">removeItem()</a> - removes the specified item from the form.</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> itemData <span class="sy0">=</span> <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;label&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Video settings&quot;</span><span class="sy0">,</span> list<span class="sy0">:</span><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;select&quot;</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;video_codec&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Codec&quot;</span><span class="sy0">,</span> options<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>text<span class="sy0">:</span> <span class="st0">&quot;DivX&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;DivX&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>text<span class="sy0">:</span> <span class="st0">&quot;XviD&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;XviD&quot;</span><span class="sy0">,</span> selected<span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;select&quot;</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;video_bitrate&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Bitrate&quot;</span><span class="sy0">,</span> options<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>text<span class="sy0">:</span> <span class="st0">&quot;1226 kbps&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;1226&quot;</span><span class="sy0">,</span> selected<span class="sy0">:</span> <span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>text<span class="sy0">:</span> <span class="st0">&quot;2412 kbps&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;2412&quot;</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">;</span>
+myForm.<span class="me1">addItem</span><span class="br0">&#40;</span><span class="kw2">null</span><span class="sy0">,</span> itemData<span class="sy0">,</span> <span class="nu0">3</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">myForm</span>.<span class="me1">removeItem</span><span class="br0">&#40;</span><span class="st0">&quot;video_bitrate&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='savingdata'><h2>Saving data</h2></a>
+
+<p>There are three variants to deal with form data using dhtmlxForm:</p>
+
+<ol>
+<li>submit form in the common way </li>
+<li>send data via AJAX request (get or post)</li>
+<li><a class="link-" href="form__server_side.html">integrate dhtmlxForm with dhtmlxConnector</a> to insert/update/delete in the automatic mode</li>
+</ol>
+
+<p>All these ways can be initialized through the <a class="link-" href="api__refs__dhtmlxform.html#events">event handlers</a> of dhtmlxForm associated with various elements
+and the <a class="link-" href="api__dhtmlxform_onbuttonclick_event.html">onButtonClick</a> event, associated with the "button" element, in particular.</p>
+
+<pre><code><pre class="js"><span class="co1">// send data on proc.php when user clicks button with the name &quot;my_submit_button&quot;</span>
+myForm.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onButtonClick&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="sy0">,</span> command<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="sy0">==</span><span class="st0">&quot;my_submit_button&quot;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">this</span>.<span class="me1">send</span><span class="br0">&#40;</span><span class="st0">&quot;proc.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Send data using AJAX request</h3>
+
+<p>dhtmlxForm provides the ability to send its data to the server using an AJAX request (GET or POST) and then process the reply with the <a class="link-" href="api__dhtmlxform_send.html">send()</a> method.</p>
+
+<pre><code><pre class="js">dhxForm.<span class="me1">send</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//or</span>
+dhxForm.<span class="me1">send</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="sy0">,</span><span class="st0">&quot;post&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//or</span>
+dhxForm.<span class="me1">send</span><span class="br0">&#40;</span><span class="st0">&quot;some.php&quot;</span><span class="sy0">,</span><span class="st0">&quot;post&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>xml<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw3">alert</span><span class="br0">&#40;</span><span class="st0">&quot;Saved&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='restoringformsstate'><h2>Restoring form's state</h2></a>
+
+<p>There are several techniques that allow you to restore the initial state of a form.</p>
+
+<p>The <a class="link-" href="api__dhtmlxform_reset.html">reset</a> method restores the latest saved values of form's items.</p>
+
+<pre><code><pre class="js">myForm.<span class="me1">reset</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//or</span>
+myForm.<span class="me1">reset</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span> response<span class="br0">&#41;</span><span class="br0">&#123;</span>
+   <span class="kw3">alert</span><span class="br0">&#40;</span><span class="st0">&quot;I'm reset&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To save the current state of the form use the <a class="link-" href="api__dhtmlxform_savebackup.html">saveBackup</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> backup1 <span class="sy0">=</span> myForm.<span class="me1">saveBackup</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To restore the saved state of the form you need to apply the <a class="link-" href="api__dhtmlxform_restorebackup.html">restoreBackup</a> method</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> backup1 <span class="sy0">=</span> myForm.<span class="me1">saveBackup</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">myForm</span>.<span class="me1">restoreBackup</span><span class="br0">&#40;</span>backup1<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>To clear the values of form's items, use the method clear():</p>
+
+<pre><code><pre class="js">myForm.<span class="me1">clear</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Notice that in the case of using Combo and Select items, the first option will be selected instead of clearing the input.</p>
+
+<a name='settingcheckedstate'><h2>Setting checked state</h2></a>
+
+<p>The common way to set(get) the state of an item is <a class="link-" href="api__dhtmlxform_setitemvalue.html">setItemValue()</a>. The method sets value for an item and checks it (if appropriate).<br>
+Applied to all items.</p>
+
+<pre><code><pre class="js">dhxForm.<span class="me1">setItemValue</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="sy0">,</span> value<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>For checkbox and radio items you can also use 3 more methods:</p>
+
+<ul>
+<li><a class="link-" href="api__dhtmlxform_checkitem.html">checkItem()</a></li>
+<li><a class="link-" href="api__dhtmlxform_uncheckitem.html">uncheckItem()</a></li>
+<li><a class="link-" href="api__dhtmlxform_isitemchecked.html">isItemChecked()</a></li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">// checking items</span>
+dhxForm.<span class="me1">checkItem</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="sy0">,</span> value<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// for radio buttons 2nd argument value should be passed</span>
+<span class="co1">// unchecking items</span>
+dhxForm.<span class="me1">uncheckItem</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="sy0">,</span> value<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// getting current state</span>
+<span class="kw2">var</span> isChecked <span class="sy0">=</span> dhxForm.<span class="me1">isItemChecked</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="sy0">,</span> value<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// returns true/false</span></pre></code></pre>
+
+<a name='settinginputslabels'><h2>Setting inputs' labels</h2></a>
+
+<p>To set (get) the text of an item as a string, use the <a class="link-" href="api__dhtmlxform_setitemlabel.html">setItemLabel()</a>/<a class="link-" href="api__dhtmlxform_getitemlabel.html">getItemLabel()</a> methods.<br>
+Applied to all items.</p>
+
+<pre><code><pre class="js"><span class="co1">// setting text</span>
+dhxForm.<span class="me1">setItemLabel</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="sy0">,</span> <span class="st0">&quot;New Text&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dhxForm.<span class="me1">setItemLabel</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="sy0">,</span> value<span class="sy0">,</span> <span class="st0">&quot;New Text&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// for radio button</span>
+<span class="co1">// getting text</span>
+<span class="kw2">var</span> text <span class="sy0">=</span> dhxForm.<span class="me1">getItemLabel</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> text <span class="sy0">=</span> dhxForm.<span class="me1">getItemLabel</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="sy0">,</span> value<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// for radio button</span></pre></code></pre>
+
+<a name='managingoptionscollection'><h2>Managing options collection</h2></a>
+
+<p>To set (get) the value of a list item, use the <a class="link-" href="api__dhtmlxform_getoptions.html">getOptions()</a> method.<br>
+Applicable to the <a class="link-" href="form__controls_list.html#select">select</a>, <a class="link-" href="form__controls_list.html#multiselect">multiselect</a> items only</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> opts <span class="sy0">=</span> dhxForm.<span class="me1">getOptions</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// returns options collection</span></pre></code></pre>
+
+<p>To add a new option:</p>
+
+<pre><code><pre class="js">opts.<span class="me1">add</span><span class="br0">&#40;</span><span class="kw2">new</span> Option<span class="br0">&#40;</span>text<span class="sy0">,</span> value<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In case you use the <a class="link-" href="form__controls_list.html#combo">combo</a> item, you can get the instance of dhtmlXCombo and manipulate it using its methods. 
+Refer to the appropriate <a class="link-" href="combo__operations_with_combobox_s_options.html">dhtmlxCombo documentation</a>.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> combo <span class="sy0">=</span> myForm.<span class="me1">getCombo</span><span class="br0">&#40;</span><span class="st0">&quot;combo_name&quot;</span><span class="br0">&#41;</span>
+combo.<span class="me1">load</span><span class="br0">&#40;</span>url<span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//to fill combo with options from XML file</span></pre></code></pre>
+
+<p>Since 3.6 update 1 there is a new <a class="link-" href="api__dhtmlxform_reloadoptions.html">reloadOptions()</a> method, which allows reloading options using a local array or from server (like connector attr).</p>
+
+<a name='settinginputsvalues'><h2>Setting input's values</h2></a>
+
+<p>To set(get) the value of an item use the <a class="link-" href="api__dhtmlxform_getitemvalue.html">getItemValue()</a>/<a class="link-" href="api__dhtmlxform_setitemvalue.html">setItemValue()</a> methods.<br>
+Applied to all items (form's controls).</p>
+
+<pre><code><pre class="js"><span class="co1">// setting value</span>
+dhxForm.<span class="me1">setItemValue</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="sy0">,</span> value<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// getting value</span>
+<span class="kw2">var</span> value <span class="sy0">=</span> dhxForm.<span class="me1">getItemValue</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='gettingtypeofanitem'><h2>Getting type of an item</h2></a>
+
+<p>To get the type of an item, use the <a class="link-" href="api__dhtmlxform_getitemtype.html">getItemType()</a> method. <br>
+Applied to all items.</p>
+
+<pre><code><pre class="js"><span class="co1">// for radio buttons 2nd argument value should be passed</span>
+<span class="kw2">var</span> type <span class="sy0">=</span> dhxForm.<span class="me1">getItemType</span><span class="br0">&#40;</span><span class="kw3">name</span><span class="sy0">,</span> value<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Returns the type of an item (for example, "input") or null.</p>
+
+<a name='checkingifanitemexists'><h2>Checking if an item exists</h2></a>
+
+<p>To check whether an item exists, use the <a class="link-" href="api__dhtmlxform_isitem.html">isItem()</a> method.<br>
+Applied to all items.</p>
+
+<pre><code><pre class="js">formdata <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;password&quot;</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">'pass'</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">'Password:'</span><span class="br0">&#125;</span><span class="sy0">,</span>
+   ...<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> myForm <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXForm<span class="br0">&#40;</span><span class="st0">&quot;form_container&quot;</span><span class="sy0">,</span>formData<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> exists <span class="sy0">=</span> myForm.<span class="me1">isItem</span><span class="br0">&#40;</span><span class="st0">&quot;pass&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// for radio buttons you must also set the 2nd argument</span>
+&nbsp;
+<span class="kw1">if</span> <span class="br0">&#40;</span>exists<span class="br0">&#41;</span> 
+      <span class="br0">&#123;</span>myForm.<span class="me1">getItemValue</span><span class="br0">&#40;</span><span class="st0">&quot;pass&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="br0">&#125;</span></pre></code></pre>
+
+<p>Returns "true" if the specified item exists.</p>
+
+<a name='addingdetailsunderinput'><h2>Adding details under input</h2></a>
+
+<p>To add the details block under an input, use the <strong>note</strong> attribute.</p>
+
+<p><img src="media/form/details_block_note_.png"/></p>
+
+<ul>
+<li><strong>note</strong> - (object) creates the details block which is placed under the input
+
+<ul>
+<li><strong>text</strong> - (string) the text of the block</li>
+<li><strong>width</strong> - (number) the width of the block</li>
+</ul></li>
+</ul>
+
+<pre><code><pre class="js">formData <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;input&quot;</span><span class="sy0">,</span> 
+    <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;prj_name&quot;</span><span class="sy0">,</span> 
+    label<span class="sy0">:</span> <span class="st0">&quot;Project Name&quot;</span><span class="sy0">,</span> 
+    note<span class="sy0">:</span> <span class="br0">&#123;</span>
+        text<span class="sy0">:</span> <span class="st0">&quot;Enter your project name here. This field is required.&quot;</span><span class="sy0">,</span>
+        width<span class="sy0">:</span><span class="nu0">300</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Related methods</h3>
+
+<p>There are 2 methods you can use to set add/remove the note block dynamically:</p>
+
+<ul>
+<li><a class="link-" href="api__dhtmlxform_setnote.html">setNote()</a> - adds the note block under the specified input;</li>
+<li><a class="link-" href="api__dhtmlxform_clearnote.html">clearNote()</a> - removes the note block from the input.</li>
+</ul>
+
+<pre><code><pre class="js">myForm.<span class="me1">setNote</span><span class="br0">&#40;</span><span class="st0">'prj_name'</span><span class="sy0">,</span> <span class="br0">&#123;</span>text<span class="sy0">:</span><span class="st0">&quot;I'm the note block&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">myForm</span>.<span class="me1">clearNote</span><span class="br0">&#40;</span><span class="st0">'prj_name'</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='settingatooltip'><h2>Setting a tooltip</h2></a>
+
+<p>To set a tooltip for an input label, use the <strong>tooltip</strong> attribute.</p>
+
+<pre><code><pre class="js">formData <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;input&quot;</span><span class="sy0">,</span> 
+    <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;prj_name&quot;</span><span class="sy0">,</span> 
+    label<span class="sy0">:</span> <span class="st0">&quot;Project Name&quot;</span><span class="sy0">,</span> 
+    tooltip<span class="sy0">:</span><span class="st0">&quot;Enter your Project Name here&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='destructingforminstance'><h2>Destructing Form instance</h2></a>
+
+<p>In order to destruct dhtmlxForm instance use the following configuration:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>body <span class="kw3">onload</span><span class="sy0">=</span><span class="st0">&quot;doOnLoad()&quot;</span> <span class="kw3">onunload</span><span class="sy0">=</span><span class="st0">&quot;doOnUnload()&quot;</span><span class="sy0">&gt;</span>
+    <span class="sy0">&lt;</span>div id<span class="sy0">=</span><span class="st0">&quot;myForm&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+    <span class="sy0">&lt;</span>script<span class="sy0">&gt;</span>
+        <span class="kw2">var</span> form<span class="sy0">;</span>
+        <span class="kw2">function</span> doOnLoad<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            form <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXForm<span class="br0">&#40;</span><span class="st0">&quot;myForm&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+        <span class="kw2">function</span> doOnUnload<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            form.<span class="me1">unload</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            form <span class="sy0">=</span> <span class="kw2">null</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="sy0">&lt;/</span>script<span class="sy0">&gt;</span>
+<span class="sy0">&lt;/</span>body<span class="sy0">&gt;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='form__other_configuration.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

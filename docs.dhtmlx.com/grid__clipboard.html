@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Clipboard Operations  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="grid__iterators.html">Iterating Over Data</a></li><li class=""><a href="grid__sorting.html">Sorting Data</a></li><li class=""><a href="grid__filtering.html">Filtering Data</a></li><li class=""><a href="grid__searching.html">Searching in Grid</a></li><li class=""><a href="grid__grouping_rows.html">Grouping Data by Rows</a></li><li class=""><a href="grid__formatting.html">Formatting Number and Date Values</a></li><li class=""><a href="grid__statistics_counter.html">Statistics Counters</a></li><li class=""><a href="grid__validation.html">Validating Data Items</a></li><li class=""><a href="grid__math.html">Using Math Formulas for Data</a></li><li class=" current"><a href="grid__clipboard.html">Clipboard Operations</a></li><ul><li class="inner"><a href="grid__clipboard.html#copyingtheentiregrid">Copying the entire grid</a></li><li class="inner"><a href="grid__clipboard.html#copyingarow">Copying a row</a></li><li class="inner"><a href="grid__clipboard.html#copyingacell">Copying a cell</a></li><li class="inner"><a href="grid__clipboard.html#copyingablockofcells">Copying a block of cells</a></li><li class="inner"><a href="grid__clipboard.html#ifclipboardoperationsblockedbybrowser">If clipboard operations blocked by browser</a></li></ul><li class=""><a href="grid__undo_redo.html">Providing Undo/Redo Operations</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__managing_data.html">Managing Data in Grid</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Clipboard Operations</h1>
+
+<p>Note, data from the grid is copied in the CSV format.</p>
+
+<div class='note'><p><p>You need to set a tab as the delimiter (using grid.csv.cell="\t" syntax) to have a possibility to insert copied data to MS Excel.</p>
+</p></div>
+
+<a name='copyingtheentiregrid'><h2>Copying the entire grid</h2></a>
+
+<p>To copy the entire grid's data to the clipboard (in the CSV format) call the <a class="link-pro" href="api__dhtmlxgrid_gridtoclipboard.html">gridToClipboard</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">gridToClipboard</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/02_clipboard/02_pro_clipboard.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Operations with clipboard</a></p>
+
+<p><br></p>
+
+<p>To paste the copied data to the grid use the <a class="link-pro" href="api__dhtmlxgrid_gridfromclipboard.html">gridFromClipboard</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">clearAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// clears grid</span>
+mygrid.<span class="me1">gridFromClipboard</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//copies content from clipboard(uses the specified delimiter)</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/02_clipboard/02_pro_clipboard.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Operations with clipboard</a></p>
+
+<a name='copyingarow'><h2>Copying a row</h2></a>
+
+<p>To copy the data of a row to the clipboard use the <a class="link-pro" href="api__dhtmlxgrid_rowtoclipboard.html">rowToClipboard</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">rowToClipboard</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// &quot;row1&quot; - the row's id</span>
+<span class="co1">//or</span>
+mygrid.<span class="me1">rowToClipboard</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// copies the currently selected row</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/02_clipboard/02_pro_clipboard.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Operations with clipboard</a></p>
+
+<p><br></p>
+
+<p>To update some row with the data from the clipboard use the <a class="link-pro" href="api__dhtmlxgrid_updaterowfromclipboard.html">updateRowFromClipboard</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">updateRowFromClipboard</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// &quot;row1&quot; - the row's id</span>
+<span class="co1">//or</span>
+mygrid.<span class="me1">updateRowFromClipboard</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// updates the currently selected row</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/02_clipboard/02_pro_clipboard.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Operations with clipboard</a></p>
+
+<p><br></p>
+
+<p>To add a new row with the data from the clipboard use the <a class="link-pro" href="api__dhtmlxgrid_addrowfromclipboard.html">addRowFromClipboard</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">addRowFromClipboard</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// adds a row to the end of the grid</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/02_clipboard/02_pro_clipboard.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Operations with clipboard</a></p>
+
+<a name='copyingacell'><h2>Copying a cell</h2></a>
+
+<p>To copy the value of a cell to the clipboard use the  <a class="link-pro" href="api__dhtmlxgrid_celltoclipboard.html">cellToClipboard</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">cellToClipboard</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// &quot;row1&quot; - the row id. 0 - the col index</span>
+<span class="co1">//or</span>
+mygrid.<span class="me1">cellToClipboard</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// copies the currently selected cell</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/02_clipboard/02_pro_clipboard.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Operations with clipboard</a></p>
+
+<p><br></p>
+
+<p>To update some cell with the value from the clipboard use the <a class="link-pro" href="api__dhtmlxgrid_updatecellfromclipboard.html">updateCellFromClipboard</a></p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">updateCellFromClipboard</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span> <span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// &quot;row1&quot; - the row id. 0 - the col index</span>
+<span class="co1">//or</span>
+mygrid.<span class="me1">cellToClipboard</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// updates the currently selected cell</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/02_clipboard/02_pro_clipboard.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Operations with clipboard</a></p>
+
+<a name='copyingablockofcells'><h2>Copying a block of cells</h2></a>
+
+<p>dhtmlxGrid provides a special copying mode "Block selection" that allows users to select a block of cells for their further copying to the clipboard.</p>
+
+<p><img src="media/grid/block_selection.png"/></p>
+
+<p>To enable the "Block selection" mode on the page, call the <a class="link-" href="api__dhtmlxgrid_enableblockselection.html">enableBlockSelection</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">enableBlockSelection</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// false to disable</span></pre></code></pre>
+
+<div class='note'><p><p>The selection color is specified by the '.dhtmlxGrid_selection' class in the the 'dhtmlxgrid.css' file. By default, the selection is set to yellow.</p>
+</p></div>
+
+<p><br></p>
+
+<p>To copy a block of cells, use the <a class="link-" href="api__dhtmlxgrid_copyblocktoclipboard.html">copyBlockToClipboard</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">copyBlockToClipboard</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><br></p>
+
+<p>To copy/paste only the visible text of cells (not values behind them), use the <a class="link-" href="api__dhtmlxgrid_forcelabelselection.html">forceLabelSelection</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">forseLabelSelection</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><br></p>
+
+<p>To paste the copied block of cells into the grid use the <a class="link-" href="api__dhtmlxgrid_pasteblockfromclipboard.html">pasteBlockFromClipboard</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">pasteBlockFromClipboard</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/02_clipboard/01_grid_selection.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Copy to clipboard</a></p>
+
+<a name='ifclipboardoperationsblockedbybrowser'><h2>If clipboard operations blocked by browser</h2></a>
+
+<p>Clipboard operations may be blocked in some browsers. In such a case, to execute an alternative code use the dhtmlxError object as in:</p>
+
+<pre><code><pre class="js">dhtmlxError.<span class="me1">catchError</span><span class="br0">&#40;</span><span class="st0">&quot;Clipboard&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+     <span class="co1">//any custom message here </span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='grid__clipboard.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="libCompiler is a DHTMLX tool that helps you to recompile DHTMLX source files collection when you make changes in the Suite or create a custom components compilation." />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Using libCompiler  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=" current"><a href="libcompiler__index.html">Using libCompiler</a></li><ul><li class="inner"><a href="libcompiler__index.html#compilingapackage">Compiling a package</a></li><li class="inner"><a href="libcompiler__index.html#compilingadebugpackage">Compiling a debug package</a></li><li class="inner"><a href="libcompiler__index.html#compilinginlinux">Compiling in Linux</a></li><li class="inner"><a href="libcompiler__index.html#makingchangesinthesuite">Making changes in the Suite</a></li><li class="inner"><a href="libcompiler__index.html#selectingnecessaryfiles">Selecting necessary files</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Using libCompiler</h1>
+
+<p>LibCompiler is a special tool that makes the process of compiling a package easier and handier.</p>
+
+<a name='compilingapackage'><h2>Compiling a package</h2></a>
+
+<p>When you download a package, e.g. dhtmlxSuite_v40_pro.zip, and unpack it, you get the following directory structure:</p>
+
+<p style='text-align:center; padding: 10px 0px;'>
+    <img src="media/libcompiler/01.png">
+</p>
+
+<ul>
+<li>the <strong>codebase</strong> directory contains compiled files,  </li>
+<li>the <strong>docs</strong> directory includes link to the documentation, </li>
+<li>the <strong>samples</strong> directory stores examples,</li>
+<li>the <strong>skins</strong> directory keeps files for skins,</li>
+<li>finally, the <strong>sources</strong> directory contains the library’s source files 
+and the very libCompiler which all of you like so much.</li>
+</ul>
+
+<p>In order for libCompiler to work you need:</p>
+
+<ol>
+<li>installed <strong>jre</strong> to run <strong>yui.jar</strong></li>
+<li>installed <strong>php</strong> to run scripts</li>
+<li>the directories of source files</li>
+</ol>
+
+<h3 id="compiling">First configuration</h3>
+
+<p>Open the file <strong>compile.bat</strong> in a text editor:</p>
+
+<p style='text-align:center; padding: 10px 0px;'>
+    <img src="media/libcompiler/02.png">
+</p>
+
+<p>In line 5 change the path <b>c:\path_to_php_dir\</b>
+for the path to the directory where php is installed, 
+e.g. C:\WebServers\PHP5&#46; In general case the result will look like this:</p>
+
+<p style='text-align:center; padding: 10px 0px;'>
+    <img src="media/libcompiler/03.png">
+</p>
+
+<p>That’s all, now you can run the <strong>compile.bat</strong> file. 
+Pay attention that it’ll rewrite js/css files and images 
+in the codebase directory.</p>
+
+<p>Delete the content of the codebase directory: all files and subfolders (not the directory itself!). 
+Then libCompiler will create the necessary subdirectories and write the needed files.</p>
+
+<p>The result of the compile.bat file execution is given below:</p>
+
+<p style='text-align:center; padding: 10px 0px;'>
+    <img src="media/libcompiler/04.png">
+</p>
+
+<a name='compilingadebugpackage'><h2>Compiling a debug package</h2></a>
+
+<p>Reproduce all the steps from the Part 1 with the file <strong>compile_debug.bat</strong>. This file will make the same compilation, as in the part 1 and
+create the <strong>dhtmlx_debug.js</strong> file additionally.</p>
+
+<p>Run the <strong>compile_debug.bat</strong> file and when its execution finishes, 
+the file <strong>dhtmlx_debug.js</strong> will appear in the codebase directory.</p>
+
+<p>The result of file execution (pay attention to dhtmlx_debug.js in logs):</p>
+
+<p style='text-align:center; padding: 10px 0px;'>
+    <img src="media/libcompiler/05.png">
+</p>
+
+<p>The same result but from the file system side:</p>
+
+<p style='text-align:center; padding: 10px 0px;'>
+    <img src="media/libcompiler/06.png">
+</p>
+
+<p>The <strong>dhtmlx_debug.js</strong> file has the same components while the markup is preserved,
+ which is rather handy during the debugging.</p>
+
+<a name='compilinginlinux'><h2>Compiling in Linux</h2></a>
+
+<p>The process is almost the same as for Windows. You need PHP and JRE installed,
+go to <strong>sources/libCompiler</strong> dir and exec from the command line:</p>
+
+<pre><code><pre class="sh">php lib_compiler.php</pre></code></pre>
+
+<p>or for debug version</p>
+
+<pre><code><pre class="sh">php lib_compiler.php --debug=true</pre></code></pre>
+
+<p>If your environment doesn't have a public path to java,
+edit <strong>lib_compiler.php</strong> and change the path to java:</p>
+
+<pre><code><pre class="php"><span class="re0">$compiler</span> <span class="sy0">=</span> <span class="st0">&quot;java -jar yui.jar&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Also you need r/w access for codebase and skins dirs.</p>
+
+<a name='makingchangesinthesuite'><h2>Making changes in the Suite</h2></a>
+
+<p>If you need to recompile <strong>dhtmlx.js</strong> with a custom code:</p>
+
+<p>1) edit/update the corresponding file in the <strong>sources</strong> folder<br>
+2) run <strong>compile.bat</strong> (or <strong>compile_debug.bat</strong>)<br></p>
+
+<p>libCompiler will recompile <strong>dhtmlx.js</strong> and <strong>dhtmlx.css</strong> files
+with your changes.</p>
+
+<a name='selectingnecessaryfiles'><h2>Selecting necessary files</h2></a>
+
+<p>You can also create a custom compilation, 
+by removing unused components from single dhtmlx.js/css</p>
+
+<p>1) edit <strong>/sources/libCompiler/conf/stat_js</strong> and
+remove all unused components' js files from it<br>
+2) edit <strong>/sources/libCompiler/conf/stat_css</strong> and
+remove all unused components' css files from it<br>
+3) recompile suite and use target dhtmlx.js/css files<br></p>
+
+<p><br>
+<strong>dhtmlxcommon.js</strong> is required always;<br>
+<strong>dhtmlxcore.js</strong> is required for chart and dataview;<br>
+<strong>dhtmlxcontainer.js</strong> is required for tabbar, layout, accordion and windows.<br></p>
+
+<p><br></p>
+
+<!-- Content Area End -->
+			<a href='libcompiler__index.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

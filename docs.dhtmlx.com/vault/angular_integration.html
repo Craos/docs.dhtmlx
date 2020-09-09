@@ -1,0 +1,362 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1589296882.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1589296882.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Vault Docs" href="https://docs.dhtmlx.com/vault/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Integrating Vault with Angular  Vault Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/c/widgets/vault">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="installation.html">How to Install dhtmlxVault</a></li><li class=""><a href="initialize.html">Initialization</a></li><li class=""><a href="configuring.html">Configuration</a></li><li class=""><a href="localization.html">Localization</a></li><li class=""><a href="work_with_vault.html">Working with Vault</a></li><li class=""><a href="loading_files.html">Loading List of Files</a></li><li class=""><a href="uploading_files.html">Uploading Files</a></li><li class=""><a href="managing_files.html">Managing Files</a></li><li class=""><a href="events.html">Handling Events</a></li><li class=""><a href="customization.html">Customizing Vault</a></li><li class=" current"><a href="angular_integration.html">Integrating Vault with Angular</a></li><ul><li class="inner"><a href="angular_integration.html#includingsourcefiles">Including source files</a></li><li class="inner"><a href="angular_integration.html#initialization">Initialization</a></li></ul><li class=""><a href="react_integration.html">Integrating Vault with React</a></li><li class=""><a href="vuejs_integration.html">Integrating Vault with Vue.js</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Integrating Vault with Angular</h1>
+
+<p>You can use dhtmlxVault in an application created with the <a href="https://vuejs.org/">Angular</a> framework. <a href="https://github.com/DHTMLX/angular-widgets">Check the demo on Github</a>.</p>
+
+<div class='note'><p><p>Please note that the implementation provided below is not the only way to use dhtmlxVault in a Angular-based application. It gives you initial schema of the integration and implies further 
+extension of the app functionality depending on your goals.</p>
+</p></div>
+
+<a name='includingsourcefiles'><h2>Including source files</h2></a>
+
+<p>To add Vault sources into a Angular-based app you need to <a href="https://dhtmlx.com/docs/products/dhtmlxVault/download.shtml">download the component package</a> and unpack it into a folder of your project.</p>
+
+<p>Then include <strong>vault.js</strong> and <strong>vault.css</strong> files into a page. Make sure that you set correct relative paths to these files:</p>
+
+<p>The source files are represented in two versions: the full version and the minified one. Make sure that you set correct relative paths to these files:</p>
+
+<p class='snippet'> index.html</p>
+
+<pre><code><pre class="html">// full version
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/vault.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>  
+<span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;codebase/vault.css&quot;</span>&gt;</span>
+&nbsp;
+// minified version
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/vault.min.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>  
+<span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;codebase/vault.min.css&quot;</span>&gt;</span></pre></code></pre>
+
+<a name='initialization'><h2>Initialization</h2></a>
+
+<p>There are two possible scenarios of initializing Vault inside an Angular application. One consists in isolating Vault structure and data inside of the Angular component and another one suggests 
+separating view and data parts with the possibility of interaction between them.</p>
+
+<h3>Scenario 1. Isolating Vault in an Angular component</h3>
+
+<p>In this variant Vault configuration and data are held inside of the Angular component with no bonds with the external part of the application.</p>
+
+<h4>Vault initialization</h4>
+
+<ul>
+<li>Create a <em>Vault.ts</em> file, where you will define a Component. Each component must have a template assigned, for Vault it will be a plain DIV tag with a named reference.</li>
+</ul>
+
+<p class='snippet'> Vault.ts</p>
+
+<pre><code><pre class="js"><span class="sy0">@</span>Component<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    template<span class="sy0">:</span> `<span class="sy0">&lt;</span>div #widget <span class="kw2">class</span><span class="sy0">=</span><span class="st0">'widget-box'</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>`
+<span class="br0">&#125;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<ul>
+<li>Use the <code>new Vault</code> constructor to initialize Vault inside of the container that you've set above: </li>
+</ul>
+
+<p class='snippet'> Vault.ts</p>
+
+<pre><code><pre class="js"><span class="kw2">export</span> <span class="kw2">class</span> VaultComponent implements OnInit<span class="sy0">,</span> OnDestroy <span class="br0">&#123;</span>
+    <span class="sy0">@</span>ViewChild<span class="br0">&#40;</span><span class="st0">'widget'</span><span class="br0">&#41;</span> container<span class="sy0">:</span> ElementRef<span class="sy0">;</span>
+    vault<span class="sy0">:</span> Vault<span class="sy0">;</span>
+&nbsp;
+    ngOnInit<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">this</span>.<span class="me1">vault</span> <span class="sy0">=</span> <span class="kw2">new</span> Vault<span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">container</span>.<span class="me1">nativeElement</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+            mode<span class="sy0">:</span> VaultMode.<span class="me1">grid</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>   
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h4>Loading data and changing config</h4>
+
+<ul>
+<li>Next you can load data into the Vault and change its configuration, e.g. add a new control into the toolbar:</li>
+</ul>
+
+<p class='snippet'> Vault.ts</p>
+
+<pre><code><pre class="js"><span class="kw2">export</span> <span class="kw2">class</span> VaultComponent implements OnInit<span class="sy0">,</span> OnDestroy <span class="br0">&#123;</span>
+    <span class="sy0">@</span>ViewChild<span class="br0">&#40;</span><span class="st0">'widget'</span><span class="br0">&#41;</span> container<span class="sy0">:</span> ElementRef<span class="sy0">;</span>
+    vault<span class="sy0">:</span> Vault<span class="sy0">;</span>
+&nbsp;
+    ngOnInit<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">this</span>.<span class="me1">vault</span> <span class="sy0">=</span> <span class="kw2">new</span> Vault<span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">container</span>.<span class="me1">nativeElement</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+            mode<span class="sy0">:</span> VaultMode.<span class="me1">grid</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">this</span>.<span class="me1">vault</span>.<span class="me1">data</span>.<span class="me1">parse</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+            <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">'myfile_12.png'</span><span class="sy0">,</span> size<span class="sy0">:</span> <span class="nu0">32420</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">'myfile_13.png'</span><span class="sy0">,</span> size<span class="sy0">:</span> <span class="nu0">55674</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">'myfile_14.png'</span><span class="sy0">,</span> size<span class="sy0">:</span> <span class="nu0">12440</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">'info.doc'</span><span class="sy0">,</span> size<span class="sy0">:</span> <span class="nu0">243441</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">this</span>.<span class="me1">vault</span>.<span class="me1">toolbar</span>.<span class="me1">data</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+            value<span class="sy0">:</span> <span class="st0">'MyAction'</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Scenario 2. Exposing Vault data and config</h3>
+
+<p>This variant adds flexibility in the control over Vault data and configuration by allowing access to them from other parts of the application.</p>
+
+<h4>Vault initialization</h4>
+
+<ul>
+<li>The first step is the same. Create a file, let it be <em>Vault2.ts</em> this time, and add a container for the Vault:</li>
+</ul>
+
+<p class='snippet'> Vault2.ts</p>
+
+<pre><code><pre class="js"><span class="sy0">@</span>Component<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    template<span class="sy0">:</span> `<span class="sy0">&lt;</span>div #widget <span class="kw2">class</span><span class="sy0">=</span><span class="st0">'widget-box'</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>`
+<span class="br0">&#125;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<ul>
+<li>Then initialize Vault with the <code>new Vault</code> constructor and define the configuration properties of Vault in the object passed as a second parameter of the constructor:</li>
+</ul>
+
+<p class='snippet'> Vault2.ts</p>
+
+<pre><code><pre class="js"><span class="kw2">export</span> <span class="kw2">class</span> VaultComponent implements OnInit<span class="sy0">,</span> OnDestroy <span class="br0">&#123;</span>
+    <span class="sy0">@</span>ViewChild<span class="br0">&#40;</span><span class="st0">'widget'</span><span class="br0">&#41;</span> container<span class="sy0">:</span> ElementRef<span class="sy0">;</span>
+    vault<span class="sy0">:</span> Vault<span class="sy0">;</span>
+&nbsp;
+    ngOnInit<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">this</span>.<span class="me1">vault</span> <span class="sy0">=</span> <span class="kw2">new</span> Vault<span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">container</span>.<span class="me1">nativeElement</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+            data<span class="sy0">:</span> <span class="kw1">this</span>.<span class="me1">data</span><span class="sy0">,</span>
+            mode<span class="sy0">:</span> VaultMode.<span class="me1">grid</span><span class="sy0">,</span>
+            uploader<span class="sy0">:</span> <span class="br0">&#123;</span>
+                autosend<span class="sy0">:</span> <span class="kw1">this</span>.<span class="me1">autosend</span><span class="sy0">,</span>
+                target<span class="sy0">:</span> <span class="kw1">this</span>.<span class="me1">target</span>
+            <span class="br0">&#125;</span><span class="sy0">,</span>
+            toolbar<span class="sy0">:</span> <span class="kw1">this</span>.<span class="me1">toolbar</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>   
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h4>Working with configuration options</h4>
+
+<ul>
+<li>Set the list of used Vault configuration properties and their types before the initialization function:</li>
+</ul>
+
+<p class='snippet'> Vault2.ts</p>
+
+<pre><code><pre class="js"><span class="kw2">export</span> <span class="kw2">class</span> VaultComponent implements OnInit<span class="sy0">,</span> OnDestroy <span class="br0">&#123;</span>
+    <span class="sy0">@</span>ViewChild<span class="br0">&#40;</span><span class="st0">'widget'</span><span class="br0">&#41;</span> container<span class="sy0">:</span> ElementRef<span class="sy0">;</span>
+    vault<span class="sy0">:</span> Vault<span class="sy0">;</span>
+&nbsp;
+    <span class="sy0">@</span>Input<span class="br0">&#40;</span><span class="br0">&#41;</span> mode<span class="sy0">:</span> string<span class="sy0">;</span>
+    <span class="sy0">@</span>Input<span class="br0">&#40;</span><span class="br0">&#41;</span> target<span class="sy0">:</span> string<span class="sy0">;</span>
+    <span class="sy0">@</span>Input<span class="br0">&#40;</span><span class="br0">&#41;</span> toolbar<span class="sy0">:</span> boolean<span class="sy0">;</span>
+    <span class="sy0">@</span>Input<span class="br0">&#40;</span><span class="br0">&#41;</span> autosend<span class="sy0">:</span> boolean<span class="sy0">;</span>
+    <span class="sy0">@</span>Input<span class="br0">&#40;</span><span class="br0">&#41;</span> data<span class="sy0">:</span> DataCollection<span class="sy0">&lt;</span>IFileWrapper<span class="sy0">&gt;;</span>
+&nbsp;
+    ngOnInit<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">this</span>.<span class="me1">vault</span> <span class="sy0">=</span> <span class="kw2">new</span> Vault<span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">container</span>.<span class="me1">nativeElement</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+            data<span class="sy0">:</span> <span class="kw1">this</span>.<span class="me1">data</span><span class="sy0">,</span>
+            mode<span class="sy0">:</span> VaultMode.<span class="me1">grid</span><span class="sy0">,</span>
+            uploader<span class="sy0">:</span> <span class="br0">&#123;</span>
+                autosend<span class="sy0">:</span> <span class="kw1">this</span>.<span class="me1">autosend</span><span class="sy0">,</span>
+                target<span class="sy0">:</span> <span class="kw1">this</span>.<span class="me1">target</span>
+            <span class="br0">&#125;</span><span class="sy0">,</span>
+            toolbar<span class="sy0">:</span> <span class="kw1">this</span>.<span class="me1">toolbar</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>   
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>The properties of Vault are exposed and available to work with outside the component. In the example below the "grid" mode of rendering a list of files is enabled:</p>
+
+<p class='snippet'> BasicSample.ts</p>
+
+<pre><code><pre class="js"><span class="sy0">@</span>Component<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    template<span class="sy0">:</span> `
+    <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">'app-box'</span><span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>app<span class="sy0">-</span>vault mode<span class="sy0">=</span><span class="st0">'grid'</span><span class="sy0">&gt;&lt;/</span>app<span class="sy0">-</span>vault<span class="sy0">&gt;</span>
+    <span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span>`
+<span class="br0">&#125;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<h4>Working with data</h4>
+
+<p>Work with data in this variant of using Vault in an Angular application can follow the MVVM pattern. Data collection represents Model and Vault represents View. 
+Data collection and Vault are kept separately, and communicate with each other via particular links. Any changes made in the Model (Data collection) trigger corresponding changes in the View (Vault).</p>
+
+<p>Usage of the MVVM pattern allows working with data outside Vault and all data-related manipulations can be moved to a separate file.</p>
+
+<ul>
+<li>Create a <em>DataSample.ts</em> file and create a new data collection named <em>files</em> in it: </li>
+</ul>
+
+<p class='snippet'> DataSample.ts</p>
+
+<pre><code><pre class="js"><span class="kw2">export</span> <span class="kw2">class</span> VaultComponent <span class="br0">&#123;</span>
+  files<span class="sy0">:</span> DataCollection<span class="sy0">;</span>
+&nbsp;
+  constructor<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">this</span>.<span class="me1">files</span> <span class="sy0">=</span> <span class="kw2">new</span> DataCollection<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>Bind the created data collection to Vault via the corresponding attribute:</li>
+</ul>
+
+<p class='snippet'> DataSample.ts</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>app<span class="sy0">-</span>vault <span class="br0">&#91;</span>data<span class="br0">&#93;</span><span class="sy0">=</span>files <span class="kw2">class</span><span class="sy0">=</span><span class="st0">'base-size'</span><span class="sy0">&gt;&lt;/</span>app<span class="sy0">-</span>vault<span class="sy0">&gt;</span></pre></code></pre>
+
+<p>Due to data binding you can:</p>
+
+<ul>
+<li>react to changes in the data</li>
+</ul>
+
+<p>For example, by using the <strong>change</strong> event:</p>
+
+<p class='snippet'> DataSample.ts</p>
+
+<pre><code><pre class="js"><span class="kw2">export</span> <span class="kw2">class</span> VaultComponent <span class="br0">&#123;</span>
+  files<span class="sy0">:</span> DataCollection<span class="sy0">;</span>
+  count<span class="sy0">:</span> number<span class="sy0">;</span>
+&nbsp;
+  constructor<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">this</span>.<span class="me1">files</span> <span class="sy0">=</span> <span class="kw2">new</span> DataCollection<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">this</span>.<span class="me1">files</span>.<span class="me1">events</span>.<span class="me1">on</span><span class="br0">&#40;</span>DataEvents.<span class="me1">change</span><span class="sy0">,</span> <span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">=&gt;</span> <span class="br0">&#123;</span>
+      <span class="kw1">this</span>.<span class="me1">count</span> <span class="sy0">=</span> <span class="kw1">this</span>.<span class="me1">files</span>.<span class="me1">getLength</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>make changes in the data</li>
+</ul>
+
+<p>For example, you can add files into the Vault and clear the list by clicking the bound buttons. In the example below buttons are subscribed to the <em>click</em> event.</p>
+
+<p class='snippet'> DataSample.ts</p>
+
+<pre><code><pre class="js"><span class="sy0">@</span>Component<span class="br0">&#40;</span><span class="br0">&#123;</span>
+  template<span class="sy0">:</span> `
+    <span class="sy0">&lt;</span>div <span class="kw2">class</span><span class="sy0">=</span><span class="st0">'app-box'</span><span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>input type<span class="sy0">=</span><span class="st0">&quot;button&quot;</span> <span class="br0">&#40;</span>click<span class="br0">&#41;</span><span class="sy0">=</span><span class="st0">&quot;add()&quot;</span> value<span class="sy0">=</span><span class="st0">&quot;Add a file&quot;</span><span class="sy0">&gt;</span>
+        <span class="sy0">&lt;</span>input type<span class="sy0">=</span><span class="st0">&quot;button&quot;</span> <span class="br0">&#40;</span>click<span class="br0">&#41;</span><span class="sy0">=</span><span class="st0">&quot;clear()&quot;</span> value<span class="sy0">=</span><span class="st0">&quot;Clear all&quot;</span><span class="sy0">&gt;</span>
+    <span class="sy0">&lt;/</span>div<span class="sy0">&gt;</span>`
+<span class="br0">&#125;</span><span class="br0">&#41;</span>
+<span class="kw2">export</span> <span class="kw2">class</span> VaultComponent <span class="br0">&#123;</span>
+  files<span class="sy0">:</span> DataCollection<span class="sy0">;</span>
+&nbsp;
+  constructor<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">this</span>.<span class="me1">files</span> <span class="sy0">=</span> <span class="kw2">new</span> DataCollection<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+  add<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">this</span>.<span class="me1">files</span>.<span class="me1">add</span><span class="br0">&#40;</span><span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">'myfile.png'</span><span class="sy0">,</span> size<span class="sy0">:</span> <span class="nu0">24560</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+  clear<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">this</span>.<span class="me1">files</span>.<span class="me1">removeAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>A click on the "Add a file" button adds a file into the Vault and a click on the "Clear all" button cleans the list of files, as it's defined by the related methods.</p>
+
+<!-- Content Area End -->
+			<a href='angular_integration.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			
+<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='loading_files.html'>Loading List of Files</a></li>	
+	<li><a href='managing_files.html'>Managing Files</a></li>
+	<li><a href='work_with_vault.html'>Working with Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Look and Feel</li>
+	<li><a href='configuring.html'>Configuration</a></li>
+	<li><a href='customization.html'>Customization</a></li>
+	<li><a href='localization.html'>Localization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Integration</li>
+	<li><a href='angular_integration.html'>Vault and Angular</a></li>
+	<li><a href='react_integration.html'>Vault and React</a></li>
+	<li><a href='vuejs_integration.html'>Vault and Vue.js</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__vault.html#methods'>Methods</a></li>
+	<li><a href='api__refs__vault_props.html'>Properties</a></li>
+	<li><a href='api__refs__vault_events.html'>Events</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

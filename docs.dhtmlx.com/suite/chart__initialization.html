@@ -1,0 +1,334 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Initialization  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="chart__api__refs__chart.html">Chart API</a></li><li class=""><a href="chart__charts_overview.html">Overview of Chart Types</a></li><li class=" current"><a href="chart__initialization.html">Initialization</a></li><ul><li class="inner"><a href="chart__initialization.html#includesourcefiles">Include source files</a></li><li class="inner"><a href="chart__initialization.html#createacontainer">Create a container</a></li><li class="inner"><a href="chart__initialization.html#initializechart">Initialize Chart</a></li><li class="inner"><a href="chart__initialization.html#loaddataintochart">Load data into Chart</a></li></ul><li class=""><a href="chart__configuration_properties.html">Configuration</a></li><li class=""><a href="chart__data_loading.html">Data Loading</a></li><li class=""><a href="chart__usage.html">Work with Chart</a></li><li class=""><a href="chart__customization.html">Customization</a></li><li class=""><a href="chart__events.html">Event Handling</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="chart__index.html">Chart</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Initialization</h1>
+
+<p>To initialize dhtmlxChart in an application, you need to take the following steps:</p>
+
+<ul>
+<li><a href="https://dhtmlx.com/docs/products/dhtmlxChart/download.shtml">Download the dhtmlxChart package</a> and unpack it into a folder of your project</li>
+<li><a href="chart__initialization.html#includesourcefiles">Include source files</a></li>
+<li><a href="chart__initialization.html#createacontainer">Create a container</a></li>
+<li><a href="chart__initialization.html#initializechart">Initialize Chart</a> with the object constructor</li>
+<li><a href="chart__initialization.html#loaddataintochart">Load data into Chart</a></li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">title</span>&gt;</span>How to Start with dhtmlxChart<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">title</span>&gt;</span>         
+        <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../../codebase/chart.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../../codebase/chart.css&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;chart_container&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">            <span class="co1">// creating dhtmlxChart </span>
+            <span class="kw2">var</span> chart <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Chart</span><span class="br0">&#40;</span><span class="st0">&quot;chart_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+                type<span class="sy0">:</span> <span class="st0">&quot;bar&quot;</span><span class="sy0">,</span>
+                scales<span class="sy0">:</span> <span class="br0">&#123;</span>
+                    <span class="st0">&quot;bottom&quot;</span> <span class="sy0">:</span> <span class="br0">&#123;</span>
+                        text<span class="sy0">:</span> <span class="st0">&quot;month&quot;</span>
+                    <span class="br0">&#125;</span><span class="sy0">,</span>
+                    <span class="st0">&quot;left&quot;</span> <span class="sy0">:</span> <span class="br0">&#123;</span>
+                        maxTicks<span class="sy0">:</span> <span class="nu0">10</span><span class="sy0">,</span>
+                        max<span class="sy0">:</span> <span class="nu0">100</span><span class="sy0">,</span>
+                        min<span class="sy0">:</span> <span class="nu0">0</span>
+                    <span class="br0">&#125;</span>
+                <span class="br0">&#125;</span><span class="sy0">,</span>
+                series<span class="sy0">:</span> <span class="br0">&#91;</span>
+                    <span class="br0">&#123;</span>
+                        id<span class="sy0">:</span> <span class="st0">&quot;A&quot;</span><span class="sy0">,</span>
+                        value<span class="sy0">:</span> <span class="st0">&quot;company C&quot;</span><span class="sy0">,</span>
+                        color<span class="sy0">:</span> <span class="st0">&quot;#5E83BA&quot;</span><span class="sy0">,</span>                       
+                        fill<span class="sy0">:</span> <span class="st0">&quot;#5E83BA&quot;</span>                     
+                    <span class="br0">&#125;</span>
+                <span class="br0">&#93;</span>
+            <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre>        <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/id9nbujd' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Basic Initialization Bar Chart</a></p>
+
+<a name='includesourcefiles'><h2>Include source files</h2></a>
+
+<p>Create an HTML file and place full paths to JS and CSS files of dhtmlxChart into the header of the created file. The Chart component can be used standalone or as a part of the Suite library.</p>
+
+<p><strong>If you use dhtmlxChart standalone</strong>, you need to include 2 files:</p>
+
+<ul>
+<li><em>chart.js</em></li>
+<li><em>chart.css</em></li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../../codebase/chart.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../../codebase/chart.css&quot;</span>&gt;</span></pre></code></pre>
+
+<p><strong>If you use dhtmlxChart as a part of the Suite package</strong>, you need to include JS/CSS files of the dhtmlxSuite library:</p>
+
+<ul>
+<li>suite.js</li>
+<li>suite.css</li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../codebase/suite.css&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../codebase/suite.js&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<a name='createacontainer'><h2>Create a container</h2></a>
+
+<p>Add a container for Chart and give it an id, "chart_container", for example:</p>
+
+<p class='snippet'> index.html</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;chart_container&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+<a name='initializechart'><h2>Initialize Chart</h2></a>
+
+<p>Initialize Chart with the <code>dhx.Chart</code> object constructor. The constructor has two parameters:</p>
+
+<ul>
+<li><strong>container</strong> – (<em>id</em>) the id of an HTML container where a chart will be initialized. You've defined it at the previous step </li>
+<li>the chart <strong>configuration object</strong> with necessary properties. There are the following main config options:
+
+<ul>
+<li><a class="link-" href="chart__api__chart_css_config.html"><strong>css</strong></a> - (<em>string</em>) adds style classes to Chart</li>
+<li><a class="link-" href="chart__api__chart_type_config.html"><strong>type</strong></a> - (<em>string</em>) the type of a chart to initialize. 
+Сhoose any of the 11 available types: "bar", "x-bar", "line", "spline", "scatter", "area", "splineArea", "donut", "pie", "pie3D", "radar"</li>
+<li><a class="link-" href="chart__configuration_properties.html#scales"><strong>scales</strong></a> - (<em>object</em>) an object with charts scales configuration</li>
+<li><a class="link-" href="chart__configuration_properties.html#series"><strong>series</strong></a> - (<em>array</em>) an array of series objects. Series are representations of data properties</li>
+<li><a class="link-" href="chart__configuration_properties.html#legend"><strong>legend</strong></a> - (<em>array</em>) an array with the legend configuration options</li>
+<li><a class="link-" href="chart__api__chart_maxpoints_config.html"><strong>maxPoints</strong></a> - (<em>number</em>) displays an average number of values in case a data set is too large to show all the values in the chart</li>
+</ul></li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> config <span class="sy0">=</span> <span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;bar&quot;</span><span class="sy0">,</span>
+    scales<span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="st0">&quot;bottom&quot;</span> <span class="sy0">:</span> <span class="br0">&#123;</span>
+            text<span class="sy0">:</span> <span class="st0">&quot;month&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="st0">&quot;left&quot;</span> <span class="sy0">:</span> <span class="br0">&#123;</span>
+            maxTicks<span class="sy0">:</span> <span class="nu0">10</span><span class="sy0">,</span>
+            max<span class="sy0">:</span> <span class="nu0">100</span><span class="sy0">,</span>
+            min<span class="sy0">:</span> <span class="nu0">0</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    series<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+            id<span class="sy0">:</span> <span class="st0">&quot;A&quot;</span><span class="sy0">,</span>
+            value<span class="sy0">:</span> <span class="st0">&quot;company C&quot;</span><span class="sy0">,</span>
+            color<span class="sy0">:</span> <span class="st0">&quot;#5E83BA&quot;</span><span class="sy0">,</span>                       
+            fill<span class="sy0">:</span> <span class="st0">&quot;#5E83BA&quot;</span>                     
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> chart <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Chart</span><span class="br0">&#40;</span><span class="st0">&quot;chart_container&quot;</span><span class="sy0">,</span> config<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>See the full list of all available configuration properties in the article <a class="link-" href="chart__configuration_properties.html">Configuration</a>.</p>
+
+<a name='loaddataintochart'><h2>Load data into Chart</h2></a>
+
+<p>Finally, you are to load the chart with data. You can load inline or external data into the chart.</p>
+
+<ul>
+<li>to load data from a local source, use the <a class="link-" href="data_collection__api__parse.html">parse</a> method of the Data Collection object:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#91;</span>
+     <span class="br0">&#123;</span> month<span class="sy0">:</span> <span class="st0">'<span class="es0">\'</span>02'</span><span class="sy0">,</span> <span class="st0">'company A'</span><span class="sy0">:</span> <span class="nu0">20</span><span class="sy0">,</span> <span class="st0">'company B'</span><span class="sy0">:</span> <span class="nu0">52</span><span class="sy0">,</span> <span class="st0">'company C'</span><span class="sy0">:</span> <span class="nu0">72</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span> month<span class="sy0">:</span> <span class="st0">'<span class="es0">\'</span>03'</span><span class="sy0">,</span> <span class="st0">'company A'</span><span class="sy0">:</span> <span class="nu0">55</span><span class="sy0">,</span> <span class="st0">'company B'</span><span class="sy0">:</span> <span class="nu0">33</span><span class="sy0">,</span> <span class="st0">'company C'</span><span class="sy0">:</span> <span class="nu0">90</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span> month<span class="sy0">:</span> <span class="st0">'<span class="es0">\'</span>04'</span><span class="sy0">,</span> <span class="st0">'company A'</span><span class="sy0">:</span> <span class="nu0">40</span><span class="sy0">,</span> <span class="st0">'company B'</span><span class="sy0">:</span> <span class="nu0">30</span><span class="sy0">,</span> <span class="st0">'company C'</span><span class="sy0">:</span> <span class="nu0">81</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span> month<span class="sy0">:</span> <span class="st0">'<span class="es0">\'</span>05'</span><span class="sy0">,</span> <span class="st0">'company A'</span><span class="sy0">:</span> <span class="nu0">80</span><span class="sy0">,</span> <span class="st0">'company B'</span><span class="sy0">:</span> <span class="nu0">11</span><span class="sy0">,</span> <span class="st0">'company C'</span><span class="sy0">:</span> <span class="nu0">62</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span> month<span class="sy0">:</span> <span class="st0">'<span class="es0">\'</span>06'</span><span class="sy0">,</span> <span class="st0">'company A'</span><span class="sy0">:</span> <span class="nu0">60</span><span class="sy0">,</span> <span class="st0">'company B'</span><span class="sy0">:</span> <span class="nu0">14</span><span class="sy0">,</span> <span class="st0">'company C'</span><span class="sy0">:</span> <span class="nu0">68</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="co1">// more data items</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> chart <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Chart</span><span class="br0">&#40;</span><span class="st0">&quot;chart_container&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;bar&quot;</span><span class="sy0">,</span>
+    scales<span class="sy0">:</span> <span class="br0">&#123;</span> <span class="co1">// scales config }</span>
+    series<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+            <span class="co1">//series config                 </span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+chart.<span class="me1">data</span>.<span class="me1">parse</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/id9nbujd' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Basic Initialization Bar Chart</a></p>
+
+<ul>
+<li>to load data from an external file, use the <a class="link-" href="data_collection__api__load.html">load</a> method of the Data Collection object:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> chart <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Chart</span><span class="br0">&#40;</span> <span class="st0">&quot;chart_container&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;bar&quot;</span><span class="sy0">,</span>
+    scales<span class="sy0">:</span> <span class="br0">&#123;</span> <span class="co1">// scales config }</span>
+    series<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+            <span class="co1">//series config                 </span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+chart.<span class="me1">data</span>.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;../common/dataset.json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/qah8exx2' target='blank'><span class='sample'>Related sample: </span>&nbsp;Chart. Load Data</a></p>
+
+<!-- Content Area End -->
+			<a href='chart__initialization.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

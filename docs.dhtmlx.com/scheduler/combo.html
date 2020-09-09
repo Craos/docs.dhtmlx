@@ -1,0 +1,329 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Combo  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="textarea.html">Textarea</a></li><li class=""><a href="time.html">Time and Date</a></li><li class=""><a href="select.html">Select</a></li><li class=""><a href="template.html">Template</a></li><li class=""><a href="multiselect.html">Multiselect</a></li><li class=""><a href="checkbox.html">Checkbox</a></li><li class=""><a href="radio.html">Radio</a></li><li class=" current"><a href="combo.html">Combo</a></li><ul><li class="inner"><a href="combo.html#initialization">Initialization</a></li><li class="inner"><a href="combo.html#properties">Properties</a></li><li class="inner"><a href="combo.html#populatingthecontrolwithdata">Populating the control with data</a></li><li class="inner"><a href="combo.html#populatingthecontrolwithdatafromtheserver">Populating the control with data from the server</a></li><li class="inner"><a href="combo.html#autofilteringmode">Auto-filtering mode</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="configuring_the_lightbox.html">Configuring the Lightbox</a><a class="n4" href="lightbox_editors.html">Lightbox Controls</a></div>
+<!-- Content Area -->
+
+
+
+<h1> Combo</h1>
+
+<p>A combo box presented by the <a href="../combo__index.html">DHTMLX Combo component</a>.</p>
+
+<p><img src="media/combo_editor.png"/></p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> holders <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> key<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">'James'</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> key<span class="sy0">:</span> <span class="nu0">2</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">'Alex'</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> key<span class="sy0">:</span> <span class="nu0">3</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">'Antony'</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> key<span class="sy0">:</span> <span class="nu0">4</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">'Andrew'</span> <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+scheduler.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">section_holder</span> <span class="sy0">=</span> <span class="st0">&quot;Holder&quot;</span><span class="sy0">;</span>
+&nbsp;
+scheduler.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">50</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span> <span class="kw3">focus</span><span class="sy0">:</span><span class="kw2">true</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;holders&quot;</span><span class="sy0">,</span> options<span class="sy0">:</span>holders<span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;holders&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;combo&quot;</span><span class="sy0">,</span> 
+    image_path<span class="sy0">:</span><span class="st0">&quot;../common/dhtmlxCombo/imgs/&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">30</span><span class="sy0">,</span> filtering<span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">72</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;auto&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/02_customization/15_combo_select.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Combo box in the lightbox</a></p>
+
+<a name='initialization'><h2>Initialization</h2></a>
+
+<p>To add the Combo control to the lightbox, follow these steps:</p>
+
+<ol>
+    <li><b>Include the <a href="../combo__index.html">dhtmlxCombo</a> files and the 'ext/dhtmlxscheduler_editors.js' extension file on the page:</b>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>script src<span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlxscheduler.js&quot;</span> ...<span class="sy0">&gt;&lt;/</span>script<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>link rel<span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> href<span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlxscheduler.css&quot;</span> ...<span class="sy0">&gt;</span>
+&nbsp;
+<span class="sy0">&lt;</span>script src<span class="sy0">=</span><span class="st0">&quot;../codebase/ext/dhtmlxscheduler_editors.js&quot;</span> ...<span class="sy0">&gt;&lt;/</span>script<span class="sy0">&gt;</span>
+&nbsp;
+<span class="sy0">&lt;</span>link rel<span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> href<span class="sy0">=</span><span class="st0">&quot;common/dhtmlxCombo/dhtmlxcombo.css&quot;</span> ..<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>script src<span class="sy0">=</span><span class="st0">&quot;common/dhtmlxCombo/dhtmlxcombo.js&quot;</span> ...<span class="sy0">&gt;&lt;/</span>script<span class="sy0">&gt;</span></pre></code></pre>
+
+    </li>
+    <li><b>Add the section to the lightbox configuration:</b>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;description&quot;</span><span class="sy0">,</span> ... <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;holders&quot;</span><span class="sy0">,</span> options<span class="sy0">:</span>holders<span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;holders&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;combo&quot;</span><span class="sy0">,</span> 
+    image_path<span class="sy0">:</span><span class="st0">&quot;../common/dhtmlxCombo/imgs/&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">30</span><span class="sy0">,</span> filtering<span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span> ...<span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+    </li>
+    <li><b>Set the label for the section:</b>
+
+<pre><code><pre class="js">scheduler.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">section_holders</span> <span class="sy0">=</span> <span class="st0">&quot;Holder&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+    </li>
+</ol>
+
+<p><a href='samples/02_customization/15_combo_select.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Combo box in the lightbox</a></p>
+
+<a name='properties'><h2>Properties</h2></a>
+
+<p>The following properties are mostly important and commonly set for the 'combo' control (see the full list <a class="link-" href="api__scheduler_lightbox_config.html">here</a>):</p>
+
+<table class="webixdoc_links">
+    <tbody>
+        <tr>
+            <td class="webixdoc_links0"><b>name</b></td>
+            <td>(<i>string</i>) the section's name </td>
+        </tr>
+        <tr>
+            <td class="webixdoc_links0"><b>height</b></td>
+            <td>(<i>number</i>) the section's height</td>
+        </tr>
+        <tr>
+            <td class="webixdoc_links0"><b>map_to</b></td>
+            <td>(<i>string</i>) the name of a data property that will be mapped to the section</td>
+        </tr>
+        <tr>
+            <td class="webixdoc_links0"><b>type</b></td>
+            <td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) the type of the section's control</td>
+        </tr>
+        <tr>
+            <td class="webixdoc_links0"  style="vertical-align: top;"><b>options</b></td>
+            <td>(<i>array of objects</i>) defines select options of the control (<b>for 'select', 'multiselect, 'radio', 'combo' controls</b>).<br> Each object in the array specifies a single option and takes these properies:
+                <ul>
+                    <li><b>key</b> -   (<i>string</i>) the option's id. This attribute is compared with the event's data property to assign options to events</li>
+                    <li><b>label</b> -   (<i>string</i>) the option's label</li>
+            </ul>
+             </td>
+        </tr>
+        <tr>
+            <td class="webixdoc_links0"><b>image_path</b></td>
+            <td>(<i>string</i>) the path to dhtmlxCombo images</td>
+        </tr>
+        <tr>
+            <td class="webixdoc_links0" style="vertical-align: top;"><b>filtering</b></td>
+            <td>(<i>boolean, string</i>) activates the auto-filtering support (options will be filtered as you type). Optional <br> The parameter can take one of the following values:
+            <ul>
+                    <li><b>false</b> -  disables filtering</li>
+                    <li><b>true or "start"</b> -  enables filtering, performs searching from the item's beginning</li>
+                    <li><b>"between"</b> -  enables filtering, searches for any occurrence of the typed text in items</li>
+            </ul>
+            </td>
+        </tr>
+        <tr>
+            <td class="webixdoc_links0"><b>script_path</b></td>
+            <td>(<i>string</i>) the path to the server-side script that will provide loading combo's options from the server. Optional</td>
+        </tr>
+        <tr>
+            <td class="webixdoc_links0"><b>cache</b></td>
+            <td>(<i>boolean</i>) enables/disables caching of the script responses (enabling the property is recommended). Optional</td>
+        </tr>
+    </tbody>
+</table>
+
+<a name='populatingthecontrolwithdata'><h2>Populating the control with data</h2></a>
+
+<p>In general, to set values for the Combo control you should use the <a class="link-" href="api__scheduler_lightbox_config.html">options</a> parameter:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> 
+    <span class="br0">&#123;</span> 
+        <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;holders&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;combo&quot;</span><span class="sy0">,</span> 
+        ...
+        <span class="me1">options</span><span class="sy0">:</span><span class="br0">&#91;</span>
+            <span class="br0">&#123;</span> key<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">'James'</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span> key<span class="sy0">:</span> <span class="nu0">2</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">'Alex'</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span> key<span class="sy0">:</span> <span class="nu0">3</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">'Antony'</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span> key<span class="sy0">:</span> <span class="nu0">4</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">'Andrew'</span> <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    ...
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Items in the  <a class="link-" href="api__scheduler_lightbox_config.html">options</a> parameter must have 2 mandatory properties:</p>
+
+<ul>
+<li><strong>key</strong> - the option's id</li>
+<li><strong>label</strong> - the option's label</li>
+</ul>
+
+<a name='populatingthecontrolwithdatafromtheserver'><h2>Populating the control with data from the server</h2></a>
+
+<p>To populate the Combo control from the server, use the <strong>script_path</strong> property, where specify the path to the server-side script that will 
+handle the server requests.</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;country&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;combo&quot;</span><span class="sy0">,</span> script_path<span class="sy0">:</span> <span class="st0">&quot;data/combo_select&quot;</span><span class="sy0">,</span> ... <span class="br0">&#125;</span><span class="sy0">,</span>
+        ...
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The <strong>script_path</strong> property specifies an URL from which combo loads its options, i.e. if script_path is specified - combo will try to load data from that URL via AJAX.</p>
+
+<p>Combo selector is based on <a href="../combo__index.html">dhtmlxCombo</a>, so the server should return data compatible with it.
+You can read about the ways of adding data into combo in the article <a href="../combo__adding_options.html">Loading Options</a>.</p>
+
+<p>The URL is requested in two cases:</p>
+
+<p>1) when the lightbox is opened and combo has some selected value - control sends request to the server and loads a label for the selected option.</p>
+
+<p>The request will have an <strong>id</strong> query param:</p>
+
+<pre><code><pre class="js">GET <span class="sy0">/</span>url<span class="sy0">?</span>id<span class="sy0">=</span><span class="nu0">1</span></pre></code></pre>
+
+<p>The response should return an array containing only the item with the specified id in the following format:</p>
+
+<pre><code><pre class="js"><span class="br0">&#91;</span>
+   <span class="br0">&#123;</span> <span class="st0">&quot;value&quot;</span><span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="st0">&quot;text&quot;</span><span class="sy0">:</span> <span class="st0">&quot;Marketing&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span></pre></code></pre>
+
+<p>2) when a user starts inputting text into the select box input - the control loads filtered values.</p>
+
+<p>The client will send a request with an entered text in a <strong>mask</strong> param of the query:</p>
+
+<pre><code><pre class="js">GET <span class="sy0">/</span>url<span class="sy0">?</span>mask<span class="sy0">=</span>al</pre></code></pre>
+
+<p>The server response should return all items that match the mask value:</p>
+
+<pre><code><pre class="js"><span class="br0">&#91;</span>
+   <span class="br0">&#123;</span> <span class="st0">&quot;value&quot;</span><span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="st0">&quot;text&quot;</span><span class="sy0">:</span> <span class="st0">&quot;Albania&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+   <span class="br0">&#123;</span> <span class="st0">&quot;value&quot;</span><span class="sy0">:</span> <span class="nu0">3</span><span class="sy0">,</span> <span class="st0">&quot;text&quot;</span><span class="sy0">:</span> <span class="st0">&quot;Algeria&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+<span class="br0">&#93;</span></pre></code></pre>
+
+<p>If you use <a href="https://github.com/DHTMLX/connector-php">PHP Connector</a> library, the server code may look like the following:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;?</span>php
+    require_once<span class="br0">&#40;</span><span class="st0">'../../connector-php/codebase/combo_connector.php'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    require_once<span class="br0">&#40;</span><span class="st0">&quot;../common/config.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    $combo <span class="sy0">=</span> <span class="kw2">new</span> ComboConnector<span class="br0">&#40;</span>$res<span class="sy0">,</span> $dbtype<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    $combo<span class="sy0">-&gt;</span>event<span class="sy0">-&gt;</span>attach<span class="br0">&#40;</span><span class="st0">&quot;beforeFilter&quot;</span><span class="sy0">,</span> <span class="st0">&quot;by_id&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw2">function</span> by_id<span class="br0">&#40;</span>$filter<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>isset<span class="br0">&#40;</span>$_GET<span class="br0">&#91;</span><span class="st0">'id'</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+            $filter<span class="sy0">-&gt;</span>add<span class="br0">&#40;</span><span class="st0">&quot;item_id&quot;</span><span class="sy0">,</span> $_GET<span class="br0">&#91;</span><span class="st0">'id'</span><span class="br0">&#93;</span><span class="sy0">,</span> <span class="st0">'='</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>   
+&nbsp;
+    $combo<span class="sy0">-&gt;</span>dynamic_loading<span class="br0">&#40;</span><span class="nu0">3</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    $combo<span class="sy0">-&gt;</span>render_table<span class="br0">&#40;</span><span class="st0">&quot;Countries&quot;</span><span class="sy0">,</span><span class="st0">&quot;item_id&quot;</span><span class="sy0">,</span><span class="st0">&quot;item_nm&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="sy0">?&gt;</span></pre></code></pre>
+
+<p><a href='samples/02_customization/18_combo_select_from_db.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Populating a combo box from the server</a></p>
+
+<a name='autofilteringmode'><h2>Auto-filtering mode</h2></a>
+
+<p>The auto-filtering mode is the mode, when options are automatically filtered as the user types. To activate the mode, 
+set the <strong>filtering</strong> property to <em>true</em>:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;holders&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;combo&quot;</span><span class="sy0">,</span> filtering<span class="sy0">:</span><span class="kw2">true</span><span class="sy0">,</span> ... <span class="br0">&#125;</span><span class="sy0">,</span>
+    ...
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>Note, you can use the auto-filtering mode, regardless of the source, you load data from ( client or server-side).</p>
+</p></div>
+
+<p>Read more on the topic in the dhtmlxCombo documentation <a href="../combo__filtering.html">dhtmlxCombo. Filtering</a> .</p>
+
+<!-- Content Area End -->
+			<a href='combo.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

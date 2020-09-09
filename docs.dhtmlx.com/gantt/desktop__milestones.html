@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Milestones  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__task_types.html">Task Types</a></li><li class=""><a href="desktop__task_object_operations.html">Task Object/Id</a></li><li class=""><a href="desktop__task_tree_operations.html">Task Parent/Child</a></li><li class=""><a href="desktop__crud_task.html">Basic Operations with Tasks</a></li><li class=""><a href="desktop__unscheduled_tasks.html">Unscheduled Tasks</a></li><li class="toc-pro"><a href="desktop__split_tasks.html">Split Tasks</a></li><li class=""><a href="desktop__multiselection.html">Multi-Task Selection</a></li><li class=""><a href="desktop__working_time.html">Work Time Calculation</a></li><li class="toc-pro"><a href="desktop__critical_path.html">Critical Path</a></li><li class="toc-pro"><a href="desktop__baselines.html">Extra Elements in Timeline Area</a></li><li class="toc-pro current"><a href="desktop__milestones.html">Milestones</a></li><ul><li class="inner"><a href="desktop__milestones.html#specifyingmilestonesinadataset">Specifying milestones in a data set</a></li></ul><li class=""><a href="desktop__tooltips.html">Tooltips for Gantt Elements</a></li><li class=""><a href="desktop__text_block_for_task.html">Displaying Contents of Tasks</a></li><li class=""><a href="desktop__readonly_mode.html">Read-Only Mode</a></li><li class=""><a href="desktop__validation.html">Validation</a></li><li class=""><a href="desktop__dnd.html">Dragging Tasks within the Timeline</a></li><li class=""><a href="desktop__advanced_dnd.html">Creating/Selecting Tasks with DnD</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__task_bars.html">Configuring Tasks</a></div>
+<!-- Content Area -->
+
+
+<p class='promarker'>Available only in <b>PRO Edition</b></p>
+<h1>Milestones</h1>
+
+<div class='pronote'><p><p>This functionality is available only in the PRO edition</p>
+</p></div>
+
+<p>Milestones are tasks with zero duration that are used to mark out important dates of the project, some key events or goals.
+You may use milestones, for example, to highlight dates of review meetings or dates of expected completion of project's phases. <br></p>
+
+<p>Programmatically, a milestone is one of <a class="link-" href="desktop__task_types.html">predefined types of tasks</a>. But it's handled as <a class="link-" href="desktop__task_types.html">a regular task</a>, i.e. it triggers the same events and templates.</p>
+
+<p><img style="border: 1px #C4C4C5 solid;margin: 20px auto 20px auto;display: block;box-shadow: #D8D8D8 0px 0px 7px 1px;" src="media/desktop/type_milestone.png">
+<a href='samples/01_initialization/16_projects_and_milestones.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Projects and milestones</a></p>
+
+<p><br></p>
+
+<p><strong>Generally, to provide a possibility to add milestones to a chart:</strong></p>
+
+<ol>
+    <li>Add an extra section to the lightbox - <a class="link-pro" href="desktop__typeselect.html">Typeselect Control</a> -  that will let your users to change the type of tasks and select milestones. <br> <br>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span> <span class="nu0">70</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;text&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;textarea&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;type&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;typeselect&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;type&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;time&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span> <span class="nu0">72</span><span class="sy0">,</span> type<span class="sy0">:</span> <span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;auto&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+    </li>
+    <li>Define the <a class="link-" href="api__gantt_rightside_text_template.html">rightside_text</a> or <a class="link-" href="api__gantt_leftside_text_template.html">leftside_text</a> template to set a text label for a milestone. <i> Note, the label set with  the <a class="link-" href="api__gantt_task_text_template.html">task_text</a> template is not  displayed 
+    as milestones have zero duration.</i> <br> <br>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">rightside_text</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>task.<span class="me1">type</span> <span class="sy0">==</span> gantt.<span class="me1">config</span>.<span class="me1">types</span>.<span class="me1">milestone</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">return</span> task.<span class="me1">text</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+    </li>
+    <li> Enable the <a class="link-" href="api__gantt_order_branch_config.html">order_branch</a> property to simplify things for your end users. <i>The option enables dragging tasks within the parent branch and will let your users create milestones at any place but
+    then drag them to the right positions. </i> <br> <br>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">order_branch</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></pre></code></pre>
+
+    </li>
+</ol>
+
+<p>After you have been completed these steps, your Gantt chart is fully ready to work with milestones.</p>
+
+<p><img style="border: 1px #C4C4C5 solid;margin: 20px auto 20px auto;display: block;box-shadow: #D8D8D8 0px 0px 7px 1px;" src="media/desktop/milestone_lightbox.png"></p>
+
+<p><a href='samples/01_initialization/16_projects_and_milestones.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Projects and milestones</a></p>
+
+<a name='specifyingmilestonesinadataset'><h2>Specifying milestones in a data set</h2></a>
+
+<p>To define milestones in the initial data set, set the <a class="link-" href="desktop__loading.html#specifyingdataproperties">type</a> property of a data item to the <strong>'milestone'</strong> value (<em>values are stored in the <a class="link-pro" href="api__gantt_types_config.html">types</a> object</em>):</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> data <span class="sy0">=</span> <span class="br0">&#123;</span>
+    tasks<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Project #1&quot;</span><span class="sy0">,</span>    type<span class="sy0">:</span>gantt.<span class="me1">config</span>.<span class="me1">types</span>.<span class="me1">project</span><span class="sy0">,</span>    <span class="kw3">open</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span> 
+        <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span>       start_date<span class="sy0">:</span><span class="st0">&quot;12-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> parent<span class="sy0">:</span><span class="nu0">1</span><span class="br0">&#125;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">        <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Alpha release&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span>gantt.<span class="me1">config</span>.<span class="me1">types</span>.<span class="me1">milestone</span><span class="sy0">,</span>   parent<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> </span><span class="xtra ln-xtra">            start_date<span class="sy0">:</span><span class="st0">&quot;14-04-2020&quot;</span><span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">,</span>                                              </span>    links<span class="sy0">:</span><span class="br0">&#91;</span><span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='desktop__milestones.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

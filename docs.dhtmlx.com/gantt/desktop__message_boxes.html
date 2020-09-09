@@ -1,0 +1,465 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Popup Messages and Modal Boxes  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__localization.html">Localization</a></li><li class=""><a href="desktop__fullscreen_mode.html">Full Screen Mode</a></li><li class=""><a href="desktop__undo_redo.html">Undo/Redo Functionality</a></li><li class=" current"><a href="desktop__message_boxes.html">Popup Messages and Modal Boxes</a></li><ul><li class="inner"><a href="desktop__message_boxes.html#basicpopupmessage">Basic Popup Message</a></li><li class="inner"><a href="desktop__message_boxes.html#modalmessageboxes">Modal Message Boxes</a></li><li class="inner"><a href="desktop__message_boxes.html#alertmessagebox">Alert Message Box</a></li><li class="inner"><a href="desktop__message_boxes.html#confirmmessagebox">Confirm Message Box</a></li><li class="inner"><a href="desktop__message_boxes.html#modalbox">Modal Box</a></li><li class="inner"><a href="desktop__message_boxes.html#hidingmodalmessageboxes">Hiding Modal Message Boxes</a></li><li class="inner"><a href="desktop__message_boxes.html#styling">Styling</a></li><li class="inner"><a href="desktop__message_boxes.html#modalwindowsandkeyboardinteraction">Modal Windows and Keyboard Interaction</a></li></ul><li class=""><a href="desktop__quick_info.html">Quick Info (Touch Support)</a></li><li class=""><a href="desktop__accessibility.html">Accessibility</a></li><li class=""><a href="desktop__keyboard_navigation.html">Keyboard Navigation</a></li><li class="toc-deprecated"><a href="desktop__content_security_policy.html">Content Security Policy Compliance</a></li><li class=""><a href="desktop__jquery_integration.html">Integration with JQuery</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__extra_resources.html">Common Features</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Popup Messages and Modal Boxes</h1>
+
+<p>Messages are used in the Gantt Chart to notify a user about an error, confirm or deny an action, choose one of the options and so on.
+Gantt Chart messages use <a href="https://github.com/DHTMLX/message">the fork of the dhtmlxMessage repository</a> as their basis. 
+So, all the functionality of dhtmlxMessage is actual for dhtmlxGantt messages.</p>
+
+<p>There are two main types of messages: a <a class="link-" href="desktop__message_boxes.html#basicpopupmessage">simple popup message box</a> and a <a class="link-" href="desktop__message_boxes.html#modalmessageboxes">modal message box</a> with buttons 
+that blocks the work of an application.</p>
+
+<p>A modal message box can belong to one of three possible types:</p>
+
+<ul>
+<li><a href="desktop__message_boxes.html#alert">Alert message box</a></li>
+<li><a href="desktop__message_boxes.html#confirm">Confirm message box</a></li>
+<li><a href="desktop__message_boxes.html#modal">Modalbox</a></li>
+</ul>
+
+<a name='basicpopupmessage'><h2>Basic Popup Message</h2></a>
+
+<p>To create a basic modal message box, use the <a class="link-" href="api__gantt_message.html">gantt.message</a> method. The obligatory parameter of the method is the text of the message:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">message</span><span class="br0">&#40;</span><span class="st0">&quot;The task is updated&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>There are three types of message boxes:</p>
+
+<ul>
+<li>a default message box (<strong>type:"info"</strong>)</li>
+</ul>
+
+<p><img src="media/desktop/default_message.png"/></p>
+
+<ul>
+<li>an error message box (<strong>type:"error"</strong>)</li>
+</ul>
+
+<p><img src="media/desktop/error_message.png"/></p>
+
+<ul>
+<li>a warning message box (<strong>type:"warning"</strong>)</li>
+</ul>
+
+<p><img src="media/desktop/warning_message.png"></p>
+
+<p>To create a necessary message box, you need to define the <em>type</em> property with the corresponding value:</p>
+
+<pre><code><pre class="js"><span class="co1">// creating an error message box</span>
+gantt.<span class="me1">message</span><span class="br0">&#40;</span><span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;error&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Invalid data format&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/04_customization/20_message_types.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Gantt message types</a></p>
+
+<p>To apply different styles to a message box you need to specify a CSS class through the type parameter as described <a class="link-" href="desktop__message_boxes.html#styling">here</a>.</p>
+
+<h3>Positioning message boxes</h3>
+
+<p>By default, a popup message box appears in the right top corner of the window. It doesn't prevent the work of the parent application, unlike <a class="link-" href="desktop__message_boxes.html#modalmessageboxes">modal message boxes</a>
+that overlay the parent application and block its work. You can change the position of a message box by using the <strong>gantt.message.position</strong> property:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">message</span>.<span class="me1">position</span> <span class="sy0">=</span> <span class="st0">'bottom'</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/13007a8d2' target='blank'><span class='sample'>Related sample: </span>&nbsp;Message position</a></p>
+
+<p>There are four possible values for the message position:</p>
+
+<ul>
+<li><p><strong>top</strong> - displays a message box in the right top corner of the window, set by default</p></li>
+<li><p><strong>bottom</strong> - displays a message box in the right bottom corner of the window</p></li>
+<li><p><strong>left</strong> -  displays a message box on the left side of the window under Gantt</p></li>
+<li><p><strong>right</strong> - displays a message box on the right side of the window under Gantt</p></li>
+</ul>
+
+<h3>Expire Interval</h3>
+
+<p>It's possible to customize the expire interval for a message box with the help of the <em>expire</em> parameter. It is the time period after the end of which the message box disappears (in milliseconds).
+By default, the expire interval is equal to 4000 milliseconds.</p>
+
+<p>You can either change this value or to cancel the expire period at all, by setting the expire parameter to "-1". In this case a message box will disappear only on a mouse click.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">message</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    type<span class="sy0">:</span><span class="st0">&quot;error&quot;</span><span class="sy0">,</span> 
+    text<span class="sy0">:</span><span class="st0">&quot;Invalid data format&quot;</span><span class="sy0">,</span>
+    expire<span class="sy0">:</span><span class="nu0">10000</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Hiding a Message Box with API</h3>
+
+<p>To hide the specified message box manually and not to wait while it hides automatically, you can use the <strong>gantt.message.hide(boxId)</strong> method. It takes one parameter:</p>
+
+<ul>
+<li><strong>boxId</strong> - the box id specified in the box's constructor</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">message</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    id<span class="sy0">:</span><span class="st0">&quot;myBox&quot;</span><span class="sy0">,</span>
+    text<span class="sy0">:</span><span class="st0">&quot;Page is loaded&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">message</span>.<span class="me1">hide</span><span class="br0">&#40;</span><span class="st0">&quot;myBox&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='modalmessageboxes'><h2>Modal Message Boxes</h2></a>
+
+<p>Modal message boxes prevent the work of the parent app, until a necessary action is performed (usually, button clicking). They close on a button click and a callback function, if any is executed.</p>
+
+<p>There exist three types of modal message boxes:</p>
+
+<ul>
+<li><a href="desktop__message_boxes.html#alert">Alert Message Box</a> - an alert box with a button;</li>
+<li><a href="desktop__message_boxes.html#confirm">Confirm Message Box</a> - a confirmation box with two buttons (to confirm or to cancel); </li>
+<li><a href="desktop__message_boxes.html#modal">Modalbox</a> - a modal message box with an unlimited number of buttons. </li>
+</ul>
+
+<p>Common properties of the boxes are:</p>
+
+<ul>
+<li><strong>id</strong> - the message box's id;</li>
+<li><strong>title</strong> - the text of the header;</li>
+<li><strong>type</strong> - the type of the message box (a warning or an error);</li>
+<li><strong>text</strong> - the text of the message box's body; </li>
+<li><strong>ok</strong> - the text of the "OK" button;</li>
+<li><strong>cancel</strong> - the text of the "Cancel" button (for the confirm box);</li>
+<li><strong>callback</strong> - the function called on button click. Takes <em>true</em> or <em>false</em> as the parameter (subject to the clicked button);</li>
+<li><strong>position</strong> - for now supports only one value - "top", any other value will result in center-align;</li>
+<li><strong>width</strong> - the width of the modal box (set as CSS <a href="https://developer.mozilla.org/en/docs/Web/CSS/length">&#60;length&#62;</a> or
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/percentage">&#60;percentage&#62;</a> values, e.g. "100px", "50%");</li>
+<li><strong>height</strong> - the height of the modal box (set as CSS <a href="https://developer.mozilla.org/en/docs/Web/CSS/length">&#60;length&#62;</a> or
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/percentage">&#60;percentage&#62;</a> values, e.g. "100px", "50%").</li>
+</ul>
+
+<a name='alertmessagebox'><h2 id="alert">Alert Message Box</h2></a>
+
+<p><img src="media/desktop/alert.png"/></p>
+
+<p>An alert message box contains the "OK" button. To set the text of the "OK" button, use the <em>ok</em> parameter with the text as a value:</p>
+
+<ul>
+<li>a short form (contains just the text of a message - implicit usage of the parameter 'text'. The other parameters take default values):</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="kw3">alert</span><span class="br0">&#40;</span><span class="st0">&quot;Text&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>a full form (contains several available parameters. Non-specified parameters take default values)</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="kw3">alert</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    text<span class="sy0">:</span><span class="st0">&quot;some text&quot;</span><span class="sy0">,</span>
+    title<span class="sy0">:</span><span class="st0">&quot;Error!&quot;</span><span class="sy0">,</span>
+    ok<span class="sy0">:</span><span class="st0">&quot;Yes&quot;</span><span class="sy0">,</span>
+    callback<span class="sy0">:</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>...<span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='confirmmessagebox'><h2 id="confirm">Confirm Message Box</h2></a>
+
+<p><img src="media/desktop/confirm.png"/></p>
+
+<p>A confirm message box has two buttons: the "OK" button and the "Cancel" one. The text of the buttons is defined in the properties with the corresponding names.</p>
+
+<ul>
+<li>a short form</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="kw3">confirm</span><span class="br0">&#40;</span><span class="st0">&quot;ConfirmText&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>a full form</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="kw3">confirm</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    text<span class="sy0">:</span> <span class="st0">&quot;Continue?&quot;</span><span class="sy0">,</span>
+    ok<span class="sy0">:</span><span class="st0">&quot;Yes&quot;</span><span class="sy0">,</span> 
+    cancel<span class="sy0">:</span><span class="st0">&quot;No&quot;</span><span class="sy0">,</span>
+    callback<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>result<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        gantt.<span class="me1">message</span><span class="br0">&#40;</span><span class="st0">&quot;Result: &quot;</span><span class="sy0">+</span>result<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='modalbox'><h2 id="modal">Modal Box</h2></a>
+
+<p><img src="media/desktop/modalbox.png"/></p>
+
+<p>A modalbox possesses some peculiar features:</p>
+
+<ul>
+<li>its <em>text</em> can include any <em>HTML</em> content;</li>
+<li>it may have many buttons specified in the <em>buttons</em> array that contains the text values of the buttons;</li>
+<li>the <em>callback</em> function takes the <em>index</em> of the chosen button as a parameter.</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">modalbox</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    title<span class="sy0">:</span><span class="st0">&quot;Settings&quot;</span><span class="sy0">,</span>
+    text<span class="sy0">:</span> <span class="st0">&quot; ... html code here... &quot;</span><span class="sy0">,</span>
+    buttons<span class="sy0">:</span><span class="br0">&#91;</span><span class="st0">&quot;Save&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Defaults&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Cancel&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    callback<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>result<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        gantt.<span class="kw3">alert</span><span class="br0">&#40;</span>result<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Configuring modalbox buttons</h3>
+
+<p>There are two main ways to define the configuration of modalbox buttons:</p>
+
+<ul>
+<li>a short form:</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">modalbox</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="co1">// other settings</span>
+    buttons<span class="sy0">:</span><span class="br0">&#91;</span><span class="st0">&quot;Save&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Delete&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Cancel&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    callback<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>result<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">switch</span><span class="br0">&#40;</span>result<span class="br0">&#41;</span><span class="br0">&#123;</span>
+            <span class="kw1">case</span> <span class="st0">&quot;0&quot;</span><span class="sy0">:</span>
+                <span class="co1">//Save</span>
+                <span class="kw1">break</span><span class="sy0">;</span>
+            <span class="kw1">case</span> <span class="st0">&quot;1&quot;</span><span class="sy0">:</span>
+                <span class="co1">//Delete</span>
+                <span class="kw1">break</span><span class="sy0">;</span>
+            <span class="kw1">case</span> <span class="st0">&quot;2&quot;</span><span class="sy0">:</span>
+                <span class="co1">//Cancel</span>
+                <span class="kw1">break</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>   
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The result of the callback function will be equal to the stringified index of a pressed button from the array ("0", "1", "2",...).
+Each button will receive a CSS class from its label converted to the lower case, e.g. <em>gantt_<strong>save</strong>_button</em>, <em>gantt_<strong>delete</strong>_button</em>, <em>gantt_<strong>cancel</strong>_button</em>.</p>
+
+<p>These classes can be used to style buttons:</p>
+
+<pre><code><pre class="js">.<span class="me1">gantt_delete_button</span> div<span class="br0">&#123;</span>
+    background<span class="sy0">:</span>red<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>In case the same button name is used by several popups that should be styled differently, the <strong>type</strong> config can be used:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">modalbox</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="co1">// other settings</span>
+    type<span class="sy0">:</span><span class="st0">&quot;special_popup&quot;</span><span class="sy0">,</span>
+    buttons<span class="sy0">:</span><span class="br0">&#91;</span><span class="st0">&quot;Save&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Delete&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Cancel&quot;</span><span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The <strong>type</strong> will be prefixed with the "gantt_" string and added as a class name to the popup element:</p>
+
+<pre><code><pre class="js">.<span class="me1">gantt_special_popup</span> .<span class="me1">gantt_delete_button</span> div<span class="br0">&#123;</span>
+    background<span class="sy0">:</span>red<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>a full form:</li>
+</ul>
+
+<p>The CSS classes of buttons and callback values can be defined explicitly using a longer form of configuration:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">modalbox</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="co1">// other settings</span>
+    buttons<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span> label<span class="sy0">:</span><span class="st0">&quot;Save&quot;</span><span class="sy0">,</span>   css<span class="sy0">:</span><span class="st0">&quot;link_save_btn&quot;</span><span class="sy0">,</span>   value<span class="sy0">:</span><span class="st0">&quot;save&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> label<span class="sy0">:</span><span class="st0">&quot;Cancel&quot;</span><span class="sy0">,</span> css<span class="sy0">:</span><span class="st0">&quot;link_cancel_btn&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span><span class="st0">&quot;cancel&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> label<span class="sy0">:</span><span class="st0">&quot;Delete&quot;</span><span class="sy0">,</span> css<span class="sy0">:</span><span class="st0">&quot;link_delete_btn&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span><span class="st0">&quot;delete&quot;</span> <span class="br0">&#125;</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    callback<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>result<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">switch</span><span class="br0">&#40;</span>result<span class="br0">&#41;</span><span class="br0">&#123;</span>
+            <span class="kw1">case</span> <span class="st0">&quot;save&quot;</span><span class="sy0">:</span>
+                <span class="co1">//Save</span>
+                <span class="kw1">break</span><span class="sy0">;</span>
+            <span class="kw1">case</span> <span class="st0">&quot;cancel&quot;</span><span class="sy0">:</span>
+                <span class="co1">//Cancel</span>
+                <span class="kw1">break</span><span class="sy0">;</span>
+            <span class="kw1">case</span> <span class="st0">&quot;delete&quot;</span><span class="sy0">:</span>
+                <span class="co1">//Delete</span>
+                <span class="kw1">break</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The <strong>label</strong> parameter is mandatory, while <strong>css</strong> and <strong>value</strong> options can be omitted. Missing parameters will be calculated as in the short form of buttons configuration: CSS will be inherited from a lower-cased button label and the button index will be used as a value.</p>
+
+<p>The <strong>css</strong> will be prefixed with the "gantt_" string and added to the button element as a class name:</p>
+
+<pre><code><pre class="js">.<span class="me1">gantt_link_delete_btn</span> div<span class="br0">&#123;</span>
+    background<span class="sy0">:</span>red<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<a name='hidingmodalmessageboxes'><h2>Hiding Modal Message Boxes</h2></a>
+
+<p>To hide a modal message box manually, you can use the <strong>gantt.modalbox.hide()</strong> method. As a parameter it takes the div container of the modalbox:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> box <span class="sy0">=</span> gantt.<span class="me1">modalbox</span><span class="br0">&#40;</span><span class="br0">&#123;</span>  
+    title<span class="sy0">:</span><span class="st0">&quot;Settings&quot;</span><span class="sy0">,</span>
+    text<span class="sy0">:</span> <span class="st0">&quot; ... html code here... &quot;</span><span class="sy0">,</span>
+    buttons<span class="sy0">:</span><span class="br0">&#91;</span><span class="st0">&quot;Save&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Defaults&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Cancel&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    callback<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>result<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        gantt.<span class="kw3">alert</span><span class="br0">&#40;</span>result<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">modalbox</span>.<span class="me1">hide</span><span class="br0">&#40;</span>box<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>For the <strong>alert</strong> and <strong>confirm</strong> modal boxes, you also need to use the <strong>gantt.modalbox.hide()</strong> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> box <span class="sy0">=</span> gantt.<span class="kw3">confirm</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    text<span class="sy0">:</span> <span class="st0">&quot;Continue?&quot;</span><span class="sy0">,</span>
+    ok<span class="sy0">:</span><span class="st0">&quot;Yes&quot;</span><span class="sy0">,</span> 
+    cancel<span class="sy0">:</span><span class="st0">&quot;No&quot;</span><span class="sy0">,</span>
+    callback<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>result<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        gantt.<span class="me1">message</span><span class="br0">&#40;</span><span class="st0">&quot;Result: &quot;</span><span class="sy0">+</span>result<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">modalbox</span>.<span class="me1">hide</span><span class="br0">&#40;</span>box<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='styling'><h2>Styling</h2></a>
+
+<p>For any type of the message box you can define a custom style to achieve the desired look.
+Generally, the appropriate CSS class is specified through the <em>type</em> parameter: you define a CSS class and set the parameter to its name.</p>
+
+<p>There are some rules related to setting the 'type' parameter you should keep in mind:</p>
+
+<ul>
+<li>To set a CSS class for the alert and confirm boxes, you must initialize such a box using the 'window-related' way.</li>
+<li>To set a CSS class for the message boxes, you must initialize such a box using the 'common' way.</li>
+<li>The name of a CSS class should go with the 'gantt-' prefix.</li>
+<li>To apply the style correctly, it's necessary to use the name of the class as <strong>.gantt-some div</strong> to specify that it is intended for the element inside a gantt message. </li>
+</ul>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>style type<span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span><span class="sy0">&gt;</span>
+.<span class="me1">gantt</span><span class="sy0">-</span>myCss div<span class="br0">&#123;</span>
+    font<span class="sy0">-</span>weight<span class="sy0">:</span>bold<span class="sy0">;</span>
+    color<span class="sy0">:</span>wheat<span class="sy0">;</span>
+    background<span class="sy0">-</span>color<span class="sy0">:</span>crimson<span class="sy0">;</span>
+<span class="br0">&#125;</span>
+<span class="sy0">&lt;/</span>style<span class="sy0">&gt;</span>
+&nbsp;
+&nbsp;
+gantt.<span class="me1">message</span><span class="br0">&#40;</span><span class="br0">&#123;</span> type<span class="sy0">:</span><span class="st0">&quot;myCss&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;some text&quot;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/f0c608393' target='blank'><span class='sample'>Related sample: </span>&nbsp;Styling message boxes</a></p>
+
+<a name='modalwindowsandkeyboardinteraction'><h2>Modal Windows and Keyboard Interaction</h2></a>
+
+<p>The keyboard functionality for modal boxes is controlled by the <strong>gantt.message.keyboard</strong> property. Initially, it's set to <em>true</em>.</p>
+
+<p>By default, modal boxes block keyboard events of the page. The only keys that can be used are:</p>
+
+<ul>
+<li>"space" and "enter" - sets the <em>true</em> value as a modal box result;</li>
+<li>"escape" - sets the <em>false</em> value as a modal box result.</li>
+</ul>
+
+<p>By setting the <strong>keyboard</strong> property to <em>false</em>, you'll enable keyboard events (and disable the above mentioned keys):</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">message</span>.<span class="me1">keyboard</span> <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span> 
+gantt.<span class="me1">modalbox</span><span class="br0">&#40;</span><span class="br0">&#123;</span>...<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>It allows using the full keyboard, e.g. for typing values into inputs inside modal boxes.</p>
+
+<!-- Content Area End -->
+			<a href='desktop__message_boxes.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

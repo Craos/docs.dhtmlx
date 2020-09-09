@@ -1,0 +1,241 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Loading Data into Grid  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="grid__data_formats.html">Exploring Supported Data Formats</a></li><li class=" current"><a href="grid__loading_storing_data.html">Loading Data into Grid</a></li><ul><li class="inner"><a href="grid__loading_storing_data.html#loadingfromaninlinedataset">Loading from an inline dataset</a></li><li class="inner"><a href="grid__loading_storing_data.html#loadingfromastaticfile">Loading from a static file</a></li><li class="inner"><a href="grid__loading_storing_data.html#loadingfromtheserverside">Loading from the server side</a></li></ul><li class=""><a href="grid__big_datasets_loading.html">Loading Big Datasets</a></li><li class=""><a href="grid__server_side.html">Saving Data on the Server Side</a></li><li class=""><a href="grid__serialization.html">Serializing Data to XML,CSV</a></li><li class=""><a href="grid__data_export.html">Exporting Data to PDF,Excel</a></li><li class=""><a href="grid__userdata.html">Loading Additional Data to Grid</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__loading_data.html">Loading and Storing Data</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Loading Data into Grid</h1>
+
+<p>You can load  data of 4 formats into dhtmlxGrid:</p>
+
+<ul>
+<li><a class="link-" href="grid__data_formats.html#xmlformat">XML</a>.</li>
+<li><a class="link-" href="grid__data_formats.html#jsonformat">JSON</a>.</li>
+<li><a class="link-" href="grid__data_formats.html#csvformat">CSV</a>.</li>
+<li><a class="link-" href="grid__data_formats.html#jsarrayformat">JSArray</a>.</li>
+<li><a class="link-" href="grid__data_formats.html#customdataformat">+ you can define a custom data format</a>.</li>
+</ul>
+
+<p>Learn more about formats supported by dhtmlxGrid in article <a class="link-" href="grid__data_formats.html">Exploring Supported Data Formats</a>.</p>
+
+<a name='loadingfromaninlinedataset'><h2>Loading from an inline dataset</h2></a>
+
+<p>The easiest way to load data to a grid is to use an inline object in JSON format.<br>
+To load data from an inline object, use the <a class="link-" href="api__dhtmlxgrid_parse.html">parse</a> method.</p>
+
+<pre><code><pre class="js">data<span class="sy0">=</span><span class="br0">&#123;</span>
+    rows<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> data<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;A Time to Kill&quot;</span><span class="sy0">,</span> <span class="st0">&quot;John Grisham&quot;</span><span class="sy0">,</span> <span class="st0">&quot;100&quot;</span><span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> data<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;Blood and Smoke&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Stephen King&quot;</span><span class="sy0">,</span> <span class="st0">&quot;1000&quot;</span><span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> data<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;The Rainmaker&quot;</span><span class="sy0">,</span> <span class="st0">&quot;John Grisham&quot;</span><span class="sy0">,</span> <span class="st0">&quot;-200&quot;</span><span class="br0">&#93;</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+mygrid.<span class="me1">parse</span><span class="br0">&#40;</span>data<span class="sy0">,</span><span class="st0">&quot;json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// takes the name and format of the data source</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/12_initialization_loading/09_init_grid_json.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Loading from JSON</a></p>
+
+<a name='loadingfromastaticfile'><h2>Loading from a static file</h2></a>
+
+<p>If you put data into a individual file, use the <a class="link-" href="api__dhtmlxgrid_load.html">load</a> method to load data from this file to the grid:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;data/books.json&quot;</span><span class="sy0">,</span><span class="st0">&quot;json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//or</span>
+mygrid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;data/books.json&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span><span class="kw3">alert</span><span class="br0">&#40;</span><span class="st0">&quot;Data has been loaded.&quot;</span><span class="br0">&#41;</span><span class="br0">&#125;</span><span class="sy0">,</span><span class="st0">&quot;json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The <a class="link-" href="api__dhtmlxgrid_load.html">load</a> method can take 3 parameters:</p>
+
+<ol>
+<li>The relative path to the data file (relative according to your HTML file).</li>
+<li>A callback function that will be called just after the data is completely loaded and processed. The parameter is optional and can be omitted.</li>
+<li>The format of data to load. By default, "xml". <em>Available values: "xml", "json", "js", "jsarray", "csv".</em></li>
+</ol>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/12_initialization_loading/09_init_grid_json.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Loading from JSON</a></p>
+
+<a name='loadingfromtheserverside'><h2>Loading from the server side</h2></a>
+
+<p>To load data from the server, use the  <a class="link-" href="api__dhtmlxgrid_load.html">load</a> method on the client side (as a parameter, the method takes 
+the path to the server-side script):</p>
+
+<pre><code><pre class="js"><span class="co1">//method takes the URL to the file that will process CRUD operations on the server</span>
+mygrid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;data.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>For example, for the data source described above, 
+you need to create a table in your database as in:</p>
+
+<p><img src="media/grid/db_structure.png"/></p>
+
+<p>You can execute the following code to create the table:</p>
+
+<pre><code><pre class="js">CREATE TABLE `events` <span class="br0">&#40;</span>
+  `id` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span> AUTO_INCREMENT<span class="sy0">,</span>
+  `title` varchar<span class="br0">&#40;</span><span class="nu0">255</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `author` varchar<span class="br0">&#40;</span><span class="nu0">255</span><span class="br0">&#41;</span> <span class="kw2">NULL</span><span class="sy0">,</span>
+  `sales` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  PRIMARY KEY <span class="br0">&#40;</span>`id`<span class="br0">&#41;</span>
+<span class="br0">&#41;</span></pre></code></pre>
+
+<div class='note'><p><p>Note, you can create any number of fields in the db and load them to the grid.</p>
+</p></div>
+
+<h3>Using dhtmlxConnector as a server-side solution</h3>
+
+<p>To implement server-side logic for dhtmlxGrid, we recommend you to use dhtmlxConnector library as the easiest way. You can learn more about the library from <a class="link-" href="connector__php__index.html">the related chapter of the documentation</a>.</p>
+
+<p>The server-side script in case of using dhtmlxConnector will look something like this:</p>
+
+<p class='snippet'>
+Using dhtmlxConnector for implementing server-side logic
+</p>
+
+<pre><code><pre class="php">//&quot;connector.php&quot; file
+<span class="kw2">&lt;?php</span>
+<span class="kw1">require_once</span><span class="br0">&#40;</span><span class="st0">&quot;codebase/connector/grid_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// includes the connector file</span>
+&nbsp;
+<span class="co1">// connects to a server with a desired DB (named &quot;sampledb&quot;)</span>
+<span class="re0">$res</span> <span class="sy0">=</span> <span class="kw2">new</span> PDO<span class="br0">&#40;</span><span class="st0">&quot;mysql:dbname=sampledb;host=localhost&quot;</span><span class="sy0">,</span><span class="st0">&quot;root&quot;</span><span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$conn</span> <span class="sy0">=</span> <span class="kw2">new</span> GridConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="sy0">,</span><span class="st0">&quot;MySQL&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>                <span class="co1">// connector initialization</span>
+&nbsp;
+<span class="re0">$conn</span><span class="sy0">-&gt;</span><span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;books&quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span><span class="st0">&quot;title,author,sales&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// data configuration</span></pre></code></pre>
+
+<p>and on the client-side:</p>
+
+<pre><code><pre class="js"><span class="co1">//&quot;index.html&quot; file</span>
+mygrid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>All available samples of the dhtmlxGrid +connector you can find in the dhtmlxConnector package which can be downloaded <a href="http://dhtmlx.com/docs/products/dhtmlxConnector/index.shtml">here</a>.</p>
+
+<!-- Content Area End -->
+			<a href='grid__loading_storing_data.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

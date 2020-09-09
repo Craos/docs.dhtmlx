@@ -1,0 +1,261 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Server-side Integration  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxform.html">dhtmlXForm API</a></li><li class=""><a href="form__how_to_start.html">How to Start with dhtmlxForm</a></li><li class=""><a href="form__constructor_of_dhtmlx_form.html">Object Constructor</a></li><li class=""><a href="form__controls_list.html">List of Controls</a></li><li class=""><a href="form__xml_structure.html">XML Format</a></li><li class=""><a href="form__json_structure.html">JSON Format</a></li><li class=""><a href="form__html_structure.html">HTML Format</a></li><li class=""><a href="form__working_with_userdata.html">Working with Userdata</a></li><li class=""><a href="form__other_configuration.html">Config and Operations</a></li><li class=""><a href="form__positioning.html">Positioning Controls</a></li><li class=""><a href="form__validation.html">Validation</a></li><li class=""><a href="form__custom_item.html">Creating a Custom Control</a></li><li class=" current"><a href="form__server_side.html">Server-side Integration</a></li><ul><li class="inner"><a href="form__server_side.html#automaticintegrationusingdhtmlxconnector">Automatic integration using dhtmlxConnector</a></li><li class="inner"><a href="form__server_side.html#fillingtheformwithcustomdatafeed">Filling the form with custom data feed</a></li><li class="inner"><a href="form__server_side.html#savingdatawithoutdhtmlxconnector">Saving data without dhtmlxConnector</a></li></ul><li class=""><a href="form__dhtmlx_components.html">Integration with DHTMLX</a></li><li class=""><a href="form__data_binding.html">Binding Data</a></li><li class=""><a href="form__handling_events.html">Handling Events</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="form__index.html">Form</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Server-side Integration</h1>
+
+<p><strong>To fill</strong> dhtmlxForm with data using datasource fields binding. There are two ways of doing this:</p>
+
+<ul>
+<li>Automatically, using <a class="link-" href="connector__php__index.html">dhtmlxConnector</a></li>
+<li>Using your own (custom) datasource</li>
+</ul>
+
+<p><strong>To save</strong> data back to server, you can use:</p>
+
+<ul>
+<li>Automatic saving using <a class="link-" href="connector__php__index.html">dhtmlxConnector</a></li>
+<li>Send data to server using AJAX request and save it there using your own processor</li>
+</ul>
+
+<a name='automaticintegrationusingdhtmlxconnector'><h2>Automatic integration using dhtmlxConnector</h2></a>
+
+<p>dhtmlxConnector allows binding dhtmlxForm fields to server side datasource with minimal efforts. For details see the <a class="link-" href="connector__php__index.html">dhtmlxConnector documentation</a>,
+here we'll show you the basics.<br>
+To use dhtmlxConnector you need to follow a few steps on client side and create server side file.</p>
+
+<h3>Server side</h3>
+
+<p>Here is the code sample (PHP) you could use to connect the form with "Users" table on server side.</p>
+
+<pre><code><pre class="php"><span class="kw1">require_once</span><span class="br0">&#40;</span><span class="st_h">'form_connector.php'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$conn</span> <span class="sy0">=</span> <span class="kw2">new</span> PDO<span class="br0">&#40;</span><span class="st0">&quot;mysql:dbname=db_name;host=localhost&quot;</span><span class="sy0">,</span><span class="st0">&quot;root&quot;</span><span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">//create connector for dhtmlxForm using connection to mySQL server</span>
+<span class="re0">$form</span> <span class="sy0">=</span> <span class="kw2">new</span> FormConnector<span class="br0">&#40;</span><span class="re0">$conn</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//table name, id field name, fields to use to fill the form</span>
+<span class="re0">$form</span><span class="sy0">-&gt;</span><span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;Users&quot;</span><span class="sy0">,</span><span class="st0">&quot;user_id&quot;</span><span class="sy0">,</span><span class="st0">&quot;f_name,l_name,email&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Client side</h3>
+
+<ol>
+<li>Instantiate DataProcessor (pass server side file url where you use dhtmlxConnector as argument)</li>
+<li>Connect form to DataProcessor</li>
+<li>Use the <a class="link-" href="api__link__dhtmlxform_load.html">load()</a> and <a class="link-" href="api__dhtmlxform_save.html">save()</a> methods of dhtmlxForm to fill form with data and save data back to server </li>
+<li>Use names for form fields the same as corresponded database table fields names (or aliases if were used)</li>
+</ol>
+
+<pre><code><pre class="js">  <span class="kw2">var</span> myForm <span class="sy0">=</span> <span class="kw2">new</span> dhtmlxForm<span class="br0">&#40;</span>containerID<span class="sy0">,</span>structureAr<span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//create form(structure below)</span>
+  <span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;php/user_details.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//instatiate dataprocessor</span>
+  dp.<span class="me1">init</span><span class="br0">&#40;</span>yourFormObject<span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//link form to dataprocessor</span>
+  ...
+  <span class="co1">//fill form with data.Where userID is ID or record you want to use to fill the form</span>
+  myForm.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;php/user_details.php?id=&quot;</span><span class="sy0">+</span>userID<span class="br0">&#41;</span><span class="sy0">;</span>
+  ...
+  <span class="co1">//create event handler to save data on button click</span>
+  myForm.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onButtonClick&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>buttonID<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>buttonID<span class="sy0">==</span><span class="st0">&quot;my_button&quot;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        myForm.<span class="me1">save</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//no params needed.It uses url that you passed to dataprocessor</span>
+    <span class="br0">&#125;</span>
+  <span class="br0">&#125;</span><span class="br0">&#41;</span>
+<span class="sy0">&lt;/</span>script<span class="sy0">&gt;</span></pre></code></pre>
+
+<p><strong>Note:</strong> Client side <a class="link-" href="form__validation.html">dhtmlxForm validation</a> will run automatically when the <a class="link-" href="api__dhtmlxform_save.html">save()</a> method is called. If it fails, data will not be sent to server.</p>
+
+<p>Form elements on client-side should have 'name' attributes with the same names as corresponded database table fields names (or aliases) returned by connector (see above):</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> structureAr <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;input&quot;</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;f_name&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;First name&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span> 
+    <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;input&quot;</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;l_name&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Last Name&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;input&quot;</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;email&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Email&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>    
+    <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;button&quot;</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;my_button&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span><span class="st0">&quot;Save&quot;</span><span class="br0">&#125;</span> 
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='fillingtheformwithcustomdatafeed'><h2>Filling the form with custom data feed</h2></a>
+
+<p>Instead of dhtmlxConnector, you can load data from any custom feed using the same <a class="link-" href="api__link__dhtmlxform_load.html">load()</a> method. The requirement is: feed elements should have the same names as corresponded form fields have.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myForm <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXForm<span class="br0">&#40;</span>containderID<span class="sy0">,</span>structureAr<span class="br0">&#41;</span><span class="sy0">;</span>
+myForm.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;user.xml&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><strong>user.xml</strong> file:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;data&gt;</span>
+  <span class="sc2">&lt;f_name&gt;</span>John<span class="sc2">&lt;<span class="sy0">/</span>f_name&gt;</span>
+  <span class="sc2">&lt;l_name&gt;</span>Doe<span class="sc2">&lt;<span class="sy0">/</span>l_name&gt;</span>
+  <span class="sc2">&lt;email&gt;</span>jdoe@mail.com<span class="sc2">&lt;<span class="sy0">/</span>email&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span>data&gt;</span></pre></code></pre>
+
+<p>The name of the top tag in XML - &#60;data&#62; - can be any.</p>
+
+<a name='savingdatawithoutdhtmlxconnector'><h2>Saving data without dhtmlxConnector</h2></a>
+
+<h3>AJAX Requests</h3>
+
+<p>In case you would like to have your own server-side processor for form data and don't apply dhtmlxConnector, you may use the <a class="link-" href="api__dhtmlxform_send.html">send()</a> method and 
+send form data to the server by <strong>AJAX POST/GET request</strong>. By default, <strong>POST</strong> request is used.</p>
+
+<pre><code><pre class="js">myForm.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onButtonClick&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>id<span class="sy0">==</span><span class="st0">&quot;send_button&quot;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        myForm.<span class="me1">send</span><span class="br0">&#40;</span><span class="st0">&quot;php/save_form.php&quot;</span><span class="sy0">,</span> <span class="st0">&quot;get&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>loader<span class="sy0">,</span> response<span class="br0">&#41;</span><span class="br0">&#123;</span>
+            <span class="kw3">alert</span><span class="br0">&#40;</span>response<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><strong>Note:</strong> Client side <a class="link-" href="form__validation.html">dhtmlxForm validation</a> will run automatically when the <a class="link-" href="api__dhtmlxform_send.html">send()</a> method is called. If it fails, data will not be sent to server.</p>
+
+<h3>HTML Form Submit</h3>
+
+<p>Also, you can wrap dhtmlxForm container with HTML form tags and use HTML form submit to send data to server in common way. Just do not forget to run <a class="link-" href="form__validation.html">dhtmlxForm validation</a> first.</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>form action<span class="sy0">=</span><span class="st0">&quot;php/save_form.php&quot;</span> method<span class="sy0">=</span><span class="st0">&quot;post&quot;</span> target<span class="sy0">=</span><span class="st0">&quot;[some target]&quot;</span><span class="sy0">&gt;</span>
+    <span class="sy0">&lt;</span>div id<span class="sy0">=</span><span class="st0">&quot;form_container&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span>
+<span class="sy0">&lt;/</span>form<span class="sy0">&gt;</span>
+&nbsp;
+<span class="sy0">&lt;</span>script<span class="sy0">&gt;</span>
+myForm <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXForm<span class="br0">&#40;</span><span class="st0">&quot;form_container&quot;</span><span class="sy0">,</span>structureAr<span class="br0">&#41;</span><span class="sy0">;</span>
+myForm.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onButtonClick&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>id<span class="sy0">==</span><span class="st0">&quot;my_button&quot;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">if</span><span class="br0">&#40;</span>myForm.<span class="me1">validate</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+            document.<span class="me1">forms</span><span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span>.<span class="me1">submit</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span>
+<span class="sy0">&lt;/</span>script<span class="sy0">&gt;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='form__server_side.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

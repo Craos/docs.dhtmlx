@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1589296882.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1589296882.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Vault Docs" href="https://docs.dhtmlx.com/vault/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Uploading Files  Vault Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/c/widgets/vault">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="installation.html">How to Install dhtmlxVault</a></li><li class=""><a href="initialize.html">Initialization</a></li><li class=""><a href="configuring.html">Configuration</a></li><li class=""><a href="localization.html">Localization</a></li><li class=""><a href="work_with_vault.html">Working with Vault</a></li><li class=""><a href="loading_files.html">Loading List of Files</a></li><li class=" current"><a href="uploading_files.html">Uploading Files</a></li><ul><li class="inner"><a href="uploading_files.html#nodejsexample">Node.js example</a></li><li class="inner"><a href="uploading_files.html#request">Request</a></li><li class="inner"><a href="uploading_files.html#response">Response</a></li></ul><li class=""><a href="managing_files.html">Managing Files</a></li><li class=""><a href="events.html">Handling Events</a></li><li class=""><a href="customization.html">Customizing Vault</a></li><li class=""><a href="angular_integration.html">Integrating Vault with Angular</a></li><li class=""><a href="react_integration.html">Integrating Vault with React</a></li><li class=""><a href="vuejs_integration.html">Integrating Vault with Vue.js</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Uploading Files</h1>
+
+<p>In order to upload files into Vault, you need to have some controller that will get and process requests on the server side. 
+Vault uses REST API for processing server-side requests.</p>
+
+<p>In general, the scheme of uploading a file to a server with Vault looks like this:</p>
+
+<ul>
+<li>you use one of the available methods for uploading a file via Vault: drag-n-drop a file for automatic upload, call the <strong>send()</strong> method, or click on the <strong>Upload</strong> button</li>
+<li>a POST request with a file represented as an HTML form is sent to a corresponding URL on a server</li>
+<li>the server-side controller processes a request and returns a response with one of the two statuses: 200 - in case of success, or error - if something has gone wrong</li>
+</ul>
+
+<p>The example described in this article is based on Node.js.</p>
+
+<a name='nodejsexample'><h2>Node.js example</h2></a>
+
+<h3>Backend configuration</h3>
+
+<p>In the example below the following modules are used:</p>
+
+<ul>
+<li>the <a href="https://www.npmjs.com/package/busboy">busboy</a> node.js module for parsing uploaded files as HTML form data</li>
+<li><a href="https://nodejs.org/api/fs.html#fs_file_system">fs</a> module for interacting with the file system </li>
+<li><a href="https://expressjs.com/">Express</a> Node.js framework</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">const</span> Busboy <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'busboy'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">const</span> fs <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'fs'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">const</span> express <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'express'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">const</span> app <span class="sy0">=</span> express<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Download logic</h3>
+
+<p>In case you want to provide the ability to download files added into Vault, you should specify the path to the directory where files will be stored, e.g.:</p>
+
+<pre><code><pre class="js">app.<span class="kw2">use</span><span class="br0">&#40;</span><span class="st0">'/backend/upload/files/:file'</span><span class="sy0">,</span> <span class="br0">&#40;</span>req<span class="sy0">,</span> res<span class="br0">&#41;</span> <span class="sy0">=&gt;</span> <span class="br0">&#123;</span>
+  <span class="kw2">var</span> file <span class="sy0">=</span> __dirname <span class="sy0">+</span> <span class="st0">'/files/'</span><span class="sy0">+</span>req.<span class="me1">params</span>.<span class="me1">file</span><span class="sy0">;</span>
+  res.<span class="me1">download</span><span class="br0">&#40;</span>file<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Upload logic</h3>
+
+<p>Below you can see an example of server-side code that gives an idea of how files upload can be processed. The handler function takes as a parameter the URL for file upload (this URL should be specified 
+in the <a class="link-" href="api__uploader__target_config.html">target</a> configuration option of Vault). It contains the logic of processing an uploaded file:</p>
+
+<pre><code><pre class="js"><span class="co1">// upload files</span>
+app.<span class="me1">post</span><span class="br0">&#40;</span><span class="st0">'/backend/upload'</span><span class="sy0">,</span> <span class="br0">&#40;</span>req<span class="sy0">,</span> res<span class="br0">&#41;</span> <span class="sy0">=&gt;</span> <span class="br0">&#123;</span>
+  <span class="co1">// check if the request method is &quot;POST&quot; </span>
+  <span class="kw1">if</span> <span class="br0">&#40;</span>req.<span class="me1">method</span> <span class="sy0">===</span> <span class="st0">'POST'</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="co1">// create a busboy instance for stream parsing of a file</span>
+    <span class="kw2">const</span> busboy <span class="sy0">=</span> <span class="kw2">new</span> Busboy<span class="br0">&#40;</span><span class="br0">&#123;</span> headers<span class="sy0">:</span> req.<span class="me1">headers</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw2">const</span> response <span class="sy0">=</span> <span class="br0">&#123;</span><span class="br0">&#125;</span><span class="sy0">;</span>
+    busboy.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">'file'</span><span class="sy0">,</span> <span class="br0">&#40;</span>fieldname<span class="sy0">,</span> file<span class="sy0">,</span> filename<span class="br0">&#41;</span> <span class="sy0">=&gt;</span> <span class="br0">&#123;</span>
+      <span class="co1">// define the directory for a file saving</span>
+      <span class="kw2">const</span> saveTo <span class="sy0">=</span> __dirname <span class="sy0">+</span> <span class="st0">&quot;/files/&quot;</span> <span class="sy0">+</span> filename<span class="sy0">;</span>
+      <span class="co1">// add the link to this file for response</span>
+      response.<span class="me1">link</span> <span class="sy0">=</span> `<span class="sy0">/</span>backend<span class="sy0">/</span>upload<span class="sy0">/</span>files<span class="sy0">/</span>$<span class="br0">&#123;</span>filename<span class="br0">&#125;</span>`<span class="sy0">;</span>
+      <span class="co1">// save the file</span>
+      file.<span class="me1">pipe</span><span class="br0">&#40;</span>fs.<span class="me1">createWriteStream</span><span class="br0">&#40;</span>saveTo<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    busboy.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">'finish'</span><span class="sy0">,</span> <span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">=&gt;</span> <span class="br0">&#123;</span>
+      <span class="co1">// return the link to download the file</span>
+      res.<span class="me1">json</span><span class="br0">&#40;</span>response<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span>
+    <span class="kw1">return</span> req.<span class="me1">pipe</span><span class="br0">&#40;</span>busboy<span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+  <span class="co1">// show error 404 in case the request method is other than POST</span>
+  res.<span class="me1">writeHead</span><span class="br0">&#40;</span><span class="nu0">404</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  res.<span class="me1">end</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='request'><h2>Request</h2></a>
+
+<p>Form data sent in the request to the server side contains the following fields:</p>
+
+<pre><code><pre class="js">file<span class="sy0">:</span> <span class="br0">&#40;</span>binary<span class="br0">&#41;</span>
+file_fullname<span class="sy0">:</span> data.<span class="me1">xlsx</span>
+file_id<span class="sy0">:</span> u1552496187456</pre></code></pre>
+
+<p>where:</p>
+
+<ul>
+<li><em>file_fullname</em> - the path to a file including the directory (in case a folder with files has been uploaded), e.g. <strong>folder/file.jpg</strong></li>
+<li><em>file_id</em> - the auto-generated id of a file</li>
+</ul>
+
+<a name='response'><h2>Response</h2></a>
+
+<p>The server returns a response with one of the two statuses: 200 - in case of success, or error - in case something has gone wrong.</p>
+
+<p>A server response may contain:</p>
+
+<ul>
+<li>the <strong>link</strong> option with a link for a file download: </li>
+</ul>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span><span class="st0">&quot;link&quot;</span><span class="sy0">:</span><span class="st0">&quot;/vault/backend/upload/files/data.xlsx&quot;</span><span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>the <strong>preview</strong> option for a file preview image from the server: </li>
+</ul>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span><span class="st0">&quot;preview&quot;</span><span class="sy0">:</span><span class="st0">&quot;/vault/backend/upload/files/preview.png&quot;</span><span class="br0">&#125;</span></pre></code></pre>
+
+<div class='note'><p><p>Please note that in order to return a link and a preview in the server response, you need to specify the corresponding attributes in the <a class="link-" href="loading_files.html#preparingdata">file configuration</a> on the client side.</p>
+</p></div>
+
+<!-- Content Area End -->
+			<a href='uploading_files.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			
+<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='loading_files.html'>Loading List of Files</a></li>	
+	<li><a href='managing_files.html'>Managing Files</a></li>
+	<li><a href='work_with_vault.html'>Working with Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Look and Feel</li>
+	<li><a href='configuring.html'>Configuration</a></li>
+	<li><a href='customization.html'>Customization</a></li>
+	<li><a href='localization.html'>Localization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Integration</li>
+	<li><a href='angular_integration.html'>Vault and Angular</a></li>
+	<li><a href='react_integration.html'>Vault and React</a></li>
+	<li><a href='vuejs_integration.html'>Vault and Vue.js</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__vault.html#methods'>Methods</a></li>
+	<li><a href='api__refs__vault_props.html'>Properties</a></li>
+	<li><a href='api__refs__vault_events.html'>Events</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

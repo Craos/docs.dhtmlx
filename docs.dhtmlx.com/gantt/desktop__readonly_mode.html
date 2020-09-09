@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Read-Only Mode  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__task_types.html">Task Types</a></li><li class=""><a href="desktop__task_object_operations.html">Task Object/Id</a></li><li class=""><a href="desktop__task_tree_operations.html">Task Parent/Child</a></li><li class=""><a href="desktop__crud_task.html">Basic Operations with Tasks</a></li><li class=""><a href="desktop__unscheduled_tasks.html">Unscheduled Tasks</a></li><li class="toc-pro"><a href="desktop__split_tasks.html">Split Tasks</a></li><li class=""><a href="desktop__multiselection.html">Multi-Task Selection</a></li><li class=""><a href="desktop__working_time.html">Work Time Calculation</a></li><li class="toc-pro"><a href="desktop__critical_path.html">Critical Path</a></li><li class="toc-pro"><a href="desktop__baselines.html">Extra Elements in Timeline Area</a></li><li class="toc-pro"><a href="desktop__milestones.html">Milestones</a></li><li class=""><a href="desktop__tooltips.html">Tooltips for Gantt Elements</a></li><li class=""><a href="desktop__text_block_for_task.html">Displaying Contents of Tasks</a></li><li class=" current"><a href="desktop__readonly_mode.html">Read-Only Mode</a></li><ul><li class="inner"><a href="desktop__readonly_mode.html#readonlymodefortheentiregantt">Read-only mode for the entire gantt</a></li><li class="inner"><a href="desktop__readonly_mode.html#readonlymodeforspecifictaskslinks">Read-only mode for specific tasks/links</a></li><li class="inner"><a href="desktop__readonly_mode.html#detailsoftheeditablepropertyconfigoption">Details of the "editable_property" config option</a></li><li class="inner"><a href="desktop__readonly_mode.html#settingeventreadonlybasedonmultipleproperties">Setting event readonly based on multiple properties</a></li></ul><li class=""><a href="desktop__validation.html">Validation</a></li><li class=""><a href="desktop__dnd.html">Dragging Tasks within the Timeline</a></li><li class=""><a href="desktop__advanced_dnd.html">Creating/Selecting Tasks with DnD</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__task_bars.html">Configuring Tasks</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Read-Only Mode</h1>
+
+<p>In this part we want to consider read-only mode in the context of 2 situations:</p>
+
+<ol>
+<li><a class="link-" href="desktop__readonly_mode.html#readonlymodefortheentiregantt">Read-only mode for the entire Gantt chart</a></li>
+<li><a class="link-" href="desktop__readonly_mode.html#readonlymodeforspecifictaskslinks">Read-only mode for specific tasks</a></li>
+</ol>
+
+<a name='readonlymodefortheentiregantt'><h2>Read-only mode for the entire gantt</h2></a>
+
+<p>To make the entire Gantt chart read-only, set the <a class="link-" href="api__gantt_readonly_config.html">readonly</a>  option to <em>true</em>.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">readonly</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Note, when the entire Gantt chart is non-editable, users can't open the lightbox.</p>
+
+<p>To make specific tasks/links editable in the read-only Gantt chart, add the 'editable' property to their data object and set it to <em>true</em>:</p>
+
+<p><img src="media/desktop/task_editable_property.png"/></p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">readonly</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="kw2">var</span> task <span class="sy0">=</span> gantt.<span class="me1">getTask</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">editable</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></pre></code></pre>
+
+<p>By default, the mentioned behavior is binded to the 'editable' property of a task/link. You can change the target property using the <a class="link-" href="api__gantt_editable_property_config.html">editable_property</a> configuration option:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">editable_property</span> <span class="sy0">=</span> <span class="st0">&quot;property_name&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='readonlymodeforspecifictaskslinks'><h2>Read-only mode for specific tasks/links</h2></a>
+
+<p>To make specific tasks or links read-only, add the 'readonly' property to data objects and set it to true:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">getTask</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">readonly</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+gantt.<span class="me1">getLink</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span>.<span class="me1">readonly</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/desktop/task_readonly_property.png"/></p>
+
+<div class='note'><p><p>By default, the gantt checks whether a task/link has this property with a no-negative value then makes the task/link read-only. Otherwise - keeps it editable.</p>
+</p></div>
+
+<p>When the task/link is read-only,  it won't react on clicks, double clicks, isn't draggable or editable in any way.</p>
+
+<p>By default, the read-only behavior is binded to the 'readonly' property of a task/link. But you can change the target property using the  <a class="link-" href="api__gantt_readonly_property_config.html">readonly_property</a> configuration option:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">readonly_property</span> <span class="sy0">=</span> <span class="st0">&quot;property_name&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='detailsoftheeditablepropertyconfigoption'><h2>Details of the "editable_property" config option</h2></a>
+
+<p>The 'editable_property' refers to the property of the task data object, not to the lightbox section or the column of the left-hand grid:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    tasks<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Project #2&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;01-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">18</span><span class="sy0">,</span>order<span class="sy0">:</span><span class="nu0">10</span><span class="sy0">,</span> 
+            progress<span class="sy0">:</span><span class="nu0">0.4</span><span class="sy0">,</span> parent<span class="sy0">:</span><span class="nu0">0</span><span class="sy0">,</span> editable<span class="sy0">:</span><span class="kw2">false</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;02-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span> order<span class="sy0">:</span><span class="nu0">10</span><span class="sy0">,</span> 
+            progress<span class="sy0">:</span><span class="nu0">0.6</span><span class="sy0">,</span> parent<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> editable<span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Task #2&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;11-04-2020&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span><span class="nu0">8</span><span class="sy0">,</span> order<span class="sy0">:</span><span class="nu0">20</span><span class="sy0">,</span> 
+            progress<span class="sy0">:</span><span class="nu0">0.6</span><span class="sy0">,</span> parent<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> editable<span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span><span class="sy0">,</span>
+    links<span class="sy0">:</span><span class="br0">&#91;</span>...<span class="br0">&#93;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>If you want to make it settable from the lightbox, you need to set the 'editable_property' to the same property the control is mapped to:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span> 
+    <span class="br0">&#123;</span>
+        <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;description&quot;</span><span class="sy0">,</span> 
+        height<span class="sy0">:</span><span class="nu0">38</span><span class="sy0">,</span> 
+        map_to<span class="sy0">:</span><span class="st0">&quot;some_property&quot;</span><span class="sy0">,</span> 
+        type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span> 
+        <span class="kw3">focus</span><span class="sy0">:</span><span class="kw2">true</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    ....
+<span class="br0">&#93;</span>
+gantt.<span class="me1">config</span>.<span class="me1">editable_property</span> <span class="sy0">=</span> <span class="st0">&quot;some_property&quot;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='settingeventreadonlybasedonmultipleproperties'><h2>Setting event readonly based on multiple properties</h2></a>
+
+<p>If you want to make events conditionally editable based on a set of properties, you can:</p>
+
+<ul>
+<li>manage their editability manually, e.g. by blocking the <a class="link-" href="api__gantt_onbeforelightbox_event.html">onBeforeLightbox</a> and <a class="link-" href="api__gantt_onbeforetaskdrag_event.html">onBeforeTaskDrag</a> events </li>
+<li>dynamically update the 'editable_property' each time the task is loaded, added or updated (<a class="link-" href="api__gantt_ontaskloading_event.html">onTaskLoading</a>, <a class="link-" href="api__gantt_ontaskcreated_event.html">onTaskCreated</a>, <a class="link-" href="api__gantt_onaftertaskupdate_event.html">onAfterTaskUpdate</a>):</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onTaskLoading&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    task.<span class="me1">editable</span> <span class="sy0">=</span> task.<span class="me1">has_owner</span> <span class="sy0">&amp;&amp;</span> task.<span class="me1">editable</span> <span class="sy0">&amp;&amp;</span> task.<span class="me1">text</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='desktop__readonly_mode.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

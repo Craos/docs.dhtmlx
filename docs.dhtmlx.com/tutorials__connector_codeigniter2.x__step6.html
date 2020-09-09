@@ -1,0 +1,305 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Step 6. Create a Grid <br> (using Model, View, Controller objects)  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="tutorials__connector_codeigniter2.x__step1.html">Step 1. Include Required Code Files</a></li><li class=""><a href="tutorials__connector_codeigniter2.x__step2.html">Step 2. Create a Data Source</a></li><li class=""><a href="tutorials__connector_codeigniter2.x__step3.html">Step 3. Configure the Database Connectivity</a></li><li class=""><a href="tutorials__connector_codeigniter2.x__step4.html">Step 4. Create a Grid <br> (using View, Controller objects)</a></li><li class=""><a href="tutorials__connector_codeigniter2.x__step5.html">Step 5. Create a Scheduler</a></li><li class=" current"><a href="tutorials__connector_codeigniter2.x__step6.html">Step 6. Create a Grid <br> (using Model, View, Controller objects)</a></li><ul><li class="inner"><a href="tutorials__connector_codeigniter2.x__step6.html#step61configuringthemodelobject">Step 6.1. Configuring the Model object</a></li><li class="inner"><a href="tutorials__connector_codeigniter2.x__step6.html#step62configuringtheviewobject">Step 6.2. Configuring the View object</a></li><li class="inner"><a href="tutorials__connector_codeigniter2.x__step6.html#step63configuringthecontrollerobject">Step 6.3. Configuring the Controller object</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="tutorials__index.html">Tutorials</a><a class="n3" href="tutorials__connector_codeigniter__index.html">Using Connector with CodeIgniter</a><a class="n4" href="tutorials__connector_codeigniter2.x__index.html">Using Connector with CodeIgniter 2.X</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Step 6. Create a Grid <br> (using Model, View, Controller objects)</h1>
+
+<p>The technique stated on <a class="link-" href="tutorials__connector_codeigniter__step4.html">Step 4</a> and <a class="link-" href="tutorials__connector_codeigniter__step5.html">Step 5</a> works well if data is loaded from a single DB table. 
+But if data requires more difficult loading and saving, it's better to create a separate model class.</p>
+
+<p>As an example, let's create a model object for the grid we built on  <a class="link-" href="tutorials__connector_codeigniter__step4.html">Step 4</a>.</p>
+
+<p>We will divide the step into 3 substeps:</p>
+
+<ul>
+<li><a class="link-" href="tutorials__connector_codeigniter2.x__step6.html#step61configuringthemodelobject">Step 6.1. Configuring the Model object</a></li>
+<li><a class="link-" href="tutorials__connector_codeigniter2.x__step6.html#step62configuringtheviewobject">Step 6.2. Configuring the View object</a></li>
+<li><a class="link-" href="tutorials__connector_codeigniter2.x__step6.html#step63configuringthecontrollerobject">Step 6.3. Configuring the Controller object</a></li>
+</ul>
+
+<a name='step61configuringthemodelobject'><h2>Step 6.1. Configuring the Model object</h2></a>
+
+<p>In our model we will specify functions for:</p>
+
+<ul>
+<li>Getting an array of data items;</li>
+<li>Getting an individual properties of a data item;</li>
+<li>Processing Insert/Update/Delete operations;</li>
+<li>Validating data before saving.</li>
+</ul>
+
+<div style="font-weight:bold; color: rgb(65, 65, 65); padding-top: 10px; font-size: 15px;">To configure the Model object:</div>
+
+<ol>
+    <li>In the "<i>models</i> " folder create a new file and name it <b>event_model.php</b></li>
+    <li>Open the "<i>event_model.php</i> " file and add the following code there:<br><br>
+<p class='snippet'>
+"models/event_model.php" file
+</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;?</span>php
+&nbsp;
+<span class="kw2">class</span> Event_model <span class="kw2">extends</span> CI_Model <span class="br0">&#123;</span>
+    <span class="kw2">var</span> $event_name<span class="sy0">;</span>
+    <span class="kw2">var</span> $start_date<span class="sy0">;</span>
+    <span class="kw2">var</span> $end_date<span class="sy0">;</span>
+&nbsp;
+    <span class="kw2">function</span> __construct<span class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        parent<span class="sy0">::</span>__construct<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="co1">//returns an array with data</span>
+    <span class="kw2">function</span> get<span class="br0">&#40;</span>$request<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        $query <span class="sy0">=</span> $this<span class="sy0">-&gt;</span>db<span class="sy0">-&gt;</span>get<span class="br0">&#40;</span><span class="st0">&quot;events&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">return</span> $query<span class="sy0">-&gt;</span>result_array<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="co1">//the function takes values of the row data</span>
+    <span class="kw2">protected</span> <span class="kw2">function</span> get_values<span class="br0">&#40;</span>$action<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        $this<span class="sy0">-&gt;</span>event_name   <span class="sy0">=</span> $action<span class="sy0">-&gt;</span>get_value<span class="br0">&#40;</span><span class="st0">&quot;event_name&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        $this<span class="sy0">-&gt;</span>start_date   <span class="sy0">=</span> $action<span class="sy0">-&gt;</span>get_value<span class="br0">&#40;</span><span class="st0">&quot;start_date&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        $this<span class="sy0">-&gt;</span>end_date     <span class="sy0">=</span> $action<span class="sy0">-&gt;</span>get_value<span class="br0">&#40;</span><span class="st0">&quot;end_date&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="co1">//inserts a new event</span>
+    <span class="kw2">function</span> insert<span class="br0">&#40;</span>$action<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        $this<span class="sy0">-&gt;</span>get_values<span class="br0">&#40;</span>$action<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">if</span> <span class="br0">&#40;</span>$this<span class="sy0">-&gt;</span>validate<span class="br0">&#40;</span>$action<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#123;</span> 
+           $this<span class="sy0">-&gt;</span>db<span class="sy0">-&gt;</span>insert<span class="br0">&#40;</span><span class="st0">&quot;events&quot;</span><span class="sy0">,</span> $this<span class="br0">&#41;</span><span class="sy0">;</span>
+           $action<span class="sy0">-&gt;</span>success<span class="br0">&#40;</span>$this<span class="sy0">-&gt;</span>db<span class="sy0">-&gt;</span>insert_id<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+       <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+    <span class="co1">//updates an event</span>
+    <span class="kw2">function</span> update<span class="br0">&#40;</span>$action<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        $this<span class="sy0">-&gt;</span>get_values<span class="br0">&#40;</span>$action<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">if</span> <span class="br0">&#40;</span>$this<span class="sy0">-&gt;</span>validate<span class="br0">&#40;</span>$action<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#123;</span> 
+            $this<span class="sy0">-&gt;</span>db<span class="sy0">-&gt;</span>update<span class="br0">&#40;</span>
+                <span class="st0">&quot;events&quot;</span><span class="sy0">,</span> 
+                $this<span class="sy0">,</span> 
+                array<span class="br0">&#40;</span><span class="st0">&quot;event_id&quot;</span> <span class="sy0">=&gt;</span> $action<span class="sy0">-&gt;</span>get_id<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+            <span class="br0">&#41;</span><span class="sy0">;</span>
+            $action<span class="sy0">-&gt;</span>success<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+    <span class="co1">// validates an event before saving</span>
+    <span class="kw2">function</span> validate<span class="br0">&#40;</span>$action<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>$this<span class="sy0">-&gt;</span>event_name <span class="sy0">==</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+            $action<span class="sy0">-&gt;</span>invalid<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            $action<span class="sy0">-&gt;</span>set_response_attribute<span class="br0">&#40;</span>
+                <span class="st0">&quot;details&quot;</span><span class="sy0">,</span>
+                <span class="st0">&quot;Empty text is not allowed&quot;</span>
+            <span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+        <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="co1">//deletes an event</span>
+    <span class="kw2">function</span> <span class="kw1">delete</span><span class="br0">&#40;</span>$action<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        $this<span class="sy0">-&gt;</span>db<span class="sy0">-&gt;</span><span class="kw1">delete</span><span class="br0">&#40;</span><span class="st0">&quot;events&quot;</span><span class="sy0">,</span> array<span class="br0">&#40;</span><span class="st0">&quot;event_id&quot;</span> <span class="sy0">=&gt;</span> $action<span class="sy0">-&gt;</span>get_id<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        $action<span class="sy0">-&gt;</span>success<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span> 
+<span class="br0">&#125;</span>
+<span class="sy0">?&gt;</span></pre></code></pre>
+
+    </li>
+</ol>
+
+<a name='step62configuringtheviewobject'><h2>Step 6.2. Configuring the View object</h2></a>
+
+<p>We won't create a new view and will use the <a class="link-" href="tutorials__connector_codeigniter__step4.html#step41configuringtheviewobject">view file specified on Step 4</a>.</p>
+
+<a name='step63configuringthecontrollerobject'><h2>Step 6.3. Configuring the Controller object</h2></a>
+
+<p>And let's create a new controller that will process our model.</p>
+
+<p>The difference between the current controler and the <a class="link-" href="tutorials__connector_codeigniter__step4.html#step42configuringthecontrollerobject">controller file of the Step 4</a> lies is 2 commands:</p>
+
+<pre><code><pre class="js">$this<span class="sy0">-&gt;</span>load<span class="sy0">-&gt;</span>model<span class="br0">&#40;</span><span class="st0">&quot;event_model&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">// loads the model</span>
+$connector<span class="sy0">-&gt;</span>useModel<span class="br0">&#40;</span>$this<span class="sy0">-&gt;</span>event_model<span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//applies the model</span></pre></code></pre>
+
+<p>The commands allows us to load our model and apply it in the project.</p>
+
+<div style="font-weight:bold; color: rgb(65, 65, 65); padding-top: 10px; font-size: 15px;">To configure the Controller object:</div>
+
+<ol>
+    <li>In the "<i>controllers</i> " folder create a new file and name it "<i>gridmodel.php</i> " </li>
+    <li>Open the "<i>gridmodel.php</i> " file and add the following code there:<br><br>
+<p class='snippet'>
+"controllers/gridmodel.php" file
+</p>
+
+<pre><code><pre class="js">require_once<span class="br0">&#40;</span><span class="st0">&quot;./dhtmlx/connector/grid_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+require_once<span class="br0">&#40;</span><span class="st0">&quot;./dhtmlx/connector/db_phpci.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+DataProcessor<span class="sy0">::</span>$action_param <span class="sy0">=</span><span class="st0">&quot;dhx_editor_status&quot;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">class</span> GridModel <span class="kw2">extends</span> CI_Controller <span class="br0">&#123;</span>
+    <span class="kw2">public</span> <span class="kw2">function</span> index<span class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span class="co1">//grid's view</span>
+        $this<span class="sy0">-&gt;</span>load<span class="sy0">-&gt;</span>view<span class="br0">&#40;</span><span class="st0">'grid'</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+    <span class="br0">&#125;</span>
+    <span class="kw2">public</span> <span class="kw2">function</span> data<span class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span class="co1">//data feed</span>
+        $this<span class="sy0">-&gt;</span>load<span class="sy0">-&gt;</span>database<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        $this<span class="sy0">-&gt;</span>load<span class="sy0">-&gt;</span>model<span class="br0">&#40;</span><span class="st0">&quot;event_model&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+        $connector <span class="sy0">=</span> <span class="kw2">new</span> GridConnector<span class="br0">&#40;</span>$this<span class="sy0">-&gt;</span>db<span class="sy0">,</span> <span class="st0">&quot;PHPCI&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        $connector<span class="sy0">-&gt;</span>configure<span class="br0">&#40;</span>
+            <span class="st0">&quot;events&quot;</span><span class="sy0">,</span> 
+            <span class="st0">&quot;event_id&quot;</span><span class="sy0">,</span> 
+            <span class="st0">&quot;start_date, end_date, event_name&quot;</span>
+        <span class="br0">&#41;</span><span class="sy0">;</span>
+        $connector<span class="sy0">-&gt;</span>useModel<span class="br0">&#40;</span>$this<span class="sy0">-&gt;</span>event_model<span class="br0">&#41;</span><span class="sy0">;</span>
+        $connector<span class="sy0">-&gt;</span>render<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+    </li>
+</ol>
+
+<div style="font-weight:bold; color: rgb(65, 65, 65); padding-top: 10px;" >That's all. We believe you have enjoyed the tutorial and seen   how easy you could integrate CodeIgniter with dhtmlxConnector. 
+The final application logic was not the goal of this article, but interface built here is a good start for creating full functional web application.
+<br><br>
+Follow our other tutorials to be a true DHTMLX expert.</div>
+
+<div id="tutorial_step">
+    <a id="next_step" class="link-" href="tutorials__index.html"></a>
+</div>
+
+<!-- Content Area End -->
+			<a href='tutorials__connector_codeigniter2.x__step6.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

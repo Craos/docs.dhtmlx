@@ -1,0 +1,320 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599057782.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599057782.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/suite/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+		<title>Configuration  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite/">Widgets</a>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='../index.html' style="color:white">Documentation</a> / <a href='../index.html' style="color:white">Suite 6.0</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="list__api__refs__list.html">List API</a></li><li class=""><a href="list__initialization.html">Initialization</a></li><li class=" current"><a href="list__configuration.html">Configuration</a></li><ul><li class="inner"><a href="list__configuration.html#arrowkeysnavigation">Arrow keys navigation</a></li><li class="inner"><a href="list__configuration.html#dragndropofitems">Drag-n-drop of items</a></li><li class="inner"><a href="list__configuration.html#dynamicrenderingofitems">Dynamic rendering of items</a></li><li class="inner"><a href="list__configuration.html#editingitems">Editing items</a></li><li class="inner"><a href="list__configuration.html#heightofanitem">Height of an item</a></li><li class="inner"><a href="list__configuration.html#heightofthelist">Height of the List</a></li><li class="inner"><a href="list__configuration.html#multipleselectionofitems">Multiple selection of items</a></li><li class="inner"><a href="list__configuration.html#selectionofitems">Selection of items</a></li><li class="inner"><a href="list__configuration.html#templateforlistitems">Template for List items</a></li></ul><li class=""><a href="list__load_data.html">Data Loading</a></li><li class=""><a href="list__work_with_list.html">Work with List</a></li><li class=""><a href="list__customization.html">Customization</a></li><li class=""><a href="list__events.html">Event Handling</a></li><li class=""><a href="list__migration.html">Migration to Newer Versions</a></li></ul>
+			</div>
+		</div>
+
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="../index.html">Start</a><a class="n2" href="list__index.html">List</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Configuration</h1>
+
+<a name='arrowkeysnavigation'><h2>Arrow keys navigation</h2></a>
+
+<p>The List component provides the possibility to navigate its items with arrow keys. You can enable this functionality using the <a class="link-" href="list__api__list_keynavigation_config.html">keyNavigation</a> property:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> list <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">List</span><span class="br0">&#40;</span><span class="st0">&quot;list&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>keyNavigation<span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>As a value of this option you can use either <em>true/false</em> to switch it on/off, or specify a <em>function</em> that will define some custom navigation logic.</p>
+
+<a name='dragndropofitems'><h2>Drag-n-drop of items</h2></a>
+
+<p>dhtmlxList supports drag-n-drop of items between lists in several modes. To begin with, you should specify the <a class="link-" href="list__api__list_dragmode_config.html">dragMode</a> property in the configuration object of List. Then define which mode you need:</p>
+
+<ul>
+<li>"target" - a list takes items from other lists, while its items can't be dragged out of it</li>
+<li>"source" - a list allows dragging its items out and can't take items from other lists</li>
+<li>"both" - a list both takes items from other lists and allows dragging its items out as well</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> list <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">List</span><span class="br0">&#40;</span><span class="st0">&quot;list_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> 
+    dragMode<span class="sy0">:</span><span class="st0">&quot;source&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In order to provide the possiblity of dragging several items between lists, you should enable the <a class="link-" href="list__api__list_multiselection_config.html">multiselection</a> in addition to the <a class="link-" href="list__api__list_dragmode_config.html">dragMode</a>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> list <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">List</span><span class="br0">&#40;</span><span class="st0">&quot;list_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> 
+    dragMode<span class="sy0">:</span><span class="st0">&quot;source&quot;</span><span class="sy0">,</span>
+    multiselection<span class="sy0">:</span><span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Read more about multiselection in List <a href="list__configuration.html#multipleselectionofitems">below</a>.</p>
+
+<p><a href='https://snippet.dhtmlx.com/yfz6ai7j' target='blank'><span class='sample'>Related sample: </span>&nbsp;List. Setup Drag Mode</a></p>
+
+<a name='dynamicrenderingofitems'><h2>Dynamic rendering of items</h2></a>
+
+<p>All data is loaded into List and rendered at once. In case you use large amounts of data in the list, it may slow down the work of your app.</p>
+
+<p>There is a possibility to increase the speed of your application containing a List by enabling dynamic data rendering. It presupposes that data is rendered by parts and on demand.
+To make use of dynamic data rendering, switch the <a class="link-" href="list__api__list_virtual_config.html">virtual</a> property on.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> list <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">List</span><span class="br0">&#40;</span><span class="st0">&quot;list_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> 
+    virtual<span class="sy0">:</span><span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='https://snippet.dhtmlx.com/x4gxy38e' target='blank'><span class='sample'>Related sample: </span>&nbsp;List. Virtual List</a></p>
+
+<a name='editingitems'><h2>Editing items</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/list/editable.png" alt="editable"/></p>
+
+<p><a href='https://snippet.dhtmlx.com/f26lfcai' target='blank'><span class='sample'>Related sample: </span>&nbsp;List. Editable List</a></p>
+
+<p>You can enable the possibility to edit List items with the help of the <a class="link-" href="list__api__list_editable_config.html">editable</a> configuration option:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> list <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">List</span><span class="br0">&#40;</span><span class="st0">&quot;list_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>editable<span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='heightofanitem'><h2>Height of an item</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/list/item_height.png" alt="item_height"/></p>
+
+<p><a href='https://snippet.dhtmlx.com/89buovn2' target='blank'><span class='sample'>Related sample: </span>&nbsp;List. Setup List Item Height</a></p>
+
+<p>You can specify the necessary height of an item and set it before initialization of List via the <a class="link-" href="list__api__list_itemheight_config.html">itemHeight</a> property either as a number:</p>
+
+<pre><code><pre class="js"><span class="co1">// sets the height of an item as a number</span>
+<span class="kw2">var</span> list <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">List</span><span class="br0">&#40;</span><span class="st0">&quot;list_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> 
+<span class="xtra ln-xtra">    itemHeight<span class="sy0">:</span><span class="nu0">30</span> </span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>or as a string value</p>
+
+<pre><code><pre class="js"><span class="co1">// sets the height of an item as a string value</span>
+<span class="kw2">var</span> list <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">List</span><span class="br0">&#40;</span><span class="st0">&quot;list_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> 
+<span class="xtra ln-xtra">    itemHeight<span class="sy0">:</span><span class="st0">&quot;30px&quot;</span> </span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>The usage of the <em>CSS calc() function</em> within the <a class="link-" href="list__api__list_itemheight_config.html">itemHeight</a> property is not possible.</p>
+</p></div>
+
+<p>When the <a class="link-" href="list__api__list_virtual_config.html">virtual</a> property is set to <em>true</em>, the default height of a list item is 37. To change this value, make use of the <strong>itemHeight</strong> property, as described above.</p>
+
+<a name='heightofthelist'><h2>Height of the List</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/list/list_height.png" alt="list_height"/></p>
+
+<p><a href='https://snippet.dhtmlx.com/k2mj2sz7' target='blank'><span class='sample'>Related sample: </span>&nbsp;List. Setup List Height</a></p>
+
+<p>You can define the desired height of a list via the <a class="link-" href="list__api__list_height_config.html">height</a> configuration option as easy as that:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> list <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">List</span><span class="br0">&#40;</span><span class="st0">&quot;list&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>height<span class="sy0">:</span> <span class="nu0">700</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>You can also use a string value for setting the height of List:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> list <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">List</span><span class="br0">&#40;</span><span class="st0">&quot;list&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>height<span class="sy0">:</span> <span class="st0">&quot;700px&quot;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>The usage of the <em>CSS calc() function</em> within the <a class="link-" href="list__api__list_height_config.html">height</a> property is not possible.</p>
+</p></div>
+
+<a name='multipleselectionofitems'><h2>Multiple selection of items</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/list/multiselection.png" alt="multiselection"/></p>
+
+<p><a href='https://snippet.dhtmlx.com/0sorkczm' target='blank'><span class='sample'>Related sample: </span>&nbsp;List. List Multiselection</a></p>
+
+<p>By default, you can select only one item in a list, since selection of another item resets selection of the previous one. To enable the possbility to select several List items, make use of the 
+<a class="link-" href="list__api__list_multiselection_config.html">multiselection</a> configuration option:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> list <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">List</span><span class="br0">&#40;</span><span class="st0">&quot;list&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>multiselection<span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Setting the <strong>multiselection</strong> property to <em>true</em> presupposes selection of multiple items by using Ctrl key.
+It is also possible to use the "Ctrl+click" combination to select several items. For this, you need to set the 
+<a class="link-" href="list__api__list_multiselection_config.html">multiselection</a> configuration option to <em>"ctrlClick"</em>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> list <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">List</span><span class="br0">&#40;</span><span class="st0">&quot;list&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    multiselection<span class="sy0">:</span><span class="st0">&quot;ctrlClick&quot;</span>   
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='selectionofitems'><h2>Selection of items</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/list/disable_selection.png" alt="disable_selection"/></p>
+
+<p><a href='samples/list/02_configuration/08_not_selectable.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Disable Selection - DHTMLX List</a></p>
+
+<p>The default configuration of List provides you with the selection feature that allows highlighting a List item. To disable selection in a List you need to set the <a class="link-" href="list__api__list_selection_config.html">selection</a> configuration property to <em>false</em>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> list <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">List</span><span class="br0">&#40;</span><span class="st0">&quot;list_container&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>selection<span class="sy0">:</span> <span class="kw2">false</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='templateforlistitems'><h2>Template for List items</h2></a>
+
+<p><img style="margin: 0px 0px 0px 20px; display: block;" src="media/list/list_template.png" alt="template"/></p>
+
+<p><a href='https://snippet.dhtmlx.com/gtzdwpj4' target='blank'><span class='sample'>Related sample: </span>&nbsp;List. Add Template To List Item</a></p>
+
+<p>You can define a template for rendering items in a List with the help of the <a class="link-" href="list__api__list_template_config.html">template</a> configuration property. Set as its value a function that takes one parameter:</p>
+
+<ul>
+<li><strong>item</strong> - (<em>object</em>) an object of a data item</li>
+</ul>
+
+<pre><code><pre class="js">&nbsp;
+<span class="kw2">var</span> list <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">List</span><span class="br0">&#40;</span><span class="st0">&quot;list&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span>
+    css<span class="sy0">:</span> <span class="st0">&quot;dhx_widget--bordered&quot;</span><span class="sy0">,</span> 
+    template<span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="kw1">item</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw2">var</span> template <span class="sy0">=</span> <span class="st0">&quot;&lt;div class='list_item'&gt;&quot;</span><span class="sy0">;</span>
+        template <span class="sy0">+=</span> <span class="st0">&quot;&lt;div class='item_name'&gt;&quot;</span><span class="sy0">+</span><span class="kw1">item</span>.<span class="me1">value</span><span class="sy0">;</span>
+&nbsp;
+        template<span class="sy0">+=</span><span class="st0">&quot;&lt;span class='item_author'&gt; by &quot;</span>
+        template <span class="sy0">+=</span> <span class="kw1">item</span>.<span class="me1">authors</span>.<span class="me1">filter</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="kw1">item</span><span class="br0">&#41;</span><span class="br0">&#123;</span><span class="kw1">return</span> <span class="kw1">item</span><span class="br0">&#125;</span><span class="br0">&#41;</span>.<span class="me1">join</span><span class="br0">&#40;</span><span class="st0">&quot;, &quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        template <span class="sy0">+=</span> <span class="kw1">item</span>.<span class="me1">publishedDate</span> <span class="sy0">?</span> <span class="st0">&quot;, &quot;</span> 
+        template <span class="sy0">+=</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="kw1">item</span>.<span class="me1">publishedDate</span>.$date<span class="br0">&#41;</span>.<span class="me1">getFullYear</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">:</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+        template <span class="sy0">+=</span> <span class="st0">&quot;&lt;/span&gt;&quot;</span><span class="sy0">;</span>
+        template <span class="sy0">+=</span> <span class="st0">&quot;&lt;/div&gt;&quot;</span><span class="sy0">;</span>
+&nbsp;
+        template <span class="sy0">+=</span> <span class="st0">&quot;&lt;div class='item_categories'&gt;&quot;</span><span class="sy0">+</span><span class="kw1">item</span>.<span class="me1">categories</span>.<span class="me1">join</span><span class="br0">&#40;</span><span class="st0">&quot;, &quot;</span><span class="br0">&#41;</span><span class="sy0">+</span><span class="st0">&quot;&lt;/div&gt;&quot;</span><span class="sy0">;</span>
+        template <span class="sy0">+=</span> <span class="st0">&quot;&lt;/div&gt;&quot;</span><span class="sy0">;</span>
+        <span class="kw1">return</span> template<span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    itemHeight<span class="sy0">:</span> <span class="nu0">72</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='list__configuration.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite Components</li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>ComboBox</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>
+	<li><a href='form__index.html'>Form</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>	
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>	
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>	
+	<li><a href='message__index.html'>Message & Tooltip</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='timepicker__index.html'>TimePicker</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='tree__index.html'>Tree</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='window__index.html'>Window</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Standalone Libs</li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../richtext/index.html'>RichText</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Helpers</li>
+	<li><a href="ajax__api__refs__ajax.html">AJAX</a></li>
+	<li><a href='data_collection__api__refs__datacollection.html'>Data Collection API</a></li>
+	<li><a href='helpers__icon.html'>Default Icons</a></li>
+	<li><a href='selection__api__refs__selection.html'>Selection Object API</a></li>
+	<li><a href='tree_collection__api__refs__treecollection.html'>Tree Collection API</a></li>
+	<li><a href='helpers__using_typescript.html'>Using DHTMLX with TypeScript</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="https://docs.dhtmlx.com/suite/assets/tree.js"></script>
+	<script>
+		function isFullTree() {
+			return document.querySelectorAll("#doc_navigation li").length > 200;
+		}
+
+		function normalizeTree(items) {
+			const itemsArray = Array.prototype.slice.call(items);
+
+			const uls = itemsArray.filter(function (i) { return i.tagName === "UL"; });
+
+			for (const ul of uls) {
+				const titleLi = ul.previousElementSibling;
+				titleLi.appendChild(ul);
+			}
+		}
+
+		const docNav = document.querySelector("#doc_navigation");
+		const docNavList = docNav.querySelector("ul");
+		if(isFullTree() && setStyles){
+			normalizeTree(docNavList.children);
+			setStyles(docNavList);
+			const current = docNavList.querySelector(".tree-item__current");
+			if (current) {
+				expandRec(current);
+			}
+		}
+		docNav.style.visibility = "inherit";
+	</script>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>
+</body>
+</html>

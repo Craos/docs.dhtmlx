@@ -1,0 +1,298 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Validation  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxform.html">dhtmlXForm API</a></li><li class=""><a href="form__how_to_start.html">How to Start with dhtmlxForm</a></li><li class=""><a href="form__constructor_of_dhtmlx_form.html">Object Constructor</a></li><li class=""><a href="form__controls_list.html">List of Controls</a></li><li class=""><a href="form__xml_structure.html">XML Format</a></li><li class=""><a href="form__json_structure.html">JSON Format</a></li><li class=""><a href="form__html_structure.html">HTML Format</a></li><li class=""><a href="form__working_with_userdata.html">Working with Userdata</a></li><li class=""><a href="form__other_configuration.html">Config and Operations</a></li><li class=""><a href="form__positioning.html">Positioning Controls</a></li><li class=" current"><a href="form__validation.html">Validation</a></li><ul><li class="inner"><a href="form__validation.html#enablingvalidation">Enabling validation</a></li><li class="inner"><a href="form__validation.html#livevalidation">Live validation</a></li><li class="inner"><a href="form__validation.html#requiredfields">Required fields</a></li><li class="inner"><a href="form__validation.html#markingvalidationerrors">Marking validation errors</a></li><li class="inner"><a href="form__validation.html#validationevents">Validation events</a></li><li class="inner"><a href="form__validation.html#assigningvalidationrulesdynamically">Assigning validation rules dynamically</a></li></ul><li class=""><a href="form__custom_item.html">Creating a Custom Control</a></li><li class=""><a href="form__server_side.html">Server-side Integration</a></li><li class=""><a href="form__dhtmlx_components.html">Integration with DHTMLX</a></li><li class=""><a href="form__data_binding.html">Binding Data</a></li><li class=""><a href="form__handling_events.html">Handling Events</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="form__index.html">Form</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Validation</h1>
+
+<a name='enablingvalidation'><h2>Enabling validation</h2></a>
+
+<p>To enable validation you need to specify the <strong>validate</strong> property and set it to the desired <a href="form__validation.html#validation">rule</a>.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> formData <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;input&quot;</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;email&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;E-mail&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span><span class="st0">&quot;&quot;</span><span class="sy0">,</span> validate<span class="sy0">:</span> <span class="st0">&quot;ValidEmail&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+<span class="kw2">var</span> dhxForm <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXForm<span class="br0">&#40;</span><span class="st0">&quot;dhxFormObj&quot;</span><span class="sy0">,</span> formData<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>With such markup, each time when you call methods <a class="link-" href="api__dhtmlxform_save.html">save</a>() and <a class="link-" href="api__dhtmlxform_send.html">send</a>(), validation will fire.</p>
+
+<p>You can also force form validation using the <a class="link-" href="api__dhtmlxform_validate.html">validate</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> formData <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;input&quot;</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;email&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;E-mail&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span><span class="st0">&quot;&quot;</span><span class="sy0">,</span> validate<span class="sy0">:</span> <span class="st0">&quot;ValidEmail&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;button&quot;</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;btn&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="st0">&quot;validate&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+<span class="kw2">var</span> myForm <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXForm<span class="br0">&#40;</span><span class="st0">&quot;form_container&quot;</span><span class="sy0">,</span> formData<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+myForm.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onButtonClick&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="br0">&#123;</span>myForm.<span class="me1">validate</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='livevalidation'><h2>Live validation</h2></a>
+
+<p>dhtmlxForm provides support for the <em>Live Validation</em> mode. It's the mode when validation is invoked just after 
+an input goes out of focus (in the standard mode validation is invoked when the user clicks the submit button).</p>
+
+<p>To enable the Live Validation mode, you should call the <a class="link-" href="api__dhtmlxform_enablelivevalidation.html">enableLiveValidation</a> method with the <em>true</em> parameter.</p>
+
+<pre><code><pre class="js">myForm.<span class="me1">enableLiveValidation</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='requiredfields'><h2>Required fields</h2></a>
+
+<p>The library provides an easy way to treat the required fields - the <strong>required</strong> attribute. 
+Setting the attribute for an input will add the <img src="media/form/requiredicon.png"/> icon after its label:</p>
+
+<p><img src="media/form/required_fields.png"></p>
+
+<p>BTW, you can add any additional validation rule to the required fields. For example, for the 'E-mail'/'Confirm e-mail' fields (in the image above) you can set 
+the <em>ValidEmail</em> rule to check whether the input value is correct, 
+i.e. the form will check whether the field contains any value and if it does, check whether this value has the correct format.</p>
+
+<pre><code><pre class="js">formData <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;input&quot;</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;prj_name&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Project Name&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span><span class="st0">&quot;My Project&quot;</span><span class="sy0">,</span> 
+     required<span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;input&quot;</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;prj_descr&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Project Description&quot;</span><span class="sy0">,</span> 
+     value<span class="sy0">:</span><span class="st0">&quot;My project is great!&quot;</span><span class="sy0">,</span> rows<span class="sy0">:</span><span class="nu0">3</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;input&quot;</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;email&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;E-mail&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span><span class="st0">&quot;&quot;</span><span class="sy0">,</span> validate<span class="sy0">:</span><span class="st0">&quot;ValidEmail&quot;</span><span class="sy0">,</span> 
+     required<span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>type<span class="sy0">:</span><span class="st0">&quot;input&quot;</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;email2&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Confirm e-mail&quot;</span><span class="sy0">,</span> validate<span class="sy0">:</span><span class="st0">&quot;ValidEmail&quot;</span><span class="sy0">,</span> 
+     value<span class="sy0">:</span><span class="st0">&quot;&quot;</span><span class="sy0">,</span> required<span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In the image above validation failed for the <strong><em>Email</em></strong> field.</p>
+
+<p><strong>Note</strong> that there is a special method that will allow you to make/unmake a certain field required - <a class="link-" href="api__dhtmlxform_setrequired.html">setRequired</a>.</p>
+
+<pre><code><pre class="js">myForm.<span class="me1">setRequired</span><span class="br0">&#40;</span><span class="st0">&quot;prj_name&quot;</span><span class="sy0">,</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// makes input with the name 'prj_name' required</span>
+...
+<span class="me1">myForm</span>.<span class="me1">setRequired</span><span class="br0">&#40;</span><span class="st0">&quot;name&quot;</span><span class="sy0">,</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// makes input with the name 'prj_name' unrequired</span></pre></code></pre>
+
+<a name='markingvalidationerrors'><h2>Marking validation errors</h2></a>
+
+<p>When an input fails validation it's marked with <strong>"dhtmlx_validation_error"</strong> CSS class. So if you want to define custom styling, you need to set its rules:</p>
+
+<pre><code><pre class="js">.<span class="me1">dhtmlx_validation_error</span><span class="br0">&#123;</span>
+    ... <span class="me1">any</span> custom marking rules here ...
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>Custom messages can be added by using validation events.</p>
+
+<a name='validationevents'><h2>Validation events</h2></a>
+
+<p>There are 4 validation events:</p>
+
+<ul>
+<li><a class="link-" href="api__dhtmlxform_onbeforevalidate_event.html">onBeforeValidate</a> - starts before validation and allows preparing input data to it (blockable)</li>
+<li><a class="link-" href="api__dhtmlxform_onvalidatesuccess_event.html">onValidateSuccess</a> - fires if validation check of some field is positive</li>
+<li><a class="link-" href="api__dhtmlxform_onvalidateerror_event.html">onValidateError</a> - fires if validation check of some field is negative</li>
+<li><a class="link-" href="api__dhtmlxform_onaftervalidate_event.html">onAfterValidate</a> - fires after validation, provides the result of total validation</li>
+</ul>
+
+<p>You can also handle HTML input-related events, such as <strong>onblur</strong> (fires when the element which is in focus, loses that focus). For mode details, read the chapter 
+<a class="link-" href="form__handling_events.html#triggeringhtmlevents">Triggering HTML Events</a> from the article <a class="link-" href="form__handling_events.html">Handling Events</a>.</p>
+
+<h2 id="validation">Validation rules</h2>
+
+<p>There are 3 types of rules:</p>
+
+<ol>
+<li>Standard rules;</li>
+<li>Custom rules;</li>
+<li>Regular expressions.</li>
+</ol>
+
+<h3>Standard rules</h3>
+
+<p>Standard rules are the following:</p>
+
+<ul>
+<li>Empty;</li>
+<li>ValidBoolean;</li>
+<li>ValidEmail;</li>
+<li>ValidInteger;</li>
+<li>ValidNumeric;</li>
+<li>ValidAplhaNumeric;</li>
+<li>ValidDatetime;</li>
+<li>ValidDate;</li>
+<li>ValidTime;</li>
+<li>ValidIPv4;</li>
+<li>ValidCurrency;</li>
+<li>ValidSSN;</li>
+<li>ValidSIN.</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> formData <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;input&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Number&quot;</span><span class="sy0">,</span> validate<span class="sy0">:</span><span class="st0">&quot;ValidNumeric&quot;</span><span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Custom rules</h3>
+
+<p>Custom rules can be created by defining a custom function and using its name as the validation rule. 
+Such function takes the only parameter - the <strong><em>field's value</em></strong> and if validation is successful returns <strong><em>true</em></strong>, otherwise <strong><em>false</em></strong>.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> formData <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;input&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Number&quot;</span><span class="sy0">,</span> validate<span class="sy0">:</span><span class="st0">&quot;Greater100&quot;</span><span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">;</span>
+...
+<span class="kw2">function</span> Greater100<span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="br0">&#123;</span> 
+        <span class="kw1">return</span> <span class="br0">&#40;</span>data<span class="sy0">&gt;</span><span class="nu0">100</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>In case, you want to validate a field just if it contains something (i.e. don't validate the field if it's empty), you should use the following technique:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> formData <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;input&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Number&quot;</span><span class="sy0">,</span> validate<span class="sy0">:</span><span class="st0">&quot;Greater100&quot;</span><span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">;</span>
+...
+<span class="kw2">function</span> Greater100<span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>data<span class="sy0">==</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span> <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span><span class="co1">// returns 'true' if the field is empty</span>
+&nbsp;
+        <span class="kw1">return</span> <span class="br0">&#40;</span>data<span class="sy0">&gt;</span><span class="nu0">100</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<h3>Regular expressions</h3>
+
+<p>You can use a <strong>regular expression as value</strong> of the <strong>validate</strong> attribute:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> formData <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;input&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Number&quot;</span><span class="sy0">,</span> validate<span class="sy0">:</span><span class="st0">&quot;[0-9]+&quot;</span><span class="br0">&#125;</span><span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='assigningvalidationrulesdynamically'><h2>Assigning validation rules dynamically</h2></a>
+
+<p>There are 2 methods that let you to set/remove validation rules dynamically. They are:</p>
+
+<ul>
+<li><a class="link-" href="api__dhtmlxform_setvalidation.html">setValidation</a> - adds a validation rule to the input with the specified name;</li>
+<li><a class="link-" href="api__dhtmlxform_clearvalidation.html">clearValidation</a> - removes all validation rules from the input.</li>
+</ul>
+
+<pre><code><pre class="js">myForm.<span class="me1">setValidation</span><span class="br0">&#40;</span><span class="st0">'age'</span><span class="sy0">,</span> <span class="st0">'ValidInteger'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">myForm</span>.<span class="me1">clearValidation</span><span class="br0">&#40;</span><span class="st0">'age'</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='form__validation.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

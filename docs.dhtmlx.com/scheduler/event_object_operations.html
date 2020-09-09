@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Event Object Operations  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=" current"><a href="event_object_operations.html">Event Object Operations</a></li><ul><li class="inner"><a href="event_object_operations.html#gettingtheeventobject">Getting the event object</a></li><li class="inner"><a href="event_object_operations.html#gettingeventsfromthespecifiedtimeperiod">Getting events from the specified time period</a></li><li class="inner"><a href="event_object_operations.html#gettingalleventsofthescheduler">Getting all events of the scheduler</a></li><li class="inner"><a href="event_object_operations.html#gettingthenexteventstartingfromthecurrentdate">Getting the next event starting from the current date</a></li><li class="inner"><a href="event_object_operations.html#gettingtheeventsid">Getting the event's id</a></li><li class="inner"><a href="event_object_operations.html#changingtheeventsid">Changing the event's id</a></li><li class="inner"><a href="event_object_operations.html#settingthelightboxoptionslabelasthetextoftheevent">Setting the lightbox option's label as the text of the event</a></li></ul><li class=""><a href="adding_events.html">Adding/Deleting Events</a></li><li class=""><a href="filtering.html">Filtering Events</a></li><li class=""><a href="dhtmlx_components_integration.html">Drag-and-Drop Operations</a></li><li class=""><a href="recurring_events.html">Recurring Events</a></li><li class=""><a href="readonly.html">Read-only Mode</a></li><li class=""><a href="validation.html">Validation</a></li><li class=""><a href="collisions.html">Preventing Double Events in a Time Slot</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="managing_events.html">Managing Scheduler Events</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Event Object Operations</h1>
+
+<a name='gettingtheeventobject'><h2>Getting the event object</h2></a>
+
+<p>To get the event object, use the <a class="link-" href="api__scheduler_getevent.html">getEvent</a> method:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">parse</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+   <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;2019-05-13 6:00&quot;</span><span class="sy0">,</span> end_date<span class="sy0">:</span><span class="st0">&quot;2019-05-13 8:00&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Event 1&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+   <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;2019-06-09 6:00&quot;</span><span class="sy0">,</span> end_date<span class="sy0">:</span><span class="st0">&quot;2019-06-09 8:00&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Event 2&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+... 
+<span class="kw2">var</span> eventObj <span class="sy0">=</span> scheduler.<span class="me1">getEvent</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//-&gt;{id:1, start_date:&quot;2019-05-13 6:00&quot;, end_date:&quot;2019-05-13 8:00&quot;, text:&quot;Event 1&quot;}</span></pre></code></pre>
+
+<a name='gettingeventsfromthespecifiedtimeperiod'><h2>Getting events from the specified time period</h2></a>
+
+<p>To get a collection of events that occur during the specified period, use <a class="link-" href="api__scheduler_getevents.html">getEvents</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> evs <span class="sy0">=</span> scheduler.<span class="me1">getEvents</span><span class="br0">&#40;</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span><span class="nu0">1</span><span class="sy0">,</span><span class="nu0">10</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span><span class="nu0">2</span><span class="sy0">,</span><span class="nu0">10</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="co1">//where evs is an array of events' objects</span></pre></code></pre>
+
+<a name='gettingalleventsofthescheduler'><h2>Getting all events of the scheduler</h2></a>
+
+<p>To get all events loaded to the scheduler, call the <a class="link-" href="api__scheduler_getevents.html">getEvents</a> method without parameters as in:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> evs <span class="sy0">=</span> scheduler.<span class="me1">getEvents</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// returns all events as an array of objects</span></pre></code></pre>
+
+<a name='gettingthenexteventstartingfromthecurrentdate'><h2>Getting the next event starting from the current date</h2></a>
+
+<pre><code><pre class="js"><span class="kw2">var</span> evs <span class="sy0">=</span> scheduler.<span class="me1">getEvents</span><span class="br0">&#40;</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">9999</span><span class="sy0">,</span><span class="nu0">1</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>   
+<span class="co1">//evs - list of all oncoming events</span>
+evs.<span class="me1">sort</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>a<span class="sy0">,</span>b<span class="br0">&#41;</span><span class="br0">&#123;</span> <span class="kw1">return</span> <span class="br0">&#40;</span>a.<span class="me1">start_date</span> <span class="sy0">&gt;</span> b.<span class="me1">start_date</span> <span class="sy0">?</span> <span class="nu0">1</span> <span class="sy0">:</span> <span class="sy0">-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//evs[0] - nearest upcoming event</span></pre></code></pre>
+
+<a name='gettingtheeventsid'><h2>Getting the event's id</h2></a>
+
+<p>To get the event's id by the value of one of the event's properties, use the following technique:</p>
+
+<p class='snippet'>
+    Getting the event's id by the event's text
+</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">parse</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+   <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;2019-05-13 6:00&quot;</span><span class="sy0">,</span> end_date<span class="sy0">:</span><span class="st0">&quot;2019-05-13 8:00&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Event 1&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+   <span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;2019-06-09 6:00&quot;</span><span class="sy0">,</span> end_date<span class="sy0">:</span><span class="st0">&quot;2019-06-09 8:00&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Event 2&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+&nbsp;
+<span class="kw2">var</span> evs <span class="sy0">=</span> scheduler.<span class="me1">getEvents</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//gets all events of the scheduler</span>
+<span class="kw1">for</span><span class="br0">&#40;</span><span class="kw2">var</span> i<span class="sy0">=</span><span class="nu0">0</span><span class="sy0">;</span>i<span class="sy0">&lt;</span>evs.<span class="me1">length</span><span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span><span class="br0">&#123;</span>  <span class="co1">//goes through all events to find the one needed</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>evs<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="me1">text</span> <span class="sy0">==</span> <span class="st0">&quot;Event 2&quot;</span><span class="br0">&#41;</span> 
+        <span class="kw2">var</span> eventId <span class="sy0">=</span> evs<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="me1">id</span><span class="sy0">;</span><span class="co1">// -&gt; 2</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>If you know an approximate time when the needed event occurs, you'd better to limit the returned collection of events, in order to increase the app's speed:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> evs <span class="sy0">=</span> scheduler.<span class="me1">getEvents</span><span class="br0">&#40;</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span>05<span class="sy0">,</span>01<span class="br0">&#41;</span><span class="sy0">,</span><span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="nu0">2019</span><span class="sy0">,</span>05<span class="sy0">,</span><span class="nu0">10</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="kw1">for</span><span class="br0">&#40;</span><span class="kw2">var</span> i<span class="sy0">=</span><span class="nu0">0</span><span class="sy0">;</span>i<span class="sy0">&lt;</span>evs.<span class="me1">length</span><span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span><span class="br0">&#123;</span>  
+    <span class="kw1">if</span> <span class="br0">&#40;</span>evs<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="me1">text</span> <span class="sy0">==</span> <span class="st0">&quot;Event 2&quot;</span><span class="br0">&#41;</span> 
+        <span class="kw2">var</span> eventId <span class="sy0">=</span> evs<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="me1">id</span><span class="sy0">;</span><span class="co1">// -&gt; 2</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='changingtheeventsid'><h2>Changing the event's id</h2></a>
+
+<p>To change the current id of an event, you may use the <a class="link-" href="api__scheduler_changeeventid.html">changeEventId</a> method as in:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">changeEventId</span><span class="br0">&#40;</span><span class="st0">&quot;ev15&quot;</span><span class="sy0">,</span> <span class="st0">&quot;ev25&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//changes the event id &quot;ev15&quot; -&gt; &quot;ev25&quot;</span></pre></code></pre>
+
+<a name='settingthelightboxoptionslabelasthetextoftheevent'><h2>Setting the lightbox option's label as the text of the event</h2></a>
+
+<p>By default the text of a Scheduler event is set via the mapped text field from the lightbox.</p>
+
+<p><img src="media/default_event_text.png"></p>
+
+<p>It is also possible to redefine the default behavior and use the label of the option selected in the combobox as the text of the event.</p>
+
+<p><img src="media/option_event_text.png"></p>
+
+<p>The text of an event is specified by one of the following templates: <a class="link-" href="api__scheduler_event_text_template.html">event_text</a> or <a class="link-" href="api__scheduler_event_bar_text_template.html">event_bar_text</a>, depending on the type of the view. So to change 
+the scheme of adding text into an event, you should redefine the corresponding template.</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span> <span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;type&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">21</span><span class="sy0">,</span> inputWidth<span class="sy0">:</span><span class="nu0">400</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;type&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;select&quot;</span><span class="sy0">,</span> 
+        options<span class="sy0">:</span>scheduler.<span class="me1">serverList</span><span class="br0">&#40;</span><span class="st0">&quot;options&quot;</span><span class="sy0">,</span> <span class="br0">&#91;</span>
+            <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Simple&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Complex&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+            <span class="br0">&#123;</span>key<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> label<span class="sy0">:</span><span class="st0">&quot;Unknown&quot;</span><span class="br0">&#125;</span>
+        <span class="br0">&#93;</span>
+    <span class="br0">&#41;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">72</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;auto&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+scheduler.<span class="me1">templates</span>.<span class="me1">event_text</span> <span class="sy0">=</span> scheduler.<span class="me1">templates</span>.<span class="me1">event_bar_text</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> event<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> options <span class="sy0">=</span> scheduler.<span class="me1">serverList</span><span class="br0">&#40;</span><span class="st0">&quot;options&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">for</span><span class="br0">&#40;</span><span class="kw2">var</span> i <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span> i <span class="sy0">&lt;</span> options.<span class="me1">length</span><span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw1">if</span><span class="br0">&#40;</span>options<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="me1">key</span> <span class="sy0">==</span> event.<span class="me1">type</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+            <span class="kw1">return</span> options<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="me1">label</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="kw1">return</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>There are several notes concerning the above code:</p>
+
+<ul>
+<li><p>The <a class="link-" href="api__scheduler_serverlist.html">serverList</a> method is used to provide options for the combobox and retrieve them inside the template. This method can also be used to load options with the rest of data using a connector and update them dynamically.</p></li>
+<li><p>Inside the template there is a linear search for a selected item. In some cases when you have a lot of events/options, it may have a noticeable impact on performance, since these templates can be called quite often. To solve this issue, you can create a hash for a quick search instead of constantly iterating an array.</p></li>
+<li><p>The client side should have the complete list of options in order to display them. Otherwise, you will need to load the options manually, e.g. if you use the autocomplete search functionality, which pulls the required options dynamically.</p></li>
+</ul>
+
+<!-- Content Area End -->
+			<a href='event_object_operations.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

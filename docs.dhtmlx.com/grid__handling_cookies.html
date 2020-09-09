@@ -1,0 +1,286 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Saving Grid Configuration in Cookies  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="grid__basic_operations.html">Common Operations with Grid and its Elements</a></li><li class=""><a href="grid__columns_types.html">Column Types</a></li><li class=""><a href="grid__headers_and_footers.html">Headers and Footers</a></li><li class=""><a href="grid__frozen_columns.html">Freezing Columns (the 'Split' Mode)</a></li><li class=""><a href="grid__navigation.html">Enabling Keyboard Navigation</a></li><li class=""><a href="grid__selection.html">Managing the Selection</a></li><li class=""><a href="grid__drag_and_drop.html">Drag-and-Drop Support</a></li><li class=" current"><a href="grid__handling_cookies.html">Saving Grid Configuration in Cookies</a></li><ul><li class="inner"><a href="grid__handling_cookies.html#common">Common</a></li><li class="inner"><a href="grid__handling_cookies.html#sometipsonautomaticsaving">Some tips on automatic saving</a></li></ul><li class=""><a href="grid__xml_configuration.html">Configuring Grid from XML</a></li><li class=""><a href="grid__json_configuration.html">Configuring Grid from JSON</a></li><li class=""><a href="grid__grouping_columns.html">Grouping Columns</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__configuring_the_grid.html">Configuring Grid</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Saving Grid Configuration in Cookies</h1>
+
+<a name='common'><h2>Common</h2></a>
+
+<p>The library provides a number of methods to manipulate cookies. Methods can take the following parameters:</p>
+
+<ol>
+<li><strong>name</strong> - (<em>optional</em>) the cookie name;</li>
+<li><strong>param</strong> - (<em>optional</em>) additional parameters added to cookie.</li>
+</ol>
+
+<div class='note'><p><p>The stated functionality requires PRO version of the dhtmlxGrid (or DHTMLX Suite) package.</br></p>
+</p></div>
+
+<p><br></p>
+
+<p class='snippet'>
+Using cookies 
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">enableAutoSaving</span><span class="br0">&#40;</span><span class="st0">&quot;some_name&quot;</span><span class="sy0">,</span><span class="st0">&quot;expires=Fri, 31-Dec-2010 23:59:59 GMT&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><br></p>
+
+<table class="common_table" cellspacing="0" cellpadding="5" border="0">
+    <caption class="caption">
+        <strong>Table 1 </strong>
+        The cookies API
+    </caption>
+    <thead>
+    <tr>
+        <th align="left">
+            <strong> Method </strong>
+        </th>
+        <th align="left">
+            <strong> Description </strong>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td colspan="2"><b>Automatic saving to cookie</b></td>
+    </tr>
+    <tr>
+        <td><a class="link-pro" href="api__dhtmlxgrid_enableautosaving.html">enableAutoSaving(<i>name,param</i>)</a></td>
+        <td>enables automatic saving of the columns order (an array of ids), size and sorting type</td>
+    </tr>
+    <tr>
+        <td><a class="link-pro" href="api__dhtmlxgrid_enableautohiddencolumnssaving.html">enableAutoHiddenColumnsSaving(<i>name,param</i>)</a></td>
+        <td>enables automatic saving of the columns states (<i>hidden/shown</i>)</td>
+    </tr>
+    <tr>
+        <td><a class="link-pro" href="api__dhtmlxgrid_enableautosizesaving.html">enableAutoSizeSaving(<i>name,param</i>)</a></td>
+        <td>enables automatic saving of the columns sizes</td>
+    </tr>
+    <tr>
+        <td><a class="link-pro" href="api__dhtmlxgrid_enableordersaving.html">enableOrderSaving(<i>name,param</i>)</a></td>
+        <td>enables automatic saving of the columns order (an array of ids)</td>
+    </tr>
+    <tr>
+        <td><a class="link-pro" href="api__dhtmlxgrid_enablesortingsaving.html">enableSortingSaving(<i>name,param</i>)</a></td>
+        <td>enables automatic saving of the columns sorting types</td>
+    </tr>
+    <tr>
+        <td colspan="2"><b>Manual saving to cookie</b></td>
+    </tr>
+    <tr>
+        <td><a class="link-pro" href="api__dhtmlxgrid_savehiddencolumnstocookie.html">saveHiddenColumnsToCookie(<i>name,param</i>)</a></td>
+        <td>saves the columns states (<i>hidden/shown</i>)</td>
+    </tr>
+    <tr>
+        <td><a class="link-pro" href="api__dhtmlxgrid_saveordertocookie.html">saveOrderToCookie(<i>name, param</i>)</a></td>
+        <td>saves the columns order (an array of ids)</td>
+    </tr>
+    <tr>
+        <td><a class="link-pro" href="api__dhtmlxgrid_savesortingtocookie.html">saveSortingToCookie(<i>name,param</i>)</a></td>
+        <td>saves the columns sorting types</td>
+    </tr>
+    <tr>
+        <td><a class="link-pro" href="api__dhtmlxgrid_savesizetocookie.html">saveSizeToCookie(<i>name,param</i>)</a></td>
+        <td>saves the columns sizes</td>
+    </tr>
+    <tr>
+        <td colspan="2"><b>Loading from cookies</b></td>
+    </tr>
+    <tr>
+        <td><a class="link-pro" href="api__dhtmlxgrid_loadhiddencolumnsfromcookie.html">loadHiddenColumnsFromCookie(<i>name</i>)</a></td>
+        <td>loads the columns states (<i>hidden/shown</i>) from cookie</td>
+    </tr>
+    <tr>
+        <td><a class="link-pro" href="api__dhtmlxgrid_loadorderfromcookie.html">loadOrderFromCookie(<i>name</i>)</a></td>
+        <td>loads the columns order (an array of ids) from cookie</td>
+    </tr>
+    <tr>
+        <td><a class="link-pro" href="api__dhtmlxgrid_loadsizefromcookie.html">loadSizeFromCookie(<i>name</i>)</a></td>
+        <td>loads the columns sizes from cookie</td>
+    </tr>
+    <tr>
+        <td><a class="link-pro" href="api__dhtmlxgrid_loadsortingfromcookie.html">loadSortingFromCookie(<i>name</i>)</a></td>
+        <td>loads the columns sorting types from cookie</td>
+    </tr>
+    <tr>
+        <td colspan="2"><b>Clearing cookies</b></td>
+    </tr>
+    <tr>
+        <td><a class="link-pro" href="api__dhtmlxgrid_clearconfigcookie.html">clearConfigCookie(<i>name</i>)</a></td>
+        <td>clears the specified cookie</td>
+    </tr>
+    </tbody>
+</table>
+
+<a name='sometipsonautomaticsaving'><h2>Some tips on automatic saving</h2></a>
+
+<p>While using automatic saving remember the following rules:</p>
+
+<ol>
+<li>the 'enable' and 'load' methods are called after grid initialization but before data loading;</li>
+<li>if you need to restore several cookie data you should follow the specific calling order. The correct order is shown in the code snippet below;</li>
+<li>the 'enable' methods must be called only AFTER calling the 'load' methods.</li>
+</ol>
+
+<p class='snippet'>
+Automatic saving to cookie. The order of calling the related methods
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+...
+<span class="me1">mygrid</span>.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// firstly, initialize the grid</span>
+&nbsp;
+&nbsp;
+mygrid.<span class="me1">loadOrderFromCookie</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>  <span class="co1">// then restore the required data</span>
+mygrid.<span class="me1">loadSizeFromCookie</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">loadSortingFromCookie</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">loadHiddenColumnsFromCookie</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+&nbsp;
+mygrid.<span class="me1">enableAutoSizeSaving</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// enable saving cookies </span>
+mygrid.<span class="me1">enableSortingSaving</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">enableOrderSaving</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">enableAutoHiddenColumnsSaving</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+mygrid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;data.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>   <span class="co1">// load data to the grid</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/16_rows_columns_manipulations/07_pro_column_states_save.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Saving/restoring columns' states</a></p>
+
+<!-- Content Area End -->
+			<a href='grid__handling_cookies.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

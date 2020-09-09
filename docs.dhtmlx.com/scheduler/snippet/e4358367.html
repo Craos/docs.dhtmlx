@@ -1,0 +1,321 @@
+<!doctype html>
+<html xmlns:x>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Snippets for DHTMLX Scheduler</title>
+	<meta property="og:title" content="Awesome code snippet for DHTMLX Scheduler" />
+
+	<script type="text/javascript" src="http://cdn.webix.com/2.1/webix.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://cdn.webix.com/2.1/webix.css">
+
+	<!-- loading extra components from cdn -->
+	<script type="text/javascript">webix.require.disabled = true;</script>
+	<script type="text/javascript" src="http://cdn.webix.com/components/codemirror/codemirror.js"></script>
+	<script type="text/javascript" src="http://cdn.webix.com/components/codemirror/codemirror/lib/codemirror.js"></script>
+	<script type="text/javascript" src="http://cdn.webix.com/components/codemirror/codemirror/mode/javascript/javascript.js"></script>
+	<script type="text/javascript" src="http://cdn.webix.com/components/codemirror/codemirror/mode/xml/xml.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://cdn.webix.com/components/codemirror/codemirror/lib/codemirror.css">
+
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<style type="text/css">
+		html,body{ height:100%; }
+		.CodeMirror pre.code_error{
+			background-color:#FFCACA;
+		}
+		.webix_menu-x .webix_list_item .webix_icon{
+			color:#555;
+			cursor:pointer;
+			margin-left:10px;
+		}
+		.webix_icon:hover{
+			color:orange;
+		}
+	</style>
+
+</head>
+<body>
+	<a href='http://dhtmlx.com' style='line-height:20px; text-decoration:none;position:absolute; top:15px; left:20px; color: #1D6FA5; font-family:Tahoma;'> <span >&#8592; back to</span> dhtmlx.com</a>
+
+	<script type="text/javascript">
+		var snippet = {
+			skin:"flat",
+			mode:"json",
+			init:function(){
+				var page = document.location.href.split("/").pop().split("?")[0];
+				if (/[a-z0-9]{8}/.test(page)){
+					webix.ajax("share.php?show="+page, function(text, data){
+						snippet.when_editor_ready(function(){
+							var obj = data.json();
+
+							var code = obj.code;
+
+							if (code.indexOf("wbx:") === 0){
+								var start = code.indexOf("\n");
+								var parts = code.substr(4,start-4).split(":");
+								snippet.skin = parts[0];
+								snippet.set_init_mode(parts[1]);
+								code = code.substr(start+1);
+							}
+
+							$$("code_editor").setValue(code);
+							$$("html_editor").setValue(obj.html);
+							snippet.update_preview();
+						});
+					});
+				} else {
+					$$("code_editor").setValue(snippet.presets.week.code);
+					$$("html_editor").setValue(snippet.presets.week.html);
+					snippet.update_preview();
+				}
+			},
+			when_editor_ready:function(code){
+				if ($$("code_editor").getEditor())
+					code.call();
+				else
+					setTimeout(code, 100);
+			},
+			info:function(){
+				$$("snippet-info").show();
+			},
+
+			
+			presets:{
+				"week":{
+					code:'scheduler.config.xml_date = "%Y-%m-%d %h:%i";\n\nscheduler.init("scheduler_here",new Date(2009,5,30),"week");\nscheduler.parse(small_events_list, "json");\n\n/*possible data sets are\n - small_events_list,\n - big_events_list\n*/',
+					html:'<script src="./scheduler/dhtmlxscheduler.js"></s'+'cript>\n\n<div id="scheduler_here" class="dhx_cal_container" style="width:100%; height:100%;">\n\t<div class="dhx_cal_navline">\n\t\t<div class="dhx_cal_prev_button">&nbsp;</div>\n\t\t<div class="dhx_cal_next_button">&nbsp;</div>\n\t\t<div class="dhx_cal_today_button"></div>\n\t\t<div class="dhx_cal_date"></div>\n\t\t<div class="dhx_cal_tab" name="day_tab" style="right:204px;"></div>\n\t\t<div class="dhx_cal_tab" name="week_tab" style="right:140px;"></div>\n\t\t<div class="dhx_cal_tab" name="month_tab" style="right:76px;"></div>\n\t</div>\n\t<div class="dhx_cal_header">\n\t</div>\n\t<div class="dhx_cal_data">\n\t</div>\n</div>',
+				},
+				"timeline":{
+					html:'<script src="./scheduler/dhtmlxscheduler.js"></s'+'cript><script src="./scheduler/ext/dhtmlxscheduler_timeline.js"></s'+'cript>\n\n<div id="scheduler_here" class="dhx_cal_container" style="width:100%; height:100%;">\n\t<div class="dhx_cal_navline">\n\t\t<div class="dhx_cal_prev_button">&nbsp;</div>\n\t\t<div class="dhx_cal_next_button">&nbsp;</div>\n\t\t<div class="dhx_cal_today_button"></div>\n\t\t<div class="dhx_cal_date"></div>\n\t\t<div class="dhx_cal_tab" name="day_tab" style="right:204px;"></div>\n\t\t<div class="dhx_cal_tab" name="week_tab" style="right:140px;"></div>\n\t\t<div class="dhx_cal_tab" name="month_tab" style="right:76px;"></div>\n\t</div>\n\t<div class="dhx_cal_header">\n\t</div>\n\t<div class="dhx_cal_data">\n\t</div>\n</div>',
+					code:'scheduler.config.xml_date = "%Y-%m-%d %h:%i";\n\nvar sections=[\n\t{key:1, label:"James Smith"},\n\t{key:2, label:"John Williams"},\n\t{key:3, label:"David Miller"},\n\t{key:4, label:"Linda Brown"}\n];\n\nscheduler.createTimelineView({\n\tname:\t"timeline",\n\tx_unit:\t"minute",\n\tx_date:\t"%H:%i",\n\tx_step:\t30,\n\tx_size: 24,\n\tx_start: 16,\n\tx_length:\t48,\n\ty_unit:\tsections,\n\ty_property:\t"section_id",\n\trender:"bar"\n});\n\nscheduler.init("scheduler_here",new Date(2009,5,30),"timeline");\nscheduler.parse(big_events_list, "json");\n'
+				}
+			},
+			ask_reset:function(){
+				webix.confirm({
+					text:"Reset to the initial state?",
+					callback:function(confirm){
+						if (confirm){
+							$$("html_editor").setValue(snippet.presets.week.html);
+							$$("code_editor").setValue(snippet.presets.week.code);
+							snippet.update_preview();
+						}
+					}
+				});
+			},
+			ask_share:function(){
+				var button = this.$view;
+				webix.ajax().post("share.php", {
+					code:$$("code_editor").getValue(),
+					html:$$("html_editor").getValue(),
+					mode:snippet.mode,
+					skin:snippet.skin
+				}, function(text){
+					if (text.length == 8){
+						var url = "http://docs.dhtmlx.com/scheduler/snippet/"+text;
+						$$("sharelink").setValue(url);
+						$$("share-buttons").setValues({
+							url:url,
+							text:"I've just created an awesome UI"
+						})
+						$$("sharewin").show(button);
+						var input = $$("sharelink").getInputNode();
+						input.focus();
+						input.select();
+					} else
+						webix.message({
+							type:"error",
+							expire:5000,
+							text:"Sorry, some server side problems<br> Data was not saved"
+						});
+				});
+
+			},
+			includes:function(){
+				var skin = snippet.skin;
+				var scripts = [
+					'<script type="text/javascript" src="./demodata.js?v=4.2" charset="utf-8"></s'+'cript>',
+					'<link rel="stylesheet" type="text/css" href="./scheduler/dhtmlxscheduler_'+skin+'.css">'
+				].join("\n");
+
+				return scripts;
+			},
+			update_preview:function(){
+				var html = $$("html_editor").getValue()||"";
+				var code = $$("code_editor").getValue()||"";
+				var skin = snippet.skin;
+
+				//code was not changed
+				if (html == snippet._old_html  &&  code == snippet._old_code && skin == snippet._old_skin)
+					return;
+
+				snippet._old_html = html;
+				snippet._old_code = code;
+				snippet._old_skin = skin;
+
+				//because of bug in Chrome we can't just replace content
+				//so recreating iframe view
+				$$("pre-view").$view.innerHTML = "<iframe style='width:100%; height:100%' frameborder='0' src='about:blank'></iframe>";
+				//IE need to render iframe before any operations with its content
+				if (webix.env.isIE)
+					webix.delay(snippet._preview_frame);
+				else
+					snippet._preview_frame();
+			},
+			_preview_frame:function(){
+				var win = $$("pre-view").getWindow().document;
+				var html = snippet._old_html;
+				var code = snippet._old_code;
+
+				var content = "<!doctype html><html><meta http-equiv='Content-Type' content='text/html; charset=UTF-8' /><head><style>html, body{ height:100%; padding:0px; margin:0px;}</style>%includes%</head><script>window.onerror = function(err){ top.snippet.on_code_error.apply(top,arguments); }</s"+"cript><body>%html%<script>%code%</s"+"cript></body>";
+
+				content = content.replace("%code%", code.replace(/\$/g, "$$$$"));
+				content = content.replace("%html%", html.replace(/\$/g, "$$$$"));
+				content = content.replace("%includes%", snippet.includes());
+
+				snippet._injection_code_line = 0;//snippet.includes.length+10+(html.match(/\n/g)||"").length;
+				snippet._injection_code_length = (code.match(/\n/g)||"").length+1;
+
+				snippet._mark_error_lines(false);
+				win.open();
+				try{
+					win.write(content);
+				} catch(e){
+					snippet.on_code_error(e);
+				}
+				win.close();
+			},
+			_mark_error_lines:function(line){
+return;
+				var editor = $$("code_editor").editor;
+				if (snippet._last_marked_cm_line){
+					for (var i = editor.lineCount() - 1; i >= 0; i--)
+						editor.setLineClass(i,'background',null);
+					snippet._last_marked_cm_line = false;
+				}
+				if (line){
+					snippet._last_marked_cm_line = true;
+					editor.setLineClass(line, 'background', 'code_error');
+					if (line)
+						editor.setLineClass(line-1, 'background', 'code_error');
+				}
+			},
+			on_key:function(){
+				clearTimeout(snippet.preview_timer);
+				snippet.preview_timer = setTimeout(function(){
+					snippet.update_preview();
+				},500);
+			},
+			on_code_error:function(text, url, line){
+				if (line && snippet._injection_code_line !== false &&
+						line >= snippet._injection_code_line &&
+						line < (snippet._injection_code_line+snippet._injection_code_length)){
+
+					var codeline = line - snippet._injection_code_line;
+					snippet._mark_error_lines(codeline-1);
+					webix.message({
+						type:'error',
+						text:text+"<br> at line "+ codeline,
+						expire:3000, id:'tutor_error_message'});
+
+				} else
+					webix.message({ type:'error', text:text, expire:3000, id:'tutor_error_message'});
+			},
+			set_init_mode:function(mode){
+				if (mode != snippet.mode){
+					debugger;
+					snippet.mode = mode;
+					var json = (mode != "xml");
+					$$("code-header").define("template", (json ? "JS Code" : "XML Code"));
+					if ($$("code_editor").getEditor()){
+						$$("code_editor").getEditor().setOption("mode", json?"javascript":"xml");
+						if (mode == "json"){
+							$$("code_editor").setValue(snippet.presets.week.code);
+							$$("html_editor").setValue(snippet.presets.week.html);
+						}
+						snippet.update_preview();
+					}
+					$$("code-header").refresh();
+				}
+			},
+			menu_click:function(id){
+				var parts = id.toString().split("_");
+				if (parts[0] == "skin"){
+					snippet.skin = parts[1];
+					snippet.update_preview();
+				} else if (parts[0] == "preset"){
+					$$("code_editor").setValue(snippet.presets[parts[1]].code)
+					$$("html_editor").setValue(snippet.presets[parts[1]].html)
+					snippet.update_preview();
+				} else if (id == "data")
+					snippet.info();
+			}
+		};
+
+		var menu = [
+			{ value:"Skins", submenu:[
+				{ id:"skin_terrace", value:"Terrace" },
+				{ id:"skin_flat", value:"Flat" },
+				{ id:"skin_classic", value:"Classic" },
+				{ id:"skin_glossy", value:"Glossy" }
+			]},
+			{ value:"Presets", submenu:[
+				{ id:"preset_week", value:"Week"},
+				{ id:"preset_timeline", value:"Timeline"}
+			]}
+		];
+		var layout = {
+			type:"line", cols:[
+				{ gravity:0.5, margin:5, padding:5, rows:[
+					{ cols:[
+						{ template:"" },
+						{ view:"button", type:"form", value:"Share", click:snippet.ask_share },
+						{ view:"button", gravity:0.5, value:"Reset", height:40, click:snippet.ask_reset }
+					]},
+					{
+						view:"toolbar", paddingY:0, margin:0, height:38, elements:[
+							{view:"label", template:"JS Code", id:"code-header" },
+							{view:"menu", width:120, data:[
+								{ value:" <span class='webix_icon icon-cog'></span> Options", submenu:menu }
+								], click:snippet.menu_click, borderless:true }
+						]
+					},
+					{ view:"codemirror-editor", id:"code_editor", gravity:2 },
+					{ type:"header", template:"HTML Code", height:38 },
+					{ view:"codemirror-editor", id:"html_editor", mode:"xml" }
+				] },
+				{ view:"resizer" },
+				{ css:"previewArea", type:"space", cols:[
+					{ view:"iframe", id:"pre-view" }
+				]}
+			]
+		};
+
+		webix.protoUI({
+			name:"sharing",
+			defaults:{
+				template:'<a class="twitterBtn" target="_blank" href="https://twitter.com/intent/tweet?text=#text#%20%23Webix&url=#url#">Tweet</a><a class="facebookBtn" target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=#url#">Facebook</a><a target="_blank" class="googleBtn" href="https://plus.google.com/share?url=#url#">Google+</a>',
+				height:30,
+				css: "wbx_sharing"
+			}
+		}, webix.ui.template);
+
+		var share = {
+			view:"popup", id:"sharewin", width:330,
+			body:{
+				margin:5, rows:[
+					{ template:"You can use the link below to share the code.",
+						height:38, borderless:true },
+					{ view:"textarea", id:"sharelink", height:70 },
+					{ view:"sharing", id:"share-buttons" }
+				]
+			}
+		};
+
+
+		webix.ui(layout);
+		webix.ui(share);
+
+		snippet.init()
+		webix.event(document.body, "keyup",  snippet.on_key)
+	</script>
+</body>
+</html>

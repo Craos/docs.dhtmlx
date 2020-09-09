@@ -1,0 +1,301 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1589296882.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1589296882.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Vault Docs" href="https://docs.dhtmlx.com/vault/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Initialization  Vault Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/c/widgets/vault">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="installation.html">How to Install dhtmlxVault</a></li><li class=" current"><a href="initialize.html">Initialization</a></li><ul><li class="inner"><a href="initialize.html#includingsourcefiles">Including source files</a></li><li class="inner"><a href="initialize.html#creatingcontainer">Creating container</a></li><li class="inner"><a href="initialize.html#initializingdhtmlxvault">Initializing dhtmlxVault</a></li><li class="inner"><a href="initialize.html#loadingdata">Loading data</a></li></ul><li class=""><a href="configuring.html">Configuration</a></li><li class=""><a href="localization.html">Localization</a></li><li class=""><a href="work_with_vault.html">Working with Vault</a></li><li class=""><a href="loading_files.html">Loading List of Files</a></li><li class=""><a href="uploading_files.html">Uploading Files</a></li><li class=""><a href="managing_files.html">Managing Files</a></li><li class=""><a href="events.html">Handling Events</a></li><li class=""><a href="customization.html">Customizing Vault</a></li><li class=""><a href="angular_integration.html">Integrating Vault with Angular</a></li><li class=""><a href="react_integration.html">Integrating Vault with React</a></li><li class=""><a href="vuejs_integration.html">Integrating Vault with Vue.js</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Initialization</h1>
+
+<p>In this article you will learn how to initialize and configure dhtmlxVault. Follow these simple steps:</p>
+
+<ol>
+<li><a href="initialize.html#includingsourcefiles">Include the dhtmlxVault source files on a page</a>.</li>
+<li><a href="initialize.html#creatingcontainer">Create a container for dhtmlxVault</a>.</li>
+<li><a href="initialize.html#initializingdhtmlxvault">Initialize dhtmlxVault with the object constructor</a>.</li>
+<li><a href="">Load a list of files into Vault</a></li>
+</ol>
+
+<p class='snippet'> index.html</p>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">title</span>&gt;</span>How to Start with dhtmlxVault<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">title</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;/codebase/vault.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;/codebase/vault.css&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;vault&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>
+        <span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">            <span class="co1">// creating dhtmlxVault</span>
+            <span class="kw2">var</span> vault <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Vault</span><span class="br0">&#40;</span><span class="st0">&quot;vault&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span>
+                uploader<span class="sy0">:</span><span class="br0">&#123;</span>
+                    target<span class="sy0">:</span> <span class="st0">&quot;/upload&quot;</span>
+                <span class="br0">&#125;</span>
+            <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre>        <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+<a name='includingsourcefiles'><h2>Including source files</h2></a>
+
+<p><a href="https://dhtmlx.com/docs/products/dhtmlxVault/download.shtml">Download the package</a> and unpack it into a folder of your project.</p>
+
+<p>To create dhtmlxVault, you need to include 2 source files on your page:</p>
+
+<ul>
+<li>vault.js</li>
+<li>vault.css</li>
+</ul>
+
+<p>Make sure that you set correct relative paths to these files:</p>
+
+<p class='snippet'> index.html</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/vault.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>  
+<span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;codebase/vault.css&quot;</span>&gt;</span></pre></code></pre>
+
+<p>The structure of the Vault pack is the following:</p>
+
+<ul>
+<li><strong>sources</strong> - the source code files of the library; they are easy-to-read and are mostly intended for debugging;</li>
+<li><strong>codebase</strong> - the obfuscated code files of the library; they are much smaller and intended for use in production. <strong>Include these files in your apps when they are ready</strong>;</li>
+<li><strong>samples</strong> - the code samples;</li>
+<li><strong>docs</strong> - the full documentation of the component.</li>
+</ul>
+
+<h3>Rendering fonts</h3>
+
+<p>dhtmlxVault makes use of <a href="https://fonts.google.com/">Google Fonts</a> for the elements content. That's why you need to include the related source file into your document as well:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/vault.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>    
+&nbsp;
+<span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;codebase/vault.css&quot;</span>&gt;</span>
+<span class="xtra ln-xtra"><span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;https://fonts.googleapis.com/css?family=Roboto:400,500&quot;</span> </span></span><span class="xtra ln-xtra"><span class="sc2">    <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span>&gt;</span></span></pre></code></pre>
+
+<a name='creatingcontainer'><h2>Creating container</h2></a>
+
+<p>Add a container for the vault and give it an id, for example "vault":</p>
+
+<p class='snippet'> index.html</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;vault&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span></pre></code></pre>
+
+<a name='initializingdhtmlxvault'><h2>Initializing dhtmlxVault</h2></a>
+
+<p>Initialize dhtmlxVault with the <code>dhx.Vault</code> object constructor. The constructor has two parameters:</p>
+
+<ul>
+<li>the HTML container for Vault,</li>
+<li>an object with configuration properties. <a href="initialize.html#configurationproperties">See the full list below</a>.</li>
+</ul>
+
+<p class='snippet'> index.html</p>
+
+<pre><code><pre class="js"><span class="co1">// creating dhtmlxVault</span>
+<span class="kw2">var</span> vault <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Vault</span><span class="br0">&#40;</span><span class="st0">&quot;vault&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span><span class="co1">// config options});</span></pre></code></pre>
+
+<h3>Path to the upload script</h3>
+
+<p>You need to set an URL to the server-side script that will process file upload before the Vault initialization. 
+For this, specify the path as a string value of the <a class="link-" href="api__uploader__target_config.html">target</a> property in the Uploader configuration object:</p>
+
+<p class='snippet'> index.html</p>
+
+<pre><code><pre class="js"><span class="co1">// creating dhtmlxVault</span>
+<span class="kw2">var</span> vault <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Vault</span><span class="br0">&#40;</span><span class="st0">'vault'</span><span class="sy0">,</span><span class="br0">&#123;</span> 
+    uploader<span class="sy0">:</span><span class="br0">&#123;</span>
+        target<span class="sy0">:</span><span class="st0">&quot;/upload&quot;</span> 
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/01_init/01_init.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Initialization</a></p>
+
+<h3><span id="configurationproperties">Configuration properties</span></h3>
+
+<p>This is the list of properties that you can specify in the <strong>Vault</strong> configuration object:</p>
+
+<ul>
+<li><strong>customScroll</strong> - (<em>boolean</em>) adds an alternative scroll bar, <em>false</em> by default; </li>
+<li><strong>mode</strong> - (<em>string</em>) defines the mode of rendering the list of files: "grid" or "list";</li>
+<li><strong>scaleFactor</strong> - (<em>number</em>) the multiplier factor of the quality of an HTML canvas image;</li>
+<li><strong>progressBar</strong> - (<em>object</em>) specifies the configuration of the progress bar;</li>
+<li><strong>toolbar</strong> - (<em>boolean</em>) defines whether the toolbar of dhtmlxVault is shown. <em>true</em> by default;</li>
+<li><strong>uploader</strong> - (<em>object</em>) specifies the configuration of the Uploader object.</li>
+</ul>
+
+<p>You can set necessary configuration options during initialization as the second parameter of the constructor:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> vault1 <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Vault</span><span class="br0">&#40;</span><span class="st0">&quot;vault1&quot;</span><span class="sy0">,</span> <span class="br0">&#123;</span> 
+    uploader<span class="sy0">:</span><span class="br0">&#123;</span>
+        target<span class="sy0">:</span><span class="st0">&quot;/upload&quot;</span> 
+    <span class="br0">&#125;</span>
+    mode<span class="sy0">:</span><span class="st0">&quot;grid&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>There are also configuration properties that are set via the <strong>Uploader</strong> configuration object:</p>
+
+<ul>
+<li><strong>target</strong> - (<em>string</em>) obligatory, an URL to the server-side script that will process file upload;</li>
+<li><strong>autosend</strong> - (<em>boolean</em>) optional, enables automatic sending of the added file. <em>true</em> by default. If set to <em>false</em>, files will be sent after a user clicks the <strong>Upload</strong> button;</li>
+<li><strong>fieldName</strong> - (<em>string</em>) optional, sets the <strong>file</strong> field name in the form data that is sent to the server, "file" is the default value;</li>
+<li><strong>params</strong> - (<em>object</em>) optional, adds extra parameters as key-value pairs for sending an XMLHttpRequest. This setting can be used to add parameters from Vault configuration. 
+E.g. if a user sends images, the images can be collected into FormData and then configuration parameters can be added into FormData;</li>
+<li><strong>singleRequest</strong> - (<em>boolean</em>) optional, defines that files are sent to server in one request, otherwise files are sent one by one. The property is <em>false</em> by default;</li>
+<li><strong>updateFromResponse</strong> - (<em>boolean</em>) optional, updates file attributes with data from server response.</li>
+</ul>
+
+<pre><code><pre class="js"><span class="co1">// creating dhtmlxVault</span>
+<span class="kw2">var</span> vault <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Vault</span><span class="br0">&#40;</span><span class="st0">&quot;vault&quot;</span><span class="sy0">,</span><span class="br0">&#123;</span> 
+    uploader<span class="sy0">:</span><span class="br0">&#123;</span>
+        target<span class="sy0">:</span><span class="st0">&quot;/upload&quot;</span>
+        autosend<span class="sy0">:</span><span class="kw2">false</span> 
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>More details are given in the <a class="link-" href="api__refs__vault.html">dhtmlxVault API reference</a>.</p>
+
+<p><a href='samples/03_configuration/01_grid.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Grid mode</a></p>
+
+<a name='loadingdata'><h2>Loading data</h2></a>
+
+<p>You can load the list of files added for upload, process files uploading on the server side and configure their downloding. Check the <a class="link-" href="loading_files.html">Loading List of Files</a> and <a class="link-" href="uploading_files.html">Uploading Files</a> articles for details.</p>
+
+<p>It is possible to load a list of files from an external file with the <a class="link-" href="api__data__load.html">load</a> method or use the <a class="link-" href="api__data__parse.html">parse</a> method to load a list of files from a local source.</p>
+
+<pre><code><pre class="js"><span class="co1">// load from an external file</span>
+vault.<span class="me1">data</span>.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/files.json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// load from a local source</span>
+vault.<span class="me1">data</span>.<span class="me1">parse</span><span class="br0">&#40;</span>files<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Files configuration</h3>
+
+<p>dhtmlxVault accepts data in the JSON format. For example:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> files <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>
+        <span class="st0">&quot;name&quot;</span><span class="sy0">:</span><span class="st0">&quot;one.jpg&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;size&quot;</span><span class="sy0">:</span><span class="nu0">36484</span><span class="sy0">,</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>
+        <span class="st0">&quot;name&quot;</span><span class="sy0">:</span><span class="st0">&quot;another.svg&quot;</span><span class="sy0">,</span>
+        <span class="st0">&quot;size&quot;</span><span class="sy0">:</span><span class="nu0">35523213</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The <strong>file</strong> object has the following properties:</p>
+
+<ul>
+<li><strong>id</strong>  -  (<em>string</em>) the ID of the file</li>
+<li><strong>image</strong> - (<em>string</em>) an HTML Canvas image for preview in the grid</li>
+<li><strong>link</strong> -  (<em>string</em>) the path to the uploaded file on a server. <a class="link-" href="loading_files.html#downloadingfiles">Read details</a> </li>
+<li><strong>name</strong> -  (<em>string</em>) the name of the file including the extension (for adding files from a server)</li>
+<li><strong>size</strong> - (<em>number</em>) the size of the file in bytes (for adding files from a server)</li>
+<li><strong>status</strong> - (<em>string</em>) the status of the file ("queue", "inprogress", "uploaded", or "failed")</li>
+<li><strong>path</strong> - (<em>string</em>) the path to the file on the computer starting from the name of the folder (in case a folder with files is added)</li>
+<li><strong>preview</strong> - (<em>string</em>) the path to the file preview. Can be set for a file with <em>status:"uploaded"</em>. If the parameter isn't specified, Vault will generate preview automatically </li>
+<li><strong>progress</strong>  - (<em>number</em>) the progress of the file upload</li>
+<li><strong>request</strong> - (<em>object</em>) an XMLHttpRequest object sent to server when an upload begins</li>
+</ul>
+
+<p>The <strong>path</strong> attribute is added only to files that were added in a folder. Thus, a file "dog.jpg" added in the folder "animals" will get the attribute <em>path="animals/"</em>.</p>
+
+<!-- Content Area End -->
+			<a href='initialize.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			
+<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='loading_files.html'>Loading List of Files</a></li>	
+	<li><a href='managing_files.html'>Managing Files</a></li>
+	<li><a href='work_with_vault.html'>Working with Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Look and Feel</li>
+	<li><a href='configuring.html'>Configuration</a></li>
+	<li><a href='customization.html'>Customization</a></li>
+	<li><a href='localization.html'>Localization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Integration</li>
+	<li><a href='angular_integration.html'>Vault and Angular</a></li>
+	<li><a href='react_integration.html'>Vault and React</a></li>
+	<li><a href='vuejs_integration.html'>Vault and Vue.js</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>
+	<li><a href='../spreadsheet/index.html'>SpreadSheet</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__vault.html#methods'>Methods</a></li>
+	<li><a href='api__refs__vault_props.html'>Properties</a></li>
+	<li><a href='api__refs__vault_events.html'>Events</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

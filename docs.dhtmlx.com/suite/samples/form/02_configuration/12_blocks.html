@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- meta block -->
+		<title>Blocks - DHTMLX Form</title>
+		<meta name="description" content="Check interactive samples of DHTMLX Form to explore its configuration and other details.">
+		<!-- end meta block -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+		<script type="text/javascript" src="../../../codebase/suite-v=6.5.3.js"></script>
+		<link rel="stylesheet" href="../../../codebase/suite-v=6.5.3.css">
+		<link rel="stylesheet" href="../../common/index-v=6.5.3.css">
+		<link rel="stylesheet" href="../common/form-v=6.5.3.css">
+		
+		<!-- custom sample head -->
+		<style>
+			.dhx_sample-container {
+				width: 1000px;
+				height: 100%;
+				flex-direction: column;
+				align-items: center;
+			}
+			.dhx_sample-container__widget {
+				margin-top: 20px;
+				height: 100%;
+			}
+		</style>
+	<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                        'gtm.start':
+                                new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5M5RCSJ');</script>
+<!-- End Google Tag Manager -->
+
+<!-- error tracking -->
+<script src="https://cdn.ravenjs.com/3.19.1/raven.min.js" crossorigin="anonymous"></script>
+<script>Raven.config('https://a2578da6be394598bfe003e4dbb3a394@sentry.dhtmlx.ru/13').install()</script></head>
+	<body>
+		<header class="dhx_sample-header">
+			<div class="dhx_sample-header__main">
+				<nav class="dhx_sample-header__breadcrumbs">
+					<ul class="dhx_sample-header-breadcrumbs">
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="../../index.html" class="dhx_sample-header-breadcrumbs__link">Suite samples</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="../index.html" class="dhx_sample-header-breadcrumbs__link">Form samples</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<a href="index.html" class="dhx_sample-header-breadcrumbs__link">Configuration</a>
+						</li>
+						<li class="dhx_sample-header-breadcrumbs__item">
+							<span class="dhx_sample-header-breadcrumbs__link">Blocks</span>
+						</li>
+					</ul>
+				</nav>
+				<h1 class="dhx_sample-header__title">
+					<div class="dhx_sample-header__content">
+						Blocks.
+					</div>
+				</h1>
+		<div class="dhx_sample-header__cta" id="dhx_sample-cta">
+			<a title="Free Trial" target="_blank" class="dhx_sample-btn dhx_sample-btn--flat dhx_sample-btn--cta" 
+			href="https://dhtmlx.com/docs/products/dhtmlxSuite/download.shtml">Free Trial</a>
+		</div>
+	</div>
+</header>
+		<section class="dhx_sample-container">
+			<form class="dhx_sample-container__widget" id="form-sample"></form>
+			<form class="dhx_sample-container__widget" id="form-settings"></form>
+		</section>
+		<script>
+			var blockConfig = {
+				type: "block",
+				title: "",
+				width: "",
+				dir: "rows",
+				size: "",
+				align: "",
+				padding: "20px",
+				height: "300px",
+				css: "dhx_layout-cell--bordered"
+			};
+			var formSettings = new dhx.Form("form-settings", {
+				css: "dhx_layout-cell--bordered",
+				cols: [{
+					padding: "20px",
+					rows: [
+						{
+							type: "input",
+							gravit: false,
+							label: "title",
+							name: "title",
+							value: blockConfig.title,
+							labelWidth: "100px",
+							labelPosition: "right"
+						},
+						{
+							type: "input",
+							gravit: false,
+							label: "width",
+							name: "width",
+							value: blockConfig.width,
+							labelWidth: "100px",
+							labelPosition: "right"
+						},
+						{
+							type: "input",
+							gravit: false,
+							label: "height",
+							name: "height",
+							value: blockConfig.height,
+							labelWidth: "100px",
+							labelPosition: "right"
+						},
+						{
+							type: "input",
+							gravit: false,
+							label: "padding",
+							name: "padding",
+							value: blockConfig.padding,
+							labelWidth: "100px",
+							labelPosition: "right"
+						}]
+					},
+					{
+						rows: [{
+							title: "Align:",
+							padding: "10px",
+							align: "around",
+							css: "dhx_layout-cell--bordered",
+							rows:[{
+									type: "radioGroup",
+									name: "align",
+									options: {
+										padding: "10px",
+										align: "center",
+										cols:[{
+												type: "radioButton",
+												label: "start",
+												gravity: false,
+												labelPosition: "left",
+												value: "start",
+												checked: true,
+											},
+											{
+												type: "radioButton",
+												label: "center",
+												gravity: false,
+												labelPosition: "left",
+												value: "center",
+											},
+											{
+												type: "radioButton",
+												label: "end",
+												gravity: false,
+												labelPosition: "left",
+												value: "end"
+											},
+											{
+												type: "radioButton",
+												label: "between",
+												gravity: false,
+												labelPosition: "left",
+												value: "between"
+											},
+											{
+												type: "radioButton",
+												label: "around",
+												gravity: false,
+												labelPosition: "left",
+												value: "around"
+											},
+											{
+												type: "radioButton",
+												label: "evenly",
+												gravity: false,
+												labelPosition: "left",
+												value: "evenly"
+											}
+										]
+									}
+								}]
+							},
+							{
+								title: "Direction:",
+								css: "dhx_layout-cell--bordered dhx_layout-cell--no-border_top",
+								padding: "10px",
+								rows:[{
+									type: "radioGroup",
+									name: "dir",
+									options: {
+										padding: "10px",
+										align: "center",
+										cols:[{
+												type: "radioButton",
+												label: "as rows",
+												labelPosition: "left",
+												value: "rows",
+												checked: true,
+												gravity: false,
+											},
+											{
+												type: "radioButton",
+												label: "as cols",
+												labelPosition: "left",
+												value: "cols",
+												gravity: false,
+											}
+										]
+									}
+								}]
+							}
+						]
+					}
+				]
+			});
+			formSettings.events.on("change", function(name, value) {
+				blockConfig[name] = value;
+				createForm();
+			});
+			var form;
+			function createForm() {
+				if (form) {
+					form.destructor();
+				};
+				var items = [
+					{
+						type: "input",
+						label: "Name",
+						icon: "dxi dxi-magnify",
+						placeholder: "John Doe",
+						labelPosition: "right",
+						gravity: false,
+					},
+					{
+						type: "input",
+						label: "Email",
+						gravity: false,
+						placeholder: "jd@mail.name",
+						labelPosition: "right",
+					},
+					{
+						type: "button",
+						submit: true,
+						value: "Send",
+						size: "medium",
+						gravity: false,
+						view: "flat",
+						color: "primary"
+					},
+				];
+				delete blockConfig.rows;
+				delete blockConfig.cols;
+				blockConfig[blockConfig.dir] = items;
+				form = new dhx.Form("form-sample", blockConfig);
+			}
+			createForm();
+		</script>
+
+	</body>
+</html>

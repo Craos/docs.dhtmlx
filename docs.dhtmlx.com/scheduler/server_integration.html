@@ -1,0 +1,554 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Server-Side Integration  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="loading_data.html">Loading Data</a></li><li class=" current"><a href="server_integration.html">Server-Side Integration</a></li><ul><li class="inner"><a href="server_integration.html#technique">Technique</a></li><li class="inner"><a href="server_integration.html#recurringevents">Recurring events</a></li><li class="inner"><a href="server_integration.html#customrequestheadersandparameters">Custom Request Headers and Parameters</a></li><li class="inner"><a href="server_integration.html#triggeringdatasavingfromscript">Triggering Data Saving from Script</a></li><li class="inner"><a href="server_integration.html#savingchangeswithoutdataprocessor">Saving Changes without DataProcessor</a></li><li class="inner"><a href="server_integration.html#errorhandling">Error Handling</a></li><li class="inner"><a href="server_integration.html#xsscsrfandsqlinjectionattacks">XSS, CSRF and SQL Injection Attacks</a></li></ul><li class=""><a href="troubleshooting.html">Troubleshooting Backend Integration Issues</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="loading_and_storing_data.html">Loading and Storing Data</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Server-Side Integration</h1>
+
+<p><style>
+.dp_table td{
+    min-width:140px;</p>
+
+<p>}
+</style></p>
+
+<p>The recommended approach to connect dhtmlxScheduler to a backend is to implement RESTful API on the server and use dhtmlxDataProcessor on the client.</p>
+
+<p><a href="../dataprocessor__index.html">DataProcessor</a> is a client-side library included into dhtmlxScheduler.js. 
+It monitors data changes and gets the server requests on the client side.</p>
+
+<p>It's possible to bind dhtmlxScheduler to the server side using REST API together with different frameworks and programming languages. 
+Here's a list of available server side implementations that you can use for Scheduler backend integration:</p>
+
+<ul>
+<li><a class="link-" href="howtostart_php_slim4.html">dhtmlxScheduler with PHP:Slim</a></li>
+<li><a class="link-" href="howtostart_dotnet_core.html">dhtmlxScheduler with ASP.NET Core</a></li>
+<li><a class="link-" href="howtostart_dotnet.html">dhtmlxScheduler with ASP.NET MVC</a></li>
+<li><a class="link-" href="howtostart_nodejs.html">dhtmlxScheduler with Node.js</a></li>
+<li><a class="link-" href="howtostart_plain_php.html">dhtmlxScheduler with PHP</a></li>
+<li><a class="link-" href="howtostart_php_laravel.html">dhtmlxScheduler with PHP:Laravel</a></li>
+<li><a class="link-" href="howtostart_ruby.html">dhtmlxScheduler with Ruby on Rails</a></li>
+<li><a class="link-" href="howtostart_php.html">dhtmlxScheduler with PHP:Slim 3</a></li>
+</ul>
+
+<a name='technique'><h2>Technique</h2></a>
+
+<p>Generally, to load data from the server side using REST API, you need to:</p>
+
+<h3>Client side</h3>
+
+<p>1) Call the <a class="link-" href="api__scheduler_load.html">load</a> method, where as a parameter specify the URL that returns Scheduler data in the <a class="link-" href="data_formats.html#json">JSON</a> format</p>
+
+<p>2) Initialize dataProcessor and attach it to the dhtmlxScheduler object. The dataProcessor constructor accepts the path to the same server-side script:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;scheduler_here&quot;</span><span class="sy0">,</span> <span class="kw2">new</span> Date<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st0">&quot;month&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;apiUrl&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;apiUrl&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">init</span><span class="br0">&#40;</span>scheduler<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3 id="requestresponsedetails">Request and response details</h3>
+
+<p>The URL is formed by the following rule:</p>
+
+<ul>
+<li>api/eventId</li>
+</ul>
+
+<p>where "api" is the url you've specified in the dataProcessor configuration.</p>
+
+<h4>REST mode</h4>
+
+<p>To enable the REST mode, use the <a href="../api__dataprocessor_settransactionmode.html">setTransactionMode()</a> method of DataProcessor:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;apiUrl&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">init</span><span class="br0">&#40;</span>scheduler<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;REST&quot;</span><span class="sy0">,</span> <span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p>The list of possible requests and responses is:</p>
+
+<table class="dp_table">
+    <tr>
+        <th><b>Action</b></th><th><b>HTTP Method</b></th><th><b>URL</b></th><th><b>Response</b></th>
+    </tr>
+    <tr>
+        <td>load data</td>
+        <td>GET</td>
+        <td>/apiUrl</td>
+        <td><a class="link-" href="data_formats.html#json">JSON format</a></td>
+    </tr>
+    <tr>
+        <td>add a new event</td>
+        <td>POST</td>
+        <td>/apiUrl</td>
+        <td>{"action":"inserted","tid":"eventId"}</td>
+    </tr>
+    <tr>
+        <td>update an event</td>
+        <td>PUT</td>
+        <td>/apiUrl/eventId</td>
+        <td>{"action":"updated"}</td>
+    </tr>
+    <tr>
+        <td>delete an event</td>
+        <td>DELETE</td>
+        <td>/apiUrl/eventId</td>
+        <td>{"action":"deleted"}</td>
+    </tr>
+</table>
+
+<h4>POST mode</h4>
+
+<p>To use the POST mode, use the <a href="../api__dataprocessor_settransactionmode.html">setTransactionMode()</a> method of DataProcessor with necessary parameters:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;apiUrl&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">init</span><span class="br0">&#40;</span>scheduler<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;POST&quot;</span><span class="sy0">,</span> <span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p>The list of possible requests and responses is:</p>
+
+<table class="dp_table">
+    <tr>
+        <th><b>Action</b></th><th><b>HTTP Method</b></th><th><b>URL</b></th><th><b>Response</b></th>
+    </tr>
+    <tr>
+        <td>load data</td>
+        <td>GET</td>
+        <td>/apiUrl</td>
+        <td><a class="link-" href="data_formats.html#json">JSON format</a></td>
+    </tr>
+
+    <tr>
+        <td>update an event</td>
+        <td>POST</td>
+        <td>/apiUrl</td>
+        <td>{"action":"inserted|updated|deleted",<br>"tid":"eventId"}</td>
+    </tr>
+</table>
+
+<h4>JSON mode</h4>
+
+<p>To use the JSON mode, use the <a href="../api__dataprocessor_settransactionmode.html">setTransactionMode()</a> method of DataProcessor with necessary parameters:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;apiUrl&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">init</span><span class="br0">&#40;</span>scheduler<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="st0">&quot;JSON&quot;</span><span class="sy0">,</span> <span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p>In this mode, the scheduler will send POST request to the server after each updating of data (similarly to the POST mode, except for the request format).</p>
+
+<p>The list of possible requests and responses is:</p>
+
+<table class="dp_table">
+    <tr>
+        <th><b>Action</b></th><th><b>HTTP Method</b></th><th><b>Request Body</b></th><th><b>Response</b></th>
+    </tr>
+    <tr>
+        <td>load data</td>
+        <td>GET</td>
+        <td></td>
+        <td><a class="link-" href="data_formats.html#json">JSON format</a></td>
+    </tr>
+    <tr>
+        <td>add a new event</td>
+        <td>POST</td>
+        <td>{
+                "id": temporaryId,
+                "action":"inserted", <br>
+                "data":{ <br>
+                    "start_date":"2019-12-18 00:00",
+                    "end_date":"2019-12-18 00:05",
+                    "text":"New event",
+                    ... 
+                } <br>
+            }
+        </td>
+        <td>{
+                "action":"inserted", 
+                "tid":"eventId"
+            }
+        </td>
+    </tr>
+    <tr>
+        <td>update an event</td>
+        <td>POST</td>
+        <td>{   
+            "id": id,
+            "action":"updated",
+            "data":{ <br>
+                "start_date":"2019-12-18 00:00",
+                "end_date":"2019-12-18 00:05",
+                "text":"New event",
+                ...
+                } <br>
+            }
+        </td>
+        <td>{"action":"updated"}</td>
+    </tr>
+    <tr>
+        <td>delete an event</td>
+        <td>POST</td>
+        <td>{   
+            "id": id,
+            "action":"deleted",
+            "data":{ <br>
+                "start_date":"2019-12-18 00:00",
+                "end_date":"2019-12-18 00:05",
+                "text":"New event",
+                ...
+                }<br>
+            }
+        </td>
+        <td>{"action":"deleted"}</td>
+    </tr>
+</table>
+
+<h4>Dynamic loading</h4>
+
+<p>The request and response for dynamic loading are the following:</p>
+
+<table class="dp_table">
+    <tr>
+        <th><b>Action</b></th><th><b>HTTP Method</b></th><th><b>URL</b></th><th><b>Response</b></th>
+    </tr>
+    <tr>
+        <td>load data</td>
+        <td>GET</td>
+        <td>/apiUrl?from=minDate&to=maxDate </td>
+        <td><a class="link-" href="data_formats.html#json">JSON format</a></td>
+    </tr>
+</table>
+
+<h3>Request parameters</h3>
+
+<p>Create/Update/Delete requests will contain all public properties of a client-side event object:</p>
+
+<ul>
+<li><strong>id</strong>: 71</li>
+<li><strong>start_date</strong>: 2014-11-04 15:00</li>
+<li><strong>end_date</strong>: 2014-11-04 18:00</li>
+<li><strong>text</strong>:  Recinto Ferial - Valencia </li>
+<li><strong>details</strong>: Details for  Recinto Ferial - Valencia </li>
+<li><strong>!nativeeditor_status</strong>: updated</li>
+</ul>
+
+<div class='note'><p><p>The <strong>!nativeeditor_status</strong> parameter is relevant for the POST mode only.</p>
+</p></div>
+
+<h3>Server side</h3>
+
+<p>On each action performed in Scheduler (adding, updating or deleting events), dataProcessor reacts by sending an AJAX request to the server.</p>
+
+<p>Each request contains all the data needed to save changes in the database.
+As we initialized dataProcessor in the REST mode, it will use different HTTP verbs for each type of operation.</p>
+
+<div class='note'><p><p>If by some reason you don't want to use REST API, the best solution is <a class="link-" href="howtostart_connector.html">to use dhtmlxConnector library</a>.</p>
+</p></div>
+
+<a name='recurringevents'><h2>Recurring events</h2></a>
+
+<p>Recurring events are stored in the database as records that contain both all <a class="link-" href="loading_data.html#dataproperties">fields of a regular event</a> and 3 additional fields: <strong>rec_type</strong>, <strong>event_length</strong> and <strong>event_pid</strong>.</p>
+
+<p>Read more in the <a class="link-" href="recurring_events.html#serversideintegration">Recurring Events</a> article.</p>
+
+<p>In addition to extra fields, a specific logic needs to be added to the server-side controller:</p>
+
+<ul>
+<li>for the <strong>insert</strong> action:
+
+<ul>
+<li>if <strong>event.rec_type === 'none'</strong>, the response must have the 'deleted' status</li>
+</ul></li>
+<li>for the <strong>update</strong> action:
+
+<ul>
+<li>if <strong>event.rec_type</strong> is not empty and <strong>event.rec_type !== 'none'</strong>, all events where <strong>event_pid == event.id</strong> must be deleted</li>
+</ul></li>
+<li>for the <strong>delete</strong> action:
+
+<ul>
+<li>if <strong>event.rec_type</strong> is not empty and <strong>event.rec_type !== 'none'</strong>, all events where <strong>event_pid == event.id</strong> must be deleted</li>
+<li>if <strong>event.event_pid</strong> is not empty, the event should be updated with <strong>event.rec_type = 'none'</strong> instead of deleting.</li>
+</ul></li>
+</ul>
+
+<div class='note'><p><p>You can have a look at the detailed example on editing and deleting recurring events in the <a class="link-" href="recurring_events.html#editingdeletingacertainoccurrenceintheseries">related section of the Recurring Events article</a>.</p>
+</p></div>
+
+<a name='customrequestheadersandparameters'><h2>Custom Request Headers and Parameters</h2></a>
+
+<h3>Adding custom request headers</h3>
+
+<p>When you need Scheduler to send additional headers to your backend, you can specify them using the <a href="../api__dataprocessor_settransactionmode.html">dataProcessor.setTransactionMode</a> method.</p>
+
+<p>For example, let's suppose that you need to add an authorization token to your requests:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;scheduler_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/api&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;/api&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">init</span><span class="br0">&#40;</span>scheduler<span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    mode<span class="sy0">:</span><span class="st0">&quot;REST&quot;</span><span class="sy0">,</span>
+    headers<span class="sy0">:</span> <span class="br0">&#123;</span>
+       <span class="st0">&quot;Authorization&quot;</span><span class="sy0">:</span> <span class="st0">&quot;Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b&quot;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Currently, <a class="link-" href="api__scheduler_load.html">load</a> does not support header/payload parameters, so if you need them for GET request, 
+you'll have to send xhr manually and load data into scheduler using <a class="link-" href="api__scheduler_parse.html">parse</a>, for example:</p>
+
+<pre><code><pre class="js">$.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    url<span class="sy0">:</span> <span class="st0">&quot;/api&quot;</span><span class="sy0">,</span>
+    headers<span class="sy0">:</span> <span class="br0">&#123;</span>
+        <span class="st0">&quot;Authorization&quot;</span><span class="sy0">:</span> <span class="st0">&quot;Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b&quot;</span>
+    <span class="br0">&#125;</span><span class="sy0">,</span>
+    success<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>result<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        scheduler.<span class="me1">parse</span><span class="br0">&#40;</span>result<span class="sy0">,</span> <span class="st0">&quot;json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Adding custom parameters to the request</h3>
+
+<p>There are several ways to send additional parameters to requests.</p>
+
+<p>As you know, scheduler sends all properties of the data object back to the backend. 
+Thus, you can add an extra property directly to the <em>data object</em> and it will be sent to the backend:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onEventCreated&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span>e<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> event <span class="sy0">=</span> scheduler.<span class="me1">getEvent</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+    event.<span class="me1">userId</span> <span class="sy0">=</span> currentUser<span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Alternatively, you can add custom parameters to all requests sent by data processor, using the <strong>payload</strong> property of
+the <a href="../api__dataprocessor_settransactionmode.html">setTransactionMode</a> parameter:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/api&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;/api&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">init</span><span class="br0">&#40;</span>scheduler<span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">setTransactionMode</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    mode<span class="sy0">:</span><span class="st0">&quot;REST&quot;</span><span class="sy0">,</span>
+    payload<span class="sy0">:</span> <span class="br0">&#123;</span>
+       token<span class="sy0">:</span> <span class="st0">&quot;9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b&quot;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Payload will be added into the query string of the request.</p>
+
+<p>One more way to add custom parameters to a request is to use the <a href="../api__dataprocessor_onbeforeupdate_event.html">onBeforeUpdate</a> event of DataProcessor:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;data/events.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+dp.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onBeforeUpdate&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span> state<span class="sy0">,</span> data<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    data.<span class="me1">productName</span> <span class="sy0">=</span> <span class="st0">&quot;Product 2&quot;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The event is called for each record sent to the backend and a custom parameter will be added to each Scheduler event, prefixed by an event id, like this:</p>
+
+<pre><code><pre class="js"><span class="nu0">123</span>_productName<span class="sy0">:</span>Product <span class="nu0">2</span></pre></code></pre>
+
+<a name='triggeringdatasavingfromscript'><h2>Triggering Data Saving from Script</h2></a>
+
+<p>If you have dataProcessor initialized, any change made by the user or programmatically will be automatically saved in the data source.</p>
+
+<p>Generally, to update a specific event programmatically, use the <a class="link-" href="api__scheduler_addevent.html">addEvent</a> method:</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">parse</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+     <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;2017-05-13 6:00&quot;</span><span class="sy0">,</span> end_date<span class="sy0">:</span><span class="st0">&quot;2017-05-13 8:00&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Event 1&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+     <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> start_date<span class="sy0">:</span><span class="st0">&quot;2017-06-09 6:00&quot;</span><span class="sy0">,</span> end_date<span class="sy0">:</span><span class="st0">&quot;2017-06-09 8:00&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span><span class="st0">&quot;Event 2&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">,</span><span class="st0">&quot;json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> event <span class="sy0">=</span> scheduler.<span class="me1">getEvent</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+event.<span class="me1">text</span> <span class="sy0">=</span> <span class="st0">&quot;Conference&quot;</span><span class="sy0">;</span> <span class="co1">//changes event's data</span>
+scheduler.<span class="me1">addEvent</span><span class="br0">&#40;</span>event<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// renders the updated event</span></pre></code></pre>
+
+<p>When called for an event that is already loaded into the scheduler, <a class="link-" href="api__scheduler_addevent.html">addEvent</a> will trigger an <em>update</em> request, otherwise <em>insert</em> will be called.</p>
+
+<p>The methods that invoke sending an update to the backend:</p>
+
+<ul>
+<li><a class="link-" href="api__scheduler_addevent.html">addEvent</a></li>
+<li><a class="link-" href="api__scheduler_deleteevent.html">deleteEvent</a></li>
+</ul>
+
+<a name='savingchangeswithoutdataprocessor'><h2>Saving Changes without DataProcessor</h2></a>
+
+<p>dhtmlxScheduler can be used without gantt.dataProcessor. In that case you'll have to monitor all changes made in the scheduler manually and then send them to your backend.
+Here is the list of events you'll need to listen to:</p>
+
+<ul>
+<li><a class="link-" href="api__scheduler_oneventadded_event.html">onEventAdded</a></li>
+<li><a class="link-" href="api__scheduler_oneventchanged_event.html">onEventChanged</a></li>
+<li><a class="link-" href="api__scheduler_oneventdeleted_event.html">onEventDeleted</a></li>
+</ul>
+
+<p>When an event is created on the client side, it obtains a temporary id which is used until the item gets a permanent database id.</p>
+
+<p>Once you insert a new item into the database, you'll need to pass it back to the client side and apply it to the related event using the <a class="link-" href="api__scheduler_changeeventid.html">changeEventId</a> method:</p>
+
+<pre><code><pre class="js"><span class="co1">// assume that eventService is some kind of CRUD service implementation</span>
+&nbsp;
+scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">'onEventAdded'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span> event<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  eventService.<span class="me1">create</span><span class="br0">&#40;</span>event<span class="br0">&#41;</span>
+    .<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>result<span class="br0">&#41;</span><span class="br0">&#123;</span>
+      scheduler.<span class="me1">changeEventId</span><span class="br0">&#40;</span>id<span class="sy0">,</span> result.<span class="me1">databaseId</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">'onEventChanged'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span> event<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  eventService.<span class="me1">update</span><span class="br0">&#40;</span>event<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">'onEventDeleted'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  eventService.<span class="kw1">delete</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='errorhandling'><h2>Error Handling</h2></a>
+
+<p>A server can inform Scheduler that an action has failed by returning the "action":"error" response:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span><span class="st0">&quot;action&quot;</span><span class="sy0">:</span><span class="st0">&quot;error&quot;</span><span class="br0">&#125;</span></pre></code></pre>
+
+<p>Such a response can be captured on the client with the help of dataProcessor:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;apiUrl&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">init</span><span class="br0">&#40;</span>scheduler<span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onAfterUpdate&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span> action<span class="sy0">,</span> tid<span class="sy0">,</span> response<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>action <span class="sy0">==</span> <span class="st0">&quot;error&quot;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="co1">// do something here</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The response object may contain any number of additional properties, they can be accessed via the <code>response</code> argument of the onAfterUpdate handler.</p>
+
+<p>If the server responded with an error on some of your action but the changes were saved on the client side, the best way to synchronize their states is to clear the client's state, and reload the correct data from the server side:</p>
+
+<pre><code><pre class="js">dp.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onAfterUpdate&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span> action<span class="sy0">,</span> tid<span class="sy0">,</span> response<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>action <span class="sy0">==</span> <span class="st0">&quot;error&quot;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        scheduler.<span class="me1">clearAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        scheduler.<span class="me1">load</span><span class="br0">&#40;</span>url<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In cases when you don't want to fully reload the data, you can delete a single event from only the client-side using the <strong>silent</strong> parameter of the <a class="link-" href="api__scheduler_deleteevent.html">deleteEvent</a> method:</p>
+
+<pre><code><pre class="js"><span class="co1">// removes the specified event only from the client-side, without server calls</span>
+scheduler.<span class="me1">deleteEvent</span><span class="br0">&#40;</span>id<span class="sy0">,</span> <span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='xsscsrfandsqlinjectionattacks'><h2>XSS, CSRF and SQL Injection Attacks</h2></a>
+
+<p>Pay attention that Scheduler doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. 
+It is important that responsibility for keeping an application safe is on the developers implementing the backend.</p>
+
+<p>Check the <a class="link-hidden" href="app_security.html">Application Security</a> article to learn the most vulnerable points of the component and the measures you can take to improve the safety of your application.</p>
+
+<!-- Content Area End -->
+			<a href='server_integration.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

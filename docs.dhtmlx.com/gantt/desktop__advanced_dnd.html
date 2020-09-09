@@ -1,0 +1,306 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Creating/Selecting Tasks with DnD  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__task_types.html">Task Types</a></li><li class=""><a href="desktop__task_object_operations.html">Task Object/Id</a></li><li class=""><a href="desktop__task_tree_operations.html">Task Parent/Child</a></li><li class=""><a href="desktop__crud_task.html">Basic Operations with Tasks</a></li><li class=""><a href="desktop__unscheduled_tasks.html">Unscheduled Tasks</a></li><li class="toc-pro"><a href="desktop__split_tasks.html">Split Tasks</a></li><li class=""><a href="desktop__multiselection.html">Multi-Task Selection</a></li><li class=""><a href="desktop__working_time.html">Work Time Calculation</a></li><li class="toc-pro"><a href="desktop__critical_path.html">Critical Path</a></li><li class="toc-pro"><a href="desktop__baselines.html">Extra Elements in Timeline Area</a></li><li class="toc-pro"><a href="desktop__milestones.html">Milestones</a></li><li class=""><a href="desktop__tooltips.html">Tooltips for Gantt Elements</a></li><li class=""><a href="desktop__text_block_for_task.html">Displaying Contents of Tasks</a></li><li class=""><a href="desktop__readonly_mode.html">Read-Only Mode</a></li><li class=""><a href="desktop__validation.html">Validation</a></li><li class=""><a href="desktop__dnd.html">Dragging Tasks within the Timeline</a></li><li class=" current"><a href="desktop__advanced_dnd.html">Creating/Selecting Tasks with DnD</a></li><ul><li class="inner"><a href="desktop__advanced_dnd.html#creatingtaskswithdragndrop">Creating tasks with drag-n-drop</a></li><li class="inner"><a href="desktop__advanced_dnd.html#settingtimeforunscheduledtasks">Setting time for unscheduled tasks</a></li><li class="inner"><a href="desktop__advanced_dnd.html#selectingtaskswithdragndrop">Selecting tasks with drag-n-drop</a></li><li class="inner"><a href="desktop__advanced_dnd.html#creatingpartsofsplittasks">Creating parts of split tasks</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__task_bars.html">Configuring Tasks</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Creating/Selecting Tasks with DnD</h1>
+
+<p>dhtmlxGantt library provides an extension that includes advanced drag-n-drop functionality while working with tasks in the timeline.</p>
+
+<p>All in all the <strong>click_drag</strong> extension allows:</p>
+
+<ul>
+<li><a href="desktop__advanced_dnd.html#creatingtaskswithdragndrop">creating tasks with drag-n-drop</a></li>
+<li><a href="desktop__advanced_dnd.html#settingtimeforunscheduledtasks">setting time for unscheduled tasks with drag-n-drop</a></li>
+<li><a href="desktop__advanced_dnd.html#selectingtaskswithdragndrop">selecting tasks with drag-n-drop</a></li>
+<li><a href="desktop__advanced_dnd.html#creatingpartsofsplittasks">creating parts of split tasks with drag-n-drop</a> (PRO version)</li>
+</ul>
+
+<div class='note'><p><p>To start using the extension, enable the <a class="link-" href="desktop__extensions_list.html#advanceddragndrop">click_drag</a> plugin using the <a class="link-" href="api__gantt_plugins.html">gantt.plugins</a> method.</p>
+</p></div>
+
+<p>To enable advanced drag-n-drop, specify the <a class="link-" href="api__gantt_click_drag_config.html">click_drag</a> configuration option and set the necessary properties from the list below inside its object:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">click_drag</span> <span class="sy0">=</span> <span class="br0">&#123;</span>
+    callback<span class="sy0">:</span> onDragEnd<span class="sy0">,</span>
+    singleRow<span class="sy0">:</span> <span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><strong>className</strong> -  (<em>string</em>) sets a custom CSS class for a selected element</li>
+<li><strong>render</strong> - (<em>function</em>) a function that creates an element rendered during dragging. Takes two parameters: 
+
+<ul>
+<li><strong>startPoint</strong> - (<em>object</em>) - an object of the type:<br>
+<code>{absolute: {left: number, top: number}, relative: {left: number, top: number} }</code>, <br>
+where absolute - the coordinates of the left top corner of the document, and relative - the coordinates of the left top element used as a viewPort </li>
+<li><strong>endPoint</strong> - (<em>object</em>) an object of the type: <br>
+<code>{absolute: {left: number, top: number}, relative: {left: number, top: number} }</code>, <br>
+where absolute - the coordinates of the left top corner of the document, and relative - the coordinates of the left top element used as a viewPort </li>
+</ul></li>
+<li><strong>viewPort</strong> - (<em>HTMLElement</em>) the element to attach an event to and select</li>
+<li><strong>useRequestAnimationFrame</strong> - (<em>boolean</em>) defines whether requestAnimationFrame is used during rendering</li>
+<li><strong>callback</strong> - (<em>function</em>) - a function that will be called when the mouse button is released. Takes 6 parameters:
+
+<ul>
+<li><strong>startPoint</strong> - (<em>object</em>) - an object of the type: <br>
+<code>{absolute: {left: number, top: number}, relative: {left: number, top: number} }</code>, <br>
+where absolute - the coordinates of the left top corner of the document, and relative - the coordinates of the left top element used as a viewPort </li>
+<li><strong>endPoint</strong> - (<em>object</em>) an object of the type: <br>
+<code>{absolute: {left: number, top: number}, relative: {left: number, top: number} }</code>, <br>
+where absolute - the coordinates of the left top corner of the document, and relative - the coordinates of the left top element used as a viewPort </li>
+<li><strong>startDate</strong> - (<em>Date</em>) the date that corresponds to the starting point</li>
+<li><strong>endDate</strong> - (<em>Date</em>) the date that corresponds to the ending point</li>
+<li><strong>tasksBetweenDates</strong> - (<em>array</em>) an array of tasks between the start and end date points</li>
+<li><strong>tasksInRows</strong> - (<em>array</em>) an array of tasks selected between the start and end coordinates vertically</li>
+</ul></li>
+<li><strong>singleRow</strong> - (<em>boolean</em>) true to add selection only in one row equal to the height of a task</li>
+</ul>
+
+<p>You can attach the following events to the element passed as a viewPort (gantt.$task_data by default - a part of the timeline with task bars):</p>
+
+<ul>
+<li><strong>onBeforeDrag</strong> - fires after pressing the mouse button before starting to drag</li>
+<li><strong>onDrag</strong> - fires each time after dragging is started but before the mouse button is released</li>
+<li><strong>onBeforeDragEnd</strong> - fires after releasing the mouse button but before the rendered element is deleted and tasks that come under selection are searched for</li>
+<li><strong>onDragEnd</strong> - fires after removing a rendered element and finding tasks that come under selection but before calling the callback function (if specified)</li>
+</ul>
+
+<a name='creatingtaskswithdragndrop'><h2>Creating tasks with drag-n-drop</h2></a>
+
+<p>You can create tasks with drag-n-drop right on the timeline by clicking in an empty place to set the start date of a task and dragging to the right to set its duration.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">click_drag</span> <span class="sy0">=</span> <span class="br0">&#123;</span>
+    callback<span class="sy0">:</span> onDragEnd<span class="sy0">,</span>
+    singleRow<span class="sy0">:</span> <span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">parse</span><span class="br0">&#40;</span>tasks<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">function</span> onDragEnd<span class="br0">&#40;</span>startPoint<span class="sy0">,</span>endPoint<span class="sy0">,</span>startDate<span class="sy0">,</span>endDate<span class="sy0">,</span>tasksBetweenDates<span class="sy0">,</span>tasksInRow<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>tasksInRow.<span class="me1">length</span> <span class="sy0">===</span> <span class="nu0">1</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw2">var</span> parent <span class="sy0">=</span> tasksInRow<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">;</span>
+        gantt.<span class="me1">createTask</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+            text<span class="sy0">:</span><span class="st0">&quot;Subtask of &quot;</span> <span class="sy0">+</span> parent.<span class="me1">text</span><span class="sy0">,</span>
+            start_date<span class="sy0">:</span> gantt.<span class="me1">roundDate</span><span class="br0">&#40;</span>startDate<span class="br0">&#41;</span><span class="sy0">,</span>
+            end_date<span class="sy0">:</span> gantt.<span class="me1">roundDate</span><span class="br0">&#40;</span>endDate<span class="br0">&#41;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span> parent.<span class="me1">id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span> <span class="kw1">else</span> <span class="kw1">if</span> <span class="br0">&#40;</span>tasksInRow.<span class="me1">length</span> <span class="sy0">===</span> <span class="nu0">0</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        gantt.<span class="me1">createTask</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+            text<span class="sy0">:</span><span class="st0">&quot;New task&quot;</span><span class="sy0">,</span>
+            start_date<span class="sy0">:</span> gantt.<span class="me1">roundDate</span><span class="br0">&#40;</span>startDate<span class="br0">&#41;</span><span class="sy0">,</span>
+            end_date<span class="sy0">:</span> gantt.<span class="me1">roundDate</span><span class="br0">&#40;</span>endDate<span class="br0">&#41;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p><a href='samples/02_extensions/24_click_drag.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Create new tasks by Drag and Drop</a></p>
+
+<a name='settingtimeforunscheduledtasks'><h2>Setting time for unscheduled tasks</h2></a>
+
+<p>The <strong>click_drag</strong> extension allows setting time for <a class="link-" href="desktop__unscheduled_tasks.html">unscheduled tasks</a> with drag-n-drop.</p>
+
+<a name='selectingtaskswithdragndrop'><h2>Selecting tasks with drag-n-drop</h2></a>
+
+<p>It is possible to select tasks with drag-n-drop in several modes: in dates, rows, or in bounds.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">multiselect</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+gantt.<span class="me1">config</span>.<span class="me1">click_drag</span> <span class="sy0">=</span> <span class="br0">&#123;</span>
+    callback<span class="sy0">:</span> onDragEnd
+<span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">config</span>.<span class="me1">autoscroll</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+gantt.<span class="me1">config</span>.<span class="me1">autoscroll_speed</span> <span class="sy0">=</span> <span class="nu0">50</span><span class="sy0">;</span>
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">parse</span><span class="br0">&#40;</span>tasks<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">function</span> onDragEnd<span class="br0">&#40;</span>startPoint<span class="sy0">,</span>endPoint<span class="sy0">,</span>startDate<span class="sy0">,</span>endDate<span class="sy0">,</span>tasksBetweenDates<span class="sy0">,</span>tasksInRows<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> mode <span class="sy0">=</span> document.<span class="me1">querySelector</span><span class="br0">&#40;</span><span class="st0">&quot;input[name=selectMode]:checked&quot;</span><span class="br0">&#41;</span>.<span class="me1">value</span><span class="sy0">;</span>
+        <span class="kw1">switch</span><span class="br0">&#40;</span>mode<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="kw1">case</span> <span class="st0">&quot;1&quot;</span><span class="sy0">:</span>
+                unselectTasks<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                tasksBetweenDates.<span class="me1">forEach</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="kw1">item</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+                    gantt.<span class="me1">selectTask</span><span class="br0">&#40;</span><span class="kw1">item</span>.<span class="me1">id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="kw1">break</span><span class="sy0">;</span>
+            <span class="kw1">case</span> <span class="st0">&quot;2&quot;</span><span class="sy0">:</span>
+                unselectTasks<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                tasksInRows.<span class="me1">forEach</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="kw1">item</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+                    gantt.<span class="me1">selectTask</span><span class="br0">&#40;</span><span class="kw1">item</span>.<span class="me1">id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="kw1">break</span><span class="sy0">;</span>
+            <span class="kw1">case</span> <span class="st0">&quot;3&quot;</span><span class="sy0">:</span>
+                unselectTasks<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw2">var</span> i<span class="sy0">=</span><span class="nu0">0</span><span class="sy0">;</span> i<span class="sy0">&lt;</span>tasksBetweenDates.<span class="me1">length</span><span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+                    <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw2">var</span> j<span class="sy0">=</span><span class="nu0">0</span><span class="sy0">;</span> j<span class="sy0">&lt;</span>tasksInRows.<span class="me1">length</span><span class="sy0">;</span> j<span class="sy0">++</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+                        <span class="kw1">if</span> <span class="br0">&#40;</span>tasksBetweenDates<span class="br0">&#91;</span>i<span class="br0">&#93;</span> <span class="sy0">===</span> tasksInRows<span class="br0">&#91;</span>j<span class="br0">&#93;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+                            gantt.<span class="me1">selectTask</span><span class="br0">&#40;</span>tasksBetweenDates<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="me1">id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                        <span class="br0">&#125;</span>
+                    <span class="br0">&#125;</span>
+                <span class="br0">&#125;</span>
+            <span class="kw1">break</span><span class="sy0">;</span>
+            <span class="kw1">return</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p><a href='samples/02_extensions/25_click_drag_select_by_drag.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Select multiple tasks by Drag and Drop</a></p>
+
+<a name='creatingpartsofsplittasks'><h2>Creating parts of split tasks</h2></a>
+
+<p>You can create parts of <a class="link-pro" href="desktop__split_tasks.html">split tasks</a> with drag-n-drop as well.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">click_drag</span> <span class="sy0">=</span> <span class="br0">&#123;</span>
+    callback<span class="sy0">:</span> onDragEnd<span class="sy0">,</span>
+    singleRow<span class="sy0">:</span> <span class="kw2">true</span>
+<span class="br0">&#125;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">parse</span><span class="br0">&#40;</span>tasks<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">function</span> onDragEnd<span class="br0">&#40;</span>startPoint<span class="sy0">,</span>endPoint<span class="sy0">,</span>startDate<span class="sy0">,</span>endDate<span class="sy0">,</span>tasksBetweenDates<span class="sy0">,</span>tasksInRow<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>tasksInRow.<span class="me1">length</span> <span class="sy0">===</span> <span class="nu0">1</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw2">var</span> currentTask <span class="sy0">=</span> tasksInRow<span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>currentTask.<span class="me1">type</span> <span class="sy0">===</span> <span class="st0">&quot;project&quot;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            currentTask.<span class="me1">render</span> <span class="sy0">=</span> <span class="st0">&quot;split&quot;</span><span class="sy0">;</span>
+            gantt.<span class="me1">addTask</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+                text<span class="sy0">:</span><span class="st0">&quot;Subtask of &quot;</span> <span class="sy0">+</span> currentTask.<span class="me1">text</span><span class="sy0">,</span>
+                start_date<span class="sy0">:</span> gantt.<span class="me1">roundDate</span><span class="br0">&#40;</span>startDate<span class="br0">&#41;</span><span class="sy0">,</span>
+                end_date<span class="sy0">:</span> gantt.<span class="me1">roundDate</span><span class="br0">&#40;</span>endDate<span class="br0">&#41;</span>
+            <span class="br0">&#125;</span><span class="sy0">,</span> currentTask.<span class="me1">id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span> <span class="kw1">else</span> <span class="br0">&#123;</span>
+            <span class="kw2">var</span> projectName <span class="sy0">=</span> <span class="st0">&quot;new Project &quot;</span> <span class="sy0">+</span> currentTask.<span class="me1">text</span><span class="sy0">;</span>
+            <span class="kw2">var</span> newProject <span class="sy0">=</span> gantt.<span class="me1">addTask</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+                text<span class="sy0">:</span> projectName<span class="sy0">,</span>
+                render<span class="sy0">:</span> <span class="st0">&quot;split&quot;</span><span class="sy0">,</span>
+                type<span class="sy0">:</span> <span class="st0">&quot;project&quot;</span><span class="sy0">,</span>
+            <span class="br0">&#125;</span><span class="sy0">,</span> currentTask.<span class="me1">parent</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            gantt.<span class="me1">moveTask</span><span class="br0">&#40;</span>
+                newProject<span class="sy0">,</span>
+                gantt.<span class="me1">getTaskIndex</span><span class="br0">&#40;</span>currentTask.<span class="me1">id</span><span class="br0">&#41;</span><span class="sy0">,</span>
+                gantt.<span class="me1">getParent</span><span class="br0">&#40;</span>currentTask.<span class="me1">id</span><span class="br0">&#41;</span>
+            <span class="br0">&#41;</span><span class="sy0">;</span>
+            gantt.<span class="me1">moveTask</span><span class="br0">&#40;</span>currentTask.<span class="me1">id</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> newProject<span class="br0">&#41;</span><span class="sy0">;</span>
+            gantt.<span class="me1">calculateTaskLevel</span><span class="br0">&#40;</span>currentTask<span class="br0">&#41;</span>
+&nbsp;
+            <span class="kw2">var</span> newTask <span class="sy0">=</span> gantt.<span class="me1">addTask</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+                text<span class="sy0">:</span><span class="st0">&quot;Subtask of &quot;</span> <span class="sy0">+</span> projectName<span class="sy0">,</span>
+                start_date<span class="sy0">:</span> gantt.<span class="me1">roundDate</span><span class="br0">&#40;</span>startDate<span class="br0">&#41;</span><span class="sy0">,</span>
+                end_date<span class="sy0">:</span> gantt.<span class="me1">roundDate</span><span class="br0">&#40;</span>endDate<span class="br0">&#41;</span>
+            <span class="br0">&#125;</span><span class="sy0">,</span> newProject<span class="br0">&#41;</span><span class="sy0">;</span>
+            gantt.<span class="me1">calculateTaskLevel</span><span class="br0">&#40;</span>newTask<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span> <span class="kw1">else</span> <span class="kw1">if</span> <span class="br0">&#40;</span>tasksInRow.<span class="me1">length</span> <span class="sy0">===</span> <span class="nu0">0</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        gantt.<span class="me1">createTask</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+            text<span class="sy0">:</span><span class="st0">&quot;New task&quot;</span><span class="sy0">,</span>
+            start_date<span class="sy0">:</span> gantt.<span class="me1">roundDate</span><span class="br0">&#40;</span>startDate<span class="br0">&#41;</span><span class="sy0">,</span>
+            end_date<span class="sy0">:</span> gantt.<span class="me1">roundDate</span><span class="br0">&#40;</span>endDate<span class="br0">&#41;</span>
+        <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p><a href='samples/02_extensions/23_click_drag_splittask.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Create split tasks by Drag and Drop</a></p>
+
+<!-- Content Area End -->
+			<a href='desktop__advanced_dnd.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

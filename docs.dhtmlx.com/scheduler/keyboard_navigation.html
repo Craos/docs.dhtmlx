@@ -1,0 +1,285 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Keyboard Navigation  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class="toc-hidden current"><a href="keyboard_navigation.html">Keyboard Navigation</a></li><ul><li class="inner"><a href="keyboard_navigation.html#enablingthefunctionality">Enabling the functionality</a></li><li class="inner"><a href="keyboard_navigation.html#focusbehaviorduringkeyboardnavigation">Focus behavior during keyboard navigation</a></li><li class="inner"><a href="keyboard_navigation.html#scopes">Scopes</a></li><li class="inner"><a href="keyboard_navigation.html#shortcutsyntax">Shortcut syntax</a></li><li class="inner"><a href="keyboard_navigation.html#existingshortcuts">Existing shortcuts</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="configuring_the_scheduler.html">Creating Scheduler on a Page</a><a class="n4" href="accessibility.html">Accessibility</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Keyboard Navigation</h1>
+
+<p>You can get access to Scheduler and its elements via keys or keys' combinations. This article will give you all the necessary information 
+on the peculiarities of keyboard navigation with Scheduler, including focus behavior, usage of ready shortcuts and creation of custom ones.</p>
+
+<a name='enablingthefunctionality'><h2>Enabling the functionality</h2></a>
+
+<p>In order to use keyboard navigation in Scheduler, you need to include the <strong>ext/dhtmlxscheduler_key_nav.js</strong> extension on the page.</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../../codebase/ext/dhtmlxscheduler_key_nav.js&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span> </span>
+<span class="sc2">    <span class="kw3">charset</span><span class="sy0">=</span><span class="st0">&quot;utf-8&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<a name='focusbehaviorduringkeyboardnavigation'><h2>Focus behavior during keyboard navigation</h2></a>
+
+<h3>Focus on Scheduler</h3>
+
+<p>When the Tab key is pressed, Scheduler gets focus the same as any usual element. 
+After that to navigate Scheduler, you can use the arrow keys and other ones.</p>
+
+<p>When the Tab key is pressed for the second time, the focus leaves Scheduler and is moved to some other place on the page.</p>
+
+<h3>Focus on a modal window</h3>
+
+<p>When a modal window (a lightbox, a confirm window) opens, the focus moves from the Scheduler to this window and 
+navigation happens inside of it as in a simple form. When the window is closed, focus goes back to the Scheduler.</p>
+
+<p>To return focus back to Scheduler, you need to use the <a class="link-" href="api__scheduler_focus.html">focus</a> method.</p>
+
+<pre><code><pre class="js">scheduler.<span class="kw3">focus</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>When Scheduler gets focus again, it places the focus on the active element inside, or on the first row, or on the latest selected element.</p>
+
+<p>The default navigation actions in a modal window are as follows:</p>
+
+<ul>
+<li><em>Enter</em> - confirm and close</li>
+<li><em>Escape</em> - close without any changes</li>
+</ul>
+
+<p>If the focus is set on some button of the form, pressing <em>Space</em> or <em>Enter</em> will call pressing the button under focus and not the action.</p>
+
+<a name='scopes'><h2>Scopes</h2></a>
+
+<p>An action called on a key click depends on the context. It means that different actions can be attached to different elements (scopes). 
+There are the following context elements (scopes) in Scheduler:</p>
+
+<ul>
+<li><strong>"scheduler"</strong> - The whole scheduler</li>
+<li><strong>"timeSlot"</strong> - A time slot</li>
+<li><strong>"event"</strong> - An event</li>
+<li><strong>"minicalDate"</strong> - A date in the mini calendar</li>
+<li><strong>"minicalButton"</strong> - An arrow button in the mini calendar</li>
+</ul>
+
+<p>If one and the same shortcut is attached to several scopes, the more specific shortcut will trigger. It means that if the same shortcut is attached 
+to Scheduler and to its element, the shortcut attached to an element will be called rather than the shortcut attached to the whole Scheduler.</p>
+
+<h3>Adding a shortcut</h3>
+
+<p>To create a new keyboard shortcut, you need to use the <a class="link-" href="api__scheduler_addshortcut.html">addShortcut</a> method and pass three parameters to it:</p>
+
+<ul>
+<li><strong>shortcut</strong> - (<em>string</em>) a new shortcut key or a keys' combination name</li>
+<li><strong>handler</strong> - (<em>function</em>) a handler function that will be called on the shortcut call </li>
+<li><strong>scope</strong> - (<em>string</em>) the name of the context element to attach the handler function to</li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">addShortcut</span><span class="br0">&#40;</span><span class="st0">&quot;shift+w&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>e<span class="br0">&#41;</span><span class="br0">&#123;</span> 
+    <span class="kw2">var</span> target <span class="sy0">=</span> e.<span class="me1">target</span><span class="sy0">;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>target.<span class="me1">closest</span><span class="br0">&#40;</span><span class="st0">&quot;[event_id]&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+        <span class="kw2">var</span> eventId <span class="sy0">=</span> target.<span class="me1">getAttribute</span><span class="br0">&#40;</span><span class="st0">&quot;event_id&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">if</span><span class="br0">&#40;</span>eventId<span class="br0">&#41;</span> 
+        scheduler.<span class="me1">showQuickInfo</span><span class="br0">&#40;</span>eventId<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">,</span><span class="st0">&quot;event&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Removing a shortcut</h3>
+
+<p>To remove a shortcut from the scope, you need to use the <a class="link-" href="api__scheduler_removeshortcut.html">removeShortcut</a> method. The method takes two parameters:</p>
+
+<ul>
+<li><strong>shortcut</strong> - (<em>string</em>) the name of the key or the keys' combination for shortcut </li>
+<li><strong>scope</strong> - (<em>string</em>) the name of the context element to which the shortcut is attached</li>
+</ul>
+
+<pre><code><pre class="js">scheduler.<span class="me1">removeShortcut</span><span class="br0">&#40;</span><span class="st0">&quot;shift+w&quot;</span><span class="sy0">,</span><span class="st0">&quot;event&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Getting a shortcut handler</h3>
+
+<p>You can get the handler of the keyboard shorcut with the help of the method <a class="link-" href="api__scheduler_getshortcuthandler.html">getShortcutHandler</a>. It takes two parameters:</p>
+
+<ul>
+<li><strong>shortcut</strong> - (<em>string</em>) the name of the key or the keys' combination for shortcut </li>
+<li><strong>scope</strong> - (<em>string</em>) the name of the context element to which the shortcut is attached</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> shortcut_handler <span class="sy0">=</span> scheduler.<span class="me1">getShortcutHandler</span><span class="br0">&#40;</span><span class="st0">&quot;shift+w&quot;</span><span class="sy0">,</span><span class="st0">&quot;event&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The method returns a function, which presents the handler of the shortcut call.</p>
+
+<a name='shortcutsyntax'><h2>Shortcut syntax</h2></a>
+
+<p>A keyboard shortcut can consist of the following keys or key combinations:</p>
+
+<ul>
+<li>a modifier key + a character key ("ctrl+a");</li>
+<li>a modifier key + a non-character key ("ctrl+space");</li>
+<li>a character key ("a");</li>
+<li>a non-character key ("space")</li>
+</ul>
+
+<p>There can be several key combinations for one action. In this case, all the combinations are listed with comma delimiter: "ctrl+a, ctrl+space".</p>
+
+<h3>The list of supported keys to use in shortcuts</h3>
+
+<ul>
+<li>modifier keys: <strong>shift</strong>, <strong>alt</strong>, <strong>ctrl</strong>, <strong>meta</strong>;</li>
+<li>non-character keys: <strong>backspace</strong>, <strong>tab</strong>, <strong>enter</strong>, <strong>esc</strong>, <strong>space</strong>, <strong>up</strong>, <strong>down</strong>, <strong>left</strong>, <strong>right</strong>, <strong>home</strong>, <strong>end</strong>, <strong>pageup</strong>, <strong>pagedown</strong>, <strong>delete</strong>,
+<strong>insert</strong>, <strong>plus</strong>, <strong>f1-f12</strong>.</li>
+</ul>
+
+<a name='existingshortcuts'><h2>Existing shortcuts</h2></a>
+
+<p>There is a set of ready shortcuts that you can use to navigate Scheduler:</p>
+
+<h3>General keyboard shortcuts</h3>
+
+<ul>
+<li><strong>Tab</strong> -  puts focus on Scheduler</li>
+<li><strong>Alt+1,Alt+2,Alt+3,...</strong> - switch between views</li>
+<li><strong>Ctrl+Left/Right</strong> - move to the next/previous date</li>
+<li><strong>Ctrl+Up/Down</strong> - scroll data area</li>
+<li><strong>Ctrl+Enter</strong> - create a new event</li>
+<li><strong>E, Shift+E</strong> - select next/previous event</li>
+<li><strong>Home</strong> - switch to the current date</li>
+<li><strong>Ctrl+C, Ctrl+X, Ctrl+V</strong> - copy/cut/paste an event</li>
+</ul>
+
+<h3>Shortcuts for Time slots</h3>
+
+<ul>
+<li><strong>Up/Down/Left/Right Arrow Keys</strong> - navigate over time slots </li>
+<li><strong>Shift+Up/Down/Left/Right Arrow Keys</strong> - extend a time slot </li>
+<li><strong>Enter</strong> - create an event in the selected time slot</li>
+</ul>
+
+<h3>Shortcuts for Events</h3>
+
+<ul>
+<li><strong>Up/Down/Left/Right Arrow Keys</strong> - go to a time slot</li>
+<li><strong>Enter</strong> - open the lightbox</li>
+</ul>
+
+<h3>Shortcuts for Mini Calendar</h3>
+
+<ul>
+<li><strong>Tab</strong> -  puts focus on Mini Calendar</li>
+<li><strong>Up/Down/Left/Right Arrow Keys</strong> - navigate over buttons/cells</li>
+<li><strong>Enter</strong> - click on a button/cell</li>
+</ul>
+
+<p><a href='samples/13_accessibility/01_regular_skin_all_views.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Keyboard Navigation and WAI-ARIA - Flat Skin </a></p>
+
+<p><a href='samples/03_extensions/07_navigation_plugin.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Keyboard navigation in the scheduler</a></p>
+
+<h3>Related events</h3>
+
+<ul>
+<li><a class="link-" href="api__scheduler_oneventcopied_event.html">onEventCopied</a></li>
+<li><a class="link-" href="api__scheduler_oneventcut_event.html">onEventCut</a></li>
+<li><a class="link-" href="api__scheduler_oneventpasted_event.html">onEventPasted</a></li>
+</ul>
+
+<!-- Content Area End -->
+			<a href='keyboard_navigation.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

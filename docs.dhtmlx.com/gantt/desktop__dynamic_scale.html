@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Dynamic Change of Scale Settings  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__configuring_time_scale.html">Setting up Scale</a></li><li class=""><a href="desktop__zooming.html">Zooming</a></li><li class=""><a href="desktop__highlighting_time_slots.html">Highlighting  Time Slots</a></li><li class="toc-deprecated"><a href="desktop__second_scale.html">Adding Second Scale(s)</a></li><li class=" current"><a href="desktop__dynamic_scale.html">Dynamic Change of Scale Settings</a></li><ul><li class="inner"><a href="desktop__dynamic_scale.html#configurationsettings">Configuration settings</a></li></ul><li class="toc-pro"><a href="desktop__custom_scale.html">Hiding Time Units in the Scale</a></li><li class=""><a href="desktop__markers.html">Adding Vertical Markers</a></li><li class=""><a href="desktop__rtl_mode.html">RTL (Right-to-left) Mode</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__time_scale.html">Configuring Scales</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Dynamic Change of Scale Settings</h1>
+
+<p>Changing the scale on-the-fly helps you to make a Gantt chart flexible - able to fit to the user's needs.</p>
+
+<p>For example, a manager has a 1-year project. To get the whole picture of the project, it's better for him to see the project in months. But to know the details of a specific task, 
+it's more suitable to have the project scheduled by weeks or days.</p>
+
+<p>Which unit to choose? All of them! And give users a possibility to choose by themselves which one to apply.</p>
+
+<a name='configurationsettings'><h2>Configuration settings</h2></a>
+
+<p>To change a scale's setting (e.g. step, sub-scale) dynamically (after dhtmlxGantt is initialized), use the following technique:</p>
+
+<ol>
+<li>Set new values for the related configuration option(s).<br> <em>For example, to change the scale's unit from "month" to "day", use the <strong>unit</strong> property of the <a class="link-" href="api__gantt_scales_config.html">scales</a> property</em>.</li>
+<li>Redefine the related template (if required). <br> <em>For example, to <a class="link-" href="desktop__highlighting_time_slots.html">highlight weekends in the scale</a>, use the <a class="link-" href="api__gantt_scale_cell_class_template.html">scale_cell_class</a> template</em>.</li>
+<li>Redraw the Gantt chart with the <a class="link-" href="api__gantt_render.html">render</a> method.</li>
+</ol>
+
+<p class='snippet'>
+    Dynamic changing of the scale configuration
+</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">scales</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>unit<span class="sy0">:</span> <span class="st0">&quot;month&quot;</span><span class="sy0">,</span> step<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> format<span class="sy0">:</span> <span class="st0">&quot;%F, %Y&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">init</span><span class="br0">&#40;</span><span class="st0">&quot;gantt_here&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+&nbsp;
+<span class="xtra ln-xtra">gantt.<span class="me1">config</span>.<span class="me1">scales</span> <span class="sy0">=</span> <span class="br0">&#91;</span>                         </span><span class="xtra ln-xtra">    <span class="br0">&#123;</span>unit<span class="sy0">:</span> <span class="st0">&quot;day&quot;</span><span class="sy0">,</span> step<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> format<span class="sy0">:</span> <span class="st0">&quot;%d %M, %D&quot;</span><span class="br0">&#125;</span> </span><span class="xtra ln-xtra"><span class="br0">&#93;</span><span class="sy0">;</span>                                              </span><span class="xtra ln-xtra">gantt.<span class="me1">templates</span>.<span class="me1">scale_cell_class</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>date<span class="br0">&#41;</span><span class="br0">&#123;</span></span><span class="xtra ln-xtra">    <span class="kw1">if</span><span class="br0">&#40;</span>date.<span class="me1">getDay</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">==</span><span class="nu0">0</span><span class="sy0">||</span>date.<span class="me1">getDay</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">==</span><span class="nu0">6</span><span class="br0">&#41;</span><span class="br0">&#123;</span></span><span class="xtra ln-xtra">        <span class="kw1">return</span> <span class="st0">&quot;weekend&quot;</span><span class="sy0">;</span></span><span class="xtra ln-xtra">    <span class="br0">&#125;</span></span><span class="xtra ln-xtra"><span class="br0">&#125;</span><span class="sy0">;</span></span><span class="xtra ln-xtra">gantt.<span class="me1">render</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='desktop__dynamic_scale.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

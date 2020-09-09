@@ -1,0 +1,263 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487820.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487820.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Scheduler Docs" href="https://docs.dhtmlx.com/scheduler/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Preventing Double Events in a Time Slot  Scheduler Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=6">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="event_object_operations.html">Event Object Operations</a></li><li class=""><a href="adding_events.html">Adding/Deleting Events</a></li><li class=""><a href="filtering.html">Filtering Events</a></li><li class=""><a href="dhtmlx_components_integration.html">Drag-and-Drop Operations</a></li><li class=""><a href="recurring_events.html">Recurring Events</a></li><li class=""><a href="readonly.html">Read-only Mode</a></li><li class=""><a href="validation.html">Validation</a></li><li class=" current"><a href="collisions.html">Preventing Double Events in a Time Slot</a></li><ul><li class="inner"><a href="collisions.html#activatingthemonitoringforcollisions">Activating the monitoring for collisions</a></li><li class="inner"><a href="collisions.html#managingtheallowablenumberofeventsinatimeslot">Managing the allowable number of events in a time slot</a></li><li class="inner"><a href="collisions.html#gettingthenumberofeventsresidedinatimeslot">Getting the number of events resided in a time slot</a></li><li class="inner"><a href="collisions.html#fullchecklistforpreventingdoublebookingsevents">Full checklist for preventing double bookings/events</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a><a class="n3" href="managing_events.html">Managing Scheduler Events</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Preventing Double Events in a Time Slot</h1>
+
+<p>In many use cases you may need to limit the count of events per time slot. For example, you may need  to deny creation of the 2nd event if some other event has already been defined at that time.</p>
+
+<a name='activatingthemonitoringforcollisions'><h2>Activating the monitoring for collisions</h2></a>
+
+<p>To control the number of events in a time slot, use the <a class="link-" href="extensions_list.html#collision">'collision' extension</a>.</p>
+
+<p class='snippet'>
+Activating the 'collision' extension
+</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../codebase/ext/dhtmlxscheduler_collision.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p><em>Once you include the extension file on the page, the extension will be activated.
+From this moment on, the scheduler won't allow users to place 2 events in the same time slot (create or move).</em></p>
+
+<a name='managingtheallowablenumberofeventsinatimeslot'><h2>Managing the allowable number of events in a time slot</h2></a>
+
+<p>By default, the allowable number of events in a time slot is 1. To regulate this number, use the <a class="link-" href="api__scheduler_collision_limit_config.html">collision_limit</a> property:</p>
+
+<p class='snippet'>
+Denying creating more than 2 events per time slot
+</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">collision_limit</span> <span class="sy0">=</span> <span class="nu0">2</span><span class="sy0">;</span>      <span class="co1">//allows creating 2 events per time slot</span></pre></code></pre>
+
+<p><a href='samples/03_extensions/15_collision.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Controlling the number of events in a time slot</a></p>
+
+<p><em>With the <a class="link-" href="extensions_list.html#collision">'collision' extension</a> enabled, each time the user tries to create a new event or modify some existing one inside an already occupied time slot, the scheduler invokes
+the <a class="link-" href="api__scheduler_oneventcollision_event.html">onEventCollision</a> event which checks the value set with the 
+<a class="link-" href="api__scheduler_collision_limit_config.html">collision_limit</a> property.</em></p>
+
+<p><br></p>
+
+<p>But remember, the <a class="link-" href="api__scheduler_oneventcollision_event.html">onEventCollision</a> event isn't triggered while loading data. So, to control a 
+number of items in a time slot while data is being loaded to the scheduler, you need to extend the previous code a bit:</p>
+
+<p class='snippet'>
+Denying creating/loading more than 2 events per time slot
+</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">config</span>.<span class="me1">collision_limit</span> <span class="sy0">=</span> <span class="nu0">2</span><span class="sy0">;</span> <span class="co1">//allows creating 2 events per time slot</span>
+<span class="xtra ln-xtra">scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onEventLoading&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>ev<span class="br0">&#41;</span><span class="br0">&#123;</span> </span><span class="xtra ln-xtra">    <span class="kw1">return</span> scheduler.<span class="me1">checkCollision</span><span class="br0">&#40;</span>ev<span class="br0">&#41;</span><span class="sy0">;</span>             </span><span class="xtra ln-xtra"><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p>The <a class="link-" href="api__scheduler_checkcollision.html">checkCollision</a> method checks whether an event occurs at the time that has already been occupied by another event(s) and invokes the <a class="link-" href="api__scheduler_oneventcollision_event.html">onEventCollision</a> event.</p>
+
+<a name='gettingthenumberofeventsresidedinatimeslot'><h2>Getting the number of events resided in a time slot</h2></a>
+
+<p>To get the number of events resided in a time slot, use the <a class="link-" href="api__scheduler_getevents.html">getEvents</a> method:</p>
+
+<p class='snippet'> 
+Getting the number of events in a time slot
+</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> count <span class="sy0">=</span> scheduler.<span class="me1">getEvents</span><span class="br0">&#40;</span>ev.<span class="me1">start_date</span><span class="sy0">,</span> ev.<span class="me1">end_date</span><span class="br0">&#41;</span>.<span class="me1">length</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Note,  the <a class="link-" href="api__scheduler_getevents.html">getEvents</a> method iterates over all events and compares their dates, so it may take a bit of time if you are using thousands of events.</p>
+
+<a name='fullchecklistforpreventingdoublebookingsevents'><h2>Full checklist for preventing double bookings/events</h2></a>
+
+<p>Below you'll find a list of steps you need to complete in order to avoid collisions of events in a time slot:</p>
+
+<p>1) Include the <em>collision</em> extension on the page:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../codebase/ext/dhtmlxscheduler_collision.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p>2) Block creation of new events while data is being loaded from the server.</p>
+
+<p>So, the user won't be able to create an event while data hasn't been loaded and the calendar is empty.
+For this purpose you should use the <a class="link-" href="api__scheduler_onloadend_event.html">onLoadEnd</a> and <a class="link-" href="api__scheduler_onloadstart_event.html">onLoadStart</a> event handlers and the <a class="link-" href="api__scheduler_readonly_config.html">readonly</a> property, as follows:</p>
+
+<pre><code><pre class="js"><span class="co1">// make the scheduler readonly </span>
+<span class="co1">// before loading data from the data source has been started</span>
+scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onLoadStart&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    scheduler.<span class="me1">config</span>.<span class="me1">readonly</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// make the scheduler editable </span>
+<span class="co1">// only after loading data from the data source is completed</span>
+scheduler.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onLoadEnd&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    scheduler.<span class="me1">config</span>.<span class="me1">readonly</span> <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>3) Enable dynamic loading to speed up data loading in case you have lots of records and they all load at once.</p>
+
+<p>To enable the dynamic loading, you need to call the <a class="link-" href="api__scheduler_setloadmode.html">setLoadMode</a> method and load your script after that:</p>
+
+<p class='snippet'>
+Enabling the dynamic loading
+</p>
+
+<pre><code><pre class="js">scheduler.<span class="me1">setLoadMode</span><span class="br0">&#40;</span><span class="st0">&quot;month&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/some&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>4) Check conflicting events on the server side via PHP connector validation. The details are given in the article devoted to 
+<a href="../connector__php__validation.html#processingincaseofvalidationerror">data validation</a>.</p>
+
+<p>You can also reload data on the client side if checking fails.</p>
+
+<p>To process the fail of checking, use DataProcessor Events <a href="../api__dataprocessor_onvalidationerror_event.html">onValidationError</a> and 
+<a href="../api__dataprocessor_onafterupdate_event.html">onAfterUpdate</a> and to reload data, make use of the Scheduler methods <a class="link-" href="api__scheduler_clearall.html">clearAll</a> and <a class="link-" href="api__scheduler_load.html">load</a>:</p>
+
+<p>a. <a href="../api__dataprocessor_onvalidationerror_event.html">onValidationError</a></p>
+
+<p>occurs after validation error has fired before data sending</p>
+
+<pre><code><pre class="js">dp.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onValidationError&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span> details<span class="br0">&#41;</span><span class="br0">&#123;</span>
+   <span class="co1">//reload actual data from the server</span>
+   scheduler.<span class="me1">clearAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+   scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/data&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Parameters:</p>
+
+<ul>
+<li>id - (string) id of the item for which error occurs</li>
+<li>details - (object) error details</li>
+</ul>
+
+<p>b. <a href="../api__dataprocessor_onafterupdate_event.html">onAfterUpdate</a></p>
+
+<p>fires after server side response has been received and processed</p>
+
+<pre><code><pre class="js">dp.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onAfterUpdate&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span> action<span class="sy0">,</span> tid<span class="sy0">,</span> response<span class="br0">&#41;</span><span class="br0">&#123;</span>
+     <span class="kw1">if</span><span class="br0">&#40;</span>action <span class="sy0">==</span> <span class="st0">&quot;invalid&quot;</span> <span class="sy0">||</span> action <span class="sy0">==</span> <span class="st0">&quot;error&quot;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+          <span class="co1">//reload actual data from the server</span>
+          scheduler.<span class="me1">clearAll</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+          scheduler.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;/data&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+     <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Parameters:</p>
+
+<ul>
+<li>id - (string) id of the updated item</li>
+<li>action - (string) response status (operation type), see the details below</li>
+<li>tid - (string) new id (applicable only for insert operations)</li>
+<li>response - (mixed) xml node/json object, contains parsed xml/json response</li>
+</ul>
+
+<p>Possible response statuses are the following:</p>
+
+<ul>
+<li>updated; </li>
+<li>inserted;</li>
+<li>deleted;</li>
+<li>invalid;</li>
+<li>error.</li>
+</ul>
+
+<!-- Content Area End -->
+			<a href='collisions.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Base Views</li>
+	<li><a href='day_view.html'>Day</a></li>
+	<li><a href='week_view.html'>Week</a></li>
+	<li><a href='month_view.html'>Month</a></li>
+	<li><a href='year_view.html'>Year</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Advanced Views</li>
+	<li><a href='units_view.html'>Units</a></li>
+	<li><a href='timeline_view.html'>Timeline</a></li>
+	<li><a href='weekagenda_view.html'>Week Agenda</a></li>
+	<li><a href='grid_view.html'>Grid</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Customization</li>
+	<li><a href='configuring_the_scheduler.html'>Scheduler</a></li>
+	<li><a href='customizing_events.html'>Events</a></li>
+	<li><a href='configuring_the_lightbox.html'>Lightbox</a></li>
+	<li><a href='special_extensions.html'>Extensions</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../gantt/index.html'>Gantt</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+	<li><a href='http://scheduler-net.com/docs/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__scheduler_events.html'>Events</a></li>
+	<li><a href='api__refs__scheduler_methods.html'>Methods</a></li>
+	<li><a href='api__refs__scheduler_props.html'>Properties</a></li>
+	<li><a href='api__refs__scheduler_templates.html'>Templates</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

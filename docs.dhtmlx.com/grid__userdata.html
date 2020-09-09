@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Loading Additional Data to Grid  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="grid__data_formats.html">Exploring Supported Data Formats</a></li><li class=""><a href="grid__loading_storing_data.html">Loading Data into Grid</a></li><li class=""><a href="grid__big_datasets_loading.html">Loading Big Datasets</a></li><li class=""><a href="grid__server_side.html">Saving Data on the Server Side</a></li><li class=""><a href="grid__serialization.html">Serializing Data to XML,CSV</a></li><li class=""><a href="grid__data_export.html">Exporting Data to PDF,Excel</a></li><li class=" current"><a href="grid__userdata.html">Loading Additional Data to Grid</a></li><ul><li class="inner"><a href="grid__userdata.html#hiddencolumns">Hidden Columns</a></li><li class="inner"><a href="grid__userdata.html#userdata">Userdata</a></li><li class="inner"><a href="grid__userdata.html#customattributes">Custom attributes</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__loading_data.html">Loading and Storing Data</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Loading Additional Data to Grid</h1>
+
+<p>To load additional data to the grid you can use:</p>
+
+<ul>
+<li>Hidden Columns.</li>
+<li>Userdata.</li>
+<li>Custom attributes.</li>
+</ul>
+
+<a name='hiddencolumns'><h2>Hidden Columns</h2></a>
+
+<p>To make some extra data in the grid invisible, you can hide some column(s). So, the data in such column(s) will be invisible to users but
+accessible by API.</p>
+
+<p><br></p>
+
+<p>To hide a column, use the <a class="link-pro" href="api__dhtmlxgrid_setcolumnhidden.html">setColumnHidden</a> method:</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>  
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>                
+mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;./codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>       
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Name, Email, Age&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+grid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">grid.<span class="me1">setColumnHidden</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="sy0">,</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//hides the 1st column</span></span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/16_rows_columns_manipulations/12_pro_grid_hideColumn.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Hide/Show column </a></p>
+
+<p>The data from hidden columns can be accessed in a usual way:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> value <span class="sy0">=</span> grid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">0</span><span class="br0">&#41;</span>.<span class="me1">getValue</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+grid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row2&quot;</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">&#41;</span>.<span class="me1">setValue</span><span class="br0">&#40;</span>value<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><br></p>
+
+<p>In case of initialization from XML, a column can be hidden as in:</p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;rows<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;head<span class="re2">&gt;</span></span></span>
+<span class="xtra ln-xtra">        <span class="sc3"><span class="re1">&lt;column</span> <span class="re0">hidden</span>=<span class="st0">&quot;true&quot;</span><span class="re2">&gt;</span></span>Dummy<span class="sc3"><span class="re1">&lt;/column<span class="re2">&gt;</span></span></span> </span>    <span class="sc3"><span class="re1">&lt;/head<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/rows<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<div class='note'><p><p>By default, data of hidden columns is included into serialization and can't be controlled by the <a class="link-pro" href="api__dhtmlxgrid_setserializablecolumns.html">setSerializableColumns</a> method. Also, the data of hidden columns is available during dataProcessor calls.</p>
+</p></div>
+
+<a name='userdata'><h2>Userdata</h2></a>
+
+<p>To add a userdata to the whole grid or some of its rows, use the <a class="link-" href="api__dhtmlxgrid_setuserdata.html">setUserData</a> method:</p>
+
+<pre><code><pre class="js"><span class="co1">//adds userdata to the row with id=&quot;row1&quot;</span>
+mygrid.<span class="me1">setUserData</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="st0">&quot;priority&quot;</span><span class="sy0">,</span><span class="st0">&quot;high&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> userdata <span class="sy0">=</span> mygrid.<span class="me1">getUserData</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="st0">&quot;priority&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//-&gt; &quot;high&quot;</span>
+&nbsp;
+<span class="co1">//adds userdata to the whole grid</span>
+mygrid.<span class="me1">setUserData</span><span class="br0">&#40;</span><span class="st0">&quot;&quot;</span><span class="sy0">,</span><span class="st0">&quot;priority&quot;</span><span class="sy0">,</span><span class="st0">&quot;high&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> userdata <span class="sy0">=</span> mygrid.<span class="me1">getUserData</span><span class="br0">&#40;</span><span class="st0">&quot;&quot;</span><span class="sy0">,</span><span class="st0">&quot;priority&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//-&gt; &quot;high&quot;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/16_rows_columns_manipulations/02_api_grid.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Using Grid API Methods</a></p>
+
+<p><br></p>
+
+<p>In case of initialization from XML, you can use a special tag - <strong>&lt;userdata&gt;&lt;/userdata&gt;</strong>:</p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;rows<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;userdata</span> <span class="re0">name</span>=<span class="st0">&quot;somName1&quot;</span><span class="re2">&gt;</span></span>some data<span class="sc3"><span class="re1">&lt;/userdata<span class="re2">&gt;</span></span></span>   //userdata related to the whole grid
+    <span class="sc3"><span class="re1">&lt;row</span> <span class="re0">id</span>=<span class="st0">&quot;unique_rowid&quot;</span><span class="re2">&gt;</span></span> 
+      <span class="sc3"><span class="re1">&lt;userdata</span> <span class="re0">name</span>=<span class="st0">&quot;someName1&quot;</span><span class="re2">&gt;</span></span> some row data <span class="sc3"><span class="re1">&lt;/userdata<span class="re2">&gt;</span></span></span> //userdata related to a row
+      <span class="sc3"><span class="re1">&lt;userdata</span> <span class="re0">name</span>=<span class="st0">&quot;someName2&quot;</span><span class="re2">&gt;</span></span> some row data <span class="sc3"><span class="re1">&lt;/userdata<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;cell<span class="re2">&gt;</span></span></span>cell content<span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;cell<span class="re2">&gt;</span></span></span><span class="sc2">&lt;![CDATA[&lt;font color=&quot;red&quot;&gt;cell&lt;/font&gt; content]]&gt;</span><span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/row<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/rows<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<a name='customattributes'><h2>Custom attributes</h2></a>
+
+<p>To add a custom attribute to a row in the grid, use the <a class="link-" href="api__dhtmlxgrid_setrowattribute.html">setRowAttribute</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setRowAttribute</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="st0">&quot;priority&quot;</span><span class="sy0">,</span><span class="st0">&quot;high&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> value <span class="sy0">=</span> mygrid.<span class="me1">getRowAttribute</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="st0">&quot;priority&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//-&gt;&quot;high&quot;</span></pre></code></pre>
+
+<p>To add a custom attribute to a cell in the grid, use the <strong>setAttribute</strong> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">0</span><span class="br0">&#41;</span>.<span class="me1">setAttribute</span><span class="br0">&#40;</span><span class="st0">&quot;priority&quot;</span><span class="sy0">,</span><span class="st0">&quot;high&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> value <span class="sy0">=</span> mygrid.<span class="me1">cells</span><span class="br0">&#40;</span><span class="st0">&quot;row1&quot;</span><span class="sy0">,</span><span class="nu0">0</span><span class="br0">&#41;</span>.<span class="me1">getAttribute</span><span class="br0">&#40;</span><span class="st0">&quot;priority&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//-&gt;&quot;high&quot;</span></pre></code></pre>
+
+<p><br>
+In case of initialization from XML, you can use a special tag  - <strong>&lt;row&gt;&lt;/row&gt;</strong>:</p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;rows<span class="re2">&gt;</span></span></span>
+<span class="xtra ln-xtra">    <span class="sc3"><span class="re1">&lt;row</span> <span class="re0">id</span>=<span class="st0">&quot;unique_rowid&quot;</span> <span class="re0">priority</span>=<span class="st0">&quot;high&quot;</span><span class="re2">&gt;</span></span> </span>        <span class="sc3"><span class="re1">&lt;cell</span> <span class="re0">some</span>=<span class="st0">&quot;data&quot;</span><span class="re2">&gt;</span></span>cell content<span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/row<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/rows<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<div class='note'><p><p>By default, custom attributes are not included into serialization and not available during dataProcessor calls.</p>
+</p></div>
+
+<p>In case of initialization from XML you can include a custom attribute into serialization as in:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">xml</span>.<span class="me1">row_attrs</span>.<span class="me1">push</span><span class="br0">&#40;</span><span class="st0">&quot;priority&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>  <span class="co1">//includes some row attribute into serialization</span>
+mygrid.<span class="me1">xml</span>.<span class="me1">cell_attrs</span>.<span class="me1">push</span><span class="br0">&#40;</span><span class="st0">&quot;priority&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//includes a cell attribute into serialization</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/12_initialization_loading/02_grid_custom_attr.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Setting custom attributes</a></p>
+
+<!-- Content Area End -->
+			<a href='grid__userdata.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

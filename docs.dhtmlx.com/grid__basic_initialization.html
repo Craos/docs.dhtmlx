@@ -1,0 +1,357 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Initializing Grid on a Page  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=" current"><a href="grid__basic_initialization.html">Initializing Grid on a Page</a></li><ul><li class="inner"><a href="grid__basic_initialization.html#step1anewhtmlfileandsourcefiles">Step 1. A new HTML file and source files</a></li><li class="inner"><a href="grid__basic_initialization.html#step2placingdhtmlxgridonapage">Step 2. Placing dhtmlxGrid on a page</a></li><li class="inner"><a href="grid__basic_initialization.html#step3objectconstructor">Step 3. Object constructor</a></li><li class="inner"><a href="grid__basic_initialization.html#step4configuringandinitializing">Step 4. Configuring and initializing</a></li><li class="inner"><a href="grid__basic_initialization.html#step5loadingdata">Step 5. Loading data</a></li><li class="inner"><a href="grid__basic_initialization.html#step6databasestructure">Step 6. Database structure</a></li><li class="inner"><a href="grid__basic_initialization.html#step7loadingdatafromtheserver">Step 7. Loading data from the server</a></li><li class="inner"><a href="grid__basic_initialization.html#step8savingdata">Step 8. Saving data</a></li><li class="inner"><a href="grid__basic_initialization.html#whatsnext">What's next</a></li></ul><li class=""><a href="grid__htmlinit.html">Initializing Grid from HTML</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__creating_a_grid.html">Creating Grid on a Page</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Initializing Grid on a Page</h1>
+
+<p>This article walks you through creating a basic application containing dhtmlxGrid.
+As you follow the steps, you learn how to initialize dhtmlxGrid, customize and configure its appearance, load data.
+The final code of the article can be used as the start point while creating applications with the help of dhtmlxGrid.</p>
+
+<p><img src='media/grid/grid_front.png'/></p>
+
+<a name='step1anewhtmlfileandsourcefiles'><h2>Step 1. A new HTML file and source files</h2></a>
+
+<p>To begin with, create a new HTML file and include the DHTMLX code files in it (it includes the dhtmlxGrid's functionality)</p>
+
+<p>Each DHTMLX component can be used standalone or as a part of the general library. If you use dhtmlxGrid standalone you need to include its source files on the page:</p>
+
+<ul>
+<li>dhtmlxgrid.js</li>
+<li>dhtmlxgrid.css</li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlxgrid.css&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;codebase/dhtmlxgrid.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span></pre></code></pre>
+
+<p>If you use dhtmlxGrid as a part of "dhtmlxSuite" package you need to include 2 files:</p>
+
+<ul>
+<li>dhtmlx.js</li>
+<li>dhtmlx.css</li>
+</ul>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlx.css&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlx.js&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p>dhtmlxGrid js/css files are parts of DHTMLX js/css correspondingly, so there is no need to include them separately.</p>
+
+<h3>Including source files from CDN</h3>
+
+<p>To include the source files of "dhtmlxSuite" package from CDN, you should set direct links to <em>dhtmlx.js</em> and <em>dhtmlx.css</em> files:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;http://cdn.dhtmlx.com/edge/dhtmlx.css&quot;</span> </span>
+<span class="sc2">    <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span>&gt;</span> 
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;http://cdn.dhtmlx.com/edge/dhtmlx.js&quot;</span> </span>
+<span class="sc2">    <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<p>By setting links in this way you will get the latest version of dhtmlxSuite. 
+To get some particular version, just specify the number of the required version in the link, like this:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;stylesheet&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;http://cdn.dhtmlx.com/5.0/dhtmlx.css&quot;</span> </span>
+<span class="sc2">    <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span>&gt;</span> 
+<span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;http://cdn.dhtmlx.com/5.0/dhtmlx.js&quot;</span> </span>
+<span class="sc2">    <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/javascript&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span></pre></code></pre>
+
+<a name='step2placingdhtmlxgridonapage'><h2>Step 2. Placing dhtmlxGrid on a page</h2></a>
+
+<p>At the next step create a <em>div</em> container where you will place your grid.</p>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">meta</span> <span class="kw3">http-equiv</span><span class="sy0">=</span><span class="st0">&quot;Content-Type&quot;</span> <span class="kw3">content</span><span class="sy0">=</span><span class="st0">&quot;text/html; charset=utf-8&quot;</span> <span class="sy0">/</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">title</span>&gt;</span>Quick start with dhtmlxGrid<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">title</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;STYLESHEET&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlx.css&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlx.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+<span class="xtra ln-xtra">    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;gridbox&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width:300px;height:400px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span>  </span>    <span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js">    <span class="co1">//here you will place your JavaScript code</span></pre>    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+<a name='step3objectconstructor'><h2>Step 3. Object constructor</h2></a>
+
+<p>To create a new dhtmlxGrid object, use the <strong>dhtmlXGridObject()</strong> constructor:</p>
+
+<pre><code><pre class="html"><span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">html</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">meta</span> <span class="kw3">http-equiv</span><span class="sy0">=</span><span class="st0">&quot;Content-Type&quot;</span> <span class="kw3">content</span><span class="sy0">=</span><span class="st0">&quot;text/html; charset=utf-8&quot;</span> <span class="sy0">/</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">title</span>&gt;</span>Quick start with dhtmlxGrid<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">title</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">&quot;STYLESHEET&quot;</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlx.css&quot;</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlx.js&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">body</span>&gt;</span>
+    <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">&quot;gridbox&quot;</span> <span class="kw3">style</span><span class="sy0">=</span><span class="st0">&quot;width:600px;height:400px;&quot;</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span> 
+    <span class="sc2">&lt;<span class="kw2">script</span>&gt;</span><pre class="js"><span class="xtra ln-xtra">        mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre>    <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;</span>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</span></pre></code></pre>
+
+<p>The only parameter is the HTML container. We've created it at the previous step.</p>
+
+<a name='step4configuringandinitializing'><h2>Step 4. Configuring and initializing</h2></a>
+
+<p>After you have created an object of dhtmlxGrid, you can move to its configuration and initialization.
+The grid is configured by calling the related methods.</p>
+
+<p>We will make the most often used configuration settings:</p>
+
+<p class='snippet'>
+Basic dhtmlxGrid configuration
+</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;!</span>DOCTYPE html<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>html<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>head<span class="sy0">&gt;</span>
+    <span class="sy0">&lt;</span>meta http<span class="sy0">-</span>equiv<span class="sy0">=</span><span class="st0">&quot;Content-Type&quot;</span> content<span class="sy0">=</span><span class="st0">&quot;text/html; charset=utf-8&quot;</span> <span class="sy0">/&gt;</span>
+    <span class="sy0">&lt;</span>title<span class="sy0">&gt;</span>Quick start <span class="kw1">with</span> dhtmlxGrid<span class="sy0">&lt;/</span>title<span class="sy0">&gt;</span>
+    <span class="sy0">&lt;</span>link rel<span class="sy0">=</span><span class="st0">&quot;STYLESHEET&quot;</span> type<span class="sy0">=</span><span class="st0">&quot;text/css&quot;</span> href<span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlx.css&quot;</span><span class="sy0">&gt;</span>
+    <span class="sy0">&lt;</span>script src<span class="sy0">=</span><span class="st0">&quot;../codebase/dhtmlx.js&quot;</span><span class="sy0">&gt;&lt;/</span>script<span class="sy0">&gt;</span>
+<span class="sy0">&lt;/</span>head<span class="sy0">&gt;</span>
+<span class="sy0">&lt;</span>body<span class="sy0">&gt;</span>
+    <span class="sy0">&lt;</span>div id<span class="sy0">=</span><span class="st0">&quot;gridbox&quot;</span> style<span class="sy0">=</span><span class="st0">&quot;width:600px;height:400px;&quot;</span><span class="sy0">&gt;&lt;/</span>div<span class="sy0">&gt;</span> 
+    <span class="sy0">&lt;</span>script<span class="sy0">&gt;</span>
+        mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="xtra ln-xtra">        <span class="co1">//the path to images required by grid </span></span><span class="xtra ln-xtra">        mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;./codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>                 </span><span class="xtra ln-xtra">        mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Sales,Book title,Author,Price&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//the headers of columns  </span></span><span class="xtra ln-xtra">        mygrid.<span class="me1">setInitWidths</span><span class="br0">&#40;</span><span class="st0">&quot;100,250,150,100&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>          <span class="co1">//the widths of columns  </span></span><span class="xtra ln-xtra">        mygrid.<span class="me1">setColAlign</span><span class="br0">&#40;</span><span class="st0">&quot;right,left,left,left&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>       <span class="co1">//the alignment of columns   </span></span><span class="xtra ln-xtra">        mygrid.<span class="me1">setColTypes</span><span class="br0">&#40;</span><span class="st0">&quot;ro,ed,ed,ed&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>                <span class="co1">//the types of columns  </span></span><span class="xtra ln-xtra">        mygrid.<span class="me1">setColSorting</span><span class="br0">&#40;</span><span class="st0">&quot;int,str,str,int&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>          <span class="co1">//the sorting types   </span></span><span class="xtra ln-xtra">        mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>      <span class="co1">//finishes initialization and renders the grid on the page </span></span>    <span class="sy0">&lt;/</span>script<span class="sy0">&gt;</span>  
+<span class="sy0">&lt;/</span>body<span class="sy0">&gt;</span>
+<span class="sy0">&lt;/</span>html<span class="sy0">&gt;</span></pre></code></pre>
+
+<p>We have defined primary settings for the grid. 
+To learn how to configure grid accoring to your needs, read other articles in the documentation, such as:</p>
+
+<ul>
+<li><a class="link-" href="grid__columns_types.html">General columns configuration</a> - a brief announcement of available column settings</li>
+<li><a class="link-" href="grid__selection.html">Selection</a> - describes different types of selection (cell, row etc.) and their use</li>
+<li><a class="link-" href="grid__sorting.html">Sorting</a>, <a class="link-" href="grid__filtering.html">Filtering</a> - tells about built-in means for sorting and filtering</li>
+<li><a class="link-" href="grid__skins.html">Skinning</a> - shows how to set the desired skin for the grid</li>
+</ul>
+
+<a name='step5loadingdata'><h2>Step 5. Loading data</h2></a>
+
+<p>If you run the app now, you can already see a grid on the page. But it won't contain any data.
+To populate the grid, we will take the data from a sample data source. We will use the easiest of the ways and specify the data source as an inline object in JSON format.</p>
+
+<p>To load data from an inline object, we will use the <a class="link-" href="api__dhtmlxgrid_parse.html">parse</a> method.</p>
+
+<pre><code><pre class="js">data<span class="sy0">=</span><span class="br0">&#123;</span>
+    rows<span class="sy0">:</span><span class="br0">&#91;</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> data<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;A Time to Kill&quot;</span><span class="sy0">,</span> <span class="st0">&quot;John Grisham&quot;</span><span class="sy0">,</span> <span class="st0">&quot;100&quot;</span><span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> data<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;Blood and Smoke&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Stephen King&quot;</span><span class="sy0">,</span> <span class="st0">&quot;1000&quot;</span><span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> id<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> data<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;The Rainmaker&quot;</span><span class="sy0">,</span> <span class="st0">&quot;John Grisham&quot;</span><span class="sy0">,</span> <span class="st0">&quot;-200&quot;</span><span class="br0">&#93;</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+mygrid.<span class="me1">parse</span><span class="br0">&#40;</span>data<span class="sy0">,</span><span class="st0">&quot;json&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//takes the name and format of the data source</span></pre></code></pre>
+
+<p>For more details on the topic, read article <a class="link-" href="grid__loading_data.html">Loading data</a></p>
+
+<a name='step6databasestructure'><h2>Step 6. Database structure</h2></a>
+
+<div class='note'><p><p>Read this and further steps if you want to load data from a database instead of from an inline object.</p>
+</p></div>
+
+<p>Now, if you have decided to load data from the server - you need to create a table in your database as in:</p>
+
+<p><img src="media/grid/db_structure.png"/></p>
+
+<p>You can execute the following code to create the table with 3 records:</p>
+
+<pre><code><pre class="js"><span class="sy0">--</span> <span class="sy0">----------------------------</span>
+<span class="sy0">--</span> Table structure <span class="kw1">for</span> books
+<span class="sy0">--</span> <span class="sy0">----------------------------</span>
+CREATE TABLE `books` <span class="br0">&#40;</span>
+  `id` int<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span> AUTO_INCREMENT<span class="sy0">,</span>
+  `title` varchar<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `author` varchar<span class="br0">&#40;</span><span class="nu0">30</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  `price` varchar<span class="br0">&#40;</span><span class="nu0">11</span><span class="br0">&#41;</span> NOT <span class="kw2">NULL</span><span class="sy0">,</span>
+  PRIMARY KEY <span class="br0">&#40;</span>`id`<span class="br0">&#41;</span>
+<span class="br0">&#41;</span>
+<span class="sy0">--</span> <span class="sy0">----------------------------</span>
+<span class="sy0">--</span> Records 
+<span class="sy0">--</span> <span class="sy0">----------------------------</span>
+INSERT INTO `books` VALUES <span class="br0">&#40;</span><span class="st0">'1'</span><span class="sy0">,</span> <span class="st0">'A Time to Kill'</span><span class="sy0">,</span> <span class="st0">'John Grisham'</span><span class="sy0">,</span> <span class="st0">'100'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+INSERT INTO `books` VALUES <span class="br0">&#40;</span><span class="st0">'2'</span><span class="sy0">,</span> <span class="st0">'Blood and Smoke'</span><span class="sy0">,</span> <span class="st0">'Stephen King'</span><span class="sy0">,</span> <span class="st0">'1000'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+INSERT INTO `books` VALUES <span class="br0">&#40;</span><span class="st0">'3'</span><span class="sy0">,</span> <span class="st0">'The Rainmaker'</span><span class="sy0">,</span> <span class="st0">'John Grisham'</span><span class="sy0">,</span> <span class="st0">'-200'</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Note, you can create any number of fields in the db and load them to the grid.</p>
+
+<a name='step7loadingdatafromtheserver'><h2>Step 7. Loading data from the server</h2></a>
+
+<p>To load data from a database, use the <a class="link-" href="api__dhtmlxgrid_load.html">load</a> method where specify a file realizing server-side 'communication' as a parameter. You may write the full server side by yourself, but we recommend to use dhtmlxConnector, as the easiest way.
+So, for our task you need to call the method as shown below:</p>
+
+<pre><code><pre class="js"><span class="co1">//method takes the url to the file that will process CRUD operations on the server</span>
+mygrid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The server-side script for dhtmlxGrid is the following:</p>
+
+<p class='snippet'>
+'connector.php' file
+</p>
+
+<pre><code><pre class="php"><span class="kw2">&lt;?php</span>
+<span class="kw1">require_once</span><span class="br0">&#40;</span><span class="st0">&quot;codebase/connector/grid_connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//includes related connector file</span>
+&nbsp;
+<span class="co1">//connects to server containing the DB named &quot;sampledb&quot;</span>
+<span class="re0">$res</span> <span class="sy0">=</span> <span class="kw2">new</span> PDO<span class="br0">&#40;</span><span class="st0">&quot;mysql:dbname=sampledb;host=localhost&quot;</span><span class="sy0">,</span><span class="st0">&quot;root&quot;</span><span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$conn</span> <span class="sy0">=</span> <span class="kw2">new</span> GridConnector<span class="br0">&#40;</span><span class="re0">$res</span><span class="sy0">,</span><span class="st0">&quot;MySQL&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>                     <span class="co1">//connector initialization</span>
+&nbsp;
+<span class="re0">$conn</span><span class="sy0">-&gt;</span><span class="me1">render_table</span><span class="br0">&#40;</span><span class="st0">&quot;books&quot;</span><span class="sy0">,</span><span class="st0">&quot;id&quot;</span><span class="sy0">,</span><span class="st0">&quot;title,author,sales&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>      <span class="co1">//data configuration</span></pre></code></pre>
+
+<a name='step8savingdata'><h2>Step 8. Saving data</h2></a>
+
+<p>If you run the app now, you will see that the grid is able to load data from the database, but unable to save it back. To 'force' the grid save data in the database, use <a class="link-" href="dataprocessor__index.html">DataProcessor</a>.
+It's very easy to use <a class="link-" href="dataprocessor__index.html">DataProcessor</a>. All you need is to initialize it and attach to the grid.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> dp <span class="sy0">=</span> <span class="kw2">new</span> dataProcessor<span class="br0">&#40;</span><span class="st0">&quot;data/connector.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+dp.<span class="me1">init</span><span class="br0">&#40;</span>mygrid<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>That's all. A standard grid that can load data from the database and save it back is ready.
+Now you may configure, change and customize it further to meet all your needs.</p>
+
+<a name='whatsnext'><h2>What's next</h2></a>
+
+<ul>
+<li>check samples</li>
+<li>read about <a class="link-" href="grid__data_formats.html">possible data formats</a> and how you can <a class="link-" href="grid__server_side.html">get data from database</a></li>
+</ul>
+
+<!-- Content Area End -->
+			<a href='grid__basic_initialization.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

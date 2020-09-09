@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Application Security  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class="toc-hidden current"><a href="desktop__app_security.html">Application Security</a></li><ul><li class="inner"><a href="desktop__app_security.html#xssattacks">XSS Attacks</a></li><li class="inner"><a href="desktop__app_security.html#sqlinjections">SQL Injections</a></li><li class="inner"><a href="desktop__app_security.html#csrfattacks">CSRF Attacks</a></li><li class="inner"><a href="desktop__app_security.html#contentsecuritypolicy">Content Security Policy</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__loading_storing_data.html">Loading and Storing Tasks</a><a class="n4" href="desktop__server_side.html">Server-Side Integration</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Application Security</h1>
+
+<p>Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the application. The backend must properly validate/escape/cleanse incoming data, user access rules, etc.</p>
+
+<p>Please note that the client-side validation can be easily compromised or bypassed completely, thus it can't be relied on as a security means. It is aimed to give a user an immediate feedback in case of an erroneous input, without having to wait a server response, while the final validation should be done on the server.</p>
+
+<p>Here we highlight the most common types of attack and show possible ways to avoid them. Usually, just implementing the backend CRUD according to the best practices of your platform will be good enough.</p>
+
+<a name='xssattacks'><h2>XSS Attacks</h2></a>
+
+<p>Possible vectors for XSS attacks are unsafe CRUD implementation on the backend, <a class="link-" href="api__refs__gantt_templates.html">Gantt template functions</a> and
+<a class="link-" href="desktop__default_edit_form.html">user input via UI</a>:</p>
+
+<ul>
+<li>the backend API that is used to save/load data into Gantt (which lies within the responsibility of the developer) is expected to escape the input/output and provide Gantt with safe data. If you use <a class="link-" href="desktop__howtostart_connector.html">dhtmlxConnector</a>, it will <a href="../connector__php__app_security.html#protectionfromcrosssitescriptingxss">escape and sanitize the client input automatically</a>. If you implement the backend on your own, you should consider escaping data you save to the database and load into Gantt by yourself.</li>
+</ul>
+
+<p>As for template functions and the lightbox listed below, they can only pose a threat, if you don't clean your data on the server. Note that securing the backend is usually enough to prevent possible XSS attacks, and vice versa, no client-side measures will be effective if the backend is not secure.</p>
+
+<ul>
+<li>a <a class="link-" href="api__refs__gantt_templates.html">template</a> output is injected into the inner HTML of Gantt as is, without any escaping or pre-processing. 
+Templates allow inserting a custom markup (formatted text, icons, buttons, etc.) into Gantt elements by design. However, it creates a possibility for injecting a remote code into the page. Any template can be redefined with the implementation you find suitable.</li>
+</ul>
+
+<p><a href='http://snippet.dhtmlx.com/01da6922e' target='blank'><span class='sample'>Related sample: </span>&nbsp;Template XSS</a></p>
+
+<ul>
+<li>the lightbox doesn't have any default validation of a client input, which, if not handled, also creates a gateway for XSS attacks. Please <a class="link-" href="desktop__validation.html#clientsidevalidation">check the article on the client-side validation</a>.</li>
+</ul>
+
+<p><a href='http://snippet.dhtmlx.com/c20f8733f' target='blank'><span class='sample'>Related sample: </span>&nbsp;Lightbox XSS</a></p>
+
+<a name='sqlinjections'><h2>SQL Injections</h2></a>
+
+<p>dhtmlxGantt is a 100% client-side component, thus SQL injections have to be prevented on the backend by the developer.</p>
+
+<p>There are two points to consider:</p>
+
+<ul>
+<li>The lightbox doesn't have any default validation, which, if not handled, allows the user to enter any values into editable inputs.</li>
+<li>your backend API can be called by a PUT/POST request containing dangerous values manually, bypassing the client-side UI.</li>
+</ul>
+
+<p>Thus you'll need to have some kind of SQL injections escaping on your backend. If you use <a class="link-" href="desktop__howtostart_connector.html">dhtmlxConnector</a> and specify a table configuration as shown in the related <a href="../connector__php__basis.html#loadingfromdatabase">documentation</a>, all values will be escaped automatically. Otherwise, you'll have to use a safe CRUD implementation, according to the good practices of the platform you use. Implementations shown in the <a class="link-" href="desktop__howtostart_guides.html">how to start guides</a> should be safe in terms of SQL injections.</p>
+
+<a name='csrfattacks'><h2>CSRF Attacks</h2></a>
+
+<p>If you use <a class="link-" href="desktop__howtostart_connector.html">dhtmlxConnector</a> on the backend, CSRF security can be enabled in the connector configuration. See the details
+<a href="../connector__php__app_security.html#preventingcsrfandxsrfattacks">in the related article</a>.</p>
+
+<p>Otherwise, you'll have to handle it manually. Please check <a class="link-" href="desktop__server_side.html#customrequestheadersandparameters">this article</a> for adding custom tokens of headers to a request sent by Gantt to the backend.</p>
+
+<a name='contentsecuritypolicy'><h2>Content Security Policy</h2></a>
+
+<p>The library provides a special config that allows you to adjust the code of your application created with dhtmlxGantt to comply with the CSP (Content Security Policy) standard. 
+It helps preventing various code injection attacks and improve the safety of application.</p>
+
+<p><a class="link-" href="api__gantt_csp_config.html">Read more about applying the CSP standard to a dhtmlxGantt application</a>.</p>
+
+<!-- Content Area End -->
+			<a href='desktop__app_security.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

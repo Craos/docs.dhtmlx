@@ -1,0 +1,278 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Migration from 3.6 to 4.0  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxlayout.html">dhtmlXLayout API</a></li><li class=""><a href="api__refs__dhtmlxlayoutcell.html">dhtmlXLayoutCell API</a></li><li class=""><a href="layout__init.html">Initializing Layout on a Page</a></li><li class=""><a href="layout__skins.html">Layout Skins</a></li><li class=""><a href="layout__patterns.html">Layout Patterns</a></li><li class=""><a href="layout__offsets.html">Layout Offsets</a></li><li class=""><a href="layout__header.html">Cell Header</a></li><li class=""><a href="layout__sizing.html">Sizing Cells</a></li><li class=""><a href="layout__docking.html">Docking/Undocking Cells</a></li><li class=""><a href="layout__expanding.html">Expanding/Collapsing Cells</a></li><li class=""><a href="layout__iterator.html">Iterator</a></li><li class=""><a href="layout__dhxwins.html">Using Windows from Layout</a></li><li class=""><a href="layout__attach_components.html">Attaching Components</a></li><li class=""><a href="layout__attach_mtb.html">Attaching Menu/Status Bar</a></li><li class=""><a href="layout__attach_html.html">Attaching HTML</a></li><li class=""><a href="layout__attach_urls.html">Attaching URL</a></li><li class=""><a href="layout__attach_google_map.html">Attaching Google Maps</a></li><li class=""><a href="layout__progress.html">Progress Bar</a></li><li class=""><a href="layout__views.html">Different Content in the Same Cell</a></li><li class=""><a href="layout__coloring_text_selection.html">Coloring Text Selection</a></li><li class=" current"><a href="layout__migration.html">Migration from 3.6 to 4.0</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="layout__index.html">Layout</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Migration from 3.6 to 4.0</h1>
+
+<p>1) In the new version of DHTMLX Library the names of some methods were changed.  We've made these changes as the previous
+names of the methods under question didn't reflect their functionality precisely, which could cause ambiguity
+or misunderstanding.</p>
+
+<p><br></p>
+
+<p>2) Since the release of the latest version of DHTMLX library some functionality has been removed. It was made as this functionality is 
+no longer needed and therefore isn't supported.</p>
+
+<p><br></p>
+
+<p>3) Functionality moved from object to object</p>
+
+<p>There were changes in the methods of layout components (Layout, Windows, Accordion, Tabbar). It concerns the methods that don't operate
+on the components in whole, but affect their cells (windows, tabs) directly.</p>
+
+<p>Such methods have earlier been called through myLayout object and now they are called through myLayout.cells() object. Be careful, as the names of these methods are
+also changed to more logical ones.</p>
+
+<p><br></p>
+
+<p>4) Access to cells by index removed</p>
+
+<p>Layout has a possibility to access cells by id - myLayout.cells(id) or by index - myLayout.items&#91;&#93;. Until 3.6 both methods had used to get cell object,
+since version 4.0 we've kept only accessing cells by id. The access to cells by index still works if the file "dhtmlxlayout_deprecated.js" is included on the page.</p>
+
+<p><br><br></p>
+
+<p><style>
+    table.my_table {
+        width: 100%;
+    }
+    table.my_table td {
+        text-align: left;
+        vertical-align: middle;
+        width: 50%;
+    }
+    table.my_table td.type_info {
+        text-align: center;
+        background-color: #E3F6FF;
+    }
+    table.my_table td.version_info {
+        text-align: center;
+        background-color: #FFDAFF;
+    }
+</style></p>
+
+<table class="my_table">
+
+<tr><td class="version_info">Up to version 3.6</td><td class="version_info">From version 4.0</td></tr>
+
+<tr><td colspan="2" class="type_info">Functions' names changed</td></tr>
+
+<tr><td>myLayout.listViews()</td><td>myLayout.listPatterns()</td></tr>
+
+<tr><td colspan="2" class="type_info">Functionality was removed</td></tr>
+
+<tr><td>myLayout.setEffect()</td><td rowspan="2">Since 4.0 effects are enabled for modern browsers by default</td></tr>
+<tr><td>myLayout.getEffect()</td></tr>
+<tr><td>myLayout.setImagePath()</td><td>Used for windows, since 4.0 windows don't use imagePath, icons can be set in css</td></tr>
+
+<tr><td colspan="2" class="type_info">Functionality moved from object to object</td></tr>
+
+<tr><td>myLayout.dockWindow(id)</td><td>myLayout.cells(id).dock()</td></tr>
+<tr><td>myLayout.unDockWindow(id)</td><td>myLayout.cells(id).undock()</td></tr>
+<tr><td>myLayout.setCollapsedText(id, text)</td><td>myLayout.cells(id).setCollapsedText(text)</td></tr>
+<tr><td>myLayout.showPanel(id)</td><td>myLayout.cells(id).showHeader()</td></tr>
+<tr><td>myLayout.hidePanel(id)</td><td>myLayout.cells(id).hideHeader()</td></tr>
+<tr><td>myLayout.isPanelVisible(id)</td><td>myLayout.cells(id).isHeaderVisible()</td></tr>
+
+<tr><td colspan="2" class="type_info">Access to cells by index</td></tr>
+
+<tr><td>myLayout.cells(id).getIndex()</td><td></td></tr>
+<tr><td>myLayout.getIdByIndex(index)</td><td></td></tr>
+<tr><td>myLayout.getIndexById(id)</td><td></td></tr>
+<tr><td>myLayout.items[] (array)</td><td></td></tr>
+
+</table>
+
+<p><br></p>
+
+<p>5) Offsets (margins)</p>
+
+<p>In all layout versions there is a possibility to set offsets (margins). They are mostly used in full-screen init type. We haven't removed this
+functionality but updated the used techniques.</p>
+
+<p><br></p>
+
+<p>Old techniques (all versions up to 3.6):</p>
+
+<pre><code><pre class="js"><span class="co1">// init</span>
+<span class="kw2">var</span> myLayout <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXLayoutObject<span class="br0">&#40;</span>document.<span class="me1">body</span><span class="sy0">,</span> <span class="st0">&quot;3L&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// modify some private properties</span>
+myLayout.<span class="me1">cont</span>.<span class="me1">obj</span>._offsetTop <span class="sy0">=</span> <span class="nu0">10</span><span class="sy0">;</span> <span class="co1">// top margin</span>
+myLayout.<span class="me1">cont</span>.<span class="me1">obj</span>._offsetLeft <span class="sy0">=</span> <span class="nu0">10</span><span class="sy0">;</span> <span class="co1">// left margin</span>
+myLayout.<span class="me1">cont</span>.<span class="me1">obj</span>._offsetHeight <span class="sy0">=</span> <span class="sy0">-</span><span class="nu0">20</span><span class="sy0">;</span> <span class="co1">// bottom margin</span>
+myLayout.<span class="me1">cont</span>.<span class="me1">obj</span>._offsetWidth <span class="sy0">=</span> <span class="sy0">-</span><span class="nu0">20</span><span class="sy0">;</span> <span class="co1">// right margin</span>
+&nbsp;
+<span class="co1">// adjust size</span>
+myLayout.<span class="me1">setSizes</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><br>
+New techniques (from version 4.0):</p>
+
+<pre><code><pre class="js"><span class="co1">// on init stage</span>
+<span class="kw2">var</span> myLayout <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXLayoutObject<span class="br0">&#40;</span><span class="br0">&#123;</span>
+    parent<span class="sy0">:</span> document.<span class="me1">body</span><span class="sy0">,</span>
+    pattern<span class="sy0">:</span> <span class="st0">&quot;3L&quot;</span><span class="sy0">,</span>
+    offsets<span class="sy0">:</span> <span class="br0">&#123;</span>
+        top<span class="sy0">:</span> <span class="nu0">10</span><span class="sy0">,</span>
+        right<span class="sy0">:</span> <span class="nu0">20</span><span class="sy0">,</span>
+        bottom<span class="sy0">:</span> <span class="nu0">30</span><span class="sy0">,</span>
+        left<span class="sy0">:</span> <span class="nu0">40</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// at any place in the code</span>
+myLayout.<span class="me1">setOffsets</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    top<span class="sy0">:</span> <span class="nu0">10</span><span class="sy0">,</span>
+    right<span class="sy0">:</span> <span class="nu0">20</span><span class="sy0">,</span>
+    bottom<span class="sy0">:</span> <span class="nu0">30</span><span class="sy0">,</span>
+    left<span class="sy0">:</span> <span class="nu0">40</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>6) Events</p>
+
+<p>Until the version 3.6 layout had the event onResize. If layout was attached to a window, this event was called after the window was resized. 
+Starting from the version 4.0 the event onResizeFinish should be used instead.</p>
+
+<pre><code><pre class="js">myLayout.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onResizeFinish&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="co1">// your code here</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxLayout/samples/06_events/03_onresizefinish.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;onResizeFinish event</a></p>
+
+<!-- Content Area End -->
+			<a href='layout__migration.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

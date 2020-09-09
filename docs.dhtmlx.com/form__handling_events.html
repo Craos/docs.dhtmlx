@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Handling Events  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="api__refs__dhtmlxform.html">dhtmlXForm API</a></li><li class=""><a href="form__how_to_start.html">How to Start with dhtmlxForm</a></li><li class=""><a href="form__constructor_of_dhtmlx_form.html">Object Constructor</a></li><li class=""><a href="form__controls_list.html">List of Controls</a></li><li class=""><a href="form__xml_structure.html">XML Format</a></li><li class=""><a href="form__json_structure.html">JSON Format</a></li><li class=""><a href="form__html_structure.html">HTML Format</a></li><li class=""><a href="form__working_with_userdata.html">Working with Userdata</a></li><li class=""><a href="form__other_configuration.html">Config and Operations</a></li><li class=""><a href="form__positioning.html">Positioning Controls</a></li><li class=""><a href="form__validation.html">Validation</a></li><li class=""><a href="form__custom_item.html">Creating a Custom Control</a></li><li class=""><a href="form__server_side.html">Server-side Integration</a></li><li class=""><a href="form__dhtmlx_components.html">Integration with DHTMLX</a></li><li class=""><a href="form__data_binding.html">Binding Data</a></li><li class=" current"><a href="form__handling_events.html">Handling Events</a></li><ul><li class="inner"><a href="form__handling_events.html#attachingeventhandler">Attaching event handler</a></li><li class="inner"><a href="form__handling_events.html#detachingeventhandler">Detaching event handler</a></li><li class="inner"><a href="form__handling_events.html#triggeringhtmlevents">Triggering HTML Events</a></li><li class="inner"><a href="form__handling_events.html#usingtheintegrateddhtmlxcomponentsevents">Using the integrated DHTMLX components' events</a></li><li class="inner"><a href="form__handling_events.html#thefulllistofevents">The full list of events</a></li></ul></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="form__index.html">Form</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Handling Events</h1>
+
+<p>dhtmlxForm allows to handle different events using its events handling system. In general it is similar to what is used in other DHTMLX components.
+You can attach several handlers to the same event and detach them using two respective methods: <strong>attachEvent(...)</strong> and <strong>detachEvent(...)</strong>.</p>
+
+<p>Though event handler is attached to the form, it's attached to each control inside of it. You can determine what is the target control for event by the ID passed to the event handler.</p>
+
+<pre><code><pre class="js">myForm.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onButtonClick&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw3">alert</span><span class="br0">&#40;</span><span class="st0">&quot;Button with name &quot;</span><span class="sy0">+</span>id<span class="sy0">+</span><span class="st0">&quot; was clicked&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>Event names are case-insensitive.</p>
+</p></div>
+
+<a name='attachingeventhandler'><h2>Attaching event handler</h2></a>
+
+<p>If you need to attach event, use the <a class="link-" href="api__link__dhtmlxform_attachevent.html">attachEvent()</a> method.</p>
+
+<pre><code><pre class="js">myForm.<span class="me1">attachEvent</span><span class="br0">&#40;</span>evName<span class="sy0">,</span> evHandler<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>evName - the name of an event;</li>
+<li>evHandler - the user-defined event handler.</li>
+</ul>
+
+<a name='detachingeventhandler'><h2>Detaching event handler</h2></a>
+
+<p>You can also delete event if you have such necessity. The <a class="link-" href="api__link__dhtmlxform_detachevent.html">detachEvent()</a> method helps you here.</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> id <span class="sy0">=</span> myform.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onButtonClick&quot;</span><span class="sy0">,</span>some_code<span class="br0">&#41;</span><span class="sy0">;</span>
+   ...
+<span class="me1">myform</span>.<span class="me1">detachEvent</span><span class="br0">&#40;</span>id<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='triggeringhtmlevents'><h2>Triggering HTML Events</h2></a>
+
+<p>You have the possibility to handle HTML input-related events for a number of dhtmlxForm inputs: 
+<a class="link-" href="form__controls_list.html#inputtextarea">input and textarea</a>, <a class="link-" href="form__controls_list.html#password">password</a>, <a class="link-" href="form__controls_list.html#calendar">calendar</a> and <a class="link-" href="form__controls_list.html#colorpicker">colorpicker</a>.</p>
+
+<p>All you have to do is to get an input instance through the <a class="link-" href="api__dhtmlxform_getinput.html">getInput()</a> method. Then you can work with the received instance the same as with any ordinary HTML object.</p>
+
+<p>There are 2 possible scenarios:</p>
+
+<ol>
+    <li> You want to handle some HTML event and keep dhtmlxForm events you have attached before.
+
+
+<pre><code><pre class="js"><span class="kw2">var</span> inpLogin <span class="sy0">=</span> myForm.<span class="me1">getInput</span><span class="br0">&#40;</span><span class="st0">&quot;login&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">if</span> <span class="br0">&#40;</span>window.<span class="me1">addEventListener</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    inpLogin.<span class="me1">addEventListener</span><span class="br0">&#40;</span><span class="st0">&quot;blur&quot;</span><span class="sy0">,</span>doOnBlur<span class="sy0">,</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span> <span class="kw1">else</span> <span class="br0">&#123;</span>
+    inpLogin.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onblur&quot;</span><span class="sy0">,</span>doOnBlur<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+    </li>
+    
+    <li> You want to handle some HTML event and overwrite (detach) the already attached dhtmlxForm events.
+
+
+<pre><code><pre class="js"><span class="kw2">var</span> inpEmail <span class="sy0">=</span> myForm.<span class="me1">getInput</span><span class="br0">&#40;</span><span class="st0">&quot;email&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+inpEmail.<span class="kw3">onblur</span> <span class="sy0">=</span> doOnBlur<span class="sy0">;</span></pre></code></pre>
+
+    </li>
+</ol>
+
+<a name='usingtheintegrateddhtmlxcomponentsevents'><h2>Using the integrated DHTMLX components' events</h2></a>
+
+<p>To use events of the dhtmlx components you've integrated into form (<a class="link-" href="form__dhtmlx_components.html#componentswhichyoucanputintoform">a list of components you can put into form</a>), you should:</p>
+
+<p><strong>get component instance through one of the following methods</strong>:</p>
+
+<ul>
+<li><a class="link-" href="api__dhtmlxform_getcalendar.html">getCalendar()</a></li>
+<li><a class="link-" href="api__dhtmlxform_getcolorpicker.html">getColorPicker()</a></li>
+<li><a class="link-" href="api__dhtmlxform_getcombo.html">getCombo()</a></li>
+<li><a class="link-" href="api__dhtmlxform_geteditor.html">getEditor()</a></li>
+</ul>
+
+<p><strong>and attach the appropriate event.</strong></p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> formData <span class="sy0">=</span> <span class="br0">&#91;</span>
+    ...
+    <span class="br0">&#123;</span>type<span class="sy0">:</span> <span class="st0">&quot;combo&quot;</span><span class="sy0">,</span> <span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;myCombo&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Select Band&quot;</span><span class="sy0">,</span> options<span class="sy0">:</span><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>value<span class="sy0">:</span> <span class="st0">&quot;opt_a&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Cradle Of Filth&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>value<span class="sy0">:</span> <span class="st0">&quot;opt_b&quot;</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Children Of Bodom&quot;</span><span class="sy0">,</span> selected<span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw2">var</span> myForm <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXForm<span class="br0">&#40;</span><span class="st0">&quot;form_container&quot;</span><span class="sy0">,</span>formData<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> combo <span class="sy0">=</span> dhxForm.<span class="me1">getCombo</span><span class="br0">&#40;</span><span class="st0">&quot;myCombo&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+combo.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onCheck&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>value<span class="sy0">,</span>state<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>value<span class="sy0">==</span><span class="nu0">2</span><span class="br0">&#41;</span> <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>        
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>                                                           
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='thefulllistofevents'><h2>The full list of events</h2></a>
+
+<p>You can find the list of all available events in the <a class="link-" href="api__refs__dhtmlxform.html#events">dhtmlXForm API</a>.</p>
+
+<!-- Content Area End -->
+			<a href='form__handling_events.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

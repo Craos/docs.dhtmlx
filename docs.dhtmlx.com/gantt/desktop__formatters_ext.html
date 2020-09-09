@@ -1,0 +1,411 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Formatters Extension  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__click_drag_ext.html">clickDrag Extension</a></li><li class="toc-pro current"><a href="desktop__formatters_ext.html">Formatters Extension</a></li><ul><li class="inner"><a href="desktop__formatters_ext.html#durationformatter">Duration Formatter</a></li><li class="inner"><a href="desktop__formatters_ext.html#linkformatter">Link Formatter</a></li></ul><li class=""><a href="desktop__fullscreen_ext.html">Fullscreen Extension</a></li><li class=""><a href="desktop__inline_editors_ext.html">Inline Editors Extension</a></li><li class=""><a href="desktop__keynav_ext.html">Keyboard Navigation Extension</a></li><li class=""><a href="desktop__overlay_ext.html">Overlay Extension</a></li><li class=""><a href="desktop__quickinfo_ext.html">quickInfo Extension</a></li><li class=""><a href="desktop__tooltips_ext.html">Tooltips Extension</a></li><li class=""><a href="desktop__undo_ext.html">Undo Extension</a></li><li class=""><a href="desktop__zoom.html">Zoom Extension</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="api__refs__gantt.html">Gantt API</a><a class="n3" href="api__refs__gantt_others.html">Others</a><a class="n4" href="api__gantt_ext_other.html">ext</a></div>
+<!-- Content Area -->
+
+
+<p class='promarker'>Available only in <b>PRO Edition</b></p>
+<h1>Formatters Extension</h1>
+
+<div class='pronote'><p><p>This functionality is available in the PRO edition only.</p>
+</p></div>
+
+<p>The <strong>gantt.ext.formatters</strong> extension provides two formatting methods:</p>
+
+<ul>
+<li><a class="link-pro" href="desktop__formatters_ext.html#durationformatter">durationFormatter()</a></li>
+<li><a class="link-pro" href="desktop__formatters_ext.html#linkformatter">linkFormatter()</a></li>
+</ul>
+
+<a name='durationformatter'><h2>Duration Formatter</h2></a>
+
+<p>The <strong>gantt.ext.formatters.durationFormatter(config)</strong> method returns a new instance of the <em>DurationFormatter</em>.</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>config</strong> - (<em>object</em>) optional, a configuration object</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">const</span> formatter <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">formatters</span>.<span class="me1">durationFormatter</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// an instance of the formatter object is created using the factory method</span></pre></code></pre>
+
+<h3><strong>API</strong></h3>
+
+<p>The created instance of the <em>DurationFormatter</em> provides following methods:</p>
+
+<ul>
+<li><strong>canParse(value: string)</strong> - returns <em>true</em> if the provided string can be parsed into the duration value, otherwise - returns <em>false</em></li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">const</span> formatter <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">formatters</span>.<span class="me1">durationFormatter</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+console.<span class="me1">log</span><span class="br0">&#40;</span>formatter.<span class="me1">canParse</span><span class="br0">&#40;</span><span class="st0">&quot;1 day&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// true</span>
+&nbsp;
+console.<span class="me1">log</span><span class="br0">&#40;</span>formatter.<span class="me1">canParse</span><span class="br0">&#40;</span><span class="st0">&quot;abc&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// false</span></pre></code></pre>
+
+<ul>
+<li><strong>format(value: number) : string</strong>- converts the provided duration value into the duration string</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">const</span> formatter <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">formatters</span>.<span class="me1">durationFormatter</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+console.<span class="me1">log</span><span class="br0">&#40;</span>formatter.<span class="me1">format</span><span class="br0">&#40;</span><span class="nu0">24</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// 3 days</span></pre></code></pre>
+
+<ul>
+<li><strong>parse(value: string) : number</strong> - parses the provided string into the duration value. If the value can’t be parsed, ‘null’ will be returned</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">const</span> formatter <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">formatters</span>.<span class="me1">durationFormatter</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+console.<span class="me1">log</span><span class="br0">&#40;</span>formatter.<span class="me1">parse</span><span class="br0">&#40;</span><span class="st0">&quot;1 day&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// 8</span></pre></code></pre>
+
+<h3><strong>Configuration</strong></h3>
+
+<p>The <strong>durationFormatter</strong> method takes a configuration object with optional properties of the <em>durationFormatter</em> as a parameter:</p>
+
+<pre><code><pre class="js"><span class="kw2">const</span> formatter <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">formatters</span>.<span class="me1">durationFormatter</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="co1">// default values</span>
+    enter<span class="sy0">:</span> <span class="st0">&quot;day&quot;</span><span class="sy0">,</span>
+    store<span class="sy0">:</span> <span class="st0">&quot;hour&quot;</span><span class="sy0">,</span>
+    format<span class="sy0">:</span> <span class="st0">&quot;auto&quot;</span><span class="sy0">,</span>
+    short<span class="sy0">:</span> <span class="kw2">false</span><span class="sy0">,</span>
+    minutesPerHour<span class="sy0">:</span> <span class="nu0">60</span><span class="sy0">,</span>
+    hoursPerDay<span class="sy0">:</span> <span class="nu0">8</span><span class="sy0">,</span>
+    hoursPerWeek<span class="sy0">:</span> <span class="nu0">40</span><span class="sy0">,</span>
+    daysPerMonth<span class="sy0">:</span> <span class="nu0">30</span><span class="sy0">,</span>
+    daysPerYear<span class="sy0">:</span> <span class="nu0">365</span><span class="sy0">,</span>
+    labels<span class="sy0">:</span> <span class="br0">&#123;</span>
+        minute<span class="sy0">:</span> <span class="br0">&#123;</span>
+            full<span class="sy0">:</span> <span class="st0">&quot;minute&quot;</span><span class="sy0">,</span>
+            plural<span class="sy0">:</span> <span class="st0">&quot;minutes&quot;</span><span class="sy0">,</span>
+            short<span class="sy0">:</span> <span class="st0">&quot;min&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        hour<span class="sy0">:</span> <span class="br0">&#123;</span>
+            full<span class="sy0">:</span> <span class="st0">&quot;hour&quot;</span><span class="sy0">,</span>
+            plural<span class="sy0">:</span> <span class="st0">&quot;hours&quot;</span><span class="sy0">,</span>
+            short<span class="sy0">:</span> <span class="st0">&quot;h&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        day<span class="sy0">:</span> <span class="br0">&#123;</span>
+            full<span class="sy0">:</span> <span class="st0">&quot;day&quot;</span><span class="sy0">,</span>
+            plural<span class="sy0">:</span> <span class="st0">&quot;days&quot;</span><span class="sy0">,</span>
+            short<span class="sy0">:</span> <span class="st0">&quot;d&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        week<span class="sy0">:</span> <span class="br0">&#123;</span>
+            full<span class="sy0">:</span> <span class="st0">&quot;week&quot;</span><span class="sy0">,</span>
+            plural<span class="sy0">:</span> <span class="st0">&quot;weeks&quot;</span><span class="sy0">,</span>
+            short<span class="sy0">:</span> <span class="st0">&quot;wk&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        month<span class="sy0">:</span> <span class="br0">&#123;</span>
+            full<span class="sy0">:</span> <span class="st0">&quot;month&quot;</span><span class="sy0">,</span>
+            plural<span class="sy0">:</span> <span class="st0">&quot;months&quot;</span><span class="sy0">,</span>
+            short<span class="sy0">:</span> <span class="st0">&quot;mon&quot;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        year<span class="sy0">:</span> <span class="br0">&#123;</span>
+            full<span class="sy0">:</span> <span class="st0">&quot;year&quot;</span><span class="sy0">,</span>
+            plural<span class="sy0">:</span> <span class="st0">&quot;years&quot;</span><span class="sy0">,</span>
+            short<span class="sy0">:</span> <span class="st0">&quot;y&quot;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The <em>object</em> has the following properties:</p>
+
+<ul>
+<li><strong>enter</strong> - (<em>string</em>) specifies the default format for the <strong>parse</strong> method, which is used when an input value is entering without units</li>
+</ul>
+
+<pre><code><pre class="js">formatter.<span class="me1">parse</span><span class="br0">&#40;</span><span class="st0">&quot;1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// is it 1 day or 1 hour?</span></pre></code></pre>
+
+<p>Default value: "day".</p>
+
+<ul>
+<li><strong>store</strong> - (<em>string</em>) specifies the format for the duration values storage in the gantt. This property affects the output value of the <strong>parse</strong> method:</li>
+</ul>
+
+<pre><code><pre class="js">formatter.<span class="me1">parse</span><span class="br0">&#40;</span><span class="st0">&quot;1 day&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// 8 - if store:&quot;hour&quot;</span>
+formatter.<span class="me1">parse</span><span class="br0">&#40;</span><span class="st0">&quot;1 day&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// 480 - store:&quot;minute&quot;</span></pre></code></pre>
+
+<p>Default value: "hour".</p>
+
+<ul>
+<li><strong>format</strong> - (<em>string|array</em>) specifies the format for the output value</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">ext</span>.<span class="me1">formatters</span>.<span class="me1">durationFormatter</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+<span class="xtra ln-xtra">    format<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;hour&quot;</span><span class="sy0">,</span> <span class="st0">&quot;minute&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span> </span>    store<span class="sy0">:</span><span class="st0">&quot;minute&quot;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span>.<span class="me1">format</span><span class="br0">&#40;</span><span class="nu0">260</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// 4 hours 20 minutes</span>
+&nbsp;
+gantt.<span class="me1">ext</span>.<span class="me1">formatters</span>.<span class="me1">durationFormatter</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+<span class="xtra ln-xtra">    format<span class="sy0">:</span> <span class="st0">&quot;hour&quot;</span><span class="sy0">,</span> </span>    store<span class="sy0">:</span><span class="st0">&quot;minute&quot;</span>  
+<span class="br0">&#125;</span><span class="br0">&#41;</span>.<span class="me1">format</span><span class="br0">&#40;</span><span class="nu0">260</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">// 4.33 hours</span></pre></code></pre>
+
+<p><strong>Supported values</strong>: "auto", "minute", "hour", "day", "week", "month", "year", "an array containing any of these values".</p>
+
+<p>The "auto" value  means the formatter will try to select an appropriate unit depending on provided value (i.e. larger values will be formatted as days/months/years, smaller values will be formatted as minutes/hours).</p>
+
+<ul>
+<li><strong>short</strong> - (<em>boolean</em>)  sets short labels (abbreviations) for time units</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">ext</span>.<span class="me1">formatters</span>.<span class="me1">durationFormatter</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    format<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;week&quot;</span><span class="sy0">,</span> <span class="st0">&quot;hour&quot;</span><span class="sy0">,</span> <span class="st0">&quot;minute&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    store<span class="sy0">:</span><span class="st0">&quot;minute&quot;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    short<span class="sy0">:</span> <span class="kw2">false</span>   </span><span class="br0">&#125;</span><span class="br0">&#41;</span>.<span class="me1">format</span><span class="br0">&#40;</span><span class="nu0">10021</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//&quot;4 weeks 7 hours 1 minute&quot;</span>
+&nbsp;
+gantt.<span class="me1">ext</span>.<span class="me1">formattersdurationFormatter</span>.<span class="me1">durationFormatter</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    format<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">&quot;week&quot;</span><span class="sy0">,</span> <span class="st0">&quot;hour&quot;</span><span class="sy0">,</span> <span class="st0">&quot;minute&quot;</span><span class="br0">&#93;</span><span class="sy0">,</span>
+    store<span class="sy0">:</span><span class="st0">&quot;minute&quot;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    short<span class="sy0">:</span> <span class="kw2">true</span>  </span><span class="br0">&#125;</span><span class="br0">&#41;</span>.<span class="me1">format</span><span class="br0">&#40;</span><span class="nu0">10021</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">//&quot;4wk 7h 1min&quot;</span></pre></code></pre>
+
+<p>Default value: <em>false</em></p>
+
+<ul>
+<li><p><strong>minutesPerHour</strong> - (<em>number</em>) - defines how duration values will be converted from minutes to hours and vice-versa. 
+<em>Default value: 60</em></p></li>
+<li><p><strong>hoursPerDay</strong> - (<em>number</em>) - defines how duration values will be converted from hours to days and vice-versa. 
+<em>Default value: 8</em></p></li>
+<li><p><strong>hoursPerWeek</strong> - (<em>number</em>) - defines how duration values will be converted from hours to weeks and vice-versa. 
+<em>Default value: 40</em></p></li>
+<li><p><strong>daysPerMonth</strong> - (<em>number</em>) - defines how duration values will be converted from days to months and vice-versa. 
+<em>Default value: 30</em></p></li>
+<li><p><strong>daysPerYear</strong> - (<em>number</em>) - defines how duration values will be converted from days to years and vice-versa. 
+<em>Default: 365</em></p></li>
+<li><p><strong>labels</strong> - (<em>object</em>) - defines text labels for different time units. These labels are used both for parsed and formatted values.</p></li>
+</ul>
+
+<p>Read details about the <strong>durationFormatter</strong> method in the <a class="link-" href="desktop__working_time.html#taskdurationindecimalformat">Work Time Calculation</a> article.</p>
+
+<a name='linkformatter'><h2>Link Formatter</h2></a>
+
+<p>The <strong>gantt.ext.formatters.linkFormatter(config)</strong> method returns a new instance of the <em>LinkFormatter</em>.</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>config</strong> - (<em>object</em>) optional, a configuration object</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">const</span> formatter <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">formatters</span>.<span class="me1">linkFormatter</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// an instance of the formatter object is created using the factory method</span></pre></code></pre>
+
+<h3><strong>API</strong></h3>
+
+<p>The created instance of the <em>LinkFormatter</em> provides following methods:</p>
+
+<ul>
+<li><strong>canParse(value: string)</strong> - returns <em>true</em> if the provided string can be parsed into the link object, otherwise - returns <em>false</em></li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">const</span> formatter <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">formatters</span>.<span class="me1">linkFormatter</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+console.<span class="me1">log</span><span class="br0">&#40;</span>formatter.<span class="me1">canParse</span><span class="br0">&#40;</span><span class="st0">&quot;1FS + 1 day&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// true</span>
+&nbsp;
+console.<span class="me1">log</span><span class="br0">&#40;</span>formatter.<span class="me1">canParse</span><span class="br0">&#40;</span><span class="st0">&quot;abc&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// false</span></pre></code></pre>
+
+<ul>
+<li><strong>format(object: link) : string</strong> - converts the provided link value into the string</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">const</span> formatter <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">formatters</span>.<span class="me1">linkFormatter</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+formatter.<span class="me1">format</span><span class="br0">&#40;</span><span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;1&quot;</span><span class="sy0">,</span> source<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> target<span class="sy0">:</span> <span class="nu0">2</span><span class="sy0">,</span> lag<span class="sy0">:</span> <span class="nu0">5</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//&quot;1SS+5 days&quot;</span></pre></code></pre>
+
+<ul>
+<li><strong>parse(value: string) : object</strong> - parses the provided string into the link object. If the value can’t be parsed, ‘null’ will be returned. <strong>Note</strong> that the <em>link.target</em> of the given link will have "null" value</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">const</span> formatter <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">formatters</span>.<span class="me1">linkFormatter</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+formatter.<span class="me1">format</span><span class="br0">&#40;</span><span class="st0">&quot;1SS+5 days&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// {id:1, type:&quot;1&quot;, source: 1, target: null, lag: 5}</span></pre></code></pre>
+
+<h3><strong>Format info</strong></h3>
+
+<p>The <em>LinkFormatter</em> supports two formats of links:</p>
+
+<ul>
+<li><strong>${WBS}</strong> - short format
+
+<ul>
+<li><strong>${WBS}</strong> - <a class="link-" href="api__gantt_getwbscode.html">task WBS code</a></li>
+</ul></li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">const</span> formatter <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">formatters</span>.<span class="me1">linkFormatter</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+console.<span class="me1">log</span><span class="br0">&#40;</span>formatter.<span class="me1">parse</span><span class="br0">&#40;</span><span class="st0">&quot;1.1&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// {id:1, type:&quot;0&quot;, source: 2, target: 3, lag: 0}</span>
+&nbsp;
+console.<span class="me1">log</span><span class="br0">&#40;</span>formatter.<span class="me1">format</span><span class="br0">&#40;</span><span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;0&quot;</span><span class="sy0">,</span> source<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> target<span class="sy0">:</span> <span class="nu0">3</span><span class="sy0">,</span> lag<span class="sy0">:</span> <span class="nu0">0</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// 1.1</span></pre></code></pre>
+
+<ul>
+<li><strong>${WBS}${TYPE}${LAG}</strong> - complete format
+
+<ul>
+<li><strong>${WBS}</strong> - <a class="link-" href="api__gantt_getwbscode.html">task WBS code</a></li>
+<li><strong>${TYPE}</strong> - <a class="link-" href="api__gantt_links_config.html">link type</a>. <strong>Supported values:</strong> 'FF', 'FS', 'SS', 'SF', or as defined by the <strong>labels</strong> config of the <em>LinkFormatter</em>.</li>
+<li><strong>${LAG}</strong> - <a class="link-pro" href="desktop__auto_scheduling.html#settinglagandleadtimesbetweentasks">link lag</a>. It's value can be either positive or negative - <strong>+1 day</strong>, <strong>-1 day</strong>. Supported format is defined by the <strong>durationFormatter</strong> parameter provided into the constructor method of the <em>LinkFormatter</em>.</li>
+</ul></li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">const</span> formatter <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">formatters</span>.<span class="me1">linkFormatter</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+console.<span class="me1">log</span><span class="br0">&#40;</span>formatter.<span class="me1">parse</span><span class="br0">&#40;</span><span class="st0">&quot;1.1SS + 1 day&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// {id:1, type:&quot;1&quot;, source: 2, target: null, lag: 1}</span>
+&nbsp;
+console.<span class="me1">log</span><span class="br0">&#40;</span>formatter.<span class="me1">format</span><span class="br0">&#40;</span><span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;1&quot;</span><span class="sy0">,</span> source<span class="sy0">:</span> <span class="nu0">2</span><span class="sy0">,</span> target<span class="sy0">:</span> <span class="nu0">3</span><span class="sy0">,</span> lag<span class="sy0">:</span> <span class="nu0">1</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// 1.1SS + 1 day</span></pre></code></pre>
+
+<p>Finish-To-Start links with no lag/lead will be formatted using the short format, while the other links will be formatted using the complete format.
+Similarly, if only WBS code of a task is provided into the <strong>parse</strong> method, the formatter will assume Finish-to-Start type and zero lag time.</p>
+
+<h3><strong>Configuration</strong></h3>
+
+<p>The <strong>linkFormatter</strong> method takes a configuration object with optional properties of the <em>linkFormatter</em> as a parameter.</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+<span class="kw2">const</span> formatter <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">formatters</span>.<span class="me1">linkFormatter</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="co1">//default values</span>
+    durationFormatter<span class="sy0">:</span> gantt.<span class="me1">ext</span>.<span class="me1">formatters</span>.<span class="me1">durationFormatter</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span>
+    labels<span class="sy0">:</span> <span class="br0">&#123;</span>
+        finish_to_finish<span class="sy0">:</span> <span class="st0">&quot;FF&quot;</span><span class="sy0">,</span>
+        finish_to_start<span class="sy0">:</span> <span class="st0">&quot;FS&quot;</span><span class="sy0">,</span>
+        start_to_start<span class="sy0">:</span> <span class="st0">&quot;SS&quot;</span><span class="sy0">,</span>
+        start_to_finish<span class="sy0">:</span> <span class="st0">&quot;SF&quot;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The <em>object</em> has the following properties:</p>
+
+<ul>
+<li><strong>durationFormatter</strong> - (<em>object</em>) an instance of the <em>DurationFormatter</em> created by the <em>gantt.ext.formatters.durationFormatter()</em>. 
+It affects how lag/lead values of links are parsed and formatted:</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">ext</span>.<span class="me1">formatters</span>.<span class="me1">linkFormatter</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+   .<span class="me1">format</span><span class="br0">&#40;</span><span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;1&quot;</span><span class="sy0">,</span> source<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> target<span class="sy0">:</span> <span class="nu0">2</span><span class="sy0">,</span> lag<span class="sy0">:</span> <span class="nu0">5</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//&quot;1SS+5 days&quot;</span>
+&nbsp;
+<span class="kw2">var</span> durationFormatter <span class="sy0">=</span> gantt.<span class="me1">ext</span>.<span class="me1">formatters</span>.<span class="me1">durationFormatter</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    short<span class="sy0">:</span> <span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+gantt.<span class="me1">ext</span>.<span class="me1">formatters</span>.<span class="me1">linkFormatter</span><span class="br0">&#40;</span><span class="br0">&#123;</span>durationFormatter<span class="sy0">:</span> durationFormatter<span class="br0">&#125;</span><span class="br0">&#41;</span>
+    .<span class="me1">format</span><span class="br0">&#40;</span><span class="br0">&#123;</span>id<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;2&quot;</span><span class="sy0">,</span> source<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> target<span class="sy0">:</span> <span class="nu0">2</span><span class="sy0">,</span> lag<span class="sy0">:</span> <span class="sy0">-</span><span class="nu0">1</span><span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//&quot;1FF-1d&quot;</span></pre></code></pre>
+
+<ul>
+<li><strong>labels</strong> - (<em>object</em>) locale labels for different types of links</li>
+</ul>
+
+<p>Read details about the linkFormatter method in the <a class="link-" href="desktop__inline_editing.html#linkformatter">Inline Editing in Grid</a> article.</p>
+
+<!-- Content Area End -->
+			<a href='desktop__formatters_ext.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1589882915.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1589882915.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Spreadsheet Docs" href="https://docs.dhtmlx.com/spreadsheet/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Localization  Spreadsheet Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/c/widgets/dhtmlxspreadsheet-jsmessage">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="initialization.html">Initialization</a></li><li class=""><a href="configuration.html">Configuration</a></li><li class=" current"><a href="localization.html">Localization</a></li><ul><li class="inner"><a href="localization.html#defaultlocale">Default locale</a></li><li class="inner"><a href="localization.html#customlocale">Custom locale</a></li></ul><li class=""><a href="loading_data.html">Data Loading and Export</a></li><li class=""><a href="working_with_ssheet.html">Work with SpreadSheet</a></li><li class=""><a href="number_formatting.html">Number Formatting</a></li><li class=""><a href="handling_events.html">Event Handling</a></li><li class=""><a href="customization.html">Customization</a></li><li class=""><a href="angular_integration.html">Integration with Angular</a></li><li class=""><a href="react_integration.html">Integration with React</a></li><li class=""><a href="vuejs_integration.html">Integration with Vue.js</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="guides.html">Guides</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Localization</h1>
+
+<p>You can localize labels in the interface of dhtmlxSpreadSheet and present it in any necessary language. You just need to provide localized strings for labels and apply your locale to the component.</p>
+
+<p><img style="margin: 20px auto 20px auto; display: block;" src="media/ssheet_locale.png"></p>
+
+<a name='defaultlocale'><h2>Default locale</h2></a>
+
+<p>The English locale is used by default:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> en <span class="sy0">=</span> <span class="br0">&#123;</span>
+    undo<span class="sy0">:</span> <span class="st0">&quot;Undo&quot;</span><span class="sy0">,</span>
+    redo<span class="sy0">:</span> <span class="st0">&quot;Redo&quot;</span><span class="sy0">,</span>
+    textColor<span class="sy0">:</span> <span class="st0">&quot;Text color&quot;</span><span class="sy0">,</span>
+    backgroundColor<span class="sy0">:</span> <span class="st0">&quot;Background color&quot;</span><span class="sy0">,</span>
+    bold<span class="sy0">:</span> <span class="st0">&quot;Bold&quot;</span><span class="sy0">,</span>
+    italic<span class="sy0">:</span> <span class="st0">&quot;Italic&quot;</span><span class="sy0">,</span>
+&nbsp;
+    lockCell<span class="sy0">:</span> <span class="st0">&quot;Lock cell&quot;</span><span class="sy0">,</span>
+    unlockCell<span class="sy0">:</span> <span class="st0">&quot;Unlock cell&quot;</span><span class="sy0">,</span>
+&nbsp;
+    format<span class="sy0">:</span> <span class="st0">&quot;Format&quot;</span><span class="sy0">,</span>
+    edit<span class="sy0">:</span> <span class="st0">&quot;Edit&quot;</span><span class="sy0">,</span>
+    clear<span class="sy0">:</span> <span class="st0">&quot;Clear&quot;</span><span class="sy0">,</span>
+    clearValue<span class="sy0">:</span> <span class="st0">&quot;Clear value&quot;</span><span class="sy0">,</span>
+    clearStyles<span class="sy0">:</span> <span class="st0">&quot;Clear styles&quot;</span><span class="sy0">,</span>
+    clearAll<span class="sy0">:</span> <span class="st0">&quot;Clear all&quot;</span><span class="sy0">,</span>
+&nbsp;
+    insert<span class="sy0">:</span> <span class="st0">&quot;Insert&quot;</span><span class="sy0">,</span>
+    columns<span class="sy0">:</span> <span class="st0">&quot;Columns&quot;</span><span class="sy0">,</span>
+    rows<span class="sy0">:</span> <span class="st0">&quot;Rows&quot;</span><span class="sy0">,</span>
+    addColumn<span class="sy0">:</span> <span class="st0">&quot;Add column&quot;</span><span class="sy0">,</span>
+    removeColumn<span class="sy0">:</span> <span class="st0">&quot;Remove column&quot;</span><span class="sy0">,</span>
+    addRow<span class="sy0">:</span> <span class="st0">&quot;Add row&quot;</span><span class="sy0">,</span>
+    removeRow<span class="sy0">:</span> <span class="st0">&quot;Remove row&quot;</span><span class="sy0">,</span>
+&nbsp;
+    configuration<span class="sy0">:</span> <span class="st0">&quot;Configuration&quot;</span><span class="sy0">,</span>
+    underline<span class="sy0">:</span> <span class="st0">&quot;Underline&quot;</span><span class="sy0">,</span>
+    align<span class="sy0">:</span> <span class="st0">&quot;Align&quot;</span><span class="sy0">,</span>
+    left<span class="sy0">:</span> <span class="st0">&quot;Left&quot;</span><span class="sy0">,</span>
+    right<span class="sy0">:</span> <span class="st0">&quot;Right&quot;</span><span class="sy0">,</span>
+    center<span class="sy0">:</span> <span class="st0">&quot;Center&quot;</span><span class="sy0">,</span>
+&nbsp;
+    help<span class="sy0">:</span> <span class="st0">&quot;Help&quot;</span><span class="sy0">,</span>
+&nbsp;
+    common<span class="sy0">:</span> <span class="st0">&quot;common&quot;</span><span class="sy0">,</span>
+    number<span class="sy0">:</span> <span class="st0">&quot;number&quot;</span><span class="sy0">,</span>
+    currency<span class="sy0">:</span> <span class="st0">&quot;currency&quot;</span><span class="sy0">,</span>
+    percent<span class="sy0">:</span> <span class="st0">&quot;percent&quot;</span><span class="sy0">,</span>
+&nbsp;
+    downloadAs<span class="sy0">:</span> <span class="st0">&quot;Download as...&quot;</span><span class="sy0">,</span>
+    importAs<span class="sy0">:</span> <span class="st0">&quot;Import as...&quot;</span><span class="sy0">,</span>
+&nbsp;
+    <span class="kw2">import</span><span class="sy0">:</span> <span class="st0">&quot;Import&quot;</span><span class="sy0">,</span>
+    <span class="kw2">export</span><span class="sy0">:</span> <span class="st0">&quot;Export&quot;</span><span class="sy0">,</span>
+    file<span class="sy0">:</span> <span class="st0">&quot;File&quot;</span><span class="sy0">,</span>
+    numberFormat<span class="sy0">:</span> <span class="st0">&quot;Number format&quot;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='customlocale'><h2>Custom locale</h2></a>
+
+<p>To apply a different locale you need to:</p>
+
+<ul>
+<li>provide translation for all text labels in SpreadSheet, e.g. the Russian locale looks like this:</li>
+</ul>
+
+<pre><code><pre class="js"><span class="kw2">var</span> ru <span class="sy0">=</span> <span class="br0">&#123;</span>
+    undo<span class="sy0">:</span> <span class="st0">&quot;Отменить&quot;</span><span class="sy0">,</span>
+    redo<span class="sy0">:</span> <span class="st0">&quot;Применить&quot;</span><span class="sy0">,</span>
+    textColor<span class="sy0">:</span> <span class="st0">&quot;Цвет текста&quot;</span><span class="sy0">,</span>
+    backgroundColor<span class="sy0">:</span> <span class="st0">&quot;Цвет фона&quot;</span><span class="sy0">,</span>
+    bold<span class="sy0">:</span> <span class="st0">&quot;Жирный&quot;</span><span class="sy0">,</span>
+    italic<span class="sy0">:</span> <span class="st0">&quot;Курсив&quot;</span><span class="sy0">,</span>
+&nbsp;
+    lockCell<span class="sy0">:</span> <span class="st0">&quot;Блокировать ячейку&quot;</span><span class="sy0">,</span>
+    unlockCell<span class="sy0">:</span> <span class="st0">&quot;Разблокировать ячейку&quot;</span><span class="sy0">,</span>
+&nbsp;
+    format<span class="sy0">:</span> <span class="st0">&quot;Формат&quot;</span><span class="sy0">,</span>
+    edit<span class="sy0">:</span> <span class="st0">&quot;Редактировать&quot;</span><span class="sy0">,</span>
+    clear<span class="sy0">:</span> <span class="st0">&quot;Очистить&quot;</span><span class="sy0">,</span>
+    clearValue<span class="sy0">:</span> <span class="st0">&quot;Очистить значение&quot;</span><span class="sy0">,</span>
+    clearStyles<span class="sy0">:</span> <span class="st0">&quot;Очистить стили&quot;</span><span class="sy0">,</span>
+    clearAll<span class="sy0">:</span> <span class="st0">&quot;Очистить все&quot;</span><span class="sy0">,</span>
+&nbsp;
+    insert<span class="sy0">:</span> <span class="st0">&quot;Вставка&quot;</span><span class="sy0">,</span>
+    columns<span class="sy0">:</span> <span class="st0">&quot;Столбцы&quot;</span><span class="sy0">,</span>
+    rows<span class="sy0">:</span> <span class="st0">&quot;Строки&quot;</span><span class="sy0">,</span>
+    addColumn<span class="sy0">:</span> <span class="st0">&quot;Добавить столбец&quot;</span><span class="sy0">,</span>
+    removeColumn<span class="sy0">:</span> <span class="st0">&quot;Удалить столбец&quot;</span><span class="sy0">,</span>
+    addRow<span class="sy0">:</span> <span class="st0">&quot;Добавить строку&quot;</span><span class="sy0">,</span>
+    removeRow<span class="sy0">:</span> <span class="st0">&quot;Удалить строку&quot;</span><span class="sy0">,</span>
+&nbsp;
+    configuration<span class="sy0">:</span> <span class="st0">&quot;Конфигурация&quot;</span><span class="sy0">,</span>
+    underline<span class="sy0">:</span> <span class="st0">&quot;Подчеркнутый&quot;</span><span class="sy0">,</span>
+&nbsp;
+    align<span class="sy0">:</span> <span class="st0">&quot;Выровнять&quot;</span><span class="sy0">,</span>
+    left<span class="sy0">:</span> <span class="st0">&quot;по левому краю&quot;</span><span class="sy0">,</span>
+    right<span class="sy0">:</span> <span class="st0">&quot;по правому краю&quot;</span><span class="sy0">,</span>
+    center<span class="sy0">:</span> <span class="st0">&quot;по центру&quot;</span><span class="sy0">,</span>
+    help<span class="sy0">:</span> <span class="st0">&quot;Помощь&quot;</span><span class="sy0">,</span>
+&nbsp;
+    common<span class="sy0">:</span> <span class="st0">&quot;общий&quot;</span><span class="sy0">,</span>
+    number<span class="sy0">:</span> <span class="st0">&quot;числовой&quot;</span><span class="sy0">,</span>
+    currency<span class="sy0">:</span> <span class="st0">&quot;денежный&quot;</span><span class="sy0">,</span>
+    percent<span class="sy0">:</span> <span class="st0">&quot;процентный&quot;</span><span class="sy0">,</span>
+&nbsp;
+    downloadAs<span class="sy0">:</span> <span class="st0">&quot;Скачать как...&quot;</span><span class="sy0">,</span>
+    importAs<span class="sy0">:</span> <span class="st0">&quot;Импортировать как...&quot;</span><span class="sy0">,</span>
+&nbsp;
+    <span class="kw2">import</span><span class="sy0">:</span> <span class="st0">&quot;Импорт&quot;</span><span class="sy0">,</span>
+    <span class="kw2">export</span><span class="sy0">:</span> <span class="st0">&quot;Экспорт&quot;</span><span class="sy0">,</span>
+    file<span class="sy0">:</span> <span class="st0">&quot;Файл&quot;</span><span class="sy0">,</span>
+&nbsp;
+    numberFormat<span class="sy0">:</span> <span class="st0">&quot;Числовой формат&quot;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>apply the new locale by calling the <strong>dhx.i18n.setLocale()</strong> method before initializing SpreadSheet:</li>
+</ul>
+
+<pre><code><pre class="js">dhx.<span class="me1">i18n</span>.<span class="me1">setLocale</span><span class="br0">&#40;</span><span class="st0">&quot;spreadsheet&quot;</span><span class="sy0">,</span> ru<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">var</span> spreadsheet <span class="sy0">=</span> <span class="kw2">new</span> dhx.<span class="me1">Spreadsheet</span><span class="br0">&#40;</span><span class="st0">&quot;ssheet1&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/01_init/04_localization.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Localization</a></p>
+
+<!-- Content Area End -->
+			<a href='localization.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Basic Tasks</li>
+	<li><a href='loading_data.html'>Loading Data</a></li>	
+	<li><a href='working_with_ssheet.html'>Main Operations</a></li>
+	<li><a href='handling_events.html'>Handling Events</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Look and Feel</li>
+	<li><a href='configuration.html'>Configuration</a></li>
+	<li><a href='localization.html'>Localization</a></li>
+	<li><a href='customization.html'>Customization</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Integration</li>
+	<li><a href='angular_integration.html'>Angular</a></li>
+	<li><a href='react_integration.html'>React</a></li>
+	<li><a href='vuejs_integration.html'>Vue.js</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../vault/index.html'>Vault</a></li>
+	<li><a href='../diagram/index.html'>Diagram</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__spreadsheet.html#methods'>Methods</a></li>
+	<li><a href='api__refs__spreadsheet.html#config'>Properties</a></li>
+	<li><a href='api__refs__spreadsheet.html#events'>Events</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

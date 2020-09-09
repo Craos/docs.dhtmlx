@@ -1,0 +1,576 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599487766.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599487766.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="Gantt Docs" href="https://docs.dhtmlx.com/gantt/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		<!-- stub -->
+		<title>Resource Management  Gantt Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="samples/index.html">Samples</a>
+				<a href="https://forum.dhtmlx.com/viewforum.php?f=15">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="desktop__install_with_bower.html">How to Install dhtmlxGantt</a></li><li class=""><a href="desktop__initializing_gantt_chart.html">Initialization</a></li><li class=""><a href="desktop__common_configuration.html">Configuration</a></li><li class=""><a href="desktop__layout_config.html">Gantt Layout</a></li><li class="toc-pro current"><a href="desktop__resource_management.html">Resource Management</a></li><ul><li class="inner"><a href="desktop__resource_management.html#assigningresources">Assigning resources</a></li><li class="inner"><a href="desktop__resource_management.html#showingtaskresource">Showing task resource</a></li><li class="inner"><a href="desktop__resource_management.html#customstylingofresources">Custom styling of resources</a></li><li class="inner"><a href="desktop__resource_management.html#resourcecalendars">Resource calendars</a></li><li class="inner"><a href="desktop__resource_management.html#balancingresourceload">Balancing resource load</a></li><li class="inner"><a href="desktop__resource_management.html#resourceviewpanel">Resource view panel</a></li></ul><li class=""><a href="desktop__handling_events.html">Event Handling</a></li><li class="toc-pro"><a href="desktop__multiple_gantts.html">Multiple Charts on a Page</a></li><li class=""><a href="desktop__extensions_list.html">Full List of Extensions</a></li><li class=""><a href="desktop__using_gantt_on_server.html">Using Gantt on the server</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="index.html">Start</a><a class="n2" href="desktop__guides.html">Guides</a><a class="n3" href="desktop__general_gantt_chart.html">Creating Gantt Chart on the Page</a></div>
+<!-- Content Area -->
+
+
+<p class='promarker'>Available only in <b>PRO Edition</b></p>
+<h1>Resource Management</h1>
+
+<div class='pronote'><p><p>This functionality is available in the Gantt PRO edition only.</p>
+</p></div>
+
+<p>Gantt provides predefined resource views for highlighting resource load, methods for breaking project down by a resource for load balancing, 
+task and resource-specific work-time calendars.</p>
+
+<p><img src="media/desktop/resource_panel.png"></p>
+
+<div class='note'><p><p>Although Gantt itself does not calculate the resource load, and does not have any methods that can be used out of the box,  Gantt provides you with public API for implementing any custom behavior.</p>
+</p></div>
+
+<a name='assigningresources'><h2>Assigning resources</h2></a>
+
+<h3>Connecting resources to tasks</h3>
+
+<p>The resource relation is defined by the <a class="link-pro" href="api__gantt_resource_property_config.html">resource_property</a> configuration option:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">resource_property</span> <span class="sy0">=</span> <span class="st0">&quot;user_id&quot;</span><span class="sy0">;</span>
+<span class="co1">// task.user_id &lt;-&gt; resource.id</span></pre></code></pre>
+
+<p>Resources can be connected to tasks via the properties of the task object in one of the following ways:</p>
+
+<ul>
+<li>assigning one resource to one task</li>
+</ul>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    id<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span> <span class="st0">&quot;02-04-2018&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span> <span class="nu0">8</span><span class="sy0">,</span> progress<span class="sy0">:</span> <span class="nu0">0.6</span><span class="sy0">,</span> 
+    user_id<span class="sy0">:</span> <span class="nu0">5</span> <span class="co1">// 5 is the id of the resource </span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<ul>
+<li>assigning multiple resources to one task</li>
+</ul>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    id<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span> <span class="st0">&quot;02-04-2018&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span> <span class="nu0">8</span><span class="sy0">,</span> progress<span class="sy0">:</span> <span class="nu0">0.6</span><span class="sy0">,</span> 
+    users<span class="sy0">:</span> <span class="br0">&#91;</span><span class="nu0">2</span><span class="sy0">,</span> <span class="nu0">3</span><span class="br0">&#93;</span> <span class="co1">// 2 and 3 are the ids of resources</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>You can use this format with the <a class="link-" href="desktop__custom_editor.html#customthirdpartyeditor">custom multiselect control</a>.</p>
+
+<ul>
+<li>assigning multiple resources and specifiying their quantity</li>
+</ul>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span>
+    id<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Task #1&quot;</span><span class="sy0">,</span> start_date<span class="sy0">:</span> <span class="st0">&quot;02-04-2018&quot;</span><span class="sy0">,</span> duration<span class="sy0">:</span> <span class="nu0">8</span><span class="sy0">,</span> progress<span class="sy0">:</span> <span class="nu0">0.6</span><span class="sy0">,</span>
+    users<span class="sy0">:</span> <span class="br0">&#91;</span><span class="br0">&#123;</span>resource_id<span class="sy0">:</span><span class="nu0">2</span><span class="sy0">,</span> value<span class="sy0">:</span><span class="nu0">8</span><span class="br0">&#125;</span><span class="sy0">,</span> <span class="br0">&#123;</span>resource_id<span class="sy0">:</span><span class="nu0">3</span><span class="sy0">,</span> value<span class="sy0">:</span><span class="nu0">4</span><span class="br0">&#125;</span><span class="br0">&#93;</span>  
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>The resources are assigned to the Task1 as follows: the resource with id=2 - in the quantity of 8 units, while the resource with the id=3 - in the quantity of 4 units.
+This format is supported by the <a class="link-pro" href="desktop__resources.html">Resources Control</a> of the lightbox.</p>
+
+<p>When sending data to the server, DataProcessor serializes the values of the described properies into JSON. To process such records on the server with ease, make use of the <a class="link-" href="desktop__server_side.html#restjson">"REST_JSON"</a>
+dataprocessor mode.</p>
+
+<h3>Getting tasks a resource is assigned to</h3>
+
+<p>There is a shorthand for getting all tasks assigned to a resource - <a class="link-" href="api__gantt_getresourceassignments.html">getResourceAssignments</a>.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">getResourceAssignments</span><span class="br0">&#40;</span><span class="st0">&quot;6&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The method takes as a parameter the id of the resource and returns an array of objects with tasks assigned to the resource:</p>
+
+<pre><code><pre class="js"><span class="br0">&#91;</span> 
+    <span class="br0">&#123;</span>task_id<span class="sy0">:</span> <span class="nu0">5</span><span class="sy0">,</span> resource_id<span class="sy0">:</span> <span class="st0">&quot;6&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">5</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>task_id<span class="sy0">:</span> <span class="nu0">18</span><span class="sy0">,</span> resource_id<span class="sy0">:</span> <span class="st0">&quot;6&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">2</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>task_id<span class="sy0">:</span> <span class="nu0">19</span><span class="sy0">,</span> resource_id<span class="sy0">:</span> <span class="st0">&quot;6&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">3</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>task_id<span class="sy0">:</span> <span class="nu0">21</span><span class="sy0">,</span> resource_id<span class="sy0">:</span> <span class="st0">&quot;6&quot;</span><span class="sy0">,</span> value<span class="sy0">:</span> <span class="nu0">5</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span></pre></code></pre>
+
+<p>Each object contains the following properties:</p>
+
+<ul>
+<li><em>task_id</em> - the id of the task</li>
+<li><em>resource_id</em> - the id of the resource</li>
+<li><em>value</em> - the quantity of the resource assigned to a task</li>
+</ul>
+
+<h3>Setting connection via lightbox</h3>
+
+<p>Resources can be assigned to any property of the task object using the built-in lightbox.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">serverList</span><span class="br0">&#40;</span><span class="st0">&quot;people&quot;</span><span class="sy0">,</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>key<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;John&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>key<span class="sy0">:</span> <span class="nu0">2</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Mike&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>key<span class="sy0">:</span> <span class="nu0">3</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Anna&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>key<span class="sy0">:</span> <span class="nu0">4</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Bill&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>key<span class="sy0">:</span> <span class="nu0">7</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Floe&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">section_owner</span> <span class="sy0">=</span> <span class="st0">&quot;Owner&quot;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+  <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">38</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span> <span class="kw3">focus</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+  <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;owner&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;owner_id&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;select&quot;</span><span class="sy0">,</span> options<span class="sy0">:</span>gantt.<span class="me1">serverList</span><span class="br0">&#40;</span><span class="st0">&quot;people&quot;</span><span class="br0">&#41;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+  <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;auto&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Loading collections</h3>
+
+<p>Collections specified as server lists can be loaded and updated dynamically, after gantt is initialized:</p>
+
+<pre><code><pre class="js"><span class="co1">// init lightbox with an empty collection </span>
+gantt.<span class="me1">locale</span>.<span class="me1">labels</span>.<span class="me1">section_owner</span> <span class="sy0">=</span> <span class="st0">&quot;Owner&quot;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">config</span>.<span class="me1">lightbox</span>.<span class="me1">sections</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+  <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;description&quot;</span><span class="sy0">,</span> height<span class="sy0">:</span><span class="nu0">38</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;text&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;textarea&quot;</span><span class="sy0">,</span> <span class="kw3">focus</span><span class="sy0">:</span><span class="kw2">true</span><span class="br0">&#125;</span><span class="sy0">,</span>
+  <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;owner&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span><span class="st0">&quot;owner_id&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;select&quot;</span><span class="sy0">,</span> options<span class="sy0">:</span>gantt.<span class="me1">serverList</span><span class="br0">&#40;</span><span class="st0">&quot;people&quot;</span><span class="br0">&#41;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+  <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span><span class="st0">&quot;time&quot;</span><span class="sy0">,</span> type<span class="sy0">:</span><span class="st0">&quot;duration&quot;</span><span class="sy0">,</span> map_to<span class="sy0">:</span> <span class="st0">&quot;auto&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co1">// once options are loaded </span>
+gantt.<span class="me1">updateCollection</span><span class="br0">&#40;</span><span class="st0">&quot;people&quot;</span><span class="sy0">,</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>key<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;John&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>key<span class="sy0">:</span> <span class="nu0">2</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Mike&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>key<span class="sy0">:</span> <span class="nu0">3</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Anna&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>key<span class="sy0">:</span> <span class="nu0">4</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Bill&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>key<span class="sy0">:</span> <span class="nu0">7</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Floe&quot;</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/desktop/resource_management.png"></p>
+
+<p><a href='samples/11_resources/01_assigning_resources.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Assigning owners to tasks</a></p>
+
+<p>If you define resources via the <em>serverList</em> collection, they can be <a class="link-" href="desktop__supported_data_formats.html#jsonwithcollections">loaded together with the rest of the data</a>, otherwise you'll need to load them manually.</p>
+
+<a name='showingtaskresource'><h2>Showing task resource</h2></a>
+
+<p>The resource name can be displayed as a part of task description or a label of one of the grid cells.
+Gantt doesn't provide a ready method for getting an item specified in the server list by its id, so you'll need to implement a small helper for this:</p>
+
+<pre><code><pre class="js"><span class="kw2">function</span> byId<span class="br0">&#40;</span>list<span class="sy0">,</span> id<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw2">var</span> i <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span> i <span class="sy0">&lt;</span> list.<span class="me1">length</span><span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>list<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="me1">key</span> <span class="sy0">==</span> id<span class="br0">&#41;</span>
+            <span class="kw1">return</span> list<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="me1">label</span> <span class="sy0">||</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre></code></pre>
+
+<p>After that you can use the resource name in templates:</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">columns</span> <span class="sy0">=</span> <span class="br0">&#91;</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;owner&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">80</span><span class="sy0">,</span> align<span class="sy0">:</span> <span class="st0">&quot;center&quot;</span><span class="sy0">,</span> template<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span><span class="kw1">item</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">return</span> byId<span class="br0">&#40;</span>gantt.<span class="me1">serverList</span><span class="br0">&#40;</span><span class="st0">'people'</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="kw1">item</span>.<span class="me1">owner_id</span><span class="br0">&#41;</span><span class="br0">&#125;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;text&quot;</span><span class="sy0">,</span> label<span class="sy0">:</span> <span class="st0">&quot;Task name&quot;</span><span class="sy0">,</span> tree<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="st0">'*'</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span><span class="kw3">name</span><span class="sy0">:</span> <span class="st0">&quot;add&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">40</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">templates</span>.<span class="me1">rightside_text</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start<span class="sy0">,</span> end<span class="sy0">,</span> task<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> byId<span class="br0">&#40;</span>gantt.<span class="me1">serverList</span><span class="br0">&#40;</span><span class="st0">'people'</span><span class="br0">&#41;</span><span class="sy0">,</span> task.<span class="me1">owner_id</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/11_resources/01_assigning_resources.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Assigning owners to tasks</a></p>
+
+<a name='customstylingofresources'><h2>Custom styling of resources</h2></a>
+
+<p>For coloring you'll usually need the following templates:</p>
+
+<ul>
+<li><a class="link-" href="api__gantt_grid_row_class_template.html">gantt.templates.grid_row_class</a> - the CSS of a row in the left hand grid</li>
+<li><a class="link-" href="api__gantt_task_row_class_template.html">gantt.templates.task_row_class</a> - the background row in the timeline (won't be called if <a class="link-" href="api__gantt_smart_rendering_config.html">smart_rendering</a> is enabled)</li>
+<li><a class="link-" href="api__gantt_task_class_template.html">gantt.templates.task_class</a> - the CSS class of a task bar element</li>
+</ul>
+
+<p>Depending on your context, you can</p>
+
+<ul>
+<li>either have <a class="link-" href="desktop__colouring_tasks.html#redefiningthetaskstemplate">predefined classes for each resource</a></li>
+<li>or load styling, e.g. background and text color settings together with the resources. In that case you'll need to <a class="link-" href="desktop__colouring_tasks.html#loadingcolorswiththedata">generate a CSS dynamically on the page</a></li>
+</ul>
+
+<p><a href='samples/11_resources/01_assigning_resources.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Assigning owners to tasks</a></p>
+
+<a name='resourcecalendars'><h2>Resource calendars</h2></a>
+
+<p>Gantt supports the custom work-time calendars feature. Work-time calendars can be associated with specific resources.</p>
+
+<p><img src="media/desktop/resource_calendars.png"></p>
+
+<p>They are mapped to tasks via the property value in one-to-one relation:</p>
+
+<pre><code><pre class="js"><span class="co1">// a resource value will be taken from the `task.resource_id` property</span>
+gantt.<span class="me1">config</span>.<span class="me1">resource_property</span> <span class="sy0">=</span> <span class="st0">&quot;resource_id&quot;</span><span class="sy0">;</span>
+&nbsp;
+gantt.<span class="me1">config</span>.<span class="me1">resource_calendars</span> <span class="sy0">=</span> <span class="br0">&#123;</span>
+    <span class="st0">&quot;resource1&quot;</span> <span class="sy0">:</span> <span class="st0">&quot;calendarId1&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;resource2&quot;</span> <span class="sy0">:</span> <span class="st0">&quot;calendarId2&quot;</span><span class="sy0">,</span>
+    <span class="st0">&quot;resource3&quot;</span> <span class="sy0">:</span> <span class="st0">&quot;calendarId3&quot;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>You can use any property to assign calendars to resources. If the resource property is changed dynamically, the gantt will automatically recalculate time of tasks using a new calendar.</p>
+
+<p><a href='samples/11_resources/02_resource_calendars.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Resource calendars</a></p>
+
+<p>If multiple resources can be assigned to a single task, the gantt can <a class="link-pro" href="api__gantt_dynamic_resource_calendars_config.html">automatically generate a common calendar</a> for all assigned resources.</p>
+
+<p>You can <a class="link-" href="desktop__working_time.html#assigningcalendartoresource">get more information in the related article</a>.</p>
+
+<a name='balancingresourceload'><h2>Balancing resource load</h2></a>
+
+<p>You can use the <a class="link-" href="desktop__extensions_list.html#grouping">grouping extension</a> to break down the whole project by the <strong>resource</strong> property.</p>
+
+<p><img src="media/desktop/resource_break_down.png"></p>
+
+<p>This feature can be used for balancing resource load in the calendar.</p>
+
+<p><a href='samples/11_resources/03_break_down_by_resource.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Break down by resources</a></p>
+
+<p>Read more about task grouping in <a class="link-pro" href="desktop__grouping.html">the related article</a>.</p>
+
+<h3>Grouping tasks by multiple resources</h3>
+
+<p>In case you assign several resources to a task, tasks will be grouped by assigned resources. It means that a task assigned to two persons won't be duplicated for each of them. Instead it will be rendered once with 
+both persons assigned to it. Note that grouped tasks will be sorted by the start date.</p>
+
+<p><img src="media/desktop/grouping_resources.png" alt="Group resources" /></p>
+
+<p><a href='samples/11_resources/08_resource_usage_groups.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Group by multiple resources</a></p>
+
+<ul>
+<li>If tasks in the loaded data set have several resources assigned to them, Gantt will create groups for them automatically. </li>
+<li>For tasks without assigned resources Gantt will create the default group Not assigned. In case there is such a group in the data set that is passed into the <strong>groupBy()</strong> method, 
+it should have the <em>default:true</em> config specified to prevent automatic creation of a such a group.</li>
+</ul>
+
+<div class='note'><p><p>Please note that dragging of tasks grouped by multiple resources is impossible.</p>
+</p></div>
+
+<a name='resourceviewpanel'><h2>Resource view panel</h2></a>
+
+<p>dhtmlxGantt has two types of predefined layout view for displaying resource load of gantt: resource load diagram and resource histogram.</p>
+
+<h3>Resource load diagram</h3>
+
+<p>It includes corresponding views for the grid and timeline: "resourceGrid" and "resourceTimeline".</p>
+
+<p><img src="media/desktop/resource_panel.png"></p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">layout</span> <span class="sy0">=</span> <span class="br0">&#123;</span>
+    css<span class="sy0">:</span> <span class="st0">&quot;gantt_container&quot;</span><span class="sy0">,</span>
+    rows<span class="sy0">:</span> <span class="br0">&#91;</span>
+      <span class="br0">&#123;</span>
+        cols<span class="sy0">:</span> <span class="br0">&#91;</span>
+          <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;grid&quot;</span><span class="sy0">,</span> group<span class="sy0">:</span><span class="st0">&quot;grids&quot;</span><span class="sy0">,</span> scrollY<span class="sy0">:</span> <span class="st0">&quot;scrollVer&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+          <span class="br0">&#123;</span>resizer<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">1</span><span class="br0">&#125;</span><span class="sy0">,</span>
+          <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span> scrollX<span class="sy0">:</span> <span class="st0">&quot;scrollHor&quot;</span><span class="sy0">,</span> scrollY<span class="sy0">:</span> <span class="st0">&quot;scrollVer&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+          <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;scrollbar&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;scrollVer&quot;</span><span class="sy0">,</span> group<span class="sy0">:</span><span class="st0">&quot;vertical&quot;</span><span class="br0">&#125;</span>
+        <span class="br0">&#93;</span><span class="sy0">,</span>
+        gravity<span class="sy0">:</span><span class="nu0">2</span>
+      <span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="br0">&#123;</span> resizer<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">1</span><span class="br0">&#125;</span><span class="sy0">,</span>
+      <span class="br0">&#123;</span>
+        config<span class="sy0">:</span> resourceConfig<span class="sy0">,</span>
+        cols<span class="sy0">:</span> <span class="br0">&#91;</span>
+          <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;resourceGrid&quot;</span><span class="sy0">,</span> group<span class="sy0">:</span><span class="st0">&quot;grids&quot;</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">435</span><span class="sy0">,</span> scrollY<span class="sy0">:</span><span class="st0">&quot;resourceVScroll&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+          <span class="br0">&#123;</span>resizer<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">1</span><span class="br0">&#125;</span><span class="sy0">,</span>
+          <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;resourceTimeline&quot;</span><span class="sy0">,</span> scrollX<span class="sy0">:</span> <span class="st0">&quot;scrollHor&quot;</span><span class="sy0">,</span> scrollY<span class="sy0">:</span><span class="st0">&quot;resourceVScroll&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+          <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;scrollbar&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;resourceVScroll&quot;</span><span class="sy0">,</span> group<span class="sy0">:</span><span class="st0">&quot;vertical&quot;</span><span class="br0">&#125;</span>
+        <span class="br0">&#93;</span><span class="sy0">,</span>
+        gravity<span class="sy0">:</span><span class="nu0">1</span>
+       <span class="br0">&#125;</span><span class="sy0">,</span>
+       <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;scrollbar&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;scrollHor&quot;</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/11_resources/04_resource_usage_diagram.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Resource load diagram</a></p>
+
+<p>Once initialized, <em>resourceGrid</em> will work in the same way as the default grid view, but readonly. <em>resourceTimeline</em> will inherit the scale configuration from the default timeline and will have two layers:</p>
+
+<ul>
+<li>background rows, which inherit <a class="link-" href="api__gantt_task_row_class_template.html">task_row_class</a> and <a class="link-" href="api__gantt_timeline_cell_class_template.html">timeline_cell_class</a>. The templates of <em>resourceTimeline</em> can be redefined at the layout level.</li>
+<li>resource layer - a layer specific for <em>resourceTimeline</em>. It will display blocks in cells where the resource has tasks assigned. The block style and content can be templated with 
+the <a class="link-pro" href="api__gantt_resource_cell_class_template.html">resource_cell_class</a> and <a class="link-pro" href="api__gantt_resource_cell_value_template.html">resource_cell_value</a> templates:</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">resource_cell_value</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>start_date<span class="sy0">,</span> end_date<span class="sy0">,</span> resource<span class="sy0">,</span> tasks<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw2">var</span> html <span class="sy0">=</span> <span class="st0">&quot;&lt;div&gt;&quot;</span> <span class="sy0">+</span>  tasks.<span class="me1">length</span> <span class="sy0">*</span> <span class="nu0">8</span> <span class="sy0">+</span> <span class="st0">&quot;h&lt;/div&gt;&quot;</span><span class="sy0">;</span>
+        <span class="kw1">return</span> html<span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/11_resources/05_resource_usage_templates.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Templates of the Resource diagram</a></p>
+
+<h3>Resource histogram</h3>
+
+<p>This type of the layout view for displaying resource load of gantt includes the "resourceGrid" and "resourceHistogram" views for the grid and timeline correspondingly.</p>
+
+<p><img src="media/desktop/resource_histogram.png" alt="Resource histogram" /></p>
+
+<pre><code><pre class="js">gantt.<span class="me1">config</span>.<span class="me1">layout</span> <span class="sy0">=</span> <span class="br0">&#123;</span>
+    css<span class="sy0">:</span> <span class="st0">&quot;gantt_container&quot;</span><span class="sy0">,</span>
+    rows<span class="sy0">:</span> <span class="br0">&#91;</span>
+        <span class="br0">&#123;</span>
+            gravity<span class="sy0">:</span> <span class="nu0">2</span><span class="sy0">,</span>
+            cols<span class="sy0">:</span> <span class="br0">&#91;</span>
+                <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;grid&quot;</span><span class="sy0">,</span> group<span class="sy0">:</span><span class="st0">&quot;grids&quot;</span><span class="sy0">,</span> scrollY<span class="sy0">:</span> <span class="st0">&quot;scrollVer&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="br0">&#123;</span>resizer<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">1</span><span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;timeline&quot;</span><span class="sy0">,</span> scrollX<span class="sy0">:</span> <span class="st0">&quot;scrollHor&quot;</span><span class="sy0">,</span> scrollY<span class="sy0">:</span> <span class="st0">&quot;scrollVer&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;scrollbar&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;scrollVer&quot;</span><span class="sy0">,</span> group<span class="sy0">:</span><span class="st0">&quot;vertical&quot;</span><span class="br0">&#125;</span>
+            <span class="br0">&#93;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span> resizer<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> next<span class="sy0">:</span> <span class="st0">&quot;resources&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>
+            gravity<span class="sy0">:</span><span class="nu0">1</span><span class="sy0">,</span>
+            id<span class="sy0">:</span> <span class="st0">&quot;resources&quot;</span><span class="sy0">,</span>
+            config<span class="sy0">:</span> resourceConfig<span class="sy0">,</span>
+            templates<span class="sy0">:</span> resourceTemplates<span class="sy0">,</span>
+            cols<span class="sy0">:</span> <span class="br0">&#91;</span>
+                <span class="br0">&#123;</span> view<span class="sy0">:</span> <span class="st0">&quot;resourceGrid&quot;</span><span class="sy0">,</span> group<span class="sy0">:</span><span class="st0">&quot;grids&quot;</span><span class="sy0">,</span> scrollY<span class="sy0">:</span> <span class="st0">&quot;resourceVScroll&quot;</span> <span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="br0">&#123;</span> resizer<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> width<span class="sy0">:</span> <span class="nu0">1</span><span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="br0">&#123;</span> view<span class="sy0">:</span> <span class="st0">&quot;resourceHistogram&quot;</span><span class="sy0">,</span> capacity<span class="sy0">:</span><span class="nu0">24</span><span class="sy0">,</span> scrollX<span class="sy0">:</span> <span class="st0">&quot;scrollHor&quot;</span><span class="sy0">,</span> 
+                    scrollY<span class="sy0">:</span> <span class="st0">&quot;resourceVScroll&quot;</span><span class="br0">&#125;</span><span class="sy0">,</span>
+                <span class="br0">&#123;</span> view<span class="sy0">:</span> <span class="st0">&quot;scrollbar&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;resourceVScroll&quot;</span><span class="sy0">,</span> group<span class="sy0">:</span><span class="st0">&quot;vertical&quot;</span><span class="br0">&#125;</span>
+            <span class="br0">&#93;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        <span class="br0">&#123;</span>view<span class="sy0">:</span> <span class="st0">&quot;scrollbar&quot;</span><span class="sy0">,</span> id<span class="sy0">:</span> <span class="st0">&quot;scrollHor&quot;</span><span class="br0">&#125;</span>
+    <span class="br0">&#93;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/11_resources/09_resource_histogram.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Resource histogram</a></p>
+
+<p>The same as in the resource load diagram, <em>resourceGrid</em> will work in the same way as the default grid view, but readonly. <em>resourceHistogram</em> has the following additional templates:</p>
+
+<ul>
+<li><em>histogram_cell_class</em> - the CSS class which is applied to a cell of the resource panel</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">histogram_cell_class</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>start_date<span class="sy0">,</span>end_date<span class="sy0">,</span>resource<span class="sy0">,</span>tasks<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><em>histogram_cell_label</em> - the label inside a cell</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">histogram_cell_label</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>start_date<span class="sy0">,</span>end_date<span class="sy0">,</span>resource<span class="sy0">,</span>tasks<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> tasks.<span class="me1">length</span> <span class="sy0">*</span> <span class="nu0">8</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><em>histogram_cell_allocated</em> - the height of the filled area in the histogram. Its value can be set from 0 to <em>maxCapacity</em> *.</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">histogram_cell_allocated</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>start_date<span class="sy0">,</span>end_date<span class="sy0">,</span>resource<span class="sy0">,</span>tasks<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> tasks.<span class="me1">length</span> <span class="sy0">*</span> <span class="nu0">8</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li><em>histogram_cell_capacity</em> - the height of the line that defines the available capacity of the resource. Its value can be set from -1 to <em>maxCapacity</em> *. Values less than 0 won't render the line.</li>
+</ul>
+
+<pre><code><pre class="js">gantt.<span class="me1">templates</span>.<span class="me1">histogram_cell_capacity</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>start_date<span class="sy0">,</span>end_date<span class="sy0">,</span>resource<span class="sy0">,</span>tasks<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="nu0">24</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><strong>What maxCapacity is</strong></p>
+
+<p>If each row of the histogram is considered as a bar chart, maxCapacity is the height of the Y-scale of this chart. In the image below maxCapacity = 24:</p>
+
+<p><img src="media/desktop/maxcapacity.png" alt="maxCapacity" /></p>
+
+<p>Thus, if the templates <em>histogram_cell_allocated</em> or <em>histogram_cell_capacity</em> are set to value 24, it implies the highest point of the row.</p>
+
+<p><strong>maxCapacity</strong> can be defined either at the histogram level:</p>
+
+<pre><code><pre class="js"><span class="br0">&#123;</span> view<span class="sy0">:</span> <span class="st0">&quot;resourceHistogram&quot;</span><span class="sy0">,</span> capacity<span class="sy0">:</span><span class="nu0">24</span><span class="sy0">,</span> scrollX<span class="sy0">:</span> <span class="st0">&quot;scrollHor&quot;</span><span class="sy0">,</span> 
+    scrollY<span class="sy0">:</span> <span class="st0">&quot;resourceVScroll&quot;</span><span class="br0">&#125;</span></pre></code></pre>
+
+<p>or individually for each resource:</p>
+
+<pre><code><pre class="js">resourcesStore.<span class="me1">parse</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;John&quot;</span><span class="sy0">,</span> capacity<span class="sy0">:</span><span class="nu0">8</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">2</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Mike&quot;</span><span class="sy0">,</span> capacity<span class="sy0">:</span><span class="nu0">4</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">3</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Anna&quot;</span><span class="sy0">,</span> capacity<span class="sy0">:</span><span class="nu0">8</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">4</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Bill&quot;</span><span class="sy0">,</span> capacity<span class="sy0">:</span><span class="nu0">8</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">5</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Floe&quot;</span><span class="sy0">,</span> capacity<span class="sy0">:</span><span class="nu0">8</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<div class='note'><p><p>Capacity defined at the resource level overrides the global capacity of histogram for a given resource.</p>
+</p></div>
+
+<h3>Working with the resource view panel</h3>
+
+<p>By default both views (either "resourceGrid" and "resourceTimeline" or "resourceGrid" and "resourceHistogram") will be bound to the data store named as specified in the 
+<a class="link-pro" href="api__gantt_resource_store_config.html">gantt.config.resource_store</a> configuration option.</p>
+
+<p>This data store has to be initialized manually with the help of the <a class="link-" href="api__gantt_createdatastore.html">createDatastore</a> method:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> resourcesStore <span class="sy0">=</span> gantt.<span class="me1">createDatastore</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+  <span class="kw3">name</span><span class="sy0">:</span> gantt.<span class="me1">config</span>.<span class="me1">resource_store</span><span class="sy0">,</span>
+  <span class="co1">// use treeDatastore if you have hierarchical resources (e.g. workers/departments), </span>
+  <span class="co1">// skip the &quot;type&quot; if you have a flat structure</span>
+  type<span class="sy0">:</span> <span class="st0">&quot;treeDatastore&quot;</span><span class="sy0">,</span> 
+  initItem<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span><span class="kw1">item</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">item</span>.<span class="me1">parent</span> <span class="sy0">=</span> <span class="kw1">item</span>.<span class="me1">parent</span> <span class="sy0">||</span> gantt.<span class="me1">config</span>.<span class="me1">root_id</span><span class="sy0">;</span>
+    <span class="kw1">item</span><span class="br0">&#91;</span>gantt.<span class="me1">config</span>.<span class="me1">resource_property</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="kw1">item</span>.<span class="me1">parent</span><span class="sy0">;</span>
+    <span class="kw1">item</span>.<span class="kw3">open</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw1">item</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>In order to populate the data store, use the <strong>datastore.parse</strong> method:</p>
+
+<pre><code><pre class="js">resourcesStore.<span class="me1">parse</span><span class="br0">&#40;</span><span class="br0">&#91;</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">1</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;QA&quot;</span><span class="sy0">,</span> parent<span class="sy0">:</span><span class="kw2">null</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">2</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Development&quot;</span><span class="sy0">,</span> parent<span class="sy0">:</span><span class="kw2">null</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">3</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Sales&quot;</span><span class="sy0">,</span> parent<span class="sy0">:</span><span class="kw2">null</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">4</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Other&quot;</span><span class="sy0">,</span> parent<span class="sy0">:</span><span class="kw2">null</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">5</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Unassigned&quot;</span><span class="sy0">,</span> parent<span class="sy0">:</span><span class="nu0">4</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">6</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;John&quot;</span><span class="sy0">,</span> parent<span class="sy0">:</span><span class="nu0">1</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">7</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Mike&quot;</span><span class="sy0">,</span> parent<span class="sy0">:</span><span class="nu0">2</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">8</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Anna&quot;</span><span class="sy0">,</span> parent<span class="sy0">:</span><span class="nu0">2</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">9</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Bill&quot;</span><span class="sy0">,</span> parent<span class="sy0">:</span><span class="nu0">3</span><span class="br0">&#125;</span><span class="sy0">,</span>
+    <span class="br0">&#123;</span>id<span class="sy0">:</span> <span class="nu0">10</span><span class="sy0">,</span> text<span class="sy0">:</span> <span class="st0">&quot;Floe&quot;</span><span class="sy0">,</span> parent<span class="sy0">:</span><span class="nu0">3</span><span class="br0">&#125;</span>
+<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>If you want to use resources in the lightbox, it might be a good idea to do it via the <a class="link-" href="api__gantt_serverlist.html">serverList</a> method from the onParse event of the data store:</p>
+
+<pre><code><pre class="js">resourcesStore.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onParse&quot;</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+  <span class="kw2">var</span> people <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">;</span>
+  resourcesStore.<span class="me1">eachItem</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>res<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">!</span>resourcesStore.<span class="me1">hasChild</span><span class="br0">&#40;</span>res.<span class="me1">id</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+        <span class="kw2">var</span> copy <span class="sy0">=</span> gantt.<span class="me1">copy</span><span class="br0">&#40;</span>res<span class="br0">&#41;</span><span class="sy0">;</span>
+        copy.<span class="me1">key</span> <span class="sy0">=</span> res.<span class="me1">id</span><span class="sy0">;</span>
+        copy.<span class="me1">label</span> <span class="sy0">=</span> res.<span class="me1">text</span><span class="sy0">;</span>
+        people.<span class="me1">push</span><span class="br0">&#40;</span>copy<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+  <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  gantt.<span class="me1">updateCollection</span><span class="br0">&#40;</span><span class="st0">&quot;people&quot;</span><span class="sy0">,</span> people<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Expanding resources panel</h3>
+
+<p>It is possible to expand the resources panel to show all the tasks assigned to a particular resource by enabling the <strong>fetchTasks</strong> property during initialization of the datastore via the
+<a class="link-" href="api__gantt_createdatastore.html">createDatastore</a> method:</p>
+
+<p><img src="media/desktop/expanded_resource_panel.png" alt="Expanded resource panel" /></p>
+
+<pre><code><pre class="js">gantt.$resourcesStore <span class="sy0">=</span> gantt.<span class="me1">createDatastore</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    <span class="kw3">name</span><span class="sy0">:</span> gantt.<span class="me1">config</span>.<span class="me1">resource_store</span><span class="sy0">,</span>
+    type<span class="sy0">:</span> <span class="st0">&quot;treeDatastore&quot;</span><span class="sy0">,</span>
+<span class="xtra ln-xtra">    fetchTasks<span class="sy0">:</span> <span class="kw2">true</span><span class="sy0">,</span> </span>    initItem<span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span><span class="kw1">item</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">item</span>.<span class="me1">parent</span> <span class="sy0">=</span> <span class="kw1">item</span>.<span class="me1">parent</span> <span class="sy0">||</span> gantt.<span class="me1">config</span>.<span class="me1">root_id</span><span class="sy0">;</span>
+        <span class="kw1">item</span><span class="br0">&#91;</span>gantt.<span class="me1">config</span>.<span class="me1">resource_property</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="kw1">item</span>.<span class="me1">parent</span><span class="sy0">;</span>
+        <span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">!</span><span class="kw1">item</span>.<span class="me1">parent</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+            <span class="kw1">item</span>.<span class="kw3">open</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span><span class="kw1">else</span><span class="br0">&#123;</span>
+            <span class="kw1">item</span>.<span class="kw3">open</span> <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+        <span class="kw1">return</span> <span class="kw1">item</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='samples/11_resources/11_resource_histogram_display_tasks.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Show all assigned tasks in the resource panel</a></p>
+
+<p>With the <strong>fetchTasks</strong> property set to <em>true</em>, Gantt renders all tasks assigned to a certain resource in the resource view panel. This functionality works both for the resource diagram and resource histogram types
+of layout.</p>
+
+<p>There is a shorthand for getting all tasks assigned to a resource - <a class="link-" href="api__gantt_getresourceassignments.html">getResourceAssignments</a>.</p>
+
+<pre><code><pre class="js">gantt.<span class="me1">getResourceAssignments</span><span class="br0">&#40;</span><span class="st0">&quot;6&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<!-- Content Area End -->
+			<a href='desktop__resource_management.html#top' class='top_link'>Back to top</a>
+			<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Tasks</li>
+	<li><a href='desktop__loading_storing_data.html'>Loading</a></li>
+	<li><a href='desktop__task_bars.html'>Operations</a></li>
+	<li><a href='desktop__styling.html'>Look &amp; Feel</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Configuration</li>
+	<li><a href='desktop__table.html'>Grid</a></li>
+	<li><a href='desktop__time_scale.html'>Scales</a></li>
+	<li><a href='desktop__edit_form.html'>Lightbox</a></li>
+	<li><a href='desktop__dependencies.html'>Links</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>PRO Edition</li>
+	<li><a href='desktop__critical_path.html'>Critical Path</a></li>
+	<li><a href='desktop__milestones.html'>Milestones</a></li>
+	<li><a href='desktop__baselines.html'>Baselines</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='../suite/index.html'>Suite</a></li>
+	<li><a href='../scheduler/index.html'>Scheduler</a></li>
+	<li><a href='../pivot/index.html'>Pivot</a></li>	
+	<li><a href='http://scheduler-net.com/'>Scheduler .Net</a></li>
+</ul>
+
+<ul class='column'>
+	<li class='group'>API</li>
+	<li><a href='api__refs__gantt_events.html'>Events</a></li>
+	<li><a href='api__refs__gantt_methods.html'>Methods</a></li>
+	<li><a href='api__refs__gantt_props.html'>Properties</a></li>
+	<li><a href='api__refs__gantt_templates.html'>Templates</a></li>
+</ul>
+
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

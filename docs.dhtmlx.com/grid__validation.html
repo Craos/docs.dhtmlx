@@ -1,0 +1,427 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Validating Data Items  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="grid__iterators.html">Iterating Over Data</a></li><li class=""><a href="grid__sorting.html">Sorting Data</a></li><li class=""><a href="grid__filtering.html">Filtering Data</a></li><li class=""><a href="grid__searching.html">Searching in Grid</a></li><li class=""><a href="grid__grouping_rows.html">Grouping Data by Rows</a></li><li class=""><a href="grid__formatting.html">Formatting Number and Date Values</a></li><li class=""><a href="grid__statistics_counter.html">Statistics Counters</a></li><li class=" current"><a href="grid__validation.html">Validating Data Items</a></li><ul><li class="inner"><a href="grid__validation.html#enablingvalidation">Enabling validation</a></li><li class="inner"><a href="grid__validation.html#validationrules">Validation rules</a></li><li class="inner"><a href="grid__validation.html#workingmodes">Working modes</a></li><li class="inner"><a href="grid__validation.html#validationevents">Validation events</a></li><li class="inner"><a href="grid__validation.html#styling">Styling</a></li><li class="inner"><a href="grid__validation.html#validationanddataprocessor">Validation and dataProcessor</a></li></ul><li class=""><a href="grid__math.html">Using Math Formulas for Data</a></li><li class=""><a href="grid__clipboard.html">Clipboard Operations</a></li><li class=""><a href="grid__undo_redo.html">Providing Undo/Redo Operations</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__managing_data.html">Managing Data in Grid</a></div>
+<!-- Content Area -->
+
+
+
+<h1>Validating Data Items</h1>
+
+<p>The library provides a special extension to validate data in dhtmlxGrid on the client side 
+(for server-side validation use the <a class="link-" href="connector__php__index.html">dhtmlxConnector library</a>).</p>
+
+<a name='enablingvalidation'><h2>Enabling validation</h2></a>
+
+<p>Validation can be enabled for a whole column or for a specific cell.</p>
+
+<h3>Per-column validation</h3>
+
+<p>To validate grid's column, call the <a class="link-professional" href="api__dhtmlxgrid_setcolvalidators.html">setColValidators</a> method to assign <a class="link-" href="grid__validation.html#validationrules">validators</a> to columns:</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>  
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>                
+mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;./codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>       
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Name,Email,Age&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="xtra ln-xtra">mygrid.<span class="me1">setColValidators</span><span class="br0">&#40;</span><span class="st0">&quot;NotEmpty,ValidEmail,ValidInteger&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>After these 2 steps are performed each time when the user finishes editing validation will be triggered.</p>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/19_validation/07_basic_validation.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Basic validation</a></p>
+
+<p><br></p>
+
+<p>To set several validators to the same column, call the <a class="link-professional" href="api__dhtmlxgrid_setcolvalidators.html">setColValidators</a> as in:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setColValidators</span><span class="br0">&#40;</span><span class="br0">&#91;</span><span class="st0">&quot;ValidInteger,ValidEmail&quot;</span><span class="sy0">,</span><span class="st0">&quot;ValidEmail&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//the 1st column has 2 validators assigned: &quot;ValidInteger&quot; and &quot;ValidEmail&quot;</span>
+<span class="co1">//the 2nd column has 1 validator assigned: &quot;ValidEmail&quot;</span></pre></code></pre>
+
+<p><br></p>
+
+<p>If you need to define validation rules just for some columns, set an empty or 'null' value for the columns which shouldn't be affected by validation.</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setColValidators</span><span class="br0">&#40;</span><span class="st0">&quot;ValidInteger,,,ValidEmail&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">//or</span>
+mygrid.<span class="me1">setColValidators</span><span class="br0">&#40;</span><span class="br0">&#91;</span><span class="st0">&quot;ValidInteger&quot;</span><span class="sy0">,</span><span class="kw2">null</span><span class="sy0">,</span><span class="kw2">null</span><span class="sy0">,</span><span class="st0">&quot;ValidEmail&quot;</span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<h3>Per-cell validation</h3>
+
+<p>To validate a grid's cell:</p>
+
+<ol>
+    <li>Call the <a class="link-professional" href="api__dhtmlxgrid_enablevalidation.html">enableValidation()</a> method to enable the cell-level validation:
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>  
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>                
+mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;./codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>       
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Name,Email,Age&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="xtra ln-xtra">mygrid.<span class="me1">enableValidation</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+    </li>
+    <li>Call the setAttribute method to assign a <a class="link-" href="grid__validation.html#validationrules">validator</a> to a cell:
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>  
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>                
+mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;./codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>       
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Name,Email,Age&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="xtra ln-xtra">mygrid.<span class="me1">enableValidation</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;data/grid.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">mygrid.<span class="me1">cells</span><span class="br0">&#40;</span>mygrid.<span class="me1">getSelectedId</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="nu0">0</span><span class="br0">&#41;</span>.<span class="me1">setAttribute</span><span class="br0">&#40;</span><span class="st0">&quot;validate&quot;</span><span class="sy0">,</span><span class="st0">&quot;NotEmpty&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+    </li>
+</ol>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/19_validation/05_per_cell_rules.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Per cell rules</a></p>
+
+<p><br></p>
+
+<p>If you configure the grid from XML, you can assign validators directly in the XML file:</p>
+
+<p class='snippet'>
+Assigning validators directly in an XML file
+</p>
+
+<pre><code><pre class="xml"><span class="sc3"><span class="re1">&lt;row</span> <span class="re0">id</span>=<span class="st0">&quot;11&quot;</span><span class="re2">&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;cell</span> <span class="re0">validate</span>=<span class="st0">&quot;NotEmpty&quot;</span><span class="re2">&gt;</span></span>some<span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;cell<span class="re2">&gt;</span></span></span>some value<span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;cell<span class="re2">&gt;</span></span></span>some value<span class="sc3"><span class="re1">&lt;/cell<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/row<span class="re2">&gt;</span></span></span></pre></code></pre>
+
+<h3>Forcing validation</h3>
+
+<p>To force validation for a certain cell manually use the <a class="link-" href="api__dhtmlxgrid_validatecell.html">validateCell</a> method:</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>  
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>                
+mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;./codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>       
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Name,Email,Age&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+mygrid.<span class="me1">enableValidation</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">load</span><span class="br0">&#40;</span><span class="st0">&quot;data/grid.php&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="xtra ln-xtra">mygrid.<span class="me1">validateCell</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="sy0">,</span><span class="nu0">1</span><span class="sy0">,</span>dhtmlxValidation.<span class="me1">isValidTime</span><span class="br0">&#41;</span><span class="sy0">;</span></span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/19_validation/06_forced_validation.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Forced validation</a></p>
+
+<a name='validationrules'><h2>Validation rules</h2></a>
+
+<p>There are 2 types of validation rules:</p>
+
+<ol>
+<li>Standard rules.</li>
+<li>Custom rules.</li>
+</ol>
+
+<h3>Standard rules</h3>
+
+<p>Standard rules are the following:</p>
+
+<ul>
+<li>Empty - must be empty;</li>
+<li>NotEmpty - must contain at least one symbol;</li>
+<li>ValidAplhaNumeric;</li>
+<li>ValidBoolean - can contain one of 4 values: 'true', 'false', 0 or 1;</li>
+<li>ValidCurrency;</li>
+<li>ValidDate (value from 0000-00-00 to 9999-12-31);</li>
+<li>ValidDatetime (value from 0000-00-00 00:00:00 to 9999:12:31 59:59:59);</li>
+<li>ValidEmail;</li>
+<li>ValidInteger;</li>
+<li>ValidIPv4 (value from 0.0.0.0 to 255.255.255.255);</li>
+<li>ValidNumeric;</li>
+<li>ValidSIN (Social Insurance Number);</li>
+<li>ValidSSN (Social Security Number);</li>
+<li>ValidTime (value from 00:00:00 to 59:59:59).</li>
+</ul>
+
+<h3>Custom rules</h3>
+
+<p>To create a custom rule define a new method for the <strong>dhtmlxValidation</strong> object and use the name of that method as the name of the rule.</p>
+
+<p>Note,</p>
+
+<ul>
+<li>The method's name must start from 'is'.</li>
+<li>While specifying the method, the prefix 'is' must be omitted.</li>
+<li>The method takes only 1 parameter - the value of the cell. Returns <strong>true</strong> if validation is successful and <strong>false</strong>, otherwise. </li>
+</ul>
+
+<pre><code><pre class="js"><span class="xtra ln-xtra">dhtmlxValidation.<span class="me1">isMin4</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="br0">&#123;</span> <span class="co1">// data should include more than 4 symbols</span></span><span class="xtra ln-xtra">    <span class="kw1">return</span> data.<span class="me1">length</span><span class="sy0">&gt;=</span><span class="nu0">4</span><span class="sy0">;</span></span><span class="xtra ln-xtra"><span class="br0">&#125;</span><span class="sy0">;</span></span><span class="xtra ln-xtra">dhtmlxValidation.<span class="me1">isMax10</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="br0">&#123;</span><span class="co1">// data should include less than 10 symbols</span></span><span class="xtra ln-xtra">    <span class="kw1">return</span> data.<span class="me1">length</span><span class="sy0">&lt;=</span><span class="nu0">10</span><span class="sy0">;</span></span><span class="xtra ln-xtra"><span class="br0">&#125;</span><span class="sy0">;</span></span>mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>  
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>                
+mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;./codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>       
+<span class="xtra ln-xtra">mygrid.<span class="me1">setColValidators</span><span class="br0">&#40;</span><span class="st0">&quot;Min4,Max10&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/19_validation/04_custom_rule.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Custom rule</a></p>
+
+<p><br></p>
+
+<p>In case you want to validate a cell just if it contains something (i.e. don't validate the cell if it's empty), use the following technique:</p>
+
+<pre><code><pre class="js">dhtmlxValidation.<span class="me1">isGreater100</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>data<span class="sy0">==</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span> <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span><span class="co1">// returns 'true' if a cell is empty</span>
+    <span class="kw1">return</span> <span class="br0">&#40;</span>data<span class="sy0">&gt;</span><span class="nu0">100</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>  
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>                
+mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;./codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>       
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Name,Email,Age&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="xtra ln-xtra">mygrid.<span class="me1">setColValidators</span><span class="br0">&#40;</span><span class="st0">&quot;Greater100,,&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> </span>mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='workingmodes'><h2>Working modes</h2></a>
+
+<p>Validation can be used in 2 modes:</p>
+
+<ol>
+<li>Basic;</li>
+<li>Live.</li>
+</ol>
+
+<h3>Basic mode</h3>
+
+<p>The basic mode is enabled by default and invokes validation just after the user finishes editing. 
+In the live mode validation is executed on each keystroke (during the editing process).</p>
+
+<h3>Live mode</h3>
+
+<p>To enable the live mode call the <a class="link-professional" href="api__dhtmlxgrid_enablevalidation.html">enableValidation</a> method with two <strong>true</strong> parameters.</p>
+
+<p class='snippet'>
+Enabling the live update mode
+</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">'gridbox'</span><span class="br0">&#41;</span><span class="sy0">;</span>  
+mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>                
+mygrid.<span class="me1">setImagePath</span><span class="br0">&#40;</span><span class="st0">&quot;./codebase/imgs/&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>       
+mygrid.<span class="me1">setHeader</span><span class="br0">&#40;</span><span class="st0">&quot;Name,Email,Age&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="xtra ln-xtra">mygrid.<span class="me1">enableValidation</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="sy0">,</span> <span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span> </span><span class="xtra ln-xtra">mygrid.<span class="me1">setColValidators</span><span class="br0">&#40;</span><span class="st0">&quot;NotEmpty,ValidEmail&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></span>mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<ul>
+<li>The methods and techniques used of the live mode are exactly the same as those of the basic mode.</li>
+<li>When an input fails validation in the live mode, it's get marked with the <strong>dhtmlx_live_validation_error</strong> css class.</li>
+<li>If a user ignores the validation mark and continues editing the incorrect value, after he finishes the editing, the logic of the basic mode will be applied to the input, i.e. 
+<strong>dhtmlx_live_validation_error</strong> will be changed to <strong>dhtmlx_validation_error</strong> and the related events will be generated.</li>
+</ul>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/19_validation/01_live_validation.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Live validation</a></p>
+
+<a name='validationevents'><h2>Validation events</h2></a>
+
+<p>The 'validation' extension provides the following validation-related events:</p>
+
+<h4>Basic mode</h4>
+
+<ul>
+<li><a class="link-" href="api__dhtmlxgrid_onvalidationerror_event.html">onValidationError</a></li>
+<li><a class="link-notsure" href="api__dhtmlxgrid_onvalidationcorrect_event.html">onValidationCorrect</a></li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onValidationCorrect&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span>ind<span class="sy0">,</span>value<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    mygrid.<span class="me1">setCellTextStyle</span><span class="br0">&#40;</span>id<span class="sy0">,</span>ind<span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">'message'</span><span class="br0">&#41;</span>.<span class="me1">innerHTML</span><span class="sy0">=</span><span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/19_validation/02_basic_custom_validation.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Basic custom validation</a></p>
+
+<h4>Live mode</h4>
+
+<ul>
+<li><a class="link-notsure" href="api__dhtmlxgrid_onlivevalidationerror_event.html">onLiveValidationError</a></li>
+<li><a class="link-notsure" href="api__dhtmlxgrid_onlivevalidationcorrect_event.html">onLiveValidationCorrect</a></li>
+</ul>
+
+<pre><code><pre class="js">mygrid.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onLiveValidationError&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span>ind<span class="sy0">,</span>value<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">'message'</span><span class="br0">&#41;</span>.<span class="me1">innerHTML</span><span class="sy0">=</span><span class="st0">&quot;Error at cell (&quot;</span><span class="sy0">+</span>id<span class="sy0">+</span><span class="st0">&quot;,&quot;</span><span class="sy0">+</span>ind
+    <span class="sy0">+</span><span class="st0">&quot;), value must &quot;</span><span class="sy0">+</span><span class="br0">&#40;</span>ind<span class="sy0">==</span><span class="nu0">0</span><span class="sy0">?</span><span class="st0">&quot;not be empty&quot;</span><span class="sy0">:</span><span class="st0">&quot;be a valid email&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onLiveValidationCorrect&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span>ind<span class="sy0">,</span>value<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    document.<span class="me1">getElementById</span><span class="br0">&#40;</span><span class="st0">'message'</span><span class="br0">&#41;</span>.<span class="me1">innerHTML</span><span class="sy0">=</span><span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><a href='http://dhtmlx.com/docs/products/dhtmlxGrid/samples/19_validation/03_live_custom_validation.html' target='blank'><span class='sample'>Related sample: </span>&nbsp;Live custom validation</a></p>
+
+<h3>Common events</h3>
+
+<p>You can also use the <a class="link-pro" href="api__dhtmlxgrid_oncellchanged_event.html">onCellChanged</a> and <a class="link-notsure" href="api__dhtmlxgrid_oneditcell_event.html">onEditCell</a> events for validation purposes. Note, while using these events you don't need to include
+the source file of the 'validation' extension on your page.</p>
+
+<p class='snippet'>
+Using common dhtmlxGrid events for validation
+</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onCellChanged&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>id<span class="sy0">,</span>index<span class="sy0">,</span>value<span class="br0">&#41;</span><span class="br0">&#123;</span>
+     <span class="kw1">if</span> <span class="br0">&#40;</span>index <span class="sy0">==</span> SOME <span class="sy0">&amp;&amp;</span> <span class="sy0">!</span>some_check<span class="br0">&#40;</span>value<span class="br0">&#41;</span><span class="br0">&#41;</span>
+          grid.<span class="me1">cellById</span><span class="br0">&#40;</span>id<span class="sy0">,</span>index<span class="br0">&#41;</span>.<span class="me1">setCValue</span><span class="br0">&#40;</span><span class="st0">&quot;invalid&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span>
+<span class="co1">//or</span>
+mygrid.<span class="me1">attachEvent</span><span class="br0">&#40;</span><span class="st0">&quot;onEditCell&quot;</span><span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span>stage<span class="sy0">,</span>id<span class="sy0">,</span>index<span class="sy0">,</span>new_value<span class="sy0">,</span>old_value<span class="br0">&#41;</span><span class="br0">&#123;</span>
+     <span class="kw1">if</span> <span class="br0">&#40;</span>stage <span class="sy0">==</span> <span class="nu0">2</span> <span class="sy0">&amp;&amp;</span> index <span class="sy0">==</span> SOME <span class="sy0">&amp;&amp;</span> <span class="sy0">!</span>some_check<span class="br0">&#40;</span>new_value<span class="br0">&#41;</span><span class="br0">&#41;</span>
+          <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span> <span class="co1">//deny edit operation</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span></pre></code></pre>
+
+<a name='styling'><h2>Styling</h2></a>
+
+<p>When an input fails validation it's get marked with a special css class.</p>
+
+<ul>
+<li>For the basic mode  - <strong>dhtmlx_validation_error</strong>.</li>
+<li>For the live mode - <strong>dhtmlx_live_validation_error</strong>.</li>
+</ul>
+
+<p>To set custom styling you should redefine the related css class:</p>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>style<span class="sy0">&gt;</span>
+.<span class="me1">dhtmlx_validation_error</span><span class="br0">&#123;</span>
+      ... <span class="me1">any</span> custom marking rules here ...
+<span class="br0">&#125;</span>
+<span class="sy0">&lt;/</span>style<span class="sy0">&gt;</span></pre></code></pre>
+
+<p>The custom messages can be added by using validation events.</p>
+
+<a name='validationanddataprocessor'><h2>Validation and dataProcessor</h2></a>
+
+<p>The native dhtmlxGrid validation described above doesn't affect <a class="link-" href="dataprocessor__index.html">DataProcessor</a> behaviour. What does it mean?</p>
+
+<p>All changes made in the grid are sent to the server, no matter if they're correct or not. Cells that fail validation are marked with a special 
+style but their values are saved on the server.</p>
+
+<p>To block sending incorrect data to the server specify the validation rules using the API of dataProcessor, particularly the <a class="link-" href="api__dataprocessor_setverificator.html">setVerificator</a> method.
+dataProcessor validates data before sending it to the server and prevents saving the data that failed validation.</p>
+
+<pre><code><pre class="js">dp.<span class="me1">setVerificator</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="sy0">,</span>dhtmlxValidation.<span class="me1">isValidEmail</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Read more details on dataProcessor validation <a class="link-" href="dataprocessor__configuration.html#validation">here</a>.</p>
+
+<!-- Content Area End -->
+			<a href='grid__validation.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>

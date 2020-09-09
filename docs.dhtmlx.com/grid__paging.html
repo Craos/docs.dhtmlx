@@ -1,0 +1,398 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/docs-v=1599488307.css">
+		<link rel="stylesheet" type="text/css" href="assets/theme-v=1599488307.css">
+		<link rel="search" type="application/opensearchdescription+xml" title="DHTMLX Docs" href="https://docs.dhtmlx.com/assets/opensearch.xml">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="initial-scale = 1.0" />
+		<meta name="description" content="" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="assets/ie.css" />
+		<![endif]-->
+		        <!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="assets/ie7.css" />
+		<![endif]-->
+        <!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="assets/ie6.css" />
+		<![endif]-->
+<a href="index.html" title="" class="attention-line">
+    <span>Check documentation for the <span class="attention-line__link"> latest version 6.0 of dhtmlxSuite <span class="more-link-icon"></span></span></span>
+</a>
+		<title>Paging  DHTMLX Docs</title>
+	</head>
+<body class="page_">
+	<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->
+	<a name="top"></a>
+	
+	<div class='headerBox'>
+	<div class="header">
+		<div class='content'>
+			<a href='https://dhtmlx.com/' class='top_logo'></a>
+			<div class='top_menu'>
+				<a href="https://dhtmlx.com/docs/products/dhtmlxSuite5/">Samples</a>
+				<a href="https://forum.dhtmlx.com/">Forum</a>
+				<a href="https://dhtmlx.com/docs/technical-support.shtml">Support</a>
+			</div>
+			<span><a href='index.html' style="color:white">Documentation</a> / <a href='suite5.html' style="color:white">Suite 5.X</a></span>
+		</div>
+	</div>
+	</div>
+
+	<div class="body">
+		<div class="content">
+		<div class="navigation">
+			<div id="doc_navigation">
+			<div class="search">
+				<form method="get" action="search.php">
+					<input type="text" accesskey="f" name="query" placeholder="Search the docs..." value="" autocomplete="off">
+						<button type="submit"><img src="assets/common/search_icon.png"/></button>
+				</form>
+			</div>
+			<ul><li class=""><a href="grid__smart_rendering.html">Smart Rendering</a></li><li class="toc-pro current"><a href="grid__paging.html">Paging</a></li><ul><li class="inner"><a href="grid__paging.html#settingthepage">Setting the page</a></li><li class="inner"><a href="grid__paging.html#skins">Skins</a></li><li class="inner"><a href="grid__paging.html#internationalization">Internationalization</a></li><li class="inner"><a href="grid__paging.html#customizingthedefaultskin">Customizing the default skin</a></li><li class="inner"><a href="grid__paging.html#customizingthebricksskin">Customizing the 'bricks' skin</a></li><li class="inner"><a href="grid__paging.html#customizingthetoolbarskin">Customizing the 'toolbar' skin</a></li><li class="inner"><a href="grid__paging.html#creatingacustomskin">Creating a custom skin</a></li><li class="inner"><a href="grid__paging.html#integratingapagedgridwithdhtmlxcontainers">Integrating a paged grid with DHTMLX containers</a></li></ul><li class=""><a href="grid__dynamic_loading.html">Dynamic Loading</a></li></ul>
+			</div>
+		</div>	  
+	  
+		<div class='doc' id='doc_content'>
+			
+			
+			<div class='breadcrumb'><a class="n1" href="suite5.html">Start</a><a class="n2" href="grid__index.html">Grid</a><a class="n3" href="grid__loading_data.html">Loading and Storing Data</a><a class="n4" href="grid__big_datasets_loading.html">Loading Big Datasets</a></div>
+<!-- Content Area -->
+
+
+<p class='promarker'>Available only in <b>PRO Edition</b></p>
+<h1>Paging</h1>
+
+<div class='note'><p><p>The stated functionality requires PRO version of the dhtmlxGrid (or DHTMLX Suite) package and doesn't work with the Smart Rendering mode enabled.</p>
+</p></div>
+
+<p>dhtmlxGrid supports paging through the items in the data source.</p>
+
+<p><img src="media/grid/paging_front.png"></p>
+
+<p>You enable and configure paging with the <a class="link-pro" href="api__dhtmlxgrid_enablepaging.html"><strong>enablePaging()</strong></a> method.</p>
+
+<pre><code><pre class="js">mygrid <span class="sy0">=</span> <span class="kw2">new</span> dhtmlXGridObject<span class="br0">&#40;</span><span class="st0">&quot;gridbox&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">enablePaging</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="sy0">,</span><span class="nu0">15</span><span class="sy0">,</span><span class="nu0">5</span><span class="sy0">,</span><span class="st0">&quot;pagingbox&quot;</span><span class="sy0">,</span><span class="kw2">true</span><span class="sy0">,</span><span class="st0">&quot;recInfoArea&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The parameters are:</p>
+
+<ul>
+<li><strong>mode</strong>  - (boolean) enable/disable paging mode</li>
+<li><strong>pageSize</strong> - (number) count of rows per page</li>
+<li><strong>pagesInGrp</strong> - (number) count of visible page selectors</li>
+<li><strong>pagingControlsContainer</strong> - (string,number) ID or container which will be used for showing paging controls</li>
+<li><strong>showRecInfo</strong> - (boolean) enable/disable showing of additional info about paging state</li>
+<li><strong>pagingStateContainer</strong> - (string,number) ID or container which will be used for showing paging state</li>
+</ul>
+
+<a name='settingthepage'><h2>Setting the page</h2></a>
+
+<p>To make the desired page active, call the method <a class="link-pro" href="api__dhtmlxgrid_changepage.html">changePage()</a>:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">changePage</span><span class="br0">&#40;</span>pageNum<span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//numbering starts at 1</span></pre></code></pre>
+
+<p>You can also use the <a class="link-pro" href="api__dhtmlxgrid_changepagerelative.html"><strong>changePageRelative(ind)</strong></a> method to 'open' the desired page. 
+As a parameter the method takes relative shifting (in pages) from the currently active page.</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">changePageRelative</span><span class="br0">&#40;</span><span class="sy0">-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='skins'><h2>Skins</h2></a>
+
+<p>The library provides 3 skins for paging:</p>
+
+<ul>
+<li>default;</li>
+<li>bricks;</li>
+<li>toolbar.</li>
+</ul>
+
+<h3>Default skin</h3>
+
+<pre><code><pre class="js">mygrid.<span class="me1">enablePaging</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="sy0">,</span><span class="nu0">15</span><span class="sy0">,</span><span class="nu0">5</span><span class="sy0">,</span><span class="st0">&quot;pagingArea&quot;</span><span class="sy0">,</span><span class="kw2">true</span><span class="sy0">,</span><span class="st0">&quot;recInfoArea&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/grid/paging_default_skin.png"></img></p>
+
+<h3>'Bricks'</h3>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>script<span class="sy0">&gt;</span>  
+    ...
+    <span class="me1">mygrid</span>.<span class="me1">enablePaging</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="sy0">,</span><span class="nu0">15</span><span class="sy0">,</span><span class="nu0">5</span><span class="sy0">,</span><span class="st0">&quot;pagingbox&quot;</span><span class="sy0">,</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    mygrid.<span class="me1">setPagingSkin</span><span class="br0">&#40;</span><span class="st0">&quot;bricks&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="sy0">&lt;/</span>script<span class="sy0">&gt;</span></pre></code></pre>
+
+<p><img src="media/grid/paging_bricks_skin.png"></img></p>
+
+<h3>'Toolbar'</h3>
+
+<pre><code><pre class="js"><span class="sy0">&lt;</span>script<span class="sy0">&gt;</span>  
+    ...
+    <span class="me1">mygrid</span>.<span class="me1">enablePaging</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="sy0">,</span><span class="nu0">15</span><span class="sy0">,</span><span class="nu0">5</span><span class="sy0">,</span><span class="st0">&quot;pagingbox&quot;</span><span class="sy0">,</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    mygrid.<span class="me1">setPagingSkin</span><span class="br0">&#40;</span><span class="st0">&quot;toolbar&quot;</span><span class="sy0">,</span> <span class="st0">&quot;dhx_skyblue&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="sy0">&lt;/</span>script<span class="sy0">&gt;</span></pre></code></pre>
+
+<p><img src="media/grid/paging_toolbar_skin.png"></img></p>
+
+<a name='internationalization'><h2>Internationalization</h2></a>
+
+<p>To localize the paging bar into some language, you should use the property <strong>i18n.paging</strong>. <br>
+The set locale is applied to all skins.</p>
+
+<pre><code><pre class="js">...
+<span class="me1">mygrid</span>.<span class="me1">i18n</span>.<span class="me1">paging</span><span class="sy0">=</span><span class="br0">&#123;</span>
+      results<span class="sy0">:</span><span class="st0">&quot;Results&quot;</span><span class="sy0">,</span>
+      records<span class="sy0">:</span><span class="st0">&quot;Records from &quot;</span><span class="sy0">,</span>
+      to<span class="sy0">:</span><span class="st0">&quot; to &quot;</span><span class="sy0">,</span>
+      page<span class="sy0">:</span><span class="st0">&quot;Page &quot;</span><span class="sy0">,</span>
+      perpage<span class="sy0">:</span><span class="st0">&quot;rows per page&quot;</span><span class="sy0">,</span>
+      first<span class="sy0">:</span><span class="st0">&quot;To first Page&quot;</span><span class="sy0">,</span>
+      previous<span class="sy0">:</span><span class="st0">&quot;Previous Page&quot;</span><span class="sy0">,</span>
+      found<span class="sy0">:</span><span class="st0">&quot;Found records&quot;</span><span class="sy0">,</span>
+      next<span class="sy0">:</span><span class="st0">&quot;Next Page&quot;</span><span class="sy0">,</span>
+      last<span class="sy0">:</span><span class="st0">&quot;To last Page&quot;</span><span class="sy0">,</span>
+      of<span class="sy0">:</span><span class="st0">&quot; of &quot;</span><span class="sy0">,</span>
+      notfound<span class="sy0">:</span><span class="st0">&quot;No Records Found&quot;</span> 
+<span class="br0">&#125;</span><span class="sy0">;</span>
+mygrid.<span class="me1">enablePaging</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="sy0">,</span><span class="nu0">15</span><span class="sy0">,</span><span class="nu0">5</span><span class="sy0">,</span><span class="st0">&quot;pagingbox&quot;</span><span class="sy0">,</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setPagingSkin</span><span class="br0">&#40;</span><span class="st0">&quot;bricks&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='customizingthedefaultskin'><h2>Customizing the default skin</h2></a>
+
+<p>The default skin creates 2 information lines:</p>
+
+<ul>
+<li>a line with info about the current state of paging; </li>
+<li>a line with navigation controls. </li>
+</ul>
+
+<p>Both lines can be configured through templates:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setPagingTemplates</span><span class="br0">&#40;</span>navigation_template<span class="sy0">,</span>info_template<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>The default definitions of the lines templates are shown below:</p>
+
+<pre><code><pre class="js"><span class="co1">//navigation_template</span>
+<span class="br0">&#91;</span>prevpages<span class="sy0">:&lt;:</span> <span class="br0">&#93;</span> <span class="br0">&#91;</span>currentpages<span class="sy0">:,</span> <span class="br0">&#93;</span> <span class="br0">&#91;</span>nextpages<span class="sy0">:&gt;:</span> <span class="br0">&#93;</span>
+&nbsp;
+<span class="co1">//info_template</span>
+Results <span class="sy0">&lt;</span>b<span class="sy0">&gt;</span><span class="br0">&#91;</span>from<span class="br0">&#93;</span><span class="sy0">-</span><span class="br0">&#91;</span>to<span class="br0">&#93;</span><span class="sy0">&lt;/</span>b<span class="sy0">&gt;</span> of <span class="sy0">&lt;</span>b<span class="sy0">&gt;</span><span class="br0">&#91;</span>total<span class="br0">&#93;</span><span class="sy0">&lt;/</span>b<span class="sy0">&gt;</span></pre></code></pre>
+
+<p>In templates you can use the following markers:</p>
+
+<ul>
+<li><strong>[from]</strong> - the index of the first row in the grid;</li>
+<li><strong>[to]</strong> - the index of the last row in the grid;</li>
+<li><strong>[total]</strong> - the total count of rows in the grid;</li>
+<li><strong>[current]</strong> - a link to the current page (or next / prev - the relative position can be used);</li>
+<li><strong>[prevpages]</strong> - a link to the previous set of pages;</li>
+<li><strong>[nextpages]</strong> - a link to the next set of pages;</li>
+<li><strong>[currentpages]</strong> - renders the current set of pages.</li>
+</ul>
+
+<p>Any of the markers allows you to specify text for it as: <strong>[</strong><i>marker</i><strong>:</strong><i>text_in_normal_state</i><strong>:</strong><i>text_in_disabled_state</i><strong>]</strong></p>
+
+<pre><code><pre class="js"><span class="br0">&#91;</span>prevpages<span class="sy0">:&lt;:</span>No Previous Pages<span class="br0">&#93;</span></pre></code></pre>
+
+<p>You can use any combination of markers and static text/HTML inside the templates:</p>
+
+<pre><code><pre class="js">...
+<span class="me1">mygrid</span>.<span class="me1">enablePaging</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="sy0">,</span><span class="nu0">15</span><span class="sy0">,</span><span class="nu0">5</span><span class="sy0">,</span><span class="st0">&quot;pagingbox&quot;</span><span class="sy0">,</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">init</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+mygrid.<span class="me1">setPagingTemplates</span><span class="br0">&#40;</span><span class="st0">&quot;Pages - [current:0] 
+     [current:+1] [current:+2] , from [total] rows&quot;</span><span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p><img src="media/grid/custom_default_skin.png"></img></p>
+
+<a name='customizingthebricksskin'><h2>Customizing the 'bricks' skin</h2></a>
+
+<p>The user can adjust the necessary class in order to change the look and feel of controls:</p>
+
+<ul>
+<li>.dhx_pbox - a border line around navigation controls;</li>
+<li>.dhx_pline - an area with page buttons;</li>
+<li>.dhx_page - a navigation button;</li>
+<li>.dhx_pager_info - an area with information about the current position inside paging;</li>
+<li>.dhx_page_active - an active page button.</li>
+</ul>
+
+<p>There are also different styles for different grid skins:</p>
+
+<ul>
+<li>.dhx_pbox_skyblue - default skin;</li>
+<li>.dhx_pbox_web - web skin;</li>
+<li>.dhx_pbox_terrace - terrace skin;</li>
+<li>etc.</li>
+</ul>
+
+<a name='customizingthetoolbarskin'><h2>Customizing the 'toolbar' skin</h2></a>
+
+<p>The toolbar skin is based on dhtmlxToolbar.
+To get the toolbar object you should use the <strong>aToolBar</strong> property. Note, the property is available only after all rows are loaded.</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">load</span><span class="br0">&#40;</span>url<span class="sy0">,</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#123;</span>
+   <span class="kw2">var</span> myToolbar<span class="sy0">=</span>grid.<span class="me1">aToolBar</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Now you can apply to the myToolbar object any of the <a class="link-" href="api__refs__dhtmlxtoolbar.html">dhtmlxToolbar</a> methods.</p>
+
+<p>In addition to that, the users can also configure which buttons (among the default ones) they expect to see in the toolbar:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setPagingWTMode</span><span class="br0">&#40;</span>navButtons<span class="sy0">,</span>navLabel<span class="sy0">,</span>pageSelect<span class="sy0">,</span>perPageSelect<span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Each of the above mentioned parameters can be set either to <em>true</em> or <em>false</em>:</p>
+
+<ul>
+<li>navButtons - the first, prev, next, last buttons;</li>
+<li>navLabel - the label with information about the currently shown pages;</li>
+<li>pageSelect - the selectbox that allows choosing the current page;</li>
+<li>perPageSelect - the selectbox that allows choosing the count of rows per page.</li>
+</ul>
+
+<p>The user can change the style of the "tooblar" paging skin using the 2nd parameter of the <a class="link-" href="api__dhtmlxgrid_setpagingskin.html">setPagingSkin()</a> method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setPagingSkin</span><span class="br0">&#40;</span><span class="st0">&quot;toolbar&quot;</span><span class="sy0">,</span><span class="st0">&quot;dhx_terrace&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='creatingacustomskin'><h2>Creating a custom skin</h2></a>
+
+<p>If none of the built-in skins meets your needs, you can easily create a custom one. 
+Basically, some custom code can be attached to events of the grid, but paging provides more simple way to define custom skins.
+Just define a grid method with the name:</p>
+
+<pre><code><pre class="js">mygrid._pgn_<span class="br0">&#91;</span><span class="kw3">NAME</span><span class="br0">&#93;</span></pre></code></pre>
+
+<p>And call the following method:</p>
+
+<pre><code><pre class="js">mygrid.<span class="me1">setSkin</span><span class="br0">&#40;</span><span class="st0">&quot;[NAME]&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>As a result, this new grid method will be called each time when some paging information is changed and needs to be updated.</p>
+
+<p>For example, creating a group of paging controls like this:</p>
+
+<pre><code><pre class="html"><span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;button&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;Previous&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">span</span>&gt;</span>Current page: NN<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">span</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">&quot;button&quot;</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">&quot;Next&quot;</span>&gt;</span></pre></code></pre>
+
+<p>This can be done in the following way:</p>
+
+<pre><code><pre class="js">mygrid._pgn_custom<span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span>page<span class="sy0">,</span>start<span class="sy0">,</span>end<span class="br0">&#41;</span><span class="br0">&#123;</span>
+    <span class="coMULTI">/* page - the current page
+        start - the first visible row
+        last - the last visible row */</span>
+    <span class="kw2">var</span> html<span class="sy0">=</span><span class="st0">'&lt;input type=&quot;button&quot; value=&quot;Previos&quot;&gt;&lt;span&gt;Current page: '</span><span class="sy0">+</span>page
+      <span class="sy0">+</span><span class="st0">'&lt;/span&gt;&lt;input type=&quot;button&quot; value=&quot;Next&quot;&gt;'</span><span class="sy0">;</span>
+    mygrid._pgn_parentObj.<span class="me1">innerHTML</span><span class="sy0">=</span>html<span class="sy0">;</span>
+    mygrid._pgn_parentObj.<span class="me1">childNodes</span><span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span>.<span class="me1">onclick</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span> <span class="co1">// the previous button logic</span>
+    mygrid.<span class="me1">changePageRelative</span><span class="br0">&#40;</span><span class="sy0">-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    mygrid._pgn_parentObj.<span class="me1">childNodes</span><span class="br0">&#91;</span><span class="nu0">2</span><span class="br0">&#93;</span>.<span class="me1">onclick</span><span class="sy0">=</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span> <span class="co1">// the next button logic</span>
+    mygrid.<span class="me1">changePageRelative</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span>
+mygrid.<span class="me1">setPagingSkin</span><span class="br0">&#40;</span><span class="st0">&quot;custom&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<a name='integratingapagedgridwithdhtmlxcontainers'><h2>Integrating a paged grid with DHTMLX containers</h2></a>
+
+<p>It's possible to add paging in Status Bar of the container components.</p>
+
+<p>For example, let's assume that you already have an initialized component with a cell.</p>
+
+<p>First, you should attach Status Bar. For this purpose, you have to set the <strong>paging</strong> param to <em>true</em>:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> pagingId <span class="sy0">=</span> <span class="st0">&quot;pagingArea_&quot;</span><span class="sy0">+</span>window.<span class="me1">dhx</span>.<span class="me1">newId</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+cell.<span class="me1">attachStatusBar</span><span class="br0">&#40;</span><span class="br0">&#123;</span>
+    text<span class="sy0">:</span> <span class="st0">&quot;&lt;div id='&quot;</span><span class="sy0">+</span>pagingId<span class="sy0">+</span><span class="st0">&quot;'&gt;&lt;/div&gt;&quot;</span><span class="sy0">,</span>
+    paging<span class="sy0">:</span> <span class="kw2">true</span>
+<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>Then you need to enable paging in the grid:</p>
+
+<pre><code><pre class="js"><span class="kw2">var</span> myGrid <span class="sy0">=</span> cell.<span class="me1">attachGrid</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co1">// more config here if needed</span>
+myGrid.<span class="me1">enablePaging</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="sy0">,</span> <span class="nu0">9</span><span class="sy0">,</span> <span class="nu0">3</span><span class="sy0">,</span> pagingId<span class="br0">&#41;</span><span class="sy0">;</span>
+myGrid.<span class="me1">setPagingSkin</span><span class="br0">&#40;</span><span class="st0">&quot;toolbar&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre></code></pre>
+
+<p>You can have a look at the related samples by this <a href="http://dhtmlx.com/docs/products/dhtmlxToolbar/samples/13_grid_paging_in_statusbar/">link</a>.</p>
+
+<!-- Content Area End -->
+			<a href='grid__paging.html#top' class='top_link'>Back to top</a>
+			
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class='content'>
+			<ul class='column'>
+	<li class='group'>Suite 5.X Collection</li>
+	<li><a href='accordion__index.html'>Accordion</a></li>
+	<li><a href='calendar__index.html'>Calendar</a></li>
+	<li><a href='carousel__index.html'>Carousel</a></li>
+	<li><a href='chart__index.html'>Chart</a></li>
+	<li><a href='colorpicker__index.html'>ColorPicker</a></li>
+	<li><a href='combo__index.html'>Combo</a></li>
+	<li><a href='dataview__index.html'>DataView</a></li>	
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='form__index.html'>Form</a></li>
+	<li><a href='grid__index.html'>Grid</a></li>
+	<li><a href='layout__index.html'>Layout</a></li>
+	<li><a href='list__index.html'>List</a></li>
+	<li><a href='menu__index.html'>Menu</a></li>
+	<li><a href='popup__index.html'>Popup</a></li>
+	<li><a href='ribbon__index.html'>Ribbon</a></li>		
+</ul>
+<ul class='column'>
+	<li class='group'>&nbsp;</li>
+	<li><a href='sidebar__index.html'>Sidebar</a></li>
+	<li><a href='slider__index.html'>Slider</a></li>
+	<li><a href='tabbar__index.html'>Tabbar</a></li>
+	<li><a href='toolbar__index.html'>Toolbar</a></li>
+	<li><a href='treegrid__index.html'>TreeGrid</a></li>
+	<li><a href='treeview__index.html'>TreeView</a></li>
+	<li><a href='windows__index.html'>Windows</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Other Components</li>
+	<li><a href='diagram/index.html'>Diagram</a></li>
+	<li><a href='gantt/index.html'>Gantt</a></li>
+	<li><a href='pivot/index.html'>Pivot</a></li>
+	<li><a href='richtext/index.html'>RichText</a></li>
+	<li><a href='scheduler/index.html'>Scheduler</a></li>
+	<li><a href='spreadsheet/index.html'>SpreadSheet</a></li>
+	<li><a href='vault/index.html'>Vault</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Data Saving</li>
+	<li><a href='datastore__index.html'>DataStore</a></li>
+	<li><a href='dataprocessor__index.html'>DataProcessor</a></li>
+	<li><a href='connector__php__index.html'>PHP connector</a></li>
+	<li><a href='connector__java__index.html'>Java connector</a></li>
+	<li><a href='connector__net__index.html'>.Net connector</a></li>
+	<li><a href='connector__cf__index.html'>ColdFusion</a></li>
+</ul>
+<ul class='column'>
+	<li class='group'>Tools&Helpers</li>	
+	<li><a href='formbuilder__index.html'>Form Builder</a></li>
+	<li><a href='libcompiler__index.html'>LibCompiler</a></li>
+	<li><a href='optimus__index.html'>Optimus Framework</a></li>
+	<li><a href='dhxskinbuilder_4_x.html'>Skin Builder</a></li>
+	<li><a href='http://snippet.dhtmlx.com/'>Snippet Editor</a></li>
+	<li><a href='designer__index.html'>Visual Designer</a></li>
+	<li><a href='helpers__index.html'>Helpers</a></li>
+</ul>
+		</div>
+	</div>
+	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		AutoComplete_init("");
+		Scroll_init();
+	</script>	
+</body>
+</html>
